@@ -28,6 +28,10 @@
   only available internally. Array-like subsetting of simulated counts
   now retains the class.
 
+- `farringtonFlexible()` with activated `populationOffset` (non-default)
+  always used the population data of the *first* time series in the fitting step
+  while iterating over a multivariate `"sts"` object.
+
 
 # surveillance 1.19.1 (2021-03-30)
 
