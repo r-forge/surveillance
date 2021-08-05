@@ -1,8 +1,8 @@
 ## This is a convenient Makefile for quick vignette compilation in Emacs
-## and for author-level checks of the vignette cache. It requires GNU make.
-## Because of this and because this Makefile does nothing special to build
+## and for maintainer-level checks of the vignette cache. It requires GNU make.
+## Because of this and because it does nothing special to build
 ## the vignettes, it is listed in the top-level .Rbuildignore file
-## (however, it will still be used during R CMD build).
+## and called GNUmakefile so that it is not used by R CMD build.
 ## In addition it defines a rule to create the PStricks-based HMM figure
 ## included in surveillance.Rnw
 ##
