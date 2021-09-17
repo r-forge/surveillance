@@ -1,7 +1,7 @@
 ################################################################################
 ### Compute one-step-ahead predictions at a series of time points
 ###
-### Copyright (C) 2011-2012 Michaela Paul, 2012-2018 Sebastian Meyer
+### Copyright (C) 2011-2012 Michaela Paul, 2012-2018,2021 Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -142,9 +142,9 @@ oneStepAhead <- function(result, # hhh4-object (i.e. a hhh4 model fit)
 
         if (do_pb) pb <- txtProgressBar(min=0, max=ntps, initial=0, style=3)
         for(i in seq_along(tps)) {
-            if (verbose > 1L) {
-                cat("\nOne-step-ahead prediction @ t =", tps[i], "...\n")
-            } else if (do_pb) setTxtProgressBar(pb, i)
+            if (do_pb) setTxtProgressBar(pb, i) else if (verbose) {
+                cat("One-step-ahead prediction @ t =", tps[i], "...\n")
+            }
 
             if (type == "rolling") { # update fit
                 fit.old <- fit # backup
