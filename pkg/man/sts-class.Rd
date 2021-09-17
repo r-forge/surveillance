@@ -99,8 +99,8 @@ sts(observed, start = c(2000, 1), frequency = 52,
       Furthermore, if \code{epochAsDate=TRUE} then \code{epoch}
       is the integer representation of \code{\link{Date}}s
       giving the exact date of the observation.}
-    \item{\code{freq}:}{If weekly data \code{freq} corresponds to 52, in
-      case of monthly data \code{freq} is 12.}
+    \item{\code{freq}:}{number of observations per year, e.g.,
+      52 for weekly data, 12 for monthly data.}
     \item{\code{start}:}{vector of length two denoting the year and the
       sample number (week, month, etc.) of the first observation}
     \item{\code{observed}:}{A matrix of size \code{length(epoch)} times the
