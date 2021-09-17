@@ -66,7 +66,7 @@ oneStepAhead <- function(result, # hhh4-object (i.e. a hhh4 model fit)
 
     ## initial fit
     fit <- if (type == "first") {
-        if (do_pb)
+        if (verbose)
             cat("\nRefitting model at first time point t =", tps[1L], "...\n")
         update.hhh4(result, subset.upper = tps[1L], use.estimates = TRUE,
                     keep.terms = TRUE) # need "model" -> $terms
