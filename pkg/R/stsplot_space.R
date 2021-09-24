@@ -23,12 +23,13 @@
 
 stsplot_space <- function (x, tps = NULL, map = x@map, population = NULL,
                            main = NULL, labels = FALSE,
+                           ..., # placed here to support passing 'col'
                            at = 10, col.regions = NULL,
                            colorkey = list(space="bottom", labels=list(at=at)),
                            total.args = NULL,
                            gpar.missing = list(col="darkgrey", lty=2, lwd=2),
                            sp.layout = NULL,
-                           xlim = bbox(map)[1, ], ylim = bbox(map)[2, ], ...)
+                           xlim = bbox(map)[1, ], ylim = bbox(map)[2, ])
 {
     counts <- if (inherits(x, "sts")) observed(x) else x
     if (is.null(tps))

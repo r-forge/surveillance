@@ -38,9 +38,6 @@
 #======================================================================
 
 #Open
-23/09/2021 make stsplot_space(measlesWeserEms, col = "white") work
-           similar to spplot(measlesWeserEms@map, "AREA", col = "white")
-           by moving formal col.+ arguments after ...
 
 #Done
 18/02/2019 add 'epoch=NULL' argument to sts() constructor and allow for

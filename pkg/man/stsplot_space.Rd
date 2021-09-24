@@ -16,12 +16,13 @@ time period.
 
 \usage{
 stsplot_space(x, tps = NULL, map = x@map, population = NULL,
-              main = NULL, labels = FALSE, at = 10, col.regions = NULL,
+              main = NULL, labels = FALSE, ...,
+              at = 10, col.regions = NULL,
               colorkey = list(space = "bottom", labels = list(at=at)),
               total.args = NULL,
               gpar.missing = list(col = "darkgrey", lty = 2, lwd = 2),
               sp.layout = NULL,
-              xlim = bbox(map)[1, ], ylim = bbox(map)[2, ], ...)
+              xlim = bbox(map)[1, ], ylim = bbox(map)[2, ])
 }
 
 \arguments{
@@ -75,6 +76,10 @@ stsplot_space(x, tps = NULL, map = x@map, population = NULL,
     determines if and how the regions of the \code{map} are labeled,
     see \code{\link{layout.labels}}.
   }
+  \item{\dots}{
+    further arguments for \code{\link{spplot}},
+    for example \code{col = "white"} for white polygon lines.
+  }
   \item{at}{
     either a number of levels (default: 10) for the categorization
     (color-coding) of counts/incidence,
@@ -114,9 +119,6 @@ stsplot_space(x, tps = NULL, map = x@map, population = NULL,
     optional list of additional layout items, see \code{\link{spplot}}.
   }
   \item{xlim,ylim}{numeric vectors of length 2 specifying the axis limits.}
-  \item{\dots}{
-    further arguments for \code{\link{spplot}}.
-  }
 }
 
 \value{
@@ -139,27 +141,29 @@ stsplot_space(x, tps = NULL, map = x@map, population = NULL,
 data("measlesWeserEms")
 
 # default plot: total region-specific counts over all weeks
-plot(measlesWeserEms, type = observed~unit)
+plot(measlesWeserEms, type = observed ~ unit)
 stsplot_space(measlesWeserEms)  # the same
 
 # compare with old implementation
-plot(measlesWeserEms, type = observed~1|unit)
+plot(measlesWeserEms, type = observed ~ 1|unit, labels = FALSE)
 
-# cumulative incidence (per 100000 inhabitants), with region labels
-plot(measlesWeserEms, type=observed~unit,
-     population=measlesWeserEms@map$POPULATION / 100000,
-     labels=list(labels="GEN", cex=0.7, font=3),
-     sub="cumulative incidence (per 100'000 inhabitants)")
+# cumulative incidence (per 100'000 inhabitants),
+# with region labels and white borders
+plot(measlesWeserEms, observed ~ unit,
+     population = measlesWeserEms@map$POPULATION / 100000,
+     labels = list(labels = "GEN", cex = 0.7, font = 3),
+     col = "white", lwd = 2,
+     sub = "cumulative incidence (per 100'000 inhabitants)")
 
 # incidence in a particular week, manual color breaks, display total
-plot(measlesWeserEms, type=observed~unit, tps=62,
-     population=measlesWeserEms@map$POPULATION / 100000,
-     at=c(0, 1, 5),
-     total.args=list(x=0, label="Overall incidence: "))
+plot(measlesWeserEms, observed ~ unit, tps = 62,
+     population = measlesWeserEms@map$POPULATION / 100000,
+     at = c(0, 1, 5),
+     total.args = list(x = 0, label = "Overall incidence: "))
 
 # if we had only observed a subset of the regions
-plot(measlesWeserEms[,5:11], type = observed~unit,
-     gpar.missing = list(col="gray", lty=4))
+plot(measlesWeserEms[,5:11], observed ~ unit,
+     gpar.missing = list(col = "gray", lty = 4))
 }
 
 \keyword{hplot}
