@@ -15,3 +15,5 @@ DT::datatable(refs_EE[nrow(refs_EE):1,],  # anti-chronologically
               rownames = FALSE,
               escape = seq_len(ncol(refs_EE)-1))
 ```
+
+Download table as CSV file: [applications_EE.csv](./applications_EE.csv)
