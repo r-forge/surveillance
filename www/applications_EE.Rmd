@@ -4,16 +4,19 @@ subtitle: >
   The endemic-epidemic modelling frameworks implemented in the R package
   [**surveillance**](https://surveillance.R-forge.R-project.org/)
   have proven useful in a wide range of applications.
+output:
+  html_document:
+    highlight: NULL
+    mathjax: NULL
 ---
 
 ```{r, echo = FALSE, results = "asis"}
 refs_EE <- read.csv("applications_EE.csv")
-refs_EE <- subset(refs_EE, select = -Species)
-##knitr::kable(refs_EE)
-refs_EE$URL <- pkgdown::rd2html(paste0("\\url{", refs_EE$URL, "}"))
-DT::datatable(refs_EE[nrow(refs_EE):1,],  # anti-chronologically
-              rownames = FALSE,
-              escape = seq_len(ncol(refs_EE)-1))
+tab <- subset(refs_EE, select = -Species)
+tab <- tab[nrow(tab):1,]  # order anti-chronologically
+## knitr::kable(tab, "simple", row.names = FALSE)
+tab$URL <- pkgdown::rd2html(paste0("\\url{", tab$URL, "}"))
+DT::datatable(tab, rownames = FALSE, escape = seq_len(ncol(tab)-1))
 ```
 
 Download table as CSV file: [applications_EE.csv](./applications_EE.csv)
