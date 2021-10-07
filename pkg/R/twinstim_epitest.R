@@ -5,7 +5,7 @@
 ###
 ### Monte Carlo Permutation Test for Space-Time Interaction in "twinstim"
 ###
-### Copyright (C) 2015-2016,2018 Sebastian Meyer
+### Copyright (C) 2015-2016,2018,2021 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -115,17 +115,17 @@ epitest <- function (model, data, tiles, method = "time", B = 199,
     ## interpret 'verbose' level
     .verbose <- if (is.numeric(verbose)) {
         if (verbose >= 2) {
-            ## create '.verbose' expression to print test statistics
+            ## create '.verbose' expression to print test statistics on the fly
+            ## (will be ignored by plapply() if parallelized using clusters)
             stats2string <- function (lrt, simpleR0)
                 paste0(c(names(lrt)[1:3], "simpleR0"), " = ",
                        sprintf(paste0("%4.", c(0,0,1,2), "f"), c(lrt[1:3], simpleR0)),
                        collapse = " | ")
             cat("Endemic/Epidemic log-likelihoods, LRT statistic, and simple R0:\n",
                 stats2string(LRT, STATISTIC_R0), "\n",
-                "\nResults from B=", B, if (method == "simulate")
+                "\nRunning B = ", B, if (method == "simulate")
                     " endemic simulations" else paste0(" permutations of ", method),
-                ## will actually not be printed if parallelized using clusters ...
-                ":\n", sep = "")
+                " ...\n", sep = "")
             substitute({
                 cat(STATS2STRING)
                 if (!lrt["converged"]) {
