@@ -5,7 +5,7 @@
 ###
 ### Simulate from a "twinSIR" model as described in Hoehle (2009)
 ###
-### Copyright (C) 2009 Michael Hoehle, 2009, 2012, 2014, 2019 Sebastian Meyer
+### Copyright (C) 2009 Michael Hoehle, 2009,2012,2014,2019,2021 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -217,8 +217,7 @@ simEpidata <- function (formula, data, id.col, I0.col, coords.cols,
         }
         h0ChangePoints <- knots(h0$upper)
     } else if (isScalar(h0)) {
-        h0func <- eval(parse(text = paste("function (t)", h0)))
-        environment(h0func) <- parent.frame()
+        h0func <- as.function(c(alist(t=), list(h0)), envir = .GlobalEnv)
         h0 <- list(exact = h0func, upper = h0func)
         h0ChangePoints <- numeric(0L)
     } else {
