@@ -79,7 +79,7 @@ LRCUSUM.runlength <- function(mu,mu0,mu1,h,dfun, n, g=5,outcomeFun=NULL,...) {
   }
   
   #Discretize number of possible states of the CUSUM
-  S <- c(-Inf,seq(0,h,length=g))
+  S <- c(-Inf,seq(0,h,length.out=g))
   names <- c(levels(cut(1,S,right=TRUE)),">=h")
   #Time variable
   t <- 1:ncol(mu)
