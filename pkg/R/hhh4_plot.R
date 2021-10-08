@@ -380,15 +380,21 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
         at <- modifyList(list(n = 10, range = .range), at)
         at <- if (exp) {
             stopifnot(at$range[1] > 0)
-            scales::log_breaks(n = at$n)(at$range)
+            scales::log_breaks(n = at$n)(at$range)  # FIXME: may not cover whole range
         } else {
             seq(at$range[1L], at$range[2L], length.out = at$n)
         }
+        ## include max value (levelplot uses right-open intervals)
+        at[length(at)] <- at[length(at)] + sqrt(.Machine$double.eps)
         if (exp && is.list(colorkey)) {
             colorkey$at <- log(at)
             colorkey$labels <- list(at = log(at), labels = at)
         }
     }
+    rng <- range(map$ranef, na.rm = TRUE)
+    if (rng[1] < at[1] | rng[2] >= at[length(at)])
+        warning(sprintf("color breaks ('at') do not span range of data (%.3g,%.3g)",
+                        rng[1], rng[2]))
 
     if (is.list(gpar.missing) && any(is.na(map$ranef))) {
         sp.layout <- c(sp.layout,
