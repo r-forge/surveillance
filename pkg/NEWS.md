@@ -34,6 +34,9 @@
 
 - `stsplot_space()` now accepts a `col` argument to change the colour of
   the polygon lines.
+  
+- `plotHHH4_ri(..., exp = TRUE)` failed to use a log-scale color axis if
+  further `colorkey` options were passed in a list.
 
 
 # surveillance 1.19.1 (2021-03-30)

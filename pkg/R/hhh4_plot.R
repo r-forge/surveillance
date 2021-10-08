@@ -375,6 +375,7 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
         .range <- exp(.range)
     }
 
+    if (isTRUE(colorkey)) colorkey <- list()
     if (is.list(at)) {
         at <- modifyList(list(n = 10, range = .range), at)
         at <- if (exp) {
@@ -383,9 +384,10 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
         } else {
             seq(at$range[1L], at$range[2L], length.out = at$n)
         }
-        if (exp && isTRUE(colorkey))
-            colorkey <- list(at = log(at),
-                             labels = list(at = log(at), labels = at))
+        if (exp && is.list(colorkey)) {
+            colorkey$at <- log(at)
+            colorkey$labels <- list(at = log(at), labels = at)
+        }
     }
 
     if (is.list(gpar.missing) && any(is.na(map$ranef))) {
