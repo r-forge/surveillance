@@ -187,8 +187,8 @@ plot(imdepi, "space", tiles = districtsD, pop = "log10popdens",
      col.regions = gray.colors(100, start=0.9, end=0.1), col = "white",
      ## color key is equidistant on log10(popdens) scale
      at = seq(1.3, 3.7, by=0.05),
-     colorkey = list(labels=list(at=log10(keylabels), labels=keylabels)))
-grid::grid.text("Population density [per km2]", x=0.95, rot=90)
+     colorkey = list(labels=list(at=log10(keylabels), labels=keylabels),
+                     title=expression("Population density per " * km^2)))
 \dontshow{\}}
 }
 
