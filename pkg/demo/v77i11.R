@@ -160,7 +160,7 @@ plot(imdepi, ylim = c(0, 20), col = c("indianred", "darkblue"),
      xlab = "Time [days]")
 for (i in seq_along(imdsims$eventsList))
     plot(imdsims[[i]], add = TRUE, legend.types = FALSE,
-         col = scales::alpha(c("indianred", "darkblue"), 0.5),
+         col = adjustcolor(c("indianred", "darkblue"), alpha.f = 0.5), ##M no need for scales::alpha()
          subset = !is.na(source),  # exclude events of the prehistory
          cumulative = list(offset = .cumoffset, maxat = 336, axis = FALSE),
          border = NA, density = 0) # no histogram for simulations
