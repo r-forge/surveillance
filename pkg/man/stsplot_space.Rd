@@ -87,8 +87,9 @@ stsplot_space(x, tps = NULL, map = x@map, population = NULL,
     or a named list of a number of levels (\code{"n"}), a transformer
     (\code{"trafo"}) of class \code{"\link[scales]{trans}"} defined by
     package \pkg{scales}, and optional further arguments for
-    \code{\link{pretty}}. The default is the square root transformation
-    (\code{\link[scales]{sqrt_trans}}).
+    \code{\link{pretty}}. The default breaks are equally spaced
+    on the square-root scale (equivalent to
+    \code{\link[scales]{sqrt_trans}}).
     Note that intervals given by \code{at} are closed on the left
     and open to the right; if manually specified break points do not
     cover the data range, further breaks are automatically added at 0
