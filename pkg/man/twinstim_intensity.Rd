@@ -203,7 +203,8 @@ text(2500, 0.08, labels="endemic", col=2, pos=2, font=2)
 
 
 ## spatial shape of the intensity (aggregated over time)
-if (surveillance.options("allExamples") && requireNamespace("maptools"))
+\dontshow{if (surveillance.options("allExamples"))}
+if (requireNamespace("maptools"))
 {
   ## load borders of Germany's districts
   load(system.file("shapes", "districtsD.RData", package="surveillance"))
