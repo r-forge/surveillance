@@ -38,7 +38,8 @@
 - `plotHHH4_ri(..., exp = TRUE)` failed to use a log-scale color axis if
   further `colorkey` options were passed in a list. The (default) color breaks
   could fail to span the range of the data without warning (resulting in
-  unfilled polygons).
+  unfilled polygons). This is now checked and the default breaks are now
+  equally spaced on the log-scale.
 
 
 # surveillance 1.19.1 (2021-03-30)

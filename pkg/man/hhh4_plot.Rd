@@ -183,15 +183,21 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
     respective component. Multiplication by the intercept only
     makes sense if there are no further (non-centered)
     covariates/offsets in the component.}
-  \item{exp}{logical indicating whether to \code{exp}-transform random
-    effects to show multiplicative effects on the respective components.
+  \item{exp}{logical indicating whether to \code{exp}-transform the
+    color-key axis labels to show the multiplicative effect of
+    the region-specific random intercept on the respective component.
+    Axis labels are then computed using \code{\link[scales]{log_breaks}}
+    from package \pkg{scales} (if that is available) or
+    \code{\link{axisTicks}} (as a fallback) respecting the
+    \code{colorkey$tick.number} setting (default: 7).
     The default is \code{FALSE}.}
   \item{at}{a numeric vector of breaks for the color levels (see
     \code{\link[lattice]{levelplot}}), or a list specifying the number
     of breaks \code{n} (default: 10) and their \code{range} (default:
-    range of the random effects, extended to be symmetric around 0,
-    or around 1 if \code{exp=TRUE}). If \code{exp=TRUE}, the breaks are
-    generated using \code{scales::\link[scales]{log_breaks}}.}
+    range of the random effects, extended to be symmetric around 0).
+    In the latter case, breaks are equally spaced (on the original,
+    non-\code{exp} scale of the random intercepts). If \code{exp=TRUE},
+    custom breaks (or \code{range}) need to be given on the exp-scale.}
   \item{matplot.args}{list of line style specifications passed to
     \code{\link{matplot}}, e.g., \code{lty}, \code{lwd}, \code{col}.}
   \item{refline.args}{list of line style specifications (e.g.,
@@ -355,9 +361,9 @@ ranef(measlesFit, intercept = TRUE)  # sum of the above
 exp(ranef(measlesFit))               # multiplicative effects
 plot(measlesFit, type="ri", component="end",
      main="deviations around the endemic intercept (log-scale)")
-if (requireNamespace("scales")) # needed for logarithmic color breaks
 plot(measlesFit, type="ri", component="end", exp=TRUE,
-     main="multiplicative effects", labels=list(font=3, labels="GEN"))
+     main="multiplicative effects",
+     labels=list(font=3, labels="GEN"))
 
 ## neighbourhood weights as a function of neighbourhood order
 plot(measlesFit, type="neweights")  # boring, model has no "ne" component
