@@ -408,7 +408,7 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
         } else {
             axisTicks(log10(exp(range(at))), log = TRUE, nint = nint)
         }
-        ## workaround colorkey labeling bug in lattice (0.20.45)
+        ## workaround colorkey labeling bug in lattice (see https://github.com/deepayan/lattice/pull/22)
         lab <- lab[log(lab) > at[1]]
         colorkey$labels <- list(at = log(lab), labels = lab)
     }
