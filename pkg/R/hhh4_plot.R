@@ -481,6 +481,7 @@ plotHHH4_maxEV <- function (...,
 
 getMaxEV <- function (x)
 {
+    stopifnot(inherits(x, "hhh4"))
     Lambda <- createLambda(x)
     if (identical(type <- attr(Lambda, "type"), "zero")) {
         rep.int(0, nrow(x$stsObj))
