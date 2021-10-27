@@ -173,6 +173,7 @@ stsplot_time1 <- function(
   ystuff <-cbind(c(upperbound,upperbound[length(observed) ]))
 
   #Plot the results
+  if (length(lty) < 3) lty[3] <- 0  # blank upperbound
   matplot(x=xstuff,y=ystuff,xlab=xlab,ylab=ylab,main=main,ylim=ylim,axes = !(xaxis.dates),type=type,lty=lty[-c(1:2)],col=col[-c(1:2)],lwd=lwd[-c(1:2)],...)
 
   #This draws the polygons containing the number of counts (sep. by NA)
@@ -180,7 +181,7 @@ stsplot_time1 <- function(
   dx <- rep(dx.observed * c(-1,-1,1,1,NA), times=length(observed))
   x.points <- i + dx
   y.points <- as.vector(t(cbind(0, observed, observed, 0, NA)))
-  polygon(x.points,y.points,col=col[1],border=col[2],lwd=lwd[1])
+  polygon(x.points,y.points,col=col[1],border=col[2],lwd=lwd[1],lty=lty[1])
 
   #Draw upper bound once more in case the polygons are filled
   if (!is.na(col[1])) {
