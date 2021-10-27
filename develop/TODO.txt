@@ -39,6 +39,7 @@
 #======================================================================
 
 #Open
+27/10/2021 default legend of stsplot_time1() should exclude unused slots
 
 #Done
 18/02/2019 add 'epoch=NULL' argument to sts() constructor and allow for
