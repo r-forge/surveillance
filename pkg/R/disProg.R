@@ -202,6 +202,26 @@ plot.disProg.one <- function(x, title = "", xaxis.years=TRUE, quarters=TRUE, sta
 }
 
 plot.disProg <- function(x, title = "", xaxis.years=TRUE, startyear = x$start[1], firstweek = x$start[2], as.one=TRUE, same.scale=TRUE, ...){
+  ## to see where this is still used
+  ## .Deprecated(msg = paste0("'plot.disProg' is deprecated;\n",
+  ##                          "  convert data with 'disProg2sts', then see help(stsplot)."))
+  ## use stsplot_time(disProg2sts(x)) as a replacement
+  if (nzchar(Sys.getenv("_R_SURVEILLANCE_STSPLOT_FOR_DISPROG_"))) {
+    cl <- match.call()
+    cl[[1]] <- quote(surveillance::stsplot_time)
+    stopifnot(!missing(x))
+    cl$x <- substitute(surveillance::disProg2sts(x))
+    names(cl)[names(cl) == "title"] <- "main"
+    if (!xaxis.years) cl["xaxis.labelFormat"] <- list(NULL)
+    cl$xaxis.years <- NULL
+    if (length(ignored <- intersect(c("startyear", "firstweek", "quarters"), names(cl)))) {
+      warning("ignored argument(s): ", paste0(ignored, collapse = ", "))
+      cl[ignored] <- NULL
+    }
+    if (missing(as.one)) cl$as.one <- TRUE  # stsplot_time has different default
+    return(eval.parent(cl))
+  }
+  
   if (xaxis.years && isTRUE(x[["epochAsDate"]]))
     warning("plot.disProg can't handle Date entries; axis labels are based on 'start'")
 
