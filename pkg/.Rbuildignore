@@ -4,6 +4,7 @@
 Makefile
 ^pkgdown$
 ^vignettes/pkgdown$
+^vignettes/plots$
 ^man/figures$
 ^surveillance_[0-9\.-]+\.tar\.gz$
 ^vignettes/.+\.tex$
