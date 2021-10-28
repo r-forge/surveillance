@@ -189,7 +189,7 @@ stsplot_time1 <- function(
   }
 
   #Draw alarm symbols
-  alarmIdx <- which(!is.na(alarm) & (alarm == 1))
+  alarmIdx <- which(alarm == 1)
   if (length(alarmIdx)>0) {
     matpoints( alarmIdx, rep(-1/40*ylim[2],length(alarmIdx)), pch=alarm.symbol$pch, col=alarm.symbol$col, cex= alarm.symbol$cex, lwd=alarm.symbol$lwd)
   }
@@ -211,19 +211,23 @@ stsplot_time1 <- function(
     axis( side=2 ,...)
   }
 
+  hasupper <- any(upperbound > 0, na.rm = TRUE)
+  included <- c(observed = TRUE, upperbound = hasupper,
+                outbreaks = length(stateIdx) > 0,
+                alarms = hasupper || length(alarmIdx) > 0)
   doLegend <- if (missing(legend.opts)) {
-      length(stateIdx) + length(alarmIdx) > 0 || any(upperbound > 0, na.rm = TRUE)
+      sum(included) > 1
   } else {
       is.list(legend.opts)
   }
   if(doLegend) {
       legend.opts <- modifyList(
           list(x = "top",
-               lty = c(lty[1],lty[3],NA,NA),
-               lwd = c(lwd[1],lwd[3],outbreak.symbol$lwd,alarm.symbol$lwd),
-               col = c(col[2],col[3],outbreak.symbol$col,alarm.symbol$col),
-               pch = c(NA,    NA,    outbreak.symbol$pch,alarm.symbol$pch),
-               legend = c("Infected", "Threshold", "Outbreak", "Alarm")),
+               lty = c(lty[1],lty[3],NA,NA)[included],
+               lwd = c(lwd[1],lwd[3],outbreak.symbol$lwd,alarm.symbol$lwd)[included],
+               col = c(col[2],col[3],outbreak.symbol$col,alarm.symbol$col)[included],
+               pch = c(NA,    NA,    outbreak.symbol$pch,alarm.symbol$pch)[included],
+               legend = c("Infected", "Threshold", "Outbreak", "Alarm")[included]),
           legend.opts)
     #Make the legend
     do.call("legend",legend.opts)

@@ -17,6 +17,8 @@
 - `simulate.hhh4(..., simplify = TRUE)` now consistently returns a
   3d array (nTime x nUnit x nsim), even for `nsim = 1` (for which plotting
   now works).
+  
+- The default legend in `stsplot_time1()` now only includes plotted elements.
 
 ## BUG FIXES
 
