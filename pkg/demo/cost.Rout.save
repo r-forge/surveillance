@@ -1,11 +1,13 @@
 
-R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -15,12 +17,11 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ## need a writable figs/ directory in getwd()
-> ## -> switch to a temporary directory to save figures to
-> TMPDIR <- tempdir()
-> OWD <- setwd(TMPDIR)
-> dir.create("figs")
-> 
+> ## need a writable figs/ directory to save selected figures
+> OUTDIR <- tempdir()
+> dir.create(file.path(OUTDIR, "figs"))
+> message("saving selected figures in ", OUTDIR, "/figs")
+saving selected figures in /tmp/Rtmpxox3uy/figs
 > 
 > ###################################################
 > ### chunk number 1:
@@ -28,7 +29,7 @@ Type 'q()' to quit R.
 > library("surveillance")
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.17.0. For overview type ‘help(surveillance)’.
+This is surveillance 1.19.1. For overview type ‘help(surveillance)’.
 > options(width=70)
 > options("prompt"="R> ")
 R> set.seed(1234)
@@ -36,7 +37,7 @@ R>
 R> opendevice <- function(horizontal=TRUE,width=7,height=4,...) {
 +   #Do it for postscript instead  -- who uses postscript these days??
 +   args <- list(...)
-+   args$file <- sub(".pdf",".eps",args$file)
++   args$file <- file.path(OUTDIR, sub(".pdf",".eps",args$file))
 +   args$width <- width
 +   args$height <- height
 +   args$horizontal <- FALSE
@@ -409,10 +410,4 @@ R> plot(ha4.cusum,type=observed ~ time | unit)
 R> dev.off()
 pdf 
   2 
-R> 
-R> 
-R> ## finally switch back to original working directory
-R> message("Note: selected figures have been saved in ", getwd(), "/figs")
-Note: selected figures have been saved in /tmp/RtmpjJvjwZ/figs
-R> setwd(OWD)
 R> 
