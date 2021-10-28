@@ -41,7 +41,8 @@
   unfilled polygons). This is now checked and the default breaks are now
   equally spaced on the log-scale.
 
-- `stsplot_time1()` did not pass `lty` to `polygon()`.
+- `stsplot_time1()` did not pass `lty` to `polygon()`
+  and `lwd` to `legend()`.
 
 
 # surveillance 1.19.1 (2021-03-30)

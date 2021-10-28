@@ -208,7 +208,7 @@ stsplot_time1 <- function(
   }
   #Label y-axis
   if (axes) {
-    axis( side=2 ,...)#cex=cex, cex.axis=cex.axis)
+    axis( side=2 ,...)
   }
 
   doLegend <- if (missing(legend.opts)) {
@@ -220,8 +220,9 @@ stsplot_time1 <- function(
       legend.opts <- modifyList(
           list(x = "top",
                lty = c(lty[1],lty[3],NA,NA),
+               lwd = c(lwd[1],lwd[3],outbreak.symbol$lwd,alarm.symbol$lwd),
                col = c(col[2],col[3],outbreak.symbol$col,alarm.symbol$col),
-               pch = c(NA,NA,outbreak.symbol$pch,alarm.symbol$pch),
+               pch = c(NA,    NA,    outbreak.symbol$pch,alarm.symbol$pch),
                legend = c("Infected", "Threshold", "Outbreak", "Alarm")),
           legend.opts)
     #Make the legend
