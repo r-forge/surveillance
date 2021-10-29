@@ -25,7 +25,7 @@ wrap.algo <- function(sts, algo, control,
 
   #Loop over all regions
   for (k in 1:nAreas) {
-    if (verbose) {
+    if (verbose && nAreas > 1) {
       cat("Running ",algo," on area ",k," out of ",nAreas,"\n")
     }
 

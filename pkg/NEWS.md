@@ -22,6 +22,8 @@
 
 - Legacy `"disProg"` objects are now plotted via internal `disProg2sts()`
   conversion and `stsplot_time()`.
+  
+- `wrap.algo()` no longer prints progress when there is only one area.
 
 ## BUG FIXES
 
