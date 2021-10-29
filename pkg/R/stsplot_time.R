@@ -221,6 +221,10 @@ stsplot_time1 <- function(
       is.list(legend.opts)
   }
   if(doLegend) {
+      ## FIXME: use method-specific default upperbound label?
+      ## ublegend <- if (identical(x@control[["ret"]], "value") &&
+      ##                 startsWith(x@control$name, "glr"))
+      ##                 "GLR statistic" else "Threshold"
       legend.opts <- modifyList(
           list(x = "top",
                lty = c(lty[1],lty[3],NA,NA)[included],
