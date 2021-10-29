@@ -20,6 +20,9 @@
   
 - The default legend in `stsplot_time1()` now only includes plotted elements.
 
+- Legacy `"disProg"` objects are now plotted via internal `disProg2sts()`
+  conversion and `stsplot_time()`.
+
 ## BUG FIXES
 
 - The `print`-method for `summary.hhh4()` did not apply the `digits`
