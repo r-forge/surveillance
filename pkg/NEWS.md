@@ -51,6 +51,11 @@
 - `stsplot_time1()` did not pass `lty` to `polygon()`
   and `lwd` to `legend()`.
 
+## DEPRECATED AND DEFUNCT
+
+- `create.disProg()` is deprecated. Methods for legacy `"disProg"` objects
+  are kept for backwards compatibility, but new projects should use `sts()`.
+
 
 # surveillance 1.19.1 (2021-03-30)
 

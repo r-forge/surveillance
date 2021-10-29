@@ -43,6 +43,10 @@
 
   This is a lightweight S4 class to implement (multivariate) time
   series of counts, typically from public health surveillance.
+  The \code{"sts"} class supersedes the informal \code{"disProg"} class
+  used in early versions of package \pkg{surveillance}. Converters are
+  available, see \code{\link{disProg2sts}}.
+  
   For areal time series, the class can also capture the spatial layout
   of the regions, where the data originate from.
   The constructor function \code{sts} can be used to setup an
@@ -241,6 +245,21 @@ sts(observed, start = c(2000, 1), frequency = 52,
 \examples{
 showClass("sts")
 
+## create an sts object from time-series data
+salmonellaDF <- read.table(system.file("extdata/salmonella.agona.txt",
+                                       package = "surveillance"), header = TRUE)
+str(salmonellaDF)
+salmonella <- with(salmonellaDF,
+                   sts(observed = observed, state = state,
+                       start = c(1990, 1), frequency = 52))
+salmonella
+plot(salmonella)
+
+## these data are also available as a legacy "disProg" object in the package
+data(salmonella.agona)
+stopifnot(all.equal(salmonella, disProg2sts(salmonella.agona)))
+
+
 ## A typical dataset with weekly counts of measles from several districts
 data("measlesWeserEms")
 measlesWeserEms
@@ -273,4 +292,5 @@ if (requireNamespace("xts")) {
 }
 
 \keyword{classes}
+\keyword{ts}
 \keyword{methods}

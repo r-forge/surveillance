@@ -2,6 +2,10 @@
 ### chunk number 1:
 ###################################################
 create.disProg <- function(week, observed, state, start=c(2001,1), freq=52, neighbourhood=NULL, populationFrac=NULL,epochAsDate=FALSE){
+  ## issue a deprecation warning if not internally called
+  if (!isTRUE(packageName(parent.frame()) == .packageName))
+    .Deprecated("sts")
+  
   namesObs <-colnames(observed)
 
   # check whether observed contains only numbers
