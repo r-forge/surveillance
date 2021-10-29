@@ -45,6 +45,9 @@ wrap.algo <- function(sts, algo, control,
   #Control object needs only to be set once
   sts@control <- survRes.k$control
 
+  #Fix invalid data name (= deparse(disProg.k) from last iteration)
+  sts@control$data <- "sts"
+
   #Set correct theta0t matrix for all
   sts@control$theta0t <- control$theta0t
 
