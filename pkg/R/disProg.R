@@ -9,14 +9,12 @@ create.disProg <- function(week, observed, state, start=c(2001,1), freq=52, neig
   namesObs <-colnames(observed)
 
   # check whether observed contains only numbers
-  if(!all(sapply(observed, is.numeric))){
-    stop("\'observed\' must be a matrix with numbers\n")
-  }
+  stopifnot(is.numeric(observed))
 
   #univariate timeseries ?
   if(is.vector(observed)){
     observed <- matrix(observed,ncol=1)
-    namesObs <- deparse(quote(observed))
+    namesObs <- "observed"
   } else {  # ensure we have a matrix
     observed <- as.matrix(observed)
   }
@@ -32,13 +30,12 @@ create.disProg <- function(week, observed, state, start=c(2001,1), freq=52, neig
   #check number of columns of observed and state
   nAreas <- ncol(observed)
   nObs <- nrow(observed)
-  if(ncol(observed) != ncol(state)){
+  if(ncol(state) != nAreas){
     #if there is only one state-vector for more than one area, repeat it
     if(ncol(state)==1) {
       state <- matrix(rep(state,nAreas),ncol=nAreas,byrow=FALSE)
     } else {
-      cat('wrong dimensions of observed and state \n')
-      return(NULL)
+      stop("wrong dimensions of 'observed' and 'state'")
     }
   }
 
@@ -46,12 +43,10 @@ create.disProg <- function(week, observed, state, start=c(2001,1), freq=52, neig
   # neighbourhood can be a matrix or an array of dimension c(nAreas,nAreas, nrow(observed))
   if(!is.null(neighbourhood) ) {
     dimNhood <- dim(neighbourhood)
-    if(length(dimNhood)==2 & any(dimNhood != nAreas)) {
-      cat('wrong dimensions of neighbourhood matrix \n')
-      return(NULL)
-    } else if (length(dimNhood)==3 & (any(dimNhood[1:2] != nAreas) | (dimNhood[3] != nrow(observed)) )){
-      cat('wrong dimensions of neighbourhood matrix \n')
-      return(NULL)
+    if(!(length(dimNhood) %in% 2:3) ||
+       any(dimNhood[1:2] != nAreas) ||
+       (length(dimNhood)==3 && dimNhood[3] != nrow(observed))) {
+      stop('wrong dimensions of neighbourhood matrix')
     }
   } else {
      # no neighbourhood specified
@@ -59,23 +54,21 @@ create.disProg <- function(week, observed, state, start=c(2001,1), freq=52, neig
   }
 
   if(is.null(populationFrac)) {
-    populationFrac <- matrix(1/ncol(observed),nrow=nObs, ncol=ncol(observed))
+    populationFrac <- matrix(1/nAreas,nrow=nObs,ncol=nAreas)
   } else {
     # make sure populationFrac is a matrix
     populationFrac <- as.matrix(populationFrac)
     # check dimensions
     if(nrow(populationFrac)!= nObs | ncol(populationFrac)!= nAreas)
-      stop("dimensions of \'populationFrac\' and \'observed\' do not match\n")
+      stop("dimensions of 'populationFrac' and 'observed' do not match")
     # check whether populationFrac contains only numbers
-    if(!all(sapply(populationFrac, is.numeric))){
-      stop("\'populationFrac\' must be a matrix with real numbers\n")
-  }
+    if(!is.numeric(populationFrac))
+      stop("'populationFrac' must be a numeric matrix")
   }
 
   #labels for observed and state
   if(is.null(namesObs)){
-    namesObs <- paste(deparse(quote(observed)),1:nAreas,sep="")
-
+    namesObs <- paste0("observed",1:nAreas)
   }
 
   colnames(observed) <- namesObs
