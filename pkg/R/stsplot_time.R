@@ -156,12 +156,10 @@ stsplot_time1 <- function(
     main <- paste0(action, " using ", method)
   }
 
-  # control where the highest value is
-  max <- max(c(observed,upperbound),na.rm=TRUE)
-
   #if ylim is not specified, give it a default value
-  if(is.null(ylim) ){
-    ylim <- c(-1/20*max, max)
+  if(is.null(ylim)){
+    ymax <- max(c(observed,upperbound),na.rm=TRUE)
+    ylim <- c(-1/20*ymax, ymax)
   }
 
   # left/right help for constructing the columns
@@ -290,12 +288,10 @@ stsplot_alarm <- function(
   observedxr <- (1:length(observed))+dx.observed
   upperboundx <- (1:length(upperbound)) #-0.5
 
-  # control where the highest value is
-  max <- max(c(observed,upperbound),na.rm=TRUE)
-
   #if ylim is not specified
   if(is.null(ylim)){
-    ylim <- c(-1/20*max, max)
+    ymax <- max(c(observed,upperbound),na.rm=TRUE)
+    ylim <- c(-1/20*ymax, ymax)
   }
 
 
