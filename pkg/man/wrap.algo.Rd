@@ -52,7 +52,7 @@ outbreakP(sts, control=list(range = range, k=100,
     returns the appropriate control object for region k.}
   \item{verbose}{Boolean, if \code{TRUE} then textual information about the
     process is given}
-  \item{...}{Additional arguments sent to the \code{algo} function.}
+  \item{...}{currently ignored.}
 }
 \value{
   An \code{sts} object with the \code{alarm}, \code{upperbound},

@@ -14,6 +14,7 @@
 wrap.algo <- function(sts, algo, control,
                       control.hook=function(k, control) return(control),
                       verbose=TRUE,...) {
+  chkDots(...)
   stopifnot(is.vector(control[["range"]], mode = "numeric"))
 
   #Number of time series
