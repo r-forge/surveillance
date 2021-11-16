@@ -264,7 +264,8 @@ plotHHH4sims_time <- function (
         xlim <- c(1 - length(ytInit) - 0.5, length(ytObs) + 0.5)
     if (is.null(ylim))
         ylim <- c(0, max(ytObs, if (individual)
-            unlist(ytSim, recursive = FALSE, use.names = FALSE) else ytMeans))
+            unlist(ytSim, recursive = FALSE, use.names = FALSE) else ytMeans,
+            na.rm = TRUE))
 
     ## graphical parameters
     stopifnot(is.list(matplot.args))
