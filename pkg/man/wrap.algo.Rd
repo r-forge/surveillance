@@ -1,6 +1,5 @@
 \name{wrap.algo}
 \alias{wrap.algo}
-\alias{farrington}
 \alias{bayes}
 \alias{rki}
 \alias{cusum}
@@ -14,7 +13,7 @@
 
 \title{Multivariate Surveillance through independent univariate algorithms}
 \description{
-  This function takes an \code{sts} object and applies an univariate
+  This function takes an \code{\link{sts}} object and applies an univariate
   surveillance algorithm to the time series of each observational unit.
 }
 \usage{
@@ -23,8 +22,6 @@ wrap.algo(sts, algo, control,control.hook=function(k, control)
          return(control),verbose=TRUE,...)
 
 %Derived functions fixing the control object and the "algo" argument
-farrington(sts, control=list(range=NULL, b=5, w=3, reweight=TRUE,
-         verbose=FALSE, alpha=0.05),...)
 bayes(sts, control = list(range = range, b = 0, w = 6,
          actY = TRUE,alpha=0.05),...)
 rki(sts, control = list(range = range, b = 2, w = 4,
@@ -41,7 +38,7 @@ outbreakP(sts, control=list(range = range, k=100,
          ret=c("cases","value"),maxUpperboundCases=1e5),...)
 }
 \arguments{
-  \item{sts}{Object of class \code{sts}}
+  \item{sts}{Object of class \code{\link{sts}}}
   \item{algo}{Character string giving the function name of the algorithm
     to call, e.g. \code{"algo.farrington"}. Calling is done using
     \code{do.call}.}
