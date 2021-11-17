@@ -153,6 +153,42 @@ plot(simData2, main = "simulated data: Poisson model", xaxis.labelFormat = NULL)
 coefs <- replace(coef(fit), "ar.1", log(0.9))
 simData3 <- simulate(fit, seed=321, coefs = coefs)
 plot(simData3, main = "simulated data: lambda = 0.5", xaxis.labelFormat = NULL)
+
+
+## more sophisticated: simulate beyond initially observed time range
+
+# extend data range by one year (non-observed domain), filling with NA values
+nextend <- 52
+timeslots <- c("observed", "state", "alarm", "upperbound", "populationFrac")
+addrows <- function (mat, n) mat[c(seq_len(nrow(mat)), rep(NA, n)),,drop=FALSE]
+extended <- Map(function (x) addrows(slot(meningo, x), n = nextend), x = timeslots)
+# create new sts object with extended matrices
+meningo2 <- do.call("sts", c(list(start = meningo@start, frequency = meningo@freq,
+                                  map = meningo@map), extended))
+
+# fit to the observed time range only, via the 'subset' argument
+fit2 <- hhh4(meningo2, control = list(
+              ar = list(f = ~ 1),
+              end = list(f = addSeason2formula(~1, period = 52)),
+              family = "NegBin1",
+              subset = 2:(nrow(meningo2) - nextend)))
+# the result is the same as before
+stopifnot(all.equal(fit, fit2, ignore = c("stsObj", "control")))
+\dontshow{
+# one-week-ahead prediction only "works" for the first non-observed time point
+# because the autoregressive component relies on non-missing past counts
+oneStepAhead(fit2, tp = rep(nrow(meningo2)-nextend, 2), type = "final", verbose = FALSE)
+# however, methods won't work as observed is NA
+}
+# long-term probabilistic forecast via simulation for non-observed time points
+meningoSim <- simulate(fit2, nsim = 100, seed = 1,
+                       subset = seq(nrow(meningo)+1, nrow(meningo2)),
+                       y.start = tail(observed(meningo), 1))
+apply(meningoSim, 1:2, function (ysim) quantile(ysim, c(0.1, 0.5, 0.9)))
+plot(meningoSim, type = "time", average = median)
+plot(meningoSim, type = "size", observed = FALSE)
+plot(meningoSim, type = "fan", means.args = list(),
+     fan.args = list(ln = c(.1,.9), ln.col = 8))
 }
 
 \keyword{datagen}
