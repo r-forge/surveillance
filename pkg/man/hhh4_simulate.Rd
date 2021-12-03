@@ -185,10 +185,12 @@ meningoSim <- simulate(fit2, nsim = 100, seed = 1,
                        subset = seq(nrow(meningo)+1, nrow(meningo2)),
                        y.start = tail(observed(meningo), 1))
 apply(meningoSim, 1:2, function (ysim) quantile(ysim, c(0.1, 0.5, 0.9)))
+# three plot types are available for "hhh4sims", see also ?plot.hhh4sims
 plot(meningoSim, type = "time", average = median)
 plot(meningoSim, type = "size", observed = FALSE)
-plot(meningoSim, type = "fan", means.args = list(),
-     fan.args = list(ln = c(.1,.9), ln.col = 8))
+if (requireNamespace("fanplot"))
+    plot(meningoSim, type = "fan", means.args = list(),
+         fan.args = list(ln = c(.1,.9), ln.col = 8))
 }
 
 \keyword{datagen}
