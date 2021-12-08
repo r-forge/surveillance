@@ -921,7 +921,7 @@ sizeHHH <- function (theta, model, subset = model$subset)
 
 penLogLik <- function(theta, sd.corr, model, attributes=FALSE)
 {
-  if(any(is.na(theta))) stop("NAs in regression parameters.", ADVICEONERROR)
+  if(anyNA(theta)) stop("NAs in regression parameters.", ADVICEONERROR)
 
   ## unpack model
   subset <- model$subset
@@ -986,7 +986,7 @@ penLogLik <- function(theta, sd.corr, model, attributes=FALSE)
 
 penScore <- function(theta, sd.corr, model)
 {
-  if(any(is.na(theta))) stop("NAs in regression parameters.", ADVICEONERROR)
+  if(anyNA(theta)) stop("NAs in regression parameters.", ADVICEONERROR)
 
   ## unpack model
   subset <- model$subset
@@ -1100,7 +1100,7 @@ penScore <- function(theta, sd.corr, model)
 
 penFisher <- function(theta, sd.corr, model, attributes=FALSE)
 {
-  if(any(is.na(theta))) stop("NAs in regression parameters.", ADVICEONERROR)
+  if(anyNA(theta)) stop("NAs in regression parameters.", ADVICEONERROR)
 
   ## unpack model
   subset <- model$subset
@@ -1491,22 +1491,14 @@ getSigma <- function(sd, correlation, dimSigma, dimBlocks, Sigmai=NULL){
 ## identical in marScore() and marFisher()
 marLogLik <- function(sd.corr, theta, model, fisher.unpen=NULL, verbose=FALSE){
 
-  dimVar <- model$nVar
-  dimCorr <- model$nCorr
   dimSigma <- model$nSigma
-
   if(dimSigma == 0){
     return(-Inf)
   }
+  if(anyNA(sd.corr)) stop("NAs in variance parameters.", ADVICEONERROR)
 
-  if(any(is.na(sd.corr))){
-    # in order to avoid nlminb from running into an infinite loop (cf. bug
-    # report #15052), we have to emergency stop() in this case.
-    # As of R 2.15.2, nlminb() throws an error if it receives NA from
-    # any of the supplied functions.
-    stop("NAs in variance parameters.", ADVICEONERROR)
-  }
-
+  dimVar <- model$nVar
+  dimCorr <- model$nCorr
   sd   <- head(sd.corr,dimVar)
   corr <- tail(sd.corr,dimCorr)
 
@@ -1550,16 +1542,14 @@ marLogLik <- function(sd.corr, theta, model, fisher.unpen=NULL, verbose=FALSE){
 
 marScore <- function(sd.corr, theta, model, fisher.unpen=NULL, verbose=FALSE){
 
-  dimVar <- model$nVar
-  dimCorr <- model$nCorr
   dimSigma <- model$nSigma
-
   if(dimSigma == 0){
     return(numeric(0L))
   }
+  if(anyNA(sd.corr)) stop("NAs in variance parameters.", ADVICEONERROR)
 
-  if(any(is.na(sd.corr))) stop("NAs in variance parameters.", ADVICEONERROR)
-
+  dimVar <- model$nVar
+  dimCorr <- model$nCorr
   sd   <- head(sd.corr,dimVar)
   corr <- tail(sd.corr,dimCorr)
 
@@ -1628,16 +1618,14 @@ marScore <- function(sd.corr, theta, model, fisher.unpen=NULL, verbose=FALSE){
 
 marFisher <- function(sd.corr, theta, model, fisher.unpen=NULL, verbose=FALSE){
 
-  dimVar <- model$nVar
-  dimCorr <- model$nCorr
   dimSigma <- model$nSigma
-
   if(dimSigma == 0){
     return(matrix(numeric(0L),0L,0L))
   }
+  if(anyNA(sd.corr)) stop("NAs in variance parameters.", ADVICEONERROR)
 
-  if(any(is.na(sd.corr))) stop("NAs in variance parameters.", ADVICEONERROR)
-
+  dimVar <- model$nVar
+  dimCorr <- model$nCorr
   sd   <- head(sd.corr,dimVar)
   corr <- tail(sd.corr,dimCorr)
 
@@ -2116,16 +2104,6 @@ fitHHH <- function(theta, sd.corr, model,
               cat("Update of variance parameters in iteration ", i, " unreliable\n")
           }
 
-          ## NA values in sd.corr cause a stop() already in marLogLik()
-          ## if(any(is.na(parVar$par))){
-          ##     updateVarianceControl[[1]] <- "updateParams_optim"
-          ##     updateVarianceControl[[2]]$method <-
-          ##         if (length(sd.corr) == 1L) "Brent" else "Nelder-Mead"
-          ##     cat("  WARNING: at least one updated variance parameter is not a number\n",
-          ##         "\t-> NO UPDATE of variance\n",
-          ##         "\t-> SWITCHING to robust", dQuote(updateVarianceControl[[2]]$method),
-          ##         "for variance updates\n")
-          ## } else
           sd.corr <- parVar$par
 
           ## overall convergence ?
