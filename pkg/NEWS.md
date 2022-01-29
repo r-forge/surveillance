@@ -51,6 +51,12 @@
 - `stsplot_time1()` did not pass `lty` to `polygon()`
   and `lwd` to `legend()`.
 
+- `rps()` was wrong for distributions close to a point mass at zero,
+  e.g., for `mu = 1e-3` and `x >= 4`. It is now also protected
+  against wide (quasi-continuous) NegBin distributions that would consume
+  too much memory with discrete RPS calculation (returning a missing
+  value with a warning). [both issues spotted by F. Rousseu]
+
 ## DEPRECATED AND DEFUNCT
 
 - `create.disProg()` is deprecated. Methods for legacy `"disProg"` objects
