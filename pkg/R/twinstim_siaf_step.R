@@ -104,11 +104,10 @@ siaf.step <- function (knots, maxRange = Inf, nTypes = 1, validpars = NULL)
     }
 
     ## Done
-    res <- list(f = f, F = F, Fcircle = Fcircle,
-                deriv = deriv, Deriv = Deriv,
-                simulate = simulate,
-                npars = npars, validpars = validpars)
-    attr(res, "knots") <- knots
-    attr(res, "maxRange") <- maxRange
-    res
+    structure(list(f = f, F = F, Fcircle = Fcircle,
+                   deriv = deriv, Deriv = Deriv,
+                   simulate = simulate,
+                   npars = npars, validpars = validpars),
+              "knots" = knots,
+              "maxRange" = maxRange)
 }
