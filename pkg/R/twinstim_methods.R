@@ -842,5 +842,17 @@ all.equal.twinstim <- function (target, current, ..., ignore = NULL)
 
     ignore <- unique.default(c(ignore, "runtime", "call"))
     target[ignore] <- current[ignore] <- list(NULL)
+
+    ## also ignore siaf.step() cache ("cachem" is time-dependent)
+    drop_cache <- function (siaf) {
+        isStepFun <- !is.null(knots <- attr(siaf, "knots")) &&
+            !is.null(maxRange <- attr(siaf, "maxRange"))
+        if (isStepFun) {
+            structure(list(), knots = knots, maxRange = maxRange)
+        } else siaf
+    }
+    target$formula$siaf <- drop_cache(target$formula$siaf)
+    current$formula$siaf <- drop_cache(current$formula$siaf)
+
     NextMethod("all.equal")
 }
