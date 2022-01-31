@@ -41,6 +41,7 @@ twinstim <- function (
     epilinkinv <- switch(epilink, "log" = exp, "identity" = identity)
 
     ## Clean the model environment when exiting the function
+    if (model)
     on.exit(suppressWarnings(rm(cl, cumCIF, cumCIF.pb, data, doHessian,
         eventsData, finetune, neghess, fisherinfo, fit, fixed,
         functions, globalEndemicIntercept, inmfe, initpars,
