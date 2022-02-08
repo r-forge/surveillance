@@ -5,7 +5,7 @@
 ###
 ### Time series plot for sts-objects
 ###
-### Copyright (C) 2007-2014 Michael Hoehle, 2013-2016,2021 Sebastian Meyer
+### Copyright (C) 2007-2014 Michael Hoehle, 2013-2016,2021-2022 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -223,12 +223,22 @@ stsplot_time1 <- function(
       ## ublegend <- if (identical(x@control[["ret"]], "value") &&
       ##                 startsWith(x@control$name, "glr"))
       ##                 "GLR statistic" else "Threshold"
+      if (!is.na(col[1])) { # filled polygons
+          ltyObs <- NA
+          pchObs <- 22
+          fillObs <- col[1]
+      } else {
+          ltyObs <- lty[1]
+          pchObs <- NA
+          fillObs <- NA
+      }
       legend.opts <- modifyList(
           list(x = "top",
-               lty = c(lty[1],lty[3],NA,NA)[included],
+               lty = c(ltyObs,lty[3],NA,NA)[included],
                lwd = c(lwd[1],lwd[3],outbreak.symbol$lwd,alarm.symbol$lwd)[included],
                col = c(col[2],col[3],outbreak.symbol$col,alarm.symbol$col)[included],
-               pch = c(NA,    NA,    outbreak.symbol$pch,alarm.symbol$pch)[included],
+               pch = c(pchObs,NA,    outbreak.symbol$pch,alarm.symbol$pch)[included],
+               pt.bg = c(fillObs,NA,NA,NA)[included],
                legend = c("Infected", "Threshold", "Outbreak", "Alarm")[included]),
           legend.opts)
     #Make the legend

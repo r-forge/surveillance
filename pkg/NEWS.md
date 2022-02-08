@@ -17,7 +17,7 @@
 - `simulate.hhh4(..., simplify = TRUE)` now consistently returns a
   3d array (nTime x nUnit x nsim), even for `nsim = 1` (for which plotting
   now works).
-  
+
 - The default legend in `stsplot_time1()` now only includes plotted elements.
 
 - `wrap.algo()` no longer prints progress when there is only one area.
@@ -38,7 +38,7 @@
 
 - `stsplot_space()` now accepts a `col` argument to change the colour of
   the polygon lines.
-  
+
 - `plotHHH4_ri(..., exp = TRUE)` failed to use a log-scale color axis if
   further `colorkey` options were passed in a list. The (default) color breaks
   could fail to span the range of the data without warning (resulting in
@@ -59,6 +59,9 @@
   This fixes their x-axis labels for the default `xaxis.years=TRUE`.
   The obsolete arguments `startyear` and `firstweek` are now ignored with
   a warning.
+
+- The default legend of `stsplot_time1()` did not show the fill color
+  in the non-default case `!is.na(col[1])`.
 
 ## DEPRECATED AND DEFUNCT
 
