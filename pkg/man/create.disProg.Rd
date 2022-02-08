@@ -1,8 +1,6 @@
 \name{create.disProg}
 \alias{create.disProg}
-\alias{print.disProg}
-
-\title{Creating an object of class disProg (DEPRECATED)}
+\title{Creating an object of class \code{disProg} (DEPRECATED)}
 \description{
   Creating objects of the legacy class \code{disProg} is deprecated;
   use \code{\link{sts}} instead.
