@@ -262,25 +262,14 @@ stsplot_time1 <- function(
 ##############
 
 stsplot_alarm <- function(
-    x, lvl=rep(1,nrow(x)), ylim=NULL,
+    x, lvl=rep(1,ncol(x)),
     xaxis.tickFreq=list("%Q"=atChange),
     xaxis.labelFreq=xaxis.tickFreq, xaxis.labelFormat="%G\n\n%OQ",
-    epochsAsDate=x@epochAsDate, xlab="time", main=NULL,
-    type="hhs", lty=c(1,1,2), col=c(1,1,4),
-    outbreak.symbol=list(pch=3, col=3, cex=1, lwd=1),
+    epochsAsDate=x@epochAsDate, xlab="time", ylab="", main=NULL,
+    outbreak.symbol=list(pch=3, col=3, cex=1, lwd=1), # unused
     alarm.symbol=list(pch=24, col=2, cex=1, lwd=1),
-    cex=1, cex.yaxis=1, ...)
+    cex.yaxis=1, ...)
 {
-
-  k <- 1
-  #Extract slots -- depending on the algorithms: x@control$range
-  observed   <- x@observed[,k]
-  state      <- x@state[,k]
-  alarm      <- x@alarm[,k]
-  upperbound <- x@upperbound[,k]
-  ylim <- c(0.5, ncol(x))
-
-  ##### Handle the NULL arguments ######################################
   if (is.null(main) && length(x@control) > 0) {
     #a surveillance algorithm has been run
     action <- switch(class(x), "sts" = "surveillance",
@@ -292,27 +281,8 @@ stsplot_alarm <- function(
   #Control what axis style is used
   xaxis.dates <- !is.null(xaxis.labelFormat)
 
-  # left/right help for constructing the columns
-  dx.observed <- 0.5
-  observedxl <- (1:length(observed))-dx.observed
-  observedxr <- (1:length(observed))+dx.observed
-  upperboundx <- (1:length(upperbound)) #-0.5
-
-  #if ylim is not specified
-  if(is.null(ylim)){
-    ymax <- max(c(observed,upperbound),na.rm=TRUE)
-    ylim <- c(-1/20*ymax, ymax)
-  }
-
-
-  #Generate the matrices to plot
-  xstuff <- cbind(observedxl, observedxr, upperboundx)
-  ystuff <-cbind(observed, observed, upperbound)
-
-
-  #Plot the results using one Large plot call (we do this by modifying
-  #the call). Move this into a special function!
-  matplot(x=xstuff,y=ystuff,xlab=xlab,ylab="",main=main,ylim=ylim,axes = FALSE,type="n",lty=lty,col=col,...)
+  #Initialize plot
+  plot(x=c(0.5,nrow(x)+0.5),y=c(0.5,ncol(x)),xlab=xlab,ylab=ylab,main=main,axes=FALSE,type="n",...)
 
   #Label of x-axis
   if(xaxis.dates){

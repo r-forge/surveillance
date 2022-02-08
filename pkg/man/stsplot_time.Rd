@@ -33,14 +33,14 @@ stsplot_time1(x, k=1, ylim=NULL,
               dx.upperbound=0L, hookFunc=function(){},
               .hookFuncInheritance=function() {}, ...)
 
-stsplot_alarm(x, lvl=rep(1,nrow(x)), ylim=NULL,
+stsplot_alarm(x, lvl=rep(1,ncol(x)),
               xaxis.tickFreq=list("\%Q"=atChange),
               xaxis.labelFreq=xaxis.tickFreq, xaxis.labelFormat="\%G\n\n\%OQ",
-              epochsAsDate=x@epochAsDate, xlab="time", main=NULL,
-              type="hhs", lty=c(1,1,2), col=c(1,1,4),
+              epochsAsDate=x@epochAsDate,
+              xlab="time", ylab="", main=NULL,
               outbreak.symbol=list(pch=3, col=3, cex=1, lwd=1),
               alarm.symbol=list(pch=24, col=2, cex=1, lwd=1),
-              cex=1, cex.yaxis=1, ...)
+              cex.yaxis=1, ...)
 }
 
 \arguments{
@@ -118,11 +118,7 @@ stsplot_alarm(x, lvl=rep(1,nrow(x)), ylim=NULL,
   \item{lvl}{A vector of length \code{ncol(x)}, which is used to
     specify the hierarchy level for each time series in the sts object
     for alarm plots.}
-  \item{cex}{A numerical value giving the amount by which plotting text
-    and symbols should be magnified relative to the default. See
-    \code{\link{par}} for details.}
-  \item{cex.yaxis}{The magnification to be used for y-axis annotation
-    relative to the current setting of \code{cex}.}
+  \item{cex.yaxis}{The magnification to be used for y-axis annotation.}
   \item{hookFunc}{a function that is called after all the basic plotting
     has be done, i.e., it is not possible to control formatting with
     this function. See Examples.}
