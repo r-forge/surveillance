@@ -68,6 +68,8 @@
 - `create.disProg()` is deprecated. Methods for legacy `"disProg"` objects
   are kept for backwards compatibility, but new projects should use `sts()`.
 
+- The long-deprecated `qlomax()` implementation has been removed.
+
 
 # surveillance 1.19.1 (2021-03-30)
 
