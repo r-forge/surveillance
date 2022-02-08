@@ -115,22 +115,23 @@ aggregate.disProg <- function(x,...){
 ###################################################
 
 ## legacy code removed in surveillance 1.20.0
-## now plotting via stsplot_time(disProg2sts(x))
-plot.disProg <- function(x, title = "", xaxis.years=TRUE, startyear = x$start[1], firstweek = x$start[2], as.one=TRUE, same.scale=TRUE, ...){
+## now plotting via syntax transformation to stsplot_time(disProg2sts(x))
+plot.disProg <- function(x, title = "", xaxis.years = TRUE,
+                         startyear = x$start[1], firstweek = x$start[2],
+                         as.one = TRUE, same.scale = TRUE, ...)
+{
+  cl <- match.call()
+  cl[[1]] <- quote(surveillance::stsplot_time)
+  stopifnot(!missing(x))
+  cl$x <- substitute(surveillance::disProg2sts(x))
+  names(cl)[names(cl) == "title"] <- "main"
+  if (!xaxis.years) cl["xaxis.labelFormat"] <- list(NULL)
+  cl$xaxis.years <- NULL
+  if (length(ignored <- intersect(c("startyear", "firstweek", "quarters"), names(cl)))) {
+    warning("ignored legacy argument(s): ", paste0(ignored, collapse = ", "))
+    cl[ignored] <- NULL
+  }
+  if (missing(as.one)) cl$as.one <- TRUE  # stsplot_time has different default
 
-    cl <- match.call()
-    cl[[1]] <- quote(surveillance::stsplot_time)
-    stopifnot(!missing(x))
-    cl$x <- substitute(surveillance::disProg2sts(x))
-    names(cl)[names(cl) == "title"] <- "main"
-    if (!xaxis.years) cl["xaxis.labelFormat"] <- list(NULL)
-    cl$xaxis.years <- NULL
-    if (length(ignored <- intersect(c("startyear", "firstweek", "quarters"), names(cl)))) {
-      warning("ignored legacy argument(s): ", paste0(ignored, collapse = ", "))
-      cl[ignored] <- NULL
-    }
-    if (missing(as.one)) cl$as.one <- TRUE  # stsplot_time has different default
-
-    eval.parent(cl)
-
+  eval.parent(cl)
 }
