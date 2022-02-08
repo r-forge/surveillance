@@ -195,7 +195,6 @@ plot(lr.ts, xaxis.labelFormat=NULL, dx.upperbound=0.5)
 
 #using the legacy interface for "disProg" data
 lr.ts0  <- algo.glrpois(sts2disProg(s.ts), control=c(cntrl,theta=0.4))
-plot(lr.ts0, xaxis.years=FALSE)
 stopifnot(upperbound(lr.ts) == lr.ts0$upperbound)
 
 

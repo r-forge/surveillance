@@ -20,9 +20,6 @@
   
 - The default legend in `stsplot_time1()` now only includes plotted elements.
 
-- Legacy `"disProg"` objects are now plotted via internal `disProg2sts()`
-  conversion and `stsplot_time()`.
-  
 - `wrap.algo()` no longer prints progress when there is only one area.
 
 ## BUG FIXES
@@ -56,6 +53,12 @@
   against wide (quasi-continuous) NegBin distributions that would consume
   too much memory with discrete RPS calculation (returning a missing
   value with a warning). [both issues spotted by F. Rousseu]
+
+- Plots of legacy `"disProg"` and `"survRes"` objects are now generated
+  via internal `disProg2sts()` conversion and `stsplot_time()`.
+  This fixes their x-axis labels for the default `xaxis.years=TRUE`.
+  The obsolete arguments `startyear` and `firstweek` are now ignored with
+  a warning.
 
 ## DEPRECATED AND DEFUNCT
 
