@@ -5,6 +5,8 @@
 - `plotHHH4_season()` gained a `period` argument to support harmonics
   with periods longer than the frequency of the `"sts"` object.
 
+- `plotHHH4_fitted()` can now handle time series with missing values.
+
 ## MINOR CHANGES
 
 - If the Nelder-Mead optimizer is used for the variance parameters in

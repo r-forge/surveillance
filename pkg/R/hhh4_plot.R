@@ -5,7 +5,7 @@
 ###
 ### Plot-method(s) for fitted hhh4() models
 ###
-### Copyright (C) 2010-2012 Michaela Paul, 2012-2021 Sebastian Meyer
+### Copyright (C) 2010-2012 Michaela Paul, 2012-2022 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -194,11 +194,6 @@ plotHHH4_fitted1 <- function(x, unit=1, main=NULL,
     stopifnot(is.matrix(meanHHHunit), !is.null(colnames(meanHHHunit)),
               nrow(meanHHHunit) == length(x$control$subset))
     meanHHHunit <- meanHHHunit[x$control$subset %in% tpInRange,,drop=FALSE]
-    if (any(is.na(meanHHHunit))) { # -> polygon() would be wrong
-        ## could be due to wrong x$control$subset wrt the epidemic lags
-        ## a workaround is then to set 'start' to a later time point
-        stop("predicted mean contains missing values")
-    }
 
     ## check color vector
     col <- if (is.null(decompose) && length(col) == 4L) {
@@ -242,27 +237,42 @@ plotHHH4_fitted1 <- function(x, unit=1, main=NULL,
 
 plotComponentPolygons <- function (x, y, col = 1:6, border = col, add = FALSE)
 {
-    if (!is.vector(x, mode = "numeric") || is.unsorted(x, strictly = TRUE))
+    if (!is.vector(x, mode = "numeric") || length(x) == 0 ||
+        is.unsorted(x, strictly = TRUE))
         stop("'x' must be a strictly increasing sequence of time points")
-    stopifnot(nrow(y <- as.matrix(y)) == (nTime <- length(x)))  # y >= 0
+    stopifnot(is.numeric(y),  # y >= 0
+              nrow(y <- as.matrix(y)) == (nTime <- length(x)))
     yc <- if ((nPoly <- ncol(y)) > 1L) {
-        apply(X = y, MARGIN = 1L, FUN = cumsum) # nPoly x nTime
+        apply(X = y, MARGIN = 1L, FUN = function(comps)
+            if (anyNA(comps)) `is.na<-`(comps) else cumsum(comps)) # nPoly x nTime
     } else t(y)
 
     if (!add) {
         ## establish basic plot window
-        plot(range(x), range(yc[nPoly,]), type = "n")
+        plot(range(x), c(0, max(yc[nPoly,], na.rm = TRUE)), type = "n")
     }
 
     ## recycle graphical parameters
     col <- rep_len(col, nPoly)
     border <- rep_len(border, nPoly)
 
-    ## draw polygons
-    xpoly <- c(x[1L], x, x[length(x)])
+    ## draw 0-anchored polygons (piecewise if y contains missing values)
+    draw1 <- function (x, y, col, border) {
+        if (!is.na(nextNA <- match(NA_real_, y))) {
+            if (nextNA < length(y)) {
+                remainder <- (nextNA+1L):length(y)
+                draw1(x[remainder], y[remainder], col, border)
+            }
+            if (nextNA == 1L) return(invisible())
+            x <- x[seq_len(nextNA-1L)]
+            y <- y[seq_len(nextNA-1L)]
+        }
+        ## cat("drawing from x =", paste0(range(x), collapse=" to "), "\n")
+        polygon(c(x[1L], x, x[length(x)]), y = c(0, y, 0),
+                col = col, border = border)
+    }
     for (poly in nPoly:1) {
-        polygon(x = xpoly, y = c(0, yc[poly, ], 0),
-                col = col[poly], border = border[poly])
+        draw1(x, yc[poly, ], col[poly], border[poly])
     }
 }
 
