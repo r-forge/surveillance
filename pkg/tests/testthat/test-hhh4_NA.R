@@ -23,3 +23,20 @@ idxhhh <- c(1:2, 7:10, 3:6)
 expect_equivalent(head(fitHHH$coefficients, -1), fitGLM$coefficients[idxhhh])
 expect_equivalent(head(fitHHH$se, -1), summary(fitGLM)$coefficients[idxhhh, 2],
                   tolerance = 0.01)
+
+### compare AR-only model against NegBin-GLM
+## meningococcal counts are strictly positive so plain AR works
+men <- fluMen[,"meningococcus"]
+fitHHH_AR <- hhh4(men, list(end = list(f = ~-1), family = "NegBin1",
+                            ar = list(f = addSeason2formula(~1))))
+fitGLM_AR <- MASS::glm.nb(
+    formula = addSeason2formula(observed ~ 1 + offset(log(Ylag))),
+    data = transform(tidy.sts(men), t = epoch - 1, Ylag = c(NA, head(observed, -1))))
+
+expect_equal(logLik(fitHHH_AR), logLik(fitGLM_AR))
+expect_equal(fitted(fitHHH_AR)[!terms(fitHHH_AR)$isNA[fitHHH_AR$control$subset,,drop=FALSE]],
+             unname(fitted(fitGLM_AR)))
+expect_equivalent(coef(fitHHH_AR)[["overdisp"]], 1/fitGLM_AR$theta)
+expect_equivalent(head(fitHHH_AR$coefficients, -1), fitGLM_AR$coefficients)
+expect_equivalent(head(fitHHH_AR$se, -1), summary(fitGLM_AR)$coefficients[, 2],
+                  tolerance = 0.05)
