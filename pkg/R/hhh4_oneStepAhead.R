@@ -15,7 +15,7 @@ oneStepAhead <- function(result, # hhh4-object (i.e. a hhh4 model fit)
                          type = c("rolling", "first", "final"),
                          which.start = c("current", "final"), #if type="rolling"
                          keep.estimates = FALSE,
-                         verbose = TRUE, # verbose-1 is used as verbose setting
+                         verbose = type != "final", # verbose-1 is used
                                          # for sequentially refitted hhh4 models
                          cores = 1) # if which.start="final", the predictions
                                     # can be computed in parallel
