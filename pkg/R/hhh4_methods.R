@@ -5,7 +5,7 @@
 ###
 ### Standard methods for hhh4-fits
 ###
-### Copyright (C) 2010-2012 Michaela Paul, 2012-2021 Sebastian Meyer
+### Copyright (C) 2010-2012 Michaela Paul, 2012-2022 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -73,7 +73,7 @@ summary.hhh4 <- function (object, maxEV = FALSE, ...)
 	return(invisible(object))
     }
     ret <- c(object[c("call", "convergence", "dim", "loglikelihood", "margll",
-                      "lags", "nTime", "nUnit")],
+                      "lags", "nObs", "nTime", "nUnit")],
              list(fixef = fixef.hhh4(object, se=TRUE, ...),
                   ranef = ranef.hhh4(object, ...),
                   REmat = .getREmat(object),
@@ -103,6 +103,8 @@ print.summary.hhh4 <- function (x, digits = max(3, getOption("digits")-3), ...)
     }
     cat('Number of units:       ', x$nUnit, '\n')
     cat('Number of time points: ', x$nTime, '\n')
+    if ((nOmit <- x$nTime * x$nUnit - x$nObs) > 0)
+        cat("  (", nOmit, " observations excluded due to missingness)\n", sep = "")
     if (!is.null(x$lags)) { # only available since surveillance 1.8-0
         if (!is.na(x$lags["ar"]) && x$lags["ar"] != 1)
             cat("Non-default autoregressive lag:  ", x$lags[["ar"]], "\n")

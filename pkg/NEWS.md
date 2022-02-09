@@ -24,6 +24,9 @@
 
 - `wrap.algo()` no longer prints progress when there is only one area.
 
+- `summary.hhh4()` prints the number of excluded observations (due to
+  missingness), if any.
+
 ## BUG FIXES
 
 - The `print`-method for `summary.hhh4()` did not apply the `digits`
