@@ -372,7 +372,7 @@ stopifnot(all.equal(measlesPreds1$measlesFit_powerlaw$pred,
                     fitted(measlesFit_powerlaw)[tp[1]:tp[2], ],
                     check.attributes = FALSE))
 
-stopifnot(identical(
+stopifnot(all.equal(  ##M identical() fails on some systems
     measlesFit_powerlaw$loglikelihood,
     -sum(scores(oneStepAhead(measlesFit_powerlaw, tp = 1, type = "final"),
                 which = "logs", individual = TRUE))))
