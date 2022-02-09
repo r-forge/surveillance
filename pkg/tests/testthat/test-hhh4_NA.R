@@ -40,3 +40,13 @@ expect_equivalent(coef(fitHHH_AR)[["overdisp"]], 1/fitGLM_AR$theta)
 expect_equivalent(head(fitHHH_AR$coefficients, -1), fitGLM_AR$coefficients)
 expect_equivalent(head(fitHHH_AR$se, -1), summary(fitGLM_AR)$coefficients[, 2],
                   tolerance = 0.05)
+
+### compare NE-only model against NegBin-GLM (where NE is actually AR as above)
+fitHHH_NE <- hhh4(men, list(end = list(f = ~-1), family = "NegBin1",
+                            ne = list(f = addSeason2formula(~1), weights = diag(1))))
+expect_equivalent(fitHHH_AR, fitHHH_NE, ignore = c("control", "lags"))
+expect_equal(meanHHH(fitHHH_AR$coefficients, terms(fitHHH_AR))$epi.own,
+             meanHHH(fitHHH_NE$coefficients, terms(fitHHH_NE))$epi.neighbours)
+plot(fitHHH_AR, legend = FALSE, col = c(8,8,8)); plotARfit <- dev.capture()
+plot(fitHHH_NE, legend = FALSE, col = c(8,8,8)); plotNEfit <- dev.capture()
+expect_identical(plotARfit, plotNEfit)

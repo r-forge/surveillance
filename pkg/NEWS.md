@@ -68,6 +68,9 @@
 - The default legend of `stsplot_time1()` did not show the fill color
   in the non-default case `!is.na(col[1])`.
 
+- Multivariate `hhh4()` with a neighbourhood component did not propagate
+  `NA`s when calculating the weighted sum of past counts.
+
 ## DEPRECATED AND DEFUNCT
 
 - `create.disProg()` is deprecated. Methods for legacy `"disProg"` objects

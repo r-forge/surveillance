@@ -222,7 +222,7 @@ setControl <- function (control, stsObj)
 
   if (control$ne$inModel) {
       if (nUnit == 1)
-          stop("\"ne\" component requires a multivariate 'stsObj'")
+          warning("\"ne\" component requires a multivariate 'stsObj'")
       ## if ar$f is a matrix it includes neighbouring units => no "ne" component
       if (control$ar$isMatrix)
           stop("there must not be an extra \"ne\" component ",
