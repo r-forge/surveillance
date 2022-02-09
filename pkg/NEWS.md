@@ -24,7 +24,7 @@
 
 - `wrap.algo()` no longer prints progress when there is only one area.
 
-- `summary.hhh4()` prints the number of excluded observations (due to
+- `summary.hhh4()` now prints the number of excluded observations (due to
   missingness), if any.
 
 ## BUG FIXES
@@ -68,8 +68,10 @@
 - The default legend of `stsplot_time1()` did not show the fill color
   in the non-default case `!is.na(col[1])`.
 
-- Multivariate `hhh4()` with a neighbourhood component did not propagate
-  `NA`s when calculating the weighted sum of past counts.
+- Multivariate `hhh4()` with neighbourhood component treated
+  `NA` counts as zero when calculating the weighted sum over units.
+  A missing count at *t-1* in any unit now gives `NA` values for the
+  neighbourhood terms of all units at time *t*, thus reducing `nobs()`.
 
 ## DEPRECATED AND DEFUNCT
 
