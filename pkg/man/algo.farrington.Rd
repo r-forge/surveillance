@@ -12,13 +12,13 @@
   the prediction interval, then an alarm is raised.
 }
 \usage{
-# original interface for "disProg" data
+# original interface for a single "disProg" time series
 algo.farrington(disProgObj, control=list(
     range=NULL, b=5, w=3, reweight=TRUE, verbose=FALSE, plot=FALSE,
     alpha=0.05, trend=TRUE, limit54=c(5,4), powertrans="2/3",
     fitFun="algo.farrington.fitGLM.fast"))
 
-# wrapper for "sts" data
+# wrapper for "sts" data, possibly multivariate
 farrington(sts, control=list(
     range=NULL, b=5, w=3, reweight=TRUE, verbose=FALSE,
     alpha=0.05), ...)
@@ -90,7 +90,13 @@ farrington(sts, control=list(
 }
 }
 \value{
-An object of class \code{"survRes"}.
+For \code{algo.farrington}, a list object of class \code{"survRes"}
+with elements \code{alarm}, \code{upperbound}, \code{trend},
+\code{disProgObj}, and \code{control}.
+
+For \code{farrington}, the input \code{"\link{sts}"} object with updated
+\code{alarm}, \code{upperbound} and \code{control} slots, and subsetted
+to \code{control$range}.
 }
 
 \examples{
