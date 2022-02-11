@@ -148,11 +148,10 @@ stsplot_time1 <- function(
   }
 
   ##### Handle the NULL arguments ######################################
-  if (is.null(main) && length(x@control) > 0) {
+  if (is.null(main) && length(method <- x@control$name)) {
     #a surveillance algorithm has been run
     action <- switch(class(x), "sts" = "surveillance",
                      "stsNC" = "nowcasting","stsBP" = "backprojection")
-    method <- x@control$name
     main <- paste0(action, " using ", method)
   }
 
@@ -270,11 +269,10 @@ stsplot_alarm <- function(
     alarm.symbol=list(pch=24, col=2, cex=1, lwd=1),
     cex.yaxis=1, ...)
 {
-  if (is.null(main) && length(x@control) > 0) {
+  if (is.null(main) && length(method <- x@control$name)) {
     #a surveillance algorithm has been run
     action <- switch(class(x), "sts" = "surveillance",
                      "stsNC" = "nowcasting","stsBP" = "backprojection")
-    method <- x@control$name
     main <- paste0(action, " using ", method)
   }
 
