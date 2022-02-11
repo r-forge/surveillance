@@ -145,9 +145,6 @@ data("measlesWeserEms")
 plot(measlesWeserEms, type = observed ~ unit)
 stsplot_space(measlesWeserEms)  # the same
 
-# compare with old implementation
-plot(measlesWeserEms, type = observed ~ 1|unit, labels = FALSE)
-
 # cumulative incidence (per 100'000 inhabitants),
 # with region labels and white borders
 plot(measlesWeserEms, observed ~ unit,
