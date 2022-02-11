@@ -16,7 +16,6 @@
            as these package will "retire". also drop gpclib support.
            - rgeos::gUnaryUnion(SpP) -> sf::st_union(sf::st_as_sfc(SpP)) ?
            - own re-implementation of maptools::Sobj_SpatialGrid
-07/10/2021 remove deprecated functions in version 1.20
 
 #Done
 17/03/2020 remove ancient algo.hhh and simHHH implementations
@@ -199,13 +198,12 @@ xx/07/2012 (sebastian): Documentation of functions in Rd files; also update refe
 #Open
 17/11/2014 add checkNeighbourhood(..., strict=TRUE) for integer check
 18/10/2017 plotHHH4_season: add options for groups and confidence intervals (from hhh4contacts)
-26/11/2018 illustrate oneStepAhead and simulate beyond sts (with missing observed)
-           also needs tweaks in plotHHH4sims_* to work with all-NA stsObserved
 26/03/2019 maybe incorporate HIDDA.forecasting::dhhh4sims(), with scores
 17/03/2020 return means from simHHH4 and export similar to old simHHH
-13/10/2020 investigate handling of NA's in observed (checkderiv, etc.)
 
 #Done
+09/02/2022 investigate handling of NA's in observed (checkderiv, etc.)
+17/11/2021 illustrate simulate beyond sts (with missing observed)
 20/02/2019 clarify ranef description in vignette("hhh4_spacetime")
 12/02/2019 scores.oneStepAhead: remove the message concerning 'reverse'
 22/01/2018 implement [.hhh4sims (from [.hhh4simslist)
