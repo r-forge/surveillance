@@ -165,10 +165,11 @@ boda <- function(sts, control=list(range=NULL, X=NULL, trend=FALSE, season=FALSE
     # fit model and calculate quantile using INLA & MC sampling
 #    browser()
     xi[i] <- bodaFit(dat=dati, samplingMethod=samplingMethod,
-                     modelformula=modelformula, prior=prior, 
+                     modelformula=modelformula,
                      alpha=control$alpha, mc.munu=control$mc.munu,
                      mc.y=control$mc.y,
-                     quantileMethod=control$quantileMethod)
+                     quantileMethod=control$quantileMethod,
+                     verbose=control$verbose)
 
     # update progress bar
     if (useProgressBar) setTxtProgressBar(pb, i)
@@ -203,8 +204,8 @@ boda <- function(sts, control=list(range=NULL, X=NULL, trend=FALSE, season=FALSE
 #  (1-alpha)*100% quantile for the posterior predictive of y[T1]
 ######################################################################
 
-bodaFit <- function(dat=dat, modelformula=modelformula,prior=prior,alpha=alpha, mc.munu=mc.munu, mc.y=mc.y,
-                    samplingMethod=samplingMethod,quantileMethod=quantileMethod,...) {
+bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
+                    samplingMethod, quantileMethod, verbose = FALSE) {
   
   # set time point
   T1 <- nrow(dat)
@@ -214,7 +215,7 @@ bodaFit <- function(dat=dat, modelformula=modelformula,prior=prior,alpha=alpha, 
   E <- mean(dat$observed, na.rm=TRUE)
   model <- INLA::inla(modelformula,
                       data=dat,
-                      family='nbinomial',E=E,
+                      family='nbinomial', E=E, verbose=verbose,
                       control.predictor=list(compute=TRUE,link=link),
                       control.compute=list(cpo=FALSE,config=TRUE),
                       control.inla = list(int.strategy = "grid",dz=1,diff.logdens = 10))
