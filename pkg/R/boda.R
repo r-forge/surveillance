@@ -149,7 +149,8 @@ boda <- function(sts, control=list(range=NULL, X=NULL, trend=FALSE, season=FALSE
   #(now text based. Alternative: tcltk based)
   useProgressBar <- length(control$range)>1
   if (useProgressBar) {
-    pb <- txtProgressBar(min=min(control$range), max=max(control$range), initial=0,style=3)
+    pb <- txtProgressBar(min=min(control$range), max=max(control$range), initial=0,
+                         style=if (interactive()) 3 else 1)
   }
 
   #Allocate vector of thresholds

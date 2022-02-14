@@ -616,7 +616,7 @@ control.boda <- list(range = rangeBoda, X = NULL, trend = TRUE,
 boda <- boda(cam.sts, control = control.boda)
 @
 
-<<boda-cache, echo = FALSE>>=
+<<boda-cache, echo = FALSE, results = hide>>=
 if (computeALL) {
 ##hoehle 2018-07-18: changed code to use NICELOOKINGboda, but that's iid. Reason:
 ##The option 'rw1' currently crashes INLA.
@@ -645,7 +645,7 @@ control.boda2 <- modifyList(control.boda,
                             list(X = campyDE[, covarNames], season = FALSE))
 boda.covars <- boda(cam.sts, control = control.boda2)
 @
-<<boda2-cache, echo = FALSE>>=
+<<boda2-cache, echo = FALSE, results = hide>>=
 if (computeALL) {
 <<boda2>>
 save(list = c("boda.covars", "covarNames", "control.boda2"),
