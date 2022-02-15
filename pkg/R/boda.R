@@ -252,7 +252,8 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
   
   if (samplingMethod=='joint'){
     # Sample from the posterior
-    jointSample <- INLA::inla.posterior.sample(mc.munu,model, intern = TRUE)
+    inla.seed <- as.integer(runif(1) * .Machine$integer.max)
+    jointSample <- INLA::inla.posterior.sample(mc.munu, model, intern = TRUE, seed = inla.seed)
     # take variation in size hyperprior into account by also sampling from it
     theta <- exp(t(sapply(jointSample, function(x) x$hyperpar[[1]])))
     mT1 <- exp(t(sapply(jointSample, function(x) x$latent[[T1]])))
