@@ -171,6 +171,7 @@ of ``evolutionary'' point processes.
 \citet{meyer.etal2011} formulated the model class ``\code{twinstim}'' --
 a \emph{two}-component \emph{s}patio-\emph{t}emporal \emph{i}ntensity \emph{m}odel --
 by a superposition of an endemic and an epidemic component:
+
 \begin{equation} \label{eqn:twinstim}
   \lambda(\bm{s},t) = \nu_{[\bm{s}][t]} +
   \sum_{j \in I(\bm{s},t)} \eta_j \, f(\norm{\bm{s}-\bm{s}_j}) \, g(t-t_j) \:.
