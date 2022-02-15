@@ -257,7 +257,6 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     # take variation in size hyperprior into account by also sampling from it
     theta <- exp(t(sapply(jointSample, function(x) x$hyperpar[[1]])))
     mT1 <- exp(t(sapply(jointSample, function(x) x$latent[[T1]])))
-    yT1 <- rnbinom(n=mc.y*mc.munu,size=theta,mu=E*mT1) 
   }
   
 
@@ -268,8 +267,8 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     yT1 <- numeric(mc.munu*mc.y) #NULL
     idx <- seq(mc.y)
     for(j in seq(mc.munu)) {
-      idx <- idx + mc.y 
       yT1[idx] <- rnbinom(n=mc.y,size=theta[j],mu=E*mT1[j])
+      idx <- idx + mc.y
     }
     
     qi <- quantile(yT1, probs=(1-alpha), type=3, na.rm=TRUE)
