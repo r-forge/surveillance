@@ -1,5 +1,5 @@
 ---
-title: "`surveillance`: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena"
+title: "surveillance: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena"
 ---
 
 The open-source [R](https://www.R-project.org/) package **surveillance**
@@ -32,14 +32,14 @@ Institute in Germany.
 [Salmon et al. (2016)](https://doi.org/10.18637/jss.v070.i10)
 provide an overall guide to the monitoring capabilities of **surveillance**.
 The paper is available as
-[`vignette("monitoringCounts", package = "surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/monitoringCounts.pdf)
+[`vignette("monitoringCounts")`](https://CRAN.R-project.org/package=surveillance/vignettes/monitoringCounts.pdf)
 with the package.
 Further descriptions can be found in a book chapter by
 H&ouml;hle and Mazick (2010,
 [preprint](https://staff.math.su.se/hoehle/pubs/hoehle_mazick2009-preprint.pdf)),
 and -- slightly outdated --
-[H&ouml;hle (2007)](https://doi.org/10.1007/s00180-007-0074-8) and
-[`vignette("surveillance", package = "surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/surveillance.pdf).
+[H&ouml;hle (2007)](https://doi.org/10.1007/s00180-007-0074-8) or
+[`vignette("surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/surveillance.pdf).
 
 - Aberration detection in *count data time series*,
   e.g., `farringtonFlexible()`.
@@ -50,7 +50,7 @@ and -- slightly outdated --
   proposed likelihood ratio CUSUMs is available as function `LRCUSUM.runlength()`.
 
 See the
-[reference section on outbreak detection](../../reference/index.html#section-prospective-outbreak-detection)
+[reference section on outbreak detection](../../reference/index.html#prospective-outbreak-detection)
 for the complete list of algorithms.
 
 
@@ -78,28 +78,28 @@ The three regression-oriented modeling frameworks for epidemic phenomena
 are also described in corresponding package vignettes:
 
 `twinstim()`
-: to analyze a *spatio-temporal point pattern* of infective events
-: described in [`vignette("twinstim", package = "surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf)
-: associated data class: [`"epidataCS"`](../../reference/epidataCS.html)
+: models a *spatio-temporal point pattern* of infective events
+: is described in [`vignette("twinstim")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf)
+: fits data of class [`"epidataCS"`](../../reference/epidataCS.html), which
   holds the observed events (with covariates) and exogenous covariates on a
   space-time grid (for the endemic component)
 : features a model-based `epitest()` for space-time interaction
     
 `twinSIR()`
-: to analyze the susceptible-infectious-recovered
+: models the susceptible-infectious-recovered
   *(SIR) event history of a fixed population*
-: described in
-  [`vignette("twinSIR", package = "surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf)
-: associated data class: [`"epidata"`](../../reference/epidata.html)
+: is described in
+  [`vignette("twinSIR")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf)
+: fits data of class [`"epidata"`](../../reference/epidata.html)
 
 `hhh4()`
-: to analyze (multivariate) *time series of infectious disease counts*
-: described in
-  [`vignette("hhh4_spacetime", package = "surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf)
+: models a (multivariate) *time series of infectious disease counts*
+: is described in
+  [`vignette("hhh4_spacetime")`](https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf)
   for areal time series, and more generally in
-  [`vignette("hhh4", package = "surveillance")`](https://CRAN.R-project.org/package=surveillance/vignettes/hhh4.pdf),
+  [`vignette("hhh4")`](https://CRAN.R-project.org/package=surveillance/vignettes/hhh4.pdf),
   including the univariate case
-: associated data class: [`"sts"`](../../reference/sts-class.html)
+: fits data of class [`"sts"`](../../reference/sts-class.html)
 
 
 ##### Applications
@@ -139,7 +139,8 @@ Note that (large) new features are unlikely to be included in **surveillance**.
 Some extensions have already been developed in separate packages, for example
 [**hhh4contacts**](https://CRAN.R-project.org/package=hhh4contacts),
 [**HIDDA.forecasting**](https://hidda.github.io/forecasting/),
-and [**hhh4addon**](https://github.com/jbracher/hhh4addon).
+[**hhh4addon**](https://github.com/jbracher/hhh4addon),
+and [**hhh4ZI**](https://github.com/Junyi-L/hhh4ZI).
 
 
 ## Funding

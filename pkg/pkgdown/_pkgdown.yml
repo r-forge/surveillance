@@ -2,7 +2,7 @@ url: https://surveillance.R-forge.R-project.org/pkgdown/
 destination: "../www/pkgdown"
 
 template:
-  bootstrap: 4
+  bootstrap: 5
   opengraph:
     twitter:
       creator: "@bastistician"
@@ -23,10 +23,11 @@ navbar:
       href: articles/pkgdown/bibliography.html
 
 footer:
-  right:
-    structure: [pkgdown, rforge]
-    components:
-      rforge: Hosted on [![R-Forge](https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png){ height=18px }](https://R-forge.R-project.org/projects/surveillance/)
+  structure:
+    left: developed_by
+    right: [built_with, rforge]
+  components:
+    rforge: Hosted on [![R-Forge](https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png){ height=18px }](https://R-forge.R-project.org/projects/surveillance/)
 
 news:
   cran_dates: false
@@ -35,6 +36,10 @@ home:
   links:
   - text: "Browse source code on GitHub mirror"
     href: https://github.com/r-forge/surveillance/tree/master/pkg
+  - text: "R-Forge project"
+    href: https://R-forge.R-project.org/projects/surveillance/
+  - text: "Applications of endemic-epidemic modelling"
+    href: ../applications_EE.html
 
 authors:
   Sebastian Meyer:
@@ -51,19 +56,13 @@ reference:
 - title: Data class "sts"
 - contents:
   - matches("sts")
-  - -ha
+  - -has_keyword("datasets")
   - -matches("epidataCS")
-  - -matches("disProg")
-  - -stsNewport
   - -sts_observation
   - -sts_creation
-- subtitle: Old data class "disProg"
-- contents:
-  - matches("disProg")
 - title: Prospective outbreak detection
 - contents:
   - matches("algo")
-  - plot.survRes
   - -algo.twins
   - boda
   - matches("CUSUM")
@@ -148,6 +147,5 @@ reference:
   - anscombe.residuals
 - title: Deprecated functions
 - contents:
-  - matches("deprecated")
   - algo.twins
   - plot.atwins

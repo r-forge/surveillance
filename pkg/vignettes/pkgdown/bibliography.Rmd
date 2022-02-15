@@ -2,7 +2,7 @@
 title: Bibliography
 ---
 
-See [Citation and Authors](../../authors.html) for the two standard
+See [Authors and Citation](../../authors.html) for the two standard
 JSS references to cite **surveillance** in publications.
 This page gives a more comprehensive list of papers feeding **surveillance**:
 
