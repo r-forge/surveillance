@@ -1,9 +1,12 @@
-# surveillance 1.19.1.9000 (UNRELEASED)
+# surveillance 1.20.0 (2022-02-15)
 
 ## NEW FEATURES
 
 - `plotHHH4_season()` gained a `period` argument to support harmonics
   with periods longer than the frequency of the `"sts"` object.
+
+- `stsplot_space()` now supports passing a `col` argument to `spplot()`
+  to change the colour of the polygon lines.
 
 - `plotHHH4_fitted()` can now handle time series with missing values.
 
@@ -40,9 +43,6 @@
 - `farringtonFlexible()` with activated `populationOffset` (non-default)
   always used the population data of the *first* time series in the fitting step
   while iterating over a multivariate `"sts"` object.
-
-- `stsplot_space()` now accepts a `col` argument to change the colour of
-  the polygon lines.
 
 - `plotHHH4_ri(..., exp = TRUE)` failed to use a log-scale color axis if
   further `colorkey` options were passed in a list. The (default) color breaks
