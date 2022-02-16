@@ -1,5 +1,5 @@
 
-R version 4.1.1 (2021-08-10) -- "Kick Things"
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
 Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -21,7 +21,7 @@ Type 'q()' to quit R.
 > OUTDIR <- tempdir()
 > dir.create(file.path(OUTDIR, "figs"))
 > message("saving selected figures in ", OUTDIR, "/figs")
-saving selected figures in /tmp/Rtmpxox3uy/figs
+saving selected figures in /tmp/RtmpeO8ybx/figs
 > 
 > ###################################################
 > ### chunk number 1:
@@ -29,7 +29,7 @@ saving selected figures in /tmp/Rtmpxox3uy/figs
 > library("surveillance")
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.19.1. For overview type ‘help(surveillance)’.
+This is surveillance 1.20.0. For overview type ‘help(surveillance)’.
 > options(width=70)
 > options("prompt"="R> ")
 R> set.seed(1234)
@@ -97,8 +97,14 @@ R> ### chunk number 7:
 R> ###################################################
 R> ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
 R> plot(ha.b662, firstweek=1, startyear = 2005)
+Warning message:
+In plot.survRes(ha.b662, firstweek = 1, startyear = 2005) :
+  ignored legacy argument(s): startyear, firstweek
 R> opendevice(file="figs/hab662.pdf")
 R> plot(ha.b662, firstweek=1, startyear = 2005,legend.opts=list(x="topleft",horiz=TRUE))
+Warning message:
+In plot.survRes(ha.b662, firstweek = 1, startyear = 2005, legend.opts = list(x = "topleft",  :
+  ignored legacy argument(s): startyear, firstweek
 R> dev.off()
 pdf 
   2 
@@ -147,6 +153,9 @@ R> kh <- find.kh(ARLa=500,ARLr=7)
 Loading required namespace: spc
 R> ha.cusum <- algo.cusum(aggregate(ha),control=list(k=kh$k,h=kh$h,m="glm",trans="rossi",range=209:290))
 R> plot(ha.cusum,startyear=2005,legend.opts=list(x=30,y=5.5))
+Warning message:
+In plot.survRes(ha.cusum, startyear = 2005, legend.opts = list(x = 30,  :
+  ignored legacy argument(s): startyear
 R> dev.off()
 pdf 
   2 
