@@ -1,11 +1,13 @@
 
-R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -35,7 +37,7 @@ Type 'q()' to quit R.
 > library("surveillance")
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.17.0. For overview type ‘help(surveillance)’.
+This is surveillance 1.20.0. For overview type ‘help(surveillance)’.
 > 
 > #Load Danish mortality data (see book chapter for CSV reading")
 > data("momo")
@@ -53,17 +55,14 @@ This is surveillance 1.17.0. For overview type ‘help(surveillance)’.
 > #Monitoring starts in week 40, 2007
 > phase2 <- which(epoch(momo) >= "2007-10-01")
 > s.far <- farrington(momo[,"[0,1)"], control=list(range=phase2,alpha=0.01,b=5,w=4,powertrans="none"))
-Running  algo.farrington  on area  1  out of  1 
 > 
 > 
 > cntrlFar <- s.far@control
 > upper.ptnone <-s.far@upperbound
 > cntrlFar$powertrans <- "2/3"
 > upper.pt23 <- farrington(momo[,"[0,1)"],control=cntrlFar)@upperbound
-Running  algo.farrington  on area  1  out of  1 
 > cntrlFar$powertrans <- "1/2"
 > upper.pt12 <- farrington(momo[,"[0,1)"],control=cntrlFar)@upperbound
-Running  algo.farrington  on area  1  out of  1 
 > 
 > 
 > ## plot(s.far,ylab="No. of deaths",xlab="time (weeks)",main="")
@@ -130,7 +129,6 @@ Waiting for profiling to be done...
 > 
 > kappa <- 1.2
 > s.nb <- glrnb(momo[,"[75,85)"], control=list(range=phase2,alpha=1/m$theta,mu0=mu0,c.ARL=4.75,theta=log(kappa),ret="cases"))
-Running  algo.glrnb  on area  1  out of  1 
 > 
 > 
 > alarmDates <- epoch(s.nb)[alarms(s.nb) == 1]
@@ -170,156 +168,6 @@ Running  algo.glrnb  on area  1  out of  1
 > pMC <- sapply(g.grid, function(g) {
 +   mean(replicate(nSims, simone.TAleq65(momo[,"[75,85)"],g)))
 + })
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
-Running  algo.glrnb  on area  1  out of  1 
 > 
 > 
 > #Density for comparison in the negative binomial distribution
@@ -1343,23 +1191,12 @@ Looking at t= 65  out of  65
 > 
 > #Determine run-length using 1000 Monte Carlo samples
 > res.far <- replicate(nSims, simone.TAleq65.far(momo[,"[0,1)"],alpha=0.01,mu0=mu0.far,size=m.01$theta))
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
-Running  algo.farrington  on area  1  out of  1 
 > (pTA65.far <- mean(res.far))
 [1] 0.6
 > 
 > #Run CUSUM
 > kappa <- 1.2
 > s.nb.01 <- glrnb(momo[,"[0,1)"], control=list(range=phase2,alpha=1/m.01$theta,mu0=mu0.far,c.ARL=2.1,theta=log(kappa),ret="cases"))
-Running  algo.glrnb  on area  1  out of  1 
 > alarmDates <- epoch(s.nb.01)[alarms(s.nb.01) == 1]
 > 
 > mu1 <- kappa*mu0.far
