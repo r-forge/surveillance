@@ -1,5 +1,5 @@
 
-R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
 Copyright (C) 2021 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -48,7 +48,7 @@ In RNGkind("Mersenne-Twister", "Inversion", "Rounding") :
 > library("surveillance")  # you should also have installed the suggested packages
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.19.1. For overview type ‘help(surveillance)’.
+This is surveillance 1.20.0. For overview type ‘help(surveillance)’.
 > 
 > ## 3.2. Data structure: 'epidataCS'
 > data("imdepi", package = "surveillance")
@@ -277,8 +277,8 @@ Done.
 +              label = "tab:imdfit_Gaussian"),
 +       sanitize.text.function = NULL, sanitize.colnames.function = NULL,
 +       sanitize.rownames.function = function(x) paste0("\\code{", x, "}"))
-% latex table generated in R 4.0.4 by xtable 1.8-4 package
-% Tue Mar 16 14:23:46 2021
+% latex table generated in R 4.1.2 by xtable 1.8-4 package
+% Wed Feb 16 08:34:08 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -437,7 +437,7 @@ Note: added the 'tau' component to object 'imdfit_powerlaw' for future use.
 > imdsims <- simulate(imdfit_powerlaw, nsim = 30, seed = 1, t0 = 1826, T = 2555,
 +   data = imdepi_untied_infeps, tiles = districtsD)
 
-Time at beginning of simulation: 2021-03-16 14:24:11 
+Time at beginning of simulation: 2022-02-16 08:34:35 
 Simulation 1 / 30 ...
 -------------------------------------------------------------------------------
 
@@ -464,8 +464,8 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 2.751 seconds
-Estimated finishing time: 2021-03-16 14:25:34 
+Runtime of first simulation: 3.172 seconds
+Estimated finishing time: 2022-02-16 08:36:10 
 
 Simulation  2 / 30 ...	simulated 187 events up to time 2555 
 Simulation  3 / 30 ...	simulated 192 events up to time 2555 
@@ -497,7 +497,7 @@ Simulation 28 / 30 ...	simulated 174 events up to time 2555
 Simulation 29 / 30 ...	simulated 158 events up to time 2555 
 Simulation 30 / 30 ...	simulated 155 events up to time 2555 
 
-Done (2021-03-16 14:26:03).
+Done (2022-02-16 08:36:50).
 > 
 > table(imdsims[[1]]$events$source > 0, exclude = NULL)
 
@@ -512,7 +512,7 @@ FALSE  TRUE  <NA>
 +      xlab = "Time [days]")
 > for (i in seq_along(imdsims$eventsList))
 +     plot(imdsims[[i]], add = TRUE, legend.types = FALSE,
-+          col = scales::alpha(c("indianred", "darkblue"), 0.5),
++          col = adjustcolor(c("indianred", "darkblue"), alpha.f = 0.5), ##M no need for scales::alpha()
 +          subset = !is.na(source),  # exclude events of the prehistory
 +          cumulative = list(offset = .cumoffset, maxat = 336, axis = FALSE),
 +          border = NA, density = 0) # no histogram for simulations
@@ -741,6 +741,7 @@ hagellochFit_fstep  7 1245.708
 > populationFrac <- measlesWeserEms@populationFrac
 > 
 > weserems_nbOrder <- nbOrder(poly2adjmat(map), maxlag = 10)
+Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3; sf_use_s2() is TRUE
 Note: range of maximum neighbour order by region is 3-5
 > 
 > measlesWeserEms <- sts(observed = counts, start = c(2001, 1), frequency = 52,
@@ -893,7 +894,7 @@ measlesFit_np2      10 1880.963
 +   end = list(f = update(formula(measlesFit_powerlaw)$end, ~. + ri() - 1)),
 +   ar  = list(f = update(formula(measlesFit_powerlaw)$ar,  ~. + ri() - 1)),
 +   ne  = list(f = update(formula(measlesFit_powerlaw)$ne,  ~. + ri() - 1)))
-[1] "false convergence (8)"
+! Non-convergence message from optimizer: false convergence (8) 
 Update of variance parameters in iteration  5  unreliable
 > summary(measlesFit_ri, amplitudeShift = TRUE, maxEV = TRUE)
 
@@ -901,10 +902,10 @@ Call:
 hhh4(stsObj = object$stsObj, control = control)
 
 Random effects:
-            Var    Corr   
-ar.ri(iid)  1.0764        
-ne.ri(iid)  1.2939 0      
-end.ri(iid) 1.3118 0    0 
+            Var   Corr   
+ar.ri(iid)  1.076        
+ne.ri(iid)  1.294 0      
+end.ri(iid) 1.312 0    0 
 
 Fixed effects:
                       Estimate   Std. Error
@@ -954,7 +955,7 @@ Number of time points:  103
 +                     fitted(measlesFit_powerlaw)[tp[1]:tp[2], ],
 +                     check.attributes = FALSE))
 > 
-> stopifnot(identical(
+> stopifnot(all.equal(  ##M identical() fails on some systems
 +     measlesFit_powerlaw$loglikelihood,
 +     -sum(scores(oneStepAhead(measlesFit_powerlaw, tp = 1, type = "final"),
 +                 which = "logs", individual = TRUE))))
@@ -977,25 +978,25 @@ One-step-ahead prediction @ t = 67 ...
 One-step-ahead prediction @ t = 68 ...
 One-step-ahead prediction @ t = 69 ...
 One-step-ahead prediction @ t = 70 ...
-One-step-ahead prediction @ t = 72 ...
 One-step-ahead prediction @ t = 71 ...
-One-step-ahead prediction @ t = 74 ...
+One-step-ahead prediction @ t = 72 ...
 One-step-ahead prediction @ t = 73 ...
-One-step-ahead prediction @ t = 76 ...
+One-step-ahead prediction @ t = 74 ...
 One-step-ahead prediction @ t = 75 ...
+One-step-ahead prediction @ t = 76 ...
 One-step-ahead prediction @ t = 77 ...
 One-step-ahead prediction @ t = 65 ...
 One-step-ahead prediction @ t = 66 ...
-One-step-ahead prediction @ t = 68 ...
 One-step-ahead prediction @ t = 67 ...
-One-step-ahead prediction @ t = 70 ...
+One-step-ahead prediction @ t = 68 ...
 One-step-ahead prediction @ t = 69 ...
-One-step-ahead prediction @ t = 72 ...
-One-step-ahead prediction @ t = 74 ...
+One-step-ahead prediction @ t = 70 ...
 One-step-ahead prediction @ t = 71 ...
-One-step-ahead prediction @ t = 76 ...
+One-step-ahead prediction @ t = 72 ...
 One-step-ahead prediction @ t = 73 ...
+One-step-ahead prediction @ t = 74 ...
 One-step-ahead prediction @ t = 75 ...
+One-step-ahead prediction @ t = 76 ...
 One-step-ahead prediction @ t = 77 ...
 One-step-ahead prediction @ t = 65 ...
 One-step-ahead prediction @ t = 66 ...
