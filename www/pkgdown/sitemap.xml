@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/404.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/pkgdown/bibliography.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/pkgdown/events.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/pkgdown/overview.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/authors.html</loc>
+  </url>
+  <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/index.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/news/index.html</loc>
   </url>
   <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/LRCUSUM.runlength.html</loc>
@@ -40,13 +61,13 @@
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/algo.cusum.html</loc>
   </url>
   <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/algo.farrington.html</loc>
-  </url>
-  <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/algo.farrington.assign.weights.html</loc>
   </url>
   <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/algo.farrington.fitGLM.html</loc>
+  </url>
+  <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/algo.farrington.html</loc>
   </url>
   <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/algo.farrington.threshold.html</loc>
@@ -256,6 +277,9 @@
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/imdepifit.html</loc>
   </url>
   <url>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/influMen.html</loc>
   </url>
   <url>
@@ -310,10 +334,10 @@
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/momo.html</loc>
   </url>
   <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/multiplicity.html</loc>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/multiplicity.Spatial.html</loc>
   </url>
   <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/multiplicity.Spatial.html</loc>
+    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/multiplicity.html</loc>
   </url>
   <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/nbOrder.html</loc>
@@ -457,9 +481,6 @@
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/surveillance-defunct.html</loc>
   </url>
   <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/surveillance-deprecated.html</loc>
-  </url>
-  <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/surveillance-package.html</loc>
   </url>
   <url>
@@ -548,14 +569,5 @@
   </url>
   <url>
     <loc>https://surveillance.R-forge.R-project.org/pkgdown/reference/zetaweights.html</loc>
-  </url>
-  <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/pkgdown/bibliography.html</loc>
-  </url>
-  <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/pkgdown/events.html</loc>
-  </url>
-  <url>
-    <loc>https://surveillance.R-forge.R-project.org/pkgdown/articles/pkgdown/overview.html</loc>
   </url>
 </urlset>
