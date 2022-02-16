@@ -70,7 +70,7 @@ These methods have also been used for COVID-19 surveillance, for example:
 - [*Nowcasting the COVID-19 pandemic in Bavaria*](https://doi.org/10.1002/bimj.202000112)
 
 
-## Spatio-temporal endemic-epidemic modeling
+## Endemic-epidemic modeling
 
 [Meyer et al. (2017)](https://doi.org/10.18637/jss.v077.i11) provide an overall
 guide to the spatio-temporal modeling capabilities of **surveillance**.
