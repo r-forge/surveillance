@@ -1,3 +1,8 @@
+# surveillance 1.20.1 (2022-07-13)
+
+- Maintenance release, fixing Rd markup and accommodating `NO_S_TYPEDEFS`.
+
+
 # surveillance 1.20.0 (2022-02-15)
 
 ## NEW FEATURES
