@@ -26,7 +26,7 @@ monitoringCounts.pdf: monitoringCounts.bib  # additional dependency
 
 .SECONDARY: ${TEXFILESFROMRNW}  # make shall not remove intermediate tex files
 %.tex: %.Rnw
-	${R} CMD Sweave "$<"
+	LANGUAGE=en ${R} --vanilla CMD Sweave "$<"
 
 .PHONY: clean cleanall
 clean:
