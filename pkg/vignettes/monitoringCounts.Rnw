@@ -63,8 +63,8 @@
   Seestrasse 10\\
   13353 Berlin, Germany\\
   E-mail: \email{maelle.salmon@yahoo.se}, \email{mail@dirk-schumacher.net}\\
-  URL: \url{https://masalmon.github.io/}\\
-  \phantom{URL: }\url{http://www.dirk-schumacher.net/}\\
+  URL: \url{https://masalmon.eu/}\\
+  \phantom{URL: }\url{https://dirk-schumacher.net/}\\
 
   Michael H\"{o}hle\\
   Department of Mathematics\\
@@ -72,7 +72,7 @@
   Kr\"{a}ftriket\\
   106 91 Stockholm, Sweden\\
   E-mail: \email{hoehle@math.su.se}\\
-  URL: \url{https://www.math.su.se/~hoehle/}
+  URL: \url{https://staff.math.su.se/hoehle/}
 }
 
 
