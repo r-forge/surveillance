@@ -218,7 +218,7 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
                       data=dat,
                       family='nbinomial', E=E, verbose=verbose,
                       control.predictor=list(compute=TRUE,link=link),
-                      control.compute=list(cpo=FALSE,config=TRUE),
+                      control.compute=list(cpo=FALSE,config=TRUE,return.marginals.predictor=TRUE),
                       control.inla = list(int.strategy = "grid",dz=1,diff.logdens = 10))
   if(is.null(model)){
     return(qi=NA)
@@ -229,7 +229,7 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     # quantile by sampling. hoehle: inla.marginal.transform does not exist anymore!  
     # Since the observation corresponding to T1 is NA we manually need to transform
     # the fitted values (had there been an observation this is not necessary!!)
-    marg <- try(INLA::inla.tmarginal(function(x) x,model$marginals.fitted.values[[T1]]), silent=TRUE)
+    marg <- try(INLA::inla.tmarginal(identity, model$marginals.fitted.values[[T1]]), silent=TRUE)
    
     if(inherits(marg,'try-error')){
         return(qi=NA)
