@@ -215,7 +215,7 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
                       control.compute=list(cpo=FALSE,config=TRUE,return.marginals.predictor=TRUE),
                       control.inla = list(int.strategy = "grid",dz=1,diff.logdens = 10))
   if(is.null(model)){
-    return(qi=NA)
+    return(NA_real_)
   }
   
   if(samplingMethod=='marginals'){
@@ -224,18 +224,11 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     marg <- model$marginals.fitted.values[[T1]]
     mT1 <- try(INLA::inla.rmarginal(n=mc.munu,marg), silent=TRUE)
     if(inherits(mT1,'try-error')){
-        return(qi=NA)
+        return(NA_real_)
     }
     # take variation in size hyperprior into account by also sampling from it
     mtheta <- model$internal.marginals.hyperpar[[1]]
     theta <- exp(INLA::inla.rmarginal(n=mc.munu,mtheta))
-    if(inherits(theta,'try-error')){
-        return(qi=NA)
-    }
-
-
-    
-
   }
   
   if (samplingMethod=='joint'){
