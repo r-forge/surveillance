@@ -28,7 +28,7 @@
 
 boda <- function(sts, control=list(range=NULL, X=NULL, trend=FALSE, season=FALSE,
                                    prior=c('iid','rw1','rw2'), alpha=0.05, mc.munu=100, 
-                                   mc.y=10, verbose=FALSE,multicore=TRUE,
+                                   mc.y=10, verbose=FALSE,
                                    samplingMethod=c('joint','marginals'),
                                    quantileMethod=c("MC","MM"))) {
 
@@ -39,12 +39,6 @@ boda <- function(sts, control=list(range=NULL, X=NULL, trend=FALSE, season=FALSE
            "  from <https://www.r-inla.org/download-install>.")
   }
 
-  #Possibly speed up the computations by using multiple cores.
-  if (is.null(control[["multicore",exact=TRUE]])) { control$multicore <- TRUE }
-  if (control$multicore) {
-      INLA::inla.setOption("num.threads", parallel::detectCores(logical = TRUE))
-  }
-  
   #Stop if the sts object is multivariate
   if (ncol(sts)>1) {
       stop("boda currently only handles univariate sts objects.")
