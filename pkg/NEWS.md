@@ -1,6 +1,10 @@
 # surveillance 1.20.1 (2022-07-13)
 
-- Maintenance release, fixing Rd markup and accommodating `NO_S_TYPEDEFS`.
+## BUG FIXES
+
+- `ks.plot.unif()`: accommodate to `NO_S_TYPEDEFS` in R >= 4.3.0.
+
+- `boda()`: fix `samplingMethod="marginals"` for INLA >= 21.07.10.
 
 
 # surveillance 1.20.0 (2022-02-15)
