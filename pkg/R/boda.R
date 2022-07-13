@@ -212,7 +212,9 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
                       data=dat,
                       family='nbinomial', E=E, verbose=verbose,
                       control.predictor=list(compute=TRUE,link=link),
-                      control.compute=list(cpo=FALSE,config=TRUE,return.marginals.predictor=TRUE),
+                      control.compute=c(list(cpo=FALSE,config=TRUE),
+                                        if (packageVersion("INLA") >= "21.07.10")
+                                            list(return.marginals.predictor=TRUE)),
                       control.inla = list(int.strategy = "grid",dz=1,diff.logdens = 10))
   if(is.null(model)){
     return(NA_real_)
