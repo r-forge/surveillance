@@ -10,7 +10,7 @@
 # Author:
 # The initial code was written by J. Manitz, which was then later
 # adapted and modified for integration into the package by M. Hoehle.
-# Contributions by M. Salmon.
+# Contributions by M. Salmon and S. Meyer.
 #
 # Date:
 #  Code continuously developed during 2010-2014
@@ -205,9 +205,12 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
   # set time point
   T1 <- nrow(dat)
 
+  # workaround scoping issue with 'E' in recent versions of INLA
+  environment(modelformula) <- environment()
+
   ### fit model
   link <- 1
-  E <- mean(dat$observed, na.rm=TRUE)
+  E <- mean(dat$observed, na.rm=TRUE)  # FIXME: is this really needed?
   model <- INLA::inla(modelformula,
                       data=dat,
                       family='nbinomial', E=E, verbose=verbose,
