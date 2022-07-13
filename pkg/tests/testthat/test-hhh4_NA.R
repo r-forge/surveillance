@@ -49,6 +49,8 @@ fitHHH_NE <- hhh4(men, list(end = list(f = ~-1), family = "NegBin1",
 expect_equivalent(fitHHH_AR, fitHHH_NE, ignore = c("control", "lags"))
 expect_equal(meanHHH(fitHHH_AR$coefficients, terms(fitHHH_AR))$epi.own,
              meanHHH(fitHHH_NE$coefficients, terms(fitHHH_NE))$epi.neighbours)
+if (dev.capabilities("capture")[[1L]]) { # e.g. not in tinytest as that uses pdf
 plot(fitHHH_AR, legend = FALSE, col = c(8,8,8)); plotARfit <- dev.capture()
 plot(fitHHH_NE, legend = FALSE, col = c(8,8,8)); plotNEfit <- dev.capture()
 expect_identical(plotARfit, plotNEfit)
+}
