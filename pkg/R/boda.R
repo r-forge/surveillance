@@ -220,14 +220,8 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
   
   if(samplingMethod=='marginals'){
     # draw sample from marginal posteriori of muT1 & etaT1 to determine predictive
-    # quantile by sampling. hoehle: inla.marginal.transform does not exist anymore!  
-    # Since the observation corresponding to T1 is NA we manually need to transform
-    # the fitted values (had there been an observation this is not necessary!!)
-    marg <- try(INLA::inla.tmarginal(identity, model$marginals.fitted.values[[T1]]), silent=TRUE)
-   
-    if(inherits(marg,'try-error')){
-        return(qi=NA)
-    }
+    # quantile by sampling.
+    marg <- model$marginals.fitted.values[[T1]]
     mT1 <- try(INLA::inla.rmarginal(n=mc.munu,marg), silent=TRUE)
     if(inherits(mT1,'try-error')){
         return(qi=NA)
