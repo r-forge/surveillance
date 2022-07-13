@@ -292,7 +292,7 @@ checksiaf.Fcircle <- function (Fcircle, f, pargrid, type=1,
 
 checksiaf.deriv <- function (deriv, f, pargrid, type=1, rmax=100)
 {
-    rgrid <- seq(-rmax,rmax,len=21) / sqrt(2)
+    rgrid <- seq(-rmax,rmax,length.out=21) / sqrt(2)
     rgrid <- rgrid[rgrid != 0] # some siafs are always 1 at (0,0) (deriv=0)
     sgrid <- cbind(rgrid, rgrid)
     apply(pargrid, 1, function (pars) {
