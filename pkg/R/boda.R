@@ -219,7 +219,8 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
                                         if (packageVersion("INLA") >= "21.07.10")
                                             list(return.marginals.predictor=TRUE)),
                       control.inla = list(int.strategy = "grid",dz=1,diff.logdens = 10))
-  if(is.null(model)){
+  if(is.null(model)){ # probably no longer happens in recent versions of INLA
+    warning("NULL result from INLA at t = ", T1)
     return(NA_real_)
   }
   
@@ -229,6 +230,7 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     marg <- model$marginals.fitted.values[[T1]]
     mT1 <- try(INLA::inla.rmarginal(n=mc.munu,marg), silent=TRUE)
     if(inherits(mT1,'try-error')){
+        warning("degenerate marginal posterior at t = ", T1)
         return(NA_real_)
     }
     # take variation in size hyperprior into account by also sampling from it
@@ -247,25 +249,25 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     mT1 <- exp(t(sapply(jointSample, function(x) x$latent[[T1]])))
   }
   
-
+  valid <- mT1 >= 0 & theta > 0
+  if (any(!valid)) {
+    ## a range of (-4.7e-55, 5.8e-52) was seen for mT1 from inla.rmarginal()
+    ## which produced an error (-> NA) in previous versions of INLA
+    warning("degenerate posterior sampling at t = ", T1)
+    return(NA_real_)
+    ## mT1 <- mT1[valid]
+    ## theta <- theta[valid]
+  }
   
   if(quantileMethod=="MC"){
     #Draw (mc.munu \times mc.y) responses. Would be nice, if we could
     #determine the quantile of the predictive posterior in more direct form
-    yT1 <- numeric(mc.munu*mc.y) #NULL
-    idx <- seq(mc.y)
-    for(j in seq(mc.munu)) {
-      yT1[idx] <- rnbinom(n=mc.y,size=theta[j],mu=E*mT1[j])
-      idx <- idx + mc.y
-    }
+    yT1 <- unlist(mapply(rnbinom, size = theta, mu = E*mT1,
+                         MoreArgs = list(n = mc.y), SIMPLIFY = FALSE))
     
     qi <- quantile(yT1, probs=(1-alpha), type=3, na.rm=TRUE)
   }
   if(quantileMethod=="MM"){
-    mT1 <- mT1[mT1>=0&theta>0]
-    
-    theta <- theta[mT1>=0&theta>0]
-    
     minBracket <- qnbinom(p=(1-alpha), 
                           mu=E*min(mT1),
                           size=max(theta))
@@ -276,9 +278,6 @@ bodaFit <- function(dat, modelformula, alpha, mc.munu, mc.y,
     
     qi <- qmix(p=(1-alpha), mu=E*mT1, size=theta,
                bracket=c(minBracket, maxBracket))
-    
-    
-    
   }
   return(qi)
 } 
