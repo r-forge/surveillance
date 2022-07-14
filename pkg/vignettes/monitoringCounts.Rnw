@@ -1051,7 +1051,7 @@ pMarkovChain <- sapply(h.grid, function(h) {
   return(tail(TA$cdf, n = 1))
 })
 @
-<<cath-cache, echo = F>>=
+<<cath-cache, echo = FALSE, results = hide>>=
 if (computeALL) {
 <<cath>>
 save(pMC, file = "monitoringCounts-cache/pMC.RData")
