@@ -162,7 +162,7 @@ plotHHH4_fitted1 <- function(x, unit=1, main=NULL,
     tpInSubset <- intersect(x$control$subset, tpInRange)   # fitted time points
 
     ## use time indexes as x-values for use of addFormattedXAxis()
-    if (is.list(xaxis)) {
+    if (is.list(xaxis) || identical(xaxis, NA)) {
         tp <- seq_along(obs)
         start <- tpInRange[1L]
         end <- tpInRange[length(tpInRange)]
@@ -207,8 +207,9 @@ plotHHH4_fitted1 <- function(x, unit=1, main=NULL,
     ## establish basic plot window
     if (is.null(ylim)) ylim <- c(0, max(obs[tpInRange],na.rm=TRUE))
     plot(c(start,end), ylim, xlim=xlim, xlab=xlab, ylab=ylab, type="n",
-         xaxt = if (is.list(xaxis)) "n" else "s")
-    if (is.list(xaxis)) do.call("addFormattedXAxis", c(list(x = stsObj), xaxis))
+         xaxt = if (is.list(xaxis)) "n" else par("xaxt"))
+    if (is.list(xaxis))
+        do.call(addFormattedXAxis, c(list(x = stsObj), xaxis))
     title(main=main, line=0.5)
 
     ## draw polygons
