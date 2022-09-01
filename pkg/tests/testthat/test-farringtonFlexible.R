@@ -96,13 +96,13 @@ test_that("We get the expected timepoints with monthly data",{
   lala <- surveillance:::algo.farrington.referencetimepoints(dayToConsider,b=b,freq=freq,epochAsDate,epochStr)
   expect_equal(lala,c(48,36,24,12))
 })
-test_that("one gets a warning if too many years back",{
+test_that("We get an error when going too many years back",{
   dayToConsider <- 48
   b <- 3
   freq <- 12
   epochAsDate <- FALSE
   epochStr <- "month"
-  expect_warning(surveillance:::algo.farrington.referencetimepoints(dayToConsider,b=8,freq=freq,epochAsDate,epochStr), "Some reference")
+  expect_true(any(surveillance:::algo.farrington.referencetimepoints(dayToConsider,b=8,freq=freq,epochAsDate,epochStr) < 1))
 
   # apply code
    control1 <-  list(range=250,noPeriods=10,populationOffset=FALSE,
