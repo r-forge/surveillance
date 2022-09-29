@@ -3,7 +3,8 @@
 
 \documentclass[nojss]{jss}
 \usepackage{amsmath,bm}
-\usepackage{subfig}
+\usepackage{subcaption} % successor of subfig, which supersedes subfigure
+\providecommand{\subfloat}[2][need a sub-caption]{\subcaptionbox{#1}{#2}}
 \newcommand{\BetaBin}{\operatorname{BetaBin}}
 \newcommand{\Var}{\operatorname{Var}}
 \newcommand{\logit}{\operatorname{logit}}
