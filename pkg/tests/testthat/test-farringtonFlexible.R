@@ -139,8 +139,8 @@ arguments <- list(dataGLM=dataGLM,
 				   control=control)
 model <- do.call(surveillance:::algo.farrington.fitGLM.flexible, args=arguments)
 
-test_that("The fit glm function gives the right class of output?",{
-  expect_identical(class(model),c("glm","lm"))
+test_that("The fit glm function gives the right class of output",{
+  expect_inherits(model, "glm")
 })
 
 test_that("The fit glm function gives as many coefficients as expected",{
@@ -342,7 +342,7 @@ lala <- surveillance:::algo.farrington.data.glm(dayToConsider, b, freq,
                                  verbose,pastWeeksNotIncluded,k)
 
 test_that("the output is a data.frame",{
-  expect_true(class(lala)=="data.frame")
+  expect_inherits(lala, "data.frame")
 })
 
 test_that("the data frame contains all variables",{
@@ -354,7 +354,7 @@ test_that("the time variable is ok with diff 1",{
 })
 
 test_that("the factor variable has the right number of levels",{
-  expect_true(length(levels(lala$seasgroups))==noPeriods)
+  expect_equal(nlevels(lala$seasgroups), noPeriods)
 })
 
 observed[1150] <- NA
