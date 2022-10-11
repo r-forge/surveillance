@@ -1,5 +1,5 @@
 %\VignetteIndexEntry{Monitoring count time series in R: Aberration detection in public health surveillance}
-%\VignetteDepends{surveillance, gamlss, INLA, MGLM}
+%\VignetteDepends{surveillance, gamlss, MGLM}
 
 \documentclass[nojss]{jss}
 \usepackage{amsmath,bm}
@@ -164,8 +164,8 @@ Using the \texttt{ts} class as intermediate step also allows the conversion betw
 # This code is the one used for the Salmon et al. (2016) JSS article.
 # Using this code all examples from the article can be reproduced.
 # computeALL is FALSE to avoid the computationally intensive parts
-# of the code (use of simulations to find a threshold value for categoricalCUSUM,
-# use of the boda function) but one can set it to TRUE to have it run.
+# of the code (simulations to find a threshold value for categoricalCUSUM,
+# INLA-driven BODA) but one can set it to TRUE to have it run.
 computeALL <- FALSE
 @
 <<echo=FALSE>>=
