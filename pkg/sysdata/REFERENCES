@@ -2,11 +2,14 @@
 ## (the variable 'meta' is defined in readCitationFile())
 authors <- utils:::.read_authors_at_R_field(meta$"Authors@R")
 
+## reverse ASCII transliterations
+authors["MH"]$family <- "H\u00F6hle"
+authors["MS"]$given <- "Ma\u00Eblle"
 
 ### Outer header
 
 citHeader("Some guidelines for citing package",
-          sQuote("surveillance"), "in publications:")
+          sQuote("surveillance", "UTF-8"), "in publications:")
 
 
 
@@ -30,7 +33,7 @@ bibentry(
 bibentry(
     bibtype = "Article",
     header = "For multivariate hhh4() models *without* random effects, cite:",
-    author = c(authors[c("MP","LH")], person(c("André", "Michael"), "Toschke")),
+    author = c(authors[c("MP","LH")], person(c("Andr\u00E9", "Michael"), "Toschke")),
     title = "Multivariate modelling of infectious disease surveillance data",
     journal = "Statistics in Medicine",
     year = "2008",
@@ -106,7 +109,7 @@ bibentry(
     bibtype = "Article",
     header = "If knox() or epitest() is used, cite:",
     author = c(authors["SM"], person("Ingeborg", "Warnke"),
-               person("Wulf", "Rössler"), authors["LH"]),
+               person("Wulf", "R\u00F6ssler"), authors["LH"]),
     title = "Model-based testing for space-time interaction using point processes: An application to psychiatric hospital admissions in an urban area",
     journal = "Spatial and Spatio-temporal Epidemiology",
     year = "2016",

@@ -78,7 +78,8 @@
     paste0(format(authors, include = c("given", "family")), collapse = ", ")
   }
 
-  Maintainer: \packageMaintainer{surveillance}
+  Maintainer: Sebastian Meyer \email{seb.meyer@fau.de}
+  %\packageMaintainer{surveillance}  % FIXME @ R 4.2.1: does not know Authors@R
 }
 
 %% Dynamically extract contributors from the DESCRIPTION file
