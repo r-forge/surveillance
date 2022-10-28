@@ -5,8 +5,8 @@
  *   Volker Schmid
  * Contributors:
  *   Michaela Paul
- *   Daniel Sabanes Bove <daniel.sabanesbove@ifspm.uzh.ch>
- *   Sebastian Meyer <sebastian.meyer@ifspm.uzh.ch>
+ *   Daniel Sabanes Bove
+ *   Sebastian Meyer
  * History:
  *   July 2016 (SM) -- dropped deprecated "register" storage class specifier
  *   April 2012 (SM) -- replaced exit() calls by Rf_error()
@@ -17,8 +17,7 @@
  * Markov Chain Monte Carlo (MCMC) estimation in the Branching Process
  * like Epidemic Model. Instead of a slow R solution this code
  * provides a faster C++ solution. Can be invoked through R or be
- * programmed as a librrary. This code uses the Gnu Scientific Library
- * (GSL) available from http://sources.redhat.com/gsl/
+ * programmed as a librrary.
  *
  * For now this code is quick & dirty. A more OO framework would be nice
  * to enable better programming, but this will probably be speedwise slower.
@@ -3187,7 +3186,7 @@ extern "C" {
   ofstream logfile,logfile2,accfile;
 
   char accFile[200];
-  sprintf(accFile, "%s.acc", logFile);
+  snprintf(accFile, 200, "%s.acc", logFile);
 
   logfile.open(logFile);
   logfile2.open(logFile2);
