@@ -54,13 +54,6 @@ algo.twins(disProgObj, control=list(burnin=1000, filter=10,
   \file{twins.log.acc} and \file{twins.log2}.
   Thus you need to have write permissions in the current working
   directory.
-
-  Finally, inspection of the C++ code using valgrind shows some memory
-  leaks when running the old underlying C++ program. As we are unable to
-  fix this impurity at the present time, we have instead put the example
-  code in a 'dontrun' environment. The example code, however, works fine
-  -- the measure is thus more aimed at reducing the number of CRAN
-  problems with the package.
 }
 
 \value{Returns an object of class \code{atwins} with elements 
@@ -81,7 +74,6 @@ algo.twins(disProgObj, control=list(burnin=1000, filter=10,
 }
 
 \examples{
-\dontrun{
 # Load the data used in the Held et al. (2006) paper
 data("hepatitisA")
 
@@ -101,7 +93,6 @@ plot(otwins, ask=FALSE)
 hist(otwins$logFile$psi,xlab=expression(psi),main="")
 if (require("coda")) {
     print(summary(mcmc(otwins$logFile[,c("psi","xipsi","K")])))
-}
 }
 }
 

@@ -9,6 +9,7 @@
  *   Sebastian Meyer
  * History:
  *   October 2022 (SM) -- dropped deprecated sprintf and a lot of unused code
+ *                        and fixed a memory leak
  *   July 2016 (SM) -- dropped deprecated "register" storage class specifier
  *   April 2012 (SM) -- replaced exit() calls by Rf_error()
  *   March 2012 (DSB) -- changed long types to int to be in accordance with R
@@ -1738,7 +1739,7 @@ void bplem_estimate(int verbose, ofstream &logfile, ofstream &logfile2, ofstream
 
   
   if(varnu){ 
-    for (int i=0; i<=I; i++) {
+    for (int i=1; i<=I; i++) {
       alpha[i] = log(xreg[i]);
     }
     
