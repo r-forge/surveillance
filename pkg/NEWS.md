@@ -1,3 +1,25 @@
+# surveillance 1.20.2 (2022-10-31)
+
+## NEW FEATURES
+
+- `plotHHH4_fitted()` can now produce simple (unformatted) time indexes
+  if argument `xaxis = NA`.
+
+## MINOR CHANGES
+
+- Various documentation improvements,
+  including an example for `predict.hhh4()`.
+
+## BUG FIXES
+
+- `hhh4()` now warns about interaction terms in model formulae.
+  These are not implemented and were silently ignored previously.
+
+- Fixed a memory leak in `algo.twins()`; this old experimental
+  MCMC implementation for a two-component epidemic model may be removed in
+  future versions of the package.
+
+
 # surveillance 1.20.1 (2022-07-13)
 
 ## BUG FIXES
