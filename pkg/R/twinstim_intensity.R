@@ -1,11 +1,12 @@
 ################################################################################
-### Part of the surveillance package, http://surveillance.r-forge.r-project.org
-### Free software under the terms of the GNU General Public License, version 2,
-### a copy of which is available at http://www.r-project.org/Licenses/.
-###
 ### Plot the temporal or spatial evolution of the estimated intensity
 ###
-### Copyright (C) 2012-2015 Sebastian Meyer
+### Copyright (C) 2012-2015, 2022 Sebastian Meyer
+###
+### This file is part of the R package "surveillance",
+### free software under the terms of the GNU General Public License, version 2,
+### a copy of which is available at https://www.R-project.org/Licenses/.
+###
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -15,7 +16,7 @@ intensity.twinstim <- function (x, aggregate = c("time", "space"),
     types = 1:nrow(x$qmatrix), tiles, tiles.idcol = NULL)
 {
     modelenv <- environment(x)
-    
+
     ## check arguments
     if (is.null(modelenv))
         stop("'x' is missing the model environment\n",
@@ -51,9 +52,9 @@ intensity.twinstim <- function (x, aggregate = c("time", "space"),
     eps.s <- modelenv$eps.s
     siaf <- modelenv$siaf
     siafpars <- modelenv$siafpars
-    
+
     ## endemic component on the spatial or temporal grid
-    hInt <- 
+    hInt <-
         if (modelenv$hash) {
             eta <- drop(modelenv$mmhGrid %*% modelenv$beta)
             if (!is.null(modelenv$offsetGrid)) eta <- modelenv$offsetGrid + eta
@@ -165,7 +166,7 @@ intensityplot.twinstim <- function (x,
     cex.fun = sqrt, ...)
 {
     which <- match.arg(which)
-    
+
     ## set up desired intensities
     cl <- match.call()
     cl <- cl[c(1L, match(names(formals(intensity.twinstim)), names(cl), 0L))]
@@ -173,13 +174,13 @@ intensityplot.twinstim <- function (x,
     components <- eval(cl, envir = parent.frame())
     aggregate <- components$aggregate
     types <- components$types
-    
+
     ## define function to plot
     FUN <- function (tmp) {}
     names(formals(FUN)) <- if (aggregate == "time") "times" else "coords"
     body1 <- if (aggregate == "time") expression(
-        hGrid <- sapply(times, components$hFUN, USE.NAMES=FALSE),
-        eGrid <- sapply(times, components$eFUN, USE.NAMES=FALSE)
+        hGrid <- vapply(times, components$hFUN, 0, USE.NAMES=FALSE),
+        eGrid <- vapply(times, components$eFUN, 0, USE.NAMES=FALSE)
         ) else expression(
             hGrid <- unname(components$hFUN(coords)), # takes whole coord matrix
             eGrid <- apply(coords, 1, components$eFUN)
@@ -189,7 +190,7 @@ intensityplot.twinstim <- function (x,
                     "endemic proportion" = expression(hGrid / (hGrid + eGrid)),
                     "total intensity" = expression(hGrid + eGrid))
     body(FUN) <- as.call(c(as.name("{"), c(body1, body2)))
-    
+
     if (!plot) return(FUN)
 
     ## plot the FUN
@@ -204,10 +205,10 @@ intensityplot.twinstim <- function (x,
             stopifnot(is.vector(tgrid, mode="numeric"))
             sort(tgrid)
         }
-        
+
         ## calculate 'which' on tgrid
         yvals <- FUN(tgrid)
-        
+
         ## plot it
         if(! "xlab" %in% nms) dotargs$xlab <- "time"
         if(! "ylab" %in% nms) dotargs$ylab <- which
@@ -225,7 +226,7 @@ intensityplot.twinstim <- function (x,
         invisible(FUN)
     } else {
         tiles <- as(tiles, "SpatialPolygons") # remove potential data for over()
-        
+
         ## set up grid of coordinates where 'which' will be evaluated
         if (isScalar(sgrid)) {
             sgrid <- maptools::Sobj_SpatialGrid(tiles, n = sgrid)$SG
@@ -234,11 +235,11 @@ intensityplot.twinstim <- function (x,
             sgrid@proj4string <- tiles@proj4string
         }
         sgrid <- as(sgrid, "SpatialPixels")
-        
+
         ## only select grid points inside W (tiles)
         sgridTileIdx <- over(sgrid, tiles)
         sgrid <- sgrid[!is.na(sgridTileIdx),]
-        
+
         ## calculate 'which' on sgrid
         yvals <- FUN(coordinates(sgrid))
         sgridy <- SpatialPixelsDataFrame(sgrid, data=data.frame(yvals=yvals),
