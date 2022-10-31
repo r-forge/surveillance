@@ -1,7 +1,7 @@
 ################################################################################
 ### Plot the temporal or spatial evolution of the estimated intensity
 ###
-### Copyright (C) 2012-2015, 2022 Sebastian Meyer
+### Copyright (C) 2012-2015, 2022  Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -229,10 +229,7 @@ intensityplot.twinstim <- function (x,
 
         ## set up grid of coordinates where 'which' will be evaluated
         if (isScalar(sgrid)) {
-            sgrid <- maptools::Sobj_SpatialGrid(tiles, n = sgrid)$SG
-            ## ensure that sgrid has exactly the same proj4string as tiles
-            ## since CRS(proj4string(tiles)) might have modified the string
-            sgrid@proj4string <- tiles@proj4string
+            sgrid <- makeGrid(tiles, n = sgrid)
         }
         sgrid <- as(sgrid, "SpatialPixels")
 

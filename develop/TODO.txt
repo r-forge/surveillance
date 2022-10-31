@@ -15,7 +15,6 @@
 15/09/2021 replace or drop functionality from rgeos and maptools
            as these package will "retire". also drop gpclib support.
            - rgeos::gUnaryUnion(SpP) -> sf::st_union(sf::st_as_sfc(SpP)) ?
-           - own re-implementation of maptools::Sobj_SpatialGrid
 
 #Done
 17/03/2020 remove ancient algo.hhh and simHHH implementations
