@@ -39,8 +39,8 @@ magic.dim <- function(k){
 ######################################################################
 
 primeFactors <- function(x){
-  if(x==1)
-    return(1)
+  if(x %in% 1:3)
+    return(x)
 
   factors<- numeric(0)
   i<-1
@@ -82,15 +82,22 @@ primeFactors <- function(x){
 bestCombination <- function(x) {
   #Compute the power set of 0:1^length(x), i.e. a binary indicator for
   #variable stating whether to include it in set 1 or not.
-  combos <- as.matrix(expand.grid(rep(list(0:1),length(x))))
-  mode(combos) <- "logical"
+  combos <- as.matrix(expand.grid(rep(list(c(FALSE,TRUE)), length(x)),
+                                  KEEP.OUT.ATTRS = FALSE))
+  ## more efficient version, if ever needed:
+  ## ncomb <- 2^length(x)
+  ## combos <- vapply(
+  ##   X = seq_along(x),
+  ##   FUN = function(i) rep_len(rep(c(FALSE,TRUE), each = 2^(i-1)), ncomb),
+  ##   FUN.VALUE = logical(ncomb),
+  ##   USE.NAMES = FALSE)
 
   #Small helper function, given a vector of length(x) stating whether
   #to include an element in set1 or not, compute the product
   #of set1 and set2=x\backslash set1
   #set1: all those for which include is TRUE, set2: all those for which
   #include is FALSE
-  setsize <- function(include) { c(prod(x[include]),prod(x[!include])) }
+  setsize <- function(include) c(prod(x[include]), prod(x[!include]))
 
   #Compute the product of set1 and set2 for each possible combination
   sizes <- apply(combos,MARGIN=1,FUN=setsize)
