@@ -552,6 +552,7 @@ In our example, the area-level data only consists of the population density
 %% characteristics to model psychiatric hospital admissions.
 
 
+\pagebreak
 \subsection{Data handling and visualization}
 
 The generated \class{epidataCS} object \code{imdepi} is a simple list of the
