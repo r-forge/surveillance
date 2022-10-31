@@ -1,6 +1,6 @@
 %\VignetteIndexEntry{twinstim: An endemic-epidemic modeling framework for spatio-temporal point patterns}
 %\VignetteEngine{knitr::knitr}
-%\VignetteDepends{surveillance, grid, animation, polyclip, memoise, maptools, spdep, colorspace}
+%\VignetteDepends{surveillance, grid, animation, polyclip, memoise, spdep, colorspace}
 
 <<setup, cache = FALSE, include = FALSE, purl = FALSE>>=
 ## purl=FALSE => not included in the tangle'd R script
@@ -505,12 +505,11 @@ in the point process log-likelihood~\eqref{eqn:twinstim:loglik},
 the more detailed the polygons of \code{W} are
 the longer it will take to fit a \code{twinstim}.
 It is thus advisable to sacrifice some shape details for speed by reducing
-the polygon complexity, e.g., by applying \code{ms_simplify}
-from the \CRANpkg{rmapshaper} package \citep{R:rmapshaper}.
-Alternative tools in \proglang{R} are
-\CRANpkg{spatstat}'s \code{simplify.owin} procedure \citep{R:spatstat} and the function
-\code{thinnedSpatialPoly} in package \CRANpkg{maptools} \citep{R:maptools}, which
-implements the Douglas-Peucker reduction method.
+the polygon complexity. In \proglang{R} this can be achieved via, e.g.,
+\code{ms_simplify} from the \CRANpkg{rmapshaper} package \citep{R:rmapshaper},
+or \code{simplify.owin} from \CRANpkg{spatstat.owin} \citep{R:spatstat}.
+% \code{thinnedSpatialPoly} in package \CRANpkg{maptools},  % will retire
+% which implements the Douglas-Peucker reduction method.
 The \pkg{surveillance} package already contains a simplified representation of
 Germany's boundaries:
 <<imdepi_W_echo, echo=TRUE, eval=FALSE, purl=FALSE>>=
@@ -1168,7 +1167,7 @@ and otherwise corresponds to the row index of the infective source.
 .Rbibfile <- file("twinstim-R.bib", "w", encoding = "latin1")
 Rbib <- knitr::write_bib(
     c("memoise", "sp", "polyclip",
-      "maptools", "animation", "xtable"),
+      "animation", "xtable"),
     file = NULL, tweak = FALSE, prefix = "R:")
 ## write_bib() to file does enc2utf8() -> fails for ISO8859-15 session charset
 writeLines(unlist(Rbib, use.names = FALSE), .Rbibfile)

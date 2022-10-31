@@ -281,10 +281,8 @@ simEpidataCS(endemic, epidemic, siaf, tiaf, qmatrix, rmarks,
   the algorithm. You are advised to sacrifice some shape
   details for speed by reducing the polygon complexity,
   for example via the \command{mapshaper} JavaScript library wrapped by
-  the R package \CRANpkg{rmapshaper}.
-  Alternative tools are provided by the packages \CRANpkg{maptools}
-  (\code{\link[maptools]{thinnedSpatialPoly}}) and \CRANpkg{spatstat.geom}
-  (\code{\link[spatstat.geom]{simplify.owin}}).
+  the R package \CRANpkg{rmapshaper}, or via
+  \code{\link[spatstat.geom]{simplify.owin}}.
 }
 
 \references{
