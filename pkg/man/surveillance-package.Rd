@@ -99,8 +99,10 @@
         file.path(pkgdir, "inst", file) else
         file.path(pkgdir, file)
     }
-    thanks <- readLines(find_inst_file("THANKS"), encoding="latin1")
-    paste0(grep("^(#|[[:blank:]]*$)", thanks, invert=TRUE, value=TRUE), collapse = ", ")
+    ## internally, Rd objects are assumed to be in UTF-8, see parse_Rd()
+    ## FIXME @ R 4.2.1: tools:::processRdChunk() should enc2utf8(err) also in the "text" case
+    thanks <- enc2utf8(readLines(find_inst_file("THANKS"), encoding="latin1"))
+    paste0(grep("^(#|$)", trimws(thanks), invert=TRUE, value=TRUE), collapse = ", ")
   }.
 }
 
