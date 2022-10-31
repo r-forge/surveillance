@@ -14,13 +14,12 @@ magic.dim <- function(k){
 
   #if k is a prime or the difference between the two factors of k is too large
   #rather use the roots of the next square number greater than k
-
-  #up is root of the smallest square number >= k
-  up <- ceiling(sqrt(k))
-  #low is root of the biggest square number < k
-  low <- up -1
-
   if(diff(res) >5){
+    #up is root of the smallest square number >= k
+    up <- ceiling(sqrt(k))
+    #low is root of the biggest square number < k
+    low <- up -1
+
     # e.g. k=11 is a prime, the next square number is 16 so up=4 and low=3
     # low^2 = 9 < 11 is naturally too small, up^2=16 > 11 so c(4,4) is a solution
     # but low*up = 3*4 = 12 > 11 is also adequate and a better solution
