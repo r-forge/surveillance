@@ -10,6 +10,9 @@
 - Various documentation improvements,
   including an example for `predict.hhh4()`.
 
+- `intensityplot.twinstim()` no longer depends on package
+  [**maptools**](https://CRAN.R-project.org/package=maptools).
+
 ## BUG FIXES
 
 - `hhh4()` now warns about interaction terms in model formulae.
@@ -1746,7 +1749,7 @@
   and `siaf.powerlawL()`.
 
 - More rigorous checking of `tiles` in
-  `simulate.twinstim()` and `intensityplot.twinstim`.
+  `simulate.twinstim()` and `intensityplot.twinstim()`.
 
 - `as.epidataCS()` gained a `verbose` argument.
 
