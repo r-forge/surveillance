@@ -18,7 +18,7 @@
 - `hhh4()` now warns about interaction terms in model formulae.
   These are not implemented and were silently ignored previously.
 
-- Fixed a memory leak in `algo.twins()`; this old experimental
+- Fixed a memory leak in `algo.twins()`; note that this old experimental
   MCMC implementation for a two-component epidemic model may be removed in
   future versions of the package.
 
