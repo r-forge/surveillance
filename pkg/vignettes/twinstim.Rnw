@@ -507,7 +507,7 @@ the longer it will take to fit a \code{twinstim}.
 It is thus advisable to sacrifice some shape details for speed by reducing
 the polygon complexity. In \proglang{R} this can be achieved via, e.g.,
 \code{ms_simplify} from the \CRANpkg{rmapshaper} package \citep{R:rmapshaper},
-or \code{simplify.owin} from \CRANpkg{spatstat.owin} \citep{R:spatstat}.
+or \code{simplify.owin} from \CRANpkg{spatstat.geom} \citep{R:spatstat}.
 % \code{thinnedSpatialPoly} in package \CRANpkg{maptools},  % will retire
 % which implements the Douglas-Peucker reduction method.
 The \pkg{surveillance} package already contains a simplified representation of
