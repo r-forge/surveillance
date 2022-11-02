@@ -4,7 +4,7 @@ intensity, its epidemic proportion or its endemic proportion over time.
 The default plot method for objects of class "twinSIR"
 is just a wrapper for the intensityplot method.
 The implementation is illustrated in Meyer et al. (2017, Section 4),
-see vignette("twinSIR").'><title>Plotting Paths of Infection Intensities for twinSIR Models — twinSIR_intensityplot • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Plotting Paths of Infection Intensities for twinSIR Models — twinSIR_intensityplot"><meta property="og:description" content='intensityplot methods to plot the evolution of the total infection
+see vignette("twinSIR").'><title>Plotting Paths of Infection Intensities for twinSIR Models — twinSIR_intensityplot • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Plotting Paths of Infection Intensities for twinSIR Models — twinSIR_intensityplot"><meta property="og:description" content='intensityplot methods to plot the evolution of the total infection
 intensity, its epidemic proportion or its endemic proportion over time.
 The default plot method for objects of class "twinSIR"
 is just a wrapper for the intensityplot method.
@@ -20,7 +20,7 @@ see vignette("twinSIR").'><meta name="twitter:card" content="summary"><meta name
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,19 +66,19 @@ see <code>vignette("twinSIR")</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic proportion"</span>, <span class="st">"endemic proportion"</span>,
-     <span class="st">"total intensity"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">x</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic proportion"</span>, <span class="st">"endemic proportion"</span>,
-              <span class="st">"total intensity"</span><span class="op">)</span>, aggregate <span class="op">=</span> <span class="cn">TRUE</span>, theta <span class="op">=</span> <span class="cn">NULL</span>,
-              plot <span class="op">=</span> <span class="cn">TRUE</span>, add <span class="op">=</span> <span class="cn">FALSE</span>, rug.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for simEpidata</span>
-<span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">x</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic proportion"</span>, <span class="st">"endemic proportion"</span>,
-              <span class="st">"total intensity"</span><span class="op">)</span>, aggregate <span class="op">=</span> <span class="cn">TRUE</span>, theta <span class="op">=</span> <span class="cn">NULL</span>,
-              plot <span class="op">=</span> <span class="cn">TRUE</span>, add <span class="op">=</span> <span class="cn">FALSE</span>, rug.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic proportion"</span>, <span class="st">"endemic proportion"</span>,</span>
+<span>     <span class="st">"total intensity"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">x</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic proportion"</span>, <span class="st">"endemic proportion"</span>,</span>
+<span>              <span class="st">"total intensity"</span><span class="op">)</span>, aggregate <span class="op">=</span> <span class="cn">TRUE</span>, theta <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>              plot <span class="op">=</span> <span class="cn">TRUE</span>, add <span class="op">=</span> <span class="cn">FALSE</span>, rug.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for simEpidata</span></span>
+<span><span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">x</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic proportion"</span>, <span class="st">"endemic proportion"</span>,</span>
+<span>              <span class="st">"total intensity"</span><span class="op">)</span>, aggregate <span class="op">=</span> <span class="cn">TRUE</span>, theta <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>              plot <span class="op">=</span> <span class="cn">TRUE</span>, add <span class="op">=</span> <span class="cn">FALSE</span>, rug.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -87,18 +87,21 @@ see <code>vignette("twinSIR")</code>.</p>
 <dd><p>an object of class <code>"<a href="twinSIR.html">twinSIR</a>"</code> (fitted model) or
     <code>"<a href="twinSIR_simulation.html">simEpidata</a>"</code> (simulated <code>twinSIR</code> epidemic),
     respectively.</p></dd>
-<dt>which</dt>
+
+  <dt>which</dt>
 <dd><p><code>"epidemic proportion"</code>, <code>"endemic proportion"</code>,
     or <code>"total intensity"</code>.  Partial matching is applied.  Determines
     whether to plot the path of the total intensity \(\lambda(t)\) or its 
     epidemic or endemic proportions
     \(\frac{e(t)}{\lambda(t)}\) or
     \(\frac{h(t)}{\lambda(t)}\).</p></dd>
-<dt>aggregate</dt>
+
+  <dt>aggregate</dt>
 <dd><p>logical. Determines whether lines for all individual infection
     intensities should be drawn (<code>FALSE</code>) or their sum only
     (<code>TRUE</code>, the default).</p></dd>
-<dt>theta</dt>
+
+  <dt>theta</dt>
 <dd><p>numeric vector of model coefficients.  If <code>x</code> is of class
     <code>"twinSIR"</code>, then <code>theta = c(alpha, beta)</code>, where <code>beta</code>
     consists of the coefficients of the piecewise constant log-baseline function
@@ -109,16 +112,19 @@ see <code>vignette("twinSIR")</code>.</p>
     (<code>cox</code>) predictor.
     The default (<code>NULL</code>) means that the fitted or true parameters,
     respectively, will be used.</p></dd>
-<dt>plot</dt>
+
+  <dt>plot</dt>
 <dd><p>logical indicating if a plot is desired, defaults to <code>TRUE</code>.
     Otherwise, only the data of the plot will be returned.  Especially with
     <code>aggregate = FALSE</code> and many individuals one might e.g. consider to 
     plot a subset of the individual intensity paths only or do some further
     calculations/analysis of the infection intensities.</p></dd>
-<dt>add</dt>
+
+  <dt>add</dt>
 <dd><p>logical.  If <code>TRUE</code>, paths are added to the current plot, using
     <code>lines</code>.</p></dd>
-<dt>rug.opts</dt>
+
+  <dt>rug.opts</dt>
 <dd><p>either a list of arguments passed to the function <code><a href="https://rdrr.io/r/graphics/rug.html" class="external-link">rug</a></code>, or
     <code>NULL</code> (or <code>NA</code>), in which case no <code>rug</code> will be plotted.
     By default, the argument <code>ticksize</code> is set to 0.02 and <code>quiet</code>
@@ -126,7 +132,8 @@ see <code>vignette("twinSIR")</code>.</p>
     <code><a href="https://rdrr.io/r/graphics/rug.html" class="external-link">rug()</a></code> function, which contains the
     locations for the <code>rug</code> is fixed internally and can not be modified.
     The locations of the rug are the time points of infections.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>For the <code>plot.twinSIR</code> method, arguments passed to
     <code>intensityplot.twinSIR</code>.
     For the <code>intensityplot</code> methods, further graphical parameters
@@ -134,16 +141,24 @@ see <code>vignette("twinSIR")</code>.</p>
     e.g. <code>lty</code>, <code>lwd</code>, <code>col</code>, <code>xlab</code>, <code>ylab</code> and
     <code>main</code>.  Note that the <code>matplot</code> arguments <code>x</code>, <code>y</code>,
     <code>type</code> and <code>add</code> are implicit and can not be specified here.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>numeric matrix with the first column <code>"stop"</code> and as many rows as there
+    
+
+<p>numeric matrix with the first column <code>"stop"</code> and as many rows as there
   are <code>"stop"</code> time points in the event history <code>x</code>.  The other 
   columns depend on the argument <code>aggregate</code>: if <code>TRUE</code>, there 
-  is only one other column named <code>which</code>, which contains the values of 
-<code>which</code> at the respective <code>"stop"</code> time points.  Otherwise, if
-<code>aggregate = FALSE</code>, there is one column for each individual, each of
-  them containing the individual <code>which</code> at the respective <code>"stop"</code>  time points.</p>
+  is only one other column named <code>which</code>, which contains the values of</p>
+<p></p>
+<p><code>which</code> at the respective <code>"stop"</code> time points.  Otherwise, if</p>
+<p></p>
+<p><code>aggregate = FALSE</code>, there is one column for each individual, each of
+  them containing the individual <code>which</code> at the respective <code>"stop"</code></p>
+
+
+<p>time points.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -151,7 +166,7 @@ see <code>vignette("twinSIR")</code>.</p>
   Spatio-temporal analysis of epidemic phenomena using the <span style="R">R</span> package
   <span class="pkg">surveillance</span>.
   <em>Journal of Statistical Software</em>, <b>77</b> (11), 1-55.
-  doi: <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">10.18637/jss.v077.i11</a></p>
+  <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">doi:10.18637/jss.v077.i11</a></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -166,38 +181,37 @@ according to a <code>twinSIR</code> specification.</p></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span>
-
-<span class="co"># a simplistic twinSIR model</span>
-<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span>
-
-<span class="co"># overall total intensity</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span>
-
-<span class="co"># overall epidemic proportion</span>
-<span class="va">epi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"epidemic"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">epi</span><span class="op">)</span>
-<span class="co"># add overall endemic proportion = 1 - epidemic proportion</span>
-<span class="va">ende</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"endemic"</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, legend <span class="op">=</span> <span class="st">"endemic proportion"</span>, lty <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="fl">2</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span>
-
-<span class="co"># individual intensities</span>
-<span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"total"</span>, aggregate <span class="op">=</span> <span class="cn">FALSE</span>,
-    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html" class="external-link">rgb</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,
-    main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Individual infection intensities "</span> <span class="op">*</span>
-        <span class="va">lambda</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">==</span> <span class="va">Y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">%.%</span> <span class="op">(</span><span class="va">e</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span> <span class="va">h</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># return value: matrix of individual intensity paths</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span>
-
-<span class="co"># plot intensity path only for individuals 3 and 99</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tmp</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">tmp</span><span class="op">[</span>,<span class="fl">1</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">99</span><span class="op">)</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"S"</span>,
-        ylab <span class="op">=</span> <span class="st">"Force of infection"</span>, xlab <span class="op">=</span> <span class="st">"time"</span>,
-        main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Paths of the infection intensities "</span> <span class="op">*</span>
-                          <span class="va">lambda</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">*</span> <span class="st">" and "</span> <span class="op">*</span> <span class="va">lambda</span><span class="op">[</span><span class="fl">99</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Individual"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">99</span><span class="op">)</span><span class="op">)</span>,
-       col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># a simplistic twinSIR model</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># overall total intensity</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># overall epidemic proportion</span></span>
+<span><span class="va">epi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"epidemic"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">epi</span><span class="op">)</span></span>
+<span><span class="co"># add overall endemic proportion = 1 - epidemic proportion</span></span>
+<span><span class="va">ende</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"endemic"</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, legend <span class="op">=</span> <span class="st">"endemic proportion"</span>, lty <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="fl">2</span>, bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># individual intensities</span></span>
+<span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span>, which <span class="op">=</span> <span class="st">"total"</span>, aggregate <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html" class="external-link">rgb</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>    main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Individual infection intensities "</span> <span class="op">*</span></span>
+<span>        <span class="va">lambda</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">==</span> <span class="va">Y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">%.%</span> <span class="op">(</span><span class="va">e</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span> <span class="va">h</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># return value: matrix of individual intensity paths</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># plot intensity path only for individuals 3 and 99</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tmp</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">tmp</span><span class="op">[</span>,<span class="fl">1</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">99</span><span class="op">)</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"S"</span>,</span>
+<span>        ylab <span class="op">=</span> <span class="st">"Force of infection"</span>, xlab <span class="op">=</span> <span class="st">"time"</span>,</span>
+<span>        main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Paths of the infection intensities "</span> <span class="op">*</span></span>
+<span>                          <span class="va">lambda</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="op">*</span> <span class="st">" and "</span> <span class="op">*</span> <span class="va">lambda</span><span class="op">[</span><span class="fl">99</span><span class="op">]</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Individual"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">99</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>       col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -208,7 +222,7 @@ according to a <code>twinSIR</code> specification.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

@@ -9,7 +9,7 @@
   Note that the spatial information itself, i.e.
   the positions of the individuals, is assumed to be constant over time.  
   Besides epidemics following the SIR compartmental model, also data from SI,
-  SIRS and SIS epidemics may be supplied.'><title>Continuous-Time SIR Event History of a Fixed Population — epidata • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Continuous-Time SIR Event History of a Fixed Population — epidata"><meta property="og:description" content='The function as.epidata is used to generate objects
+  SIRS and SIS epidemics may be supplied.'><title>Continuous-Time SIR Event History of a Fixed Population — epidata • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Continuous-Time SIR Event History of a Fixed Population — epidata"><meta property="og:description" content='The function as.epidata is used to generate objects
   of class "epidata".  Objects of this class are
   specific data frames containing the event history of an epidemic together
   with some additional attributes.  These objects are the basis for fitting
@@ -30,7 +30,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,14 +134,16 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     <code>event.col</code> and <code>Revent.col</code> may be 1, all others are 0.  This
     rule follows the point process characteristic that there are no
     concurrent events (infections or removals).</p></dd>
-<dt>t0,max.time</dt>
+
+  <dt>t0,max.time</dt>
 <dd><p>observation period. In the resulting <code>"epidata"</code>, the time
     scale will be relative to the start time <code>t0</code>.
     Individuals that have already been removed prior to <code>t0</code>, i.e.,
     rows with <code>tR &lt;= t0</code>, will be dropped.
     The end of the observation period (<code>max.time</code>) will by default
     (<code>NULL</code>, or if <code>NA</code>) coincide with the last observed event.</p></dd>
-<dt>tE.col, tI.col, tR.col</dt>
+
+  <dt>tE.col, tI.col, tR.col</dt>
 <dd><p>single numeric or character indexes of the time columns in
     <code>data</code>, which specify when the individuals became exposed,
     infectious and removed, respectively.
@@ -152,24 +154,28 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     <code>is.na(tR)</code> (and this is checked for the provided data).<br>
     CAVE: Support for latent periods (<code>tE.col</code>) is experimental!
           <code><a href="twinSIR.html">twinSIR</a></code> cannot handle them anyway.</p></dd>
-<dt>id.col</dt>
+
+  <dt>id.col</dt>
 <dd><p>single numeric or character index of the <code>id</code> column in <code>data</code>.
     The <code>id</code> column identifies the individuals in the data frame.
     It is converted to a factor by calling <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></code>, i.e.,
     unused levels are dropped if it already was a factor.</p></dd>
-<dt>start.col</dt>
+
+  <dt>start.col</dt>
 <dd><p>single index of the <code>start</code> column in <code>data</code>.  Can be numeric
     (by column number) or character (by column name).
     The <code>start</code> column contains the (numeric) time points of the beginnings
     of the consecutive time intervals of the event history.  The minimum value
     in this column, i.e. the start of the observation period should be 0.</p></dd>
-<dt>stop.col</dt>
+
+  <dt>stop.col</dt>
 <dd><p>single index of the <code>stop</code> column in <code>data</code>.  Can be numeric
     (by column number) or character (by column name).
     The <code>stop</code> column contains the (numeric) time points of the ends
     of the consecutive time intervals of the event history.  The stop value must
     always be greater than the start value of a row.</p></dd>
-<dt>atRiskY.col</dt>
+
+  <dt>atRiskY.col</dt>
 <dd><p>single index of the <code>atRiskY</code> column in <code>data</code>.  Can be numeric
     (by column number) or character (by column name).
     The <code>atRiskY</code> column indicates if the individual was “at-risk”
@@ -177,19 +183,22 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     must be logical or in 0/1-coding.
     Individuals with <code>atRiskY == 0</code> in the first time interval (normally 
     the rows with <code>start == 0</code>) are taken as <em>initially infectious</em>.</p></dd>
-<dt>event.col</dt>
+
+  <dt>event.col</dt>
 <dd><p>single index of the <code>event</code> column in <code>data</code>.  Can be numeric
     (by column number) or character (by column name).
     The <code>event</code> column indicates if the individual became <em>infected</em>
     at the <code>stop</code> time of the interval.  This variable must be logical or
     in 0/1-coding.</p></dd>
-<dt>Revent.col</dt>
+
+  <dt>Revent.col</dt>
 <dd><p>single index of the <code>Revent</code> column in <code>data</code>.  Can be numeric
     (by column number) or character (by column name).
     The <code>Revent</code> column indicates if the individual was <em>recovered</em> 
     at the <code>stop</code> time of the interval.  This variable must be logical or
     in 0/1-coding.</p></dd>
-<dt>coords.cols</dt>
+
+  <dt>coords.cols</dt>
 <dd><p>index<em>es</em> of the <code>coords</code> column<em>s</em> in <code>data</code>. Can be
     numeric (by column number), character (by column name), or <code>NULL</code>
     (no coordinates, e.g., if <code>D</code> is a pre-specified distance matrix).
@@ -203,7 +212,8 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     coordinates are derived from the first time block only (normally the rows 
     with <code>start == 0</code>).<br>
     The <code><a href="epidata_animate.html">animate</a></code>-method requires coordinates.</p></dd>
-<dt>f</dt>
+
+  <dt>f</dt>
 <dd><p>a <em>named</em> list of <em>vectorized</em> functions for a
     distance-based force of infection.
     The functions must interact elementwise on a (distance) matrix <code>D</code> so that
@@ -222,7 +232,8 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     where \(d_{ij}\) denotes entries of the distance matrix
     (by default this is the Euclidean distance \(||s_i - s_j||\)
     between the individuals' coordinates, but see argument <code>D</code>).</p></dd>
-<dt>w</dt>
+
+  <dt>w</dt>
 <dd><p>a <em>named</em> list of <em>vectorized</em> functions for extra 
     covariate-based weights \(w_{ij}\) in the epidemic component.
     Each function operates on a single time-constant covariate in
@@ -237,32 +248,39 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     \(\sum_{j \in I(t)} w_m(z^{(m)}_i, z^{(m)}_j)\),
     where \(z^{(m)}\) denotes the variable in <code>data</code> associated
     with <code>w[[m]]</code>.</p></dd>
-<dt>D</dt>
+
+  <dt>D</dt>
 <dd><p>either a function to calculate the distances between the individuals
     with locations taken from <code>coord.cols</code> (the default is
     Euclidean distance via the function <code><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></code>) and
     the result converted to a matrix via <code><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></code>,
     or a pre-computed distance matrix with <code>dimnames</code> containing
     the individual ids (a classed <code>"<a href="https://rdrr.io/pkg/Matrix/man/Matrix-class.html" class="external-link">Matrix</a>"</code> is supported).</p></dd>
-<dt>keep.cols</dt>
+
+  <dt>keep.cols</dt>
 <dd><p>logical indicating if all columns in <code>data</code>
     should be retained (and not only the obligatory <code>"epidata"</code>
     columns), in particular any additional columns with 
     time-constant individual-specific covariates.
     Alternatively, <code>keep.cols</code> can be a numeric or character vector
     indexing columns of <code>data</code> to keep.</p></dd>
-<dt>.latent</dt>
+
+  <dt>.latent</dt>
 <dd><p>(internal) logical indicating whether to allow for latent periods
     (EXPERIMENTAL). Otherwise (default), the function verifies that an
     event (i.e., switching to the I state) only happens when the
     respective individual is at risk (i.e., in the S state).</p></dd>
-<dt>x,object</dt>
+
+  <dt>x,object</dt>
 <dd><p>an object of class <code>"epidata"</code>.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>arguments passed to <code><a href="https://rdrr.io/r/base/print.dataframe.html" class="external-link">print.data.frame</a></code>. Currently unused
     in the <code>as.epidata</code>-methods.</p></dd>
-<dt>i,j,drop</dt>
+
+  <dt>i,j,drop</dt>
 <dd><p>arguments passed to <code><a href="https://rdrr.io/r/base/Extract.data.frame.html" class="external-link">[.data.frame</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -293,25 +311,37 @@ update(object, f = list(), w = list(), D = dist, ...)</code></pre></div>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a <code>data.frame</code> with the columns <code>"BLOCK"</code>, <code>"id"</code>,
-<code>"start"</code>, <code>"stop"</code>, <code>"atRiskY"</code>, <code>"event"</code>,
-<code>"Revent"</code> and the coordinate columns (with the original names from
-<code>data</code>), which are all obligatory.  These columns are followed by any 
+    
+
+<p>a <code>data.frame</code> with the columns <code>"BLOCK"</code>, <code>"id"</code>,</p>
+<p></p>
+<p><code>"start"</code>, <code>"stop"</code>, <code>"atRiskY"</code>, <code>"event"</code>,</p>
+<p></p>
+<p><code>"Revent"</code> and the coordinate columns (with the original names from</p>
+<p></p>
+<p><code>data</code>), which are all obligatory.  These columns are followed by any 
   remaining columns of the input <code>data</code>.  Last but not least, the newly
   generated columns with epidemic variables corresponding to the functions
-  in the list <code>f</code> are appended, if <code>length(f)</code> &gt; 0.
-  The <code>data.frame</code> is given the additional <em>attributes</em></p>
+  in the list <code>f</code> are appended, if <code>length(f)</code> &gt; 0.</p>
+  
+
+<p>The <code>data.frame</code> is given the additional <em>attributes</em></p>
 <dl><dt>"eventTimes"</dt>
 <dd><p>numeric vector of infection time points (sorted chronologically).</p></dd>
-<dt>"timeRange"</dt>
+
+  <dt>"timeRange"</dt>
 <dd><p>numeric vector of length 2: <code>c(min(start), max(stop))</code>.</p></dd>
-<dt>"coords.cols"</dt>
+
+  <dt>"coords.cols"</dt>
 <dd><p>numeric vector containing the column indices of the coordinate columns in
     the resulting data frame.</p></dd>
-<dt>"f"</dt>
+
+  <dt>"f"</dt>
 <dd><p>this equals the argument <code>f</code>.</p></dd>
-<dt>"w"</dt>
+
+  <dt>"w"</dt>
 <dd><p>this equals the argument <code>w</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -334,59 +364,58 @@ models to epidemic data.</p>
   Spatio-temporal analysis of epidemic phenomena using the <span style="R">R</span> package
   <span class="pkg">surveillance</span>.
   <em>Journal of Statistical Software</em>, <b>77</b> (11), 1-55.
-  doi: <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">10.18637/jss.v077.i11</a></p>
+  <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">doi:10.18637/jss.v077.i11</a></p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span>   <span class="co"># see help("hagelloch") for a description</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">hagelloch.df</span><span class="op">)</span>
-
-<span class="co">## convert the original data frame to an "epidata" event history</span>
-<span class="va">myEpi</span> <span class="op">&lt;-</span> <span class="fu">as.epidata</span><span class="op">(</span><span class="va">hagelloch.df</span>, t0 <span class="op">=</span> <span class="fl">0</span>,
-                    tI.col <span class="op">=</span> <span class="st">"tI"</span>, tR.col <span class="op">=</span> <span class="st">"tR"</span>, id.col <span class="op">=</span> <span class="st">"PN"</span>,
-                    coords.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x.loc"</span>, <span class="st">"y.loc"</span><span class="op">)</span>,
-                    keep.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SEX"</span>, <span class="st">"AGE"</span>, <span class="st">"CL"</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># \dontshow{</span>
-<span class="co">## test consistency with default method</span>
-<span class="va">evHist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span>
-<span class="va">myEpi2</span> <span class="op">&lt;-</span> <span class="fu">as.epidata</span><span class="op">(</span>
-    <span class="va">evHist</span>, id.col <span class="op">=</span> <span class="fl">1</span>, start.col <span class="op">=</span> <span class="st">"start"</span>, stop.col <span class="op">=</span> <span class="st">"stop"</span>,
-    atRiskY.col <span class="op">=</span> <span class="st">"atRiskY"</span>, event.col <span class="op">=</span> <span class="st">"event"</span>, Revent.col <span class="op">=</span> <span class="st">"Revent"</span>,
-    coords.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x.loc"</span>, <span class="st">"y.loc"</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">myEpi</span>, <span class="va">myEpi2</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># }</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span><span class="op">)</span>  <span class="co"># "epidata" has event history format</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span>              <span class="co"># see 'summary.epidata'</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span>                 <span class="co"># see 'plot.epidata' and also 'animate.epidata'</span>
-
-<span class="co">## add distance- and covariate-based weights for the force of infection</span>
-<span class="co">## in a twinSIR model, see vignette("twinSIR") for a description</span>
-<span class="va">myEpi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">myEpi</span>,
-    f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-        household    <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span> <span class="op">==</span> <span class="fl">0</span>,
-        nothousehold <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span> <span class="op">&gt;</span> <span class="fl">0</span>
-    <span class="op">)</span>,
-    w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-        c1 <span class="op">=</span> <span class="kw">function</span> <span class="op">(</span><span class="va">CL.i</span>, <span class="va">CL.j</span><span class="op">)</span> <span class="va">CL.i</span> <span class="op">==</span> <span class="st">"1st class"</span> <span class="op">&amp;</span> <span class="va">CL.j</span> <span class="op">==</span> <span class="va">CL.i</span>,
-        c2 <span class="op">=</span> <span class="kw">function</span> <span class="op">(</span><span class="va">CL.i</span>, <span class="va">CL.j</span><span class="op">)</span> <span class="va">CL.i</span> <span class="op">==</span> <span class="st">"2nd class"</span> <span class="op">&amp;</span> <span class="va">CL.j</span> <span class="op">==</span> <span class="va">CL.i</span>
-    <span class="op">)</span>
-<span class="op">)</span>
-<span class="co">## this is now identical to the prepared hagelloch "epidata"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">myEpi</span>, <span class="va">hagelloch</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># \dontshow{</span>
-<span class="co">## test with precomputed distance matrix D</span>
-<span class="va">myEpi3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span> <span class="co"># from overwriting existing f columns</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">hagelloch</span>, f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">hagelloch</span>, <span class="st">"f"</span><span class="op">)</span>,
-           D <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">hagelloch.df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x.loc"</span>, <span class="st">"y.loc"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">hagelloch</span>, <span class="va">myEpi3</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># }</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span>   <span class="co"># see help("hagelloch") for a description</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">hagelloch.df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## convert the original data frame to an "epidata" event history</span></span>
+<span><span class="va">myEpi</span> <span class="op">&lt;-</span> <span class="fu">as.epidata</span><span class="op">(</span><span class="va">hagelloch.df</span>, t0 <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                    tI.col <span class="op">=</span> <span class="st">"tI"</span>, tR.col <span class="op">=</span> <span class="st">"tR"</span>, id.col <span class="op">=</span> <span class="st">"PN"</span>,</span>
+<span>                    coords.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x.loc"</span>, <span class="st">"y.loc"</span><span class="op">)</span>,</span>
+<span>                    keep.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SEX"</span>, <span class="st">"AGE"</span>, <span class="st">"CL"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># \dontshow{</span></span>
+<span><span class="co">## test consistency with default method</span></span>
+<span><span class="va">evHist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">myEpi2</span> <span class="op">&lt;-</span> <span class="fu">as.epidata</span><span class="op">(</span></span>
+<span>    <span class="va">evHist</span>, id.col <span class="op">=</span> <span class="fl">1</span>, start.col <span class="op">=</span> <span class="st">"start"</span>, stop.col <span class="op">=</span> <span class="st">"stop"</span>,</span>
+<span>    atRiskY.col <span class="op">=</span> <span class="st">"atRiskY"</span>, event.col <span class="op">=</span> <span class="st">"event"</span>, Revent.col <span class="op">=</span> <span class="st">"Revent"</span>,</span>
+<span>    coords.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x.loc"</span>, <span class="st">"y.loc"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">myEpi</span>, <span class="va">myEpi2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># }</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span><span class="op">)</span>  <span class="co"># "epidata" has event history format</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span>              <span class="co"># see 'summary.epidata'</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">myEpi</span><span class="op">)</span>                 <span class="co"># see 'plot.epidata' and also 'animate.epidata'</span></span>
+<span></span>
+<span><span class="co">## add distance- and covariate-based weights for the force of infection</span></span>
+<span><span class="co">## in a twinSIR model, see vignette("twinSIR") for a description</span></span>
+<span><span class="va">myEpi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">myEpi</span>,</span>
+<span>    f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>        household    <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span> <span class="op">==</span> <span class="fl">0</span>,</span>
+<span>        nothousehold <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span> <span class="op">&gt;</span> <span class="fl">0</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>        c1 <span class="op">=</span> <span class="kw">function</span> <span class="op">(</span><span class="va">CL.i</span>, <span class="va">CL.j</span><span class="op">)</span> <span class="va">CL.i</span> <span class="op">==</span> <span class="st">"1st class"</span> <span class="op">&amp;</span> <span class="va">CL.j</span> <span class="op">==</span> <span class="va">CL.i</span>,</span>
+<span>        c2 <span class="op">=</span> <span class="kw">function</span> <span class="op">(</span><span class="va">CL.i</span>, <span class="va">CL.j</span><span class="op">)</span> <span class="va">CL.i</span> <span class="op">==</span> <span class="st">"2nd class"</span> <span class="op">&amp;</span> <span class="va">CL.j</span> <span class="op">==</span> <span class="va">CL.i</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">## this is now identical to the prepared hagelloch "epidata"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">myEpi</span>, <span class="va">hagelloch</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># \dontshow{</span></span>
+<span><span class="co">## test with precomputed distance matrix D</span></span>
+<span><span class="va">myEpi3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span> <span class="co"># from overwriting existing f columns</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">hagelloch</span>, f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">hagelloch</span>, <span class="st">"f"</span><span class="op">)</span>,</span>
+<span>           D <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">hagelloch.df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x.loc"</span>, <span class="st">"y.loc"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">hagelloch</span>, <span class="va">myEpi3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># }</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -397,7 +426,7 @@ models to epidemic data.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

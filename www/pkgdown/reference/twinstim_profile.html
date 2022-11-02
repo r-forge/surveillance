@@ -4,7 +4,7 @@
 WARNING: the implementation is not well tested, simply uses
   optim (ignoring optimizer settings from the original fit),
   and does not return the complete set of coefficients at each grid point."><title>Profile Likelihood Computation and Confidence Intervals for
-twinstim objects — twinstim_profile • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Profile Likelihood Computation and Confidence Intervals for
+twinstim objects — twinstim_profile • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Profile Likelihood Computation and Confidence Intervals for
 twinstim objects — twinstim_profile"><meta property="og:description" content="Function to compute estimated and profile likelihood based confidence
   intervals for twinstim objects. Computations might be cumbersome!  
 WARNING: the implementation is not well tested, simply uses
@@ -20,7 +20,7 @@ WARNING: the implementation is not well tested, simply uses
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,17 +66,18 @@ WARNING: the implementation is not well tested, simply uses
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for twinstim</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/profile.html" class="external-link">profile</a></span><span class="op">(</span><span class="va">fitted</span>, <span class="va">profile</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>,
-        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fnscale <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, maxit <span class="op">=</span> <span class="fl">100</span>, trace <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-        do.ltildeprofile<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for twinstim</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/profile.html" class="external-link">profile</a></span><span class="op">(</span><span class="va">fitted</span>, <span class="va">profile</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fnscale <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, maxit <span class="op">=</span> <span class="fl">100</span>, trace <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>        do.ltildeprofile<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>fitted</dt>
 <dd><p>an object of class <code>"twinstim"</code>.</p></dd>
-<dt>profile</dt>
+
+  <dt>profile</dt>
 <dd><p>a list with elements being numeric vectors of length 4.  These vectors must
     have the form <code>c(index, lower, upper, gridsize)</code>.</p><dl><dt><code>index</code>:</dt>
 <dd><p>index of the parameter to be profiled in the vector <code>coef(fitted)</code>.</p></dd>
@@ -94,25 +95,32 @@ WARNING: the implementation is not well tested, simply uses
 
     
 </dl><p></p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>\((1-\alpha)\%\) profile likelihood based confidence
     intervals are computed.  If alpha &lt;= 0, then no confidence intervals are
     computed. This is currently not implemented.</p></dd>
-<dt>control</dt>
+
+  <dt>control</dt>
 <dd><p>control object to use in <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">optim</a></code> for the profile log-likelihood
     computations. It might be necessary to control <code>maxit</code> or
   <code>reltol</code> in order to obtain results in finite time.</p></dd>
-<dt>do.ltildeprofile</dt>
+
+  <dt>do.ltildeprofile</dt>
 <dd><p>If <code>TRUE</code> calculate profile likelihood as
     well. This might take a while, since an optimisation for all other
     parameters has to be performed. Useful for likelihood based
     confidence intervals. Default: <code>FALSE</code>.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>unused (argument of the generic).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>list with profile log-likelihood evaluations on the grid, and
+    
+
+<p>list with profile log-likelihood evaluations on the grid, and
 -- not implemented yet --
 highest likelihood and Wald confidence intervals.
 The argument <code>profile</code> is also returned.</p>
@@ -124,34 +132,33 @@ The argument <code>profile</code> is also returned.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># profiling takes a while</span>
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">#Load the twinstim model fitted to the IMD data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span>, <span class="st">"imdepifit"</span><span class="op">)</span>
-<span class="co"># for profiling we need the model environment</span>
-<span class="va">imdepifit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">imdepifit</span>, model<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">#Generate profiling object for a list of parameters for the new model</span>
-<span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"h.(Intercept)"</span>,<span class="st">"e.typeC"</span><span class="op">)</span>
-<span class="va">coefList</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">names</span>, <span class="kw">function</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/pmatch.html" class="external-link">pmatch</a></span><span class="op">(</span><span class="va">name</span>,<span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">imdepifit</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="fl">11</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span>
-
-<span class="co">#Profile object (necessary to specify a more loose convergence</span>
-<span class="co">#criterion). Speed things up by using do.ltildeprofile=FALSE (the default)</span>
-<span class="va">prof</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/profile.html" class="external-link">profile</a></span><span class="op">(</span><span class="va">imdepifit</span>, <span class="va">coefList</span>,
-  control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>reltol<span class="op">=</span><span class="fl">0.1</span>, REPORT<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, do.ltildeprofile<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">#Plot result for one variable</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="kw">for</span> <span class="op">(</span><span class="va">name</span> <span class="kw">in</span> <span class="va">names</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">prof</span><span class="op">$</span><span class="va">lp</span><span class="op">[[</span><span class="va">name</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
-       <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">grid</span>,<span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">profile</span>,<span class="va">estimated</span>,<span class="va">wald</span><span class="op">)</span>,
-               type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="va">name</span>,ylab<span class="op">=</span><span class="st">"loglik"</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"bottomleft"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"profile"</span>,<span class="st">"estimated"</span>,<span class="st">"wald"</span><span class="op">)</span>,lty<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,col<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># profiling takes a while</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">#Load the twinstim model fitted to the IMD data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span>, <span class="st">"imdepifit"</span><span class="op">)</span></span>
+<span><span class="co"># for profiling we need the model environment</span></span>
+<span><span class="va">imdepifit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">imdepifit</span>, model<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Generate profiling object for a list of parameters for the new model</span></span>
+<span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"h.(Intercept)"</span>,<span class="st">"e.typeC"</span><span class="op">)</span></span>
+<span><span class="va">coefList</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">names</span>, <span class="kw">function</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/pmatch.html" class="external-link">pmatch</a></span><span class="op">(</span><span class="va">name</span>,<span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">imdepifit</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="fl">11</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Profile object (necessary to specify a more loose convergence</span></span>
+<span><span class="co">#criterion). Speed things up by using do.ltildeprofile=FALSE (the default)</span></span>
+<span><span class="va">prof</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/profile.html" class="external-link">profile</a></span><span class="op">(</span><span class="va">imdepifit</span>, <span class="va">coefList</span>,</span>
+<span>  control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>reltol<span class="op">=</span><span class="fl">0.1</span>, REPORT<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, do.ltildeprofile<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Plot result for one variable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">name</span> <span class="kw">in</span> <span class="va">names</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">prof</span><span class="op">$</span><span class="va">lp</span><span class="op">[[</span><span class="va">name</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">grid</span>,<span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">profile</span>,<span class="va">estimated</span>,<span class="va">wald</span><span class="op">)</span>,</span>
+<span>               type<span class="op">=</span><span class="st">"l"</span>,xlab<span class="op">=</span><span class="va">name</span>,ylab<span class="op">=</span><span class="st">"loglik"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"bottomleft"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"profile"</span>,<span class="st">"estimated"</span>,<span class="st">"wald"</span><span class="op">)</span>,lty<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,col<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -162,7 +169,7 @@ The argument <code>profile</code> is also returned.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

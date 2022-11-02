@@ -5,7 +5,7 @@ by (penalized) maximum likelihood in the point process frame work.  Optimization
 (maximization) of the (penalized) likelihood function is performed by means of 
 optim.
 The implementation is illustrated in Meyer et al. (2017, Section 4),
-see vignette("twinSIR").'><title>Fit an Additive-Multiplicative Intensity Model for SIR Data — twinSIR • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fit an Additive-Multiplicative Intensity Model for SIR Data — twinSIR"><meta property="og:description" content='twinSIR is used to fit additive-multiplicative intensity models for
+see vignette("twinSIR").'><title>Fit an Additive-Multiplicative Intensity Model for SIR Data — twinSIR • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fit an Additive-Multiplicative Intensity Model for SIR Data — twinSIR"><meta property="og:description" content='twinSIR is used to fit additive-multiplicative intensity models for
 epidemics as described in Höhle (2009).  Estimation is driven 
 by (penalized) maximum likelihood in the point process frame work.  Optimization 
 (maximization) of the (penalized) likelihood function is performed by means of 
@@ -22,7 +22,7 @@ see vignette("twinSIR").'><meta name="twitter:card" content="summary"><meta name
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,9 @@ see <code>vignette("twinSIR")</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">twinSIR</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">weights</span>, <span class="va">subset</span>,
-        knots <span class="op">=</span> <span class="cn">NULL</span>, nIntervals <span class="op">=</span> <span class="fl">1</span>, lambda.smooth <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="fl">1</span>,
-        optim.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, model <span class="op">=</span> <span class="cn">TRUE</span>, keep.data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">twinSIR</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">weights</span>, <span class="va">subset</span>,</span>
+<span>        knots <span class="op">=</span> <span class="cn">NULL</span>, nIntervals <span class="op">=</span> <span class="fl">1</span>, lambda.smooth <span class="op">=</span> <span class="fl">0</span>, penalty <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        optim.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, model <span class="op">=</span> <span class="cn">TRUE</span>, keep.data <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -80,17 +80,21 @@ see <code>vignette("twinSIR")</code>.</p>
 <dd><p>an object of class <code>"<a href="https://rdrr.io/r/stats/formula.html" class="external-link">formula</a>"</code> (or one that can be coerced to
     that class): a symbolic description of the intensity model to be estimated.  
     The details of the model specification are given below.</p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>an object inheriting from class <code>"<a href="epidata.html">epidata</a>"</code>.</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>an optional vector of weights to be used in the fitting process.  Should be
     <code>NULL</code> (the default, i.e. all observations have unit weight) or a
     numeric vector.</p></dd>
-<dt>subset</dt>
+
+  <dt>subset</dt>
 <dd><p>an optional vector specifying a subset of observations to be used in the
     fitting process.  The subset <code>atRiskY == 1</code> is automatically chosen,
     because the likelihood only depends on those observations.</p></dd>
-<dt>knots</dt>
+
+  <dt>knots</dt>
 <dd><p>numeric vector or <code>NULL</code> (the default).  Specification of the knots,
     where we suppose a step of the log-baseline.  With the current 
     implementation, these must be existing <code>"stop"</code> time points in the
@@ -102,23 +106,27 @@ see <code>vignette("twinSIR")</code>.</p>
     By default, the <code>knots</code> are automatically chosen at the quantiles of
     the infection time points such that <code>nIntervals</code> intervals result.
     Non-NULL <code>knots</code> take precedence over <code>nIntervals</code>.</p></dd>
-<dt>nIntervals</dt>
+
+  <dt>nIntervals</dt>
 <dd><p>the number of intervals of constant log-baseline hazard.  Defaults to 1,
     which means an overall constant log-baseline hazard will be fitted.</p></dd>
-<dt>lambda.smooth</dt>
+
+  <dt>lambda.smooth</dt>
 <dd><p>numeric, the smoothing parameter \(\lambda\).  By default it is 0 which
     leads to unpenalized likelihood inference.
     In case <code>lambda.smooth=-1</code>, the automatic smoothing parameter
     selection based on a mixed model approach is used (cf.
     Höhle, 2009).</p></dd>
-<dt>penalty</dt>
+
+  <dt>penalty</dt>
 <dd><p>either a single number denoting the order of the difference used to penalize
     the log-baseline coefficients (defaults to 1), or a more specific penalty
     matrix \(K\) for the parameter sub-vector \(\beta\). In case of
     non-equidistant knots -- usually the case when using quantile based
     knot locations -- only a 1st order differences penalty matrix as in
     Fahrmeir and Lang (2001) is implemented.</p></dd>
-<dt>optim.args</dt>
+
+  <dt>optim.args</dt>
 <dd><p>a list with arguments passed to the <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">optim</a></code> function.
     Especially useful are the following ones:</p><dl><dt><code>par</code>:</dt>
 <dd><p>to specify initial parameter values.  Those must be in the order
@@ -156,14 +164,16 @@ see <code>vignette("twinSIR")</code>.</p>
 
     
 </dl><p></p></dd>
-<dt>model</dt>
+
+  <dt>model</dt>
 <dd><p>logical indicating if the model frame, the <code>weights</code>,
     <code>lambda.smooth</code>, the penalty matrix \(K\) and the list of used
     distance functions <code>f</code> (from <code>attributes(data)</code>) should be
     returned for further computation.  This defaults to <code>TRUE</code> as this
     information is necessary e.g. in the <code>profile</code> and <code>plot</code> 
     methods.</p></dd>
-<dt>keep.data</dt>
+
+  <dt>keep.data</dt>
 <dd><p>logical indicating if the <code>"epidata"</code> object (<code>data</code>)
     should be part of the return value. This is only necessary for use of the
     <code><a href="twinSIR_simulation.html">simulate</a></code>-method for <code>"twinSIR"</code>
@@ -173,6 +183,7 @@ see <code>vignette("twinSIR")</code>.</p>
     all individuals in every time block.  The default value is <code>FALSE</code>, so
     if you intent to use <code>simulate.twinSIR</code>, you have to set this to
     <code>TRUE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -187,12 +198,12 @@ see <code>vignette("twinSIR")</code>.</p>
 <p>Basically, the additive-multiplicative model for the infection intensity
   \(\lambda_i(t)\) for individual \(i\) is
   $$\lambda_i(t) = Y_i(t) * (e_i(t) + h_i(t))$$
-  where</p><dl><dt>Y\_i(t)</dt>
+  where</p><dl><dt>Y_i(t)</dt>
 <dd><p>is the at-risk indicator, indicating if individual \(i\) is
       “at risk” of becoming infected at time point \(t\).
       This variable is part of the event history <code>data</code>.</p></dd>
 
-    <dt>e\_i(t)</dt>
+    <dt>e_i(t)</dt>
 <dd><p>is the epidemic component of the infection intensity, defined as
       $$e_i(t) = \sum_{j \in I(t)} f(||s_i - s_j||)$$
       where \(I(t)\) is the set of infectious individuals just before time
@@ -207,7 +218,7 @@ see <code>vignette("twinSIR")</code>.</p>
       with \(x_{im}(t) = \sum_{j \in I(t)} B_m(||s_i - s_j||)\) being the
       \(m\)'th epidemic variable for individual \(i\).</p></dd>
 
-    <dt>h\_i(t)</dt>
+    <dt>h_i(t)</dt>
 <dd><p>is the endemic (<code>cox</code>) component of the infection intensity, defined
       as
       $$h_i(t) = \exp(h_0(t) + z_i(t)' \beta)$$
@@ -245,31 +256,42 @@ see <code>vignette("twinSIR")</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>twinSIR</code> returns an object of class
-<code>"twinSIR"</code>, which is a list containing the following components:</p>
+    <p></p>
+<p><code>twinSIR</code> returns an object of class</p>
+<p></p>
+<p><code>"twinSIR"</code>, which is a list containing the following components:</p>
 <dl><dt>coefficients</dt>
 <dd><p>a named vector of coefficients.</p></dd>
-<dt>loglik</dt>
+
+  <dt>loglik</dt>
 <dd><p>the maximum of the (penalized) log-likelihood function.</p></dd>
-<dt>counts</dt>
+
+  <dt>counts</dt>
 <dd><p>the number of log-likelihood and score function evaluations.</p></dd>
-<dt>converged</dt>
+
+  <dt>converged</dt>
 <dd><p>logical indicating convergence of the optimization
     algorithm.</p></dd>
-<dt>fisherinfo.observed</dt>
+
+  <dt>fisherinfo.observed</dt>
 <dd><p>if requested, the negative Hessian from
     <code>optim</code>.</p></dd>
-<dt>fisherinfo</dt>
+
+  <dt>fisherinfo</dt>
 <dd><p>an estimation of the Expected Fisher Information matrix.</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>the optimization algorithm used.</p></dd>
-<dt>intervals</dt>
+
+  <dt>intervals</dt>
 <dd><p>a numeric vector (<code>c(minTime, knots, maxTime)</code>)
     representing the consecutive intervals of constant log-baseline.</p></dd>
-<dt>nEvents</dt>
+
+  <dt>nEvents</dt>
 <dd><p>a numeric vector containing the number of infections in each of
     the above <code>intervals</code>.</p></dd>
-<dt>model</dt>
+
+  <dt>model</dt>
 <dd><p>if requested, the model information used. This is a list with
     components <code>"survs"</code> (data.frame with the id, start, stop and event
     columns), <code>"X"</code> (matrix of the epidemic variables), <code>"Z"</code> (matrix
@@ -278,14 +300,19 @@ see <code>vignette("twinSIR")</code>.</p>
     (the penalty matrix used), and <code>"f"</code> and <code>"w"</code>
     (the functions to generate the used epidemic covariates).
     Be aware that the model only contains those rows with <code>atRiskY == 1</code>!</p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>if requested, the supplied <code>"epidata"</code> <code>data</code>.</p></dd>
-<dt>call</dt>
+
+  <dt>call</dt>
 <dd><p>the matched call.</p></dd>
-<dt>formula</dt>
+
+  <dt>formula</dt>
 <dd><p>the specified <code>formula</code>.</p></dd>
-<dt>terms</dt>
+
+  <dt>terms</dt>
 <dd><p>the <code>terms</code> object used.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -296,7 +323,7 @@ see <code>vignette("twinSIR")</code>.</p>
   Spatio-temporal analysis of epidemic phenomena using the <span style="R">R</span> package
   <span class="pkg">surveillance</span>.
   <em>Journal of Statistical Software</em>, <b>77</b> (11), 1-55.
-  doi: <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">10.18637/jss.v077.i11</a></p>
+  <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">doi:10.18637/jss.v077.i11</a></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -336,48 +363,47 @@ objects of class <code>"twinSIR"</code>.</p></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span>
-
-<span class="co"># simple model with an overall constant baseline hazard rate</span>
-<span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span> <span class="op">+</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span>
-<span class="va">fit1</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>   <span class="co"># see also help("summary.twinSIR")</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>      <span class="co"># see also help("plot.twinSIR")</span>
-<span class="fu"><a href="checkResidualProcess.html">checkResidualProcess</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>   <span class="co"># could be better</span>
-
-<span class="co"># fit a piecewise constant baseline hazard rate with 3 intervals using </span>
-<span class="co"># _un_penalized ML and estimated coefs from fit1 as starting values </span>
-<span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, nIntervals <span class="op">=</span> <span class="fl">3</span>,
-                optim.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span>
-
-<span class="co"># fit a piecewise constant baseline hazard rate with 7 intervals</span>
-<span class="co"># using _penalized_ ML</span>
-<span class="va">fit3</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, nIntervals <span class="op">=</span> <span class="fl">7</span>,
-                lambda.smooth <span class="op">=</span> <span class="fl">0.1</span>, penalty <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span>
-<span class="fu"><a href="checkResidualProcess.html">checkResidualProcess</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span>
-
-<span class="co"># plot the estimated log-baseline levels</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">fit2</span><span class="op">$</span><span class="va">intervals</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"S"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">6</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">fit3</span><span class="op">$</span><span class="va">intervals</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"S"</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"right"</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unpenalized 3"</span>, <span class="st">"penalized 7"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, bty<span class="op">=</span><span class="st">"n"</span><span class="op">)</span>
-
-
-<span class="co">## special use case: fit the model to a subset of the events only,</span>
-<span class="co">## while preserving epidemic contributions from the remainder</span>
-<span class="co">## (maybe some buffer area nodes)</span>
-<span class="va">fit_subset</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, subset <span class="op">=</span> <span class="va">CL</span><span class="op">==</span><span class="st">"preschool"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit_subset</span><span class="op">)</span>
-
-<span class="co"># \dontshow{</span>
-    <span class="co">## the eventTimes attribute was wrong in surveillance &lt;= 1.15.0</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">fit_subset</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">fit_subset</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">survs</span><span class="op">$</span><span class="va">event</span><span class="op">)</span>
-    <span class="op">)</span>
-<span class="co"># }</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># simple model with an overall constant baseline hazard rate</span></span>
+<span><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span> <span class="op">+</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span></span>
+<span><span class="va">fit1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>   <span class="co"># see also help("summary.twinSIR")</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>      <span class="co"># see also help("plot.twinSIR")</span></span>
+<span><span class="fu"><a href="checkResidualProcess.html">checkResidualProcess</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span>   <span class="co"># could be better</span></span>
+<span></span>
+<span><span class="co"># fit a piecewise constant baseline hazard rate with 3 intervals using </span></span>
+<span><span class="co"># _un_penalized ML and estimated coefs from fit1 as starting values </span></span>
+<span><span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, nIntervals <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                optim.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fit a piecewise constant baseline hazard rate with 7 intervals</span></span>
+<span><span class="co"># using _penalized_ ML</span></span>
+<span><span class="va">fit3</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, nIntervals <span class="op">=</span> <span class="fl">7</span>,</span>
+<span>                lambda.smooth <span class="op">=</span> <span class="fl">0.1</span>, penalty <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="checkResidualProcess.html">checkResidualProcess</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># plot the estimated log-baseline levels</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">fit2</span><span class="op">$</span><span class="va">intervals</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"S"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">6</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">fit3</span><span class="op">$</span><span class="va">intervals</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"S"</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"right"</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"unpenalized 3"</span>, <span class="st">"penalized 7"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, bty<span class="op">=</span><span class="st">"n"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## special use case: fit the model to a subset of the events only,</span></span>
+<span><span class="co">## while preserving epidemic contributions from the remainder</span></span>
+<span><span class="co">## (maybe some buffer area nodes)</span></span>
+<span><span class="va">fit_subset</span> <span class="op">&lt;-</span> <span class="fu">twinSIR</span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, subset <span class="op">=</span> <span class="va">CL</span><span class="op">==</span><span class="st">"preschool"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit_subset</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># \dontshow{</span></span>
+<span>    <span class="co">## the eventTimes attribute was wrong in surveillance &lt;= 1.15.0</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">fit_subset</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">fit_subset</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">survs</span><span class="op">$</span><span class="va">event</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="co"># }</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -388,7 +414,7 @@ objects of class <code>"twinSIR"</code>.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

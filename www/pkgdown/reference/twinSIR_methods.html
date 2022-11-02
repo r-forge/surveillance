@@ -8,7 +8,7 @@ the epidemic effects \(\alpha\) in twinSIR models.  Parameter
 constraints reduce the average increase in the maximized loglikelihood - thus
 the penalty for constrained parameters should be smaller than the factor 2 used
 in the ordinary definition of AIC.  To this end, these two methods offer the
-calculation of the so-called one-sided AIC (OSAIC)."><title>Print, Summary and Extraction Methods for "twinSIR" Objects — twinSIR_methods • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Print, Summary and Extraction Methods for " twinsir objects twinsir_methods><meta property="og:description" content="Besides print and summary methods there are also some standard
+calculation of the so-called one-sided AIC (OSAIC)."><title>Print, Summary and Extraction Methods for "twinSIR" Objects — twinSIR_methods • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Print, Summary and Extraction Methods for " twinsir objects twinsir_methods><meta property="og:description" content="Besides print and summary methods there are also some standard
 extraction methods defined for objects of class &quot;twinSIR&quot;:
 vcov, logLik and especially AIC and
 extractAIC, which extract Akaike's Information Criterion.  Note that
@@ -28,7 +28,7 @@ calculation of the so-called one-sided AIC (OSAIC)."><meta name="twitter:card" c
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,27 +78,27 @@ calculation of the so-called one-sided AIC (OSAIC).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"digits"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>,
-        correlation <span class="op">=</span> <span class="cn">FALSE</span>, symbolic.cor <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span>, k <span class="op">=</span> <span class="fl">2</span>, one.sided <span class="op">=</span> <span class="cn">NULL</span>, nsim <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span>
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/extractAIC.html" class="external-link">extractAIC</a></span><span class="op">(</span><span class="va">fit</span>, scale <span class="op">=</span> <span class="fl">0</span>, k <span class="op">=</span> <span class="fl">2</span>, one.sided <span class="op">=</span> <span class="cn">NULL</span>,
-           nsim <span class="op">=</span> <span class="fl">1e3</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for summary.twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>,
-      digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"digits"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span>, symbolic.cor <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">symbolic.cor</span>,
-      signif.stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"show.signif.stars"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"digits"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>,</span>
+<span>        correlation <span class="op">=</span> <span class="cn">FALSE</span>, symbolic.cor <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span>, k <span class="op">=</span> <span class="fl">2</span>, one.sided <span class="op">=</span> <span class="cn">NULL</span>, nsim <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/extractAIC.html" class="external-link">extractAIC</a></span><span class="op">(</span><span class="va">fit</span>, scale <span class="op">=</span> <span class="fl">0</span>, k <span class="op">=</span> <span class="fl">2</span>, one.sided <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>           nsim <span class="op">=</span> <span class="fl">1e3</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for summary.twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>,</span>
+<span>      digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"digits"</span><span class="op">)</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span>, symbolic.cor <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">symbolic.cor</span>,</span>
+<span>      signif.stars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"show.signif.stars"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -107,41 +107,51 @@ calculation of the so-called one-sided AIC (OSAIC).</p>
 <dd><p>an object of class <code>"twinSIR"</code>.<br>
     For the <code>print</code> method of the <code>summary</code> method, an object of
     class <code>"summary.twinSIR"</code>.</p></dd>
-<dt>digits</dt>
+
+  <dt>digits</dt>
 <dd><p>integer, used for number formatting with <code><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif()</a></code>.  Minimum number of
     significant digits to be printed in values.</p></dd>
-<dt>correlation</dt>
+
+  <dt>correlation</dt>
 <dd><p>logical. if <code>TRUE</code>, the correlation matrix of the estimated parameters
     is returned and printed.</p></dd>
-<dt>symbolic.cor</dt>
+
+  <dt>symbolic.cor</dt>
 <dd><p>logical. If <code>TRUE</code>, print the correlations in a symbolic form (see
     <code>symnum</code>) rather than as numbers.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>For the <code>summary</code> method: arguments passed to
     <code>extractAIC.twinSIR</code>.<br>
     For the <code>AIC</code> method, optionally more fitted model objects.<br>
     For the <code>print</code>, <code>extractAIC</code>, <code>vcov</code> and
     <code>logLik</code> methods: unused (argument of the generic).</p></dd>
-<dt>k</dt>
+
+  <dt>k</dt>
 <dd><p>numeric specifying the "weight" of the <em>penalty</em> to be used;
     in an unconstrained fit <code>k = 2</code> is the classical AIC.</p></dd>
-<dt>one.sided</dt>
+
+  <dt>one.sided</dt>
 <dd><p>logical or <code>NULL</code> (the default).  Determines if the one-sided AIC
     should be calculated instead of using the classical penalty <code>k*edf</code>. 
     The default value <code>NULL</code> chooses classical AIC in the case of an
     unconstrained fit and one-sided AIC in the case of constraints. The type of
     the fit can be seen in <code>object$method</code> (or <code>fit$method</code>
     respectively), where <code>"L-BFGS"</code> means constrained optimization.</p></dd>
-<dt>nsim</dt>
+
+  <dt>nsim</dt>
 <dd><p>when there are more than two epidemic covariates in the fit, the
     weights in the OSAIC formula have to be determined by simulation. 
     Default is to use 1000 samples. Note that package <span class="pkg">quadprog</span> is
     additionally required in this case.</p></dd>
-<dt>scale</dt>
+
+  <dt>scale</dt>
 <dd><p>unused (argument of the generic).</p></dd>
-<dt>signif.stars</dt>
+
+  <dt>signif.stars</dt>
 <dd><p>logical. If <code>TRUE</code>, “significance
       stars” are printed for each coefficient.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -172,8 +182,13 @@ calculation of the so-called one-sided AIC (OSAIC).</p>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The <code>print</code> methods return their first argument, invisibly, as
-  they always should. The <code>vcov</code> and <code>logLik</code>  methods return the estimated variance-covariance
+    
+
+<p>The <code>print</code> methods return their first argument, invisibly, as
+  they always should. The <code>vcov</code> and <code>logLik</code></p>
+
+
+<p>methods return the estimated variance-covariance
   matrix of the parameters (here, the inverse of the estimate of the
   expected Fisher information matrix), and the maximum log-likelihood
   value of the model, respectively.
@@ -200,27 +215,26 @@ calculation of the so-called one-sided AIC (OSAIC).</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span>
-
-<span class="co"># a simplistic twinSIR model</span>
-<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="va">household</span> <span class="op">+</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span>, correlation <span class="op">=</span> <span class="cn">TRUE</span>, symbolic.cor <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co"># AIC or OSAIC</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span>, one.sided <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/extractAIC.html" class="external-link">extractAIC</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/extractAIC.html" class="external-link">extractAIC</a></span><span class="op">(</span><span class="va">fit</span>, one.sided <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="co"># comparing models via AIC</span>
-<span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">fit</span>, nIntervals <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">fit2</span><span class="op">)</span>   <span class="co"># the 2nd column should be named "OSAIC" here</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># a simplistic twinSIR model</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="va">household</span> <span class="op">+</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span>, correlation <span class="op">=</span> <span class="cn">TRUE</span>, symbolic.cor <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># AIC or OSAIC</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span>, one.sided <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/extractAIC.html" class="external-link">extractAIC</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/extractAIC.html" class="external-link">extractAIC</a></span><span class="op">(</span><span class="va">fit</span>, one.sided <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># comparing models via AIC</span></span>
+<span><span class="va">fit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">fit</span>, nIntervals <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">fit2</span><span class="op">)</span>   <span class="co"># the 2nd column should be named "OSAIC" here</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -231,7 +245,7 @@ calculation of the so-called one-sided AIC (OSAIC).</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

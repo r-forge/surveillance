@@ -6,7 +6,7 @@
   limited to the spatial and temporal range of stgrid.
 The simulate method for objects of class
   &quot;twinstim&quot; simulates new epidemic data using the model and
-  the parameter estimates of the fitted object."><title>Simulation of a Self-Exciting Spatio-Temporal Point Process — twinstim_simulation • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Simulation of a Self-Exciting Spatio-Temporal Point Process — twinstim_simulation"><meta property="og:description" content="The function simEpidataCS simulates events of a self-exciting
+  the parameter estimates of the fitted object."><title>Simulation of a Self-Exciting Spatio-Temporal Point Process — twinstim_simulation • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Simulation of a Self-Exciting Spatio-Temporal Point Process — twinstim_simulation"><meta property="og:description" content="The function simEpidataCS simulates events of a self-exciting
   spatio-temporal point process of the &quot;twinstim&quot; class.
   Simulation works via Ogata's modified thinning of the conditional
   intensity as described in Meyer et al. (2012). Note that simulation is
@@ -24,7 +24,7 @@ The simulate method for objects of class
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,19 +72,19 @@ The simulate method for objects of class
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">simEpidataCS</span><span class="op">(</span><span class="va">endemic</span>, <span class="va">epidemic</span>, <span class="va">siaf</span>, <span class="va">tiaf</span>, <span class="va">qmatrix</span>, <span class="va">rmarks</span>,
-    <span class="va">events</span>, <span class="va">stgrid</span>, <span class="va">tiles</span>, <span class="va">beta0</span>, <span class="va">beta</span>, <span class="va">gamma</span>, <span class="va">siafpars</span>, <span class="va">tiafpars</span>,
-    epilink <span class="op">=</span> <span class="st">"log"</span>, t0 <span class="op">=</span> <span class="va">stgrid</span><span class="op">$</span><span class="va">start</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, T <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">stgrid</span><span class="op">$</span><span class="va">stop</span>,<span class="fl">1</span><span class="op">)</span>,
-    nEvents <span class="op">=</span> <span class="fl">1e5</span>, control.siaf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>F<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, Deriv<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-    W <span class="op">=</span> <span class="cn">NULL</span>, trace <span class="op">=</span> <span class="fl">5</span>, nCircle2Poly <span class="op">=</span> <span class="fl">32</span>, gmax <span class="op">=</span> <span class="cn">NULL</span>, .allocate <span class="op">=</span> <span class="fl">500</span>,
-    .skipChecks <span class="op">=</span> <span class="cn">FALSE</span>, .onlyEvents <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="co"># S3 method for twinstim</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">object</span>, nsim <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">data</span>, <span class="va">tiles</span>,
-    newcoef <span class="op">=</span> <span class="cn">NULL</span>, rmarks <span class="op">=</span> <span class="cn">NULL</span>, t0 <span class="op">=</span> <span class="cn">NULL</span>, T <span class="op">=</span> <span class="cn">NULL</span>, nEvents <span class="op">=</span> <span class="fl">1e5</span>,
-    control.siaf <span class="op">=</span> <span class="va">object</span><span class="op">$</span><span class="va">control.siaf</span>,
-    W <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">W</span>, trace <span class="op">=</span> <span class="cn">FALSE</span>, nCircle2Poly <span class="op">=</span> <span class="cn">NULL</span>, gmax <span class="op">=</span> <span class="cn">NULL</span>,
-    .allocate <span class="op">=</span> <span class="fl">500</span>, simplify <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">simEpidataCS</span><span class="op">(</span><span class="va">endemic</span>, <span class="va">epidemic</span>, <span class="va">siaf</span>, <span class="va">tiaf</span>, <span class="va">qmatrix</span>, <span class="va">rmarks</span>,</span>
+<span>    <span class="va">events</span>, <span class="va">stgrid</span>, <span class="va">tiles</span>, <span class="va">beta0</span>, <span class="va">beta</span>, <span class="va">gamma</span>, <span class="va">siafpars</span>, <span class="va">tiafpars</span>,</span>
+<span>    epilink <span class="op">=</span> <span class="st">"log"</span>, t0 <span class="op">=</span> <span class="va">stgrid</span><span class="op">$</span><span class="va">start</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, T <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">stgrid</span><span class="op">$</span><span class="va">stop</span>,<span class="fl">1</span><span class="op">)</span>,</span>
+<span>    nEvents <span class="op">=</span> <span class="fl">1e5</span>, control.siaf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>F<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, Deriv<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    W <span class="op">=</span> <span class="cn">NULL</span>, trace <span class="op">=</span> <span class="fl">5</span>, nCircle2Poly <span class="op">=</span> <span class="fl">32</span>, gmax <span class="op">=</span> <span class="cn">NULL</span>, .allocate <span class="op">=</span> <span class="fl">500</span>,</span>
+<span>    .skipChecks <span class="op">=</span> <span class="cn">FALSE</span>, .onlyEvents <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for twinstim</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">object</span>, nsim <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">data</span>, <span class="va">tiles</span>,</span>
+<span>    newcoef <span class="op">=</span> <span class="cn">NULL</span>, rmarks <span class="op">=</span> <span class="cn">NULL</span>, t0 <span class="op">=</span> <span class="cn">NULL</span>, T <span class="op">=</span> <span class="cn">NULL</span>, nEvents <span class="op">=</span> <span class="fl">1e5</span>,</span>
+<span>    control.siaf <span class="op">=</span> <span class="va">object</span><span class="op">$</span><span class="va">control.siaf</span>,</span>
+<span>    W <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">W</span>, trace <span class="op">=</span> <span class="cn">FALSE</span>, nCircle2Poly <span class="op">=</span> <span class="cn">NULL</span>, gmax <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    .allocate <span class="op">=</span> <span class="fl">500</span>, simplify <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -93,10 +93,12 @@ The simulate method for objects of class
 <dd><p>see <code><a href="twinstim.html">twinstim</a></code>. Note that type-specific endemic
     intercepts are specified by <code>beta0</code> here, not by the term
     <code>(1|type)</code>.</p></dd>
-<dt>epidemic</dt>
+
+  <dt>epidemic</dt>
 <dd><p>see <code><a href="twinstim.html">twinstim</a></code>. Marks appearing in this formula must
     be returned by the generating function <code>rmarks</code>.</p></dd>
-<dt>siaf</dt>
+
+  <dt>siaf</dt>
 <dd><p>see <code><a href="twinstim.html">twinstim</a></code>.
     In addition to what is required for fitting with <code>twinstim</code>,
     the <code>siaf</code> specification must also contain the element
@@ -109,16 +111,19 @@ The simulate method for objects of class
     current implementation there will always be simulated only one
     location at a time, i.e. <code>n=1</code>.
     The <a href="twinstim_iaf.html">predefined siaf's</a> all provide simulation.</p></dd>
-<dt>tiaf</dt>
+ 
+  <dt>tiaf</dt>
 <dd><p>e.g. what is returned by the generating function
     <code><a href="twinstim_iaf.html">tiaf.constant</a></code> or <code><a href="twinstim_iaf.html">tiaf.exponential</a></code>. See also
     <code><a href="twinstim.html">twinstim</a></code>.</p></dd>
-<dt>qmatrix</dt>
+
+  <dt>qmatrix</dt>
 <dd><p>see <code><a href="epidataCS.html">epidataCS</a></code>. Note that this square
     matrix and its <code>dimnames</code> determine the number and names of the
     different event types. In the simplest case, there is only a single
     type of event, i.e. <code>qmatrix = diag(1)</code>.</p></dd>
-<dt>rmarks</dt>
+
+  <dt>rmarks</dt>
 <dd><p>function of single time (1st argument) and location
     (2nd argument) returning a one-row <code>data.frame</code> of marks (named
     according to the variables in <code>epidemic</code>) for an event at this
@@ -134,7 +139,8 @@ The simulate method for objects of class
     this period, e.g., if simulating beyond the original observation
     period, <code>rmarks</code> will sample marks from all of
     <code>data$events</code>.</p></dd>
-<dt>events</dt>
+
+  <dt>events</dt>
 <dd><p><code>NULL</code> or missing (default) in case of an empty prehistory,
     or a <code><a href="https://rdrr.io/pkg/sp/man/SpatialPoints.html" class="external-link">SpatialPointsDataFrame</a></code> containing events of the
     prehistory (-Inf;<code>t0</code>] of the process (required for the
@@ -148,22 +154,26 @@ The simulate method for objects of class
     specification. Note that some column names are reserved (see
     <code><a href="epidataCS.html">as.epidataCS</a></code>).  Only events up to
     time <code>t0</code> are selected and taken as the prehistory.</p></dd>
-<dt>stgrid</dt>
+
+  <dt>stgrid</dt>
 <dd><p>see <code><a href="epidataCS.html">as.epidataCS</a></code>. Simulation only works inside the spatial
     and temporal range of <code>stgrid</code>.</p></dd>
-<dt>tiles</dt>
+
+  <dt>tiles</dt>
 <dd><p>object inheriting from <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code> with
     <code>row.names</code> matching the <code>tile</code> names in <code>stgrid</code> and
     having the same <code>proj4string</code> as <code>events</code> and <code>W</code>. This is necessary
     to sample the spatial location of events generated by the endemic component.</p></dd>
-<dt>beta0,beta,gamma,siafpars,tiafpars</dt>
+
+  <dt>beta0,beta,gamma,siafpars,tiafpars</dt>
 <dd><p>these are the parameter subvectors of the <code>twinstim</code>.
     <code>beta</code> and <code>gamma</code> must be given in the 
     same order as they appear in <code>endemic</code> and <code>epidemic</code>,
     respectively. <code>beta0</code> is either a single endemic intercept or a
     vector of type-specific endemic intercepts in the same order as in
     <code>qmatrix</code>.</p></dd>
-<dt>epilink</dt>
+
+  <dt>epilink</dt>
 <dd><p>a character string determining the link function to be used for the
     <code>epidemic</code> linear predictor of event marks. By default, the
     log-link is used. The experimental alternative is
@@ -171,14 +181,16 @@ The simulate method for objects of class
     guarantee the force of infection to be positive. If this leads to a
     negative total intensity (endemic + epidemic), the point process is
     not well defined and simulation cannot proceed.</p></dd>
-<dt>t0</dt>
+
+  <dt>t0</dt>
 <dd><p><code>events</code> having occurred during (-Inf;<code>t0</code>] are regarded
     as part of the prehistory \(H_0\) of the process.
     For <code>simEpidataCS</code>, by default and also if <code>t0=NULL</code>,
     the beginning of <code>stgrid</code> is used as <code>t0</code>.
     For the <code>simulate.twinstim</code> method, <code>NULL</code> means to use
     the fitted time range of the <code>"twinstim"</code> <code>object</code>.</p></dd>
-<dt>T, nEvents</dt>
+
+  <dt>T, nEvents</dt>
 <dd><p>simulate a maximum of <code>nEvents</code> events up to time <code>T</code>,
     then stop. For <code>simEpidataCS</code>, by default, and also if
     <code>T=NULL</code>, <code>T</code> equals the last stop time in <code>stgrid</code>
@@ -186,7 +198,8 @@ The simulate method for objects of class
     For the <code>simulate.twinstim</code> method, <code>T=NULL</code> means to use
     the same same time range as for the fitting of the <code>"twinstim"</code>
     <code>object</code>.</p></dd>
-<dt>W</dt>
+ 
+  <dt>W</dt>
 <dd><p>see <code><a href="epidataCS.html">as.epidataCS</a></code>. When simulating from
     <code>twinstim</code>-fits, <code>W</code> is by default taken from the original
     <code>data$W</code>. If specified as <code>NULL</code>, <code>W</code> is generated 
@@ -200,22 +213,27 @@ The simulate method for objects of class
     parent event, after which the corresponding tile is determined by
     overlay with <code>tiles</code>. On the other hand endemic events are
     sampled from <code>tiles</code>.</p></dd>
-<dt>trace</dt>
+
+  <dt>trace</dt>
 <dd><p>logical (or integer) indicating if (or how often) the current
     simulation status should be <code>cat</code>ed.  For the
     <code>simulate.twinstim</code> method, <code>trace</code> currently only applies
     to the first of the <code>nsim</code> simulations.</p></dd>
-<dt>.allocate</dt>
+
+  <dt>.allocate</dt>
 <dd><p>number of rows (events) to initially allocate for the event history;
     defaults to 500.  Each time the simulated epidemic exceeds the
     allocated space, the event <code>data.frame</code> will be enlarged by
     <code>.allocate</code> rows.</p></dd>
-<dt>.skipChecks,.onlyEvents</dt>
+
+  <dt>.skipChecks,.onlyEvents</dt>
 <dd><p>these logical arguments are not meant to be set by the user.
     They are used by the <code>simulate</code>-method for <code>"twinstim"</code> objects.</p></dd>
-<dt>object</dt>
+
+  <dt>object</dt>
 <dd><p>an object of class <code>"<a href="twinstim.html">twinstim</a>"</code>.</p></dd>
-<dt>nsim</dt>
+
+  <dt>nsim</dt>
 <dd><p>number of epidemics (i.e. spatio-temporal point patterns inheriting
     from class <code>"epidataCS"</code>) to simulate.  Defaults to 1 when the
     result is a simple object inheriting from class
@@ -223,7 +241,8 @@ The simulate method for objects of class
     called directly).  If <code>nsim &gt; 1</code>, the result 
     will be a list the structure of which depends on the argument
     <code>simplify</code>.</p></dd>
-<dt>seed</dt>
+
+  <dt>seed</dt>
 <dd><p>an object specifying how the random number generator should be
     initialized for simulation (via <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></code>). The
     initial state will also be stored as an attribute <code>"seed"</code> of
@@ -232,20 +251,23 @@ The simulate method for objects of class
     By default (<code>NULL</code>), neither initialization nor recovery will
     be done.
     This behaviour is copied from the <code><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a>.lm</code> method.</p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>an object of class <code>"epidataCS"</code>, usually the one to which the
     <code>"twinstim"</code> <code>object</code> was fitted. It carries
     the <code>stgrid</code> of the endemic component, but also
     <code>events</code> for use as the prehistory, and defaults for
     <code>rmarks</code> and <code>nCircle2Poly</code>.</p></dd>
-<dt>newcoef</dt>
+
+  <dt>newcoef</dt>
 <dd><p>an optional named numeric vector of (a subset of) parameters to
     replace the original point estimates in <code>coef(object)</code>.
     Elements which do not match any model parameter by name are silently
     ignored. The <code>newcoef</code>s may also be supplied in a list
     following the same conventions as for the <code>start</code> argument in
     <code><a href="twinstim.html">twinstim</a></code>.</p></dd>
-<dt>simplify</dt>
+
+  <dt>simplify</dt>
 <dd><p>logical. It is strongly recommended to set <code>simplify = TRUE</code>
     (default) if <code>nsim</code> is large. This saves space and computation time,
     because for each simulated epidemic only the <code>events</code> component is
@@ -253,51 +275,92 @@ The simulate method for objects of class
     are only stored from the first run. In this case, the runtime of each
     simulation is stored as an attribute <code>"runtime"</code> to each simulated
     <code>events</code>. See also the “Value” section below.</p></dd>
-<dt>control.siaf</dt>
+
+  <dt>control.siaf</dt>
 <dd><p>see <code><a href="twinstim.html">twinstim</a></code>.</p></dd>
-<dt>nCircle2Poly</dt>
+
+  <dt>nCircle2Poly</dt>
 <dd><p>see <code><a href="epidataCS.html">as.epidataCS</a></code>. For
     <code>simulate.twinstim</code>, <code>NULL</code> means to use the same value as
     for <code>data</code>.</p></dd>
-<dt>gmax</dt>
+
+  <dt>gmax</dt>
 <dd><p>maximum value the temporal interaction function
     <code>tiaf$g</code> can attain. If <code>NULL</code>, then it is assumed as the
     maximum value of the type-specific values at 0, i.e.
     <code>max(tiaf$g(rep.int(0,nTypes), tiafpars, 1:nTypes))</code>.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>unused (arguments of the generic).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The function <code>simEpidataCS</code> returns a simulated epidemic of class
-<code>"simEpidataCS"</code>, which enhances the class
-<code>"epidataCS"</code> by the following additional components known from
-  objects of class <code>"<a href="twinstim.html">twinstim</a>"</code>:
-<code>bbox</code>, <code>timeRange</code>, <code>formula</code>, <code>coefficients</code>,
-<code>npars</code>, <code>control.siaf</code>, <code>call</code>, <code>runtime</code>.
-  It has corresponding <code><a href="coeflist.html">coeflist</a></code>,
-<code><a href="residualsCT.html">residuals</a></code>,
-<code><a href="R0.html">R0</a></code>, and
-<code><a href="twinstim_intensity.html">intensityplot</a></code> methods.
-  The <code>simulate.twinstim</code> method has some additional
-<em>attributes</em> set on its result:
-<code>call</code>, <code>seed</code>, and <code>runtime</code>.
-  If <code>nsim &gt; 1</code>, it returns an object of class
-<code>"simEpidataCSlist"</code>, the form of which depends on the value of
-<code>simplify</code> (which is stored as an attribute <code>simplified</code>):
+    
+
+<p>The function <code>simEpidataCS</code> returns a simulated epidemic of class</p>
+<p></p>
+<p><code>"simEpidataCS"</code>, which enhances the class</p>
+<p></p>
+<p><code>"epidataCS"</code> by the following additional components known from
+  objects of class <code>"<a href="twinstim.html">twinstim</a>"</code>:</p>
+<p></p>
+<p><code>bbox</code>, <code>timeRange</code>, <code>formula</code>, <code>coefficients</code>,</p>
+<p></p>
+<p><code>npars</code>, <code>control.siaf</code>, <code>call</code>, <code>runtime</code>.
+  It has corresponding <code><a href="coeflist.html">coeflist</a></code>,</p>
+<p></p>
+<p><code><a href="residualsCT.html">residuals</a></code>,</p>
+<p></p>
+<p><code><a href="R0.html">R0</a></code>, and</p>
+<p></p>
+<p><code><a href="twinstim_intensity.html">intensityplot</a></code> methods.</p>
+
+
+<p>The <code>simulate.twinstim</code> method has some additional</p>
+<p></p>
+<p><em>attributes</em> set on its result:</p>
+<p></p>
+<p><code>call</code>, <code>seed</code>, and <code>runtime</code>.
+  If <code>nsim &gt; 1</code>, it returns an object of class</p>
+<p></p>
+<p><code>"simEpidataCSlist"</code>, the form of which depends on the value of</p>
+<p></p>
+<p><code>simplify</code> (which is stored as an attribute <code>simplified</code>):
   if <code>simplify = FALSE</code>, then the return value is
-  just a list of sequential simulations, each of class
-<code>"simEpidataCS"</code>. However, if <code>simplify = TRUE</code>, then the
-  sequential simulations share all components but the simulated
-<code>events</code>, i.e. the result is a list with the same components as
-  a single object of class <code>"simEpidataCS"</code>, but with <code>events</code>  replaced by an <code>eventsList</code> containing the <code>events</code> returned
-  by each of the simulations.
-  The <code>stgrid</code> component of the returned <code>"simEpidataCS"</code>  will be truncated to the actual end of the simulation, which might
+  just a list of sequential simulations, each of class</p>
+<p></p>
+<p><code>"simEpidataCS"</code>. However, if <code>simplify = TRUE</code>, then the
+  sequential simulations share all components but the simulated</p>
+<p></p>
+<p><code>events</code>, i.e. the result is a list with the same components as
+  a single object of class <code>"simEpidataCS"</code>, but with <code>events</code></p>
+
+
+<p>replaced by an <code>eventsList</code> containing the <code>events</code> returned
+  by each of the simulations.</p>
+
+
+<p>The <code>stgrid</code> component of the returned <code>"simEpidataCS"</code></p>
+
+
+<p>will be truncated to the actual end of the simulation, which might
   be \(&lt;T\), if the upper bound <code>nEvents</code> is reached during
-  simulation.
-  CAVE: Currently, <code>simplify=TRUE</code> in <code>simulate.twinstim</code>  ignores that multiple simulated epidemics
-  (<code>nsim &gt; 1</code>) may have different <code>stgrid</code>  time ranges. In a <code>"simEpidataCSlist"</code>, the <code>stgrid</code> shared
-  by all of the simulated epidemics is just the <code>stgrid</code>  returned by the <em>first</em> simulation.</p>
+  simulation.</p>
+  
+
+<p>CAVE: Currently, <code>simplify=TRUE</code> in <code>simulate.twinstim</code></p>
+
+
+<p>ignores that multiple simulated epidemics
+  (<code>nsim &gt; 1</code>) may have different <code>stgrid</code></p>
+ 
+
+<p>time ranges. In a <code>"simEpidataCSlist"</code>, the <code>stgrid</code> shared
+  by all of the simulated epidemics is just the <code>stgrid</code></p>
+
+
+<p>returned by the <em>first</em> simulation.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -305,10 +368,8 @@ The simulate method for objects of class
   the algorithm. You are advised to sacrifice some shape
   details for speed by reducing the polygon complexity,
   for example via the <code class="command">mapshaper</code> JavaScript library wrapped by
-  the R package <a href="https://CRAN.R-project.org/package=rmapshaper" class="external-link"><span class="pkg">rmapshaper</span></a>.
-  Alternative tools are provided by the packages <a href="https://CRAN.R-project.org/package=maptools" class="external-link"><span class="pkg">maptools</span></a>
-  (<code><a href="http://maptools.r-forge.r-project.org/reference/thinnedSpatialPoly.html" class="external-link">thinnedSpatialPoly</a></code>) and <a href="https://CRAN.R-project.org/package=spatstat.geom" class="external-link"><span class="pkg">spatstat.geom</span></a>
-  (<code><a href="https://rdrr.io/pkg/spatstat.geom/man/simplify.owin.html" class="external-link">simplify.owin</a></code>).</p>
+  the R package <a href="https://CRAN.R-project.org/package=rmapshaper" class="external-link"><span class="pkg">rmapshaper</span></a>, or via
+  <code><a href="https://rdrr.io/pkg/spatstat.geom/man/simplify.owin.html" class="external-link">simplify.owin</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -320,7 +381,7 @@ The simulate method for objects of class
 <p>Meyer, S., Elias, J. and Höhle, M. (2012):
   A space-time conditional intensity model for invasive meningococcal
   disease occurrence. <em>Biometrics</em>, <b>68</b>, 607-616.
-  doi: <a href="https://doi.org/10.1111/j.1541-0420.2011.01684.x" class="external-link">10.1111/j.1541-0420.2011.01684.x</a></p>
+  <a href="https://doi.org/10.1111/j.1541-0420.2011.01684.x" class="external-link">doi:10.1111/j.1541-0420.2011.01684.x</a></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -340,126 +401,125 @@ spatio-temporal conditional intensity models also to simulated data.</p></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span>, <span class="st">"imdepifit"</span><span class="op">)</span>
-
-<span class="co">## load borders of Germany's districts (originally obtained from</span>
-<span class="co">## the German Federal Agency for Cartography and Geodesy,</span>
-<span class="co">## https://gdz.bkg.bund.de/), simplified by the "modified Visvalingam"</span>
-<span class="co">## algorithm (level=6.6%) using MapShaper.org (v. 0.1.17):</span>
-<span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shapes"</span>, <span class="st">"districtsD.RData"</span>, package<span class="op">=</span><span class="st">"surveillance"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stateD</span>, add<span class="op">=</span><span class="cn">TRUE</span>, border<span class="op">=</span><span class="fl">2</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-<span class="co"># 'stateD' was obtained as 'rgeos::gUnaryUnion(districtsD)'</span>
-
-<span class="co">## simulate 2 realizations (over a short period, for speed)</span>
-<span class="co">## considering events from data(imdepi) before t=31 as prehistory</span>
-<span class="va">mysims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">imdepifit</span>, nsim<span class="op">=</span><span class="fl">2</span>, seed<span class="op">=</span><span class="fl">1</span>, data<span class="op">=</span><span class="va">imdepi</span>,
-                   tiles<span class="op">=</span><span class="va">districtsD</span>, newcoef<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"e.typeC"</span><span class="op">=</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>,
-                   t0<span class="op">=</span><span class="fl">31</span>, T<span class="op">=</span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fl">180</span> <span class="kw">else</span> <span class="fl">45</span>, <span class="co"># for CRAN</span>
-                   simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co"># \dontshow{</span>
-    <span class="co">## check construction and selection from "simEpidataCSlist"</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span>
-        <span class="va">mysim_from_list</span> <span class="op">&lt;-</span> <span class="va">mysims</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-        <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html" class="external-link">capture.output</a></span><span class="op">(</span><span class="va">mysim_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">eval</a></span><span class="op">(</span><span class="st">"[[&lt;-"</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">mysims</span>, <span class="st">"call"</span><span class="op">)</span>, <span class="st">"nsim"</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-        <span class="va">mysim_from_list</span><span class="op">$</span><span class="va">runtime</span> <span class="op">&lt;-</span> <span class="va">mysim_single</span><span class="op">$</span><span class="va">runtime</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">mysim_single</span>, <span class="va">mysim_from_list</span>,
-                            check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
-    <span class="op">}</span><span class="op">)</span>
-    <span class="co">## check equivalence of Lambdag from simulation and residuals via twinstim</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span>
-        <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">mysims</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
-        <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="fu">surveillance</span><span class="fu">:::</span><span class="fu"><a href="residualsCT.html">residuals.twinstim</a></span><span class="op">(</span><span class="fu">surveillance</span><span class="fu">:::</span><span class="fu">as.twinstim.simEpidataCS</span><span class="op">(</span><span class="va">mysims</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-    <span class="op">)</span><span class="op">)</span>
-<span class="co"># }</span>
-
-<span class="co">## plot both simulations using the plot-method for simEpidataCSlist's</span>
-<span class="va">mysims</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mysims</span>, aggregate<span class="op">=</span><span class="st">"time"</span><span class="op">)</span>
-
-<span class="co">## extract the second realization -&gt; object of class simEpidataCS</span>
-<span class="va">mysim2</span> <span class="op">&lt;-</span> <span class="va">mysims</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mysim2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mysim2</span>, aggregate<span class="op">=</span><span class="st">"space"</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">### compare the observed _cumulative_ number of cases during the</span>
-<span class="co">### first 90 days to 20 simulations from the fitted model</span>
-
-<span class="va">sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">imdepifit</span>, nsim<span class="op">=</span><span class="fl">20</span>, seed<span class="op">=</span><span class="fl">1</span>, data<span class="op">=</span><span class="va">imdepi</span>, t0<span class="op">=</span><span class="fl">0</span>, T<span class="op">=</span><span class="fl">90</span>,
-                 tiles<span class="op">=</span><span class="va">districtsD</span>, simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">## extract cusums</span>
-<span class="va">getcsums</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">events</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply</a></span><span class="op">(</span><span class="va">events</span><span class="op">$</span><span class="va">time</span>, <span class="va">events</span><span class="op">@</span><span class="va">data</span><span class="op">[</span><span class="st">"type"</span><span class="op">]</span>,
-           <span class="kw">function</span> <span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>, simplify<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="va">csums_observed</span> <span class="op">&lt;-</span> <span class="fu">getcsums</span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">)</span>
-<span class="va">csums_simulated</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">sims</span><span class="op">$</span><span class="va">eventsList</span>, <span class="va">getcsums</span><span class="op">)</span>
-
-<span class="co">## plot it</span>
-<span class="va">plotcsums</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">csums</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/mapply.html" class="external-link">mapply</a></span><span class="op">(</span><span class="kw">function</span> <span class="op">(</span><span class="va">csum</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">csum</span><span class="op">)</span><span class="op">)</span>, <span class="va">csum</span>, <span class="va">...</span><span class="op">)</span>,
-           <span class="va">csums</span>, <span class="va">...</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">90</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">35</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"n"</span>, xlab<span class="op">=</span><span class="st">"Time [days]"</span>,
-     ylab<span class="op">=</span><span class="st">"Cumulative number of cases"</span><span class="op">)</span>
-<span class="fu">plotcsums</span><span class="op">(</span><span class="va">csums_observed</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">$</span><span class="va">type</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">csums_simulated</span>, <span class="va">plotcsums</span>,
-                 col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html" class="external-link">adjustcolor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-
-
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-
-<span class="co">### Experimental code to generate 'nsim' simulations of 'nm2add' months</span>
-<span class="co">### beyond the observed time period:</span>
-<span class="va">nm2add</span> <span class="op">&lt;-</span> <span class="fl">24</span>
-<span class="va">nsim</span> <span class="op">&lt;-</span> <span class="fl">5</span>
-<span class="co">### The events still infective by the end of imdepi$stgrid will be used</span>
-<span class="co">### as the prehistory for the continued process.</span>
-
-<span class="va">origT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">stop</span>, <span class="fl">1</span><span class="op">)</span>
-<span class="co">## create a time-extended version of imdepi</span>
-<span class="va">imdepiext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span>
-    <span class="co">## first we have to expand stgrid (assuming constant "popdensity")</span>
-    <span class="va">g</span> <span class="op">&lt;-</span> <span class="va">imdepi</span><span class="op">$</span><span class="va">stgrid</span>
-    <span class="va">g</span><span class="op">$</span><span class="va">stop</span> <span class="op">&lt;-</span> <span class="va">g</span><span class="op">$</span><span class="va">BLOCK</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-    <span class="va">gadd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">origT</span>, by<span class="op">=</span><span class="fl">30</span>, length.out<span class="op">=</span><span class="va">nm2add</span><span class="op">)</span>,
-                                 each<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">g</span><span class="op">$</span><span class="va">tile</span><span class="op">)</span><span class="op">)</span>,
-                       <span class="va">g</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">g</span><span class="op">$</span><span class="va">tile</span><span class="op">)</span><span class="op">)</span>, <span class="va">nm2add</span><span class="op">)</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-    <span class="co">## now create an "epidataCS" using this time-extended stgrid</span>
-    <span class="fu"><a href="epidataCS.html">as.epidataCS</a></span><span class="op">(</span>events<span class="op">=</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span>,  <span class="co"># the replacement warnings are ok</span>
-                 W<span class="op">=</span><span class="va">imdepi</span><span class="op">$</span><span class="va">W</span>, qmatrix<span class="op">=</span><span class="va">imdepi</span><span class="op">$</span><span class="va">qmatrix</span>,
-                 stgrid<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">gadd</span><span class="op">)</span>, T<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">gadd</span><span class="op">$</span><span class="va">start</span><span class="op">)</span> <span class="op">+</span> <span class="fl">30</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span>
-<span class="va">newT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">imdepiext</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">stop</span>, <span class="fl">1</span><span class="op">)</span>
-
-<span class="co">## simulate beyond the original period</span>
-<span class="va">simsext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">imdepifit</span>, nsim<span class="op">=</span><span class="va">nsim</span>, seed<span class="op">=</span><span class="fl">1</span>, t0<span class="op">=</span><span class="va">origT</span>, T<span class="op">=</span><span class="va">newT</span>,
-                    data<span class="op">=</span><span class="va">imdepiext</span>, tiles<span class="op">=</span><span class="va">districtsD</span>, simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">## Aside to understand the note from checking events and tiles:</span>
-<span class="co"># marks(imdepi)["636",]  # tile 09662 is attributed to this event, but:</span>
-<span class="co"># plot(districtsD[c("09678","09662"),], border=1:2, lwd=2, axes=TRUE)</span>
-<span class="co"># points(imdepi$events["636",])</span>
-<span class="co">## this mismatch is due to polygon simplification</span>
-
-<span class="co">## plot the observed and simulated event numbers over time</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepiext</span>, breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">start</span><span class="op">)</span>,<span class="va">origT</span><span class="op">)</span>,
-     cumulative<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>maxat<span class="op">=</span><span class="fl">330</span><span class="op">)</span><span class="op">)</span>
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">simsext</span><span class="op">$</span><span class="va">eventsList</span><span class="op">)</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">simsext</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, add<span class="op">=</span><span class="cn">TRUE</span>, legend.types<span class="op">=</span><span class="cn">FALSE</span>,
-         breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">simsext</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">start</span><span class="op">)</span>,<span class="va">newT</span><span class="op">)</span>,
-         subset<span class="op">=</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>,  <span class="co"># have to exclude the events of the prehistory</span>
-         cumulative<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>offset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">$</span><span class="va">type</span><span class="op">)</span><span class="op">)</span>, maxat<span class="op">=</span><span class="fl">330</span>, axis<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
-         border<span class="op">=</span><span class="cn">NA</span>, density<span class="op">=</span><span class="fl">0</span><span class="op">)</span>  <span class="co"># no histogram</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">origT</span>, lty<span class="op">=</span><span class="fl">2</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span>, <span class="st">"imdepifit"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## load borders of Germany's districts (originally obtained from</span></span>
+<span><span class="co">## the German Federal Agency for Cartography and Geodesy,</span></span>
+<span><span class="co">## https://gdz.bkg.bund.de/), simplified by the "modified Visvalingam"</span></span>
+<span><span class="co">## algorithm (level=6.6%) using MapShaper.org (v. 0.1.17):</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shapes"</span>, <span class="st">"districtsD.RData"</span>, package<span class="op">=</span><span class="st">"surveillance"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stateD</span>, add<span class="op">=</span><span class="cn">TRUE</span>, border<span class="op">=</span><span class="fl">2</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># 'stateD' was obtained as 'rgeos::gUnaryUnion(districtsD)'</span></span>
+<span></span>
+<span><span class="co">## simulate 2 realizations (over a short period, for speed)</span></span>
+<span><span class="co">## considering events from data(imdepi) before t=31 as prehistory</span></span>
+<span><span class="va">mysims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">imdepifit</span>, nsim<span class="op">=</span><span class="fl">2</span>, seed<span class="op">=</span><span class="fl">1</span>, data<span class="op">=</span><span class="va">imdepi</span>,</span>
+<span>                   tiles<span class="op">=</span><span class="va">districtsD</span>, newcoef<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"e.typeC"</span><span class="op">=</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>                   t0<span class="op">=</span><span class="fl">31</span>, T<span class="op">=</span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fl">180</span> <span class="kw">else</span> <span class="fl">45</span>, <span class="co"># for CRAN</span></span>
+<span>                   simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># \dontshow{</span></span>
+<span>    <span class="co">## check construction and selection from "simEpidataCSlist"</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>        <span class="va">mysim_from_list</span> <span class="op">&lt;-</span> <span class="va">mysims</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html" class="external-link">capture.output</a></span><span class="op">(</span><span class="va">mysim_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">eval</a></span><span class="op">(</span><span class="st">"[[&lt;-"</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">mysims</span>, <span class="st">"call"</span><span class="op">)</span>, <span class="st">"nsim"</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>        <span class="va">mysim_from_list</span><span class="op">$</span><span class="va">runtime</span> <span class="op">&lt;-</span> <span class="va">mysim_single</span><span class="op">$</span><span class="va">runtime</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">mysim_single</span>, <span class="va">mysim_from_list</span>,</span>
+<span>                            check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">}</span><span class="op">)</span></span>
+<span>    <span class="co">## check equivalence of Lambdag from simulation and residuals via twinstim</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">mysims</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="fu">surveillance</span><span class="fu">:::</span><span class="fu"><a href="residualsCT.html">residuals.twinstim</a></span><span class="op">(</span><span class="fu">surveillance</span><span class="fu">:::</span><span class="fu">as.twinstim.simEpidataCS</span><span class="op">(</span><span class="va">mysims</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># }</span></span>
+<span></span>
+<span><span class="co">## plot both simulations using the plot-method for simEpidataCSlist's</span></span>
+<span><span class="va">mysims</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mysims</span>, aggregate<span class="op">=</span><span class="st">"time"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## extract the second realization -&gt; object of class simEpidataCS</span></span>
+<span><span class="va">mysim2</span> <span class="op">&lt;-</span> <span class="va">mysims</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mysim2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mysim2</span>, aggregate<span class="op">=</span><span class="st">"space"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">### compare the observed _cumulative_ number of cases during the</span></span>
+<span><span class="co">### first 90 days to 20 simulations from the fitted model</span></span>
+<span></span>
+<span><span class="va">sims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">imdepifit</span>, nsim<span class="op">=</span><span class="fl">20</span>, seed<span class="op">=</span><span class="fl">1</span>, data<span class="op">=</span><span class="va">imdepi</span>, t0<span class="op">=</span><span class="fl">0</span>, T<span class="op">=</span><span class="fl">90</span>,</span>
+<span>                 tiles<span class="op">=</span><span class="va">districtsD</span>, simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## extract cusums</span></span>
+<span><span class="va">getcsums</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">events</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/tapply.html" class="external-link">tapply</a></span><span class="op">(</span><span class="va">events</span><span class="op">$</span><span class="va">time</span>, <span class="va">events</span><span class="op">@</span><span class="va">data</span><span class="op">[</span><span class="st">"type"</span><span class="op">]</span>,</span>
+<span>           <span class="kw">function</span> <span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>, simplify<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">csums_observed</span> <span class="op">&lt;-</span> <span class="fu">getcsums</span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">)</span></span>
+<span><span class="va">csums_simulated</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">sims</span><span class="op">$</span><span class="va">eventsList</span>, <span class="va">getcsums</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## plot it</span></span>
+<span><span class="va">plotcsums</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">csums</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/mapply.html" class="external-link">mapply</a></span><span class="op">(</span><span class="kw">function</span> <span class="op">(</span><span class="va">csum</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">csum</span><span class="op">)</span><span class="op">)</span>, <span class="va">csum</span>, <span class="va">...</span><span class="op">)</span>,</span>
+<span>           <span class="va">csums</span>, <span class="va">...</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">90</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">35</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"n"</span>, xlab<span class="op">=</span><span class="st">"Time [days]"</span>,</span>
+<span>     ylab<span class="op">=</span><span class="st">"Cumulative number of cases"</span><span class="op">)</span></span>
+<span><span class="fu">plotcsums</span><span class="op">(</span><span class="va">csums_observed</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">$</span><span class="va">type</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">csums_simulated</span>, <span class="va">plotcsums</span>,</span>
+<span>                 col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html" class="external-link">adjustcolor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span><span class="co">### Experimental code to generate 'nsim' simulations of 'nm2add' months</span></span>
+<span><span class="co">### beyond the observed time period:</span></span>
+<span><span class="va">nm2add</span> <span class="op">&lt;-</span> <span class="fl">24</span></span>
+<span><span class="va">nsim</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="co">### The events still infective by the end of imdepi$stgrid will be used</span></span>
+<span><span class="co">### as the prehistory for the continued process.</span></span>
+<span></span>
+<span><span class="va">origT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">stop</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">## create a time-extended version of imdepi</span></span>
+<span><span class="va">imdepiext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="co">## first we have to expand stgrid (assuming constant "popdensity")</span></span>
+<span>    <span class="va">g</span> <span class="op">&lt;-</span> <span class="va">imdepi</span><span class="op">$</span><span class="va">stgrid</span></span>
+<span>    <span class="va">g</span><span class="op">$</span><span class="va">stop</span> <span class="op">&lt;-</span> <span class="va">g</span><span class="op">$</span><span class="va">BLOCK</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span>    <span class="va">gadd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">origT</span>, by<span class="op">=</span><span class="fl">30</span>, length.out<span class="op">=</span><span class="va">nm2add</span><span class="op">)</span>,</span>
+<span>                                 each<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">g</span><span class="op">$</span><span class="va">tile</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                       <span class="va">g</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">g</span><span class="op">$</span><span class="va">tile</span><span class="op">)</span><span class="op">)</span>, <span class="va">nm2add</span><span class="op">)</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="co">## now create an "epidataCS" using this time-extended stgrid</span></span>
+<span>    <span class="fu"><a href="epidataCS.html">as.epidataCS</a></span><span class="op">(</span>events<span class="op">=</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span>,  <span class="co"># the replacement warnings are ok</span></span>
+<span>                 W<span class="op">=</span><span class="va">imdepi</span><span class="op">$</span><span class="va">W</span>, qmatrix<span class="op">=</span><span class="va">imdepi</span><span class="op">$</span><span class="va">qmatrix</span>,</span>
+<span>                 stgrid<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">gadd</span><span class="op">)</span>, T<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">gadd</span><span class="op">$</span><span class="va">start</span><span class="op">)</span> <span class="op">+</span> <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="va">newT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="va">imdepiext</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">stop</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## simulate beyond the original period</span></span>
+<span><span class="va">simsext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">imdepifit</span>, nsim<span class="op">=</span><span class="va">nsim</span>, seed<span class="op">=</span><span class="fl">1</span>, t0<span class="op">=</span><span class="va">origT</span>, T<span class="op">=</span><span class="va">newT</span>,</span>
+<span>                    data<span class="op">=</span><span class="va">imdepiext</span>, tiles<span class="op">=</span><span class="va">districtsD</span>, simplify<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Aside to understand the note from checking events and tiles:</span></span>
+<span><span class="co"># marks(imdepi)["636",]  # tile 09662 is attributed to this event, but:</span></span>
+<span><span class="co"># plot(districtsD[c("09678","09662"),], border=1:2, lwd=2, axes=TRUE)</span></span>
+<span><span class="co"># points(imdepi$events["636",])</span></span>
+<span><span class="co">## this mismatch is due to polygon simplification</span></span>
+<span></span>
+<span><span class="co">## plot the observed and simulated event numbers over time</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepiext</span>, breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">start</span><span class="op">)</span>,<span class="va">origT</span><span class="op">)</span>,</span>
+<span>     cumulative<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>maxat<span class="op">=</span><span class="fl">330</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">simsext</span><span class="op">$</span><span class="va">eventsList</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">simsext</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, add<span class="op">=</span><span class="cn">TRUE</span>, legend.types<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>         breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">simsext</span><span class="op">$</span><span class="va">stgrid</span><span class="op">$</span><span class="va">start</span><span class="op">)</span>,<span class="va">newT</span><span class="op">)</span>,</span>
+<span>         subset<span class="op">=</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>,  <span class="co"># have to exclude the events of the prehistory</span></span>
+<span>         cumulative<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>offset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">$</span><span class="va">type</span><span class="op">)</span><span class="op">)</span>, maxat<span class="op">=</span><span class="fl">330</span>, axis<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>         border<span class="op">=</span><span class="cn">NA</span>, density<span class="op">=</span><span class="fl">0</span><span class="op">)</span>  <span class="co"># no histogram</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">origT</span>, lty<span class="op">=</span><span class="fl">2</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -470,7 +530,7 @@ spatio-temporal conditional intensity models also to simulated data.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

@@ -9,7 +9,7 @@
   deterministic).  
 The simulate method for objects of class
   "twinSIR" simulates new epidemic data using the model and
-  the parameter estimates of the fitted object.'><title>Simulation of Epidemic Data — twinSIR_simulation • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Simulation of Epidemic Data — twinSIR_simulation"><meta property="og:description" content='This function simulates the infection (and removal) times of 
+  the parameter estimates of the fitted object.'><title>Simulation of Epidemic Data — twinSIR_simulation • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Simulation of Epidemic Data — twinSIR_simulation"><meta property="og:description" content='This function simulates the infection (and removal) times of 
   an epidemic.  Besides the classical SIR type of epidemic, also SI, SIRS and
   SIS epidemics are supported.  Simulation works via the conditional intensity 
   of infection of an individual, given some (time varying) endemic covariates 
@@ -30,7 +30,7 @@ The simulate method for objects of class
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,16 +81,16 @@ The simulate method for objects of class
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">simEpidata</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">id.col</span>, <span class="va">I0.col</span>, <span class="va">coords.cols</span>, <span class="va">subset</span>,
-           <span class="va">beta</span>, <span class="va">h0</span>, f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">alpha</span>, <span class="va">infPeriod</span>,
-           remPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span><span class="op">)</span>,
-           end <span class="op">=</span> <span class="cn">Inf</span>, trace <span class="op">=</span> <span class="cn">FALSE</span>, .allocate <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="co"># S3 method for twinSIR</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">object</span>, nsim <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span>,
-         infPeriod <span class="op">=</span> <span class="cn">NULL</span>, remPeriod <span class="op">=</span> <span class="cn">NULL</span>,
-         end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">object</span><span class="op">$</span><span class="va">intervals</span><span class="op">)</span><span class="op">)</span>, trace <span class="op">=</span> <span class="cn">FALSE</span>, .allocate <span class="op">=</span> <span class="cn">NULL</span>,
-         data <span class="op">=</span> <span class="va">object</span><span class="op">$</span><span class="va">data</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">simEpidata</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">id.col</span>, <span class="va">I0.col</span>, <span class="va">coords.cols</span>, <span class="va">subset</span>,</span>
+<span>           <span class="va">beta</span>, <span class="va">h0</span>, f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">alpha</span>, <span class="va">infPeriod</span>,</span>
+<span>           remPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">Inf</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>           end <span class="op">=</span> <span class="cn">Inf</span>, trace <span class="op">=</span> <span class="cn">FALSE</span>, .allocate <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for twinSIR</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">object</span>, nsim <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>         infPeriod <span class="op">=</span> <span class="cn">NULL</span>, remPeriod <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>         end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">object</span><span class="op">$</span><span class="va">intervals</span><span class="op">)</span><span class="op">)</span>, trace <span class="op">=</span> <span class="cn">FALSE</span>, .allocate <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>         data <span class="op">=</span> <span class="va">object</span><span class="op">$</span><span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -99,7 +99,8 @@ The simulate method for objects of class
 <dd><p>an object of class <code>"<a href="https://rdrr.io/r/stats/formula.html" class="external-link">formula</a>"</code> (or one that can be coerced to
     that class): a symbolic description of the intensity model to be estimated.  
     The details of model specification are given under Details.</p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>a data.frame containing the variables in <code>formula</code> and the variables
     specified by <code>id.col</code>, <code>I0.col</code> and <code>coords.col</code> (see below).
     It represents the “history” of the endemic covariates to use for the
@@ -116,14 +117,16 @@ The simulate method for objects of class
     the object of class <code>"<a href="epidata.html">epidata</a>"</code> used for the fit.  This is a
     part of the return value of the function <code>twinSIR</code>, if called with 
     argument <code>keep.data</code> set to <code>TRUE</code>.</p></dd>
-<dt>id.col</dt>
+
+  <dt>id.col</dt>
 <dd><p>only if <code>data</code> does not inherit from <code>epidata</code>:
     single index of the <code>id</code> column in <code>data</code>.  Can be numeric
     (by column number) or character (by column name).<br>
     The <code>id</code> column identifies the individuals in the data-frame.  It will
     be converted to a factor variable and its levels serve also to identify 
     individuals as argument to the <code>infPeriod</code> function.</p></dd>
-<dt>I0.col</dt>
+
+  <dt>I0.col</dt>
 <dd><p>only if <code>data</code> does not inherit from <code>epidata</code>:
     single index of the <code>I0</code> column in <code>data</code>.  Can be numeric
     (by column number), character (by column name) or <code>NULL</code>.<br>
@@ -133,7 +136,8 @@ The simulate method for objects of class
     infectious individuals”. Otherwise, the variable must be logical or in
     0/1-coding.  As this variable is constant over time the initially
     infectious individuals are derived from the first time block only.</p></dd>
-<dt>coords.cols</dt>
+
+  <dt>coords.cols</dt>
 <dd><p>only if <code>data</code> does not inherit from <code>epidata</code>:
     index<em>es</em> of the <code>coords</code> column<em>s</em> in <code>data</code>.  Can be a
     numeric (by column number), a character (by column name) vector or
@@ -145,15 +149,18 @@ The simulate method for objects of class
     coordinates are derived from the first time block only.  The epidemic
     covariates are calculated based on the Euclidian distance between the
     individuals, see <code>f</code>.</p></dd>
-<dt>subset</dt>
+
+  <dt>subset</dt>
 <dd><p>an optional vector specifying a subset of the covariate history to be used 
     in the simulation.</p></dd>
-<dt>beta</dt>
+
+  <dt>beta</dt>
 <dd><p>numeric vector of length equal the number of endemic (<code>cox</code>) terms on
     the rhs of <code>formula</code>.  It contains the effects of the endemic predictor
     (excluding the log-baseline <code>h0</code>, see below) in the same order as in 
     the formula.</p></dd>
-<dt>h0</dt>
+
+  <dt>h0</dt>
 <dd><p><em>either</em> a single number to specify a constant baseline hazard
     (equal to <code>exp(h0)</code>) <em>or</em> a list of functions named
     <code>exact</code> and <code>upper</code>.  In the latter case, <code>h0$exact</code>
@@ -165,14 +172,17 @@ The simulate method for objects of class
     implementation, when we evaluate the intensity at the
     <code><a href="https://rdrr.io/r/stats/stepfun.html" class="external-link">knots</a></code> (change points) of <code>h0$upper</code> we need its value
     for the subsequent interval.</p></dd>
-<dt>f, w</dt>
+
+  <dt>f, w</dt>
 <dd><p>see <code><a href="epidata.html">as.epidata</a></code>.</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>a named numeric vector of coefficients for the epidemic
     covariates generated by <code>f</code> and <code>w</code>. The names are matched
     against <code>names(f)</code> and <code>names(w)</code>.
     Remember that <code>alpha &gt;= 0</code>.</p></dd>
-<dt>infPeriod</dt>
+
+  <dt>infPeriod</dt>
 <dd><p>a function generating lengths of infectious periods.  It should take one
     parameter (e.g. <code>ids</code>), which is a character vector of id's of 
     individuals, and return appropriate infection periods for those
@@ -192,40 +202,49 @@ The simulate method for objects of class
 <p><code>infPeriod = function (x) {Inf}</code></p>
 <p>In other words: once an individual became
     infected it spreads the disease forever, i.e. it will never be removed.</p></dd>
-<dt>remPeriod</dt>
+
+  <dt>remPeriod</dt>
 <dd><p>a function generating lengths of removal periods.  Per default, once an
     individual was removed it will stay in this state forever (<code>Inf</code>).
     Therefore, it will not become at-risk (S) again and re-infections are not
     possible.  Alternatively, always returning 0 as length of the removal 
     period corresponds to a SIS epidemic.  Any other values correspond to SIRS.
     Note that <code>end</code> should be set to a finite value in these cases.</p></dd>
-<dt>end</dt>
+
+  <dt>end</dt>
 <dd><p>a single positive numeric value specifying the time point at which the
     simulation should be forced to end.  By default, this is <code>Inf</code>, i.e.
     the simulation continues until there is no susceptible individual left.<br>
     For the <code>simulate</code> method of class <code>"twinSIR"</code> the default is
     to have equal simulation and observation periods.</p></dd>
-<dt>trace</dt>
+
+  <dt>trace</dt>
 <dd><p>logical (or integer) indicating if (or how often) the sets of susceptible 
     and infected individuals as well as the rejection indicator (of the 
     rejection sampling step) should be <code>cat</code>ed.  Defaults to <code>FALSE</code>.</p></dd>
-<dt>.allocate</dt>
+
+  <dt>.allocate</dt>
 <dd><p>number of blocks to initially allocate for the event history (i.e.
     <code>.allocate*N</code> rows). By default (<code>NULL</code>), this number is set to
     <code>max(500, ceiling(nBlocks/100)*100)</code>, i.e. 500 but at least the
     number of blocks in <code>data</code> (rounded to the next multiple of 100).
     Each time the simulated epidemic exceeds the allocated space, the
     event history will be enlarged by <code>.allocate</code> blocks.</p></dd>
-<dt>object</dt>
+
+  <dt>object</dt>
 <dd><p>an object of class <code>"twinSIR"</code>.  This must contain the original
     <code>data</code> used for the fit (see <code>data</code>).</p></dd>
-<dt>nsim</dt>
+
+  <dt>nsim</dt>
 <dd><p>number of epidemics to simulate.  Defaults to 1.</p></dd>
-<dt>seed</dt>
+
+  <dt>seed</dt>
 <dd><p>an integer that will be used in the call to <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></code> before
     simulating the epidemics.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>unused (argument of the generic).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -246,36 +265,54 @@ The simulate method for objects of class
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An object of class <code>"simEpidata"</code>, which is a <code>data.frame</code> with the
-  columns <code>"id"</code>, <code>"start"</code>, <code>"stop"</code>, <code>"atRiskY"</code>,
-<code>"event"</code>, <code>"Revent"</code> and the coordinate columns (with the original
+    
+
+<p>An object of class <code>"simEpidata"</code>, which is a <code>data.frame</code> with the
+  columns <code>"id"</code>, <code>"start"</code>, <code>"stop"</code>, <code>"atRiskY"</code>,</p>
+<p></p>
+<p><code>"event"</code>, <code>"Revent"</code> and the coordinate columns (with the original
   names from <code>data</code>), which are all obligatory.  These columns are followed
   by all the variables appearing on the rhs of the <code>formula</code>.  Last but not
   least, the generated columns with epidemic covariates corresponding to the
-  functions in the lists <code>f</code> and <code>w</code> are appended.
-  Note that objects of class <code>"simEpidata"</code> also inherit from class
-<code>"<a href="epidata.html">epidata</a>"</code>, thus all <code>"<a href="epidata.html">epidata</a>"</code> methods can be
-  applied.
-  The <code>data.frame</code> is given the additional <em>attributes</em></p>
+  functions in the lists <code>f</code> and <code>w</code> are appended.</p>
+
+
+<p>Note that objects of class <code>"simEpidata"</code> also inherit from class</p>
+<p></p>
+<p><code>"<a href="epidata.html">epidata</a>"</code>, thus all <code>"<a href="epidata.html">epidata</a>"</code> methods can be
+  applied.</p>
+  
+
+<p>The <code>data.frame</code> is given the additional <em>attributes</em></p>
 <dl><dt>"eventTimes"</dt>
 <dd><p>numeric vector of infection time points (sorted chronologically).</p></dd>
-<dt>"timeRange"</dt>
+
+  <dt>"timeRange"</dt>
 <dd><p>numeric vector of length 2: <code>c(min(start), max(stop))</code>.</p></dd>
-<dt>"coords.cols"</dt>
+
+  <dt>"coords.cols"</dt>
 <dd><p>numeric vector containing the column indices of the coordinate columns in
     the resulting data-frame.</p></dd>
-<dt>"f"</dt>
+
+  <dt>"f"</dt>
 <dd><p>this equals the argument <code>f</code>.</p></dd>
-<dt>"w"</dt>
+
+  <dt>"w"</dt>
 <dd><p>this equals the argument <code>w</code>.</p></dd>
-<dt>"config"</dt>
+
+  <dt>"config"</dt>
 <dd><p>a list with elements <code>h0 = h0$exact</code>, <code>beta</code> and <code>alpha</code>.</p></dd>
-<dt>call</dt>
+
+  <dt>call</dt>
 <dd><p>the matched call.</p></dd>
-<dt>terms</dt>
+
+  <dt>terms</dt>
 <dd><p>the <code>terms</code> object used.</p></dd>
-</dl><p>If <code>nsim &gt; 1</code> epidemics are simulated by the
-<code>simulate</code>-method for fitted <code>"twinSIR"</code> models, these are
+
+
+</dl><p>If <code>nsim &gt; 1</code> epidemics are simulated by the</p>
+<p></p>
+<p><code>simulate</code>-method for fitted <code>"twinSIR"</code> models, these are
   returned in a list.</p>
     </div>
     <div class="section level2">
@@ -300,70 +337,69 @@ models to epidemic data.</p></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co">## Generate a data frame containing a hypothetic population with 100 individuals</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span>
-<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
-<span class="va">pos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span>, dimnames<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>id<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, x<span class="op">=</span><span class="va">pos</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, y<span class="op">=</span><span class="va">pos</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, 
-                  gender<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="va">n</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,
-                  I0col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>, <span class="co"># 3 initially infectious</span>
-                  start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span><span class="op">)</span>, stop<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">Inf</span>,<span class="va">n</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co">## Simulate an SIR epidemic in this population</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">infPeriods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="va">n</span><span class="op">-</span><span class="fl">3</span>, rate<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span>
-<span class="va">epi</span> <span class="op">&lt;-</span> <span class="fu">simEpidata</span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">start</span>,<span class="va">stop</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">pop</span>,
-    id.col <span class="op">=</span> <span class="st">"id"</span>, I0.col <span class="op">=</span> <span class="st">"I0col"</span>, coords.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>,<span class="st">"y"</span><span class="op">)</span>,
-    beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span>, h0 <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>B1<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>, f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>B1<span class="op">=</span><span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span><span class="op">&lt;=</span><span class="fl">1</span><span class="op">)</span>,
-    infPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="va">infPeriods</span><span class="op">[</span><span class="va">ids</span><span class="op">]</span>,
-    <span class="co">##remPeriod = function(ids) rexp(length(ids), rate=0.1), end = 30   # -&gt; SIRS</span>
-<span class="op">)</span>
-
-<span class="co">## extract event times by id</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">epi</span><span class="op">)</span><span class="op">$</span><span class="va">byID</span><span class="op">)</span>
-
-<span class="co">## Plot the numbers of susceptible, infectious and removed individuals</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">epi</span><span class="op">)</span>
-
-
-<span class="co">## load the 1861 Hagelloch measles epidemic</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span>
-
-<span class="co">## fit a simplistic twinSIR model</span>
-<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span>
-
-<span class="co">## simulate a new epidemic from the above model</span>
-<span class="co">## with simulation period = observation period, re-using observed infPeriods</span>
-<span class="va">sim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">fit</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim1</span><span class="op">)</span>
-
-<span class="co">## check if we find similar parameters in the simulated epidemic</span>
-<span class="va">fitsim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">fit</span>, data <span class="op">=</span> <span class="va">sim1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>base <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fitsim1</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">## simulate only 10 days, using random infPeriods ~ Exp(0.1)</span>
-<span class="va">sim2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">fit</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, seed <span class="op">=</span> <span class="fl">2</span>, end <span class="op">=</span> <span class="fl">10</span>,
-    infPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim2</span><span class="op">)</span>
-
-<span class="co">## simulate from a different model with manually specified parameters</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">321</span><span class="op">)</span>
-<span class="va">simepi</span> <span class="op">&lt;-</span> <span class="fu">simEpidata</span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">hagelloch</span>,
-    beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span>, h0 <span class="op">=</span> <span class="op">-</span><span class="fl">4</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>household <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>,
-    f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>household <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,
-    infPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span>, rate<span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">simepi</span><span class="op">)</span>
-<span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">simepi</span><span class="op">)</span>
-
-<span class="co">## see if we correctly estimate the parameters</span>
-<span class="va">fitsimepi</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span> <span class="op">+</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">simepi</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0.1</span><span class="op">)</span>, est <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fitsimepi</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">fitsimepi</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co">## Generate a data frame containing a hypothetic population with 100 individuals</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">pos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span>, dimnames<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>id<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, x<span class="op">=</span><span class="va">pos</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, y<span class="op">=</span><span class="va">pos</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, </span>
+<span>                  gender<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="va">n</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>                  I0col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>, <span class="co"># 3 initially infectious</span></span>
+<span>                  start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span><span class="op">)</span>, stop<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">Inf</span>,<span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Simulate an SIR epidemic in this population</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">infPeriods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">/</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="va">n</span><span class="op">-</span><span class="fl">3</span>, rate<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">epi</span> <span class="op">&lt;-</span> <span class="fu">simEpidata</span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">start</span>,<span class="va">stop</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">pop</span>,</span>
+<span>    id.col <span class="op">=</span> <span class="st">"id"</span>, I0.col <span class="op">=</span> <span class="st">"I0col"</span>, coords.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>,<span class="st">"y"</span><span class="op">)</span>,</span>
+<span>    beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span>, h0 <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>B1<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>, f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>B1<span class="op">=</span><span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span><span class="op">&lt;=</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>    infPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="va">infPeriods</span><span class="op">[</span><span class="va">ids</span><span class="op">]</span>,</span>
+<span>    <span class="co">##remPeriod = function(ids) rexp(length(ids), rate=0.1), end = 30   # -&gt; SIRS</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## extract event times by id</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">epi</span><span class="op">)</span><span class="op">$</span><span class="va">byID</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Plot the numbers of susceptible, infectious and removed individuals</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">epi</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">## load the 1861 Hagelloch measles epidemic</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"hagelloch"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">hagelloch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## fit a simplistic twinSIR model</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## simulate a new epidemic from the above model</span></span>
+<span><span class="co">## with simulation period = observation period, re-using observed infPeriods</span></span>
+<span><span class="va">sim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">fit</span>, data <span class="op">=</span> <span class="va">hagelloch</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## check if we find similar parameters in the simulated epidemic</span></span>
+<span><span class="va">fitsim1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">fit</span>, data <span class="op">=</span> <span class="va">sim1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>base <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>, new <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fitsim1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">## simulate only 10 days, using random infPeriods ~ Exp(0.1)</span></span>
+<span><span class="va">sim2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">fit</span>, data <span class="op">=</span> <span class="va">hagelloch</span>, seed <span class="op">=</span> <span class="fl">2</span>, end <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>    infPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span>, rate <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sim2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## simulate from a different model with manually specified parameters</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">321</span><span class="op">)</span></span>
+<span><span class="va">simepi</span> <span class="op">&lt;-</span> <span class="fu">simEpidata</span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">hagelloch</span>,</span>
+<span>    beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span>, h0 <span class="op">=</span> <span class="op">-</span><span class="fl">4</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>household <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>,</span>
+<span>    f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>household <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">u</span><span class="op">)</span> <span class="va">u</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>    infPeriod <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">ids</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ids</span><span class="op">)</span>, rate<span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">simepi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">simepi</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## see if we correctly estimate the parameters</span></span>
+<span><span class="va">fitsimepi</span> <span class="op">&lt;-</span> <span class="fu"><a href="twinSIR.html">twinSIR</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="twinSIR_cox.html">cox</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">)</span> <span class="op">+</span> <span class="va">household</span>, data <span class="op">=</span> <span class="va">simepi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>true <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0.1</span><span class="op">)</span>, est <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fitsimepi</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">fitsimepi</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -374,7 +410,7 @@ models to epidemic data.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

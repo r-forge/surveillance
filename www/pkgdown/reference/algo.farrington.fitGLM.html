@@ -4,7 +4,7 @@
   as specified by the Farrington procedure. If 
   requested, Anscombe residuals are computed based on an initial fit
   and a 2nd fit is made using weights, where base counts suspected to
-  be caused by earlier outbreaks are downweighted."><title>Fit Poisson GLM of the Farrington procedure for a single time point — algo.farrington.fitGLM • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fit Poisson GLM of the Farrington procedure for a single time point — algo.farrington.fitGLM"><meta property="og:description" content="The function fits a Poisson regression model (GLM) with mean predictor
+  be caused by earlier outbreaks are downweighted."><title>Fit Poisson GLM of the Farrington procedure for a single time point — algo.farrington.fitGLM • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fit Poisson GLM of the Farrington procedure for a single time point — algo.farrington.fitGLM"><meta property="og:description" content="The function fits a Poisson regression model (GLM) with mean predictor
   $$\log \mu_t = \alpha + \beta t$$
   as specified by the Farrington procedure. If 
   requested, Anscombe residuals are computed based on an initial fit
@@ -20,7 +20,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,24 +66,28 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">algo.farrington.fitGLM</span><span class="op">(</span><span class="va">response</span>, <span class="va">wtime</span>, timeTrend <span class="op">=</span> <span class="cn">TRUE</span>,
-                       reweight <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
-<span class="fu">algo.farrington.fitGLM.fast</span><span class="op">(</span><span class="va">response</span>, <span class="va">wtime</span>, timeTrend <span class="op">=</span> <span class="cn">TRUE</span>,
-                            reweight <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
-<span class="fu">algo.farrington.fitGLM.populationOffset</span><span class="op">(</span><span class="va">response</span>, <span class="va">wtime</span>, <span class="va">population</span>,
-                                        timeTrend<span class="op">=</span><span class="cn">TRUE</span>,reweight<span class="op">=</span><span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">algo.farrington.fitGLM</span><span class="op">(</span><span class="va">response</span>, <span class="va">wtime</span>, timeTrend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                       reweight <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">algo.farrington.fitGLM.fast</span><span class="op">(</span><span class="va">response</span>, <span class="va">wtime</span>, timeTrend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                            reweight <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">algo.farrington.fitGLM.populationOffset</span><span class="op">(</span><span class="va">response</span>, <span class="va">wtime</span>, <span class="va">population</span>,</span>
+<span>                                        timeTrend<span class="op">=</span><span class="cn">TRUE</span>,reweight<span class="op">=</span><span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>response</dt>
 <dd><p>The vector of observed base counts</p></dd>
+
 <dt>wtime</dt>
 <dd><p>Vector of week numbers corresponding to <code>response</code></p></dd>
+
 <dt>timeTrend</dt>
 <dd><p>Boolean whether to fit the \(\beta t\) or not</p></dd>
+
 <dt>reweight</dt>
 <dd><p>Fit twice -- 2nd time with Anscombe residuals</p></dd>
+
 <dt>population</dt>
 <dd><p>Population size. Possibly used as offset, i.e. in
     <code>algo.farrington.fitGLM.populationOffset</code> the value 
@@ -92,8 +96,10 @@
     $$\log \mu_t = \log(\texttt{population}) + \alpha + \beta t$$
     This provides a way to adjust the Farrington procedure to the case
     of greatly varying populations. Note: This is an experimental implementation with methodology not covered by the original paper.</p></dd>
+
 <dt>...</dt>
 <dd><p>Used to catch additional arguments, currently not used.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -112,8 +118,11 @@
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>an object of class GLM with additional fields <code>wtime</code>,
-<code>response</code> and <code>phi</code>. If the <code>glm</code> returns without
+    
+
+<p>an object of class GLM with additional fields <code>wtime</code>,</p>
+<p></p>
+<p><code>response</code> and <code>phi</code>. If the <code>glm</code> returns without
   convergence <code>NULL</code> is returned.</p>
     </div>
     <div class="section level2">
@@ -130,7 +139,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

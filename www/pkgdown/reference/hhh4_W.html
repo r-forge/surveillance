@@ -11,7 +11,7 @@
   estimated for each of the adjacency orders 2:maxlag (the
   first-order weight is fixed to 1 for identifiability).
   Both weight functions can be modified to include a 0-distance weight,
-  which enables hhh4 models without a separate autoregressive component."><title>Power-Law and Nonparametric Neighbourhood Weights for hhh4-Models — hhh4_W • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Power-Law and Nonparametric Neighbourhood Weights for hhh4-Models — hhh4_W"><meta property="og:description" content="Set up power-law or nonparametric weights for the neighbourhood
+  which enables hhh4 models without a separate autoregressive component."><title>Power-Law and Nonparametric Neighbourhood Weights for hhh4-Models — hhh4_W • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Power-Law and Nonparametric Neighbourhood Weights for hhh4-Models — hhh4_W"><meta property="og:description" content="Set up power-law or nonparametric weights for the neighbourhood
   component of hhh4-models as proposed by Meyer and Held (2014).
   Without normalization, power-law weights are
   \(w_{ji} = o_{ji}^{-d}\)
@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,12 +87,12 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">W_powerlaw</span><span class="op">(</span><span class="va">maxlag</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>, log <span class="op">=</span> <span class="cn">FALSE</span>,
-           initial <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="va">log</span><span class="op">)</span> <span class="fl">0</span> <span class="kw">else</span> <span class="fl">1</span>, from0 <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">W_np</span><span class="op">(</span><span class="va">maxlag</span>, truncate <span class="op">=</span> <span class="cn">TRUE</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>,
-     initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="zetaweights.html">zetaweights</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="op">(</span><span class="va">maxlag</span><span class="op">+</span><span class="va">from0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
-     from0 <span class="op">=</span> <span class="cn">FALSE</span>, to0 <span class="op">=</span> <span class="va">truncate</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">W_powerlaw</span><span class="op">(</span><span class="va">maxlag</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>, log <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>           initial <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="va">log</span><span class="op">)</span> <span class="fl">0</span> <span class="kw">else</span> <span class="fl">1</span>, from0 <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">W_np</span><span class="op">(</span><span class="va">maxlag</span>, truncate <span class="op">=</span> <span class="cn">TRUE</span>, normalize <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>     initial <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="fu"><a href="zetaweights.html">zetaweights</a></span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="op">(</span><span class="va">maxlag</span><span class="op">+</span><span class="va">from0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>     from0 <span class="op">=</span> <span class="cn">FALSE</span>, to0 <span class="op">=</span> <span class="va">truncate</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -103,24 +103,29 @@
     high order, <code>maxlag</code> should be set to the maximum adjacency
     order in the network of regions. The smallest possible value for
     <code>maxlag</code> is 2 if <code>from0=FALSE</code> and 1 otherwise.</p></dd>
-<dt>truncate,to0</dt>
+
+  <dt>truncate,to0</dt>
 <dd><p><code>W_np</code> represents order-specific log-weights up to
     order <code>maxlag</code>. Higher orders are by default (<code>truncate=TRUE</code>)
     assumed to have zero weight (similar to <code>W_powerlaw</code>).
     Alternatively, <code>truncate=FALSE</code> requests that the weight at
     order <code>maxlag</code> should be carried forward to higher orders.
     <code>truncate</code> has previously been called <code>to0</code> (deprecated).</p></dd>
-<dt>normalize</dt>
+
+  <dt>normalize</dt>
 <dd><p>logical indicating if the weights should be normalized
     such that the rows of the weight matrix sum to 1 (default).
     Note that normalization does not work with islands, i.e., regions
     without neighbours.</p></dd>
-<dt>log</dt>
+
+  <dt>log</dt>
 <dd><p>logical indicating if the decay parameter \(d\) should be
     estimated on the log-scale to ensure positivity.</p></dd>
-<dt>initial</dt>
+
+  <dt>initial</dt>
 <dd><p>initial value of the parameter vector.</p></dd>
-<dt>from0</dt>
+
+  <dt>from0</dt>
 <dd><p>logical indicating if these parametric weights should
     include the 0-distance (autoregressive) case. In the default setting
     (<code>from0 = FALSE</code>), adjacency order 0 has zero weight, which is
@@ -132,12 +137,16 @@
     \(w_{jj} = 1\) (without normalization). Note that
     the corresponding <code>hhh4</code> model should then exclude a separate
     autoregressive component (<code>control$ar$f = ~ -1</code>).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a list which can be passed as a specification of parametric
-  neighbourhood weights in the <code>control$ne$weights</code> argument of
-<code><a href="hhh4.html">hhh4</a></code>.</p>
+    
+
+<p>a list which can be passed as a specification of parametric
+  neighbourhood weights in the <code>control$ne$weights</code> argument of</p>
+<p></p>
+<p><code><a href="hhh4.html">hhh4</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -152,12 +161,12 @@
     <p>Meyer, S. and Held, L. (2014):
   Power-law models for infectious disease spread.
   <em>The Annals of Applied Statistics</em>, <b>8</b> (3), 1612-1639.
-  doi: <a href="https://doi.org/10.1214/14-AOAS743" class="external-link">10.1214/14-AOAS743</a></p>
+  <a href="https://doi.org/10.1214/14-AOAS743" class="external-link">doi:10.1214/14-AOAS743</a></p>
 <p>Meyer, S. and Held, L. (2017):
   Incorporating social contact data in spatio-temporal models for
   infectious disease spread.
   <em>Biostatistics</em>, <b>18</b> (2), 338-351.
-  doi: <a href="https://doi.org/10.1093/biostatistics/kxw051" class="external-link">10.1093/biostatistics/kxw051</a></p>
+  <a href="https://doi.org/10.1093/biostatistics/kxw051" class="external-link">doi:10.1093/biostatistics/kxw051</a></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -174,58 +183,57 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"measlesWeserEms"</span><span class="op">)</span>
-
-<span class="co">## data contains adjaceny orders as required for parametric weights</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, type <span class="op">=</span> <span class="va">observed</span> <span class="op">~</span> <span class="va">unit</span>, labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>  <span class="co"># max order is 5</span>
-
-<span class="co">## fit a power-law decay of spatial interaction</span>
-<span class="co">## in a hhh4 model with seasonality and random intercepts in the endemic part</span>
-<span class="va">measlesModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span>,
-    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, weights <span class="op">=</span> <span class="fu">W_powerlaw</span><span class="op">(</span>maxlag<span class="op">=</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span><span class="op">)</span>, S<span class="op">=</span><span class="fl">1</span>, period<span class="op">=</span><span class="fl">52</span><span class="op">)</span><span class="op">)</span>,
-    family <span class="op">=</span> <span class="st">"NegBin1"</span><span class="op">)</span>
-
-<span class="co">## fit the model</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># random intercepts are initialized randomly</span>
-<span class="va">measlesFit</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, <span class="va">measlesModel</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span>  <span class="co"># "neweights.d" is the decay parameter d</span>
-<span class="fu"><a href="hhh4_W_utils.html">coefW</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span>
-
-<span class="co">## plot the spatio-temporal weights o_ji^-d / sum_k o_jk^-d</span>
-<span class="co">## as a function of adjacency order</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit</span>, type <span class="op">=</span> <span class="st">"neweights"</span>, xlab <span class="op">=</span> <span class="st">"adjacency order"</span><span class="op">)</span>
-<span class="co">## normalization =&gt; same distance does not necessarily mean same weight.</span>
-<span class="co">## to extract the whole weight matrix W: getNEweights(measlesFit)</span>
-
-<span class="co">## visualize contributions of the three model components</span>
-<span class="co">## to the overall number of infections (aggregated over all districts)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit</span>, total <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">## little contribution from neighbouring districts</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">## simpler model with autoregressive effects captured by the ne component</span>
-<span class="va">measlesModel2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, weights <span class="op">=</span> <span class="fu">W_powerlaw</span><span class="op">(</span>maxlag<span class="op">=</span><span class="fl">5</span>, from0<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span><span class="op">)</span>, S<span class="op">=</span><span class="fl">1</span>, period<span class="op">=</span><span class="fl">52</span><span class="op">)</span><span class="op">)</span>,
-    family <span class="op">=</span> <span class="st">"NegBin1"</span><span class="op">)</span>
-<span class="va">measlesFit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, <span class="va">measlesModel2</span><span class="op">)</span>
-<span class="co">## omitting the separate AR component simplifies model extensions/selection</span>
-<span class="co">## and interpretation of covariate effects (only two predictors left)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit2</span>, type <span class="op">=</span> <span class="st">"neweights"</span>, exclude <span class="op">=</span> <span class="cn">NULL</span>, xlab <span class="op">=</span> <span class="st">"adjacency order"</span><span class="op">)</span>
-<span class="co">## strong decay, again mostly within-district transmission</span>
-<span class="co">## (one could also try a purely autoregressive model)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit2</span>, total <span class="op">=</span> <span class="cn">TRUE</span>,
-     legend.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic"</span>, <span class="st">"endemic"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">## almost the same RMSE as with separate AR and NE effects</span>
-<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>rmse1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">measlesFit</span>, <span class="st">"response"</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
-  rmse2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">measlesFit2</span>, <span class="st">"response"</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"measlesWeserEms"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## data contains adjaceny orders as required for parametric weights</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, type <span class="op">=</span> <span class="va">observed</span> <span class="op">~</span> <span class="va">unit</span>, labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>  <span class="co"># max order is 5</span></span>
+<span></span>
+<span><span class="co">## fit a power-law decay of spatial interaction</span></span>
+<span><span class="co">## in a hhh4 model with seasonality and random intercepts in the endemic part</span></span>
+<span><span class="va">measlesModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, weights <span class="op">=</span> <span class="fu">W_powerlaw</span><span class="op">(</span>maxlag<span class="op">=</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span><span class="op">)</span>, S<span class="op">=</span><span class="fl">1</span>, period<span class="op">=</span><span class="fl">52</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"NegBin1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## fit the model</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># random intercepts are initialized randomly</span></span>
+<span><span class="va">measlesFit</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, <span class="va">measlesModel</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span>  <span class="co"># "neweights.d" is the decay parameter d</span></span>
+<span><span class="fu"><a href="hhh4_W_utils.html">coefW</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## plot the spatio-temporal weights o_ji^-d / sum_k o_jk^-d</span></span>
+<span><span class="co">## as a function of adjacency order</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit</span>, type <span class="op">=</span> <span class="st">"neweights"</span>, xlab <span class="op">=</span> <span class="st">"adjacency order"</span><span class="op">)</span></span>
+<span><span class="co">## normalization =&gt; same distance does not necessarily mean same weight.</span></span>
+<span><span class="co">## to extract the whole weight matrix W: getNEweights(measlesFit)</span></span>
+<span></span>
+<span><span class="co">## visualize contributions of the three model components</span></span>
+<span><span class="co">## to the overall number of infections (aggregated over all districts)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit</span>, total <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">## little contribution from neighbouring districts</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">## simpler model with autoregressive effects captured by the ne component</span></span>
+<span><span class="va">measlesModel2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, weights <span class="op">=</span> <span class="fu">W_powerlaw</span><span class="op">(</span>maxlag<span class="op">=</span><span class="fl">5</span>, from0<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span><span class="op">)</span>, S<span class="op">=</span><span class="fl">1</span>, period<span class="op">=</span><span class="fl">52</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"NegBin1"</span><span class="op">)</span></span>
+<span><span class="va">measlesFit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, <span class="va">measlesModel2</span><span class="op">)</span></span>
+<span><span class="co">## omitting the separate AR component simplifies model extensions/selection</span></span>
+<span><span class="co">## and interpretation of covariate effects (only two predictors left)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit2</span>, type <span class="op">=</span> <span class="st">"neweights"</span>, exclude <span class="op">=</span> <span class="cn">NULL</span>, xlab <span class="op">=</span> <span class="st">"adjacency order"</span><span class="op">)</span></span>
+<span><span class="co">## strong decay, again mostly within-district transmission</span></span>
+<span><span class="co">## (one could also try a purely autoregressive model)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit2</span>, total <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>     legend.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epidemic"</span>, <span class="st">"endemic"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## almost the same RMSE as with separate AR and NE effects</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>rmse1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">measlesFit</span>, <span class="st">"response"</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  rmse2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">measlesFit2</span>, <span class="st">"response"</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -236,7 +244,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

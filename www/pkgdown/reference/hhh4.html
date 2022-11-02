@@ -10,7 +10,7 @@
   implementation is given in the vignette("hhh4"). Meyer et al
   (2017, Section 5, available as vignette("hhh4_spacetime"))
   describe hhh4 models for areal time series of infectious
-  disease counts.'><title>Fitting HHH Models with Random Effects and Neighbourhood Structure — hhh4 • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fitting HHH Models with Random Effects and Neighbourhood Structure — hhh4"><meta property="og:description" content='Fits an autoregressive Poisson or negative binomial model
+  disease counts.'><title>Fitting HHH Models with Random Effects and Neighbourhood Structure — hhh4 • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fitting HHH Models with Random Effects and Neighbourhood Structure — hhh4"><meta property="og:description" content='Fits an autoregressive Poisson or negative binomial model
   to a univariate or multivariate time series of counts.
   The characteristic feature of hhh4 models is the additive
   decomposition of the conditional mean into epidemic and
@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,24 +84,24 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">hhh4</span><span class="op">(</span><span class="va">stsObj</span>,
-     control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-         ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span>, offset <span class="op">=</span> <span class="fl">1</span>, lag <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-         ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span>, offset <span class="op">=</span> <span class="fl">1</span>, lag <span class="op">=</span> <span class="fl">1</span>,
-                   weights <span class="op">=</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">stsObj</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span>,
-                   scale <span class="op">=</span> <span class="cn">NULL</span>, normalize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
-         end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, offset <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-         family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Poisson"</span>, <span class="st">"NegBin1"</span>, <span class="st">"NegBinM"</span><span class="op">)</span>,
-         subset <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">stsObj</span><span class="op">)</span>,
-         optimizer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>stop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>tol<span class="op">=</span><span class="fl">1e-5</span>, niter<span class="op">=</span><span class="fl">100</span><span class="op">)</span>,
-                          regression <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"nlminb"</span><span class="op">)</span>,
-                          variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"nlminb"</span><span class="op">)</span><span class="op">)</span>,
-         verbose <span class="op">=</span> <span class="cn">FALSE</span>,
-         start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fixed<span class="op">=</span><span class="cn">NULL</span>, random<span class="op">=</span><span class="cn">NULL</span>, sd.corr<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>,
-         data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">stsObj</span><span class="op">@</span><span class="va">epoch</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">stsObj</span><span class="op">@</span><span class="va">epoch</span><span class="op">)</span><span class="op">)</span>,
-         keep.terms <span class="op">=</span> <span class="cn">FALSE</span>
-     <span class="op">)</span>,
-     check.analyticals <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">hhh4</span><span class="op">(</span><span class="va">stsObj</span>,</span>
+<span>     control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>         ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span>, offset <span class="op">=</span> <span class="fl">1</span>, lag <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>         ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span>, offset <span class="op">=</span> <span class="fl">1</span>, lag <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                   weights <span class="op">=</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">stsObj</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span>,</span>
+<span>                   scale <span class="op">=</span> <span class="cn">NULL</span>, normalize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>         end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, offset <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>         family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Poisson"</span>, <span class="st">"NegBin1"</span>, <span class="st">"NegBinM"</span><span class="op">)</span>,</span>
+<span>         subset <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">stsObj</span><span class="op">)</span>,</span>
+<span>         optimizer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>stop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>tol<span class="op">=</span><span class="fl">1e-5</span>, niter<span class="op">=</span><span class="fl">100</span><span class="op">)</span>,</span>
+<span>                          regression <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"nlminb"</span><span class="op">)</span>,</span>
+<span>                          variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method<span class="op">=</span><span class="st">"nlminb"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>         start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fixed<span class="op">=</span><span class="cn">NULL</span>, random<span class="op">=</span><span class="cn">NULL</span>, sd.corr<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>         data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">stsObj</span><span class="op">@</span><span class="va">epoch</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">stsObj</span><span class="op">@</span><span class="va">epoch</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         keep.terms <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>     <span class="op">)</span>,</span>
+<span>     check.analyticals <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -109,7 +109,8 @@
     <dl><dt>stsObj</dt>
 <dd><p>object of class <code>"<a href="sts-class.html">sts</a>"</code> containing the (multivariate)
     count data time series.</p></dd>
-<dt>control</dt>
+
+  <dt>control</dt>
 <dd><p>a list containing the model specification and control arguments:</p><dl><dt><code>ar</code></dt>
 <dd><p>Model for the autoregressive component given as
         list with the following components:</p><dl><dt>f = ~ -1</dt>
@@ -251,7 +252,8 @@
     
 </dl><p>The auxiliary function <code><a href="makeControl.html">makeControl</a></code> might be useful to
     create such a list of control parameters.</p></dd>
-<dt>check.analyticals</dt>
+
+  <dt>check.analyticals</dt>
 <dd><p>logical (or a subset of
     <code>c("numDeriv", "maxLik")</code>), indicating if (how) the implemented
     analytical score vector and Fisher information matrix should be
@@ -260,59 +262,81 @@
     <code>hhh4</code> will return a list containing the analytical and numerical
     derivatives for comparison (no ML estimation will be performed). 
     This is mainly intended for internal use by the package developers.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>hhh4</code> returns an object of class <code>"hhh4"</code>,
+    <p></p>
+<p><code>hhh4</code> returns an object of class <code>"hhh4"</code>,
   which is a list containing the following components:</p>
 <dl><dt>coefficients</dt>
 <dd><p>named vector with estimated (regression) parameters of the model</p></dd>
-<dt>se</dt>
+
+  <dt>se</dt>
 <dd><p>estimated standard errors (for regression parameters)</p></dd>
-<dt>cov</dt>
+
+  <dt>cov</dt>
 <dd><p>covariance matrix (for regression parameters)</p></dd>
-<dt>Sigma</dt>
+
+  <dt>Sigma</dt>
 <dd><p>estimated variance-covariance matrix of random effects</p></dd>
-<dt>Sigma.orig</dt>
+
+  <dt>Sigma.orig</dt>
 <dd><p>estimated variance parameters on internal scale used
     for optimization</p></dd>
-<dt>Sigma.cov</dt>
+
+  <dt>Sigma.cov</dt>
 <dd><p>inverse of marginal Fisher information (on internal
     scale), i.e., the asymptotic covariance matrix of <code>Sigma.orig</code></p></dd>
-<dt>call</dt>
+
+  <dt>call</dt>
 <dd><p>the matched call</p></dd>
-<dt>dim</dt>
+
+  <dt>dim</dt>
 <dd><p>vector with number of fixed and random effects in the model</p></dd>
-<dt>loglikelihood</dt>
+
+  <dt>loglikelihood</dt>
 <dd><p>(penalized) loglikelihood evaluated at the MLE</p></dd>
-<dt>margll</dt>
+
+  <dt>margll</dt>
 <dd><p>(approximate) log marginal likelihood should the model contain random effects</p></dd>
-<dt>convergence</dt>
+
+  <dt>convergence</dt>
 <dd><p>logical. Did optimizer converge?</p></dd>
-<dt>fitted.values</dt>
+
+  <dt>fitted.values</dt>
 <dd><p>fitted mean values \(\mu_{i,t}\)</p></dd>
-<dt>control</dt>
+
+  <dt>control</dt>
 <dd><p>control object of the fit</p></dd>
-<dt>terms</dt>
+
+  <dt>terms</dt>
 <dd><p>the terms object used in the fit if <code>keep.terms = TRUE</code>
     and <code>NULL</code> otherwise</p></dd>
-<dt>stsObj</dt>
+
+  <dt>stsObj</dt>
 <dd><p>the supplied <code>stsObj</code></p></dd>
-<dt>lags</dt>
+
+  <dt>lags</dt>
 <dd><p>named integer vector of length two containing the lags
     used for the epidemic components <code>"ar"</code> and <code>"ne"</code>,
     respectively. The corresponding lag is <code>NA</code> if the component
     was not included in the model.</p></dd>
-<dt>nObs</dt>
+
+  <dt>nObs</dt>
 <dd><p>number of observations used for fitting the model</p></dd>
-<dt>nTime</dt>
+
+  <dt>nTime</dt>
 <dd><p>number of time points used for fitting the model</p></dd>
-<dt>nUnit</dt>
+
+  <dt>nUnit</dt>
 <dd><p>number of units (e.g. areas) used for fitting the model</p></dd>
-<dt>runtime</dt>
+
+  <dt>runtime</dt>
 <dd><p>the <code><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></code>-queried time taken
     to fit the model, i.e., a named numeric vector of length 5 of class
     <code>"proc_time"</code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -383,261 +407,260 @@
     A statistical framework for the analysis of multivariate infectious
     disease surveillance counts.
     <em>Statistical Modelling</em>, <b>5</b> (3), 187-199.
-    doi: <a href="https://doi.org/10.1191/1471082X05st098oa" class="external-link">10.1191/1471082X05st098oa</a></p>    
+    <a href="https://doi.org/10.1191/1471082X05st098oa" class="external-link">doi:10.1191/1471082X05st098oa</a></p>    
 <p>Paul, M., Held, L. and Toschke, A. M. (2008):
     Multivariate modelling of infectious disease surveillance data.
     <em>Statistics in Medicine</em>, <b>27</b> (29), 6250-6267.
-    doi: <a href="https://doi.org/10.1002/sim.4177" class="external-link">10.1002/sim.4177</a></p>
+    <a href="https://doi.org/10.1002/sim.4177" class="external-link">doi:10.1002/sim.4177</a></p>
 <p>Paul, M. and Held, L. (2011):
     Predictive assessment of a non-linear random effects model for
     multivariate time series of infectious disease counts.
     <em>Statistics in Medicine</em>, <b>30</b> (10), 1118-1136.
-    doi: <a href="https://doi.org/10.1002/sim.4177" class="external-link">10.1002/sim.4177</a></p>
+    <a href="https://doi.org/10.1002/sim.4177" class="external-link">doi:10.1002/sim.4177</a></p>
 <p>Held, L. and Paul, M. (2012):
     Modeling seasonality in space-time infectious disease surveillance data.
     <em>Biometrical Journal</em>, <b>54</b> (6), 824-843.
-    doi: <a href="https://doi.org/10.1002/bimj.201200037" class="external-link">10.1002/bimj.201200037</a></p>    
+    <a href="https://doi.org/10.1002/bimj.201200037" class="external-link">doi:10.1002/bimj.201200037</a></p>    
 <p>Meyer, S. and Held, L. (2014):
     Power-law models for infectious disease spread.
     <em>The Annals of Applied Statistics</em>, <b>8</b> (3), 1612-1639.
-    doi: <a href="https://doi.org/10.1214/14-AOAS743" class="external-link">10.1214/14-AOAS743</a></p>
+    <a href="https://doi.org/10.1214/14-AOAS743" class="external-link">doi:10.1214/14-AOAS743</a></p>
 <p>Meyer, S., Held, L. and Höhle, M. (2017):
     Spatio-temporal analysis of epidemic phenomena using the <span style="R">R</span> package
     <span class="pkg">surveillance</span>.
     <em>Journal of Statistical Software</em>, <b>77</b> (11), 1-55.
-    doi: <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">10.18637/jss.v077.i11</a></p>
+    <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">doi:10.18637/jss.v077.i11</a></p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co">######################</span>
-<span class="co">## Univariate examples</span>
-<span class="co">######################</span>
-
-<span class="co">### weekly counts of salmonella agona cases, UK, 1990-1995</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"salmonella.agona"</span><span class="op">)</span>
-<span class="co">## convert old "disProg" to new "sts" data class</span>
-<span class="va">salmonella</span> <span class="op">&lt;-</span> <span class="fu"><a href="disProg2sts.html">disProg2sts</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">)</span>
-<span class="va">salmonella</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">salmonella</span><span class="op">)</span>
-
-<span class="co">## generate formula for an (endemic) time trend and seasonality</span>
-<span class="va">f.end</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, S <span class="op">=</span> <span class="fl">1</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span>
-<span class="va">f.end</span>
-<span class="co">## specify a simple autoregressive negative binomial model</span>
-<span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.end</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"NegBin1"</span><span class="op">)</span>
-<span class="co">## fit this model to the data</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">salmonella</span>, <span class="va">model1</span><span class="op">)</span>
-<span class="co">## summarize the model fit</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">res</span>, idx2Exp<span class="op">=</span><span class="fl">1</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span><span class="op">)</span>
-
-
-<span class="co">### weekly counts of meningococcal infections, Germany, 2001-2006</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"influMen"</span><span class="op">)</span>
-<span class="va">fluMen</span> <span class="op">&lt;-</span> <span class="fu"><a href="disProg2sts.html">disProg2sts</a></span><span class="op">(</span><span class="va">influMen</span><span class="op">)</span>
-<span class="va">meningo</span> <span class="op">&lt;-</span> <span class="va">fluMen</span><span class="op">[</span>, <span class="st">"meningococcus"</span><span class="op">]</span>
-<span class="va">meningo</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">meningo</span><span class="op">)</span>
-
-<span class="co">## again a simple autoregressive NegBin model with endemic seasonality</span>
-<span class="va">meningoFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span>stsObj <span class="op">=</span> <span class="va">meningo</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span>, S <span class="op">=</span> <span class="fl">1</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span><span class="op">)</span>,
-    family <span class="op">=</span> <span class="st">"NegBin1"</span>
-<span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">meningoFit</span>, idx2Exp<span class="op">=</span><span class="cn">TRUE</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">meningoFit</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">meningoFit</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span><span class="op">)</span>
-
-
-<span class="co">########################</span>
-<span class="co">## Multivariate examples</span>
-<span class="co">########################</span>
-
-<span class="co">### bivariate analysis of influenza and meningococcal infections</span>
-<span class="co">### (see Paul et al, 2008)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluMen</span>, same.scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-     
-<span class="co">## Fit a negative binomial model with</span>
-<span class="co">## - autoregressive component: disease-specific intercepts</span>
-<span class="co">## - neighbour-driven component: only transmission from flu to men</span>
-<span class="co">## - endemic component: S=3 and S=1 sine/cosine pairs for flu and men, respectively</span>
-<span class="co">## - disease-specific overdispersion</span>
-
-<span class="va">WfluMen</span> <span class="op">&lt;-</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluMen</span><span class="op">)</span>
-<span class="va">WfluMen</span><span class="op">[</span><span class="st">"meningococcus"</span>,<span class="st">"influenza"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span>
-<span class="va">WfluMen</span>
-<span class="va">f.end_fluMen</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">fe</a></span><span class="op">(</span><span class="fl">1</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
-                                  S <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span>
-<span class="va">f.end_fluMen</span>
-<span class="va">fluMenFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">fluMen</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">fe</a></span><span class="op">(</span><span class="fl">1</span>, unitSpecific <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
-    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, weights <span class="op">=</span> <span class="va">WfluMen</span><span class="op">)</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.end_fluMen</span><span class="op">)</span>,
-    family <span class="op">=</span> <span class="st">"NegBinM"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fluMenFit</span>, idx2Exp<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluMenFit</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span>, unit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluMenFit</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span>, unit <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co"># \dontshow{</span>
-    <span class="co">## regression test for amplitude/shift transformation of sine-cosine pairs</span>
-    <span class="co">## coefficients were wrongly matched in surveillance &lt; 1.18.0</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fluMenFit</span>, amplitudeShift <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="st">"end.A(2 * pi * t/52).meningococcus"</span><span class="op">]</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fluMenFit</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"end."</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sin"</span>,<span class="st">"cos"</span><span class="op">)</span>, <span class="st">"(2 * pi * t/52).meningococcus"</span><span class="op">)</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co"># }</span>
-
-
-<span class="co">### weekly counts of measles, Weser-Ems region of Lower Saxony, Germany</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"measlesWeserEms"</span><span class="op">)</span>
-<span class="va">measlesWeserEms</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span>  <span class="co"># note the two districts with zero cases</span>
-
-<span class="co">## we could fit the same simple model as for the salmonella cases above</span>
-<span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span><span class="op">)</span>,
-    family <span class="op">=</span> <span class="st">"NegBin1"</span>
-<span class="op">)</span>
-<span class="va">measlesFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">measlesWeserEms</span>, <span class="va">model1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">measlesFit</span>, idx2Exp<span class="op">=</span><span class="cn">TRUE</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">## but we should probably at least use a population offset in the endemic</span>
-<span class="co">## component to reflect heterogeneous incidence levels of the districts,</span>
-<span class="co">## and account for spatial dependence (here just using first-order adjacency)</span>
-<span class="va">measlesFit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">measlesFit</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>,
-    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span>, weights <span class="op">=</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">measlesFit2</span>, idx2Exp<span class="op">=</span><span class="cn">TRUE</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit2</span>, units <span class="op">=</span> <span class="cn">NULL</span>, hide0s <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">## 'measlesFit2' corresponds to the 'measlesFit_basic' model in</span>
-<span class="co">## vignette("hhh4_spacetime"). See there for further analyses,</span>
-<span class="co">## including vaccination coverage as a covariate,</span>
-<span class="co">## spatial power-law weights, and random intercepts.</span>
-
-
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">### last but not least, a more sophisticated (and time-consuming)</span>
-<span class="co">### analysis of weekly counts of influenza from 140 districts in</span>
-<span class="co">### Southern Germany (originally analysed by Paul and Held, 2011,</span>
-<span class="co">### and revisited by Held and Paul, 2012, and Meyer and Held, 2014)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"fluBYBW"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluBYBW</span>, type <span class="op">=</span> <span class="va">observed</span> <span class="op">~</span> <span class="va">time</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluBYBW</span>, type <span class="op">=</span> <span class="va">observed</span> <span class="op">~</span> <span class="va">unit</span>,
-     <span class="co">## mean yearly incidence per 100.000 inhabitants (8 years)</span>
-     population <span class="op">=</span> <span class="va">fluBYBW</span><span class="op">@</span><span class="va">map</span><span class="op">$</span><span class="va">X31_12_01</span> <span class="op">/</span> <span class="fl">100000</span> <span class="op">*</span> <span class="fl">8</span><span class="op">)</span>
-
-<span class="co">## For the full set of models for data("fluBYBW") as analysed by</span>
-<span class="co">## Paul and Held (2011), including predictive model assessement</span>
-<span class="co">## using proper scoring rules, see the (computer-intensive)</span>
-<span class="co">## demo("fluBYBW") script:</span>
-<span class="va">demoscript</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">"demo"</span>, <span class="st">"fluBYBW.R"</span><span class="op">)</span>,
-                          package <span class="op">=</span> <span class="st">"surveillance"</span><span class="op">)</span>
-<span class="va">demoscript</span>
-<span class="co">#file.show(demoscript)</span>
-
-<span class="co">## Here we fit the improved power-law model of Meyer and Held (2014)</span>
-<span class="co">## - autoregressive component: random intercepts + S = 1 sine/cosine pair</span>
-<span class="co">## - neighbour-driven component: random intercepts + S = 1 sine/cosine pair</span>
-<span class="co">##   + population gravity with normalized power-law weights</span>
-<span class="co">## - endemic component: random intercepts + trend + S = 3 sine/cosine pairs</span>
-<span class="co">## - random intercepts are iid but correlated between components</span>
-<span class="va">f.S1</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>
-    <span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"iid"</span>, corr<span class="op">=</span><span class="st">"all"</span><span class="op">)</span>,
-    S <span class="op">=</span> <span class="fl">1</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span>
-<span class="va">f.end.S3</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>
-    <span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"iid"</span>, corr<span class="op">=</span><span class="st">"all"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="op">(</span><span class="va">t</span><span class="op">-</span><span class="fl">208</span><span class="op">)</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span>,
-    S <span class="op">=</span> <span class="fl">3</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span>
-
-<span class="co">## for power-law weights, we need adjaceny orders, which can be</span>
-<span class="co">## computed from the binary adjacency indicator matrix</span>
-<span class="va">nbOrder1</span> <span class="op">&lt;-</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span>
-<span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="nbOrder.html">nbOrder</a></span><span class="op">(</span><span class="va">nbOrder1</span>, <span class="fl">15</span><span class="op">)</span>
-
-<span class="co">## full model specification</span>
-<span class="va">fluModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.S1</span><span class="op">)</span>,
-    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.formula.html" class="external-link">update.formula</a></span><span class="op">(</span><span class="va">f.S1</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span>,
-              weights <span class="op">=</span> <span class="fu"><a href="hhh4_W.html">W_powerlaw</a></span><span class="op">(</span>maxlag<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,
-                                   normalize <span class="op">=</span> <span class="cn">TRUE</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.end.S3</span>, offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,
-    family <span class="op">=</span> <span class="st">"NegBin1"</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pop <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,
-    optimizer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"Nelder-Mead"</span><span class="op">)</span><span class="op">)</span>,
-    verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co">## CAVE: random effects considerably increase the runtime of model estimation</span>
-<span class="co">## (It is usually advantageous to first fit a model with simple intercepts</span>
-<span class="co">## to obtain reasonable start values for the other parameters.)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># because random intercepts are initialized randomly</span>
-<span class="va">fluFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">fluBYBW</span>, <span class="va">fluModel</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fluFit</span>, idx2Exp <span class="op">=</span> <span class="cn">TRUE</span>, amplitudeShift <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"fitted"</span>, total <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"season"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"maxEV"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"maps"</span>, prop <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html" class="external-link">grid.arrange</a></span><span class="op">(</span>
-    grobs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ar"</span>, <span class="st">"ne"</span>, <span class="st">"end"</span><span class="op">)</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">comp</span><span class="op">)</span>
-        <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"ri"</span>, component <span class="op">=</span> <span class="va">comp</span>, main <span class="op">=</span> <span class="va">comp</span>,
-             exp <span class="op">=</span> <span class="cn">TRUE</span>, sub <span class="op">=</span> <span class="st">"multiplicative effect"</span><span class="op">)</span><span class="op">)</span>,
-    nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"neweights"</span>, xlab <span class="op">=</span> <span class="st">"adjacency order"</span><span class="op">)</span>
-<span class="op">}</span>
-
-
-<span class="co">########################################################################</span>
-<span class="co">## An endemic-only "hhh4" model can also be estimated using MASS::glm.nb</span>
-<span class="co">########################################################################</span>
-
-<span class="co">## weekly counts of measles, Weser-Ems region of Lower Saxony, Germany</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"measlesWeserEms"</span><span class="op">)</span>
-
-<span class="co">## fit an endemic-only "hhh4" model</span>
-<span class="co">## with time covariates and a district-specific offset</span>
-<span class="va">hhh4fit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">measlesWeserEms</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, period <span class="op">=</span> <span class="va">measlesWeserEms</span><span class="op">@</span><span class="va">freq</span><span class="op">)</span>,
-               offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>,
-    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"NegBin1"</span>,
-    subset <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span>
-<span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span>
-
-<span class="co">## fit the same model using MASS::glm.nb</span>
-<span class="va">measlesWeserEmsData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">measlesWeserEmsData</span><span class="op">$</span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">t</span><span class="op">)</span>
-<span class="va">glmnbfit</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">formula</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">$</span><span class="va">end</span>, <span class="va">observed</span> <span class="op">~</span> <span class="va">.</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/offset.html" class="external-link">offset</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
-    data <span class="op">=</span> <span class="va">measlesWeserEmsData</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span>
-
-<span class="co">## Note that the overdispersion parameter is parametrized inversely.</span>
-<span class="co">## The likelihood and point estimates are all the same.</span>
-<span class="co">## However, the variance estimates are different: in glm.nb, the parameters</span>
-<span class="co">## are estimated conditional on the overdispersion theta.</span>
-
-<span class="co"># \dontshow{</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">[[</span><span class="st">"overdisp"</span><span class="op">]</span><span class="op">]</span>, <span class="va">glmnbfit</span><span class="op">$</span><span class="va">theta</span>, tolerance <span class="op">=</span> <span class="fl">1e-6</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span>,
-              tolerance <span class="op">=</span> <span class="fl">1e-6</span>, check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span>,
-              tolerance <span class="op">=</span> <span class="fl">1e-6</span>, check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="co"># }</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co">######################</span></span>
+<span><span class="co">## Univariate examples</span></span>
+<span><span class="co">######################</span></span>
+<span></span>
+<span><span class="co">### weekly counts of salmonella agona cases, UK, 1990-1995</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"salmonella.agona"</span><span class="op">)</span></span>
+<span><span class="co">## convert old "disProg" to new "sts" data class</span></span>
+<span><span class="va">salmonella</span> <span class="op">&lt;-</span> <span class="fu"><a href="disProg2sts.html">disProg2sts</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">)</span></span>
+<span><span class="va">salmonella</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">salmonella</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## generate formula for an (endemic) time trend and seasonality</span></span>
+<span><span class="va">f.end</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, S <span class="op">=</span> <span class="fl">1</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></span>
+<span><span class="va">f.end</span></span>
+<span><span class="co">## specify a simple autoregressive negative binomial model</span></span>
+<span><span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.end</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"NegBin1"</span><span class="op">)</span></span>
+<span><span class="co">## fit this model to the data</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">salmonella</span>, <span class="va">model1</span><span class="op">)</span></span>
+<span><span class="co">## summarize the model fit</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">res</span>, idx2Exp<span class="op">=</span><span class="fl">1</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">### weekly counts of meningococcal infections, Germany, 2001-2006</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"influMen"</span><span class="op">)</span></span>
+<span><span class="va">fluMen</span> <span class="op">&lt;-</span> <span class="fu"><a href="disProg2sts.html">disProg2sts</a></span><span class="op">(</span><span class="va">influMen</span><span class="op">)</span></span>
+<span><span class="va">meningo</span> <span class="op">&lt;-</span> <span class="va">fluMen</span><span class="op">[</span>, <span class="st">"meningococcus"</span><span class="op">]</span></span>
+<span><span class="va">meningo</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">meningo</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## again a simple autoregressive NegBin model with endemic seasonality</span></span>
+<span><span class="va">meningoFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span>stsObj <span class="op">=</span> <span class="va">meningo</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span>, S <span class="op">=</span> <span class="fl">1</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"NegBin1"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">meningoFit</span>, idx2Exp<span class="op">=</span><span class="cn">TRUE</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">meningoFit</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">meningoFit</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">########################</span></span>
+<span><span class="co">## Multivariate examples</span></span>
+<span><span class="co">########################</span></span>
+<span></span>
+<span><span class="co">### bivariate analysis of influenza and meningococcal infections</span></span>
+<span><span class="co">### (see Paul et al, 2008)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluMen</span>, same.scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>     </span>
+<span><span class="co">## Fit a negative binomial model with</span></span>
+<span><span class="co">## - autoregressive component: disease-specific intercepts</span></span>
+<span><span class="co">## - neighbour-driven component: only transmission from flu to men</span></span>
+<span><span class="co">## - endemic component: S=3 and S=1 sine/cosine pairs for flu and men, respectively</span></span>
+<span><span class="co">## - disease-specific overdispersion</span></span>
+<span></span>
+<span><span class="va">WfluMen</span> <span class="op">&lt;-</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluMen</span><span class="op">)</span></span>
+<span><span class="va">WfluMen</span><span class="op">[</span><span class="st">"meningococcus"</span>,<span class="st">"influenza"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">WfluMen</span></span>
+<span><span class="va">f.end_fluMen</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">fe</a></span><span class="op">(</span><span class="fl">1</span>, which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                                  S <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></span>
+<span><span class="va">f.end_fluMen</span></span>
+<span><span class="va">fluMenFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">fluMen</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">fe</a></span><span class="op">(</span><span class="fl">1</span>, unitSpecific <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span> <span class="fl">1</span>, weights <span class="op">=</span> <span class="va">WfluMen</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.end_fluMen</span><span class="op">)</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"NegBinM"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fluMenFit</span>, idx2Exp<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluMenFit</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span>, unit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluMenFit</span>, type <span class="op">=</span> <span class="st">"season"</span>, components <span class="op">=</span> <span class="st">"end"</span>, unit <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># \dontshow{</span></span>
+<span>    <span class="co">## regression test for amplitude/shift transformation of sine-cosine pairs</span></span>
+<span>    <span class="co">## coefficients were wrongly matched in surveillance &lt; 1.18.0</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fluMenFit</span>, amplitudeShift <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="st">"end.A(2 * pi * t/52).meningococcus"</span><span class="op">]</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fluMenFit</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"end."</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sin"</span>,<span class="st">"cos"</span><span class="op">)</span>, <span class="st">"(2 * pi * t/52).meningococcus"</span><span class="op">)</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># }</span></span>
+<span></span>
+<span></span>
+<span><span class="co">### weekly counts of measles, Weser-Ems region of Lower Saxony, Germany</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"measlesWeserEms"</span><span class="op">)</span></span>
+<span><span class="va">measlesWeserEms</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span>  <span class="co"># note the two districts with zero cases</span></span>
+<span></span>
+<span><span class="co">## we could fit the same simple model as for the salmonella cases above</span></span>
+<span><span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"NegBin1"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">measlesFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">measlesWeserEms</span>, <span class="va">model1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">measlesFit</span>, idx2Exp<span class="op">=</span><span class="cn">TRUE</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## but we should probably at least use a population offset in the endemic</span></span>
+<span><span class="co">## component to reflect heterogeneous incidence levels of the districts,</span></span>
+<span><span class="co">## and account for spatial dependence (here just using first-order adjacency)</span></span>
+<span><span class="va">measlesFit2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">measlesFit</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span>, weights <span class="op">=</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">measlesFit2</span>, idx2Exp<span class="op">=</span><span class="cn">TRUE</span>, amplitudeShift<span class="op">=</span><span class="cn">TRUE</span>, maxEV<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit2</span>, units <span class="op">=</span> <span class="cn">NULL</span>, hide0s <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## 'measlesFit2' corresponds to the 'measlesFit_basic' model in</span></span>
+<span><span class="co">## vignette("hhh4_spacetime"). See there for further analyses,</span></span>
+<span><span class="co">## including vaccination coverage as a covariate,</span></span>
+<span><span class="co">## spatial power-law weights, and random intercepts.</span></span>
+<span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">### last but not least, a more sophisticated (and time-consuming)</span></span>
+<span><span class="co">### analysis of weekly counts of influenza from 140 districts in</span></span>
+<span><span class="co">### Southern Germany (originally analysed by Paul and Held, 2011,</span></span>
+<span><span class="co">### and revisited by Held and Paul, 2012, and Meyer and Held, 2014)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"fluBYBW"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluBYBW</span>, type <span class="op">=</span> <span class="va">observed</span> <span class="op">~</span> <span class="va">time</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluBYBW</span>, type <span class="op">=</span> <span class="va">observed</span> <span class="op">~</span> <span class="va">unit</span>,</span>
+<span>     <span class="co">## mean yearly incidence per 100.000 inhabitants (8 years)</span></span>
+<span>     population <span class="op">=</span> <span class="va">fluBYBW</span><span class="op">@</span><span class="va">map</span><span class="op">$</span><span class="va">X31_12_01</span> <span class="op">/</span> <span class="fl">100000</span> <span class="op">*</span> <span class="fl">8</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## For the full set of models for data("fluBYBW") as analysed by</span></span>
+<span><span class="co">## Paul and Held (2011), including predictive model assessement</span></span>
+<span><span class="co">## using proper scoring rules, see the (computer-intensive)</span></span>
+<span><span class="co">## demo("fluBYBW") script:</span></span>
+<span><span class="va">demoscript</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="st">"demo"</span>, <span class="st">"fluBYBW.R"</span><span class="op">)</span>,</span>
+<span>                          package <span class="op">=</span> <span class="st">"surveillance"</span><span class="op">)</span></span>
+<span><span class="va">demoscript</span></span>
+<span><span class="co">#file.show(demoscript)</span></span>
+<span></span>
+<span><span class="co">## Here we fit the improved power-law model of Meyer and Held (2014)</span></span>
+<span><span class="co">## - autoregressive component: random intercepts + S = 1 sine/cosine pair</span></span>
+<span><span class="co">## - neighbour-driven component: random intercepts + S = 1 sine/cosine pair</span></span>
+<span><span class="co">##   + population gravity with normalized power-law weights</span></span>
+<span><span class="co">## - endemic component: random intercepts + trend + S = 3 sine/cosine pairs</span></span>
+<span><span class="co">## - random intercepts are iid but correlated between components</span></span>
+<span><span class="va">f.S1</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span></span>
+<span>    <span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"iid"</span>, corr<span class="op">=</span><span class="st">"all"</span><span class="op">)</span>,</span>
+<span>    S <span class="op">=</span> <span class="fl">1</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></span>
+<span><span class="va">f.end.S3</span> <span class="op">&lt;-</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span></span>
+<span>    <span class="op">~</span><span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="fu"><a href="hhh4_formula.html">ri</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"iid"</span>, corr<span class="op">=</span><span class="st">"all"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="op">(</span><span class="va">t</span><span class="op">-</span><span class="fl">208</span><span class="op">)</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span>,</span>
+<span>    S <span class="op">=</span> <span class="fl">3</span>, period <span class="op">=</span> <span class="fl">52</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## for power-law weights, we need adjaceny orders, which can be</span></span>
+<span><span class="co">## computed from the binary adjacency indicator matrix</span></span>
+<span><span class="va">nbOrder1</span> <span class="op">&lt;-</span> <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span></span>
+<span><span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="nbOrder.html">nbOrder</a></span><span class="op">(</span><span class="va">nbOrder1</span>, <span class="fl">15</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## full model specification</span></span>
+<span><span class="va">fluModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.S1</span><span class="op">)</span>,</span>
+<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.formula.html" class="external-link">update.formula</a></span><span class="op">(</span><span class="va">f.S1</span>, <span class="op">~</span> <span class="va">.</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">pop</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              weights <span class="op">=</span> <span class="fu"><a href="hhh4_W.html">W_powerlaw</a></span><span class="op">(</span>maxlag<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                                   normalize <span class="op">=</span> <span class="cn">TRUE</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">f.end.S3</span>, offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    family <span class="op">=</span> <span class="st">"NegBin1"</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pop <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    optimizer <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>variance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"Nelder-Mead"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## CAVE: random effects considerably increase the runtime of model estimation</span></span>
+<span><span class="co">## (It is usually advantageous to first fit a model with simple intercepts</span></span>
+<span><span class="co">## to obtain reasonable start values for the other parameters.)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>  <span class="co"># because random intercepts are initialized randomly</span></span>
+<span><span class="va">fluFit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">fluBYBW</span>, <span class="va">fluModel</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fluFit</span>, idx2Exp <span class="op">=</span> <span class="cn">TRUE</span>, amplitudeShift <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"fitted"</span>, total <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"season"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"maxEV"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"maps"</span>, prop <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html" class="external-link">grid.arrange</a></span><span class="op">(</span></span>
+<span>    grobs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ar"</span>, <span class="st">"ne"</span>, <span class="st">"end"</span><span class="op">)</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">comp</span><span class="op">)</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"ri"</span>, component <span class="op">=</span> <span class="va">comp</span>, main <span class="op">=</span> <span class="va">comp</span>,</span>
+<span>             exp <span class="op">=</span> <span class="cn">TRUE</span>, sub <span class="op">=</span> <span class="st">"multiplicative effect"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluFit</span>, type <span class="op">=</span> <span class="st">"neweights"</span>, xlab <span class="op">=</span> <span class="st">"adjacency order"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span></span>
+<span><span class="co">########################################################################</span></span>
+<span><span class="co">## An endemic-only "hhh4" model can also be estimated using MASS::glm.nb</span></span>
+<span><span class="co">########################################################################</span></span>
+<span></span>
+<span><span class="co">## weekly counts of measles, Weser-Ems region of Lower Saxony, Germany</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"measlesWeserEms"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## fit an endemic-only "hhh4" model</span></span>
+<span><span class="co">## with time covariates and a district-specific offset</span></span>
+<span><span class="va">hhh4fit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">measlesWeserEms</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, period <span class="op">=</span> <span class="va">measlesWeserEms</span><span class="op">@</span><span class="va">freq</span><span class="op">)</span>,</span>
+<span>               offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"NegBin1"</span>,</span>
+<span>    subset <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## fit the same model using MASS::glm.nb</span></span>
+<span><span class="va">measlesWeserEmsData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">measlesWeserEms</span>, tidy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">measlesWeserEmsData</span><span class="op">$</span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">t</span><span class="op">)</span></span>
+<span><span class="va">glmnbfit</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">formula</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">$</span><span class="va">end</span>, <span class="va">observed</span> <span class="op">~</span> <span class="va">.</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/offset.html" class="external-link">offset</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">population</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    data <span class="op">=</span> <span class="va">measlesWeserEmsData</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Note that the overdispersion parameter is parametrized inversely.</span></span>
+<span><span class="co">## The likelihood and point estimates are all the same.</span></span>
+<span><span class="co">## However, the variance estimates are different: in glm.nb, the parameters</span></span>
+<span><span class="co">## are estimated conditional on the overdispersion theta.</span></span>
+<span></span>
+<span><span class="co"># \dontshow{</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">[[</span><span class="st">"overdisp"</span><span class="op">]</span><span class="op">]</span>, <span class="va">glmnbfit</span><span class="op">$</span><span class="va">theta</span>, tolerance <span class="op">=</span> <span class="fl">1e-6</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span>,</span>
+<span>              tolerance <span class="op">=</span> <span class="fl">1e-6</span>, check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">hhh4fit</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">glmnbfit</span><span class="op">)</span>,</span>
+<span>              tolerance <span class="op">=</span> <span class="fl">1e-6</span>, check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># }</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -648,7 +671,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

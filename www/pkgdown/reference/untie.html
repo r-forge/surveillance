@@ -3,7 +3,7 @@
   way similar to what jitter does: tie-breaking is
   performed by shifting all data points by a random amount.
   The surveillance package defines methods for matrices,
-  "epidataCS", and a default method for numeric vectors.'><title>Randomly Break Ties in Data — untie • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Randomly Break Ties in Data — untie"><meta property="og:description" content='This is a generic function intended to randomly break tied data in a
+  "epidataCS", and a default method for numeric vectors.'><title>Randomly Break Ties in Data — untie • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Randomly Break Ties in Data — untie"><meta property="og:description" content='This is a generic function intended to randomly break tied data in a
   way similar to what jitter does: tie-breaking is
   performed by shifting all data points by a random amount.
   The surveillance package defines methods for matrices,
@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,37 +63,40 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, <span class="va">amount</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for epidataCS</span>
-<span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>t<span class="op">=</span><span class="cn">NULL</span>, s<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>,
-      minsep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>t<span class="op">=</span><span class="fl">0</span>, s<span class="op">=</span><span class="fl">0</span><span class="op">)</span>, direction <span class="op">=</span> <span class="st">"left"</span>, keep.sources <span class="op">=</span> <span class="cn">FALSE</span>,
-      <span class="va">...</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co"># S3 method for matrix</span>
-<span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, amount <span class="op">=</span> <span class="cn">NULL</span>, minsep <span class="op">=</span> <span class="fl">0</span>,
-      constraint <span class="op">=</span> <span class="cn">NULL</span>, giveup <span class="op">=</span> <span class="fl">1000</span>, <span class="va">...</span><span class="op">)</span>
-<span class="co"># S3 method for default</span>
-<span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, amount <span class="op">=</span> <span class="cn">NULL</span>, minsep <span class="op">=</span> <span class="fl">0</span>,
-      direction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"symmetric"</span>, <span class="st">"left"</span>, <span class="st">"right"</span><span class="op">)</span>, sort <span class="op">=</span> <span class="cn">NULL</span>,
-      giveup <span class="op">=</span> <span class="fl">1000</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, <span class="va">amount</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for epidataCS</span></span>
+<span><span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, amount <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>t<span class="op">=</span><span class="cn">NULL</span>, s<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>,</span>
+<span>      minsep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>t<span class="op">=</span><span class="fl">0</span>, s<span class="op">=</span><span class="fl">0</span><span class="op">)</span>, direction <span class="op">=</span> <span class="st">"left"</span>, keep.sources <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>      <span class="va">...</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for matrix</span></span>
+<span><span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, amount <span class="op">=</span> <span class="cn">NULL</span>, minsep <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>      constraint <span class="op">=</span> <span class="cn">NULL</span>, giveup <span class="op">=</span> <span class="fl">1000</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">untie</span><span class="op">(</span><span class="va">x</span>, amount <span class="op">=</span> <span class="cn">NULL</span>, minsep <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>      direction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"symmetric"</span>, <span class="st">"left"</span>, <span class="st">"right"</span><span class="op">)</span>, sort <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>      giveup <span class="op">=</span> <span class="fl">1000</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>the data to be untied.</p></dd>
-<dt>amount</dt>
+
+  <dt>amount</dt>
 <dd><p>upper bound for the random amount by which data are shifted.
     <code>NULL</code> means to use a data-driven default, which equals
     the minimum separation of the data points for the non-symmetric
     default method and its half for the symmetric default method and the
     <code>matrix</code> method.</p></dd>
-<dt>minsep</dt>
+
+  <dt>minsep</dt>
 <dd><p>minimum separation of jittered points. Can only be
     obeyed if much smaller than <code>amount</code> (also depending on the
     number of points). <code>minsep&gt;0</code> is currently only implemented for
     the spatial (matrix) method.</p></dd>
-<dt>keep.sources</dt>
+
+  <dt>keep.sources</dt>
 <dd><p>logical (<code>FALSE</code>). If <code>TRUE</code>, the original list of
     possible event sources in <code>x$events$.sources</code> will be
     preserved. For instance, events observed at the same time did by
@@ -105,26 +108,33 @@
     <code>"epidataCS"</code> object. Note, however, that an update is forced
     within <code>twinstim</code> if a subset of the data is selected
     for model fitting or if a different <code>qmatrix</code> is supplied.</p></dd>
-<dt>constraint</dt>
+
+  <dt>constraint</dt>
 <dd><p>an object of class <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representing the domain which the points of the matrix should belong
     to -- before and after jittering.</p></dd>
-<dt>giveup</dt>
+
+  <dt>giveup</dt>
 <dd><p>number of attempts after which the
     algorithm should stop trying to generate new points.</p></dd>
-<dt>direction</dt>
+
+  <dt>direction</dt>
 <dd><p>one of <code>"symmetric"</code> (default), <code>"left"</code>, or
     <code>"right"</code>, indicating in which direction vector elements should
     be shifted.</p></dd>
-<dt>sort</dt>
+
+  <dt>sort</dt>
 <dd><p>logical indicating if the jittered vector should be sorted. Defaults
     to doing so if the original vector was already sorted.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>For the <code>"epidataCS"</code>-method: arguments passed to the
     <code>matrix</code>- or <code>default</code>-method (<code>giveup</code>).
     Unused in other methods.</p></dd>
-<dt>verbose</dt>
+
+  <dt>verbose</dt>
 <dd><p>logical passed to <code><a href="epidataCS.html">as.epidataCS</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -145,7 +155,9 @@
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>the untied (jittered) data.</p>
+    
+
+<p>the untied (jittered) data.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -158,20 +170,19 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># vector example</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="fu">untie</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>, direction<span class="op">=</span><span class="st">"left"</span>, sort<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="co"># spatial example</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">)</span>
-<span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">coords</span>, cex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="multiplicity.html">multiplicity</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="va">coords_untied</span> <span class="op">&lt;-</span> <span class="fu">untie</span><span class="op">(</span><span class="va">coords</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">anyDuplicated</a></span><span class="op">(</span><span class="va">coords_untied</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">coords_untied</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="co"># shifted by very small amount in this case</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># vector example</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="fu">untie</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>, direction<span class="op">=</span><span class="st">"left"</span>, sort<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># spatial example</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">)</span></span>
+<span><span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">coords</span>, cex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="multiplicity.html">multiplicity</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">coords_untied</span> <span class="op">&lt;-</span> <span class="fu">untie</span><span class="op">(</span><span class="va">coords</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">anyDuplicated</a></span><span class="op">(</span><span class="va">coords_untied</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">coords_untied</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="co"># shifted by very small amount in this case</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -182,7 +193,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

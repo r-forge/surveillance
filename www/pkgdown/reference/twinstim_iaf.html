@@ -10,7 +10,7 @@
   the constructor functions documented here.
   See Meyer and Held (2014) for various spatial interaction functions,
   and Meyer et al. (2017, Section 3, available as vignette("twinstim"))
-  for an illustration of the implementation.'><title>Temporal and Spatial Interaction Functions for twinstim — twinstim_iaf • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Temporal and Spatial Interaction Functions for twinstim — twinstim_iaf"><meta property="og:description" content='A twinstim model as described in Meyer et al. (2012) requires
+  for an illustration of the implementation.'><title>Temporal and Spatial Interaction Functions for twinstim — twinstim_iaf • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Temporal and Spatial Interaction Functions for twinstim — twinstim_iaf"><meta property="og:description" content='A twinstim model as described in Meyer et al. (2012) requires
   the specification of the spatial and temporal interaction functions
   (\(f\) and \(g\), respectively), 
   i.e. how infectivity decays with increasing spatial and temporal
@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,22 +84,22 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># predefined spatial interaction functions</span>
-<span class="fu">siaf.constant</span><span class="op">(</span><span class="op">)</span>
-<span class="fu">siaf.step</span><span class="op">(</span><span class="va">knots</span>, maxRange <span class="op">=</span> <span class="cn">Inf</span>, nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu">siaf.gaussian</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, logsd <span class="op">=</span> <span class="cn">TRUE</span>, density <span class="op">=</span> <span class="cn">FALSE</span>,
-              F.adaptive <span class="op">=</span> <span class="cn">FALSE</span>, F.method <span class="op">=</span> <span class="st">"iso"</span>,
-              effRangeMult <span class="op">=</span> <span class="fl">6</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu">siaf.exponential</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span>
-<span class="fu">siaf.powerlaw</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span>
-<span class="fu">siaf.powerlaw1</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, sigma <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu">siaf.powerlawL</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span>
-<span class="fu">siaf.student</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span>
-
-<span class="co"># predefined temporal interaction functions</span>
-<span class="fu">tiaf.constant</span><span class="op">(</span><span class="op">)</span>
-<span class="fu">tiaf.step</span><span class="op">(</span><span class="va">knots</span>, maxRange <span class="op">=</span> <span class="cn">Inf</span>, nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu">tiaf.exponential</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># predefined spatial interaction functions</span></span>
+<span><span class="fu">siaf.constant</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">siaf.step</span><span class="op">(</span><span class="va">knots</span>, maxRange <span class="op">=</span> <span class="cn">Inf</span>, nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">siaf.gaussian</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, logsd <span class="op">=</span> <span class="cn">TRUE</span>, density <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>              F.adaptive <span class="op">=</span> <span class="cn">FALSE</span>, F.method <span class="op">=</span> <span class="st">"iso"</span>,</span>
+<span>              effRangeMult <span class="op">=</span> <span class="fl">6</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">siaf.exponential</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span></span>
+<span><span class="fu">siaf.powerlaw</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span></span>
+<span><span class="fu">siaf.powerlaw1</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, sigma <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu">siaf.powerlawL</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span></span>
+<span><span class="fu">siaf.student</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span>, engine <span class="op">=</span> <span class="st">"C"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># predefined temporal interaction functions</span></span>
+<span><span class="fu">tiaf.constant</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">tiaf.step</span><span class="op">(</span><span class="va">knots</span>, maxRange <span class="op">=</span> <span class="cn">Inf</span>, nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">tiaf.exponential</span><span class="op">(</span>nTypes <span class="op">=</span> <span class="fl">1</span>, validpars <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -116,7 +116,8 @@
     For instance, an identifiable spatial step function could be
     <code>siaf.step(quantile(<a href="epidataCS.html">getSourceDists</a>(myepi, "space"), c(1,2,4)/10))</code>,
     where <code>myepi</code> is the <code>"epidataCS"</code> data to be modelled.</p></dd>
-<dt>maxRange</dt>
+
+  <dt>maxRange</dt>
 <dd><p>a scalar larger than any of <code>knots</code>.
     Per default (<code>maxRange=Inf</code>), the step function
     never drops to 0 but keeps the last height for any distance larger
@@ -126,7 +127,8 @@
     interaction at a distance <code>maxRange</code> (just like what the
     variables <code>eps.s</code> and <code>eps.t</code> do in the
     <code>"<a href="epidataCS.html">epidataCS</a>"</code> object).</p></dd>
-<dt>nTypes</dt>
+
+  <dt>nTypes</dt>
 <dd><p>determines the number of parameters ((log-)scales or (log-)shapes)
     of the kernels. In a multitype epidemic, the different types may
     share the same spatial interaction function, in which case
@@ -136,7 +138,8 @@
     Currently, <code>nTypes &gt; 1</code> is only implemented for
     <code>siaf.gaussian(F.adaptive = TRUE)</code>,
     <code>tiaf.step</code>, and <code>tiaf.exponential</code>.</p></dd>
-<dt>logsd,density</dt>
+
+  <dt>logsd,density</dt>
 <dd><p>logicals affecting the parametrization of the Gaussian kernel.
     Settings different from the defaults are deprecated.
     The default is to use only the kernel of the bivariate, isotropic
@@ -145,7 +148,8 @@
     avoid constrained optimisation (L-BFGS-B) or <code>validpars</code>.<br>
     The power-law kernels always employ the log-scale for their scale
     and shape parameters.</p></dd>
-<dt>F.adaptive,F.method</dt>
+
+  <dt>F.adaptive,F.method</dt>
 <dd><p>If <code>F.adaptive = TRUE</code>, then an adaptive bandwidth of
     <code>adapt*sd</code> will be used in the midpoint-cubature
     (<code><a href="https://rdrr.io/pkg/polyCub/man/polyCub.midpoint.html" class="external-link">polyCub.midpoint</a></code> in package <span class="pkg">polyCub</span>)
@@ -162,7 +166,8 @@
     <code>nGQ</code>, <code>rel.tol</code>, or <code>eps</code>, depending on the cubature
     method) can then be adjusted in <code>twinstim</code>'s
     <code>control.siaf$F</code> argument.</p></dd>
-<dt>effRangeMult</dt>
+
+  <dt>effRangeMult</dt>
 <dd><p>determines the effective range for numerical integration
     in terms of multiples of the standard deviation \(\sigma\) of the
     Gaussian kernel, i.e. with <code>effRangeMult=6</code>
@@ -171,13 +176,15 @@
     of the whole observation region <code>W</code>.
     Setting <code>effRangeMult=NULL</code> will disable
     the integral approximation with an effective integration range.</p></dd>
-<dt>validpars</dt>
+
+  <dt>validpars</dt>
 <dd><p>function taking one argument, the parameter vector, indicating if it
     is valid (see also <code><a href="twinstim_siaf.html">siaf</a></code>).
     If <code>logsd=FALSE</code> and one prefers not to use
     <code>method="L-BFGS-B"</code> for fitting the <code>twinstim</code>, then
     <code>validpars</code> could be set to <code>function (pars) pars &gt; 0</code>.</p></dd>
-<dt>engine</dt>
+
+  <dt>engine</dt>
 <dd><p>character string specifying the implementation to use.
     Prior to <span class="pkg">surveillance</span> 0.14.0, the <code>intrfr</code> functions for
     <code>polyCub.iso</code> were evaluated in <span style="R">R</span> (and this
@@ -185,8 +192,10 @@
     The new C-implementation, <samp>LinkingTo</samp> the newly exported
     <code>polyCub_iso</code> C-implementation in <span class="pkg">polyCub</span> 0.6.0,
     is considerably faster.</p></dd>
-<dt>sigma</dt>
+
+  <dt>sigma</dt>
 <dd><p>Fixed value of \(\sigma\) for the one-parameter power-law kernel.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -304,7 +313,9 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The specification of an interaction function, which is a list.
+    
+
+<p>The specification of an interaction function, which is a list.
   See <code><a href="twinstim_siaf.html">siaf</a></code> and <code><a href="twinstim_tiaf.html">tiaf</a></code>, respectively, for a
   description of its components.</p>
     </div>
@@ -318,16 +329,16 @@
 <p>Meyer, S., Elias, J. and Höhle, M. (2012):
   A space-time conditional intensity model for invasive meningococcal
   disease occurrence. <em>Biometrics</em>, <b>68</b>, 607-616.
-  doi: <a href="https://doi.org/10.1111/j.1541-0420.2011.01684.x" class="external-link">10.1111/j.1541-0420.2011.01684.x</a></p>
+  <a href="https://doi.org/10.1111/j.1541-0420.2011.01684.x" class="external-link">doi:10.1111/j.1541-0420.2011.01684.x</a></p>
 <p>Meyer, S. and Held, L. (2014):
   Power-law models for infectious disease spread.
   <em>The Annals of Applied Statistics</em>, <b>8</b> (3), 1612-1639.
-  doi: <a href="https://doi.org/10.1214/14-AOAS743" class="external-link">10.1214/14-AOAS743</a></p>
+  <a href="https://doi.org/10.1214/14-AOAS743" class="external-link">doi:10.1214/14-AOAS743</a></p>
 <p>Meyer, S., Held, L. and Höhle, M. (2017):
   Spatio-temporal analysis of epidemic phenomena using the <span style="R">R</span> package
   <span class="pkg">surveillance</span>.
   <em>Journal of Statistical Software</em>, <b>77</b> (11), 1-55.
-  doi: <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">10.18637/jss.v077.i11</a></p>
+  <a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">doi:10.18637/jss.v077.i11</a></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -341,38 +352,37 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># constant temporal dispersal</span>
-<span class="fu">tiaf.constant</span><span class="op">(</span><span class="op">)</span>
-<span class="co"># step function kernel</span>
-<span class="fu">tiaf.step</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span>, maxRange<span class="op">=</span><span class="fl">14</span>, nTypes<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-<span class="co"># exponential temporal decay</span>
-<span class="fu">tiaf.exponential</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Type-dependent Gaussian spatial interaction function using an adaptive</span>
-<span class="co"># two-dimensional midpoint-rule to integrate it over polygonal domains</span>
-<span class="fu">siaf.gaussian</span><span class="op">(</span><span class="fl">2</span>, F.adaptive<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co"># Single-type Gaussian spatial interaction function (using polyCub.iso)</span>
-<span class="fu">siaf.gaussian</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Exponential kernel</span>
-<span class="fu">siaf.exponential</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Power-law kernel</span>
-<span class="fu">siaf.powerlaw</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># Power-law kernel with fixed sigma = 1</span>
-<span class="fu">siaf.powerlaw1</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># "lagged" power-law</span>
-<span class="fu">siaf.powerlawL</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># (reparametrized) t-kernel</span>
-<span class="fu">siaf.student</span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># step function kernel</span>
-<span class="fu">siaf.step</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">50</span><span class="op">)</span>, maxRange<span class="op">=</span><span class="fl">100</span><span class="op">)</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># constant temporal dispersal</span></span>
+<span><span class="fu">tiaf.constant</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># step function kernel</span></span>
+<span><span class="fu">tiaf.step</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">7</span><span class="op">)</span>, maxRange<span class="op">=</span><span class="fl">14</span>, nTypes<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># exponential temporal decay</span></span>
+<span><span class="fu">tiaf.exponential</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Type-dependent Gaussian spatial interaction function using an adaptive</span></span>
+<span><span class="co"># two-dimensional midpoint-rule to integrate it over polygonal domains</span></span>
+<span><span class="fu">siaf.gaussian</span><span class="op">(</span><span class="fl">2</span>, F.adaptive<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Single-type Gaussian spatial interaction function (using polyCub.iso)</span></span>
+<span><span class="fu">siaf.gaussian</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Exponential kernel</span></span>
+<span><span class="fu">siaf.exponential</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Power-law kernel</span></span>
+<span><span class="fu">siaf.powerlaw</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Power-law kernel with fixed sigma = 1</span></span>
+<span><span class="fu">siaf.powerlaw1</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># "lagged" power-law</span></span>
+<span><span class="fu">siaf.powerlawL</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># (reparametrized) t-kernel</span></span>
+<span><span class="fu">siaf.student</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># step function kernel</span></span>
+<span><span class="fu">siaf.step</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">20</span>,<span class="fl">50</span><span class="op">)</span>, maxRange<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -383,7 +393,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

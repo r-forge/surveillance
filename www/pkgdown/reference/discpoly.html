@@ -4,7 +4,7 @@
   classes: "Polygon",
   "owin", or -- if rgeos (or
   gpclib) are available --
-  "gpc.poly".'><title>Polygonal Approximation of a Disc/Circle — discpoly • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Polygonal Approximation of a Disc/Circle — discpoly"><meta property="og:description" content='Generates a polygon representing a disc/circle (in planar
+  "gpc.poly".'><title>Polygonal Approximation of a Disc/Circle — discpoly • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Polygonal Approximation of a Disc/Circle — discpoly"><meta property="og:description" content='Generates a polygon representing a disc/circle (in planar
   coordinates) as an object of one of three possible
   classes: "Polygon",
   "owin", or -- if rgeos (or
@@ -20,7 +20,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,32 +66,47 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">discpoly</span><span class="op">(</span><span class="va">center</span>, <span class="va">radius</span>, npoly <span class="op">=</span> <span class="fl">64</span>,
-         class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Polygon"</span>, <span class="st">"owin"</span>, <span class="st">"gpc.poly"</span><span class="op">)</span>,
-         hole <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">discpoly</span><span class="op">(</span><span class="va">center</span>, <span class="va">radius</span>, npoly <span class="op">=</span> <span class="fl">64</span>,</span>
+<span>         class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Polygon"</span>, <span class="st">"owin"</span>, <span class="st">"gpc.poly"</span><span class="op">)</span>,</span>
+<span>         hole <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>center</dt>
 <dd><p>numeric vector of length 2 (center coordinates of the circle).</p></dd>
-<dt>radius</dt>
+
+
+  <dt>radius</dt>
 <dd><p>single numeric value (radius of the circle).</p></dd>
-<dt>npoly</dt>
+
+
+  <dt>npoly</dt>
 <dd><p>single integer. Number of edges of the polygonal approximation.</p></dd>
-<dt>class</dt>
+
+
+  <dt>class</dt>
 <dd><p>class of the resulting polygon (partial name
   matching applies). For <code>"owin"</code>, this is just a
   wrapper around <span class="pkg">spatstat.geom</span>'s own <code><a href="https://rdrr.io/pkg/spatstat.geom/man/disc.html" class="external-link">disc</a></code> function.</p></dd>
-<dt>hole</dt>
+
+
+  <dt>hole</dt>
 <dd><p>logical. Does the resulting polygon represent a hole?</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A polygon of class <code>class</code> representing a
-  circle/disc with <code>npoly</code> edges accuracy.<br>  If <code>class="gpc.poly"</code> although this formal class is not
-  currently defined (and <span class="pkg">rgeos</span> is not available), only the
-<code>pts</code> slot of a <code>"gpc.poly"</code> is returned with a warning.</p>
+    
+
+<p>A polygon of class <code>class</code> representing a
+  circle/disc with <code>npoly</code> edges accuracy.<br></p>
+
+
+<p>If <code>class="gpc.poly"</code> although this formal class is not
+  currently defined (and <span class="pkg">rgeos</span> is not available), only the</p>
+<p></p>
+<p><code>pts</code> slot of a <code>"gpc.poly"</code> is returned with a warning.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -106,26 +121,25 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co">## Construct circles with increasing accuracy and of different spatial classes</span>
-<span class="va">disc1</span> <span class="op">&lt;-</span> <span class="fu">discpoly</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">5</span>, npoly<span class="op">=</span><span class="fl">4</span>, class <span class="op">=</span> <span class="st">"owin"</span><span class="op">)</span>
-<span class="va">disc2</span> <span class="op">&lt;-</span> <span class="fu">discpoly</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">5</span>, npoly<span class="op">=</span><span class="fl">16</span>, class <span class="op">=</span> <span class="st">"Polygon"</span><span class="op">)</span>
-
-<span class="co">## Look at the results</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">disc1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">disc1</span>, axes<span class="op">=</span><span class="cn">TRUE</span>, main<span class="op">=</span><span class="st">""</span>, border<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">disc2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">disc2</span>, col<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rgeos"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># for the "gpc.poly" class definition</span>
-    <span class="va">disc3</span> <span class="op">&lt;-</span> <span class="fu">discpoly</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">5</span>, npoly<span class="op">=</span><span class="fl">64</span>, class <span class="op">=</span> <span class="st">"gpc.poly"</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">disc3</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">disc3</span>, add<span class="op">=</span><span class="cn">TRUE</span>, poly.args<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>border<span class="op">=</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="co">## if one only wants to _draw_ a circle without an object behind</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/symbols.html" class="external-link">symbols</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, circles<span class="op">=</span><span class="fl">5</span>, inches<span class="op">=</span><span class="cn">FALSE</span>, add<span class="op">=</span><span class="cn">TRUE</span>, fg<span class="op">=</span><span class="fl">5</span><span class="op">)</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co">## Construct circles with increasing accuracy and of different spatial classes</span></span>
+<span><span class="va">disc1</span> <span class="op">&lt;-</span> <span class="fu">discpoly</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">5</span>, npoly<span class="op">=</span><span class="fl">4</span>, class <span class="op">=</span> <span class="st">"owin"</span><span class="op">)</span></span>
+<span><span class="va">disc2</span> <span class="op">&lt;-</span> <span class="fu">discpoly</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">5</span>, npoly<span class="op">=</span><span class="fl">16</span>, class <span class="op">=</span> <span class="st">"Polygon"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Look at the results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">disc1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">disc1</span>, axes<span class="op">=</span><span class="cn">TRUE</span>, main<span class="op">=</span><span class="st">""</span>, border<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">disc2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">disc2</span>, col<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rgeos"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> <span class="co"># for the "gpc.poly" class definition</span></span>
+<span>    <span class="va">disc3</span> <span class="op">&lt;-</span> <span class="fu">discpoly</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">5</span>, npoly<span class="op">=</span><span class="fl">64</span>, class <span class="op">=</span> <span class="st">"gpc.poly"</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">disc3</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">disc3</span>, add<span class="op">=</span><span class="cn">TRUE</span>, poly.args<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>border<span class="op">=</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co">## if one only wants to _draw_ a circle without an object behind</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/symbols.html" class="external-link">symbols</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, circles<span class="op">=</span><span class="fl">5</span>, inches<span class="op">=</span><span class="cn">FALSE</span>, add<span class="op">=</span><span class="cn">TRUE</span>, fg<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -136,7 +150,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

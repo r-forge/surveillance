@@ -6,7 +6,7 @@
   for example manual quality checking and reporting system
   hierarchies. Altogether, the delays are subject to a delay distribution,
   which may, or may not, vary over time."><title>Adjust a univariate time series of counts for observed
-  but-not-yet-reported events — nowcast • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Adjust a univariate time series of counts for observed
+  but-not-yet-reported events — nowcast • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Adjust a univariate time series of counts for observed
   but-not-yet-reported events — nowcast"><meta property="og:description" content="Nowcasting can help to obtain up-to-date information on trends during
   a situation where reports about events arrive with delay. For example
   in public health reporting, reports about important
@@ -24,7 +24,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,24 +72,24 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">nowcast</span><span class="op">(</span><span class="va">now</span>, <span class="va">when</span>, <span class="va">data</span>, dEventCol<span class="op">=</span><span class="st">"dHospital"</span>, dReportCol<span class="op">=</span><span class="st">"dReport"</span>,
-        method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bayes.notrunc"</span>, <span class="st">"bayes.notrunc.bnb"</span>, <span class="st">"lawless"</span>,
-                 <span class="st">"bayes.trunc"</span>, <span class="st">"unif"</span>, <span class="st">"bayes.trunc.ddcp"</span><span class="op">)</span>,
-        aggregate.by<span class="op">=</span><span class="st">"1 day"</span>,
-        D<span class="op">=</span><span class="fl">15</span>,
-        m<span class="op">=</span><span class="cn">NULL</span>, m.interpretation<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hoehle_anderheiden2014"</span>, <span class="st">"lawless1994"</span><span class="op">)</span>,
-        control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-            dRange<span class="op">=</span><span class="cn">NULL</span>, alpha<span class="op">=</span><span class="fl">0.05</span>, nSamples<span class="op">=</span><span class="fl">1e3</span>,
-            N.tInf.prior<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"poisgamma"</span>,<span class="st">"pois"</span>,<span class="st">"unif"</span><span class="op">)</span>,
-            N.tInf.max<span class="op">=</span><span class="fl">300</span>, gd.prior.kappa<span class="op">=</span><span class="fl">0.1</span>,
-            ddcp<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ddChangepoint<span class="op">=</span><span class="cn">NULL</span>,
-                      cp_order<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"zero"</span>,<span class="st">"one"</span><span class="op">)</span>,
-                      Wextra<span class="op">=</span><span class="cn">NULL</span>,
-                      logLambda<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"iidLogGa"</span>,<span class="st">"tps"</span>,<span class="st">"rw1"</span>,<span class="st">"rw2"</span><span class="op">)</span>,
-                      responseDistr<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"poisson"</span>, <span class="st">"negbin"</span><span class="op">)</span>,
-                      mcmc<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>burnin<span class="op">=</span><span class="fl">2500</span>, sample<span class="op">=</span><span class="fl">10000</span>, thin<span class="op">=</span><span class="fl">1</span>, adapt<span class="op">=</span><span class="fl">1000</span>,
-                             store.samples<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>,
-            score<span class="op">=</span><span class="cn">FALSE</span>, predPMF<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nowcast</span><span class="op">(</span><span class="va">now</span>, <span class="va">when</span>, <span class="va">data</span>, dEventCol<span class="op">=</span><span class="st">"dHospital"</span>, dReportCol<span class="op">=</span><span class="st">"dReport"</span>,</span>
+<span>        method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bayes.notrunc"</span>, <span class="st">"bayes.notrunc.bnb"</span>, <span class="st">"lawless"</span>,</span>
+<span>                 <span class="st">"bayes.trunc"</span>, <span class="st">"unif"</span>, <span class="st">"bayes.trunc.ddcp"</span><span class="op">)</span>,</span>
+<span>        aggregate.by<span class="op">=</span><span class="st">"1 day"</span>,</span>
+<span>        D<span class="op">=</span><span class="fl">15</span>,</span>
+<span>        m<span class="op">=</span><span class="cn">NULL</span>, m.interpretation<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hoehle_anderheiden2014"</span>, <span class="st">"lawless1994"</span><span class="op">)</span>,</span>
+<span>        control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>            dRange<span class="op">=</span><span class="cn">NULL</span>, alpha<span class="op">=</span><span class="fl">0.05</span>, nSamples<span class="op">=</span><span class="fl">1e3</span>,</span>
+<span>            N.tInf.prior<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"poisgamma"</span>,<span class="st">"pois"</span>,<span class="st">"unif"</span><span class="op">)</span>,</span>
+<span>            N.tInf.max<span class="op">=</span><span class="fl">300</span>, gd.prior.kappa<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span>            ddcp<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ddChangepoint<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>                      cp_order<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"zero"</span>,<span class="st">"one"</span><span class="op">)</span>,</span>
+<span>                      Wextra<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>                      logLambda<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"iidLogGa"</span>,<span class="st">"tps"</span>,<span class="st">"rw1"</span>,<span class="st">"rw2"</span><span class="op">)</span>,</span>
+<span>                      responseDistr<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"poisson"</span>, <span class="st">"negbin"</span><span class="op">)</span>,</span>
+<span>                      mcmc<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>burnin<span class="op">=</span><span class="fl">2500</span>, sample<span class="op">=</span><span class="fl">10000</span>, thin<span class="op">=</span><span class="fl">1</span>, adapt<span class="op">=</span><span class="fl">1000</span>,</span>
+<span>                             store.samples<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            score<span class="op">=</span><span class="cn">FALSE</span>, predPMF<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -98,22 +98,27 @@
 <dd><p>an object of class <code>Date</code> denoting the day at which to do the
     nowcast. This corresponds to \(T\) in the notation of
     Höhle and an der Heiden (2014).</p></dd>
-<dt>when</dt>
+
+  <dt>when</dt>
 <dd><p>a vector of <code>Date</code> objects denoting the day(s) for which
     the projections are to be done. One needs to ensure that each
     element in <code>when</code> is smaller or equal to <code>now</code>.</p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>A data frame with one row per case -- for each case on needs
     information on the day of the event (e.g. hospitalization) and the
     day of report of this event.</p></dd>
-<dt>dEventCol</dt>
+
+  <dt>dEventCol</dt>
 <dd><p>The name of the column in <code>data</code> which contains the
     date of the event, e.g. hospitalization. Default: <code>"dHospital"</code>.</p></dd>
-<dt>dReportCol</dt>
+
+  <dt>dReportCol</dt>
 <dd><p>Name of the column in <code>data</code> containing the date at
     which the report arrives at the respective register. Default:
     <code>"dReport"</code>.</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>A vector of strings denoting the different methods for doing
     the nowcasting. Note that results of the first name in this list are
     officially
@@ -151,21 +156,25 @@
 
     
 </dl><p></p></dd>
-<dt>aggregate.by</dt>
+
+  <dt>aggregate.by</dt>
 <dd><p>Time scale used for the temporal aggregation of
     the records in the data <code>data</code>. See
     <code><a href="linelist2sts.html">linelist2sts</a></code> and <code><a href="https://rdrr.io/r/base/seq.Date.html" class="external-link">seq.Date</a></code> for further
   information.</p></dd>
-<dt>D</dt>
+
+  <dt>D</dt>
 <dd><p>Maximum possible or maximum relevant delay (unit:
     <code>aggregate.by</code>). Default: 15.</p></dd>
-<dt>m</dt>
+
+  <dt>m</dt>
 <dd><p>Size of the moving window for the estimation of the delay
     distribution. Default: <code>NULL</code>, i.e. take all values at all
   times. Otherwise: a positive integer equal to or greater than <code>D</code>
   such that only values from a sliding window are used. The shape of the
   window depends on the value of <code>m.interpretation</code>.</p></dd>
-<dt>m.interpretation</dt>
+
+  <dt>m.interpretation</dt>
 <dd><p>This parameter controls the interpretation of
   the sliding window used to estimate the delay distribution. If
   <code>m.interpretation="hoehle_anderheiden2014"</code> (Default) then the
@@ -187,7 +196,8 @@
   occured during <code>(now-m-d):now</code>. See Fig. 2 in Lawless (1994) for
   details. Note: A warning is given is
   <code>method="lawless"</code>, but <code>m.interpretation</code> is not.</p></dd>
-<dt>control</dt>
+
+  <dt>control</dt>
 <dd><p>A list with named arguments controlling the
     functionality of the nowcasting.</p><dl><dt>dRange</dt>
 <dd><p>Default: <code>NULL</code>. In this case the
@@ -241,7 +251,7 @@
   very dynamic epidemic situations where a lot of cases suddenly appear
   overwhelming the surveillance system infrastructure.</p></dd>
 
-	  <dt>codeWextra</dt>
+	  <dt><code>Wextra</code></dt>
 <dd><p>An additional design matrix part to be joined
   onto the part originating from the change-points. Altogether, the
   column bind of these two quantities will be \(W_{t,d}\). This allows
@@ -292,6 +302,7 @@
 
     
 </dl><p></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -300,8 +311,10 @@
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>nowcast</code> returns an object of <code>"<a href="stsNC-class.html">stsNC</a>"</code>. The
-<code>upperbound</code> slot contains the median of the method specified at
+    <p></p>
+<p><code>nowcast</code> returns an object of <code>"<a href="stsNC-class.html">stsNC</a>"</code>. The</p>
+<p></p>
+<p><code>upperbound</code> slot contains the median of the method specified at
   the first position the argument <code>method</code>. The slot <code>pi</code> (for
   prediction interval)
   contains the equal tailed (1-\(\alpha\))*100% prediction
@@ -316,16 +329,16 @@
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Höhle, M. and an der Heiden, M. (2014): Bayesian nowcasting
   during the STEC O104:H4 outbreak in Germany, 2011. <em>Biometrics</em>
-  70(4):993-1002. doi: <a href="https://doi.org/10.1111/biom.12194" class="external-link">10.1111/biom.12194</a>
+  70(4):993-1002. <a href="https://doi.org/10.1111/biom.12194" class="external-link">doi:10.1111/biom.12194</a>
 .<br>
   A preprint is available as
   <a href="https://staff.math.su.se/hoehle/pubs/hoehle_anderheiden2014-preprint.pdf" class="external-link">https://staff.math.su.se/hoehle/pubs/hoehle_anderheiden2014-preprint.pdf</a>.</p>
 <p>Günther, F. and Bender, A. and Katz, K. and
   Küchenhoff, H. and Höhle, M. (2020):
   Nowcasting the COVID-19 pandemic in Bavaria.
-  <em>Biometrical Journal</em>. doi: <a href="https://doi.org/10.1002/bimj.202000112" class="external-link">10.1002/bimj.202000112</a>
+  <em>Biometrical Journal</em>. <a href="https://doi.org/10.1002/bimj.202000112" class="external-link">doi:10.1002/bimj.202000112</a>
 <br>
-  Preprint available at doi: <a href="https://doi.org/10.1101/2020.06.26.20140210" class="external-link">10.1101/2020.06.26.20140210</a>
+  Preprint available at <a href="https://doi.org/10.1101/2020.06.26.20140210" class="external-link">doi:10.1101/2020.06.26.20140210</a>
 .</p>
     </div>
     <div class="section level2">
@@ -349,63 +362,62 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"husO104Hosp"</span><span class="op">)</span>
-
-<span class="co">#Extract the reporting triangle at a specific day</span>
-<span class="va">t.repTriangle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2011-07-04"</span><span class="op">)</span>
-
-<span class="co">#Use 'void' nowcasting procedure (we just want the reporting triangle)</span>
-<span class="va">nc</span> <span class="op">&lt;-</span> <span class="fu">nowcast</span><span class="op">(</span>now<span class="op">=</span><span class="va">t.repTriangle</span>,when<span class="op">=</span><span class="va">t.repTriangle</span>,
-              dEventCol<span class="op">=</span><span class="st">"dHosp"</span>,dReportCol<span class="op">=</span><span class="st">"dReport"</span>,data<span class="op">=</span><span class="va">husO104Hosp</span>,
-              D<span class="op">=</span><span class="fl">15</span>,method<span class="op">=</span><span class="st">"unif"</span><span class="op">)</span>
-
-<span class="co">#Show reporting triangle</span>
-<span class="fu"><a href="stsNC-class.html">reportingTriangle</a></span><span class="op">(</span><span class="va">nc</span><span class="op">)</span>
-
-<span class="co">#Perform Bayesian nowcasting assuming the delay distribution is stable over time</span>
-<span class="va">nc.control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>N.tInf.prior<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="st">"poisgamma"</span>,
-                                mean.lambda<span class="op">=</span><span class="fl">50</span>,var.lambda<span class="op">=</span><span class="fl">3000</span><span class="op">)</span>,
-                                nSamples<span class="op">=</span><span class="fl">1e2</span><span class="op">)</span>
-
-<span class="va">t.repTriangle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2011-06-10"</span><span class="op">)</span>
-<span class="va">when</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">t.repTriangle</span><span class="op">-</span><span class="fl">3</span>,length.out<span class="op">=</span><span class="fl">10</span>,by<span class="op">=</span><span class="st">"-1 day"</span><span class="op">)</span>
-<span class="va">nc</span> <span class="op">&lt;-</span> <span class="fu">nowcast</span><span class="op">(</span>now<span class="op">=</span><span class="va">t.repTriangle</span>,when<span class="op">=</span><span class="va">when</span>,
-              dEventCol<span class="op">=</span><span class="st">"dHosp"</span>,dReportCol<span class="op">=</span><span class="st">"dReport"</span>,data<span class="op">=</span><span class="va">husO104Hosp</span>,
-              D<span class="op">=</span><span class="fl">15</span>,method<span class="op">=</span><span class="st">"bayes.trunc"</span>,control<span class="op">=</span><span class="va">nc.control</span><span class="op">)</span>
-
-<span class="co">#Show time series and posterior median forecast/nowcast</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nc</span>,xaxis.tickFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">atChange</span>,<span class="st">"%m"</span><span class="op">=</span><span class="va">atChange</span><span class="op">)</span>,
-     xaxis.labelFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">at2ndChange</span><span class="op">)</span>,xaxis.labelFormat<span class="op">=</span><span class="st">"%d-%b"</span>,
-     xlab<span class="op">=</span><span class="st">"Time (days)"</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">### Using runjags to do a Bayesian model with changepoint(s)</span>
-<span class="co">### -- this might take a while</span>
-<span class="va">nc.control.ddcp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html" class="external-link">modifyList</a></span><span class="op">(</span><span class="va">nc.control</span>,
-                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>gd.prior.kappa<span class="op">=</span><span class="fl">0.1</span>,
-                         ddcp<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ddChangepoint<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2011-05-23"</span><span class="op">)</span><span class="op">)</span>,
-                             logLambda<span class="op">=</span><span class="st">"tps"</span>,
-                             tau.gamma<span class="op">=</span><span class="fl">1</span>,
-                             mcmc<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>burnin<span class="op">=</span><span class="fl">1000</span>,sample<span class="op">=</span><span class="fl">1000</span>,thin<span class="op">=</span><span class="fl">1</span>,
-                                    adapt<span class="op">=</span><span class="fl">1000</span>,store.samples<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">nc.ddcp</span> <span class="op">&lt;-</span> <span class="fu">nowcast</span><span class="op">(</span>now<span class="op">=</span><span class="va">t.repTriangle</span>,when<span class="op">=</span><span class="va">when</span>,
-               dEventCol<span class="op">=</span><span class="st">"dHosp"</span>,dReportCol<span class="op">=</span><span class="st">"dReport"</span>,
-               data<span class="op">=</span><span class="va">husO104Hosp</span>, aggregate.by<span class="op">=</span><span class="st">"1 day"</span>,
-               method<span class="op">=</span><span class="st">"bayes.trunc.ddcp"</span>, D<span class="op">=</span><span class="fl">15</span>,
-                   control<span class="op">=</span><span class="va">nc.control.ddcp</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nc.ddcp</span>,legend.opts<span class="op">=</span><span class="cn">NULL</span>,
-     xaxis.tickFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">atChange</span>,<span class="st">"%m"</span><span class="op">=</span><span class="va">atChange</span><span class="op">)</span>,
-     xaxis.labelFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">at2ndChange</span><span class="op">)</span>,xaxis.labelFormat<span class="op">=</span><span class="st">"%d-%b"</span>,
-     xlab<span class="op">=</span><span class="st">"Time (days)"</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="fu"><a href="stsNC-class.html">delayCDF</a></span><span class="op">(</span><span class="va">nc.ddcp</span><span class="op">)</span><span class="op">[[</span><span class="st">"bayes.trunc.ddcp"</span><span class="op">]</span><span class="op">]</span>,<span class="st">"model"</span><span class="op">)</span><span class="op">$</span><span class="va">lambda</span>
-<span class="va">showIdx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">when</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="stsSlots.html">epoch</a></span><span class="op">(</span><span class="va">nc.ddcp</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#seq(ncol(lambda))</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matlines</a></span><span class="op">(</span> <span class="va">showIdx</span>,<span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">[</span><span class="va">showIdx</span>,<span class="op">]</span>,col<span class="op">=</span><span class="st">"gray"</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"topright"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fu">lambda</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>,<span class="st">"95% CI"</span><span class="op">)</span>,col<span class="op">=</span><span class="st">"gray"</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"husO104Hosp"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Extract the reporting triangle at a specific day</span></span>
+<span><span class="va">t.repTriangle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2011-07-04"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Use 'void' nowcasting procedure (we just want the reporting triangle)</span></span>
+<span><span class="va">nc</span> <span class="op">&lt;-</span> <span class="fu">nowcast</span><span class="op">(</span>now<span class="op">=</span><span class="va">t.repTriangle</span>,when<span class="op">=</span><span class="va">t.repTriangle</span>,</span>
+<span>              dEventCol<span class="op">=</span><span class="st">"dHosp"</span>,dReportCol<span class="op">=</span><span class="st">"dReport"</span>,data<span class="op">=</span><span class="va">husO104Hosp</span>,</span>
+<span>              D<span class="op">=</span><span class="fl">15</span>,method<span class="op">=</span><span class="st">"unif"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Show reporting triangle</span></span>
+<span><span class="fu"><a href="stsNC-class.html">reportingTriangle</a></span><span class="op">(</span><span class="va">nc</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Perform Bayesian nowcasting assuming the delay distribution is stable over time</span></span>
+<span><span class="va">nc.control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>N.tInf.prior<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="st">"poisgamma"</span>,</span>
+<span>                                mean.lambda<span class="op">=</span><span class="fl">50</span>,var.lambda<span class="op">=</span><span class="fl">3000</span><span class="op">)</span>,</span>
+<span>                                nSamples<span class="op">=</span><span class="fl">1e2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">t.repTriangle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2011-06-10"</span><span class="op">)</span></span>
+<span><span class="va">when</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="va">t.repTriangle</span><span class="op">-</span><span class="fl">3</span>,length.out<span class="op">=</span><span class="fl">10</span>,by<span class="op">=</span><span class="st">"-1 day"</span><span class="op">)</span></span>
+<span><span class="va">nc</span> <span class="op">&lt;-</span> <span class="fu">nowcast</span><span class="op">(</span>now<span class="op">=</span><span class="va">t.repTriangle</span>,when<span class="op">=</span><span class="va">when</span>,</span>
+<span>              dEventCol<span class="op">=</span><span class="st">"dHosp"</span>,dReportCol<span class="op">=</span><span class="st">"dReport"</span>,data<span class="op">=</span><span class="va">husO104Hosp</span>,</span>
+<span>              D<span class="op">=</span><span class="fl">15</span>,method<span class="op">=</span><span class="st">"bayes.trunc"</span>,control<span class="op">=</span><span class="va">nc.control</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Show time series and posterior median forecast/nowcast</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nc</span>,xaxis.tickFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">atChange</span>,<span class="st">"%m"</span><span class="op">=</span><span class="va">atChange</span><span class="op">)</span>,</span>
+<span>     xaxis.labelFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">at2ndChange</span><span class="op">)</span>,xaxis.labelFormat<span class="op">=</span><span class="st">"%d-%b"</span>,</span>
+<span>     xlab<span class="op">=</span><span class="st">"Time (days)"</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">### Using runjags to do a Bayesian model with changepoint(s)</span></span>
+<span><span class="co">### -- this might take a while</span></span>
+<span><span class="va">nc.control.ddcp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html" class="external-link">modifyList</a></span><span class="op">(</span><span class="va">nc.control</span>,</span>
+<span>                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>gd.prior.kappa<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span>                         ddcp<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ddChangepoint<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2011-05-23"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                             logLambda<span class="op">=</span><span class="st">"tps"</span>,</span>
+<span>                             tau.gamma<span class="op">=</span><span class="fl">1</span>,</span>
+<span>                             mcmc<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>burnin<span class="op">=</span><span class="fl">1000</span>,sample<span class="op">=</span><span class="fl">1000</span>,thin<span class="op">=</span><span class="fl">1</span>,</span>
+<span>                                    adapt<span class="op">=</span><span class="fl">1000</span>,store.samples<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nc.ddcp</span> <span class="op">&lt;-</span> <span class="fu">nowcast</span><span class="op">(</span>now<span class="op">=</span><span class="va">t.repTriangle</span>,when<span class="op">=</span><span class="va">when</span>,</span>
+<span>               dEventCol<span class="op">=</span><span class="st">"dHosp"</span>,dReportCol<span class="op">=</span><span class="st">"dReport"</span>,</span>
+<span>               data<span class="op">=</span><span class="va">husO104Hosp</span>, aggregate.by<span class="op">=</span><span class="st">"1 day"</span>,</span>
+<span>               method<span class="op">=</span><span class="st">"bayes.trunc.ddcp"</span>, D<span class="op">=</span><span class="fl">15</span>,</span>
+<span>                   control<span class="op">=</span><span class="va">nc.control.ddcp</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nc.ddcp</span>,legend.opts<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>     xaxis.tickFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">atChange</span>,<span class="st">"%m"</span><span class="op">=</span><span class="va">atChange</span><span class="op">)</span>,</span>
+<span>     xaxis.labelFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%d"</span><span class="op">=</span><span class="va">at2ndChange</span><span class="op">)</span>,xaxis.labelFormat<span class="op">=</span><span class="st">"%d-%b"</span>,</span>
+<span>     xlab<span class="op">=</span><span class="st">"Time (days)"</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="fu"><a href="stsNC-class.html">delayCDF</a></span><span class="op">(</span><span class="va">nc.ddcp</span><span class="op">)</span><span class="op">[[</span><span class="st">"bayes.trunc.ddcp"</span><span class="op">]</span><span class="op">]</span>,<span class="st">"model"</span><span class="op">)</span><span class="op">$</span><span class="va">lambda</span></span>
+<span><span class="va">showIdx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">when</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="stsSlots.html">epoch</a></span><span class="op">(</span><span class="va">nc.ddcp</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co">#seq(ncol(lambda))</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matlines</a></span><span class="op">(</span> <span class="va">showIdx</span>,<span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">[</span><span class="va">showIdx</span>,<span class="op">]</span>,col<span class="op">=</span><span class="st">"gray"</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x<span class="op">=</span><span class="st">"topright"</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="fu">lambda</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>,<span class="st">"95% CI"</span><span class="op">)</span>,col<span class="op">=</span><span class="st">"gray"</span>,lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>,lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -416,7 +428,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

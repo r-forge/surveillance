@@ -4,7 +4,7 @@ number of events along the time axis (epidataCSplot_time) as a
 hist(), or the locations of the events in the observation region
 W (epidataCSplot_space).
 The spatial plot can be enriched with tile-specific color levels to
-indicate attributes such as the population (using spplot).'><title>Plotting the Events of an Epidemic over Time and Space — epidataCS_plot • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Plotting the Events of an Epidemic over Time and Space — epidataCS_plot"><meta property="og:description" content='The plot method for class "epidataCS" either plots the
+indicate attributes such as the population (using spplot).'><title>Plotting the Events of an Epidemic over Time and Space — epidataCS_plot • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Plotting the Events of an Epidemic over Time and Space — epidataCS_plot"><meta property="og:description" content='The plot method for class "epidataCS" either plots the
 number of events along the time axis (epidataCSplot_time) as a
 hist(), or the locations of the events in the observation region
 W (epidataCSplot_space).
@@ -20,7 +20,7 @@ indicate attributes such as the population (using spplot).'><meta name="twitter:
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,28 +66,29 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for epidataCS</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, aggregate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"time"</span>, <span class="st">"space"</span><span class="op">)</span>, <span class="va">subset</span>, by <span class="op">=</span> <span class="va">type</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">epidataCSplot_time</span><span class="op">(</span><span class="va">x</span>, <span class="va">subset</span>, by <span class="op">=</span> <span class="va">type</span>,
-                   t0.Date <span class="op">=</span> <span class="cn">NULL</span>, breaks <span class="op">=</span> <span class="st">"stgrid"</span>, freq <span class="op">=</span> <span class="cn">TRUE</span>,
-                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="va">nTypes</span><span class="op">)</span>, cumulative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-                   add <span class="op">=</span> <span class="cn">FALSE</span>, mar <span class="op">=</span> <span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="cn">NULL</span>, ylim <span class="op">=</span> <span class="cn">NULL</span>,
-                   xlab <span class="op">=</span> <span class="st">"Time"</span>, ylab <span class="op">=</span> <span class="cn">NULL</span>, main <span class="op">=</span> <span class="cn">NULL</span>,
-                   panel.first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/graphics/axTicks.html" class="external-link">axTicks</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"grey"</span><span class="op">)</span>,
-                   legend.types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">epidataCSplot_space</span><span class="op">(</span><span class="va">x</span>, <span class="va">subset</span>, by <span class="op">=</span> <span class="va">type</span>, tiles <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">W</span>, pop <span class="op">=</span> <span class="cn">NULL</span>,
-                    cex.fun <span class="op">=</span> <span class="va">sqrt</span>, points.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">FALSE</span>,
-                    legend.types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, legend.counts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-                    sp.layout <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for epidataCS</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, aggregate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"time"</span>, <span class="st">"space"</span><span class="op">)</span>, <span class="va">subset</span>, by <span class="op">=</span> <span class="va">type</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">epidataCSplot_time</span><span class="op">(</span><span class="va">x</span>, <span class="va">subset</span>, by <span class="op">=</span> <span class="va">type</span>,</span>
+<span>                   t0.Date <span class="op">=</span> <span class="cn">NULL</span>, breaks <span class="op">=</span> <span class="st">"stgrid"</span>, freq <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="va">nTypes</span><span class="op">)</span>, cumulative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                   add <span class="op">=</span> <span class="cn">FALSE</span>, mar <span class="op">=</span> <span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="cn">NULL</span>, ylim <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                   xlab <span class="op">=</span> <span class="st">"Time"</span>, ylab <span class="op">=</span> <span class="cn">NULL</span>, main <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                   panel.first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/graphics/axTicks.html" class="external-link">axTicks</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"grey"</span><span class="op">)</span>,</span>
+<span>                   legend.types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">epidataCSplot_space</span><span class="op">(</span><span class="va">x</span>, <span class="va">subset</span>, by <span class="op">=</span> <span class="va">type</span>, tiles <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">W</span>, pop <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                    cex.fun <span class="op">=</span> <span class="va">sqrt</span>, points.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                    legend.types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, legend.counts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                    sp.layout <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>an object of class <code>"<a href="epidataCS.html">epidataCS</a>"</code>.</p></dd>
-<dt>aggregate</dt>
+
+  <dt>aggregate</dt>
 <dd><p>character, one of <code>"time"</code> and <code>"space"</code>, referring to the
     specific plot functions <code>epidataCSplot_time</code> and
     <code>epidataCSplot_time</code>, respectively.
@@ -95,13 +96,15 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
     <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></code> (or <code><a href="https://rdrr.io/r/graphics/hist.POSIXt.html" class="external-link">hist.Date</a></code>).
     For <code>"space"</code>, the observation region <code>x$W</code> (or the
     <code>tiles</code>) and the locations of the events therein are plotted.</p></dd>
-<dt>subset</dt>
+
+  <dt>subset</dt>
 <dd><p>logical expression indicating a subset of events to consider for
     plotting: missing values are taken as false. Note that the
     expression is evaluated in the data frame of event marks
     (<code>marks(x)</code>), which means that column names can be referred to
     by name (like in <code><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset.data.frame</a></code>).</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>in the basic <code>plot</code>-method further arguments are passed to the
     <code>aggregate</code>-specific plot function.
     In <code>epidataCSplot_time</code>, further graphical parameters are
@@ -109,7 +112,9 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
     respectively. In <code>epidataCSplot_space</code>, further arguments are
     passed to the <code>plot</code>-method for
     <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>, which draws <code>tiles</code>.</p></dd>
-<dt>by</dt>
+
+
+  <dt>by</dt>
 <dd><p>an expression evaluated in <code>marks(x)</code>, defining how
     events should be stratified in the plot (the result is converted to
     a factor), or <code>NULL</code> to disregard event types.
@@ -118,7 +123,8 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
     the point colors in the spatial plot differ by type, respectively.<br>
     Note: to select specific event types for plotting use the
     <code>subset</code> argument, e.g., <code>subset=(type=="B")</code>.</p></dd>
-<dt>t0.Date</dt>
+
+  <dt>t0.Date</dt>
 <dd><p>the beginning of the observation period
     <code>t0 = x$stgrid$start[1]</code> as a <code>"<a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a>"</code> (or
     anything coercible by <code>as.Date</code> without further arguments),
@@ -129,53 +135,67 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
     fractional parts of the event times are removed (which ensures that
     using <code>breaks = "months"</code> or other automatic types always
     works).</p></dd>
-<dt>breaks</dt>
+
+  <dt>breaks</dt>
 <dd><p>a specification of the histogram break points, see
     <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></code> (or <code><a href="https://rdrr.io/r/graphics/hist.POSIXt.html" class="external-link">hist.Date</a></code> if <code>t0.Date</code> is
     used). The default value <code>"stgrid"</code> is special and means to use
     the temporal grid points
     <code>with(x$stgrid, c(start[1L], unique.default(stop)))</code>
     as breaks (or their <code>"Date"</code> equivalents).</p></dd>
-<dt>freq</dt>
+
+  <dt>freq</dt>
 <dd><p>see <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></code>, defaults to <code>TRUE</code>.</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>fill colour for the bars of the histogram, defaults to
     the vector of <code><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></code> colours.</p></dd>
-<dt>cumulative</dt>
+
+  <dt>cumulative</dt>
 <dd><p>if a list (of style options),
     lines for the cumulative number of events (per type) will be
     added to the plot. Possible options are <code>axis</code> (logical),
     <code>lab</code> (axis label), <code>maxat</code> (single integer affecting
     the axis range), <code>lwd</code>, <code>col</code>, and <code>offset</code> (a
     numeric vector of length the number of types).</p></dd>
-<dt>add</dt>
+
+  <dt>add</dt>
 <dd><p>logical (default: <code>FALSE</code>) indicating if the plot
     should be added to an existing window.
     Ignored if an <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code> is created (if <code>pop</code> is
     non-<code>NULL</code>).</p></dd>
-<dt>mar</dt>
+
+  <dt>mar</dt>
 <dd><p>see <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>. The default (<code>NULL</code>) is
     <code>mar &lt;- par("mar")</code>, with <code>mar[4] &lt;- mar[2]</code> if an
     axis is requested for the <code>cumulative</code> numbers.</p></dd>
-<dt>xlim,ylim</dt>
+
+  <dt>xlim,ylim</dt>
 <dd><p><code>NULL</code> provides automatic axis limits.</p></dd>
-<dt>xlab,ylab</dt>
+
+  <dt>xlab,ylab</dt>
 <dd><p>axis labels (with sensible defaults).</p></dd>
-<dt>main</dt>
+
+  <dt>main</dt>
 <dd><p>main title of the plot (defaults to no title).</p></dd>
-<dt>panel.first</dt>
+
+  <dt>panel.first</dt>
 <dd><p>expression that should be evaluated after the
     plotting window has been set up but before the histogram is plotted.
     Defaults to adding horizontal grid lines.</p></dd>
-<dt>legend.types</dt>
+
+  <dt>legend.types</dt>
 <dd><p>if a list (of arguments for <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></code>),
     a legend for the event types is added to the plot in case there is
     more than one type.</p></dd>
-<dt>tiles</dt>
+
+
+  <dt>tiles</dt>
 <dd><p>the observation region <code>x$W</code> (default) or,
     alternatively, a <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representation of the tiles of <code>x$stgrid</code>.</p></dd>
-<dt>pop</dt>
+
+  <dt>pop</dt>
 <dd><p>if <code>tiles</code> is a
     <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygonsDataFrame-class.html" class="external-link">SpatialPolygonsDataFrame</a>"</code>, <code>pop</code> can
     specify an attribute to be displayed in a <code>levelplot</code> behind the
@@ -183,33 +203,40 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
     the conventional graphics system is used to display the <code>tiles</code>
     and event locations, otherwise the result is a
     <code><a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis.object</a></code>.</p></dd>
-<dt>cex.fun</dt>
+
+  <dt>cex.fun</dt>
 <dd><p>function which takes a vector of counts of events
     at each unique location and returns a (vector of) <code>cex</code>
     value(s) for the sizes of the corresponding <code>points</code>.
     Defaults to the <code><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt()</a></code> function, which for the default
     circular <code>pch=1</code> means that the area of each point is
     proportional to the number of events at its location.</p></dd>
-<dt>points.args</dt>
+
+  <dt>points.args</dt>
 <dd><p>a list of (type-specific) graphical parameters
     for <code><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></code>, specifically <code>pch</code>, <code>lwd</code>,
     and <code>col</code>, which are all recycled to give the length
     <code>nlevels(x$events$type)</code>. In contrast, a possible
     <code>cex</code> element should be scalar (default: 0.5) and 
     multiplies the sizes obtained from <code>cex.fun</code>.</p></dd>
-<dt>legend.counts</dt>
+
+  <dt>legend.counts</dt>
 <dd><p>if a list (of arguments for
     <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></code>), a legend illustrating the effect of 
     <code>cex.fun</code> is added to the plot. This list may contain a
     special element <code>counts</code>, which is an integer vector
     specifying the counts to illustrate.</p></dd>
-<dt>sp.layout</dt>
+
+  <dt>sp.layout</dt>
 <dd><p>optional list of additional layout items in case
     <code>pop</code> is non-<code>NULL</code>, see <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>For <code>aggregate="time"</code> (i.e., <code>epidataCSplot_time</code>) the data
+    
+
+<p>For <code>aggregate="time"</code> (i.e., <code>epidataCSplot_time</code>) the data
 of the histogram (as returned by <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></code>),
 and for <code>aggregate="space"</code> (i.e., <code>epidataCSplot_space</code>)
 <code>NULL</code>, invisibly, or the <code><a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis.object</a></code> generated by
@@ -226,34 +253,33 @@ and for <code>aggregate="space"</code> (i.e., <code>epidataCSplot_space</code>)
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span><span class="op">)</span>
-
-<span class="co">## show the occurrence of events along time</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"time"</span>, main <span class="op">=</span> <span class="st">"Histogram of event time points"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"time"</span>, by <span class="op">=</span> <span class="cn">NULL</span>, main <span class="op">=</span> <span class="st">"Aggregated over both event types"</span><span class="op">)</span>
-
-<span class="co">## show the distribution in space</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"space"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"lavender"</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-<span class="co">## with the district-specific population density in the background,</span>
-<span class="co">## a scale bar, and customized point style</span>
-<span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shapes"</span>, <span class="st">"districtsD.RData"</span>, package <span class="op">=</span> <span class="st">"surveillance"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">districtsD</span><span class="op">$</span><span class="va">log10popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log10</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">$</span><span class="va">POPULATION</span><span class="op">/</span><span class="va">districtsD</span><span class="op">$</span><span class="va">AREA</span><span class="op">)</span>
-<span class="va">keylabels</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, each<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"space"</span>, tiles <span class="op">=</span> <span class="va">districtsD</span>, pop <span class="op">=</span> <span class="st">"log10popdens"</span>,
-     <span class="co">## modify point style for better visibility on gray background</span>
-     points.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"orangered"</span>,<span class="st">"blue"</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,
-     <span class="co">## metric scale bar, see proj4string(imdepi$W)</span>
-     sp.layout <span class="op">=</span> <span class="fu"><a href="layout.labels.html">layout.scalebar</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">W</span>, scale<span class="op">=</span><span class="fl">100</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0"</span>,<span class="st">"100 km"</span><span class="op">)</span><span class="op">)</span>,
-     <span class="co">## gray scale for the population density and white borders</span>
-     col.regions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/gray.colors.html" class="external-link">gray.colors</a></span><span class="op">(</span><span class="fl">100</span>, start<span class="op">=</span><span class="fl">0.9</span>, end<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"white"</span>,
-     <span class="co">## color key is equidistant on log10(popdens) scale</span>
-     at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1.3</span>, <span class="fl">3.7</span>, by<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>,
-     colorkey <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>at<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log10</a></span><span class="op">(</span><span class="va">keylabels</span><span class="op">)</span>, labels<span class="op">=</span><span class="va">keylabels</span><span class="op">)</span>,
-                     title<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Population density per "</span> <span class="op">*</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## show the occurrence of events along time</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"time"</span>, main <span class="op">=</span> <span class="st">"Histogram of event time points"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"time"</span>, by <span class="op">=</span> <span class="cn">NULL</span>, main <span class="op">=</span> <span class="st">"Aggregated over both event types"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## show the distribution in space</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"space"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"lavender"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">## with the district-specific population density in the background,</span></span>
+<span><span class="co">## a scale bar, and customized point style</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shapes"</span>, <span class="st">"districtsD.RData"</span>, package <span class="op">=</span> <span class="st">"surveillance"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">districtsD</span><span class="op">$</span><span class="va">log10popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log10</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">$</span><span class="va">POPULATION</span><span class="op">/</span><span class="va">districtsD</span><span class="op">$</span><span class="va">AREA</span><span class="op">)</span></span>
+<span><span class="va">keylabels</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, each<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"space"</span>, tiles <span class="op">=</span> <span class="va">districtsD</span>, pop <span class="op">=</span> <span class="st">"log10popdens"</span>,</span>
+<span>     <span class="co">## modify point style for better visibility on gray background</span></span>
+<span>     points.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"orangered"</span>,<span class="st">"blue"</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>     <span class="co">## metric scale bar, see proj4string(imdepi$W)</span></span>
+<span>     sp.layout <span class="op">=</span> <span class="fu"><a href="layout.labels.html">layout.scalebar</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">W</span>, scale<span class="op">=</span><span class="fl">100</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0"</span>,<span class="st">"100 km"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>     <span class="co">## gray scale for the population density and white borders</span></span>
+<span>     col.regions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/gray.colors.html" class="external-link">gray.colors</a></span><span class="op">(</span><span class="fl">100</span>, start<span class="op">=</span><span class="fl">0.9</span>, end<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>     <span class="co">## color key is equidistant on log10(popdens) scale</span></span>
+<span>     at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1.3</span>, <span class="fl">3.7</span>, by<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>,</span>
+<span>     colorkey <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>at<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log10</a></span><span class="op">(</span><span class="va">keylabels</span><span class="op">)</span>, labels<span class="op">=</span><span class="va">keylabels</span><span class="op">)</span>,</span>
+<span>                     title<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Population density per "</span> <span class="op">*</span> <span class="va">km</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -264,7 +290,7 @@ and for <code>aggregate="space"</code> (i.e., <code>epidataCSplot_space</code>)
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

@@ -5,7 +5,7 @@
   logarithmic score (logs),
   ranked probability score (rps),
   Dawid-Sebastiani score (dss),
-  squared error score (ses)."><title>Proper Scoring Rules for Poisson or Negative Binomial Predictions — scores • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Proper Scoring Rules for Poisson or Negative Binomial Predictions — scores"><meta property="og:description" content="Proper scoring rules for Poisson or negative binomial predictions
+  squared error score (ses)."><title>Proper Scoring Rules for Poisson or Negative Binomial Predictions — scores • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Proper Scoring Rules for Poisson or Negative Binomial Predictions — scores"><meta property="og:description" content="Proper scoring rules for Poisson or negative binomial predictions
   of count data are described in Czado et al. (2009).
   The following scores are implemented:
   logarithmic score (logs),
@@ -22,7 +22,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,17 +69,17 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">scores</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">scores</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span>,
-       which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"logs"</span>, <span class="st">"rps"</span>, <span class="st">"dss"</span>, <span class="st">"ses"</span><span class="op">)</span>,
-       sign <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">logs</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu">rps</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span>, k <span class="op">=</span> <span class="fl">40</span>, tolerance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span><span class="op">)</span>
-<span class="fu">dss</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="fu">ses</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scores</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">scores</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>       which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"logs"</span>, <span class="st">"rps"</span>, <span class="st">"dss"</span>, <span class="st">"ses"</span><span class="op">)</span>,</span>
+<span>       sign <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">logs</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">rps</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span>, k <span class="op">=</span> <span class="fl">40</span>, tolerance <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">dss</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu">ses</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -88,41 +88,53 @@
 <dd><p>the observed counts.
     All functions are vectorized and also accept matrices or arrays.
     Dimensions are preserved.</p></dd>
-<dt>mu</dt>
+
+  <dt>mu</dt>
 <dd><p>the means of the predictive distributions for the
     observations <code>x</code>.</p></dd>
-<dt>size</dt>
+
+  <dt>size</dt>
 <dd><p>either <code>NULL</code> (default), indicating Poisson predictions with mean
     <code>mu</code>, or dispersion parameters of
     negative binomial forecasts for the observations <code>x</code>,
     parametrized as in <code><a href="https://rdrr.io/r/stats/NegBinomial.html" class="external-link">dnbinom</a></code> with variance
     <code>mu*(1+mu/size)</code>.</p></dd>
-<dt>which</dt>
+
+  <dt>which</dt>
 <dd><p>a character vector specifying which scoring rules to apply.
     By default, all four proper scores are calculated.
     The normalized squared error score (<code>"nses"</code>) is also available
     but it is improper and hence not computed by default.</p></dd>
-<dt>sign</dt>
+
+  <dt>sign</dt>
 <dd><p>a logical indicating if the function should also return
     <code>sign(x-mu)</code>, i.e., the sign of the difference between
     the observed counts and corresponding predictions.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>unused (argument of the generic).</p></dd>
-<dt>k</dt>
+
+  <dt>k</dt>
 <dd><p>scalar argument controlling the finite sum approximation for the
     <code>rps</code> with truncation at <code>max(x, ceiling(mu + k*sd))</code>.</p></dd>
-<dt>tolerance</dt>
+
+  <dt>tolerance</dt>
 <dd><p>absolute tolerance for the finite sum approximation employed in the
     <code>rps</code> calculation. A warning is produced if the approximation
     with <code>k</code> summands is insufficient for the specified
     <code>tolerance</code>. In this case, increase <code>k</code> for higher
     precision (or use a larger tolerance).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The scoring functions return the individual scores for the predictions
-  of the observations in <code>x</code> (maintaining their dimension attributes).
-  The default <code>scores</code>-method applies the selected (<code>which</code>)
+    
+
+<p>The scoring functions return the individual scores for the predictions
+  of the observations in <code>x</code> (maintaining their dimension attributes).</p>
+  
+
+<p>The default <code>scores</code>-method applies the selected (<code>which</code>)
   scoring functions (and calculates <code>sign(x-mu)</code>) and returns the
   results in an array (via <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">simplify2array</a></code>), where the last
   dimension corresponds to the different scores.</p>
@@ -132,7 +144,7 @@
     <p>Czado, C., Gneiting, T. and Held, L. (2009):
     Predictive model assessment for count data.
     <em>Biometrics</em>, <b>65</b> (4), 1254-1261.
-    doi: <a href="https://doi.org/10.1111/j.1541-0420.2009.01191.x" class="external-link">10.1111/j.1541-0420.2009.01191.x</a></p>
+    <a href="https://doi.org/10.1111/j.1541-0420.2009.01191.x" class="external-link">doi:10.1111/j.1541-0420.2009.01191.x</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -147,24 +159,23 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">3</span><span class="op">*</span><span class="va">pi</span>, <span class="fl">100</span><span class="op">)</span>
-<span class="va">size</span> <span class="op">&lt;-</span> <span class="fl">0.5</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/NegBinomial.html" class="external-link">rnbinom</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">mu</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span>
-<span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span>
-<span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>  <span class="co"># ses ignores the variance</span>
-<span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span>
-
-<span class="co">## apply a specific scoring rule</span>
-<span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span>, which <span class="op">=</span> <span class="st">"rps"</span><span class="op">)</span>
-<span class="fu">rps</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span>
-<span class="co"># failed in surveillance &lt;= 1.19.1</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.unsorted.html" class="external-link">is.unsorted</a></span><span class="op">(</span><span class="fu">rps</span><span class="op">(</span><span class="fl">3</span>, mu <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span>, strictly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># rps() gives NA (with a warning) if the NegBin is too wide</span>
-<span class="fu">rps</span><span class="op">(</span><span class="fl">1e5</span>, mu <span class="op">=</span> <span class="fl">1e5</span>, size <span class="op">=</span> <span class="fl">1e-5</span><span class="op">)</span>
-
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">3</span><span class="op">*</span><span class="va">pi</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">size</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/NegBinomial.html" class="external-link">rnbinom</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">mu</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span></span>
+<span><span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span></span>
+<span><span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>  <span class="co"># ses ignores the variance</span></span>
+<span><span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## apply a specific scoring rule</span></span>
+<span><span class="fu">scores</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span>, which <span class="op">=</span> <span class="st">"rps"</span><span class="op">)</span></span>
+<span><span class="fu">rps</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span></span>
+<span><span class="co"># failed in surveillance &lt;= 1.19.1</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/is.unsorted.html" class="external-link">is.unsorted</a></span><span class="op">(</span><span class="fu">rps</span><span class="op">(</span><span class="fl">3</span>, mu <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span>, strictly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># rps() gives NA (with a warning) if the NegBin is too wide</span></span>
+<span><span class="fu">rps</span><span class="op">(</span><span class="fl">1e5</span>, mu <span class="op">=</span> <span class="fl">1e5</span>, size <span class="op">=</span> <span class="fl">1e-5</span><span class="op">)</span></span>
+<span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -175,7 +186,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

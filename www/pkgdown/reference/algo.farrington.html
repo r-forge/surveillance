@@ -3,7 +3,7 @@
   At each time point of the specified range, a GLM is fitted to
   predict the counts. This is then compared to the observed
   counts. If the observation is above a specific quantile of
-  the prediction interval, then an alarm is raised."><title>Surveillance for Count Time Series Using the Classic Farrington Method — algo.farrington • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Surveillance for Count Time Series Using the Classic Farrington Method — algo.farrington"><meta property="og:description" content="Implements the procedure of Farrington et al. (1996).
+  the prediction interval, then an alarm is raised."><title>Surveillance for Count Time Series Using the Classic Farrington Method — algo.farrington • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Surveillance for Count Time Series Using the Classic Farrington Method — algo.farrington"><meta property="og:description" content="Implements the procedure of Farrington et al. (1996).
   At each time point of the specified range, a GLM is fitted to
   predict the counts. This is then compared to the observed
   counts. If the observation is above a specific quantile of
@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,16 +63,16 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># original interface for a single "disProg" time series</span>
-<span class="fu">algo.farrington</span><span class="op">(</span><span class="va">disProgObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    range<span class="op">=</span><span class="cn">NULL</span>, b<span class="op">=</span><span class="fl">5</span>, w<span class="op">=</span><span class="fl">3</span>, reweight<span class="op">=</span><span class="cn">TRUE</span>, verbose<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">FALSE</span>,
-    alpha<span class="op">=</span><span class="fl">0.05</span>, trend<span class="op">=</span><span class="cn">TRUE</span>, limit54<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span><span class="op">)</span>, powertrans<span class="op">=</span><span class="st">"2/3"</span>,
-    fitFun<span class="op">=</span><span class="st">"algo.farrington.fitGLM.fast"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># wrapper for "sts" data, possibly multivariate</span>
-<span class="fu">farrington</span><span class="op">(</span><span class="va">sts</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    range<span class="op">=</span><span class="cn">NULL</span>, b<span class="op">=</span><span class="fl">5</span>, w<span class="op">=</span><span class="fl">3</span>, reweight<span class="op">=</span><span class="cn">TRUE</span>, verbose<span class="op">=</span><span class="cn">FALSE</span>,
-    alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># original interface for a single "disProg" time series</span></span>
+<span><span class="fu">algo.farrington</span><span class="op">(</span><span class="va">disProgObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    range<span class="op">=</span><span class="cn">NULL</span>, b<span class="op">=</span><span class="fl">5</span>, w<span class="op">=</span><span class="fl">3</span>, reweight<span class="op">=</span><span class="cn">TRUE</span>, verbose<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>    alpha<span class="op">=</span><span class="fl">0.05</span>, trend<span class="op">=</span><span class="cn">TRUE</span>, limit54<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span><span class="op">)</span>, powertrans<span class="op">=</span><span class="st">"2/3"</span>,</span>
+<span>    fitFun<span class="op">=</span><span class="st">"algo.farrington.fitGLM.fast"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># wrapper for "sts" data, possibly multivariate</span></span>
+<span><span class="fu">farrington</span><span class="op">(</span><span class="va">sts</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    range<span class="op">=</span><span class="cn">NULL</span>, b<span class="op">=</span><span class="fl">5</span>, w<span class="op">=</span><span class="fl">3</span>, reweight<span class="op">=</span><span class="cn">TRUE</span>, verbose<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>    alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -80,7 +80,8 @@
     <dl><dt>disProgObj</dt>
 <dd><p>an object of class <code>"disProg"</code> (a list including <code>observed</code> and
     <code>state</code> time series).</p></dd>
-<dt>control</dt>
+
+  <dt>control</dt>
 <dd><p>list of control parameters</p><dl><dt><code>range</code></dt>
 <dd><p>Specifies the index of all timepoints which
         should be tested. If range is <code>NULL</code> the maximum number
@@ -142,11 +143,14 @@
 
     
 </dl><p></p></dd>
-<dt>sts</dt>
+
+  <dt>sts</dt>
 <dd><p>an object of class <code>"<a href="sts-class.html">sts</a>"</code>.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>arguments for <code><a href="wrap.algo.html">wrap.algo</a></code>,
     e.g., <code>verbose=FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -164,9 +168,16 @@
 </ol></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>For <code>algo.farrington</code>, a list object of class <code>"survRes"</code>with elements <code>alarm</code>, <code>upperbound</code>, <code>trend</code>,
-<code>disProgObj</code>, and <code>control</code>.
-For <code>farrington</code>, the input <code>"<a href="sts-class.html">sts</a>"</code> object with updated
+    
+
+<p>For <code>algo.farrington</code>, a list object of class <code>"survRes"</code></p>
+
+
+<p>with elements <code>alarm</code>, <code>upperbound</code>, <code>trend</code>,
+<code>disProgObj</code>, and <code>control</code>.</p>
+
+
+<p>For <code>farrington</code>, the input <code>"<a href="sts-class.html">sts</a>"</code> object with updated
 <code>alarm</code>, <code>upperbound</code> and <code>control</code> slots, and subsetted
 to <code>control$range</code>.</p>
     </div>
@@ -190,31 +201,30 @@ to <code>control$range</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co">#load "disProg" data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"salmonella.agona"</span><span class="op">)</span>
-
-<span class="co">#Do surveillance for the last 100 weeks.</span>
-<span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">$</span><span class="va">observed</span><span class="op">)</span>
-<span class="va">control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>b<span class="op">=</span><span class="fl">4</span>,w<span class="op">=</span><span class="fl">3</span>,range<span class="op">=</span><span class="op">(</span><span class="va">n</span><span class="op">-</span><span class="fl">100</span><span class="op">)</span><span class="op">:</span><span class="va">n</span>,reweight<span class="op">=</span><span class="cn">TRUE</span>, verbose<span class="op">=</span><span class="cn">FALSE</span>,alpha<span class="op">=</span><span class="fl">0.01</span><span class="op">)</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">algo.farrington</span><span class="op">(</span><span class="va">salmonella.agona</span>,control<span class="op">=</span><span class="va">control</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-
-<span class="co">#Generate Poisson counts and create an "sts" object</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">520</span>,lambda<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-<span class="va">stsObj</span> <span class="op">&lt;-</span> <span class="fu"><a href="sts-class.html">sts</a></span><span class="op">(</span>observed<span class="op">=</span><span class="va">x</span>, frequency<span class="op">=</span><span class="fl">52</span><span class="op">)</span>
-
-<span class="co">#Compare timing of the two possible fitters for algo.farrington</span>
-<span class="va">range</span> <span class="op">&lt;-</span> <span class="fl">312</span><span class="op">:</span><span class="fl">520</span>
-<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="va">range</span> <span class="op">&lt;-</span> <span class="fl">460</span><span class="op">:</span><span class="fl">520</span> 
-<span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span> <span class="va">sts1</span> <span class="op">&lt;-</span> <span class="fu">farrington</span><span class="op">(</span><span class="va">stsObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="va">range</span>,
-                       fitFun<span class="op">=</span><span class="st">"algo.farrington.fitGLM.fast"</span><span class="op">)</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span> <span class="va">sts2</span> <span class="op">&lt;-</span> <span class="fu">farrington</span><span class="op">(</span><span class="va">stsObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="va">range</span>,
-                       fitFun<span class="op">=</span><span class="st">"algo.farrington.fitGLM"</span><span class="op">)</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co">#Check if results are the same</span>
-<span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">upperbound</a></span><span class="op">(</span><span class="va">sts1</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="stsSlots.html">upperbound</a></span><span class="op">(</span><span class="va">sts2</span><span class="op">)</span><span class="op">)</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co">#load "disProg" data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"salmonella.agona"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Do surveillance for the last 100 weeks.</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">$</span><span class="va">observed</span><span class="op">)</span></span>
+<span><span class="va">control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>b<span class="op">=</span><span class="fl">4</span>,w<span class="op">=</span><span class="fl">3</span>,range<span class="op">=</span><span class="op">(</span><span class="va">n</span><span class="op">-</span><span class="fl">100</span><span class="op">)</span><span class="op">:</span><span class="va">n</span>,reweight<span class="op">=</span><span class="cn">TRUE</span>, verbose<span class="op">=</span><span class="cn">FALSE</span>,alpha<span class="op">=</span><span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">algo.farrington</span><span class="op">(</span><span class="va">salmonella.agona</span>,control<span class="op">=</span><span class="va">control</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Generate Poisson counts and create an "sts" object</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">520</span>,lambda<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">stsObj</span> <span class="op">&lt;-</span> <span class="fu"><a href="sts-class.html">sts</a></span><span class="op">(</span>observed<span class="op">=</span><span class="va">x</span>, frequency<span class="op">=</span><span class="fl">52</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Compare timing of the two possible fitters for algo.farrington</span></span>
+<span><span class="va">range</span> <span class="op">&lt;-</span> <span class="fl">312</span><span class="op">:</span><span class="fl">520</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="va">range</span> <span class="op">&lt;-</span> <span class="fl">460</span><span class="op">:</span><span class="fl">520</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span> <span class="va">sts1</span> <span class="op">&lt;-</span> <span class="fu">farrington</span><span class="op">(</span><span class="va">stsObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="va">range</span>,</span>
+<span>                       fitFun<span class="op">=</span><span class="st">"algo.farrington.fitGLM.fast"</span><span class="op">)</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span> <span class="va">sts2</span> <span class="op">&lt;-</span> <span class="fu">farrington</span><span class="op">(</span><span class="va">stsObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="va">range</span>,</span>
+<span>                       fitFun<span class="op">=</span><span class="st">"algo.farrington.fitGLM"</span><span class="op">)</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Check if results are the same</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">upperbound</a></span><span class="op">(</span><span class="va">sts1</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="stsSlots.html">upperbound</a></span><span class="op">(</span><span class="va">sts2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -225,7 +235,7 @@ to <code>control$range</code>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

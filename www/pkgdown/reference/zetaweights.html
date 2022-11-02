@@ -5,7 +5,7 @@
   Without normalization and truncation,
   this is just \(o^{-d}\) (where \(o\) is a neighbourhood order).
   This function is mainly used internally for W_powerlaw
-  weights in hhh4 models."><title>Power-Law Weights According to Neighbourhood Order — zetaweights • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Power-Law Weights According to Neighbourhood Order — zetaweights"><meta property="og:description" content="Compute power-law weights with decay parameter d
+  weights in hhh4 models."><title>Power-Law Weights According to Neighbourhood Order — zetaweights • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Power-Law Weights According to Neighbourhood Order — zetaweights"><meta property="og:description" content="Compute power-law weights with decay parameter d
   based on a matrix of neighbourhood orders nbmat
   (e.g., as obtained via nbOrder).
   Without normalization and truncation,
@@ -22,7 +22,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,27 +69,33 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, d <span class="op">=</span> <span class="fl">1</span>, maxlag <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">nbmat</span><span class="op">)</span>, normalize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, d <span class="op">=</span> <span class="fl">1</span>, maxlag <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">nbmat</span><span class="op">)</span>, normalize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>nbmat</dt>
 <dd><p>numeric, symmetric matrix of neighbourhood orders.</p></dd>
-<dt>d</dt>
+
+  <dt>d</dt>
 <dd><p>single numeric decay parameter (default: 1). Should be
   positive.</p></dd>
-<dt>maxlag</dt>
+
+  <dt>maxlag</dt>
 <dd><p>single numeric specifying an upper limit for the power
     law. For neighbourhood orders &gt; <code>maxlag</code>, the resulting weight
     is 0. Defaults to no truncation.</p></dd>
-<dt>normalize</dt>
+
+  <dt>normalize</dt>
 <dd><p>Should the resulting weight matrix be normalized such
     that rows sum to 1?</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a numeric matrix with same dimensions and names as the input matrix.</p>
+    
+
+<p>a numeric matrix with same dimensions and names as the input matrix.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -102,14 +108,13 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">nbmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,
-                  <span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span>,
-                  <span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">2</span>,
-                  <span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">4</span>, <span class="fl">4</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, d<span class="op">=</span><span class="fl">1</span>, normalize<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># harmonic: o^-1</span>
-<span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, d<span class="op">=</span><span class="fl">1</span>, normalize<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>  <span class="co"># rowSums=1</span>
-<span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, maxlag<span class="op">=</span><span class="fl">1</span>, normalize<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># results in adjacency matrix</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">nbmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">2</span>,</span>
+<span>                  <span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span>,</span>
+<span>                  <span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">2</span>,</span>
+<span>                  <span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fl">4</span>, <span class="fl">4</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, d<span class="op">=</span><span class="fl">1</span>, normalize<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># harmonic: o^-1</span></span>
+<span><span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, d<span class="op">=</span><span class="fl">1</span>, normalize<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>  <span class="co"># rowSums=1</span></span>
+<span><span class="fu">zetaweights</span><span class="op">(</span><span class="va">nbmat</span>, maxlag<span class="op">=</span><span class="fl">1</span>, normalize<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># results in adjacency matrix</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -120,7 +125,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

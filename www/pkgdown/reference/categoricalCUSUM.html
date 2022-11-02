@@ -4,7 +4,7 @@
   Logistic, multinomial logistic, proportional
   odds or Bradley-Terry regression models are used to specify in-control
   and out-of-control parameters.
-  The implementation is illustrated in Salmon et al. (2016)."><title>CUSUM detector for time-varying categorical time series — categoricalCUSUM • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="CUSUM detector for time-varying categorical time series — categoricalCUSUM"><meta property="og:description" content="Function to process sts object by binomial, beta-binomial
+  The implementation is illustrated in Salmon et al. (2016)."><title>CUSUM detector for time-varying categorical time series — categoricalCUSUM • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="CUSUM detector for time-varying categorical time series — categoricalCUSUM"><meta property="og:description" content="Function to process sts object by binomial, beta-binomial
   or multinomial CUSUM as described by Höhle (2010).
   Logistic, multinomial logistic, proportional
   odds or Bradley-Terry regression models are used to specify in-control
@@ -20,7 +20,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,8 +66,8 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">categoricalCUSUM</span><span class="op">(</span><span class="va">stsObj</span>,control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="cn">NULL</span>,h<span class="op">=</span><span class="fl">5</span>,pi0<span class="op">=</span><span class="cn">NULL</span>,
-                 pi1<span class="op">=</span><span class="cn">NULL</span>, dfun<span class="op">=</span><span class="cn">NULL</span>, ret<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cases"</span>,<span class="st">"value"</span><span class="op">)</span><span class="op">)</span>,<span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">categoricalCUSUM</span><span class="op">(</span><span class="va">stsObj</span>,control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="cn">NULL</span>,h<span class="op">=</span><span class="fl">5</span>,pi0<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>                 pi1<span class="op">=</span><span class="cn">NULL</span>, dfun<span class="op">=</span><span class="cn">NULL</span>, ret<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cases"</span>,<span class="st">"value"</span><span class="op">)</span><span class="op">)</span>,<span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -77,34 +77,50 @@
     counts in each of the \(k\) categories of the response
     variable. Time varying number of counts \(n_t\) is found in slot
     <code>populationFrac</code>.</p></dd>
-<dt>control</dt>
-<dd><p>Control object containing several items</p><ul><li><p><code>range</code>Vector of length \(t_{max}\) with indices of the
-	<code>observed</code> slot to monitor.</p></li>
-<li><p><code>h</code>Threshold to use for the monitoring. Once the
-	CUSUM statistics is larger or equal to <code>h</code> we have an alarm.</p></li>
-<li><p><code>pi0</code>\((k-1) \times t_{max}\) in-control probability
-	vector for all categories except the reference category.</p></li>
-<li><p><code>mu1</code>\((k-1) \times t_{max}\) out-of-control probability
-	vector for all categories except the reference category.</p></li>
-<li><p><code>dfun</code>The probability mass function (PMF) or density used
+
+  <dt>control</dt>
+<dd><p>Control object containing several items</p><dl><dt><code>range</code></dt>
+<dd><p>Vector of length \(t_{max}\) with indices of the
+	<code>observed</code> slot to monitor.</p></dd>
+
+      <dt><code>h</code></dt>
+<dd><p>Threshold to use for the monitoring. Once the
+	CUSUM statistics is larger or equal to <code>h</code> we have an alarm.</p></dd>
+
+      <dt><code>pi0</code></dt>
+<dd><p>\((k-1) \times t_{max}\) in-control probability
+	vector for all categories except the reference category.</p></dd>
+
+      <dt><code>mu1</code></dt>
+<dd><p>\((k-1) \times t_{max}\) out-of-control probability
+	vector for all categories except the reference category.</p></dd>
+
+      <dt><code>dfun</code></dt>
+<dd><p>The probability mass function (PMF) or density used
 	to compute the likelihood ratios of the CUSUM. In a negative
 	binomial CUSUM this is <code>dnbinom</code>, in a binomial CUSUM
 	<code>dbinom</code> and in a multinomial CUSUM <code>dmultinom</code>. The
 	function must be able to handle the arguments <code>y</code>,
 	<code>size</code>, <code>mu</code> and <code>log</code>. As a consequence, one in
 	the case of, e.g, the beta-binomial distribution has to write a small
-	wrapper function.</p></li>
-<li><p><code>ret</code>Return the necessary proportion to sound an alarm in the
+	wrapper function.</p></dd>
+
+      <dt><code>ret</code></dt>
+<dd><p>Return the necessary proportion to sound an alarm in the
 	slot <code>upperbound</code> or just the value of the CUSUM
 	statistic. Thus, <code>ret</code> is one of the values in
 	<code>c("cases","value")</code>. Note: For the binomial PMF it is
 	possible to compute this value explicitly, which is much faster
 	than the numeric search otherwise conducted. In case <code>dfun</code>
 	just corresponds to <code>dbinom</code> just set the attribute
-	<code>isBinomialPMF</code> for the <code>dfun</code> object.</p></li>
-</ul></dd>
-<dt>...</dt>
+	<code>isBinomialPMF</code> for the <code>dfun</code> object.</p></dd>
+
+  
+</dl></dd>
+
+  <dt>...</dt>
 <dd><p>Additional arguments to send to <code>dfun</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -135,7 +151,7 @@
 <p>Salmon, M., Schumacher, D. and Höhle, M. (2016):
   Monitoring count time series in <span style="R">R</span>: Aberration detection in public
   health surveillance. <em>Journal of Statistical Software</em>,
-  <b>70</b> (10), 1-35. doi: <a href="https://doi.org/10.18637/jss.v070.i10" class="external-link">10.18637/jss.v070.i10</a></p>
+  <b>70</b> (10), 1-35. <a href="https://doi.org/10.18637/jss.v070.i10" class="external-link">doi:10.18637/jss.v070.i10</a></p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -144,86 +160,85 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://www.gamlss.com/" class="external-link">"gamlss"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co">###########################################################################</span>
-  <span class="co">#Beta-binomial CUSUM for a small example containing the time-varying</span>
-  <span class="co">#number of positive test out of a time-varying number of total</span>
-  <span class="co">#test.</span>
-  <span class="co">#######################################</span>
-
-  <span class="co">#Load meat inspection data</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"abattoir"</span><span class="op">)</span>
-
-  <span class="co">#Use GAMLSS to fit beta-bin regression model</span>
-  <span class="va">phase1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">52</span><span class="op">)</span>
-  <span class="va">phase2</span>  <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">phase1</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span> <span class="op">:</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span>
-
-  <span class="co">#Fit beta-binomial model using GAMLSS</span>
-  <span class="va">abattoir.df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span>
-
-  <span class="co">#Replace the observed and epoch column names to something more convenient</span>
-  <span class="va">dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"observed"</span><span class="op">=</span><span class="st">"y"</span>, <span class="st">"epoch"</span><span class="op">=</span><span class="st">"t"</span>, <span class="st">"population"</span><span class="op">=</span><span class="st">"n"</span><span class="op">)</span>
-  <span class="va">replace</span> <span class="op">&lt;-</span> <span class="va">dict</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">abattoir.df</span><span class="op">)</span><span class="op">]</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">abattoir.df</span><span class="op">)</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">replace</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">replace</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">replace</span><span class="op">)</span><span class="op">]</span>
-
-  <span class="va">m.bbin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">y</span>,<span class="va">n</span><span class="op">-</span><span class="va">y</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">t</span> <span class="op">+</span>
-                      <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span>
-                      <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">4</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="fl">4</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span>, sigma.formula<span class="op">=</span><span class="op">~</span><span class="fl">1</span>,
-                   family<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss.dist/man/BB.html" class="external-link">BB</a></span><span class="op">(</span>sigma.link<span class="op">=</span><span class="st">"log"</span><span class="op">)</span>,
-                   data<span class="op">=</span><span class="va">abattoir.df</span><span class="op">[</span><span class="va">phase1</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>,<span class="st">"y"</span>,<span class="st">"t"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-
-  <span class="co">#CUSUM parameters</span>
-  <span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="co">#detect a doubling of the odds for a test being positive</span>
-  <span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">4</span> <span class="co">#threshold of the cusum</span>
-
-  <span class="co">#Compute in-control and out of control mean</span>
-  <span class="va">pi0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">m.bbin</span>,newdata<span class="op">=</span><span class="va">abattoir.df</span><span class="op">[</span><span class="va">phase2</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>,<span class="st">"y"</span>,<span class="st">"t"</span><span class="op">)</span><span class="op">]</span>,type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span>
-  <span class="va">pi1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html" class="external-link">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html" class="external-link">qlogis</a></span><span class="op">(</span><span class="va">pi0</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">R</span><span class="op">)</span><span class="op">)</span>
-  <span class="co">#Create matrix with in control and out of control proportions.</span>
-  <span class="co">#Categories are D=1 and D=0, where the latter is the reference category</span>
-  <span class="va">pi0m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">pi0</span>, <span class="fl">1</span><span class="op">-</span><span class="va">pi0</span><span class="op">)</span>
-  <span class="va">pi1m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">pi1</span>, <span class="fl">1</span><span class="op">-</span><span class="va">pi1</span><span class="op">)</span>
-
-
-  <span class="co">######################################################################</span>
-  <span class="co"># Use the multinomial surveillance function. To this end it is necessary</span>
-  <span class="co"># to create a new abattoir object containing counts and proportion for</span>
-  <span class="co"># each of the k=2 categories. For binomial data this appears a bit</span>
-  <span class="co"># redundant, but generalizes easier to k&gt;2 categories.</span>
-  <span class="co">######################################################################</span>
-
-  <span class="va">abattoir2</span> <span class="op">&lt;-</span> <span class="fu"><a href="sts-class.html">sts</a></span><span class="op">(</span>epoch<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span>, start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2006</span>,<span class="fl">1</span><span class="op">)</span>, freq<span class="op">=</span><span class="fl">52</span>,
-    observed<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">@</span><span class="va">observed</span>, <span class="va">abattoir</span><span class="op">@</span><span class="va">populationFrac</span><span class="op">-</span><span class="va">abattoir</span><span class="op">@</span><span class="va">observed</span><span class="op">)</span>,
-    populationFrac<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">@</span><span class="va">populationFrac</span>,<span class="va">abattoir</span><span class="op">@</span><span class="va">populationFrac</span><span class="op">)</span>,
-    state<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">0</span>,nrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,
-    multinomialTS<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-
-  <span class="co">######################################################################</span>
-  <span class="co">#Function to use as dfun in the categoricalCUSUM</span>
-  <span class="co">#(just a wrapper to the dBB function). Note that from v 3.0-1 the</span>
-  <span class="co">#first argument of dBB changed its name from "y" to "x"!</span>
-  <span class="co">######################################################################</span>
-  <span class="va">mydBB.cusum</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">y</span>, <span class="va">mu</span>, <span class="va">sigma</span>, <span class="va">size</span>, <span class="va">log</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss.dist/man/BB.html" class="external-link">dBB</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, mu <span class="op">=</span> <span class="va">mu</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, sigma <span class="op">=</span> <span class="va">sigma</span>, bd <span class="op">=</span> <span class="va">size</span>, log <span class="op">=</span> <span class="va">log</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">}</span>
-
-
-  <span class="co">#Create control object for multinom cusum and use the categoricalCUSUM</span>
-  <span class="co">#method</span>
-  <span class="va">control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="va">phase2</span>,h<span class="op">=</span><span class="va">h</span>,pi0<span class="op">=</span><span class="va">pi0m</span>, pi1<span class="op">=</span><span class="va">pi1m</span>, ret<span class="op">=</span><span class="st">"cases"</span>,
-       dfun<span class="op">=</span><span class="va">mydBB.cusum</span><span class="op">)</span>
-  <span class="va">surv</span> <span class="op">&lt;-</span> <span class="fu">categoricalCUSUM</span><span class="op">(</span><span class="va">abattoir2</span>, control<span class="op">=</span><span class="va">control</span>,
-         sigma<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">m.bbin</span><span class="op">$</span><span class="va">sigma.coef</span><span class="op">)</span><span class="op">)</span>
-
-  <span class="co">#Show results</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,dx.upperbound<span class="op">=</span><span class="fl">0</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">pi0</span>,col<span class="op">=</span><span class="st">"green"</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">pi1</span>,col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span>
-
-  <span class="co">#Index of the alarm</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.max</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">alarms</a></span><span class="op">(</span><span class="va">surv</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://www.gamlss.com/" class="external-link">"gamlss"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co">###########################################################################</span></span>
+<span>  <span class="co">#Beta-binomial CUSUM for a small example containing the time-varying</span></span>
+<span>  <span class="co">#number of positive test out of a time-varying number of total</span></span>
+<span>  <span class="co">#test.</span></span>
+<span>  <span class="co">#######################################</span></span>
+<span></span>
+<span>  <span class="co">#Load meat inspection data</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"abattoir"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">#Use GAMLSS to fit beta-bin regression model</span></span>
+<span>  <span class="va">phase1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">52</span><span class="op">)</span></span>
+<span>  <span class="va">phase2</span>  <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">phase1</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span> <span class="op">:</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">#Fit beta-binomial model using GAMLSS</span></span>
+<span>  <span class="va">abattoir.df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">#Replace the observed and epoch column names to something more convenient</span></span>
+<span>  <span class="va">dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"observed"</span><span class="op">=</span><span class="st">"y"</span>, <span class="st">"epoch"</span><span class="op">=</span><span class="st">"t"</span>, <span class="st">"population"</span><span class="op">=</span><span class="st">"n"</span><span class="op">)</span></span>
+<span>  <span class="va">replace</span> <span class="op">&lt;-</span> <span class="va">dict</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">abattoir.df</span><span class="op">)</span><span class="op">]</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">abattoir.df</span><span class="op">)</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">replace</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">replace</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">replace</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span>  <span class="va">m.bbin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gamlss/man/gamlss.html" class="external-link">gamlss</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">y</span>,<span class="va">n</span><span class="op">-</span><span class="va">y</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">t</span> <span class="op">+</span></span>
+<span>                      <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                      <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">4</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="fl">4</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="fl">52</span><span class="op">*</span><span class="va">t</span><span class="op">)</span>, sigma.formula<span class="op">=</span><span class="op">~</span><span class="fl">1</span>,</span>
+<span>                   family<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss.dist/man/BB.html" class="external-link">BB</a></span><span class="op">(</span>sigma.link<span class="op">=</span><span class="st">"log"</span><span class="op">)</span>,</span>
+<span>                   data<span class="op">=</span><span class="va">abattoir.df</span><span class="op">[</span><span class="va">phase1</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>,<span class="st">"y"</span>,<span class="st">"t"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">#CUSUM parameters</span></span>
+<span>  <span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="co">#detect a doubling of the odds for a test being positive</span></span>
+<span>  <span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">4</span> <span class="co">#threshold of the cusum</span></span>
+<span></span>
+<span>  <span class="co">#Compute in-control and out of control mean</span></span>
+<span>  <span class="va">pi0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">m.bbin</span>,newdata<span class="op">=</span><span class="va">abattoir.df</span><span class="op">[</span><span class="va">phase2</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>,<span class="st">"y"</span>,<span class="st">"t"</span><span class="op">)</span><span class="op">]</span>,type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span>  <span class="va">pi1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html" class="external-link">plogis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html" class="external-link">qlogis</a></span><span class="op">(</span><span class="va">pi0</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">R</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="co">#Create matrix with in control and out of control proportions.</span></span>
+<span>  <span class="co">#Categories are D=1 and D=0, where the latter is the reference category</span></span>
+<span>  <span class="va">pi0m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">pi0</span>, <span class="fl">1</span><span class="op">-</span><span class="va">pi0</span><span class="op">)</span></span>
+<span>  <span class="va">pi1m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">pi1</span>, <span class="fl">1</span><span class="op">-</span><span class="va">pi1</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span>  <span class="co">######################################################################</span></span>
+<span>  <span class="co"># Use the multinomial surveillance function. To this end it is necessary</span></span>
+<span>  <span class="co"># to create a new abattoir object containing counts and proportion for</span></span>
+<span>  <span class="co"># each of the k=2 categories. For binomial data this appears a bit</span></span>
+<span>  <span class="co"># redundant, but generalizes easier to k&gt;2 categories.</span></span>
+<span>  <span class="co">######################################################################</span></span>
+<span></span>
+<span>  <span class="va">abattoir2</span> <span class="op">&lt;-</span> <span class="fu"><a href="sts-class.html">sts</a></span><span class="op">(</span>epoch<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span>, start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2006</span>,<span class="fl">1</span><span class="op">)</span>, freq<span class="op">=</span><span class="fl">52</span>,</span>
+<span>    observed<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">@</span><span class="va">observed</span>, <span class="va">abattoir</span><span class="op">@</span><span class="va">populationFrac</span><span class="op">-</span><span class="va">abattoir</span><span class="op">@</span><span class="va">observed</span><span class="op">)</span>,</span>
+<span>    populationFrac<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">@</span><span class="va">populationFrac</span>,<span class="va">abattoir</span><span class="op">@</span><span class="va">populationFrac</span><span class="op">)</span>,</span>
+<span>    state<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">0</span>,nrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">abattoir</span><span class="op">)</span>,ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>    multinomialTS<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">######################################################################</span></span>
+<span>  <span class="co">#Function to use as dfun in the categoricalCUSUM</span></span>
+<span>  <span class="co">#(just a wrapper to the dBB function). Note that from v 3.0-1 the</span></span>
+<span>  <span class="co">#first argument of dBB changed its name from "y" to "x"!</span></span>
+<span>  <span class="co">######################################################################</span></span>
+<span>  <span class="va">mydBB.cusum</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">y</span>, <span class="va">mu</span>, <span class="va">sigma</span>, <span class="va">size</span>, <span class="va">log</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/gamlss.dist/man/BB.html" class="external-link">dBB</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, mu <span class="op">=</span> <span class="va">mu</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, sigma <span class="op">=</span> <span class="va">sigma</span>, bd <span class="op">=</span> <span class="va">size</span>, log <span class="op">=</span> <span class="va">log</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span></span>
+<span>  <span class="co">#Create control object for multinom cusum and use the categoricalCUSUM</span></span>
+<span>  <span class="co">#method</span></span>
+<span>  <span class="va">control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>range<span class="op">=</span><span class="va">phase2</span>,h<span class="op">=</span><span class="va">h</span>,pi0<span class="op">=</span><span class="va">pi0m</span>, pi1<span class="op">=</span><span class="va">pi1m</span>, ret<span class="op">=</span><span class="st">"cases"</span>,</span>
+<span>       dfun<span class="op">=</span><span class="va">mydBB.cusum</span><span class="op">)</span></span>
+<span>  <span class="va">surv</span> <span class="op">&lt;-</span> <span class="fu">categoricalCUSUM</span><span class="op">(</span><span class="va">abattoir2</span>, control<span class="op">=</span><span class="va">control</span>,</span>
+<span>         sigma<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">m.bbin</span><span class="op">$</span><span class="va">sigma.coef</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">#Show results</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">surv</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,dx.upperbound<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">pi0</span>,col<span class="op">=</span><span class="st">"green"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">pi1</span>,col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co">#Index of the alarm</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.max</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">alarms</a></span><span class="op">(</span><span class="va">surv</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -234,7 +249,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

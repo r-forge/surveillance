@@ -6,7 +6,7 @@
   and recommended to redirect the animation to an off-screen graphics
   device using the contributed R package animation. For instance,
   the animation can be watched and navigated in a web browser via
-  saveHTML (see Examples).'><title>Spatio-Temporal Animation of a Continuous-Time Continuous-Space Epidemic — epidataCS_animate • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Spatio-Temporal Animation of a Continuous-Time Continuous-Space Epidemic — epidataCS_animate"><meta property="og:description" content='Function for the animation of continuous-time continuous-space
+  saveHTML (see Examples).'><title>Spatio-Temporal Animation of a Continuous-Time Continuous-Space Epidemic — epidataCS_animate • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Spatio-Temporal Animation of a Continuous-Time Continuous-Space Epidemic — epidataCS_animate"><meta property="og:description" content='Function for the animation of continuous-time continuous-space
   epidemic data, i.e. objects inheriting from class "epidataCS".
   There are three types of animation, see argument time.spacing.
   Besides the on-screen plotting in the interactive R session, it is possible
@@ -24,7 +24,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,21 +72,23 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for epidataCS</span>
-<span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">object</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="cn">Inf</span><span class="op">)</span>, time.spacing <span class="op">=</span> <span class="cn">NULL</span>,
-        nmax <span class="op">=</span> <span class="cn">NULL</span>, sleep <span class="op">=</span> <span class="cn">NULL</span>, legend.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, timer.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-        pch <span class="op">=</span> <span class="fl">15</span><span class="op">:</span><span class="fl">18</span>, col.current <span class="op">=</span> <span class="st">"red"</span>, col.I <span class="op">=</span> <span class="st">"#C16E41"</span>,
-        col.R <span class="op">=</span> <span class="st">"#B3B3B3"</span>, col.influence <span class="op">=</span> <span class="cn">NULL</span>,
-        main <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for epidataCS</span></span>
+<span><span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">object</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="cn">Inf</span><span class="op">)</span>, time.spacing <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>        nmax <span class="op">=</span> <span class="cn">NULL</span>, sleep <span class="op">=</span> <span class="cn">NULL</span>, legend.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, timer.opts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        pch <span class="op">=</span> <span class="fl">15</span><span class="op">:</span><span class="fl">18</span>, col.current <span class="op">=</span> <span class="st">"red"</span>, col.I <span class="op">=</span> <span class="st">"#C16E41"</span>,</span>
+<span>        col.R <span class="op">=</span> <span class="st">"#B3B3B3"</span>, col.influence <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>        main <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>object</dt>
 <dd><p>an object inheriting from class <code>"epidataCS"</code>.</p></dd>
-<dt>interval</dt>
+
+  <dt>interval</dt>
 <dd><p>time range of the animation.</p></dd>
-<dt>time.spacing</dt>
+
+  <dt>time.spacing</dt>
 <dd><p>time interval for the animation steps.<br>
     If <code>NULL</code> (the default), the events are plotted sequentially by
     producing a snapshot at every time point where an event occurred.
@@ -100,12 +102,14 @@
     If <code>time.spacing = NA</code>, then the time spacing is automatically
     determined in such a way that <code>nmax</code> snapshots result. In this
     case, <code>nmax</code> must be given a finite value.</p></dd>
-<dt>nmax</dt>
+
+  <dt>nmax</dt>
 <dd><p>maximum number of snapshots to generate. The default <code>NULL</code>
     means to take the value from <code>ani.options("nmax")</code> if the
     <span class="pkg">animation</span> package is available, and no limitation (<code>Inf</code>)
     otherwise.</p></dd>
-<dt>sleep</dt>
+
+  <dt>sleep</dt>
 <dd><p>numeric scalar specifying the artificial pause in seconds between two
     time points (using <code><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></code>), or <code>NULL</code>
     (default), when this is taken from <code>ani.options("interval")</code> if
@@ -113,16 +117,19 @@
     Note that <code>sleep</code> is ignored on non-interactive devices
     (see <code><a href="https://rdrr.io/r/grDevices/dev.interactive.html" class="external-link">dev.interactive</a></code>), e.g., if generating an
     animation inside <span class="pkg">animation</span>'s <code><a href="https://rdrr.io/pkg/animation/man/saveHTML.html" class="external-link">saveHTML</a></code>.</p></dd>
-<dt>pch, col</dt>
+
+  <dt>pch, col</dt>
 <dd><p>vectors of length equal to the number of event types specifying the
     point symbols and colors for events to plot (in this order).
     The vectors are recycled if necessary.</p></dd>
-<dt>legend.opts</dt>
+
+  <dt>legend.opts</dt>
 <dd><p>either a list of arguments passed to the <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></code> function or
     <code>NULL</code> (or <code>NA</code>), in which case no legend will be plotted.  All 
     necessary arguments have sensible defaults and need not be
     specified.</p></dd>
-<dt>timer.opts</dt>
+
+  <dt>timer.opts</dt>
 <dd><p>either a list of arguments passed to the <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></code> function or
     <code>NULL</code> (or <code>NA</code>), in which case no timer will be plotted.  All 
     necessary arguments have sensible defaults and need not be specified, i.e.</p><dl><dt><code>x</code>:</dt>
@@ -146,26 +153,34 @@
     
 </dl><p>Note that the argument <code>legend</code>, which is the current time of the
     animation, can not be modified.</p></dd>
-<dt>col.current</dt>
+
+  <dt>col.current</dt>
 <dd><p>color of events when occurring (new).</p></dd>
-<dt>col.I</dt>
+
+  <dt>col.I</dt>
 <dd><p>color once infectious.</p></dd>
-<dt>col.R</dt>
+
+  <dt>col.R</dt>
 <dd><p>color event has once “recovered”. If <code>NA</code>,
     then recovered events will not be shown.</p></dd>
-<dt>col.influence</dt>
+
+  <dt>col.influence</dt>
 <dd><p>color with which the influence region is drawn. Use
     <code>NULL</code> (default) if no influence regions should be drawn.</p></dd>
-<dt>main</dt>
+
+  <dt>main</dt>
 <dd><p>optional main title placed above the map.</p></dd>
-<dt>verbose</dt>
+
+  <dt>verbose</dt>
 <dd><p>logical specifying if a (textual) progress bar should
     be shown during snapshot generation. This is especially useful if
     the animation is produced within <code><a href="https://rdrr.io/pkg/animation/man/saveHTML.html" class="external-link">saveHTML</a></code>
     or similar.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>further graphical parameters passed to the plot-method of the
     <code><a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons-class</a></code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -181,30 +196,29 @@ observation region <code>W</code> (aggregated over time).</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span><span class="op">)</span>
-<span class="va">imdepiB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="va">type</span> <span class="op">==</span> <span class="st">"B"</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span>
-<span class="co"># Animate the first year of type B with a step size of 7 days</span>
-<span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, interval<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">365</span><span class="op">)</span>, time.spacing<span class="op">=</span><span class="fl">7</span>, nmax<span class="op">=</span><span class="cn">Inf</span>, sleep<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
-
-<span class="co"># Sequential animation of type B events during the first year</span>
-<span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, interval<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">365</span><span class="op">)</span>, time.spacing<span class="op">=</span><span class="cn">NULL</span>, sleep<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
-
-<span class="co"># Animate the whole time range but with nmax=20 snapshots only</span>
-<span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, time.spacing<span class="op">=</span><span class="cn">NA</span>, nmax<span class="op">=</span><span class="fl">20</span>, sleep<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="co"># Such an animation can be saved in various ways using the tools of</span>
-<span class="co"># the animation package, e.g., saveHTML()</span>
-<span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/animation/" class="external-link">"animation"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">oldwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  <span class="co"># to not clutter up the current working dir</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/animation/man/saveHTML.html" class="external-link">saveHTML</a></span><span class="op">(</span><span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">365</span><span class="op">)</span>, time.spacing <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>,
-           nmax <span class="op">=</span> <span class="cn">Inf</span>, interval <span class="op">=</span> <span class="fl">0.2</span>, loop <span class="op">=</span> <span class="cn">FALSE</span>,
-           title <span class="op">=</span> <span class="st">"Animation of the first year of type B events"</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">oldwd</span><span class="op">)</span>
-<span class="op">}</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"imdepi"</span><span class="op">)</span></span>
+<span><span class="va">imdepiB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="va">type</span> <span class="op">==</span> <span class="st">"B"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co"># Animate the first year of type B with a step size of 7 days</span></span>
+<span><span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, interval<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">365</span><span class="op">)</span>, time.spacing<span class="op">=</span><span class="fl">7</span>, nmax<span class="op">=</span><span class="cn">Inf</span>, sleep<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Sequential animation of type B events during the first year</span></span>
+<span><span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, interval<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">365</span><span class="op">)</span>, time.spacing<span class="op">=</span><span class="cn">NULL</span>, sleep<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Animate the whole time range but with nmax=20 snapshots only</span></span>
+<span><span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, time.spacing<span class="op">=</span><span class="cn">NA</span>, nmax<span class="op">=</span><span class="fl">20</span>, sleep<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Such an animation can be saved in various ways using the tools of</span></span>
+<span><span class="co"># the animation package, e.g., saveHTML()</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/animation/" class="external-link">"animation"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">oldwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>  <span class="co"># to not clutter up the current working dir</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/animation/man/saveHTML.html" class="external-link">saveHTML</a></span><span class="op">(</span><span class="fu"><a href="animate.html">animate</a></span><span class="op">(</span><span class="va">imdepiB</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">365</span><span class="op">)</span>, time.spacing <span class="op">=</span> <span class="fl">7</span><span class="op">)</span>,</span>
+<span>           nmax <span class="op">=</span> <span class="cn">Inf</span>, interval <span class="op">=</span> <span class="fl">0.2</span>, loop <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>           title <span class="op">=</span> <span class="st">"Animation of the first year of type B events"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">oldwd</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -215,7 +229,7 @@ observation region <code>W</code> (aggregated over time).</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

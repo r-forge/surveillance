@@ -5,7 +5,7 @@
   The following proper scoring rules are available:
   Dawid-Sebastiani score ("dss"),
   logarithmic score ("logs"),
-  ranked probability score ("rps").'><title>Calibration Tests for Poisson or Negative Binomial Predictions — calibrationTest • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Calibration Tests for Poisson or Negative Binomial Predictions — calibrationTest"><meta property="og:description" content='The implemented calibration tests for Poisson or negative binomial
+  ranked probability score ("rps").'><title>Calibration Tests for Poisson or Negative Binomial Predictions — calibrationTest • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Calibration Tests for Poisson or Negative Binomial Predictions — calibrationTest"><meta property="og:description" content='The implemented calibration tests for Poisson or negative binomial
   predictions of count data are based on proper scoring rules and
   described in detail in Wei and Held (2014).
   The following proper scoring rules are available:
@@ -22,7 +22,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.20.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,12 +69,12 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">calibrationTest</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span>,
-                which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dss"</span>, <span class="st">"logs"</span>, <span class="st">"rps"</span><span class="op">)</span>,
-                tolerance <span class="op">=</span> <span class="fl">1e-4</span>, method <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">x</span>, <span class="va">mu</span>, size <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dss"</span>, <span class="st">"logs"</span>, <span class="st">"rps"</span><span class="op">)</span>,</span>
+<span>                tolerance <span class="op">=</span> <span class="fl">1e-4</span>, method <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -82,44 +82,58 @@
     <dl><dt>x</dt>
 <dd><p>the observed counts.
     All involved functions are vectorized and also accept matrices or arrays.</p></dd>
-<dt>mu</dt>
+
+  <dt>mu</dt>
 <dd><p>the means of the predictive distributions for the
     observations <code>x</code>.</p></dd>
-<dt>size</dt>
+
+  <dt>size</dt>
 <dd><p>either <code>NULL</code> (default), indicating Poisson predictions with mean
     <code>mu</code>, or dispersion parameters of
     negative binomial forecasts for the observations <code>x</code>,
     parametrized as in <code><a href="https://rdrr.io/r/stats/NegBinomial.html" class="external-link">dnbinom</a></code> with variance
     <code>mu*(1+mu/size)</code>.</p></dd>
-<dt>which</dt>
+
+  <dt>which</dt>
 <dd><p>a character string indicating which proper scoring rule to apply.</p></dd>
-<dt>tolerance</dt>
+
+  <dt>tolerance</dt>
 <dd><p>absolute tolerance for the null expectation and variance of
     <code>"logs"</code> and <code>"rps"</code>. For the latter, see the note below.
     Unused for <code>which = "dss"</code> (closed form).</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>selection of the \(z\)-statistic: <code>method = 2</code> refers to
     the alternative test statistic \(Z_s^*\) of Wei and Held (2014,
     Discussion), which has been recommended for low counts.
     <code>method = 1</code> corresponds to Equation 5 in Wei and Held (2014).</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>unused (argument of the generic).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>an object of class <code>"htest"</code>,
+    
+
+<p>an object of class <code>"htest"</code>,
   which is a list with the following components:</p>
 <dl><dt>method</dt>
 <dd><p>a character string indicating the type of test
     performed (including <code>which</code> scoring rule).</p></dd>
-<dt>data.name</dt>
+
+  <dt>data.name</dt>
 <dd><p>a character string naming the supplied <code>x</code> argument.</p></dd>
-<dt>statistic</dt>
+
+  <dt>statistic</dt>
 <dd><p>the \(z\)-statistic of the test.</p></dd>
-<dt>parameter</dt>
+
+  <dt>parameter</dt>
 <dd><p>the number of predictions underlying the test, i.e., <code>length(x)</code>.</p></dd>
-<dt>p.value</dt>
+
+  <dt>p.value</dt>
 <dd><p>the p-value for the test.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -142,15 +156,14 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="va">pi</span>, <span class="fl">100</span><span class="op">)</span>
-<span class="va">size</span> <span class="op">&lt;-</span> <span class="fl">0.1</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/NegBinomial.html" class="external-link">rnbinom</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">mu</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span>
-<span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span> <span class="co"># p = 0.99</span>
-<span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># p = 4.3e-05</span>
-<span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span> <span class="co"># p = 0.6959</span>
-<span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">size</span>, which <span class="op">=</span> <span class="st">"rps"</span><span class="op">)</span> <span class="co"># p = 0.1286</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="va">pi</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">size</span> <span class="op">&lt;-</span> <span class="fl">0.1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/NegBinomial.html" class="external-link">rnbinom</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">mu</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span></span>
+<span><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span> <span class="co"># p = 0.99</span></span>
+<span><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="va">mu</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># p = 4.3e-05</span></span>
+<span><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">size</span><span class="op">)</span> <span class="co"># p = 0.6959</span></span>
+<span><span class="fu">calibrationTest</span><span class="op">(</span><span class="va">y</span>, mu <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">size</span>, which <span class="op">=</span> <span class="st">"rps"</span><span class="op">)</span> <span class="co"># p = 0.1286</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
@@ -161,7 +174,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>
