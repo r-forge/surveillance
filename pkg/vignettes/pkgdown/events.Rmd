@@ -2,6 +2,14 @@
 title: Events
 ---
 
+## 2022
+
+- `hhh4()` [workshop](https://cmmid.github.io/hhh4-workshop/)
+  hosted at the [Centre for Mathematical Modelling of Infectious
+  Diseases](https://www.lshtm.ac.uk/research/centres/centre-mathematical-modelling-infectious-diseases),
+  London.  Material of the tutorial session is available at
+  <https://github.com/cmmid/hhh4-workshop/>.
+
 ## 2020
 
 - The **surveillance** package is part of the COVID-19 outbreak response.
