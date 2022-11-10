@@ -1,5 +1,5 @@
 
-R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics"
+R version 4.2.2 (2022-10-31) -- "Innocent and Trusting"
 Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.20.1. For overview type ‘help(surveillance)’.
+This is surveillance 1.20.2. For overview type ‘help(surveillance)’.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -1840,11 +1840,11 @@ bayes(5,5,1) 6  3  192 0  1         0.9846154 0.01538462 0
 > system.time( sts1 <- farrington(stsObj, control=list(range=range,
 +                        fitFun="algo.farrington.fitGLM.fast"), verbose=FALSE))
    user  system elapsed 
-  0.319   0.000   0.319 
+  0.215   0.000   0.215 
 > system.time( sts2 <- farrington(stsObj, control=list(range=range,
 +                        fitFun="algo.farrington.fitGLM"), verbose=FALSE))
    user  system elapsed 
-  0.541   0.000   0.542 
+  0.354   0.000   0.354 
 > 
 > #Check if results are the same
 > stopifnot(upperbound(sts1) == upperbound(sts2))
@@ -2415,38 +2415,306 @@ rki(4,0,2) 12  6 585  0 1.00 0.9898477 0.010152284    0
 > 
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: algo.twins
-> ### Title: Model fit based on a two-component epidemic model
+> ### Title: Fit a Two-Component Epidemic Model using MCMC
 > ### Aliases: algo.twins
 > ### Keywords: ts regression
 > 
 > ### ** Examples
 > 
-> ## Not run: 
-> ##D # Load the data used in the Held et al. (2006) paper
-> ##D data("hepatitisA")
-> ##D 
-> ##D # Fix seed - this is used for the MCMC samplers in twins
-> ##D set.seed(123)
-> ##D 
-> ##D # Call algorithm and save result (use short chain without filtering for speed)
-> ##D otwins <- algo.twins(hepatitisA,
-> ##D                      control=list(burnin=500, filter=1, sampleSize=1000))
-> ##D 
-> ##D # This shows the entire output (use ask=TRUE for pause between plots)
-> ##D plot(otwins, ask=FALSE)
-> ##D 
-> ##D # Direct access to MCMC output
-> ##D hist(otwins$logFile$psi,xlab=expression(psi),main="")
-> ##D if (require("coda")) {
-> ##D     print(summary(mcmc(otwins$logFile[,c("psi","xipsi","K")])))
-> ##D }
-> ## End(Not run)
+> # Load the data used in the Held et al. (2006) paper
+> data("hepatitisA")
+> 
+> # Fix seed - this is used for the MCMC samplers in twins
+> set.seed(123)
+> 
+> # Call algorithm and save result (use short chain without filtering for speed)
+> oldwd <- setwd(tempdir())  # where logfiles will be written
+> otwins <- algo.twins(hepatitisA,
++                      control=list(burnin=500, filter=1, sampleSize=1000))
+MCMC Estimation in BPLE Model v1.0.1 (using R API).
+dim(x) = 208	1
+logfile is in "twins.log".
+logfile2 is in "twins.log2".
+burnin = 500 (500)
+filter = 1 (1)
+sampleSize = 1000 (1000)
+T = 52
+nfreq = 1
+alpha_xi = 10.000000
+beta_xi = 10.000000
+psiRWSigma = 0.250000
+alpha_psi = 1.000000
+beta_psi = 0.100000
+nu_trend = 0
+ ====== The data =======
+0	0	
+0	24	
+0	43	
+0	51	
+0	61	
+0	76	
+0	63	
+0	53	
+0	32	
+0	47	
+0	43	
+0	39	
+0	33	
+0	50	
+0	34	
+0	27	
+0	18	
+0	38	
+0	35	
+0	30	
+0	39	
+0	27	
+0	53	
+0	25	
+0	32	
+0	27	
+0	37	
+0	26	
+0	26	
+0	25	
+0	22	
+0	26	
+0	34	
+0	40	
+0	36	
+0	50	
+0	57	
+0	68	
+0	69	
+0	86	
+0	58	
+0	76	
+0	83	
+0	78	
+0	49	
+0	54	
+0	51	
+0	37	
+0	43	
+0	31	
+0	40	
+0	53	
+0	17	
+0	19	
+0	43	
+0	42	
+0	34	
+0	34	
+0	26	
+0	36	
+0	32	
+0	29	
+0	12	
+0	32	
+0	23	
+0	12	
+0	17	
+0	24	
+0	19	
+0	21	
+0	18	
+0	15	
+0	19	
+0	15	
+0	7	
+0	22	
+0	25	
+0	13	
+0	17	
+0	12	
+0	7	
+0	14	
+0	19	
+0	11	
+0	10	
+0	17	
+0	36	
+0	25	
+0	38	
+0	43	
+0	40	
+0	47	
+0	41	
+0	73	
+0	49	
+0	39	
+0	32	
+0	57	
+0	41	
+0	37	
+0	47	
+0	33	
+0	38	
+0	44	
+0	24	
+0	19	
+0	36	
+0	33	
+0	31	
+0	36	
+0	22	
+0	35	
+0	36	
+0	22	
+0	30	
+0	35	
+0	25	
+0	28	
+0	15	
+0	24	
+0	19	
+0	20	
+0	20	
+0	24	
+0	20	
+0	20	
+0	16	
+0	36	
+0	22	
+0	13	
+0	17	
+0	17	
+0	15	
+0	13	
+0	16	
+0	15	
+0	16	
+0	24	
+0	10	
+0	14	
+0	25	
+0	28	
+0	27	
+0	48	
+0	31	
+0	30	
+0	37	
+0	35	
+0	36	
+0	28	
+0	45	
+0	32	
+0	32	
+0	47	
+0	46	
+0	32	
+0	15	
+0	17	
+0	33	
+0	31	
+0	33	
+0	36	
+0	29	
+0	35	
+0	28	
+0	20	
+0	32	
+0	22	
+0	25	
+0	21	
+0	50	
+0	36	
+0	37	
+0	39	
+0	23	
+0	22	
+0	27	
+0	30	
+0	29	
+0	27	
+0	13	
+0	26	
+0	20	
+0	17	
+0	23	
+0	34	
+0	19	
+0	27	
+0	22	
+0	54	
+0	99	
+0	86	
+0	99	
+0	61	
+0	82	
+0	62	
+0	69	
+0	38	
+0	50	
+0	39	
+0	38	
+0	30	
+0	37	
+0	27	
+0	33	
+0	33	
+0	26	
+0	28	
+0	27	
+------------------------------------------------
+psi:     Ga(1.000000, 0.100000)-->	10.000000
+------------------------------------------------
+Total number of samples = 500 + 1 * 1000 = 1500
+..................................................
+Current psiRWSigma= 0.250000 --> acc rate = 0.416000
+Corrected psiRWSigma= 0.375000
+..................................................
+Current psiRWSigma= 0.375000 --> acc rate = 0.294000
+Corrected psiRWSigma= 0.187500
+..................................................
+Current psiRWSigma= 0.187500 --> acc rate = 0.512000
+Corrected psiRWSigma= 0.281250
+..................................................
+Current psiRWSigma= 0.281250 --> acc rate = 0.374000
+Corrected psiRWSigma= 0.281250
+.34%.35%..36%.37%..38%.39%..40%.41%..42%.43%..44%.45%..46%.47%..48%.49%..50%.51%..52%.53%..54%.55%..56%.57%..58%.59%..60%.61%..62%.63%..64%.65%..66%.67%..68%.69%..70%.71%..72%.73%..74%.75%..76%.77%..78%.79%..80%.81%..82%.83%..84%.85%..86%.87%..88%.89%..90%.91%..92%.93%..94%.95%..96%.97%..98%.99%..100%
+Done with twins -- going back to R.
+> setwd(oldwd)
+> 
+> # This shows the entire output (use ask=TRUE for pause between plots)
+> plot(otwins, ask=FALSE)
+> 
+> # Direct access to MCMC output
+> hist(otwins$logFile$psi,xlab=expression(psi),main="")
+> if (require("coda")) {
++     print(summary(mcmc(otwins$logFile[,c("psi","xipsi","K")])))
++ }
+Loading required package: coda
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+       Mean    SD Naive SE Time-series SE
+psi   21.73 4.497  0.14222          0.716
+xipsi  1.00 0.000  0.00000          0.000
+K     11.60 2.834  0.08962          1.218
+
+2. Quantiles for each variable:
+
+       2.5%   25%   50%   75% 97.5%
+psi   14.35 18.63 21.02 24.36 33.25
+xipsi  1.00  1.00  1.00  1.00  1.00
+K      8.00  9.00 11.00 14.00 17.00
+
 > 
 > 
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("algo.twins", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
+
+detaching ‘package:coda’
+
 > nameEx("backprojNP")
 > ### * backprojNP
 > 
@@ -4493,7 +4761,7 @@ $h
 > ### ** Examples
 > 
 > formatDate(Sys.Date(), "%G/%OQ/%q")
-[1] "2022/III/14"
+[1] "2022/IV/41"
 > 
 > 
 > 
@@ -4658,10 +4926,11 @@ Is projected: NA
 proj4string : [NA]
 Features    : 12 
 Data slot   : 3 variables
+> plot(ha.sts, type = observed ~ time)  # = plot(aggregate(ha.sts, by = "unit"))
 > plot(ha.sts, type = observed ~ unit, labels = TRUE)
 > 
-> ## conversion of the old "disProg" object 'ha' to the new S4 class "sts"
 > ## Not run: 
+> ##D ## conversion of the old "disProg" object 'ha' to the new S4 class "sts"
 > ##D shpfile <- system.file("shapes/berlin.shp", package="surveillance")
 > ##D ha.sts <- disProg2sts(ha, map = maptools::readShapePoly(shpfile,IDvar="SNAME"))
 > ##D ## in data("ha.sts"), German umlauts in 'ha.sts@map@data$BEZIRK'
@@ -5426,7 +5695,7 @@ Number of time points:  103
 > flush(stderr()); flush(stdout())
 > 
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: plot.hhh4
+> ### Name: hhh4_plot
 > ### Title: Plots for Fitted 'hhh4'-models
 > ### Aliases: plot.hhh4 plotHHH4_fitted plotHHH4_fitted1 plotHHH4_season
 > ###   getMaxEV_season plotHHH4_maxEV getMaxEV plotHHH4_maps plotHHH4_ri
@@ -5571,6 +5840,55 @@ end.ri(iid).03462
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("hhh4_plot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("hhh4_predict")
+> ### * hhh4_predict
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: hhh4_predict
+> ### Title: Predictions from a 'hhh4' Model
+> ### Aliases: predict.hhh4
+> ### Keywords: methods models
+> 
+> ### ** Examples
+> 
+> ## simulate simple seasonal noise with reduced baseline for t >= 60
+> t <- 0:100
+> y <- rpois(length(t), exp(3 + sin(2*pi*t/52) - 2*(t >= 60)))
+> obj <- sts(y)
+> plot(obj)
+> 
+> ## fit true model
+> fit <- hhh4(obj, list(end = list(f = addSeason2formula(~lock)),
++                       data = list(lock = as.integer(t >= 60)),
++                       family = "Poisson"))
+> coef(fit, amplitudeShift = TRUE, se = TRUE)
+                        Estimate Std. Error
+end.1                 2.98937318 0.03274760
+end.lock             -2.04436410 0.09101313
+end.A(2 * pi * t/52)  1.03892400 0.04365286
+end.s(2 * pi * t/52)  0.00871127 0.03475900
+> 
+> ## compute predictions for a subset of the time points
+> stopifnot(identical(predict(fit), fitted(fit)))
+> plot(obj)
+> lines(40:80, predict(fit, newSubset = 40:80), lwd = 2)
+> 
+> 
+> ## advanced: compute predictions for "newdata" (here, a modified covariate)
+> mod <- fit
+> mod$terms <- NULL  # to be sure
+> mod$control$data$lock[t >= 60] <- 0.5
+> pred <- meanHHH(mod$coefficients, terms(mod))$mean
+> plot(fit, xaxis = NA)
+> lines(mod$control$subset, pred, lty = 2)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("hhh4_predict", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("hhh4_simulate")
 > ### * hhh4_simulate
@@ -6604,7 +6922,7 @@ List of 14
 > 
 > library("spatstat.geom")
 Loading required package: spatstat.data
-spatstat.geom 2.4-0
+spatstat.geom 3.0-3
 > plot(letterR)
 > plot(intersectPolyCircle(letterR, c(3,2), 1), add=TRUE, col=2, lwd=3)
 > 
@@ -6694,8 +7012,8 @@ dt      <= 50  > 50
 > 
 > ## contingency table in LaTeX
 > toLatex(knoxtest)
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:00:29 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:47:52 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{r|rr|r}
@@ -6882,7 +7200,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x55ffce327d48>
+<environment: 0x5579f1447538>
 
 $ar$offset
 [1] 1
@@ -6891,7 +7209,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x55ffce327d48>
+<environment: 0x5579f1447538>
 
 $ne$offset
 [1] 1
@@ -7701,41 +8019,6 @@ length(x) = 4
 
 detaching ‘package:parallel’
 
-> nameEx("plot.atwins")
-> ### * plot.atwins
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: plot.atwins
-> ### Title: Plot results of a twins model fit
-> ### Aliases: plot.atwins
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
-> ## Not run: 
-> ##D #Apparently, the algo.atwins can crash on some LINUX systems
-> ##D #thus for now the example section is commented
-> ##D 
-> ##D #Load the data used in the Held et al. (2006) paper
-> ##D data("hepatitisA")
-> ##D 
-> ##D #Fix seed - this is used for the MCMC samplers in twins
-> ##D set.seed(123)
-> ##D 
-> ##D #Call algorithm and save result
-> ##D otwins <- algo.twins(hepatitisA)
-> ##D 
-> ##D #This shows the entire output
-> ##D plot(otwins,which=c(1,2),ask=FALSE)
-> ## End(Not run)
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("plot.atwins", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
 > nameEx("plot.disProg")
 > ### * plot.disProg
 > 
@@ -7823,16 +8106,12 @@ detaching ‘package:parallel’
 +     ## the neighbourhood graph can be plotted with spdep
 +     plot(spdep::mat2listw(adjmat), coordinates(fluBYBW@map))
 + }
-Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3; sf_use_s2() is TRUE
 > 
 > 
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("poly2adjmat", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-
-detaching ‘package:sf’
-
 > nameEx("polyAtBorder")
 > ### * polyAtBorder
 > 
@@ -8880,8 +9159,8 @@ $gpclib
 +                 thresholdMethod="delta",alpha=0.1)
 > salm <- farringtonFlexible(salm,control=control)
 > toLatex(salm)
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:00:55 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:08 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrlr}
@@ -9682,22 +9961,22 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
  & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
 \hline
 \hline 
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:01 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:12 2022
  \texttt{h.(Intercept)} & $-20.481$ & $0.053$ & $-389.0$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.041$ & $0.022$ & $-1.9$ & $0.06$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.242$ & $0.064$ & $3.8$ & $2\cdot{}10^{-04}$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.350$ & $0.064$ & $5.4$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:01 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:12 2022
  \texttt{e.(Intercept)} & $-16.90$ & $0.26$ & $-64$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 \end{tabular}
 > # or, to report rate ratios
 > xtable(s)
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:01 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:12 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -10045,8 +10324,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x55ffe1a27560>
-<environment: 0x55ffe1a21cd0>
+<bytecode: 0x5579f8854e20>
+<environment: 0x5579f87de220>
 
 $G
 function (t, logvals, types) 
@@ -10056,7 +10335,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x55ffe1a21cd0>
+<environment: 0x5579f87de220>
 
 $deriv
 function (t, logvals, types) 
@@ -10072,8 +10351,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x55ffe1a28750>
-<environment: 0x55ffe1a21cd0>
+<bytecode: 0x5579f8856010>
+<environment: 0x5579f87de220>
 
 $Deriv
 function (t, logvals, types) 
@@ -10092,7 +10371,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x55ffe1a21cd0>
+<environment: 0x5579f87de220>
 
 $npars
 [1] 4
@@ -10758,16 +11037,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x55ffe18e7000>
-<environment: 0x55ffe18e3d90>
+<bytecode: 0x5579f3359b38>
+<environment: 0x5579f545f368>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x55ffe18e7a80>
-<environment: 0x55ffe18e3d90>
+<bytecode: 0x5579f335a5b8>
+<environment: 0x5579f545f368>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10775,8 +11054,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x55ffe18e7fc0>
-<environment: 0x55ffe18e3d90>
+<bytecode: 0x5579f335aaf8>
+<environment: 0x5579f545f368>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10790,8 +11069,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x55ffe18e8730>
-<environment: 0x55ffe18e3d90>
+<bytecode: 0x5579f335b268>
+<environment: 0x5579f545f368>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10799,8 +11078,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x55ffe18e5ee0>
-<environment: 0x55ffe18e3d90>
+<bytecode: 0x5579f54c8218>
+<environment: 0x5579f545f368>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10812,8 +11091,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x55ffe18e6538>
-<environment: 0x55ffe18e3d90>
+<bytecode: 0x5579f54c8870>
+<environment: 0x5579f545f368>
 
 $npars
 [1] 3
@@ -10908,10 +11187,8 @@ Setting up the model environment ...
 > 
 > ## spatial shape of the intensity (aggregated over time)
 > ## Don't show: 
-> if (surveillance.options("allExamples"))
+> if (surveillance.options("allExamples")) {
 + ## End(Don't show)
-+ if (requireNamespace("maptools"))
-+ {
 +   ## load borders of Germany's districts
 +   load(system.file("shapes", "districtsD.RData", package="surveillance"))
 + 
@@ -10931,7 +11208,9 @@ Setting up the model environment ...
 +   })
 +   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
 +   plot(maps_epiprop[[2]], split=c(2,1,2,1))
++ ## Don't show: 
 + }
+> ## End(Don't show)
 > 
 > 
 > 
@@ -11086,15 +11365,15 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
  & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
 \hline
 \hline 
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:05 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:15 2022
  \texttt{h.(Intercept)} & $-20.52869$ & $0.04724$ & $-434.597$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.04574$ & $0.02212$ & $-2.068$ & $0.03863$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.21728$ & $0.06467$ & $3.360$ & $0.00078$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.31810$ & $0.06380$ & $4.986$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:05 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:15 2022
  \texttt{e.(Intercept)} & $-12.51659$ & $0.32326$ & $-38.720$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{e.typeC} & $-0.90832$ & $0.26742$ & $-3.397$ & $0.000682$ \\ 
   \texttt{e.agegrp[3,19)} & $0.70612$ & $0.32706$ & $2.159$ & $0.030852$ \\ 
@@ -11105,8 +11384,8 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 > 
 > # or using the xtable-method (which produces rate ratios)
 > xtable(s)
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:05 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:15 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -11348,7 +11627,7 @@ Data attributes:
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2022-07-14 17:01:08 
+Time at beginning of simulation: 2022-11-10 09:48:18 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11373,12 +11652,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.138 seconds
-Estimated finishing time: 2022-07-14 17:01:09 
+Runtime of first simulation: 0.091 seconds
+Estimated finishing time: 2022-11-10 09:48:18 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2022-07-14 17:01:09).
+Done (2022-11-10 09:48:18).
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
 >     local({
@@ -11762,8 +12041,8 @@ FALSE  TRUE
 > 
 > # Compute the quality values in a nice formatted way
 > xtable(algo.quality(survResObj))
-% latex table generated in R 4.2.0 by xtable 1.8-4 package
-% Thu Jul 14 17:01:13 2022
+% latex table generated in R 4.2.2 by xtable 1.8-4 package
+% Thu Nov 10 09:48:21 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -11825,7 +12104,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  73.976 0.976 77.173 3.594 0.333 
+Time elapsed:  52.497 0.647 54.734 2.268 0.243 
 > grDevices::dev.off()
 null device 
           1 
