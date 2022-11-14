@@ -1,6 +1,6 @@
 Package: surveillance
 Title: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena
-Version: 1.20.2
+Version: 1.20.3
 Date: 2022-11-14
 Authors@R: c(MH = person("Michael", "Hoehle",
                   email = "hoehle@math.su.se",
