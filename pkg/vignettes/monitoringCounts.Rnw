@@ -4,7 +4,7 @@
 %\VignetteDepends{surveillance, gamlss, MGLM}
 
 <<knitr, include = FALSE, purl = FALSE>>=
-knitr::opts_chunk$set(fig.path="plots/monitoringCounts-", out.width = NULL,
+knitr::opts_chunk$set(fig.path="plots/monitoringCounts-",
                       error = FALSE, warning = FALSE, message = FALSE)
 knitr::render_sweave()             # use Sweave environments
 knitr::set_header(highlight = '')  # no \usepackage{Sweave} (part of jss class)
@@ -222,10 +222,9 @@ y.max <- 0
 })
 @
 
- \setkeys{Gin}{height=7cm, width=15cm}
 \begin{figure}
 \centering
-<<NewportPlot, fig.width=10, fig.height=4.66667, echo=FALSE, purl=FALSE>>=
+<<NewportPlot, fig.width=9, fig.height=4.5, out.width=".9\\linewidth", echo=FALSE, purl=FALSE>>=
 y.max <- max(aggregate(salmNewport,by="unit")@observed,na.rm=TRUE)
 plotOpts2 <- modifyList(plotOpts,list(x=salmNewport,legend.opts=NULL,ylim=c(0,y.max),type = observed ~ time),keep.null=TRUE)
 plotOpts2$par.list <- list(mar=c(6,5,0,5),family="Times")
@@ -235,6 +234,7 @@ do.call("plot",plotOpts2)
 \caption{Weekly number of cases of S. Newport in Germany, 2004-2013.}
 \label{fig:Newport}
 \end{figure}
+
 \subsubsection[Basic manipulation of objects of the class sts]{Basic manipulation of objects of the class \texttt{sts}}
 This time series above is represented as a multivariate \code{sts} object whose dimensions correspond
 to the 16 German federal states. Values are weekly counts so \code{freq = 52}.
@@ -254,30 +254,26 @@ Actually \code{sts} objects
 can be plotted using different options: \code{type = observed ~ time} produces the time series for whole Germany as shown in Figure~\ref{fig:Newport}, whereas \code{type = observed ~ time | unit} (the default)
 is a panelled graph with each panel representing the time series of counts of a federal state as seen in Figure~\ref{fig:unit}.
 
-\setkeys{Gin}{height=7cm, width=9cm}
 \begin{figure}
-%\hspace*{\fill}%
-\hspace{-1em}
 \subfloat[]{
 
-<<unitPlot1, echo=FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<unitPlot1, echo=FALSE, results='hide', fig.width=6, fig.height=4.5, out.width=".5\\linewidth", purl=FALSE>>=
 y.max <- max(observed(salmNewport[,2]),observed(salmNewport[,3]),na.rm=TRUE)
 plotOpts2 <- modifyList(plotOpts,list(x=salmNewport[,2],legend.opts=NULL,ylim=c(0,y.max)),keep.null=TRUE)
 plotOpts2$xaxis.tickFreq <- list("%G"=atChange)
 do.call("plot",plotOpts2)
 @
 
-}\hspace{-3em}%
+}
 \subfloat[]{
 
-<<unitPlot2, echo=FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<unitPlot2, echo=FALSE, results='hide', fig.width=6, fig.height=4.5, out.width=".5\\linewidth", purl=FALSE>>=
 plotOpts2 <- modifyList(plotOpts,list(x=salmNewport[,3],legend.opts=NULL,ylim=c(0,y.max)),keep.null=TRUE)
 plotOpts2$xaxis.tickFreq <- list("%G"=atChange)
 do.call("plot",plotOpts2)
 @
 
 }
-%\hspace*{\fill}%
 \caption{Weekly count of S. Newport in the German federal states (a) Bavaria and (b) Berlin.}
 \label{fig:unit}
 \end{figure}
@@ -343,10 +339,10 @@ control <- list(range = in2011, method = "C1", alpha = 0.05)
 surv <- earsC(salmNewportGermany, control = control)
 plot(surv)
 @
- \setkeys{Gin}{height=7cm, width=15cm}
+
 \begin{figure}
 \centering
-<<EARSPlot, fig.width=10, fig.height=4.666667, echo=FALSE, purl=FALSE>>=
+<<EARSPlot, fig.width=9, fig.height=4.5, out.width=".9\\linewidth", echo=FALSE, purl=FALSE>>=
 y.max <- max(observed(surv),upperbound(surv),na.rm=TRUE)
 do.call("plot",modifyList(plotOpts,list(x=surv,ylim=c(0,y.max)),keep.null=TRUE))
 @
@@ -420,8 +416,6 @@ The algorithm uses \code{w}, \code{b} and \texttt{noPeriods} to deduce the lengt
 the same length up to rounding. An exception is the reference window centred around $t_0$. Figure~\ref{fig:fPlot} shows a minimal example, where each character corresponds to a different period. Note that setting $\mathtt{noPeriods} = 1$ corresponds to using the original method with only a subset of the data:
 there is only one period defined per year, the reference window around $t_0$ and other timepoints are not included in the model.
 
-
- \setkeys{Gin}{height=3cm, width=7cm}
 \begin{figure}
 \subfloat[$\texttt{noPeriods}=2$]{
 \includegraphics[width=0.45\textwidth]{monitoringCounts-cache/fPlot1.pdf}
@@ -492,23 +486,18 @@ plot(salm.farrington)
 plot(salm.noufaily)
 @
 
- \setkeys{Gin}{height=7cm, width=9cm}
-
 \begin{figure}
-\hspace{-1em}
-%\begin{center}
 \subfloat[]{
 
-<<farPlot1, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<farPlot1, echo = FALSE, results='hide', fig.width=6, fig.height=5.5, out.width=".5\\linewidth", purl=FALSE>>=
 y.max <- max(observed(salm.farrington),upperbound(salm.farrington),observed(salm.noufaily),upperbound(salm.noufaily),na.rm=TRUE)
 do.call("plot",modifyList(plotOpts,list(x=salm.farrington,ylim=c(0,y.max))))
 @
 
 }
-\hspace{-3em}
 \subfloat[]{
 
-<<farPlot2, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<farPlot2, echo = FALSE, results='hide', fig.width=6, fig.height=5.5, out.width=".5\\linewidth", purl=FALSE>>=
 do.call("plot",modifyList(plotOpts,list(x=salm.noufaily,ylim=c(0,y.max))))
 @
 
@@ -561,11 +550,10 @@ As an example,
 \citet{Manitz2013} studied the influence of absolute
 humidity on the occurrence of weekly reported campylobacter cases in Germany.
 
-\setkeys{Gin}{height=7cm, width=15cm}
 \begin{figure}
 \centering
   
-<<campyDE, fig.width=10, fig.height=4.6667, echo=FALSE, purl=FALSE>>=
+<<campyDE, fig.width=9, fig.height=4.5, out.width=".9\\linewidth", echo=FALSE, purl=FALSE>>=
 # Load data and create \code{sts}-object
 data("campyDE")
 cam.sts <- sts(epoch=campyDE$date,
@@ -710,10 +698,10 @@ similar to the original procedure, but the improved reweighting and trend
 inclusion produces fewer alarms.
 
 The \code{boda} method is to be seen as a step towards more Bayesian thinking in aberration detection. However, besides its time demands for a detailed modeling, the speed of the procedure is also prohibitive as regards routine application. As a response~\citet{Maelle} introduce a method which has two advantages: it allows to adjust outbreak detection for reporting delays and includes an approximate inference method much faster than the INLA inference method. However, its linear predictor is more in the style of~\citet{Noufaily2012} not allowing for additional covariates or penalized options for the intercept.
- \setkeys{Gin}{height=7cm, width=15cm}
+
 \begin{figure}
 \centering
-<<bPlot, fig.width=10, fig.height=4.6667, echo=FALSE, purl=FALSE>>=
+<<bPlot, fig.width=9, fig.height=4.5, out.width=".9\\linewidth", echo=FALSE, purl=FALSE>>=
 y.max <- max(observed(boda.covars),upperbound(boda.covars),na.rm=TRUE)
 plotOpts2 <- modifyList(plotOpts,list(x=boda.covars,ylim=c(0,y.max)),keep.null=TRUE)
 plotOpts2$xaxis.tickFreq <- list("%m"=atChange,"%G"=atChange)
@@ -754,10 +742,9 @@ combineSTS <- function(stsList) {
 }
 @
 
-\setkeys{Gin}{height=7cm, width=16cm}
 \begin{figure}
 \centering
-<<alarmplot, fig.width=8, fig.height=3.5, echo=FALSE>>=
+<<alarmplot, fig.width=8, fig.height=4, out.width="\\linewidth", echo=FALSE>>=
 # Make an artifical object containing two columns - one with the boda output
 # and one with the farrington output
 cam.surv <- combineSTS(list(boda.covars=boda.covars,boda=boda,bayes=bayes,
@@ -835,10 +822,9 @@ control <- list(range = phase2, c.ARL = 4, theta = log(2), ret = "cases",
 salmGlrnb <- glrnb(salmNewportGermany, control = control)
 @
 
- \setkeys{Gin}{height=7cm, width=15cm}
 \begin{figure}
 \centering
-<<glrnbPlot, fig.width=10, fig.height=4.6667, echo=FALSE, purl=FALSE>>=
+<<glrnbPlot, fig.width=9, fig.height=4.5, out.width=".9\\linewidth", echo=FALSE, purl=FALSE>>=
 y.max <- max(observed(salmGlrnb),upperbound(salmGlrnb),na.rm=TRUE)
 do.call("plot",modifyList(plotOpts,list(x=salmGlrnb,ylim=c(0,y.max))))
 @
@@ -919,7 +905,7 @@ where $\bm{z}_t$ is a vector of possibly time-varying covariates and $\bm{\beta}
 \begin{figure}
 \centering
   
-<<catPlot1, fig.width=10, fig.height=4.6667, echo=FALSE, purl=FALSE>>=
+<<catPlot1, fig.width=9, fig.height=4.5, out.width=".9\\linewidth", echo=FALSE, purl=FALSE>>=
 y.max <- max(observed(salmHospitalized)/population(salmHospitalized),upperbound(salmHospitalized)/population(salmHospitalized),na.rm=TRUE)
 plotOpts2 <- modifyList(plotOpts,list(x=salmHospitalized,legend.opts=NULL,ylab="",ylim=c(0,y.max)),keep.null=TRUE)
 plotOpts2$xaxis.tickFreq <- list("%G"=atChange,"%m"=atChange)
@@ -1079,12 +1065,10 @@ load("monitoringCounts-cache/pMarkovChain.RData")
 @
 
 
-\setkeys{Gin}{height=7cm, width=9cm}
 \begin{figure}
-\hspace{-1em}
 \subfloat[]{
 
-<<catF, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<catF, echo = FALSE, results='hide', fig.width=6, fig.height=5.2, out.width=".5\\linewidth", purl=FALSE>>=
 y.max <- max(observed(salmHospitalizedCat[,1])/population(salmHospitalizedCat[,1]),upperbound(salmHospitalizedCat[,1])/population(salmHospitalizedCat[,1]),na.rm=TRUE)
 plotOpts3 <- modifyList(plotOpts,list(x=salmHospitalizedCat[,1],ylab="Proportion",ylim=c(0,y.max)))
 plotOpts3$legend.opts <- list(x="top",bty="n",legend=c(expression(U[t])),lty=1,lwd=line.lwd,col=plotOpts$alarm.symbol$col,horiz=TRUE,cex=cex.text)
@@ -1095,10 +1079,9 @@ plot(salmHospitalizedCat[,1])
 @ 
 
 }
-\hspace{-3em}
 \subfloat[]{
 
-<<catARL, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<catARL, echo = FALSE, results='hide', fig.width=6, fig.height=5.2, out.width=".5\\linewidth", purl=FALSE>>=
 par(mar=c(6,5,5,5),family="Times")
 matplot(h.grid, cbind(pMC,pMarkovChain),type="l",ylab=expression(P(T[A] <= 56 * "|" * tau * "=" * infinity)),xlab="Threshold h",col=1,cex.axis=cex.text,cex.lab=cex.text)
 prob <- 0.1
@@ -1111,6 +1094,7 @@ matplot(h.grid, cbind(pMC, pMarkovChain), type="l", lty=1:2, col=1)
 abline(h=0.1, lty=5)
 legend("center", c("Monte Carlo","Markov chain"), lty=1:2, bty="n")
 @ 
+
 }
 \caption{(a) Results of the monitoring with categorical CUSUM of the proportion of Salmonella cases that were hospitalized in Germany in Jan 2013 - Jan 2014. (b)
 Probability of a false alarm within the 56 timepoints of the monitoring as a function of the threshold $h$.}
@@ -1133,9 +1117,9 @@ data("rotaBB")
 plot(rotaBB)
 @
 
- \setkeys{Gin}{height=7cm, width=15cm}
 \begin{figure}
-<<rotaPlot, fig.width=7.5, fig.height=3.5, echo=FALSE, purl=FALSE>>=
+\centering
+<<rotaPlot, fig.width=8, fig.height=4, out.width=".95\\linewidth", echo=FALSE, purl=FALSE>>=
 par(mar=c(5.1,20.1,4.1,0),family="Times")
 plot(rotaBB,xlab="Time (months)",ylab="",
      col="mediumblue",cex=cex.text,cex.lab=cex.text,cex.axis=cex.text,cex.main=cex.text,
@@ -1266,13 +1250,10 @@ matlines(alpha1/rowSums(alpha1),type="l",lwd=1,lty=2)
 @
 
 
-
-\setkeys{Gin}{height=7cm, width=9cm}
 \begin{figure}
-\hspace{-1em}
 \subfloat[]{
 
-<<ctPlot1, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<ctPlot1, echo = FALSE, results='hide', fig.width=6, fig.height=4.5, out.width=".5\\linewidth", purl=FALSE>>=
 surv@observed[,1] <- 0
 surv@multinomialTS <- FALSE
 surv.dm@observed[,1] <- 0
@@ -1288,10 +1269,9 @@ mtext(side=1,text="Time (weeks)",
 @
 
 }
-\hspace{-3em}
 \subfloat[]{
 
-<<ctPlot2, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
+<<ctPlot2, echo = FALSE, results='hide', fig.width=6, fig.height=4.5, out.width=".5\\linewidth", purl=FALSE>>=
 plotOpts3$x <- surv.dm[,1]
 do.call("plot",plotOpts3)
 abline(h=h, lwd=2, col="darkgrey")
