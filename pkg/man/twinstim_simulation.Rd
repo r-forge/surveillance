@@ -322,9 +322,11 @@ data("imdepi", "imdepifit")
 ## https://gdz.bkg.bund.de/), simplified by the "modified Visvalingam"
 ## algorithm (level=6.6\%) using MapShaper.org (v. 0.1.17):
 load(system.file("shapes", "districtsD.RData", package="surveillance"))
+\dontshow{if (surveillance.options("allExamples")) \{}
 plot(districtsD)
 plot(stateD, add=TRUE, border=2, lwd=2)
 # 'stateD' was obtained as 'rgeos::gUnaryUnion(districtsD)'
+\dontshow{\}}
 
 ## simulate 2 realizations (over a short period, for speed)
 ## considering events from data(imdepi) before t=31 as prehistory
