@@ -1,4 +1,4 @@
-# surveillance 1.20.2 (2022-10-31)
+# surveillance 1.20.2 (2022-11-14)
 
 ## NEW FEATURES
 
