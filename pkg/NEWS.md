@@ -1,11 +1,7 @@
 # surveillance 1.20.3 (2022-11-14)
 
-CRAN maintenance:
-
 - `vignette("monitoringCounts")` now uses **knitr** as its engine
   to work around [Bug 18318](https://bugs.R-project.org/show_bug.cgi?id=18318).
-
-- Speed up examples
 
 
 # surveillance 1.20.2 (2022-10-31)
