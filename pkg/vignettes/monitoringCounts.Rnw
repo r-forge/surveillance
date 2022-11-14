@@ -1075,7 +1075,7 @@ load("monitoringCounts-cache/pMarkovChain.RData")
 <<catF, echo = FALSE, results='hide', fig.width=6, fig.height=4.6667, purl=FALSE>>=
 y.max <- max(observed(salmHospitalizedCat[,1])/population(salmHospitalizedCat[,1]),upperbound(salmHospitalizedCat[,1])/population(salmHospitalizedCat[,1]),na.rm=TRUE)
 plotOpts3 <- modifyList(plotOpts,list(x=salmHospitalizedCat[,1],ylab="Proportion",ylim=c(0,y.max)))
-plotOpts3$legend.opts <- list(x="top",bty="n",legend=c(expression(U[t])),lty=1,lwd=line.lwd,col=plotOpts$alarm.symbol$col,horiz=TRUE,cex=plotOpts$cex.leg)
+plotOpts3$legend.opts <- list(x="top",bty="n",legend=c(expression(U[t])),lty=1,lwd=line.lwd,col=plotOpts$alarm.symbol$col,horiz=TRUE,cex=cex.text)
 do.call("plot",plotOpts3)
 @
 <<catF-simple, echo = FALSE, fig.keep = 'none'>>=
