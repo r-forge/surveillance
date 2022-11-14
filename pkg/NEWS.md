@@ -13,6 +13,9 @@
 - `intensityplot.twinstim()` no longer depends on package
   [**maptools**](https://CRAN.R-project.org/package=maptools).
 
+- `vignette("monitoringCounts")` now uses **knitr** as its engine
+  to work around [Bug 18318](https://bugs.R-project.org/show_bug.cgi?id=18318).
+
 ## BUG FIXES
 
 - `hhh4()` now warns about interaction terms in model formulae.
