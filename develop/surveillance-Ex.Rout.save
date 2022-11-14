@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.20.2. For overview type ‘help(surveillance)’.
+This is surveillance 1.20.3. For overview type ‘help(surveillance)’.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -1821,9 +1821,9 @@ bayes(5,5,1) 6  3  192 0  1         0.9846154 0.01538462 0
 > #load "disProg" data
 > data("salmonella.agona")
 > 
-> #Do surveillance for the last 100 weeks.
+> #Do surveillance for the last 42 weeks
 > n <- length(salmonella.agona$observed)
-> control <- list(b=4,w=3,range=(n-100):n,reweight=TRUE, verbose=FALSE,alpha=0.01)
+> control <- list(b=4,w=3,range=(n-42):n,reweight=TRUE, verbose=FALSE,alpha=0.01)
 > res <- algo.farrington(salmonella.agona,control=control)
 > plot(res)
 > 
@@ -1832,22 +1832,20 @@ bayes(5,5,1) 6  3  192 0  1         0.9846154 0.01538462 0
 > x <- rpois(520,lambda=1)
 > stsObj <- sts(observed=x, frequency=52)
 > 
-> #Compare timing of the two possible fitters for algo.farrington
-> range <- 312:520
 > ## Don't show: 
-> if (!interactive()) range <- 460:520
-> ## End(Don't show) 
-> system.time( sts1 <- farrington(stsObj, control=list(range=range,
+> if (surveillance.options("allExamples")) {
++ ## End(Don't show)
++ #Compare timing of the two possible fitters for algo.farrington
++ range <- 312:520
++ system.time( sts1 <- farrington(stsObj, control=list(range=range,
 +                        fitFun="algo.farrington.fitGLM.fast"), verbose=FALSE))
-   user  system elapsed 
-  0.215   0.000   0.215 
-> system.time( sts2 <- farrington(stsObj, control=list(range=range,
++ system.time( sts2 <- farrington(stsObj, control=list(range=range,
 +                        fitFun="algo.farrington.fitGLM"), verbose=FALSE))
-   user  system elapsed 
-  0.354   0.000   0.354 
-> 
-> #Check if results are the same
-> stopifnot(upperbound(sts1) == upperbound(sts2))
++ #Check if results are the same
++ stopifnot(upperbound(sts1) == upperbound(sts2))
++ ## Don't show: 
++ }
+> ## End(Don't show)
 > 
 > 
 > 
@@ -3613,14 +3611,16 @@ GPC Polygon
 +                     coords.cols = c("x.loc", "y.loc"),
 +                     keep.cols = c("SEX", "AGE", "CL"))
 > ## Don't show: 
-> ## test consistency with default method
-> evHist <- as.data.frame(myEpi)[,-1]
-> myEpi2 <- as.epidata(
+> if (surveillance.options("allExamples")) {
++ ## test consistency with default method
++ evHist <- as.data.frame(myEpi)[,-1]
++ myEpi2 <- as.epidata(
 +     evHist, id.col = 1, start.col = "start", stop.col = "stop",
 +     atRiskY.col = "atRiskY", event.col = "event", Revent.col = "Revent",
 +     coords.cols = c("x.loc", "y.loc")
 + )
-> stopifnot(identical(myEpi, myEpi2))
++ stopifnot(identical(myEpi, myEpi2))
++ }
 > ## End(Don't show)
 > 
 > str(myEpi)
@@ -3671,9 +3671,12 @@ $ counters ('data.frame', 376 x 6 ): evolution of the epidemic:
 
 > plot(myEpi)                 # see 'plot.epidata' and also 'animate.epidata'
 > 
-> ## add distance- and covariate-based weights for the force of infection
-> ## in a twinSIR model, see vignette("twinSIR") for a description
-> myEpi <- update(myEpi,
+> ## Don't show: 
+> if (surveillance.options("allExamples")) {
++ ## End(Don't show)
++ ## add distance- and covariate-based weights for the force of infection
++ ## in a twinSIR model, see vignette("twinSIR") for a description
++ myEpi <- update(myEpi,
 +     f = list(
 +         household    = function(u) u == 0,
 +         nothousehold = function(u) u > 0
@@ -3683,16 +3686,21 @@ $ counters ('data.frame', 376 x 6 ): evolution of the epidemic:
 +         c2 = function (CL.i, CL.j) CL.i == "2nd class" & CL.j == CL.i
 +     )
 + )
-> ## this is now identical to the prepared hagelloch "epidata"
-> stopifnot(all.equal(myEpi, hagelloch))
++ ## this is now identical to the prepared hagelloch "epidata"
++ stopifnot(all.equal(myEpi, hagelloch))
++ ## Don't show: 
++ }
+> ## End(Don't show)
 > 
 > ## Don't show: 
-> ## test with precomputed distance matrix D
-> myEpi3 <- suppressWarnings( # from overwriting existing f columns
+> if (surveillance.options("allExamples")) {
++ ## test with precomputed distance matrix D
++ myEpi3 <- suppressWarnings( # from overwriting existing f columns
 +     update(hagelloch, f = attr(hagelloch, "f"),
 +            D = as.matrix(dist(hagelloch.df[c("x.loc", "y.loc")])))
 + )
-> stopifnot(identical(hagelloch, myEpi3))
++ stopifnot(identical(hagelloch, myEpi3))
++ }
 > ## End(Don't show)
 > 
 > 
@@ -4146,24 +4154,19 @@ Note: dropped type(s) "C"
 > 
 > # Such an animation can be saved in various ways using the tools of
 > # the animation package, e.g., saveHTML()
-> if (require("animation")) {
+> if (interactive() && require("animation")) {
 +   oldwd <- setwd(tempdir())  # to not clutter up the current working dir
 +   saveHTML(animate(imdepiB, interval = c(0,365), time.spacing = 7),
 +            nmax = Inf, interval = 0.2, loop = FALSE,
 +            title = "Animation of the first year of type B events")
 +   setwd(oldwd)
 + }
-Loading required package: animation
-HTML file created at: index.html
 > 
 > 
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("epidataCS_animate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-
-detaching ‘package:animation’
-
 > nameEx("epidataCS_permute")
 > ### * epidataCS_permute
 > 
@@ -4627,46 +4630,38 @@ Loading required namespace: fanplot
 > 
 > ### ** Examples
 > 
-> 
-> ### DATA I/O ###
-> #Read Salmonella Agona data
 > data("salmonella.agona")
-> 
 > # Create the corresponding sts object from the old disProg object
 > salm <- disProg2sts(salmonella.agona)
 > 
-> ### RUN THE ALGORITHMS WITH TWO DIFFERENT SETS OF OPTIONS ###           
-> # Farrington with old options
-> control1 <-  list(range=(260:312),
-+                   noPeriods=1,populationOffset=FALSE,
-+                   fitFun="algo.farrington.fitGLM.flexible",
-+                   b=4,w=3,weightsThreshold=1,
+> ### RUN THE ALGORITHMS WITH TWO DIFFERENT SETS OF OPTIONS
+> control1 <-  list(range=282:312,
++                   noPeriods=1,
++                   b=4, w=3, weightsThreshold=1,
 +                   pastWeeksNotIncluded=3,
-+                   pThresholdTrend=0.05,trend=TRUE,
-+                   thresholdMethod="delta",alpha=0.1)
-> control2 <- list(range=(260:312),
-+                  noPeriods=10,populationOffset=FALSE,
-+                  fitFun="algo.farrington.fitGLM.flexible",
-+                  b=4,w=3,weightsThreshold=2.58,
++                   pThresholdTrend=0.05,
++                   alpha=0.1)
+> control2 <- list(range=282:312,
++                  noPeriods=10,
++                  b=4, w=3, weightsThreshold=2.58,
 +                  pastWeeksNotIncluded=26,
-+                  pThresholdTrend=1,trend=TRUE,
-+                  thresholdMethod="delta",alpha=0.1)
++                  pThresholdTrend=1,
++                  alpha=0.1)
 > salm1 <- farringtonFlexible(salm,control=control1)
 > salm2 <- farringtonFlexible(salm,control=control2)
 > 
-> ### PLOT THE RESULTS ###
+> ### PLOT THE RESULTS
 > y.max <- max(upperbound(salm1),observed(salm1),upperbound(salm2),na.rm=TRUE)
->  
 > plot(salm1, ylim=c(0,y.max), main='S. Newport in Germany', legend.opts=NULL)
-> lines(1:(nrow(salm1)+1)-0.5, 
+> lines(1:(nrow(salm1)+1)-0.5,
 +       c(upperbound(salm1),upperbound(salm1)[nrow(salm1)]),
 +       type="s",col='tomato4',lwd=2)
-> lines(1:(nrow(salm2)+1)-0.5, 
+> lines(1:(nrow(salm2)+1)-0.5,
 +       c(upperbound(salm2),upperbound(salm2)[nrow(salm2)]),
 +       type="s",col="blueviolet",lwd=2)
-> 
-> legend(0, 10, legend=c('Alarm','Upperbound with old options',
-+                        'Upperbound with new options'),
+> legend("topleft",
++        legend=c('Alarm','Upperbound with old options',
++                 'Upperbound with new options'),
 +        pch=c(24,NA,NA),lty=c(NA,1,1),
 +        bg="white",lwd=c(2,2,2),col=c('red','tomato4',"blueviolet"))
 > 
@@ -4720,10 +4715,14 @@ $h
 > ### ** Examples
 > 
 > data("fluBYBW")
+> 
 > # Count time series plot
 > plot(fluBYBW, type = observed ~ time)
-> # Map of disease incidence (per 100000 inhabitants) for the year 2001
-> plot(fluBYBW, type = observed ~ unit, tps = 1:52, total.args = list(),
+> ## Don't show: 
+> if (surveillance.options("allExamples"))
++ ## End(Don't show)
++ # Map of disease incidence (per 100000 inhabitants) for the year 2001
++ plot(fluBYBW, type = observed ~ unit, tps = 1:52, total.args = list(),
 +      population = fluBYBW@map$X31_12_01 / 100000)
 > # the overall rate for 2001 shown in the bottom right corner is
 > sum(observed(fluBYBW[1:52,])) / sum(fluBYBW@map$X31_12_01) * 100000
@@ -4761,7 +4760,7 @@ $h
 > ### ** Examples
 > 
 > formatDate(Sys.Date(), "%G/%OQ/%q")
-[1] "2022/IV/41"
+[1] "2022/IV/45"
 > 
 > 
 > 
@@ -6487,13 +6486,6 @@ z = 0.049572, n = 5, p-value = 0.9605
 data:  measlesFit
 z = 3.118, n = 1751, p-value = 0.001821
 
-> calibrationTest(measlesFit, which = "rps")  # p = 0.9322
-
-	Calibration Test for Count Data (based on RPS)
-
-data:  measlesFit
-z = -0.085113, n = 1751, p-value = 0.9322
-
 > calibrationTest(measlesFit, which = "logs") # p = 0.7238
 
 	Calibration Test for Count Data (based on LOGS)
@@ -7013,7 +7005,7 @@ dt      <= 50  > 50
 > ## contingency table in LaTeX
 > toLatex(knoxtest)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:47:52 2022
+% Mon Nov 14 23:07:10 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{r|rr|r}
@@ -7200,7 +7192,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x5579f1447538>
+<environment: 0x55b6cda41d18>
 
 $ar$offset
 [1] 1
@@ -7209,7 +7201,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x5579f1447538>
+<environment: 0x55b6cda41d18>
 
 $ne$offset
 [1] 1
@@ -8131,15 +8123,23 @@ detaching ‘package:parallel’
 > ## Determine districts at the border and check the result on the map
 > if (requireNamespace("rgeos")) {
 +     atBorder <- polyAtBorder(districtsD, method = "rgeos")
-+     plot(districtsD, col = atBorder)
++     if (interactive()) plot(districtsD, col = atBorder)
++     table(atBorder)
 + }
+atBorder
+FALSE  TRUE 
+  324    89 
 > 
 > ## For method = "polyclip", a higher snapping tolerance is required
 > ## to obtain the correct result
 > if (requireNamespace("polyclip")) {
 +     atBorder <- polyAtBorder(districtsD, snap = 1e-6, method = "polyclip")
-+     plot(districtsD, col = atBorder)
++     if (interactive()) plot(districtsD, col = atBorder)
++     table(atBorder)
 + }
+atBorder
+FALSE  TRUE 
+  324    89 
 > 
 > 
 > 
@@ -8680,15 +8680,13 @@ Loading required namespace: xts
 > data("measlesWeserEms")
 > 
 > ## animate the weekly counts of measles (during weeks 12-16 only, for speed)
-> if (require("animation")) {
+> if (interactive() && require("animation")) {
 +     oldwd <- setwd(tempdir())  # to not clutter up the current working dir
 +     saveHTML(animate(measlesWeserEms, tps=12:16),
 +              title="Evolution of the measles epidemic in the Weser-Ems region",
 +              ani.width=500, ani.height=600)
 +     setwd(oldwd)
 + }
-Loading required package: animation
-HTML file created at: index.html
 > 
 > ## Not run: 
 > ##D ## animate the weekly incidence of measles (per 100'000 inhabitants),
@@ -8704,9 +8702,6 @@ HTML file created at: index.html
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("sts_animate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-
-detaching ‘package:animation’
-
 > nameEx("sts_creation")
 > ### * sts_creation
 > 
@@ -8774,8 +8769,8 @@ detaching ‘package:animation’
 > ## compare traditional plot() with ggplot2-based autoplot.sts()
 > if (requireNamespace("ggplot2")) {
 +     data("measlesDE")
-+     plot(measlesDE)
-+     autoplot.sts(measlesDE)
++     plot(measlesDE, units = 1:2)
++     autoplot.sts(measlesDE, units = 1:2)
 + }
 Loading required namespace: ggplot2
 > 
@@ -8934,14 +8929,19 @@ proj4string : [NA]
 Features    : 12 
 Data slot   : 3 variables
 > 
-> ## map of total counts by district
-> plot(ha.sts, type=observed ~ 1 | unit)
-> ## only show a sub-period total for two selected districts
-> plot(ha.sts[1:20,1:2], type=observed ~ 1 | unit)
+> ## Don't show: 
+> if (surveillance.options("allExamples")) {
++ ## End(Don't show)
++ ## map of total counts by district (compare old vs. new implementation)
++ plot(ha.sts, type = observed ~ 1 | unit)
++ plot(ha.sts, type = observed ~ unit, labels = TRUE)
++ ## Don't show: 
++ }
+> ## End(Don't show)
 > 
 > ## Not run: 
 > ##D # space-time animation
-> ##D plot(aggregate(ha.sts,nfreq=13), type= observed ~ 1 | unit * time)
+> ##D plot(aggregate(ha.sts,nfreq=13), type = observed ~ 1 | unit * time)
 > ##D 
 > ##D #print the frames to a png device
 > ##D #and do the animation without extra sleeping between frames
@@ -9160,7 +9160,7 @@ $gpclib
 > salm <- farringtonFlexible(salm,control=control)
 > toLatex(salm)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:08 2022
+% Mon Nov 14 23:07:23 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrlr}
@@ -9476,25 +9476,27 @@ converged
 > ende <- plot(fit, which = "endemic", add = TRUE, col = 2)
 > legend("topleft", legend = "endemic proportion", lty = 1, col = 2, bty = "n")
 > 
-> # individual intensities
-> tmp <- plot(fit, which = "total", aggregate = FALSE,
+> ## Don't show: 
+> if (surveillance.options("allExamples")) {
++ ## End(Don't show)
++ # individual intensities
++ tmp <- plot(fit, which = "total", aggregate = FALSE,
 +     col = rgb(0, 0, 0, alpha = 0.1),
 +     main = expression("Individual infection intensities " *
 +         lambda[i](t) == Y[i](t) %.% (e[i](t) + h[i](t))))
-> # return value: matrix of individual intensity paths
-> str(tmp)
- num [1:375, 1:189] 1.14 7.2 7.47 7.63 8.25 ...
- - attr(*, "dimnames")=List of 2
-  ..$ : NULL
-  ..$ : chr [1:189] "stop" "1" "2" "3" ...
-> 
-> # plot intensity path only for individuals 3 and 99
-> matplot(x = tmp[,1], y = tmp[,1+c(3,99)], type = "S",
++ # return value: matrix of individual intensity paths
++ str(tmp)
++ 
++ # plot intensity path only for individuals 3 and 99
++ matplot(x = tmp[,1], y = tmp[,1+c(3,99)], type = "S",
 +         ylab = "Force of infection", xlab = "time",
 +         main = expression("Paths of the infection intensities " *
 +                           lambda[3](t) * " and " * lambda[99](t)))
-> legend("topright", legend = paste("Individual", c(3,99)),
++ legend("topright", legend = paste("Individual", c(3,99)),
 +        col = 1:2, lty = 1:2)
++ ## Don't show: 
++ }
+> ## End(Don't show)
 > 
 > 
 > 
@@ -9962,21 +9964,21 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 \hline
 \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:12 2022
+% Mon Nov 14 23:07:27 2022
  \texttt{h.(Intercept)} & $-20.481$ & $0.053$ & $-389.0$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.041$ & $0.022$ & $-1.9$ & $0.06$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.242$ & $0.064$ & $3.8$ & $2\cdot{}10^{-04}$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.350$ & $0.064$ & $5.4$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:12 2022
+% Mon Nov 14 23:07:27 2022
  \texttt{e.(Intercept)} & $-16.90$ & $0.26$ & $-64$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 \end{tabular}
 > # or, to report rate ratios
 > xtable(s)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:12 2022
+% Mon Nov 14 23:07:27 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -10240,48 +10242,44 @@ D = 105.76, df = 1, p-value < 2.2e-16
 > 
 > ## permutation test
 > et <- epitest(imdfitB50, imdepiB50,
-+               B = 9,        # limited here for speed
++               B = 5,        # CAVE: limited here for speed
 +               verbose = 2,  # (tracing does not work on Windows)
 +               .seed = 1, .parallel = 2)
 Endemic/Epidemic log-likelihoods, LRT statistic, and simple R0:
 l0 = -4979 | l1 = -4926 | D = 105.8 | simpleR0 = 0.27
 
-Running B = 9 permutations of time ...
+Running B = 5 permutations of time ...
 l0 = -4979 | l1 = -4941 | D = 75.7 | simpleR0 = 0.24
 l0 = -4980 | l1 = -4946 | D = 67.7 | simpleR0 = 0.22
 l0 = -4980 | l1 = -4943 | D = 73.7 | simpleR0 = 0.23
 l0 = -4980 | l1 = -4944 | D = 70.3 | simpleR0 = 0.20
 l0 = -4980 | l1 = -4950 | D = 59.7 | simpleR0 = 0.21
-l0 = -4980 | l1 = -4952 | D = 55.4 | simpleR0 = 0.19
-l0 = -4980 | l1 = -4947 | D = 65.2 | simpleR0 = 0.21
-l0 = -4979 | l1 = -4947 | D = 64.0 | simpleR0 = 0.21
-l0 = -4979 | l1 = -4954 | D = 49.1 | simpleR0 = 0.19
 > et
 
 	Monte Carlo Permutation Test for Space-Time Interaction
 
 data:  imdepiB50
 twinstim:  imdfitB50
-simpleR0 = 0.26632, B = 9, p-value = 0.1
+simpleR0 = 0.26632, B = 5, p-value = 0.1667
 
 > plot(et)
 > 
 > ## summary of parameter estimates under permutation
 > summary(coef(et, which = "m1"))
  h.(Intercept)    h.I(start/365 - 3.5) h.sin(2 * pi * start/365)
- Min.   :-20.53   Min.   :-0.05114     Min.   :0.1342           
- 1st Qu.:-20.53   1st Qu.:-0.04084     1st Qu.:0.1717           
- Median :-20.50   Median :-0.03246     Median :0.1904           
- Mean   :-20.51   Mean   :-0.03330     Mean   :0.1912           
- 3rd Qu.:-20.50   3rd Qu.:-0.02679     3rd Qu.:0.2027           
- Max.   :-20.49   Max.   :-0.01873     Max.   :0.2838           
+ Min.   :-20.53   Min.   :-0.05114     Min.   :0.1469           
+ 1st Qu.:-20.53   1st Qu.:-0.04242     1st Qu.:0.1717           
+ Median :-20.53   Median :-0.02865     Median :0.1904           
+ Mean   :-20.52   Mean   :-0.03355     Mean   :0.1975           
+ 3rd Qu.:-20.50   3rd Qu.:-0.02679     3rd Qu.:0.1948           
+ Max.   :-20.50   Max.   :-0.01873     Max.   :0.2838           
  h.cos(2 * pi * start/365) e.(Intercept)      
- Min.   :0.4003            Min.   :7.978e-07  
- 1st Qu.:0.4197            1st Qu.:8.672e-07  
- Median :0.4296            Median :8.862e-07  
- Mean   :0.4338            Mean   :8.914e-07  
- 3rd Qu.:0.4473            3rd Qu.:9.218e-07  
- Max.   :0.4869            Max.   :9.977e-07  
+ Min.   :0.4003            Min.   :8.672e-07  
+ 1st Qu.:0.4177            1st Qu.:8.706e-07  
+ Median :0.4197            Median :9.218e-07  
+ Mean   :0.4214            Mean   :9.259e-07  
+ 3rd Qu.:0.4201            3rd Qu.:9.721e-07  
+ Max.   :0.4491            Max.   :9.977e-07  
 > 
 > 
 > 
@@ -10324,8 +10322,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x5579f8854e20>
-<environment: 0x5579f87de220>
+<bytecode: 0x55b6d74669b0>
+<environment: 0x55b6d7462240>
 
 $G
 function (t, logvals, types) 
@@ -10335,7 +10333,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x5579f87de220>
+<environment: 0x55b6d7462240>
 
 $deriv
 function (t, logvals, types) 
@@ -10351,8 +10349,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x5579f8856010>
-<environment: 0x5579f87de220>
+<bytecode: 0x55b6d7467ba0>
+<environment: 0x55b6d7462240>
 
 $Deriv
 function (t, logvals, types) 
@@ -10371,7 +10369,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x5579f87de220>
+<environment: 0x55b6d7462240>
 
 $npars
 [1] 4
@@ -11037,16 +11035,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x5579f3359b38>
-<environment: 0x5579f545f368>
+<bytecode: 0x55b6d4756b40>
+<environment: 0x55b6d47538d0>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x5579f335a5b8>
-<environment: 0x5579f545f368>
+<bytecode: 0x55b6d47575c0>
+<environment: 0x55b6d47538d0>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -11054,8 +11052,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x5579f335aaf8>
-<environment: 0x5579f545f368>
+<bytecode: 0x55b6d4757b00>
+<environment: 0x55b6d47538d0>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -11069,8 +11067,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x5579f335b268>
-<environment: 0x5579f545f368>
+<bytecode: 0x55b6d4758270>
+<environment: 0x55b6d47538d0>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -11078,8 +11076,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x5579f54c8218>
-<environment: 0x5579f545f368>
+<bytecode: 0x55b6d4755a20>
+<environment: 0x55b6d47538d0>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -11091,8 +11089,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x5579f54c8870>
-<environment: 0x5579f545f368>
+<bytecode: 0x55b6d4756078>
+<environment: 0x55b6d47538d0>
 
 $npars
 [1] 3
@@ -11366,14 +11364,14 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 \hline
 \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:15 2022
+% Mon Nov 14 23:07:29 2022
  \texttt{h.(Intercept)} & $-20.52869$ & $0.04724$ & $-434.597$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.04574$ & $0.02212$ & $-2.068$ & $0.03863$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.21728$ & $0.06467$ & $3.360$ & $0.00078$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.31810$ & $0.06380$ & $4.986$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:15 2022
+% Mon Nov 14 23:07:29 2022
  \texttt{e.(Intercept)} & $-12.51659$ & $0.32326$ & $-38.720$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{e.typeC} & $-0.90832$ & $0.26742$ & $-3.397$ & $0.000682$ \\ 
   \texttt{e.agegrp[3,19)} & $0.70612$ & $0.32706$ & $2.159$ & $0.030852$ \\ 
@@ -11385,7 +11383,7 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 > # or using the xtable-method (which produces rate ratios)
 > xtable(s)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:15 2022
+% Mon Nov 14 23:07:29 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -11527,7 +11525,8 @@ h.I(start/365 - 3.5) & 0.955 & 0.91--1.00 & 0.039 \\
 > load(system.file("shapes", "districtsD.RData", package="surveillance"))
 > 
 > ## Fit an endemic-only twinstim()
-> m_noepi <- update(imdepifit, epidemic = ~0, siaf = NULL, model = TRUE)
+> m_noepi <- update(imdepifit, epidemic = ~0, siaf = NULL, model = TRUE,
++                   T = 120)  # using a restricted time range, for speed
 marked point pattern of 2 types
 no epidemic component in model
 
@@ -11538,18 +11537,19 @@ initial parameters:
 h.cos(2 * pi * start/365) 
                0.31810266 
 negative log-likelihood and parameters in each iteration:
-  0:     9588.6172: -20.5287 -0.0457409 0.217282 0.318103
-  1:     9579.1628: -20.3806 -0.0451693 0.262218 0.342359
-  2:     9579.0641: -20.3682 -0.0445380 0.272312 0.349760
-  3:     9579.0639: -20.3683 -0.0443942 0.273114 0.350612
-  4:     9579.0639: -20.3683 -0.0443821 0.273191 0.350677
+  0:     615.41060: -20.5287 -0.0457409 0.217282 0.318103
+  1:     613.30014: -20.5437 0.124010  1.12037 0.395413
+  2:     613.24452: -19.6568 0.373041  1.09147 0.430787
+  3:     613.21423:  30.7603  15.3176 -0.729385  2.29075
+  4:     613.21421:  31.0758  15.4117 -0.738867  2.30508
+  5:     613.21421:  31.0762  15.4119 -0.738881  2.30510
 
 MLE:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.36827531               -0.04438215                0.27319055 
+               31.0762030                15.4118731                -0.7388808 
 h.cos(2 * pi * start/365) 
-               0.35067694 
-loglik(MLE) = -9579.064 
+                2.3050950 
+loglik(MLE) = -613.2142 
 
 Done.
 > 
@@ -11564,32 +11564,36 @@ attr(,"package")
 Object of class SpatialPointsDataFrame
 Coordinates:
        min      max
-x 4047.462 4656.604
-y 2702.047 3522.018
+x 4081.874 4618.351
+y 2865.592 3391.435
 Is projected: TRUE 
 proj4string :
 [+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80
 +units=km +no_defs]
-Number of points: 630
+Number of points: 40
 Data attributes:
-      time                tile     type   
- Min.   :   0.9178   11000  : 27   B:322  
- 1st Qu.: 478.0623   02000  : 14   C:308  
- Median :1161.0357   03241  :  9          
- Mean   :1204.4420   09162  :  9          
- 3rd Qu.:1853.1891   05112  :  7          
- Max.   :2548.7790   05170  :  7          
-                     (Other):557          
-> plot(s1, col = s1$type, cex = 0.5); plot(imdepi$W, lwd = 2, add = TRUE)
+      time              tile    type  
+ Min.   :  2.448   11000  : 3   B:23  
+ 1st Qu.: 39.161   08215  : 2   C:17  
+ Median : 62.464   02000  : 1         
+ Mean   : 63.507   03241  : 1         
+ 3rd Qu.: 87.287   03361  : 1         
+ Max.   :119.966   03454  : 1         
+                   (Other):31         
+> plot(imdepi$W, lwd = 2); plot(s1, col = s1$type, cex = 0.5, add = TRUE)
 > 
-> ## Not run: 
-> ##D ## the general simulation method takes several seconds
-> ##D s0 <- simulate(m_noepi, seed = 1, data = imdepi, tiles = districtsD)
-> ##D class(s0)  # gives a full "simEpidataCS" with several methods applicable
-> ##D methods(class = "epidataCS")
-> ##D plot(s0, "time")
-> ##D plot(s0, "space", points.args = list(pch = 3), lwd = 2)
-> ## End(Not run)
+> ## Don't show: 
+> if (surveillance.options("allExamples")) {
++ ## End(Don't show)
++ ## the general simulation method takes longer
++ s0 <- simulate(m_noepi, seed = 1, data = imdepi, tiles = districtsD)
++ class(s0)  # gives a full "simEpidataCS" with several methods applicable
++ methods(class = "epidataCS")
++ plot(s0, "time")
++ plot(s0, "space", points.args = list(pch = 3), lwd = 2)
++ ## Don't show: 
++ }
+> ## End(Don't show)
 > 
 > 
 > 
@@ -11616,9 +11620,15 @@ Data attributes:
 > ## https://gdz.bkg.bund.de/), simplified by the "modified Visvalingam"
 > ## algorithm (level=6.6%) using MapShaper.org (v. 0.1.17):
 > load(system.file("shapes", "districtsD.RData", package="surveillance"))
-> plot(districtsD)
-> plot(stateD, add=TRUE, border=2, lwd=2)
-> # 'stateD' was obtained as 'rgeos::gUnaryUnion(districtsD)'
+> ## Don't show: 
+> if (surveillance.options("allExamples")) {
++ ## End(Don't show)
++ plot(districtsD)
++ plot(stateD, add=TRUE, border=2, lwd=2)
++ # 'stateD' was obtained as 'rgeos::gUnaryUnion(districtsD)'
++ ## Don't show: 
++ }
+> ## End(Don't show)
 > 
 > ## simulate 2 realizations (over a short period, for speed)
 > ## considering events from data(imdepi) before t=31 as prehistory
@@ -11627,7 +11637,7 @@ Data attributes:
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2022-11-10 09:48:18 
+Time at beginning of simulation: 2022-11-14 23:07:31 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11652,12 +11662,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.091 seconds
-Estimated finishing time: 2022-11-10 09:48:18 
+Runtime of first simulation: 0.082 seconds
+Estimated finishing time: 2022-11-14 23:07:31 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2022-11-10 09:48:18).
+Done (2022-11-14 23:07:31).
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
 >     local({
@@ -12042,7 +12052,7 @@ FALSE  TRUE
 > # Compute the quality values in a nice formatted way
 > xtable(algo.quality(survResObj))
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Thu Nov 10 09:48:21 2022
+% Mon Nov 14 23:07:33 2022
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -12104,7 +12114,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  52.497 0.647 54.734 2.268 0.243 
+Time elapsed:  42.799 0.732 44.729 1.756 0.261 
 > grDevices::dev.off()
 null device 
           1 
