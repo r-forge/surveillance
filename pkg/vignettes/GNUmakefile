@@ -6,7 +6,7 @@
 ## In addition it defines a rule to create the PStricks-based HMM figure
 ## included in surveillance.Rnw
 ##
-## Copyright (C) 2016  Sebastian Meyer <Sebastian.Meyer@ifspm.uzh.ch>
+## Copyright (C) 2016,2022  Sebastian Meyer <seb.meyer@fau.de>
 ## This Makefile can be redistributed and/or modified under the terms
 ## of the GNU General Public License, version 2 or later.
 
@@ -30,7 +30,7 @@ monitoringCounts.pdf: monitoringCounts.bib  # additional dependency
 
 .PHONY: clean cleanall
 clean:
-	rm -rf *.aux *.bbl *.blg *.log *.out *-R.bib plots/ Rplots.pdf $(addprefix *-cache.RData,.new .diff) *-concordance.tex
+	rm -rf *.aux *.bbl *.blg *.log *.out *-R.bib plots/ Rplots.pdf $(addprefix *-cache.RData,.new .diff) *.Rout
 cleanall: clean
 	rm -rf ${VIGNETTES} ${TEXFILESFROMRNW} ${RNWFILES:.Rnw=.R}
 
@@ -42,6 +42,19 @@ surveillance-hmm.pdf: surveillance-hmm.tex
 	latex -interaction=batchmode $< && dvips -q ${<:.tex=.dvi} && \
 		ps2pdf -q -sOutputFile=- ${<:.tex=.ps} | pdfcrop - $@
 	rm -f $(addprefix $(basename $<).,aux dvi log ps)
+
+
+### check running tangled vignette code because knitr tampers with R CMD check,
+### see <https://github.com/yihui/knitr/pull/2036>
+
+.PHONY: check-tangle
+check-tangle:
+	@rm -f ${RNWFILES:.Rnw=.Rout} ${RNWFILES:.Rnw=.R}  # force re-purl()
+	$(MAKE) ${RNWFILES:.Rnw=.Rout}
+%.Rout: %.R
+	LANGUAGE=en ${R} CMD BATCH --vanilla "$<" && rm -f Rplots.pdf || { tail -13 "$@"; exit 1; }
+%.R: %.Rnw
+	LANGUAGE=en ${R} --vanilla -s -e 'COMPUTE <- FALSE; tools::buildVignette("$<", weave=FALSE, tangle=TRUE)'
 
 
 ### rebuild cache and check if it differs from the old one
