@@ -73,14 +73,6 @@ unionSpatialPolygons <- function (SpP,
         },
         "rgeos" = rgeos::gUnaryUnion(SpP, ...),
         "gpclib" = {
-            ## rgeosStatus needed by maptools::unionSpatialPolygons is only
-            ## set in maptools:::.onAttach. Since it is bad practice to do
-            ## library("maptools") in package code (cf. R-exts 1.1.3.1),
-            ## the user has to attach "maptools" manually beforehand
-            if (!"maptools" %in% .packages()) {
-                stop("need 'library(\"maptools\")'; ",
-                     "then call surveillance::unionSpatialPolygons")
-            }
             gpclibCheck() && maptools::gpclibPermit()
             maptools::unionSpatialPolygons(
                 SpP, IDs = rep.int(1,length(SpP@polygons)),
