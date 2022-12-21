@@ -172,12 +172,22 @@ print(res,digits=3)
 ###################################################
 ### chunk number 20:
 ###################################################
+
+## import shapefile as "SpatialPolygonsDataFrame"
+shp <- system.file("shapes/berlin.shp",package="surveillance")
+if (requireNamespace("maptools")) { # deprecated package
+    map <- maptools::readShapePoly(shp, IDvar = "SNAME")
+} else { # replacement code
+    map <- sf::as_Spatial(sf::st_read(shp, stringsAsFactors = TRUE, quiet = TRUE))
+    row.names(map) <- as.character(map$SNAME)
+}
+## convert to "sts" class
+ha.sts <- disProg2sts(ha, map = map)
+## or simply load the prepared object from the package: data("ha.sts")
+
 opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
 par(mar=c(0,0,0,0))
-shp <- system.file("shapes/berlin.shp",package="surveillance")
-ha <- disProg2sts(ha, map=maptools::readShapePoly(shp,IDvar="SNAME"))
-plot(ha,type=observed ~ 1 | unit)
-
+plot(ha.sts,type=observed ~ 1 | unit)
 dev.off()
 
 
@@ -185,7 +195,7 @@ dev.off()
 ### chunk number 22:
 ###################################################
 opendevice(file="figs/ha-timeunit.pdf",width=7,height=5)
-ha4 <- aggregate(ha[,c("pank","mitt","frkr","scho","chwi","neuk")],nfreq=13)
+ha4 <- aggregate(ha.sts[,c("pank","mitt","frkr","scho","chwi","neuk")],nfreq=13)
 ha4.cusum <- cusum(ha4,control=list(k=1.5,h=1.75,m="glm",trans="rossi",range=52:73))
 #ha4.b332 <- bayes(ha4,control=list(range=52:73,b=2,w=3,alpha=0.01/6))
 plot(ha4.cusum,type=observed ~ time | unit)

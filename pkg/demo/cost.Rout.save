@@ -321,14 +321,25 @@ R>
 R> ###################################################
 R> ### chunk number 20:
 R> ###################################################
-R> opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
-R> par(mar=c(0,0,0,0))
+R> 
+R> ## import shapefile as "SpatialPolygonsDataFrame"
 R> shp <- system.file("shapes/berlin.shp",package="surveillance")
-R> ha <- disProg2sts(ha, map=maptools::readShapePoly(shp,IDvar="SNAME"))
+R> if (requireNamespace("maptools")) { # deprecated package
++     map <- maptools::readShapePoly(shp, IDvar = "SNAME")
++ } else { # replacement code
++     map <- sf::as_Spatial(sf::st_read(shp, stringsAsFactors = TRUE, quiet = TRUE))
++     row.names(map) <- as.character(map$SNAME)
++ }
+Loading required namespace: maptools
 Warning message:
 shapelib support is provided by GDAL through the sf and terra packages among others 
-R> plot(ha,type=observed ~ 1 | unit)
+R> ## convert to "sts" class
+R> ha.sts <- disProg2sts(ha, map = map)
+R> ## or simply load the prepared object from the package: data("ha.sts")
 R> 
+R> opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
+R> par(mar=c(0,0,0,0))
+R> plot(ha.sts,type=observed ~ 1 | unit)
 R> dev.off()
 null device 
           1 
@@ -338,7 +349,7 @@ R> ###################################################
 R> ### chunk number 22:
 R> ###################################################
 R> opendevice(file="figs/ha-timeunit.pdf",width=7,height=5)
-R> ha4 <- aggregate(ha[,c("pank","mitt","frkr","scho","chwi","neuk")],nfreq=13)
+R> ha4 <- aggregate(ha.sts[,c("pank","mitt","frkr","scho","chwi","neuk")],nfreq=13)
 R> ha4.cusum <- cusum(ha4,control=list(k=1.5,h=1.75,m="glm",trans="rossi",range=52:73))
 Running  algo.cusum  on area  1  out of  6 
 Running  algo.cusum  on area  2  out of  6 
