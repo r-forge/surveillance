@@ -1,5 +1,5 @@
 
-R version 4.2.2 (2022-10-31) -- "Innocent and Trusting"
+R version 4.2.2 Patched (2022-11-10 r83330) -- "Innocent and Trusting"
 Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -21,7 +21,7 @@ Type 'q()' to quit R.
 > OUTDIR <- tempdir()
 > dir.create(file.path(OUTDIR, "figs"))
 > message("saving selected figures in ", OUTDIR, "/figs")
-saving selected figures in /tmp/RtmpWRpwUv/figs
+saving selected figures in /tmp/RtmpVGAvJG/figs
 > 
 > ###################################################
 > ### chunk number 1:
@@ -29,7 +29,7 @@ saving selected figures in /tmp/RtmpWRpwUv/figs
 > library("surveillance")
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.20.2. For overview type ‘help(surveillance)’.
+This is surveillance 1.20.3. For overview type ‘help(surveillance)’.
 > options(width=70)
 > options("prompt"="R> ")
 R> set.seed(1234)
@@ -86,13 +86,6 @@ pdf
 R> 
 R> 
 R> ###################################################
-R> ### chunk number 6: HAB662 eval=FALSE
-R> ###################################################
-R> ## ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
-R> ## plot(ha.b662, firstweek=1, startyear = 2005)
-R> 
-R> 
-R> ###################################################
 R> ### chunk number 7:
 R> ###################################################
 R> ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
@@ -108,14 +101,6 @@ In plot.survRes(ha.b662, firstweek = 1, startyear = 2005, legend.opts = list(x =
 R> dev.off()
 pdf 
   2 
-R> 
-R> 
-R> ###################################################
-R> ### chunk number 8: FACDC eval=FALSE
-R> ###################################################
-R> ## cntrl <- list(range = 300:400, m = 1, w = 3, b = 5, alpha = 0.01)
-R> ## sps.cdc <- algo.cdc(sps, control = cntrl)
-R> ## sps.farrington <- algo.farrington(sps, control = cntrl)
 R> 
 R> 
 R> ###################################################
@@ -136,13 +121,6 @@ R> plot(sps.farrington, legend = NULL, xaxis.years=FALSE)
 R> dev.off()
 pdf 
   2 
-R> 
-R> 
-R> ###################################################
-R> ### chunk number 11: CUSUM eval=FALSE
-R> ###################################################
-R> ## kh <- find.kh(ARLa=500,ARLr=7)
-R> ## ha.cusum <- algo.cusum(aggregate(ha),control=list(k=kh$k,h=kh$h,m="glm",trans="rossi",range=209:290))
 R> 
 R> 
 R> ###################################################
@@ -216,19 +194,6 @@ R> #Apply function to one
 R> surv.one <- function(outbrk) {
 +   algo.compare(algo.call(outbrk,control=aparv.control))
 + }
-R> 
-R> 
-R> 
-R> ###################################################
-R> ### chunk number 15:  eval=FALSE
-R> ###################################################
-R> ## #Apply function to one
-R> ## surv.one <- function(outbrk) {
-R> ##   algo.compare(algo.call(outbrk,control=aparv.control))
-R> ## }
-R> ##
-R> ## algo.summary(lapply(outbrks, surv.one))
-R> ##
 R> 
 R> 
 R> ###################################################
@@ -369,15 +334,6 @@ R> ##
 R> 
 R> 
 R> ###################################################
-R> ### chunk number 19: HA eval=FALSE
-R> ###################################################
-R> ## shp <- system.file("shapes/berlin.shp",package="surveillance")
-R> ## ha <- disProg2sts(ha, map=maptools::readShapePoly(shp,IDvar="SNAME"))
-R> ## plot(ha,type=observed ~ 1 | unit)
-R> ##
-R> 
-R> 
-R> ###################################################
 R> ### chunk number 20:
 R> ###################################################
 R> opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
@@ -391,15 +347,6 @@ R>
 R> dev.off()
 pdf 
   2 
-R> 
-R> 
-R> ###################################################
-R> ### chunk number 21: HA:MAP eval=FALSE
-R> ###################################################
-R> ## ha4 <- aggregate(ha[,c("pank","mitt","frkr","scho","chwi","neuk")],nfreq=13)
-R> ## ha4.cusum <- cusum(ha4,control=list(k=1.5,h=1.75,m="glm",trans="rossi",range=52:73))
-R> ## #ha4.b332 <- bayes(ha4,control=list(range=52:73,b=2,w=3,alpha=0.01/6))
-R> ## plot(ha4.cusum,type=observed ~ time | unit)
 R> 
 R> 
 R> ###################################################

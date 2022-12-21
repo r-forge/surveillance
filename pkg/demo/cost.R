@@ -59,13 +59,6 @@ dev.off()
 
 
 ###################################################
-### chunk number 6: HAB662 eval=FALSE
-###################################################
-## ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
-## plot(ha.b662, firstweek=1, startyear = 2005)
-
-
-###################################################
 ### chunk number 7:
 ###################################################
 ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
@@ -73,14 +66,6 @@ plot(ha.b662, firstweek=1, startyear = 2005)
 opendevice(file="figs/hab662.pdf")
 plot(ha.b662, firstweek=1, startyear = 2005,legend.opts=list(x="topleft",horiz=TRUE))
 dev.off()
-
-
-###################################################
-### chunk number 8: FACDC eval=FALSE
-###################################################
-## cntrl <- list(range = 300:400, m = 1, w = 3, b = 5, alpha = 0.01)
-## sps.cdc <- algo.cdc(sps, control = cntrl)
-## sps.farrington <- algo.farrington(sps, control = cntrl)
 
 
 ###################################################
@@ -99,13 +84,6 @@ par(mfcol = c(1, 2),cex=0.8)
 plot(sps.cdc, legend = NULL, xaxis.years=FALSE)
 plot(sps.farrington, legend = NULL, xaxis.years=FALSE)
 dev.off()
-
-
-###################################################
-### chunk number 11: CUSUM eval=FALSE
-###################################################
-## kh <- find.kh(ARLa=500,ARLr=7)
-## ha.cusum <- algo.cusum(aggregate(ha),control=list(k=kh$k,h=kh$h,m="glm",trans="rossi",range=209:290))
 
 
 ###################################################
@@ -173,19 +151,6 @@ surv.one <- function(outbrk) {
 }
 
 
-
-###################################################
-### chunk number 15:  eval=FALSE
-###################################################
-## #Apply function to one
-## surv.one <- function(outbrk) {
-##   algo.compare(algo.call(outbrk,control=aparv.control))
-## }
-##
-## algo.summary(lapply(outbrks, surv.one))
-##
-
-
 ###################################################
 ### chunk number 16: ALGOSUMMARY
 ###################################################
@@ -216,15 +181,6 @@ print(res,digits=3)
 
 
 ###################################################
-### chunk number 19: HA eval=FALSE
-###################################################
-## shp <- system.file("shapes/berlin.shp",package="surveillance")
-## ha <- disProg2sts(ha, map=maptools::readShapePoly(shp,IDvar="SNAME"))
-## plot(ha,type=observed ~ 1 | unit)
-##
-
-
-###################################################
 ### chunk number 20:
 ###################################################
 opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
@@ -234,15 +190,6 @@ ha <- disProg2sts(ha, map=maptools::readShapePoly(shp,IDvar="SNAME"))
 plot(ha,type=observed ~ 1 | unit)
 
 dev.off()
-
-
-###################################################
-### chunk number 21: HA:MAP eval=FALSE
-###################################################
-## ha4 <- aggregate(ha[,c("pank","mitt","frkr","scho","chwi","neuk")],nfreq=13)
-## ha4.cusum <- cusum(ha4,control=list(k=1.5,h=1.75,m="glm",trans="rossi",range=52:73))
-## #ha4.b332 <- bayes(ha4,control=list(range=52:73,b=2,w=3,alpha=0.01/6))
-## plot(ha4.cusum,type=observed ~ time | unit)
 
 
 ###################################################
