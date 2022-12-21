@@ -8,11 +8,11 @@
 Union all subpolygons of a
 \code{"\link[sp:SpatialPolygons-class]{SpatialPolygons}"} object.
 This is a wrapper for the polygon clipping engines implemented by
-packages \pkg{rgeos}, \pkg{polyclip}, or \pkg{gpclib}.
+packages \pkg{rgeos} and \pkg{polyclip}.
 }
 
 \usage{
-unionSpatialPolygons(SpP, method = c("rgeos", "polyclip", "gpclib"), ...)
+unionSpatialPolygons(SpP, method = c("rgeos", "polyclip"), ...)
 }
 
 \arguments{
@@ -26,11 +26,9 @@ unionSpatialPolygons(SpP, method = c("rgeos", "polyclip", "gpclib"), ...)
     polygon clipping machinery to use. Default is to simply call
     \code{\link[rgeos]{gUnaryUnion}} in package \pkg{rgeos}.
     For \code{method="polyclip"}, function
-    \code{\link[polyclip]{polyclip}} from package \pkg{polyclip} is used,
-    whereas \code{method="gpclib"} calls
-    \code{\link[maptools]{unionSpatialPolygons}} in package
-    \pkg{maptools} (and requires acceptance of \pkg{gpclib}'s restricted
-    license via \code{\link{surveillance.options}(gpclib=TRUE)}).
+    \code{\link[polyclip]{polyclip}} from package \pkg{polyclip} is used.
+    As from \pkg{surveillance} version 1.21.0, \code{method="gpclib"}
+    that relied on package \pkg{maptools} is defunct.
   }
   \item{\dots}{further arguments passed to the chosen \code{method}.}
 }
@@ -47,9 +45,7 @@ unionSpatialPolygons(SpP, method = c("rgeos", "polyclip", "gpclib"), ...)
 
 \seealso{
   \code{\link[rgeos]{gUnaryUnion}} in package \pkg{rgeos},
-  \code{\link[polyclip]{polyclip}} in package \pkg{polyclip},
-  \code{\link[maptools]{unionSpatialPolygons}} in package \pkg{maptools}
-  (for using \code{\link[gpclib:gpc.poly-class]{union}} of package \pkg{gpclib}).
+  \code{\link[polyclip]{polyclip}} in package \pkg{polyclip}.
 }
 
 \examples{

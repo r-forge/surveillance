@@ -50,12 +50,16 @@ discpoly <- function (center, radius, npoly = 64,
 }
 
 
-### Wrapper for polyclip or rgeos::gUnaryUnion or maptools::unionSpatialPolygons
+### Wrapper for polyclip or rgeos::gUnaryUnion
 
 unionSpatialPolygons <- function (SpP,
-                                  method = c("rgeos", "polyclip", "gpclib"),
+                                  method = c("rgeos", "polyclip"),
                                   ...)
 {
+    if (identical(method, "gpclib")) {
+        .Deprecated(msg = "method = \"gpclib\" is defunct; using default")
+        method <- NULL
+    }
     method <- match.arg(method)
     W <- switch(
         method,
@@ -71,13 +75,14 @@ unionSpatialPolygons <- function (SpP,
                 ID="1")
             SpatialPolygons(list(W_Polygons))
         },
-        "rgeos" = rgeos::gUnaryUnion(SpP, ...),
-        "gpclib" = {
-            gpclibCheck() && maptools::gpclibPermit()
-            maptools::unionSpatialPolygons(
-                SpP, IDs = rep.int(1,length(SpP@polygons)),
-                avoidGEOS = TRUE, ...)
-        })
+        "rgeos" = rgeos::gUnaryUnion(SpP, ...)
+        ## "gpclib" = {
+        ##     gpclibCheck() && maptools::gpclibPermit()
+        ##     maptools::unionSpatialPolygons(
+        ##         SpP, IDs = rep.int(1,length(SpP@polygons)),
+        ##         avoidGEOS = TRUE, ...)
+        ## }
+    )
     ## ensure that W has exactly the same proj4string as SpP
     W@proj4string <- SpP@proj4string
     W

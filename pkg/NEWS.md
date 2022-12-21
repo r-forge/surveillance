@@ -1,3 +1,10 @@
+# surveillance 1.21.0 (UNRELEASED)
+
+- **surveillance** no longer relies on the **maptools** package:
+  `unionSpatialPolygons()` with `method = "gpclib"` is deprecated
+  and now uses the default method with a warning.
+
+
 # surveillance 1.20.3 (2022-11-14)
 
 - `vignette("monitoringCounts")` now uses **knitr** as its engine
