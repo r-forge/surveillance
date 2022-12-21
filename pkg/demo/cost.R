@@ -24,14 +24,6 @@ opendevice <- function(horizontal=TRUE,width=7,height=4,...) {
 }
 
 
-
-###################################################
-### chunk number 2: K1
-###################################################
-data("ha")
-plot(aggregate(ha),main="Hepatitis A in Berlin 2001-2006")
-
-
 ###################################################
 ### chunk number 3:
 ###################################################
@@ -47,7 +39,6 @@ dev.off()
 sps <- sim.pointSource(p = 0.99, r = 0.5, length = 400,
      A = 1, alpha = 1, beta = 0, phi = 0, frequency = 1,
      state = NULL, K = 1.7)
-plot(sps,xaxis.years=FALSE)
 
 
 ###################################################
@@ -62,7 +53,6 @@ dev.off()
 ### chunk number 7:
 ###################################################
 ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
-plot(ha.b662, firstweek=1, startyear = 2005)
 opendevice(file="figs/hab662.pdf")
 plot(ha.b662, firstweek=1, startyear = 2005,legend.opts=list(x="topleft",horiz=TRUE))
 dev.off()

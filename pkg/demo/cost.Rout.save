@@ -21,7 +21,7 @@ Type 'q()' to quit R.
 > OUTDIR <- tempdir()
 > dir.create(file.path(OUTDIR, "figs"))
 > message("saving selected figures in ", OUTDIR, "/figs")
-saving selected figures in /tmp/RtmpVGAvJG/figs
+saving selected figures in /tmp/RtmpfQNNY5/figs
 > 
 > ###################################################
 > ### chunk number 1:
@@ -47,14 +47,6 @@ R> opendevice <- function(horizontal=TRUE,width=7,height=4,...) {
 + }
 R> 
 R> 
-R> 
-R> ###################################################
-R> ### chunk number 2: K1
-R> ###################################################
-R> data("ha")
-R> plot(aggregate(ha),main="Hepatitis A in Berlin 2001-2006")
-R> 
-R> 
 R> ###################################################
 R> ### chunk number 3:
 R> ###################################################
@@ -62,8 +54,8 @@ R> opendevice(file="figs/002.pdf")
 R> data("ha")
 R> plot(aggregate(ha),main="Hepatitis A in Berlin 2001-2006")
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
 R> 
 R> ###################################################
@@ -72,7 +64,6 @@ R> ###################################################
 R> sps <- sim.pointSource(p = 0.99, r = 0.5, length = 400,
 +      A = 1, alpha = 1, beta = 0, phi = 0, frequency = 1,
 +      state = NULL, K = 1.7)
-R> plot(sps,xaxis.years=FALSE)
 R> 
 R> 
 R> ###################################################
@@ -81,26 +72,22 @@ R> ###################################################
 R> opendevice(file="figs/003.pdf")
 R> plot(sps,xaxis.years=FALSE,legend.opts=list(x="topleft"))
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
 R> 
 R> ###################################################
 R> ### chunk number 7:
 R> ###################################################
 R> ha.b662 <- algo.bayes(aggregate(ha), control = list(range = 209:290, b = 2, w = 6, alpha = 0.01))
-R> plot(ha.b662, firstweek=1, startyear = 2005)
-Warning message:
-In plot.survRes(ha.b662, firstweek = 1, startyear = 2005) :
-  ignored legacy argument(s): startyear, firstweek
 R> opendevice(file="figs/hab662.pdf")
 R> plot(ha.b662, firstweek=1, startyear = 2005,legend.opts=list(x="topleft",horiz=TRUE))
 Warning message:
 In plot.survRes(ha.b662, firstweek = 1, startyear = 2005, legend.opts = list(x = "topleft",  :
   ignored legacy argument(s): startyear, firstweek
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
 R> 
 R> ###################################################
@@ -119,8 +106,8 @@ R> par(mfcol = c(1, 2),cex=0.8)
 R> plot(sps.cdc, legend = NULL, xaxis.years=FALSE)
 R> plot(sps.farrington, legend = NULL, xaxis.years=FALSE)
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
 R> 
 R> ###################################################
@@ -135,8 +122,8 @@ Warning message:
 In plot.survRes(ha.cusum, startyear = 2005, legend.opts = list(x = 30,  :
   ignored legacy argument(s): startyear
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
 R> #Extract coefficients
 R> beta <- coef(ha.cusum$control$m.glm)
@@ -345,8 +332,8 @@ shapelib support is provided by GDAL through the sf and terra packages among oth
 R> plot(ha,type=observed ~ 1 | unit)
 R> 
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
 R> 
 R> ###################################################
@@ -364,6 +351,6 @@ Running  algo.cusum  on area  6  out of  6
 R> #ha4.b332 <- bayes(ha4,control=list(range=52:73,b=2,w=3,alpha=0.01/6))
 R> plot(ha4.cusum,type=observed ~ time | unit)
 R> dev.off()
-pdf 
-  2 
+null device 
+          1 
 R> 
