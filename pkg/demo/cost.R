@@ -1,7 +1,6 @@
 ## need a writable figs/ directory to save selected figures
-OUTDIR <- tempdir()
-dir.create(file.path(OUTDIR, "figs"))
-message("saving selected figures in ", OUTDIR, "/figs")
+OUTDIR <- if (interactive()) tempdir() else "."
+stopifnot(dir.create(file.path(OUTDIR, "figs")))
 
 ###################################################
 ### chunk number 1:
@@ -14,7 +13,7 @@ set.seed(1234)
 opendevice <- function(horizontal=TRUE,width=7,height=4,...) {
   #Do it for postscript instead  -- who uses postscript these days??
   args <- list(...)
-  args$file <- file.path(OUTDIR, sub(".pdf",".eps",args$file))
+  args$file <- file.path(OUTDIR, sub("\\.pdf$",".eps",args$file))
   args$width <- width
   args$height <- height
   args$horizontal <- FALSE
