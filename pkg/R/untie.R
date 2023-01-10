@@ -129,7 +129,7 @@ untie.matrix <- function (x, amount = NULL, minsep = 0,
     }
     if (!is.null(constraint)) {
         stopifnot(inherits(constraint, "SpatialPolygons"))
-        proj4string(constraint) <- CRS(NA_character_)
+        constraint@proj4string <- new("CRS")
         outOfConstraint <- function (x) {
             is.na(over(SpatialPoints(x), constraint))
         }
