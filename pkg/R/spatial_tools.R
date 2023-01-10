@@ -250,7 +250,7 @@ is.projected <- function (obj, warn = FALSE)
     res <- tryCatch(sp::is.projected(obj), error = identity)
     if (inherits(res, "error")) {
         pkg <- if (inherits(res, "packageNotFoundError"))
-                   e$package
+                   res$package
                else if (startsWith(res$message, "sf required"))
                    ## FIXME: temporarily used by "sp" with evolution status 2
                    "sf"
