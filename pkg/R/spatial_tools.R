@@ -1,7 +1,7 @@
 ################################################################################
 ### Auxiliary functions for operations on spatial data
 ###
-### Copyright (C) 2009-2015,2018,2021,2022  Sebastian Meyer
+### Copyright (C) 2009-2015,2018,2021-2023  Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -204,7 +204,7 @@ layout.scalebar <- function (obj, corner = c(0.05, 0.95), scale = 1,
     stopifnot(inherits(obj, "Spatial"))
     BB <- bbox(obj)
     force(labels)  # the default should use the original 'scale' value in km
-    if (identical(FALSE, is.projected(obj))) {
+    if (isFALSE(is.projected(obj, warn = TRUE))) {
         ## 'obj' has longlat coordinates, 'scale' is interpreted in kilometres
         scale <- .scale2longlat(t(rowMeans(BB)), scale)
     }
@@ -244,6 +244,29 @@ layout.scalebar <- function (obj, corner = c(0.05, 0.95), scale = 1,
     rightLL[,1L] - focusLL[,1L]
 }
 
+## internal wrapper for sp::is.projected to catch its (future) sf dependence
+is.projected <- function (obj, warn = FALSE)
+{
+    res <- tryCatch(sp::is.projected(obj), error = identity)
+    if (inherits(res, "error")) {
+        pkg <- if (inherits(res, "packageNotFoundError"))
+                   e$package
+               else if (startsWith(res$message, "sf required"))
+                   ## FIXME: temporarily used by "sp" with evolution status 2
+                   "sf"
+               else stop(res)
+        ## fallback: grep for longlat in (deprecated) Proj.4 representation
+        p4s <- as.character(obj@proj4string@projargs)
+        if (is.na(p4s) || !nzchar(p4s)) {
+            if (warn)
+                warning("could not determine projection status; package ",
+                        dQuote(pkg), " is missing")
+            NA
+        } else {
+            !grepl("longlat", p4s, fixed = TRUE)
+        }
+    } else res
+}
 
 ### determine the total area of a SpatialPolygons object
 ## CAVE: sum(sapply(obj@polygons, slot, "area"))
