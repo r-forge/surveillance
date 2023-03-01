@@ -64,13 +64,13 @@ simulate.hhh4 <- function (object, # result from a call to hhh4
     ## CAVE: for an ri()-model, building the terms affects the .Random.seed,
     ## so doing that twice would yield different simulations than pre-1.16.2
     if (is.null(object$terms))
-        object$terms <- terms.hhh4(object)
+        object$terms <- terms(object)
 
     ## get fitted exppreds nu_it, phi_it, lambda_it (incl. offsets, t in subset)
     exppreds <- get_exppreds_with_offsets(object, subset = subset, theta = theta)
 
     ## extract overdispersion parameters (simHHH4 assumes psi->0 means Poisson)
-    model <- terms.hhh4(object)
+    model <- terms(object)
     psi <- splitParams(theta,model)$overdisp
     if (length(psi) > 1) # "NegBinM" or shared overdispersion parameters
         psi <- psi[model$indexPsi]

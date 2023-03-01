@@ -5,7 +5,7 @@
 ###
 ### Plot-method(s) for fitted hhh4() models
 ###
-### Copyright (C) 2010-2012 Michaela Paul, 2012-2022 Sebastian Meyer
+### Copyright (C) 2010-2012 Michaela Paul, 2012-2023 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -40,6 +40,7 @@ plotHHH4_fitted <- function (x, units = 1, names = NULL,
                              legend.observed = FALSE,
                              decompose = NULL, total = FALSE, meanHHH = NULL, ...)
 {
+    stopifnot(inherits(x, "hhh4"))
     if (total) {
         units <- "Overall"  # only used as a label
     } else if (is.null(units)) {
@@ -51,7 +52,7 @@ plotHHH4_fitted <- function (x, units = 1, names = NULL,
     ## get decomposed mean => no need to compute it in each plotHHH4_fitted1()
     if (is.null(meanHHH)) {
         meanHHH <- if (is.null(decompose)) {
-            meanHHH(x$coefficients, terms.hhh4(x))
+            meanHHH(x$coefficients, terms(x))
         } else {
             decompose.hhh4(x)
         }
@@ -138,6 +139,7 @@ plotHHH4_fitted1 <- function(x, unit=1, main=NULL,
                              xlim=NULL, ylim=NULL, xlab="", ylab="No. infected",
                              hide0s=FALSE, decompose=NULL, total=FALSE, meanHHH=NULL)
 {
+    stopifnot(inherits(x, "hhh4"))
     stsObj <- x$stsObj
     if (!total && is.character(unit) &&
         is.na(unit <- match(.unit <- unit, colnames(stsObj))))
@@ -171,7 +173,7 @@ plotHHH4_fitted1 <- function(x, unit=1, main=NULL,
     ## get fitted component means
     if (is.null(meanHHH)) {
         meanHHH <- if (is.null(decompose)) {
-            meanHHH(x$coefficients, terms.hhh4(x))
+            meanHHH(x$coefficients, terms(x))
         } else {
             decompose.hhh4(x)
         }
@@ -288,13 +290,14 @@ plotHHH4_maps <- function (x,
     labels = FALSE, sp.layout = NULL, ...,
     map = x$stsObj@map, meanHHH = NULL)
 {
+    stopifnot(inherits(x, "hhh4"))
     which <- match.arg(which, several.ok = TRUE)
     if (is.null(col.regions))
         col.regions <- .hcl.colors(10)
 
     ## extract district-specific mean components
     if (is.null(meanHHH)) {
-        meanHHH <- meanHHH(x$coefficients, terms.hhh4(x))
+        meanHHH <- meanHHH(x$coefficients, terms(x))
     }
 
     ## select relevant components and convert to an array
@@ -370,6 +373,7 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
                          gpar.missing = list(col="darkgrey", lty=2, lwd=2),
                          ...)
 {
+    stopifnot(inherits(x, "hhh4"))
     ranefmatrix <- ranef.hhh4(x, tomatrix=TRUE)
     if (is.null(ranefmatrix)) stop("model has no random effects")
     stopifnot(length(component) == 1L)
@@ -553,8 +557,7 @@ get_exppreds_with_offsets <- function (object,
                                        subset = seq_len(nrow(object$stsObj)),
                                        theta = object$coefficients)
 {
-    model <- terms.hhh4(object)
-    means <- meanHHH(theta, model, subset = subset)
+    means <- meanHHH(theta, terms(object), subset = subset)
     res <- sapply(X = c("ar", "ne", "end"), FUN = function (comp) {
         exppred <- means[[paste0(comp, ".exppred")]]
         offset <- object$control[[comp]]$offset
@@ -732,7 +735,6 @@ plotHHH4_season <- function (...,
 getSeason <- function(x, component = c("end", "ar", "ne"), unit = 1,
                       period = x$stsObj@freq)
 {
-    stopifnot(inherits(x, "hhh4"))
     component <- match.arg(component)
     startseason <- getSeasonStart(x)
     if (is.character(unit)) unit <- match(unit, colnames(x$stsObj))
