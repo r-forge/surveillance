@@ -1,8 +1,11 @@
-# surveillance 1.21.0 (UNRELEASED)
+# surveillance 1.20.4 (UNRELEASED)
 
 - **surveillance** no longer relies on the **maptools** package:
   `unionSpatialPolygons()` with `method = "gpclib"` is deprecated
   and now uses the default method with a warning.
+  
+- Methods for `"gpc.poly"` polygons from **gpclib** (or **rgeos**) are
+  deprecated.
 
 
 # surveillance 1.20.3 (2022-11-14)

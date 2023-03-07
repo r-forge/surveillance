@@ -2,6 +2,10 @@
 ### Hook functions for package start-up
 #######################################
 
+gpcWarning <- function ()
+    .Deprecated(msg = paste(dQuote("gpc.poly"), "methods are deprecated",
+                            "in package", sQuote("surveillance")))
+
 gpclibCheck <- function (fatal = TRUE)
 {
     gpclibOK <- surveillance.options("gpclib")

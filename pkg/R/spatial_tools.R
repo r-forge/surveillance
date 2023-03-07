@@ -31,13 +31,14 @@ discpoly <- function (center, radius, npoly = 64,
 
     ## do it myself for the "Polygon" and "gpc.poly" classes
     stopifnot(radius > 0, isScalar(npoly), npoly > 2)
-    theta <- seq(2*pi, 0, length = npoly+1)[-(npoly+1)]   # for clockwise order
+    theta <- seq(2*pi, 0, length.out = npoly+1)[-(npoly+1)]   # for clockwise order
     if (hole) theta <- rev(theta)   # for anticlockwise order
     x <- center[1] + radius * cos(theta)
     y <- center[2] + radius * sin(theta)
     switch(class,
         "Polygon" = Polygon(cbind(c(x,x[1]),c(y,y[1])), hole=hole),
         "gpc.poly" = {
+            gpcWarning()
             pts <- list(list(x=x, y=y, hole=hole))
             if (isClass("gpc.poly") || requireNamespace("rgeos")) {
                 new("gpc.poly", pts = pts)
@@ -57,7 +58,7 @@ unionSpatialPolygons <- function (SpP,
                                   ...)
 {
     if (identical(method, "gpclib")) {
-        .Deprecated(msg = "method = \"gpclib\" is defunct; using default")
+        .Deprecated(msg = "method = \"gpclib\" is deprecated; using default")
         method <- NULL
     }
     method <- match.arg(method)

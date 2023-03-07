@@ -21,7 +21,7 @@ reset.surveillance.options()
     options. Available options are:
     \describe{
       \item{gpclib:}{
-        Logical flag indicating whether \pkg{gpclib}, the General
+        (DEPRECATED) Logical flag indicating whether \pkg{gpclib}, the General
 	Polygon Clipping Library for \R, which has a restricted license
 	(commercial use prohibited), 
 	may be used. This is no longer required since package

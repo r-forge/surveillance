@@ -8,7 +8,7 @@
   coordinates) as an object of one of three possible
   classes: \code{"\link[sp:Polygon-class]{Polygon}"},
   \code{"\link[spatstat.geom]{owin}"}, or -- if \pkg{rgeos} (or
-  \pkg{gpclib}) are available --
+  \pkg{gpclib}) are available (DEPRECATED) --
   \code{"\link[rgeos:gpc.poly-class]{gpc.poly}"}.
 }
 
@@ -58,13 +58,7 @@ plot(disc1, axes=TRUE, main="", border=2)
 print(disc2)
 lines(disc2, col=3)
 
-if (requireNamespace("rgeos")) { # for the "gpc.poly" class definition
-    disc3 <- discpoly(c(0,0), 5, npoly=64, class = "gpc.poly")
-    print(disc3)
-    plot(disc3, add=TRUE, poly.args=list(border=4))
-}
-
-## if one only wants to _draw_ a circle without an object behind
+## to only _draw_ a circle
 symbols(0, 0, circles=5, inches=FALSE, add=TRUE, fg=5)
 }
 

@@ -6,7 +6,7 @@
 ### Methods for gpc.poly polygons
 ### These are no longer used by the surveillance package itself
 ###
-### Copyright (C) 2009-2013 Sebastian Meyer
+### Copyright (C) 2009-2013,2023 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -16,6 +16,7 @@
 
 scale.gpc.poly <-
     function (x, center = c(0,0), scale = c(1,1)) {
+        gpcWarning()
         x@pts <- lapply(x@pts, function (p) {
             p$x <- (p$x-center[1]) / scale[1]
             p$y <- (p$y-center[2]) / scale[2]
@@ -29,6 +30,7 @@ scale.gpc.poly <-
 
 inside.gpc.poly <- function(x, y = NULL, polyregion, mode.checked = FALSE)
 {
+    gpcWarning()
     xy <- xy.coords(x, y, recycle=FALSE)
     N <- length(xy$x)
     # check for each polygon of polyregion if points are in the polygon
@@ -45,12 +47,13 @@ inside.gpc.poly <- function(x, y = NULL, polyregion, mode.checked = FALSE)
 
 ### Maximum extent of a gpc.poly (i.e. maximum distance of two vertices)
 
-diameter.gpc.poly <- function (object)
+diameter.gpc.poly <- function (x)
 {
-    pts <- object@pts
+    gpcWarning()
+    pts <- x@pts
     x <- unlist(lapply(pts, "[[", "x"), use.names=FALSE)
     y <- unlist(lapply(pts, "[[", "y"), use.names=FALSE)
-    
+
     ## The diagonal of the bounding box provides a fast upper bound
     ##ext <- sqrt(diff(range(x))^2 + diff(range(y))^2)
 
