@@ -6,6 +6,8 @@ gpcWarning <- function ()
     .Deprecated(msg = paste(dQuote("gpc.poly"), "methods are deprecated",
                             "in package", sQuote("surveillance")))
 
+## might no longer be needed in the future:
+## https://en.wikipedia.org/wiki/General_Polygon_Clipper
 gpclibCheck <- function (fatal = TRUE)
 {
     gpclibOK <- surveillance.options("gpclib")

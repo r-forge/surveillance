@@ -38,9 +38,10 @@ discpoly <- function (center, radius, npoly = 64,
     switch(class,
         "Polygon" = Polygon(cbind(c(x,x[1]),c(y,y[1])), hole=hole),
         "gpc.poly" = {
-            gpcWarning()
+            ##gpcWarning()
             pts <- list(list(x=x, y=y, hole=hole))
-            if (isClass("gpc.poly") || requireNamespace("rgeos")) {
+            if (isClass("gpc.poly") ||
+                (gpclibCheck() && requireNamespace("gpclib"))) {
                 new("gpc.poly", pts = pts)
             } else {
                 warning("formal class \"gpc.poly\" not available")

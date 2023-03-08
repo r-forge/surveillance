@@ -15,7 +15,7 @@
 intersectPolyCircle.gpc.poly <- function (object, center, radius,
                                           npoly = 32, useGEOS = FALSE, ...)
 {
-    gpcWarning()
+    ## gpcWarning()
     if (useGEOS) {
         loadNamespace("rgeos")  # coerce gpc.poly to SpatialPolygons
         res <- intersectPolyCircle.SpatialPolygons(as(object, "SpatialPolygons"),

@@ -20,7 +20,7 @@
     default = FALSE, # no gpclib due to license restrictions
     check = function(x) {
         if (!is.logical(x) || length(x) != 1L) return(FALSE)
-        if (x) gpcWarning()
+        ## if (x) gpcWarning()
         if (x && !requireNamespace("gpclib")) {
             warning("cannot set gpclib=TRUE")
             return(FALSE)
