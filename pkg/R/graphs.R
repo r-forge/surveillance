@@ -19,7 +19,7 @@
 nbOrder <- function (neighbourhood, maxlag = 1)
 {
     if (!requireNamespace("spdep"))
-        stop("package ", dQuote("spdep"),
+        stop("package ", sQuote("spdep"),
              " is required to determine neighbourhood orders")
 
     stopifnot(isScalar(maxlag), maxlag > 0)
@@ -83,7 +83,7 @@ nbOrder <- function (neighbourhood, maxlag = 1)
 poly2adjmat <- function (SpP, ..., zero.policy = TRUE)
 {
     if (!requireNamespace("spdep"))
-        stop("package ", dQuote("spdep"),
+        stop("package ", sQuote("spdep"),
              " is required to derive adjacencies from SpatialPolygons")
     nb <- spdep::poly2nb(SpP, ...)
     adjmat <- spdep::nb2mat(nb, style="B", zero.policy=zero.policy)

@@ -262,7 +262,7 @@ is.projected <- function (obj, warn = FALSE)
         if (is.na(p4s) || !nzchar(p4s)) {
             if (warn)
                 warning("could not determine projection status; package ",
-                        dQuote(pkg), " is missing")
+                        sQuote(pkg), " is missing")
             NA
         } else {
             !grepl("longlat", p4s, fixed = TRUE)

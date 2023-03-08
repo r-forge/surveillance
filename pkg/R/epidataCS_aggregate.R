@@ -26,7 +26,7 @@ as.epidata.epidataCS <- function (data, tileCentroids, eps = 0.001, ...)
 {
     if (!requireNamespace("intervals"))
         stop("conversion from ", dQuote("epidataCS"), " to ", dQuote("epidata"),
-             " requires the ", dQuote("intervals"), " package")
+             " requires the ", sQuote("intervals"), " package")
 
     ### generate twinSIR's epidata object from stgrid (no events)
     centroidIdx <- match(levels(data$stgrid$tile), rownames(tileCentroids), nomatch = NA_integer_)
