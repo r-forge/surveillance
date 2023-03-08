@@ -4,8 +4,8 @@
   `unionSpatialPolygons()` with `method = "gpclib"` is deprecated
   and now uses the default method with a warning.
   
-- Methods for `"gpc.poly"` polygons from **gpclib** (or **rgeos**) are
-  deprecated.
+- Long unused `scale.gpc.poly()` and `inside.gpc.poly()` are deprecated;
+  the unused and undocumented `diameter.gpc.poly()` method has been removed.
 
 
 # surveillance 1.20.3 (2022-11-14)
