@@ -115,6 +115,7 @@
 ############
 
 02/10/2020 simulate.twinstim's gmax should be replaced by tiaf$gmax(pars)
+27/02/2023 add tiaf.exponential(log = TRUE) to force a decay (usually expected)
 
 
 #Fixed
