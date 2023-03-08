@@ -6,7 +6,7 @@
 ### Methods for gpc.poly polygons
 ### These are no longer used by the surveillance package itself
 ###
-### Copyright (C) 2009-2013,2023 Sebastian Meyer
+### Copyright (C) 2009-2013 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -42,22 +42,4 @@ inside.gpc.poly <- function(x, y = NULL, polyregion, mode.checked = FALSE)
     })
     if (N == 1) sum(locations) > 0 else
     .rowSums(locations, N, length(polyregion@pts)) > 0
-}
-
-
-### Maximum extent of a gpc.poly (i.e. maximum distance of two vertices)
-
-diameter.gpc.poly <- function (x)
-{
-    gpcWarning()
-    pts <- x@pts
-    x <- unlist(lapply(pts, "[[", "x"), use.names=FALSE)
-    y <- unlist(lapply(pts, "[[", "y"), use.names=FALSE)
-
-    ## The diagonal of the bounding box provides a fast upper bound
-    ##ext <- sqrt(diff(range(x))^2 + diff(range(y))^2)
-
-    xy <- cbind(x,y)
-    dists <- dist(xy)
-    max(dists)
 }
