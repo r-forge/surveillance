@@ -7,8 +7,7 @@
 \description{
   Given a square binary adjacency matrix, the function
   \code{nbOrder} determines the integer matrix of neighbourhood orders
-  (shortest-path distance) using the function \code{\link[spdep]{nblag}}
-  from the \pkg{spdep} package.
+  (shortest-path distance).
 }
 
 \usage{
@@ -48,8 +47,7 @@ Sebastian Meyer
 }
 
 \seealso{
-  \code{\link[spdep]{nblag}} from the \pkg{spdep} package, on which this
-  wrapper depends.
+  \code{\link[spdep]{nblag}} from the \pkg{spdep} package
 }
 
 \examples{
@@ -62,10 +60,8 @@ adjmat <- adjmat + t(adjmat)
 adjmat
 
 ## determine neighbourhood order matrix
-if (requireNamespace("spdep")) {
-    nbmat <- nbOrder(adjmat, maxlag=Inf)
-    nbmat
-}
+nbmat <- nbOrder(adjmat, maxlag = Inf)
+nbmat
 }
 
 \keyword{spatial}

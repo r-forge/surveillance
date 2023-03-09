@@ -26,7 +26,7 @@ nbmat <- structure(
     .Dimnames = rep.int(list(c("a", "b", "c", "d", "e")), 2L)
     )
 
-test_that("nbOrder() returns the validated matrix", if (requireNamespace("spdep")) {
+test_that("nbOrder() returns the validated matrix", {
     expect_identical(suppressMessages(nbOrder(adjmat, maxlag=Inf)),
                      nbmat)
 })

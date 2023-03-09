@@ -241,8 +241,8 @@ orders~$o_{ji}$ between the districts.
 A map of the districts in the form of a \code{SpatialPolygons} object (defined
 by the \CRANpkg{sp} package of \citealp{R:sp}) can be used to
 derive the matrix of adjacency orders automatically using the functions
-\code{poly2adjmat} and \code{nbOrder},
-which wrap functionality of package \CRANpkg{spdep} \citep{R:spdep}:
+\code{poly2adjmat} and \code{nbOrder}, where the former
+wraps functionality of package \CRANpkg{spdep} \citep{R:spdep}:
 <<measlesWeserEms_neighbourhood, eval=FALSE>>=
 weserems_adjmat <- poly2adjmat(map)
 weserems_nbOrder <- nbOrder(weserems_adjmat, maxlag = Inf)
