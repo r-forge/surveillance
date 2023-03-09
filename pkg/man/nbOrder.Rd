@@ -36,11 +36,6 @@ distance matrix of the vertices.
 The \code{dimnames} of the input \code{neighbourhood} matrix are preserved.
 }
 
-\note{
-By the end, the function issues a \code{\link{message}} informing about the
-range of maximum neighbourhood order by region.
-}
-
 \author{
 Sebastian Meyer
 }

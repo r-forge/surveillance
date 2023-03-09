@@ -54,13 +54,6 @@ nbOrder <- function (neighbourhood, maxlag = Inf)
     }
     diag(nbmat) <- 0L
 
-    ## FIXME: drop this annoying message
-    ## message about maximum neighbour order by region
-    maxlagbyrow <- apply(nbmat, 1, max)
-    message("Note: range of maximum neighbour order by region is ",
-            paste0(range(maxlagbyrow), collapse="-"),
-            if (max(maxlagbyrow) == maxlag) " ('maxlag' reached)")
-
     ## Done
     nbmat
 }
