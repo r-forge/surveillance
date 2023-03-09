@@ -6,7 +6,7 @@
 ### Functions concerning graphs: neighbourhood order, adjacency matrix
 ### These are wrappers around functionality from package "spdep" by Roger Bivand
 ###
-### Copyright (C) 2009-2013,2017 Sebastian Meyer
+### Copyright (C) 2009-2013,2017,2023 Sebastian Meyer
 ### $Revision$
 ### $Date$
 ################################################################################
@@ -33,17 +33,13 @@ nbOrder <- function (neighbourhood, maxlag = 1)
         return(neighbourhood)
     }
 
-    ## manually convert to spdep's "nb" class
-    ## region.idxs <- seq_len(nregions)
-    ## nb <- lapply(region.idxs, function(i) {
-    ##     nbs <- which(neighbourhood[i,])
-    ##     if (length(nbs) > 0L) nbs else 0L
-    ## })
-    ## class(nb) <- "nb"
-
-    ## convert first-order neighbourhood to spdep's "nb" class
-    nb <- spdep::mat2listw(neighbourhood)$neighbours
-    attr(nb, "region.id") <- NULL
+    ## convert binary adjacency matrix to spdep's "nb" class, "manually",
+    ## mimicing spdep::mat2listw(neighbourhood)$neighbours; there is no mat2nb()
+    nb <- structure(
+        apply(neighbourhood, 1L, function(x)
+            if (length(nbs <- which(x))) nbs else 0L,
+            simplify = FALSE),
+        class = "nb")
 
     ## compute higher order neighbours using spdep::nblag()
     nb.lags <- spdep::nblag(nb, maxlag=maxlag)
