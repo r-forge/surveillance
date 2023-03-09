@@ -29,7 +29,8 @@ nbOrder <- function (neighbourhood, maxlag = 1)
     }
 
     ## list of indexes of first-order neighbours by region
-    first <- apply(neighbourhood, 1L, which, simplify = FALSE)
+    ##first <- apply(neighbourhood, 1L, which, simplify = FALSE) # R >= 4.1.0
+    first <- lapply(seq_len(nregions), function (i) which(neighbourhood[i,]))
 
     ## Side note: fast method to determine neighbours _up to_ specific order:
     ## crossprod(neighbourhood) > 0  # up to second order neighbours (+set diag to 0)
@@ -38,7 +39,7 @@ nbOrder <- function (neighbourhood, maxlag = 1)
 
     ## now find recursive neighbours for each region
     nbmat <- `diag<-`(neighbourhood, NA)  # skip self in which() below
-    for (i in seq_len(nregions)) {
+    for (i in seq_len(nregions)) {  # slightly faster than [l]apply() variants
         nblags <- as.integer(nbmat[i,])
         lag <- 1L
         while (lag < maxlag) {
