@@ -7,6 +7,9 @@
 - Long unused `scale.gpc.poly()` and `inside.gpc.poly()` are deprecated;
   the unused and undocumented `diameter.gpc.poly()` method has been removed.
 
+- `nbOrder()` has been re-implemented: it is now more efficient and no
+  longer depends on **spdep**.
+
 
 # surveillance 1.20.3 (2022-11-14)
 
