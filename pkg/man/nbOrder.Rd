@@ -11,7 +11,7 @@
 }
 
 \usage{
-nbOrder(neighbourhood, maxlag = 1)
+nbOrder(neighbourhood, maxlag = Inf)
 }
 
 \arguments{
@@ -23,11 +23,10 @@ nbOrder(neighbourhood, maxlag = 1)
   }
   \item{maxlag}{
     positive scalar integer specifying an upper bound for the
-    neighbourhood order. The default (1) just returns the input
+    neighbourhood order. The default (\code{Inf}) means no truncation
+    (but orders cannot be larger than the number of regions minus 1),
+    whereas \code{maxlag = 1} just returns the input
     neighbourhood matrix (converted to binary integer mode).
-    \code{maxlag} is automatically trimmed to one less than the number
-    of regions (there cannot be higher orders) and then converted to
-    integer, thus, \code{maxlag = Inf} also works.
   }
 }
 
@@ -60,8 +59,8 @@ adjmat <- adjmat + t(adjmat)
 adjmat
 
 ## determine neighbourhood order matrix
-nbmat <- nbOrder(adjmat, maxlag = Inf)
-nbmat
+nblags <- nbOrder(adjmat)
+nblags
 }
 
 \keyword{spatial}

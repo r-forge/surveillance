@@ -6,7 +6,7 @@ fluBWsub <- fluBYBW[, substr(colnames(fluBYBW), 1, 2) %in% "81"]
 ## stsplot_space(fluBWsub, labels = TRUE)
 
 ## set "neighbourhood" to order of adjacency + 1
-neighbourhood(fluBWsub) <-  # nbOrder(neighbourhood(fluBWsub), maxlag = 5) + 1
+neighbourhood(fluBWsub) <-  # nbOrder(neighbourhood(fluBWsub)) + 1
     structure(
         c(1, 4, 3, 2, 2, 4, 2, 4, 3, 3, 4, 4, 5, 4, 1, 2, 3,
           4, 5, 4, 2, 3, 4, 3, 4, 4, 3, 2, 1, 2, 3, 4, 3, 2, 2, 3, 3, 4,

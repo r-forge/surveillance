@@ -8,7 +8,8 @@
   the unused and undocumented `diameter.gpc.poly()` method has been removed.
 
 - `nbOrder()` has been re-implemented: it is now more efficient and no
-  longer depends on **spdep**.
+  longer depends on **spdep**. Furthermore, it now defaults to
+  `maxlag = Inf`; the historical default `maxlag = 1` was barely useful.
 
 
 # surveillance 1.20.3 (2022-11-14)

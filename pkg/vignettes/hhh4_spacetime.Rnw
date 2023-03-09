@@ -245,7 +245,7 @@ derive the matrix of adjacency orders automatically using the functions
 wraps functionality of package \CRANpkg{spdep} \citep{R:spdep}:
 <<measlesWeserEms_neighbourhood, eval=FALSE>>=
 weserems_adjmat <- poly2adjmat(map)
-weserems_nbOrder <- nbOrder(weserems_adjmat, maxlag = Inf)
+weserems_nbOrder <- nbOrder(weserems_adjmat)
 @
 <<echo=FALSE>>=
 weserems_nbOrder <- measlesWeserEms@neighbourhood

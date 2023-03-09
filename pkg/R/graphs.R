@@ -4,7 +4,6 @@
 ### a copy of which is available at http://www.r-project.org/Licenses/.
 ###
 ### Functions concerning graphs: neighbourhood order, adjacency matrix
-### These are wrappers around functionality from package "spdep" by Roger Bivand
 ###
 ### Copyright (C) 2009-2013,2017,2023 Sebastian Meyer
 ### $Revision$
@@ -15,7 +14,7 @@
 ### Determine the matrix of neighbourhood orders
 ### given the binary matrix of first-order neighbours.
 
-nbOrder <- function (neighbourhood, maxlag = 1)
+nbOrder <- function (neighbourhood, maxlag = Inf)
 {
     stopifnot(isScalar(maxlag), maxlag > 0)
     checkNeighbourhood(neighbourhood)

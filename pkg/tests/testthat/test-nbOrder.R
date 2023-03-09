@@ -27,7 +27,7 @@ nbmat <- structure(
     )
 
 test_that("nbOrder() returns the validated matrix", {
-    expect_identical(suppressMessages(nbOrder(adjmat, maxlag=Inf)),
+    expect_identical(suppressMessages(nbOrder(adjmat)),
                      nbmat)
 })
 
