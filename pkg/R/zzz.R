@@ -33,19 +33,12 @@ gpclibCheck <- function (fatal = TRUE)
                           "For overview type ",
                           sQuote(paste0("help(", pkgname, ")")), ".")
 
-    ## decide if we should run all examples (some take a few seconds)
-    allExamples <- if (interactive()) {
-        TRUE
-    } else { # R CMD check
-        ## only do all examples if a specific environment variable is set
-        ## (to any value different from "")
-        nzchar(Sys.getenv("_R_SURVEILLANCE_ALL_EXAMPLES_"))
-        ## CAVE: testing for _R_CHECK_TIMINGS_ as in surveillance < 1.9-1
-        ## won't necessarily skip long examples for daily checks on CRAN (see
-        ## https://stat.ethz.ch/pipermail/r-devel/2012-September/064812.html
-        ## ). For instance, the daily Windows checks run without timings.
+    if (!interactive()) { # particularly for R CMD check
+        ## skip long examples and disallow gpclib, unless:
+        allExamples <- nzchar(Sys.getenv("_R_SURVEILLANCE_ALL_EXAMPLES_"))
+        ## not using surveillance.options() as this would load gpclib already
+        .Options$allExamples$value <- .Options$gpclib$value <- allExamples
     }
-    surveillance.options(allExamples = allExamples)
 }
 
 
