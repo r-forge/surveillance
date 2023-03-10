@@ -27,11 +27,11 @@ gpclibCheck <- function (fatal = TRUE)
 
 .onAttach <- function (libname, pkgname)
 {
-    ## Startup message
     VERSION <- packageVersion(pkgname, lib.loc=libname)
-    packageStartupMessage("This is ", pkgname, " ", VERSION, ". ",
-                          "For overview type ",
-                          sQuote(paste0("help(", pkgname, ")")), ".")
+    packageStartupMessage("This is ", pkgname, " ", VERSION, "; ",
+                          "see ", sQuote(paste0("package?", pkgname)), " or\n",
+                          "https://surveillance.R-Forge.R-project.org/",
+                          " for an overview.")
 
     if (!interactive()) { # particularly for R CMD check
         ## skip long examples and disallow gpclib, unless:
