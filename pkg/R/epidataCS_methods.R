@@ -275,7 +275,7 @@ permute.epidataCS <- function (x, what = c("time", "space"), keep)
 
 print.epidataCS <- function (x, n = 6L, digits = getOption("digits"), ...)
 {
-    print.epidataCS_header(
+    print_epidataCS_header(
         timeRange = c(x$stgrid$start[1L], x$stgrid$stop[nrow(x$stgrid)]),
         bbox = bbox(x$W),
         nBlocks = length(unique(x$stgrid$BLOCK)),
@@ -304,7 +304,7 @@ print.epidataCS <- function (x, n = 6L, digits = getOption("digits"), ...)
     invisible(x)
 }
 
-print.epidataCS_header <- function (timeRange, bbox, nBlocks, nTiles,
+print_epidataCS_header <- function (timeRange, bbox, nBlocks, nTiles,
                                     digits = getOption("digits"))
 {
     bboxtxt <- paste(
@@ -354,7 +354,7 @@ summary.epidataCS <- function (object, ...)
 
 print.summary.epidataCS <- function (x, ...)
 {
-    print.epidataCS_header(timeRange = x$timeRange, bbox = x$bbox,
+    print_epidataCS_header(timeRange = x$timeRange, bbox = x$bbox,
                            nBlocks = x$nBlocks, nTiles = length(x$tileTable))
     cat("Overall number of events: ", x$nEvents, " (",
         if (x$nTypes==1) "single type" else paste(x$nTypes, "types"),
