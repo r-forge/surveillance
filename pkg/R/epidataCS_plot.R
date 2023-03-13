@@ -254,9 +254,11 @@ epidataCSplot_space <- function (x, subset, by = type, tiles = x$W, pop = NULL,
     points.args_pointwise$cex <- points.args_pointwise$cex * cex.fun(pointCounts)
 
     ## plot
+    ## Note: "epidataCS" always works with projected coords,
+    ##       so we can set asp/aspect and thus avoid sp::is.projected()
     if (is.null(pop)) {
         ## classical plotting system
-        if (!add) plot(tiles, ...)
+        if (!add) plot(tiles, asp = 1, ...)
         do.call("points", c(alist(x=eventCoordsTypesCounts[,1:2,drop=FALSE]),
                             points.args_pointwise))
         ## optionally add legends
@@ -334,7 +336,7 @@ epidataCSplot_space <- function (x, subset, by = type, tiles = x$W, pop = NULL,
             list(inside = list(fun = lattice::draw.key(legend.counts), corner = corner.counts))
         }
         ## create the plot
-        spplot(obj = tiles, zcol = pop,
+        spplot(obj = tiles, zcol = pop, aspect = "iso",
                sp.layout = c(list(layout.points), sp.layout),
                legend = c(legend.types, legend.counts), ...)
     }

@@ -270,6 +270,17 @@ is.projected <- function (obj, warn = FALSE)
     } else res
 }
 
+## internal replacement for sp::mapasp using the above is.projected wrapper
+mapasp <- function (data)
+{
+    if (isFALSE(is.projected(data))) {
+        bb <- bbox(data)
+        xlim <- bb[1L,]
+        ylim <- bb[2L,]
+        (diff(ylim)/diff(xlim)) / cos((mean(ylim) * pi)/180)
+    } else "iso"
+}
+
 
 ### determine the total area of a SpatialPolygons object
 

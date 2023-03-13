@@ -29,6 +29,7 @@ stsplot_space <- function (x, tps = NULL, map = x@map, population = NULL,
                            total.args = NULL,
                            gpar.missing = list(col="darkgrey", lty=2, lwd=2),
                            sp.layout = NULL,
+                           ## aspect = mapasp(map), # currently hard-coded
                            xlim = bbox(map)[1, ], ylim = bbox(map)[2, ])
 {
     counts <- if (inherits(x, "sts")) observed(x) else x
@@ -96,7 +97,8 @@ stsplot_space <- function (x, tps = NULL, map = x@map, population = NULL,
     ## generate the spplot()
     args <- list(quote(map[!is.na(map$ncases),]), "ncases", main=main,
                  col.regions=col.regions, at=at, colorkey=colorkey,
-                 sp.layout=sp.layout, xlim=xlim, ylim=ylim, quote(...))
+                 sp.layout=sp.layout, aspect=mapasp(map), xlim=xlim, ylim=ylim,
+                 quote(...))
     do.call("spplot", args)
 }
 

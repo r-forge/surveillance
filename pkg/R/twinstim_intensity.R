@@ -280,6 +280,7 @@ intensityplot.twinstim <- function (x,
         if (add) message("'add'ing is not possible with 'aggregate=\"space\"'")
         if (! "xlim" %in% nms) dotargs$xlim <- bbox(tiles)[1,]
         if (! "ylim" %in% nms) dotargs$ylim <- bbox(tiles)[2,]
+        if (! "aspect" %in% nms) dotargs$aspect <- "iso"  # always projected
         if (! "scales" %in% nms) dotargs$scales <- list(draw = TRUE)
         do.call("spplot", args=c(alist(sgridy, zcol="yvals", sp.layout=lobjs,
                           checkEmptyRC=FALSE), dotargs))

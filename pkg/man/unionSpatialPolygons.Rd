@@ -51,7 +51,7 @@ unionSpatialPolygons(SpP, method = c("rgeos", "polyclip"), ...)
 \examples{
 ## Load districts of Germany
 load(system.file("shapes", "districtsD.RData", package = "surveillance"))
-plot(districtsD, border = "gray")
+plot(districtsD, border = "gray", asp = 1)  % to avoid sp -> sf
 
 ## Union these districts using either "rgeos" or "polyclip"
 if (requireNamespace("rgeos"))  {

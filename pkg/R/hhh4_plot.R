@@ -288,7 +288,8 @@ plotHHH4_maps <- function (x,
     which = c("mean", "endemic", "epi.own", "epi.neighbours"),
     prop = FALSE, main = which, zmax = NULL, col.regions = NULL,
     labels = FALSE, sp.layout = NULL, ...,
-    map = x$stsObj@map, meanHHH = NULL)
+    map = x$stsObj@map,  ## aspect = mapasp(map), # currently hard-coded
+    meanHHH = NULL)
 {
     stopifnot(inherits(x, "hhh4"))
     which <- match.arg(which, several.ok = TRUE)
@@ -346,11 +347,13 @@ plotHHH4_maps <- function (x,
         if (is.na(zmax)) { # automatic color breaks over range of values
             spplot(map, zcol = zcol, main = main,
                    cuts = length(col.regions) - 1L,
-                   col.regions = col.regions, sp.layout = sp.layout, ...)
+                   col.regions = col.regions, sp.layout = sp.layout,
+                   aspect = mapasp(map), ...)
         } else { # breakpoints from 0 to zmax
             spplot(map, zcol = zcol, main = main,
                    at = seq(0, zmax, length.out = length(col.regions) + 1L),
-                   col.regions = col.regions, sp.layout = sp.layout, ...)
+                   col.regions = col.regions, sp.layout = sp.layout,
+                   aspect = mapasp(map), ...)
         },
         zcol = names(comps), main = main, zmax = zmax,
         SIMPLIFY = FALSE, USE.NAMES = FALSE)
@@ -370,6 +373,7 @@ plotHHH4_maps <- function (x,
 plotHHH4_ri <- function (x, component, exp = FALSE,
                          at = list(n = 10), col.regions = cm.colors(100),
                          colorkey = TRUE, labels = FALSE, sp.layout = NULL,
+                         ## aspect = mapasp(map), # currently hard-coded
                          gpar.missing = list(col="darkgrey", lty=2, lwd=2),
                          ...)
 {
@@ -439,7 +443,7 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
 
     spplot(map[!is.na(map$ranef),], zcol = "ranef",
            sp.layout = sp.layout, col.regions = col.regions,
-           at = at, colorkey = colorkey, ...)
+           at = at, colorkey = colorkey, aspect = mapasp(map), ...)
 }
 
 

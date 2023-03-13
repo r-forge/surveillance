@@ -1,7 +1,7 @@
 %\VignetteIndexEntry{twinstim: An endemic-epidemic modeling framework for spatio-temporal point patterns}
 %\VignetteEngine{knitr::knitr}
 %% additional dependencies beyond what is required for surveillance anyway:
-%\VignetteDepends{surveillance, grid, polyclip, memoise, colorspace}
+%\VignetteDepends{surveillance, grid, sf, polyclip, memoise, colorspace}
 
 <<setup, cache = FALSE, include = FALSE, purl = FALSE>>=
 ## purl=FALSE => not included in the tangle'd R script
@@ -442,6 +442,8 @@ summary(events)
 <<imdepi_events, echo=FALSE, purl=FALSE>>=
 oopt <- options(width=100)
 ## hack to reduce the 'print.gap' in the data summary but not for the bbox
+## Note: 'sp' "evolution" needs 'sf' for summary(events),
+##       see https://github.com/r-spatial/evolution/issues/10
 local({
     print.summary.Spatial <- sp:::print.summary.Spatial
     environment(print.summary.Spatial) <- environment()
@@ -1039,6 +1041,7 @@ even more so if the population density is low.
 for (.type in 1:2) {
     print(intensityplot(imdfit_powerlaw, aggregate="space", which="epidemic proportion",
                         types=.type, tiles=districtsD, sgrid=1000,
+                        # scales=list(draw=TRUE), # default, now needs 'sf'
                         xlab="x [km]", ylab="y [km]", at=seq(0,1,by=0.1),
                         col.regions=rev(hcl.colors(10,"Reds")),
                         colorkey=list(title="Epidemic proportion")))
