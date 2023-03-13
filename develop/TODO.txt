@@ -12,8 +12,7 @@
 #======================================================================
 
 #Open
-15/09/2021 replace or drop functionality from rgeos and maptools
-           as these package will "retire". also drop gpclib support.
+15/09/2021 replace or drop functionality from rgeos as it will "retire".
            - rgeos::gUnaryUnion(SpP) -> sf::st_union(sf::st_as_sfc(SpP)) ?
 
 #Done
