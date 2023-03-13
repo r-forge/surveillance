@@ -270,15 +270,14 @@ is.projected <- function (obj, warn = FALSE)
     } else res
 }
 
+
 ### determine the total area of a SpatialPolygons object
-## CAVE: sum(sapply(obj@polygons, slot, "area"))
-##       is not correct if the object contains holes
 
 areaSpatialPolygons <- function (obj, byid = FALSE)
 {
-    if (requireNamespace("rgeos", quietly = TRUE)) {
-        rgeos::gArea(obj, byid = byid)
-    } else {
+    ## if (requireNamespace("rgeos", quietly = TRUE)) {
+    ##     rgeos::gArea(obj, byid = byid)
+    ## } else {
         areas <- vapply(
             X = obj@polygons,
             FUN = function (p) sum(
@@ -289,7 +288,7 @@ areaSpatialPolygons <- function (obj, byid = FALSE)
             FUN.VALUE = 0, USE.NAMES = FALSE
         )
         if (byid) setNames(areas, row.names(obj)) else sum(areas)
-    }
+    ## }
 }
 
 
