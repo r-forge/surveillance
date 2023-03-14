@@ -14,6 +14,8 @@ R := R
 DEMOSCRIPTS := $(wildcard *.R)
 ROUTFILES := ${DEMOSCRIPTS:.R=.Rout}
 
+.NOTPARALLEL:  # Rplots handling
+
 all : ${ROUTFILES}
 
 %.Rout : %.R
@@ -21,7 +23,7 @@ all : ${ROUTFILES}
 	@if [ -f Rplots.pdf ]; then mv Rplots.pdf ${<:.R=.pdf}; fi
 
 diff : ${ROUTFILES}
-	meld & $(foreach Rout,${ROUTFILES},sleep 2; meld --newtab ${Rout}.save ${Rout} &)
+	meld & $(foreach Rout,${ROUTFILES},sleep 2; meld --newtab ${Rout}.save ${Rout} &) meld --newtab cost.eps.save figs &
 #	$(foreach Rout,${ROUTFILES},${R} CMD Rdiff ${Rout} ${Rout}.save;)
 
 clean :
