@@ -1,5 +1,5 @@
 
-R version 4.2.2 (2022-10-31) -- "Innocent and Trusting"
+R version 4.2.2 Patched (2022-11-10 r83330) -- "Innocent and Trusting"
 Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -35,7 +35,8 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.20.3. For overview type ‘help(surveillance)’.
+This is surveillance 1.21.0; see ‘package?surveillance’ or
+https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -3254,7 +3255,7 @@ Loading required package: gamlss.dist
 Loading required package: MASS
 Loading required package: nlme
 Loading required package: parallel
- **********   GAMLSS Version 5.4-3  ********** 
+ **********   GAMLSS Version 5.4-12  ********** 
 For more on GAMLSS look at https://www.gamlss.com/
 Type gamlssNews() to see new features/changes/bug fixes.
 
@@ -3508,19 +3509,13 @@ Slot "coords":
 
 > lines(disc2, col=3)
 > 
-> if (requireNamespace("rgeos")) { # for the "gpc.poly" class definition
+> if (surveillance.options("gpclib") && requireNamespace("gpclib")) {
 +     disc3 <- discpoly(c(0,0), 5, npoly=64, class = "gpc.poly")
 +     print(disc3)
 +     plot(disc3, add=TRUE, poly.args=list(border=4))
 + }
-Loading required namespace: rgeos
-GPC Polygon
-   Num. Contours:  1 
-   Num. Vertices:  64 
-   BBox (X):  -5 --> 5 
-   BBox (Y):  -5 --> 5 
 > 
-> ## if one only wants to _draw_ a circle without an object behind
+> ## to only _draw_ a circle
 > symbols(0, 0, circles=5, inches=FALSE, add=TRUE, fg=5)
 > 
 > 
@@ -3955,31 +3950,22 @@ Overall number of events: 336
 Loading objects:
   districtsD
   stateD
-> summary(stateD)
-Object of class SpatialPolygons
-Coordinates:
-       min      max
-x 4031.295 4672.253
-y 2684.102 3549.931
-Is projected: TRUE 
-proj4string :
-[+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80
-+units=km +no_defs]
 > 
 > ## extract point pattern of events from the "imdepi" data
-> data(imdepi)
-> events <- marks(imdepi)  # data frame with coordinate columns
-> coordinates(events) <- c("x", "y")  # promote to a "SpatialPointsDataFrame"
-> #proj4string(events) <- proj4string(stateD)
-> events@proj4string <- stateD@proj4string  # exact copy (avoid CRS reformatting)
-> 
-> ## or, much simpler, use the corresponding coerce-method
-> ## Don't show: 
-> events@coords.nrs <- numeric(0L)
-> stopifnot(all.equal(as(imdepi, "SpatialPointsDataFrame"), events))
-> ## End(Don't show)
+> ## a) as a data frame with coordinate columns via marks()
+> eventsData <- marks(imdepi)
+> ## b) as a Spatial object via the coerce-method
 > events <- as(imdepi, "SpatialPointsDataFrame")
-> summary(events)
+> 
+> ## plot observation region with events (may require package 'sf')
+> if (requireNamespace("sf")) {
++   plot(stateD, axes=TRUE); title(xlab="x [km]", ylab="y [km]")
++   points(events, pch=unclass(events$type), cex=0.5, col=unclass(events$type))
++   legend("topright", legend=levels(events$type), title="Type", pch=1:2, col=1:2)
++ 
++   summary(events)
++ }
+Loading required namespace: sf
 Object of class SpatialPointsDataFrame
 Coordinates:
        min      max
@@ -4007,11 +3993,6 @@ Data attributes:
                             
                             
                             
-> 
-> ## plot observation region with events
-> plot(stateD, axes=TRUE); title(xlab="x [km]", ylab="y [km]")
-> points(events, pch=unclass(events$type), cex=0.5, col=unclass(events$type))
-> legend("topright", legend=levels(events$type), title="Type", pch=1:2, col=1:2)
 > 
 > ## space-time grid with endemic covariates
 > head(stgrid <- imdepi$stgrid[,-1])
@@ -4760,7 +4741,7 @@ $h
 > ### ** Examples
 > 
 > formatDate(Sys.Date(), "%G/%OQ/%q")
-[1] "2022/IV/45"
+[1] "2023/I/74"
 > 
 > 
 > 
@@ -4915,26 +4896,12 @@ Head of observed:
      chwi frkr lich mahe mitt neuk pank rein span zehl scho trko
 [1,]    0    0    0    0    0    0    0    0    0    0    0    0
 
-map:
-Object of class SpatialPolygonsDataFrame
-Coordinates:
-         min     max
-x 1585386.04 1926324
-y   88486.36  365880
-Is projected: NA 
-proj4string : [NA]
-Features    : 12 
-Data slot   : 3 variables
+map: 12 Polygons, 3 variables
+Head of map@data:
+     Id                     BEZIRK SNAME
+chwi  0 Charlottenburg-Wilmersdorf  chwi
 > plot(ha.sts, type = observed ~ time)  # = plot(aggregate(ha.sts, by = "unit"))
 > plot(ha.sts, type = observed ~ unit, labels = TRUE)
-> 
-> ## Not run: 
-> ##D ## conversion of the old "disProg" object 'ha' to the new S4 class "sts"
-> ##D shpfile <- system.file("shapes/berlin.shp", package="surveillance")
-> ##D ha.sts <- disProg2sts(ha, map = maptools::readShapePoly(shpfile,IDvar="SNAME"))
-> ##D ## in data("ha.sts"), German umlauts in 'ha.sts@map@data$BEZIRK'
-> ##D ## have been replaced for compatibility
-> ## End(Not run)
 > 
 > 
 > 
@@ -5316,16 +5283,10 @@ Head of observed:
      03458 03459 03460 03461 03462
 [1,]     0     0     0     0     0
 
-map:
-Object of class SpatialPolygonsDataFrame
-Coordinates:
-       min       max
-x  6.65464  8.711123
-y 52.03746 53.788426
-Is projected: FALSE 
-proj4string : [+proj=longlat +datum=WGS84 +no_defs]
-Features    : 17 
-Data slot   : 6 variables
+map: 17 Polygons, 6 variables
+Head of map@data:
+                 GEN     AREA POPULATION vaccdoc.2004 vacc1.2004 vacc2.2004
+03401 SK Delmenhorst 72177996      75986    0.9297573  0.9519231  0.7870879
 
 Head of neighbourhood:
       03401 03402 03403 03404 03405 03451 03452 03453 03454 03455 03456 03457
@@ -5440,7 +5401,7 @@ Number of time points:  103
 > ##D ## for power-law weights, we need adjaceny orders, which can be
 > ##D ## computed from the binary adjacency indicator matrix
 > ##D nbOrder1 <- neighbourhood(fluBYBW)
-> ##D neighbourhood(fluBYBW) <- nbOrder(nbOrder1, 15)
+> ##D neighbourhood(fluBYBW) <- nbOrder(nbOrder1)
 > ##D 
 > ##D ## full model specification
 > ##D fluModel <- list(
@@ -6795,13 +6756,11 @@ List of 14
 > par(opar)
 > 
 > # Plot the spatial distribution of the events in W
-> plot(imdepi, "space", points.args = list(col=c("indianred", "darkblue")),
-+      axes = TRUE, lwd = 2)
-> title(xlab = "x [km]", ylab = "y [km]")
+> plot(imdepi, "space", points.args = list(col=c("indianred", "darkblue")))
 > 
 > ## Not run: 
 > ##D # or manually (no legends, no account for tied locations)
-> ##D plot(imdepi$W, lwd=2)
+> ##D plot(imdepi$W, lwd=2, asp=1) ##D 
 > ##D plot(imdepi$events, pch=c(3,4)[imdepi$events$type], cex=0.8,
 > ##D      col=c("indianred", "darkblue")[imdepi$events$type], add=TRUE)
 > ## End(Not run)
@@ -6886,7 +6845,7 @@ List of 14
 > 
 > ### ** Examples
 > 
-> if (requireNamespace("rgeos")) {
+> if (surveillance.options("gpclib") && requireNamespace("gpclib")) {
 +     poly <- discpoly(c(0.5,0.5), 0.5, npoly=4, class="gpc.poly")
 +     pts <- cbind(x=runif(50), y=runif(50))
 +     plot(poly)
@@ -6914,7 +6873,7 @@ List of 14
 > 
 > library("spatstat.geom")
 Loading required package: spatstat.data
-spatstat.geom 3.0-3
+spatstat.geom 3.1-0
 > plot(letterR)
 > plot(intersectPolyCircle(letterR, c(3,2), 1), add=TRUE, col=2, lwd=3)
 > 
@@ -7005,7 +6964,7 @@ dt      <= 50  > 50
 > ## contingency table in LaTeX
 > toLatex(knoxtest)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:10 2022
+% Wed Mar 15 00:29:28 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{r|rr|r}
@@ -7086,32 +7045,35 @@ dt      <= 50  > 50
 > ### Keywords: aplot dplot
 > 
 > ### ** Examples
-> 
-> ## districts in the Regierungsbezirk Weser-Ems (longlat coordinates)
-> data("measlesWeserEms")
-> mapWE <- measlesWeserEms@map
-> li1 <- layout.labels(mapWE, labels = list(font=2, labels="GEN"))
-> li2 <- layout.scalebar(mapWE, corner = c(0.05, 0.05), scale = 20,
+> if (requireNamespace("sf")) { # required by recent 'sp'
++ 
++ ## districts in the Regierungsbezirk Weser-Ems (longlat coordinates)
++ data("measlesWeserEms")
++ mapWE <- measlesWeserEms@map
++ li1 <- layout.labels(mapWE, labels = list(font=2, labels="GEN"))
++ li2 <- layout.scalebar(mapWE, corner = c(0.05, 0.05), scale = 20,
 +                        labels = c("0", "20 km"))
-> spplot(mapWE, zcol = "AREA", sp.layout = c(list(li1), li2),
++ spplot(mapWE, zcol = "AREA", sp.layout = c(list(li1), li2),
 +        col.regions = rev(heat.colors(100)), scales = list(draw = TRUE))
-> 
-> ## districts in Bavaria (projected coordinates)
-> load(system.file("shapes", "districtsD.RData", package = "surveillance"))
-> bavaria <- districtsD[substr(row.names(districtsD), 1, 2) == "09", ]
-> sb <- layout.scalebar(bavaria, corner = c(0.75,0.9), scale = 50,
++ 
++ ## districts in Bavaria (projected coordinates)
++ load(system.file("shapes", "districtsD.RData", package = "surveillance"))
++ bavaria <- districtsD[substr(row.names(districtsD), 1, 2) == "09", ]
++ sb <- layout.scalebar(bavaria, corner = c(0.75,0.9), scale = 50,
 +                       labels = c("0", "50 km"), cex = 0.8)
-> spplot(bavaria, zcol = "POPULATION", sp.layout = sb,
++ spplot(bavaria, zcol = "POPULATION", sp.layout = sb,
 +        xlab = "x [km]", ylab = "y [km]", scales = list(draw = TRUE),
 +        col.regions = rev(heat.colors(100)))
-> 
-> ## these layout functions also work in the traditional graphics system
-> par(mar = c(0,0,0,0))
-> plot(bavaria, col = "lavender")
-> layout.scalebar(bavaria, corner = c(0.75, 0.9), scale = 50,
++ 
++ ## these layout functions also work in the traditional graphics system
++ par(mar = c(0,0,0,0))
++ plot(bavaria, col = "lavender")
++ layout.scalebar(bavaria, corner = c(0.75, 0.9), scale = 50,
 +                 labels = c("0", "50 km"), plot = TRUE)
-> layout.labels(bavaria, labels = list(cex = 0.8,
++ layout.labels(bavaria, labels = list(cex = 0.8,
 +               labels = substr(bavaria$GEN, 1, 3)), plot = TRUE)
++ 
++ }
 > 
 > 
 > 
@@ -7192,7 +7154,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x55b6cda41d18>
+<environment: 0x560fa4921980>
 
 $ar$offset
 [1] 1
@@ -7201,7 +7163,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x55b6cda41d18>
+<environment: 0x560fa4921980>
 
 $ne$offset
 [1] 1
@@ -7300,16 +7262,10 @@ Head of observed:
      03458 03459 03460 03461 03462
 [1,]     0     0     0     0     0
 
-map:
-Object of class SpatialPolygonsDataFrame
-Coordinates:
-       min       max
-x  6.65464  8.711123
-y 52.03746 53.788426
-Is projected: FALSE 
-proj4string : [+proj=longlat +datum=WGS84 +no_defs]
-Features    : 17 
-Data slot   : 6 variables
+map: 17 Polygons, 6 variables
+Head of map@data:
+                 GEN     AREA POPULATION vaccdoc.2004 vacc1.2004 vacc2.2004
+03401 SK Delmenhorst 72177996      75986    0.9297573  0.9519231  0.7870879
 
 Head of neighbourhood:
       03401 03402 03403 03404 03405 03451 03452 03453 03454 03455 03456 03457
@@ -7494,12 +7450,8 @@ Head of observed:
 [6,]    1    1    0    0    0    0
 > 
 > ## determine neighbourhood order matrix
-> if (requireNamespace("spdep")) {
-+     nbmat <- nbOrder(adjmat, maxlag=Inf)
-+     nbmat
-+ }
-Loading required namespace: spdep
-Note: range of maximum neighbour order by region is 0-4
+> nblags <- nbOrder(adjmat)
+> nblags
      [,1] [,2] [,3] [,4] [,5] [,6]
 [1,]    0    2    1    2    0    1
 [2,]    2    0    3    4    0    1
@@ -8094,10 +8046,8 @@ detaching ‘package:parallel’
 +     ## a visual check of the district-specific number of neighbours
 +     plot(fluBYBW@map)
 +     text(coordinates(fluBYBW@map), labels=rowSums(adjmat==1), font=2, col=2)
-+ 
-+     ## the neighbourhood graph can be plotted with spdep
-+     plot(spdep::mat2listw(adjmat), coordinates(fluBYBW@map))
 + }
+Loading required namespace: spdep
 > 
 > 
 > 
@@ -8126,6 +8076,7 @@ detaching ‘package:parallel’
 +     if (interactive()) plot(districtsD, col = atBorder)
 +     table(atBorder)
 + }
+Loading required namespace: rgeos
 atBorder
 FALSE  TRUE 
   324    89 
@@ -8534,16 +8485,10 @@ Head of observed:
      03458 03459 03460 03461 03462
 [1,]     0     0     0     0     0
 
-map:
-Object of class SpatialPolygonsDataFrame
-Coordinates:
-       min       max
-x  6.65464  8.711123
-y 52.03746 53.788426
-Is projected: FALSE 
-proj4string : [+proj=longlat +datum=WGS84 +no_defs]
-Features    : 17 
-Data slot   : 6 variables
+map: 17 Polygons, 6 variables
+Head of map@data:
+                 GEN     AREA POPULATION vaccdoc.2004 vacc1.2004 vacc2.2004
+03401 SK Delmenhorst 72177996      75986    0.9297573  0.9519231  0.7870879
 
 Head of neighbourhood:
       03401 03402 03403 03404 03405 03451 03452 03453 03454 03455 03456 03457
@@ -8559,9 +8504,8 @@ Head of neighbourhood:
 > ## orders of adjacency can also be determined from the map
 > if (requireNamespace("spdep")) {
 +     stopifnot(identical(weserems_nbOrder,
-+                         nbOrder(poly2adjmat(map), maxlag = 10)))
++                         nbOrder(poly2adjmat(map))))
 + }
-Note: range of maximum neighbour order by region is 3-5
 > mymeasles <- sts(counts, start = c(2001, 1), frequency = 52,
 +                  population = populationFrac,
 +                  neighbourhood = weserems_nbOrder, map = map)
@@ -8901,9 +8845,9 @@ Note: selection of units could invalidate the 'neighbourhood'
 > 
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: stsplot_spacetime
-> ### Title: Map of Disease Incidence
+> ### Title: Animated Map of Disease Incidence (DEPRECATED)
 > ### Aliases: stsplot_spacetime
-> ### Keywords: hplot dynamic spatial
+> ### Keywords: hplot dynamic spatial internal
 > 
 > ### ** Examples
 > 
@@ -8918,16 +8862,10 @@ Head of observed:
      chwi frkr lich mahe mitt neuk pank rein span zehl scho trko
 [1,]    0    0    0    0    0    0    0    0    0    0    0    0
 
-map:
-Object of class SpatialPolygonsDataFrame
-Coordinates:
-         min     max
-x 1585386.04 1926324
-y   88486.36  365880
-Is projected: NA 
-proj4string : [NA]
-Features    : 12 
-Data slot   : 3 variables
+map: 12 Polygons, 3 variables
+Head of map@data:
+     Id                     BEZIRK SNAME
+chwi  0 Charlottenburg-Wilmersdorf  chwi
 > 
 > ## Don't show: 
 > if (surveillance.options("allExamples")) {
@@ -8983,16 +8921,10 @@ Head of observed:
      chwi frkr lich mahe mitt neuk pank rein span zehl scho trko
 [1,]    0    0    0    0    0    0    0    0    0    0    0    0
 
-map:
-Object of class SpatialPolygonsDataFrame
-Coordinates:
-         min     max
-x 1585386.04 1926324
-y   88486.36  365880
-Is projected: NA 
-proj4string : [NA]
-Features    : 12 
-Data slot   : 3 variables
+map: 12 Polygons, 3 variables
+Head of map@data:
+     Id                     BEZIRK SNAME
+chwi  0 Charlottenburg-Wilmersdorf  chwi
 > 
 > plot(ha.sts, type=observed ~ time | unit)  # default multivariate type
 > plot(ha.sts, units=c("mitt", "pank"))      # selected units
@@ -9160,7 +9092,7 @@ $gpclib
 > salm <- farringtonFlexible(salm,control=control)
 > toLatex(salm)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:23 2022
+% Wed Mar 15 00:29:40 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrlr}
@@ -9964,21 +9896,21 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 \hline
 \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:27 2022
+% Wed Mar 15 00:29:44 2023
  \texttt{h.(Intercept)} & $-20.481$ & $0.053$ & $-389.0$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.041$ & $0.022$ & $-1.9$ & $0.06$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.242$ & $0.064$ & $3.8$ & $2\cdot{}10^{-04}$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.350$ & $0.064$ & $5.4$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:27 2022
+% Wed Mar 15 00:29:44 2023
  \texttt{e.(Intercept)} & $-16.90$ & $0.26$ & $-64$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 \end{tabular}
 > # or, to report rate ratios
 > xtable(s)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:27 2022
+% Wed Mar 15 00:29:44 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -10198,10 +10130,9 @@ Log-likelihood: -1416
 > ## assuming spatial interaction to be constant within 50 km
 > imdepiB50 <- update(subset(imdepi, type == "B"), eps.s = 50)
 Note: dropped type(s) "C"
-> imdfitB50 <- update(imdepifit, data = imdepiB50,
+> imdfitB50 <- update(imdepifit, data = imdepiB50, subset = NULL,
 +                     epidemic = ~1, epilink = "identity", siaf = NULL,
 +                     start = c("e.(Intercept)" = 0))
-updating list of potential sources ...
 assuming constant spatial interaction 'siaf.constant()'
 assuming constant temporal interaction 'tiaf.constant()'
 
@@ -10212,21 +10143,21 @@ initial parameters:
 h.cos(2 * pi * start/365)             e.(Intercept) 
                0.31810266                0.00000000 
 negative log-likelihood and parameters in each iteration:
-  0:     4988.6877: -20.5287 -0.0457409 0.217282 0.318103  0.00000
-  1:     4962.3942: -20.4584 -0.0321602 0.184937 0.407538 1.33281e-07
-  2:     4940.0569: -20.5155 -0.0245929 0.176635 0.424593 4.31984e-07
-  3:     4928.7139: -20.5466 -0.0222204 0.170694 0.410664 8.04319e-07
-  4:     4926.3842: -20.5555 -0.0221261 0.166078 0.404602 1.06077e-06
-  5:     4926.2860: -20.5567 -0.0222276 0.164994 0.403374 1.12713e-06
-  6:     4926.2858: -20.5567 -0.0222488 0.164889 0.403239 1.13027e-06
-  7:     4926.2858: -20.5567 -0.0222508 0.164880 0.403227 1.13028e-06
+  0:     5003.2689: -20.5287 -0.0457409 0.217282 0.318103  0.00000
+  1:     4976.8102: -20.4550 -0.0301407 0.180918 0.409589 1.32796e-07
+  2:     4954.6046: -20.5107 -0.0215816 0.170495 0.427496 4.30414e-07
+  3:     4943.3681: -20.5415 -0.0189837 0.164078 0.413779 8.00735e-07
+  4:     4941.0764: -20.5504 -0.0188616 0.159460 0.407828 1.05463e-06
+  5:     4940.9811: -20.5516 -0.0189533 0.158399 0.406644 1.11980e-06
+  6:     4940.9809: -20.5516 -0.0189726 0.158301 0.406519 1.12284e-06
+  7:     4940.9809: -20.5516 -0.0189745 0.158294 0.406508 1.12284e-06
 
 MLE:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-            -2.055672e+01             -2.225080e-02              1.648802e-01 
+            -2.055161e+01             -1.897446e-02              1.582939e-01 
 h.cos(2 * pi * start/365)             e.(Intercept) 
-             4.032271e-01              1.130279e-06 
-loglik(MLE) = -4926.286 
+             4.065077e-01              1.122844e-06 
+loglik(MLE) = -4940.981 
 
 Done.
 > 
@@ -10237,49 +10168,49 @@ Done.
 
 data:  imdepiB50
 twinstim:  imdfitB50
-D = 105.76, df = 1, p-value < 2.2e-16
+D = 104.94, df = 1, p-value < 2.2e-16
 
 > 
 > ## permutation test
 > et <- epitest(imdfitB50, imdepiB50,
 +               B = 5,        # CAVE: limited here for speed
-+               verbose = 2,  # (tracing does not work on Windows)
-+               .seed = 1, .parallel = 2)
++               verbose = 2,  # (tracing does not work on Windows
++               .seed = 1, .parallel = 1)       # if parallelized)
 Endemic/Epidemic log-likelihoods, LRT statistic, and simple R0:
-l0 = -4979 | l1 = -4926 | D = 105.8 | simpleR0 = 0.27
+l0 = -4993 | l1 = -4941 | D = 104.9 | simpleR0 = 0.26
 
 Running B = 5 permutations of time ...
-l0 = -4979 | l1 = -4941 | D = 75.7 | simpleR0 = 0.24
-l0 = -4980 | l1 = -4946 | D = 67.7 | simpleR0 = 0.22
-l0 = -4980 | l1 = -4943 | D = 73.7 | simpleR0 = 0.23
-l0 = -4980 | l1 = -4944 | D = 70.3 | simpleR0 = 0.20
-l0 = -4980 | l1 = -4950 | D = 59.7 | simpleR0 = 0.21
+l0 = -4993 | l1 = -4955 | D = 76.2 | simpleR0 = 0.22
+l0 = -4993 | l1 = -4956 | D = 75.2 | simpleR0 = 0.22
+l0 = -4993 | l1 = -4956 | D = 74.0 | simpleR0 = 0.23
+l0 = -4993 | l1 = -4962 | D = 62.2 | simpleR0 = 0.20
+l0 = -4993 | l1 = -4958 | D = 71.6 | simpleR0 = 0.21
 > et
 
 	Monte Carlo Permutation Test for Space-Time Interaction
 
 data:  imdepiB50
 twinstim:  imdfitB50
-simpleR0 = 0.26632, B = 5, p-value = 0.1667
+simpleR0 = 0.26456, B = 5, p-value = 0.1667
 
 > plot(et)
 > 
 > ## summary of parameter estimates under permutation
 > summary(coef(et, which = "m1"))
  h.(Intercept)    h.I(start/365 - 3.5) h.sin(2 * pi * start/365)
- Min.   :-20.53   Min.   :-0.05114     Min.   :0.1469           
- 1st Qu.:-20.53   1st Qu.:-0.04242     1st Qu.:0.1717           
- Median :-20.53   Median :-0.02865     Median :0.1904           
- Mean   :-20.52   Mean   :-0.03355     Mean   :0.1975           
- 3rd Qu.:-20.50   3rd Qu.:-0.02679     3rd Qu.:0.1948           
- Max.   :-20.50   Max.   :-0.01873     Max.   :0.2838           
+ Min.   :-20.55   Min.   :-0.048191    Min.   :0.1953           
+ 1st Qu.:-20.53   1st Qu.:-0.029535    1st Qu.:0.2161           
+ Median :-20.52   Median :-0.028398    Median :0.2399           
+ Mean   :-20.52   Mean   :-0.027233    Mean   :0.2367           
+ 3rd Qu.:-20.50   3rd Qu.:-0.022584    3rd Qu.:0.2618           
+ Max.   :-20.49   Max.   :-0.007459    Max.   :0.2701           
  h.cos(2 * pi * start/365) e.(Intercept)      
- Min.   :0.4003            Min.   :8.672e-07  
- 1st Qu.:0.4177            1st Qu.:8.706e-07  
- Median :0.4197            Median :9.218e-07  
- Mean   :0.4214            Mean   :9.259e-07  
- 3rd Qu.:0.4201            3rd Qu.:9.721e-07  
- Max.   :0.4491            Max.   :9.977e-07  
+ Min.   :0.4108            Min.   :8.552e-07  
+ 1st Qu.:0.4166            1st Qu.:8.886e-07  
+ Median :0.4216            Median :9.353e-07  
+ Mean   :0.4398            Mean   :9.198e-07  
+ 3rd Qu.:0.4594            3rd Qu.:9.512e-07  
+ Max.   :0.4905            Max.   :9.685e-07  
 > 
 > 
 > 
@@ -10322,8 +10253,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x55b6d74669b0>
-<environment: 0x55b6d7462240>
+<bytecode: 0x560faa4e1380>
+<environment: 0x560faa4dcb00>
 
 $G
 function (t, logvals, types) 
@@ -10333,7 +10264,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x55b6d7462240>
+<environment: 0x560faa4dcb00>
 
 $deriv
 function (t, logvals, types) 
@@ -10349,8 +10280,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x55b6d7467ba0>
-<environment: 0x55b6d7462240>
+<bytecode: 0x560faa4e2570>
+<environment: 0x560faa4dcb00>
 
 $Deriv
 function (t, logvals, types) 
@@ -10369,7 +10300,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x55b6d7462240>
+<environment: 0x560faa4dcb00>
 
 $npars
 [1] 4
@@ -11035,16 +10966,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x55b6d4756b40>
-<environment: 0x55b6d47538d0>
+<bytecode: 0x560faa3c8220>
+<environment: 0x560faa3c4d30>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x55b6d47575c0>
-<environment: 0x55b6d47538d0>
+<bytecode: 0x560faa3c8ca0>
+<environment: 0x560faa3c4d30>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -11052,8 +10983,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x55b6d4757b00>
-<environment: 0x55b6d47538d0>
+<bytecode: 0x560faa3c91e0>
+<environment: 0x560faa3c4d30>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -11067,8 +10998,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x55b6d4758270>
-<environment: 0x55b6d47538d0>
+<bytecode: 0x560faa3c9950>
+<environment: 0x560faa3c4d30>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -11076,8 +11007,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x55b6d4755a20>
-<environment: 0x55b6d47538d0>
+<bytecode: 0x560faa3c7100>
+<environment: 0x560faa3c4d30>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -11089,8 +11020,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x55b6d4756078>
-<environment: 0x55b6d47538d0>
+<bytecode: 0x560faa3c7758>
+<environment: 0x560faa3c4d30>
 
 $npars
 [1] 3
@@ -11193,7 +11124,7 @@ Setting up the model environment ...
 +   # total intensity (using a rather sparse 'sgrid' for speed)
 +   intensityplot(imdepifit, which="total intensity",
 +                 aggregate="space", tiles=districtsD, sgrid=500,
-+                 col.regions=rev(heat.colors(100)))
++                 col.regions=rev(heat.colors(100))) 
 + 
 +   # epidemic proportion by type
 +   maps_epiprop <- lapply(1:2, function (type) {
@@ -11364,14 +11295,14 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 \hline
 \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:29 2022
+% Wed Mar 15 00:29:47 2023
  \texttt{h.(Intercept)} & $-20.52869$ & $0.04724$ & $-434.597$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.04574$ & $0.02212$ & $-2.068$ & $0.03863$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.21728$ & $0.06467$ & $3.360$ & $0.00078$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.31810$ & $0.06380$ & $4.986$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:29 2022
+% Wed Mar 15 00:29:47 2023
  \texttt{e.(Intercept)} & $-12.51659$ & $0.32326$ & $-38.720$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{e.typeC} & $-0.90832$ & $0.26742$ & $-3.397$ & $0.000682$ \\ 
   \texttt{e.agegrp[3,19)} & $0.70612$ & $0.32706$ & $2.159$ & $0.030852$ \\ 
@@ -11383,7 +11314,7 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 > # or using the xtable-method (which produces rate ratios)
 > xtable(s)
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:29 2022
+% Wed Mar 15 00:29:47 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -11560,18 +11491,7 @@ Done.
 [1] "SpatialPointsDataFrame"
 attr(,"package")
 [1] "sp"
-> summary(s1)
-Object of class SpatialPointsDataFrame
-Coordinates:
-       min      max
-x 4081.874 4618.351
-y 2865.592 3391.435
-Is projected: TRUE 
-proj4string :
-[+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80
-+units=km +no_defs]
-Number of points: 40
-Data attributes:
+> summary(s1@data)
       time              tile    type  
  Min.   :  2.448   11000  : 3   B:23  
  1st Qu.: 39.161   08215  : 2   C:17  
@@ -11580,7 +11500,8 @@ Data attributes:
  3rd Qu.: 87.287   03361  : 1         
  Max.   :119.966   03454  : 1         
                    (Other):31         
-> plot(imdepi$W, lwd = 2); plot(s1, col = s1$type, cex = 0.5, add = TRUE)
+> plot(imdepi$W, lwd = 2, asp = 1)  
+> plot(s1, col = s1$type, cex = 0.5, add = TRUE)
 > 
 > ## Don't show: 
 > if (surveillance.options("allExamples")) {
@@ -11637,7 +11558,7 @@ Data attributes:
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2022-11-14 23:07:31 
+Time at beginning of simulation: 2023-03-15 00:29:48 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11662,12 +11583,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.082 seconds
-Estimated finishing time: 2022-11-14 23:07:31 
+Runtime of first simulation: 0.084 seconds
+Estimated finishing time: 2023-03-15 00:29:48 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2022-11-14 23:07:31).
+Done (2023-03-15 00:29:49).
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
 >     local({
@@ -11974,7 +11895,7 @@ imdepifit2 10 18966.65
 > 
 > ## Load districts of Germany
 > load(system.file("shapes", "districtsD.RData", package = "surveillance"))
-> plot(districtsD, border = "gray")
+> plot(districtsD, border = "gray", asp = 1)  
 > 
 > ## Union these districts using either "rgeos" or "polyclip"
 > if (requireNamespace("rgeos"))  {
@@ -12052,7 +11973,7 @@ FALSE  TRUE
 > # Compute the quality values in a nice formatted way
 > xtable(algo.quality(survResObj))
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Mon Nov 14 23:07:33 2022
+% Wed Mar 15 00:29:51 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -12114,7 +12035,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  42.799 0.732 44.729 1.756 0.261 
+Time elapsed:  44.503 0.616 45.925 1.094 0.11 
 > grDevices::dev.off()
 null device 
           1 
