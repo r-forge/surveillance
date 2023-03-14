@@ -1,4 +1,4 @@
-# surveillance 1.21.0 (UNRELEASED)
+# surveillance 1.21.0 (2023-03-14)
 
 - **surveillance** no longer relies on the **maptools** package:
   `unionSpatialPolygons()` with `method = "gpclib"` is deprecated
@@ -16,7 +16,7 @@
   some examples are now conditionalized on its availability.
 
 - Printing `"sts"` objects with a map now shows the first row of the
-  attached data (if present) instead of the summary.
+  attached data (if present) instead of the object summary.
 
 
 # surveillance 1.20.3 (2022-11-14)
