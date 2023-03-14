@@ -37,8 +37,11 @@ stsplot_spacetime <- function(
   #Formula is of type "observed ~ 1|unit" (i.e. no time)
   aggregate <- type[[3]][[3]] == "unit"
   if (aggregate) {
+    .Deprecated("stsplot_space")
     o <- t(as.matrix(apply(o,MARGIN=2,sum)))
     alarm <- t(as.matrix(apply(alarm,MARGIN=2,sum)))>0
+  } else {
+    .Deprecated("animate")
   }
 
   #Number of time points

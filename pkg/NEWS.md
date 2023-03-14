@@ -3,7 +3,7 @@
 - **surveillance** no longer relies on the **maptools** package:
   `unionSpatialPolygons()` with `method = "gpclib"` is deprecated
   and now uses the default method with a warning.
-  
+
 - Long unused `scale.gpc.poly()` and `inside.gpc.poly()` are deprecated;
   the unused and undocumented `diameter.gpc.poly()` method has been removed.
 
@@ -17,6 +17,10 @@
 
 - Printing `"sts"` objects with a map now shows the first row of the
   attached data (if present) instead of the object summary.
+
+- `stsplot_spacetime()` is formally deprecated; it has long been
+  superseded by `stsplot_space()` and an `animate()` method for `"sts"`
+  objects.
 
 
 # surveillance 1.20.3 (2022-11-14)
