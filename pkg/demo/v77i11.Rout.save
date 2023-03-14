@@ -1,5 +1,5 @@
 
-R version 4.2.2 (2022-10-31) -- "Innocent and Trusting"
+R version 4.2.2 Patched (2022-11-10 r83330) -- "Innocent and Trusting"
 Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -48,7 +48,8 @@ In RNGkind("Mersenne-Twister", "Inversion", "Rounding") :
 > library("surveillance")  # you should also have installed the suggested packages
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.20.2. For overview type ‘help(surveillance)’.
+This is surveillance 1.21.0; see ‘package?surveillance’ or
+https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > ## 3.2. Data structure: 'epidataCS'
 > data("imdepi", package = "surveillance")
@@ -278,7 +279,7 @@ Done.
 +       sanitize.text.function = NULL, sanitize.colnames.function = NULL,
 +       sanitize.rownames.function = function(x) paste0("\\code{", x, "}"))
 % latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Nov  2 10:12:46 2022
+% Tue Mar 14 13:19:53 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -437,7 +438,7 @@ Note: added the 'tau' component to object 'imdfit_powerlaw' for future use.
 > imdsims <- simulate(imdfit_powerlaw, nsim = 30, seed = 1, t0 = 1826, T = 2555,
 +   data = imdepi_untied_infeps, tiles = districtsD)
 
-Time at beginning of simulation: 2022-11-02 10:12:57 
+Time at beginning of simulation: 2023-03-14 13:20:07 
 Simulation 1 / 30 ...
 -------------------------------------------------------------------------------
 
@@ -464,8 +465,8 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 1.594 seconds
-Estimated finishing time: 2022-11-02 10:13:45 
+Runtime of first simulation: 1.688 seconds
+Estimated finishing time: 2023-03-14 13:20:58 
 
 Simulation  2 / 30 ...	simulated 187 events up to time 2555 
 Simulation  3 / 30 ...	simulated 192 events up to time 2555 
@@ -497,7 +498,7 @@ Simulation 28 / 30 ...	simulated 174 events up to time 2555
 Simulation 29 / 30 ...	simulated 158 events up to time 2555 
 Simulation 30 / 30 ...	simulated 155 events up to time 2555 
 
-Done (2022-11-02 10:14:03).
+Done (2023-03-14 13:21:13).
 > 
 > table(imdsims[[1]]$events$source > 0, exclude = NULL)
 
@@ -741,7 +742,6 @@ hagellochFit_fstep  7 1245.708
 > populationFrac <- measlesWeserEms@populationFrac
 > 
 > weserems_nbOrder <- nbOrder(poly2adjmat(map), maxlag = 10)
-Note: range of maximum neighbour order by region is 3-5
 > 
 > measlesWeserEms <- sts(observed = counts, start = c(2001, 1), frequency = 52,
 +   neighbourhood = weserems_nbOrder, map = map, population = populationFrac)
