@@ -95,11 +95,8 @@ stsplot_spacetime <- function(
     screen(n=1)
     plot(map,col=o.col[t,],xlab="",ylab="",...)
     #Indicate alarms as shaded overlays
-    if (!all(is.na(alarm.col))) {
-      #Plotting using density "NA" does not appear to work
-      #anymore in the new sp versions
-      alarm.col[is.na(alarm.col)] <- 0
-      plot(map,dens=alarm.col*15,add=TRUE)
+    if (length(alarmIdx <- which(alarm.col[t,] > 0))) {
+      plot(map[alarmIdx,], density=15, add=TRUE)
     }
 
 
