@@ -14,6 +14,8 @@
 #Open
 15/09/2021 replace or drop functionality from rgeos as it will "retire".
            - rgeos::gUnaryUnion(SpP) -> sf::st_union(sf::st_as_sfc(SpP)) ?
+15/03/2023 remove dead and unfinished (long experimental) code.
+           candidates: newtonRaphson
 
 #Done
 17/03/2020 remove ancient algo.hhh and simHHH implementations
@@ -201,6 +203,8 @@ xx/07/2012 (sebastian): Documentation of functions in Rd files; also update refe
 17/03/2020 return means from simHHH4 and export similar to old simHHH
 28/02/2023 interaction terms currently need to be set up manually, because
            checkFormula()/fe() does not use model.matrix() capabilities.
+15/03/2023 updateParams_nlm() loses coef names
+15/03/2023 exemplify plot(decompose = TRUE)
 
 #Done
 09/02/2022 investigate handling of NA's in observed (checkderiv, etc.)
@@ -251,3 +255,4 @@ March 2015 update vignette("hhh4") according to JSS paper
            about unused variables "alpha.lambda" and "beta.lambda" in data
            (unused if ddcp$logLambda != "iidLogGa")
 26/07/2012 Estimation of delay function taking right-censoring into account
+           plot(nc, type="delay") is not documented/exemplified at all
