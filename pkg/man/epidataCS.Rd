@@ -363,11 +363,10 @@ str(imdepi, max.level=4)
 ## see help("imdepi") for more info on the data set
 
 ## extraction methods subset the 'events' component
-## (thereby taking care of the validity of the epidataCS object,
-## for instance the hidden auxiliary column .sources)
 imdepi[101:200,]
-tail(imdepi, n=4)           # reduce the epidemic to the last 4 events
-subset(imdepi, type=="B")   # only consider event type B
+head(imdepi, n=1)           # only first event
+tail(imdepi, n=4)           # only last 4 events
+subset(imdepi, type=="B")   # only events of type B
 
 ## see help("plot.epidataCS") for convenient plot-methods for "epidataCS"
 
