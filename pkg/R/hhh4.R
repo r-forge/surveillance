@@ -2,7 +2,7 @@
 ### Endemic-epidemic modelling for univariate or multivariate
 ### time series of infectious disease counts (data class "sts")
 ###
-### Copyright (C) 2010-2012 Michaela Paul, 2012-2016,2019-2022 Sebastian Meyer
+### Copyright (C) 2010-2012 Michaela Paul, 2012-2016,2019-2023 Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -173,7 +173,7 @@ setControl <- function (control, stsObj)
   defaultControl <- eval(formals(hhh4)$control)
   environment(defaultControl$ar$f) <- environment(defaultControl$ne$f) <-
       environment(defaultControl$end$f) <- .GlobalEnv
-  control <- modifyList(defaultControl, control)
+  control <- modifyList(defaultControl, control, keep.null = TRUE)
 
   ## check that component specifications are list objects
   for (comp in c("ar", "ne", "end")) {
