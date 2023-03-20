@@ -1927,7 +1927,7 @@ updateParams_nlm <- function (start, ll, sc, fi, ..., control)
     ## run the optimization
     res <- do.call("nlm", args=c(alist(p=start, f=negllscfi, ...), control))
     ## Done
-    list(par=res$estimate, ll=-res$minimum,
+    list(par=setNames(res$estimate, names(start)), ll=-res$minimum,
          rel.tol=getRelDiff(res$estimate, start),
          convergence=as.numeric(res$code>2), message=res$message)
     ## nlm returns convergence status in $code, 1-2 indicate convergence,
