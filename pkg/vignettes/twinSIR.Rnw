@@ -1,7 +1,7 @@
 %\VignetteIndexEntry{twinSIR: Individual-level epidemic modeling for a fixed population with known distances}
 %\VignetteEngine{knitr::knitr}
 %% additional dependencies beyond what is required for surveillance anyway:
-%\VignetteDepends{surveillance, quadprog}
+%\VignetteDepends{surveillance}
 
 <<setup, cache = FALSE, include = FALSE, purl = FALSE>>=
 ## purl=FALSE => not included in the tangle'd R script
@@ -23,7 +23,6 @@ options(xtable.booktabs = TRUE, xtable.size = "small",
 
 
 \documentclass[nojss,nofooter,article]{jss}
-\usepackage[latin1]{inputenc} % Rnw is ASCII, but automatic package bib isn't
 
 \title{%
   \vspace{-1.5cm}
