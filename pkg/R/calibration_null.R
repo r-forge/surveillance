@@ -1,14 +1,12 @@
 ################################################################################
-### Part of the surveillance package, http://surveillance.r-forge.r-project.org
-### Free software under the terms of the GNU General Public License, version 2,
-### a copy of which is available at http://www.r-project.org/Licenses/.
-###
 ### Expectation and variance of proper scoring rules for Poisson and NegBin
 ### Reference: Wei and Held (2014), Test, 23, 787-805
 ###
 ### Copyright (C) 2013-2014 Wei Wei, 2015 Sebastian Meyer
-### $Revision$
-### $Date$
+###
+### This file is part of the R package "surveillance",
+### free software under the terms of the GNU General Public License, version 2,
+### a copy of which is available at https://www.R-project.org/Licenses/.
 ################################################################################
 
 ## wrapper function calling the necessary "EV" function for the selected score

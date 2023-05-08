@@ -1,15 +1,13 @@
 ################################################################################
-### Part of the surveillance package, http://surveillance.r-forge.r-project.org
-### Free software under the terms of the GNU General Public License, version 2,
-### a copy of which is available at http://www.r-project.org/Licenses/.
-###
 ### The plot-method for "epidata" (via plot.summary.epidata) shows the evolution
 ### of the numbers of susceptible, infectious and recovered individuals.
 ### The extra function "stateplot" shows the event history of one individual.
 ###
 ### Copyright (C) 2008-2009, 2013-2014 Sebastian Meyer
-### $Revision$
-### $Date$
+###
+### This file is part of the R package "surveillance",
+### free software under the terms of the GNU General Public License, version 2,
+### a copy of which is available at https://www.R-project.org/Licenses/.
 ################################################################################
 
 plot.epidata <- function(x, ...)

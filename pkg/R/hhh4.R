@@ -7,9 +7,6 @@
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
 ### a copy of which is available at https://www.R-project.org/Licenses/.
-###
-### $Revision$
-### $Date$
 ################################################################################
 
 ## Error message issued in loglik, score and fisher functions upon NA parameters

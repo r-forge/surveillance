@@ -1,15 +1,13 @@
 ################################################################################
-### Part of the surveillance package, http://surveillance.r-forge.r-project.org
-### Free software under the terms of the GNU General Public License, version 2,
-### a copy of which is available at http://www.r-project.org/Licenses/.
-###
 ### Power-law kernel f(s) = (||s||+sigma)^-d
 ### This is the pure kernel of the Lomax density (the density requires d>1, but
 ### for the siaf specification we only want d to be positive)
 ###
 ### Copyright (C) 2013-2014,2017 Sebastian Meyer
-### $Revision$
-### $Date$
+###
+### This file is part of the R package "surveillance",
+### free software under the terms of the GNU General Public License, version 2,
+### a copy of which is available at https://www.R-project.org/Licenses/.
 ################################################################################
 
 
