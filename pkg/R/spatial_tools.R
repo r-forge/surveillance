@@ -38,7 +38,7 @@ discpoly <- function (center, radius, npoly = 64,
             ##gpcWarning()
             pts <- list(list(x=x, y=y, hole=hole))
             if (isClass("gpc.poly") ||
-                (gpclibCheck() && requireNamespace("gpclib"))) {
+                (gpclibCheck(FALSE) && requireNamespace("gpclib"))) {
                 new("gpc.poly", pts = pts)
             } else {
                 warning("formal class \"gpc.poly\" not available")

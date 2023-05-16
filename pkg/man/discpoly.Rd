@@ -44,6 +44,7 @@ discpoly(center, radius, npoly = 64,
 ## Construct circles with increasing accuracy and of different spatial classes
 disc1 <- discpoly(c(0,0), 5, npoly=4, class = "owin")
 disc2 <- discpoly(c(0,0), 5, npoly=16, class = "Polygon")
+disc3 <- discpoly(c(0,0), 5, npoly=64, class = "gpc.poly")  # may warn
 
 ## Look at the results
 print(disc1)
@@ -52,10 +53,11 @@ plot(disc1, axes=TRUE, main="", border=2)
 print(disc2)
 lines(disc2, col=3)
 
-if (surveillance.options("gpclib") && requireNamespace("gpclib")) {
-    disc3 <- discpoly(c(0,0), 5, npoly=64, class = "gpc.poly")
-    print(disc3)
-    plot(disc3, add=TRUE, poly.args=list(border=4))
+print(disc3)  # a list or a formal "gpc.poly" (if gpclib is available)
+if (is(disc3, "gpc.poly")) {
+  plot(disc3, add=TRUE, poly.args=list(border=4))
+} else {
+  lines(disc3[[1]], col=4)
 }
 
 ## to only _draw_ a circle
