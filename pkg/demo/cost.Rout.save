@@ -341,6 +341,10 @@ R>
 R> opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
 R> par(mar=c(0,0,0,0))
 R> plot(ha.sts,type=observed ~ 1 | unit)
+Warning message:
+'stsplot_spacetime' is deprecated.
+Use 'stsplot_space' instead.
+See help("Deprecated") 
 R> dev.off()
 null device 
           1 
