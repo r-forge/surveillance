@@ -6,10 +6,9 @@
 \description{
   Generates a polygon representing a disc/circle (in planar
   coordinates) as an object of one of three possible
-  classes: \code{"\link[sp:Polygon-class]{Polygon}"},
-  \code{"\link[spatstat.geom]{owin}"}, or -- if
-  \pkg{gpclib} is available --
-  \code{"\link[gpclib:gpc.poly-class]{gpc.poly}"}.
+  classes: \code{"\link[sp:Polygon-class]{Polygon}"} from package \CRANpkg{sp},
+  \code{"\link[spatstat.geom]{owin}"} from package \CRANpkg{spatstat.geom}, or
+  \code{"gpc.poly"} from \pkg{gpclib} (if available).
 }
 
 \usage{
@@ -34,16 +33,11 @@ discpoly(center, radius, npoly = 64,
 
 \value{
   A polygon of class \code{class} representing a
-  circle/disc with \code{npoly} edges accuracy.\cr
+  circle/disc with \code{npoly} edges accuracy.
+  
   If \code{class="gpc.poly"} and this S4 class is neither registered
   nor available via loading \pkg{gpclib}, only the
   \code{pts} slot of a \code{"gpc.poly"} is returned with a warning.
-}
-
-\author{
-  Sebastian Meyer\cr
-  This function is inspired by the \code{\link[spatstat.geom]{disc}} function
-  from package \pkg{spatstat.geom}.
 }
 
 \examples{
@@ -69,7 +63,7 @@ symbols(0, 0, circles=5, inches=FALSE, add=TRUE, fg=5)
 }
 
 \seealso{
-  \link[spatstat.geom]{disc} in package \pkg{spatstat.geom}.
+  \code{\link[spatstat.geom]{disc}} in package \pkg{spatstat.geom}.
 }
 
 \keyword{datagen}

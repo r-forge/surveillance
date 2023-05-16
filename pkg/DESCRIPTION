@@ -85,5 +85,6 @@ Description: Statistical methods for the modeling and monitoring of time series
     <doi:10.18637/jss.v077.i11>.
 License: GPL-2
 URL: https://surveillance.R-Forge.R-project.org/
-Additional_repositories: https://inla.r-inla-download.org/R/stable/
+Additional_repositories: https://inla.r-inla-download.org/R/stable/,
+    https://rdpeng.r-universe.dev
 VignetteBuilder: utils, knitr
