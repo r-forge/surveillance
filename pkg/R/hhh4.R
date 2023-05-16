@@ -258,7 +258,7 @@ setControl <- function (control, stsObj)
           if (!identical(dim(control[[comp]]$offset), dim(stsObj)))
               stop("'control$",comp,"$offset' must be a numeric matrix of size ",
                    nTime, "x", nUnit)
-          if (any(is.na(control[[comp]]$offset)))
+          if (anyNA(control[[comp]]$offset))
               stop("'control$",comp,"$offset' must not contain NA values")
       } else if (!identical(as.numeric(control[[comp]]$offset), 1)) {
           stop("'control$",comp,"$offset' must either be 1 or a numeric ",

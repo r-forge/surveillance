@@ -28,7 +28,7 @@ as.epidata.epidataCS <- function (data, tileCentroids, eps = 0.001, ...)
 
     ### generate twinSIR's epidata object from stgrid (no events)
     centroidIdx <- match(levels(data$stgrid$tile), rownames(tileCentroids), nomatch = NA_integer_)
-    if (any(is.na(centroidIdx))) {
+    if (anyNA(centroidIdx)) {
         stop("some levels of 'data$stgrid$tile' are not available from 'tileCentroids'")
     }
     centroids <- tileCentroids[centroidIdx,]

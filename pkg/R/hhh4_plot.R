@@ -430,7 +430,7 @@ plotHHH4_ri <- function (x, component, exp = FALSE,
         colorkey$labels <- list(at = log(lab), labels = lab)
     }
 
-    if (is.list(gpar.missing) && any(is.na(map$ranef))) {
+    if (is.list(gpar.missing) && anyNA(map$ranef)) {
         sp.layout <- c(sp.layout,
                        c(list("sp.polygons", map[is.na(map$ranef),]),
                          gpar.missing))

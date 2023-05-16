@@ -71,7 +71,7 @@ stsplot_space <- function (x, tps = NULL, map = x@map, population = NULL,
         colorkey <- modifyList(eval(formals()$colorkey), colorkey)
 
     ## automatic additions to sp.layout (region labels and total)
-    if (is.list(gpar.missing) && any(is.na(map$ncases))) {
+    if (is.list(gpar.missing) && anyNA(map$ncases)) {
         layout.missing <- c(list("sp.polygons", obj=map[is.na(map$ncases),]),
                             gpar.missing)
         sp.layout <- c(sp.layout, list(layout.missing))

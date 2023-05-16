@@ -175,7 +175,7 @@ as.epidata.default <- function(data, id.col, start.col, stop.col, atRiskY.col,
         }
         if (is.character(colidx)) {
             colidx <- match(colidx, colnames(data))
-            if (any(is.na(colidx))) {
+            if (anyNA(colidx)) {
                 stop("'", colarg, " = ", deparse(cl[[colarg]]), "': ",
                      "column does not exist in 'data'")
             }

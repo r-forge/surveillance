@@ -150,7 +150,7 @@ checkWeightsArray <- function (W, nUnits, nTime, name = deparse(substitute(W)),
     if (any(dim(W)[1:2] != nUnits) || isTRUE(dim(W)[3] != nTime))
         stop("'", name, "' must conform to dimensions ",
              nUnits, " x ", nUnits, " (x ", nTime, ")")
-    if (any(is.na(W))) {
+    if (anyNA(W)) {
         if (islands) # normalization of parametric weights yields division by 0
             warning("neighbourhood structure contains islands")
         stop("missing values in '", name, "' are not allowed")

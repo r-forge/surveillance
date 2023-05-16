@@ -53,7 +53,7 @@ simEpidata <- function (formula, data, id.col, I0.col, coords.cols,
             colidx <- get(colarg, inherits = FALSE)
             if (is.numeric(colidx)) {
                 tmp <- names(data)[colidx]
-                if (any(is.na(tmp))) {
+                if (anyNA(tmp)) {
                     stop("'", colarg, " = ", deparse(cl[[colarg]]), "': ",
                          "column index must be in [1; ", ncol(data),
                          "=ncol(data)]")
@@ -183,7 +183,7 @@ simEpidata <- function (formula, data, id.col, I0.col, coords.cols,
                 "(number of epidemic terms), must be specified"), nPredEpi))
         }
         alpha <- alpha[c(names(f), names(w))]
-        if (any(is.na(alpha))) {
+        if (anyNA(alpha)) {
             stop("'alpha' is incomplete for 'f' or 'w'")
         }
         stopifnot(alpha >= 0)
