@@ -1,7 +1,7 @@
 %\VignetteIndexEntry{twinSIR: Individual-level epidemic modeling for a fixed population with known distances}
 %\VignetteEngine{knitr::knitr}
 %% additional dependencies beyond what is required for surveillance anyway:
-%\VignetteDepends{surveillance}
+%\VignetteDepends{surveillance, quadprog}
 
 <<setup, cache = FALSE, include = FALSE, purl = FALSE>>=
 ## purl=FALSE => not included in the tangle'd R script
