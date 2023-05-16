@@ -43,7 +43,7 @@ LinkingTo:
     Rcpp, polyCub
 Suggests:
     parallel, grid,
-    gridExtra (>= 2.0.0), lattice, colorspace, scales, animation,
+    gridExtra (>= 2.0.0), lattice (>= 0.20-44), colorspace, scales, animation,
     msm, spc, coda, runjags, INLA,
     spdep, numDeriv, maxLik, gsl, fanplot, hhh4contacts,
     quadprog,
