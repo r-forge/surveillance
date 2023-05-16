@@ -28,5 +28,6 @@ diff : ${ROUTFILES}
 
 clean :
 	rm -f ${DEMOSCRIPTS:.R=.pdf} ${DEMOSCRIPTS:.R=.Rout}
+	rm -rf figs
 
 .PHONY: all clean diff
