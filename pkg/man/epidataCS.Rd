@@ -400,12 +400,11 @@ head(stgrid <- imdepi$stgrid[,-1])
 ## reconstruct the "imdepi" object from its components
 myimdepi <- as.epidataCS(events = events, stgrid = stgrid,
                          W = stateD, qmatrix = diag(2), nCircle2Poly = 16)
-\dontrun{
+\dontshow{if (surveillance.options("allExamples"))}
 ## This reconstructed object is equal to 'imdepi' as long as the internal
 ## structures of the embedded classes ("owin", "SpatialPolygons", ...), and
 ## the calculation of the influence regions by "polyclip" have not changed:
 stopifnot(all.equal(imdepi, myimdepi))
-}
 }
 
 \keyword{spatial}
