@@ -688,7 +688,7 @@ profile.twinstim <- function (fitted, profile, alpha = 0.05,
     if (is.na(profile[[i]][3])) profile[[i]][3] <- theta.ml[idx] + 3*se[idx]
     #Evaluate profile loglik on a grid (if requested)
     if (profile[[i]][4] > 0) {
-      thetai.grid <- seq(profile[[i]][2],profile[[i]][3],length=profile[[i]][4])
+      thetai.grid <- seq(profile[[i]][2],profile[[i]][3],length.out=profile[[i]][4])
       resProfile[[i]] <- matrix(NA, nrow = length(thetai.grid), ncol = 4L,
         dimnames = list(NULL, c("grid","profile","estimated","wald")))
 
