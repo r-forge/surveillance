@@ -12,8 +12,9 @@ Example \code{twinstim} Fit for the \code{imdepi} Data
 \format{
   an object of class \code{"\link{twinstim}"}
   obtained from the following call using \code{data(imdepi)}:
+  
   \Sexpr[stage=build,results=verbatim]{
-    data(imdepifit)
+    data(imdepifit, package="surveillance")
     writeLines(deparse(imdepifit$call, width.cutoff = 25))
   }
 }
