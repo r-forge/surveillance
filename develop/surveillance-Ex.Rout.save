@@ -1,6 +1,6 @@
 
-R version 4.2.2 Patched (2022-11-10 r83330) -- "Innocent and Trusting"
-Copyright (C) 2022 The R Foundation for Statistical Computing
+R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.21.0; see ‘package?surveillance’ or
+This is surveillance 1.21.1; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -1952,7 +1952,7 @@ bayes(5,5,1) 6  3  192 0  1         0.9846154 0.01538462 0
 > ##D surv <- algo.hmm(counts, control=list(range=(2*52):length(counts$observed),
 > ##D                                    Mtilde=2*52,noStates=2,trend=FALSE,
 > ##D                                    covEffectsEqual=TRUE,extraMSMargs=list()))
-> ##D plot(surv,legend=list(x="topright"))
+> ##D plot(surv,legend.opts=list(x="topright"))
 > ## End(Not run)
 > 
 > if (require("msm")) {
@@ -1962,7 +1962,7 @@ bayes(5,5,1) 6  3  192 0  1         0.9846154 0.01538462 0
 +                           trend=FALSE,covEffectsEqual=TRUE, saveHMMs=TRUE))
 + 
 + #Compute most probable state using the viterbi algorithm - 1 is "normal", 2 is "outbreak".
-+ viterbi.msm(surv$control$hmm[[1]])$fitted
++ viterbi.msm(surv$control$hmms[[1]])$fitted
 + 
 + #How often correct?
 + tab <- cbind(truth=counts$state + 1 ,
@@ -2758,7 +2758,7 @@ detaching ‘package:coda’
 > 
 > #Helper function to show the EM step
 > plotIt <- function(cur.sts) {
-+   plot(cur.sts,xaxis.labelFormat=NULL, legend=NULL,ylim=c(0,140))
++   plot(cur.sts,xaxis.labelFormat=NULL, legend.opts=NULL,ylim=c(0,140))
 + }
 > 
 > #Call non-parametric back-projection function with hook function but
@@ -2815,13 +2815,10 @@ No bootstrap CIs calculated as requested.
 > #Show the fit
 > lines(1:nrow(sts.bp)-0.5,mu[,1],col="green",type="s",lwd=3)
 > 
-> #Non-parametric back-projection including boostrap CIs. B=10 is only
-> #used for illustration in the documentation example
-> #In practice use a realistic value of B=1000 or more.
-> bpnp.control2 <- modifyList(bpnp.control, list(hookFun=NULL,k=2,B=10,eq3a.method="C"))
-> ## Not run: 
-> ##D bpnp.control2 <- modifyList(bpnp.control, list(hookFun=NULL,k=2,B=1000,eq3a.method="C"))
-> ## End(Not run)
+> #Non-parametric back-projection including boostrap CIs
+> bpnp.control2 <- modifyList(bpnp.control, list(hookFun=NULL, k=2,
++   B=10, # in practice, use B >= 1000 !
++   eq3a.method="C"))
 > sts.bp2 <- backprojNP(Ysts, incu.pmf=inc.pmf, control=bpnp.control2)
 Back-projecting with k= 2  to get lambda estimate.
 Convergence criterion @ iteration i= 1 :  1.831091 
@@ -3466,6 +3463,10 @@ Head of observed:
 > ## Construct circles with increasing accuracy and of different spatial classes
 > disc1 <- discpoly(c(0,0), 5, npoly=4, class = "owin")
 > disc2 <- discpoly(c(0,0), 5, npoly=16, class = "Polygon")
+> disc3 <- discpoly(c(0,0), 5, npoly=64, class = "gpc.poly")  # may warn
+Note: use ‘surveillance.options(gpclib=TRUE)’ to accept the gpclib license.
+Warning in discpoly(c(0, 0), 5, npoly = 64, class = "gpc.poly") :
+  formal class "gpc.poly" not available
 > 
 > ## Look at the results
 > print(disc1)
@@ -3509,10 +3510,46 @@ Slot "coords":
 
 > lines(disc2, col=3)
 > 
-> if (surveillance.options("gpclib") && requireNamespace("gpclib")) {
-+     disc3 <- discpoly(c(0,0), 5, npoly=64, class = "gpc.poly")
-+     print(disc3)
-+     plot(disc3, add=TRUE, poly.args=list(border=4))
+> print(disc3)  # a list or a formal "gpc.poly" (if gpclib is available)
+[[1]]
+[[1]]$x
+ [1]  5.000000e+00  4.975924e+00  4.903926e+00  4.784702e+00  4.619398e+00
+ [6]  4.409606e+00  4.157348e+00  3.865052e+00  3.535534e+00  3.171966e+00
+[11]  2.777851e+00  2.356984e+00  1.913417e+00  1.451423e+00  9.754516e-01
+[16]  4.900857e-01 -9.184851e-16 -4.900857e-01 -9.754516e-01 -1.451423e+00
+[21] -1.913417e+00 -2.356984e+00 -2.777851e+00 -3.171966e+00 -3.535534e+00
+[26] -3.865052e+00 -4.157348e+00 -4.409606e+00 -4.619398e+00 -4.784702e+00
+[31] -4.903926e+00 -4.975924e+00 -5.000000e+00 -4.975924e+00 -4.903926e+00
+[36] -4.784702e+00 -4.619398e+00 -4.409606e+00 -4.157348e+00 -3.865052e+00
+[41] -3.535534e+00 -3.171966e+00 -2.777851e+00 -2.356984e+00 -1.913417e+00
+[46] -1.451423e+00 -9.754516e-01 -4.900857e-01  3.061617e-16  4.900857e-01
+[51]  9.754516e-01  1.451423e+00  1.913417e+00  2.356984e+00  2.777851e+00
+[56]  3.171966e+00  3.535534e+00  3.865052e+00  4.157348e+00  4.409606e+00
+[61]  4.619398e+00  4.784702e+00  4.903926e+00  4.975924e+00
+
+[[1]]$y
+ [1] -1.224647e-15 -4.900857e-01 -9.754516e-01 -1.451423e+00 -1.913417e+00
+ [6] -2.356984e+00 -2.777851e+00 -3.171966e+00 -3.535534e+00 -3.865052e+00
+[11] -4.157348e+00 -4.409606e+00 -4.619398e+00 -4.784702e+00 -4.903926e+00
+[16] -4.975924e+00 -5.000000e+00 -4.975924e+00 -4.903926e+00 -4.784702e+00
+[21] -4.619398e+00 -4.409606e+00 -4.157348e+00 -3.865052e+00 -3.535534e+00
+[26] -3.171966e+00 -2.777851e+00 -2.356984e+00 -1.913417e+00 -1.451423e+00
+[31] -9.754516e-01 -4.900857e-01  6.123234e-16  4.900857e-01  9.754516e-01
+[36]  1.451423e+00  1.913417e+00  2.356984e+00  2.777851e+00  3.171966e+00
+[41]  3.535534e+00  3.865052e+00  4.157348e+00  4.409606e+00  4.619398e+00
+[46]  4.784702e+00  4.903926e+00  4.975924e+00  5.000000e+00  4.975924e+00
+[51]  4.903926e+00  4.784702e+00  4.619398e+00  4.409606e+00  4.157348e+00
+[56]  3.865052e+00  3.535534e+00  3.171966e+00  2.777851e+00  2.356984e+00
+[61]  1.913417e+00  1.451423e+00  9.754516e-01  4.900857e-01
+
+[[1]]$hole
+[1] FALSE
+
+
+> if (is(disc3, "gpc.poly")) {
++   plot(disc3, add=TRUE, poly.args=list(border=4))
++ } else {
++   lines(disc3[[1]], col=4)
 + }
 > 
 > ## to only _draw_ a circle
@@ -3872,8 +3909,6 @@ List of 4
 > ## see help("imdepi") for more info on the data set
 > 
 > ## extraction methods subset the 'events' component
-> ## (thereby taking care of the validity of the epidataCS object,
-> ## for instance the hidden auxiliary column .sources)
 > imdepi[101:200,]
 Observation period: 0 - 2557 
 Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
@@ -3896,7 +3931,18 @@ Overall number of events: 100
 105   334   472.7581
 106   334  1525.4796
 [....]
-> tail(imdepi, n=4)           # reduce the epidemic to the last 4 events
+> head(imdepi, n=1)           # only first event
+Observation period: 0 - 2557 
+Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
+Spatio-temporal grid (not shown): 84 time blocks x 413 tiles 
+Types of events: "B" "C"
+Overall number of events: 1
+
+           coordinates      time  tile type eps.t eps.s  sex agegrp BLOCK start
+1 (4112.188, 3202.792) 0.2116949 05554    B    30   200 male [3,19)     1     0
+  popdensity
+1   260.8612
+> tail(imdepi, n=4)           # only last 4 events
 Observation period: 0 - 2557 
 Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
 Spatio-temporal grid (not shown): 84 time blocks x 413 tiles 
@@ -3913,7 +3959,7 @@ Overall number of events: 4
 634  2526    56.5969
 635  2526   567.2927
 636  2526  1506.5248
-> subset(imdepi, type=="B")   # only consider event type B
+> subset(imdepi, type=="B")   # only events of type B
 Note: dropped type(s) "C"
 Observation period: 0 - 2557 
 Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
@@ -4007,12 +4053,13 @@ Data attributes:
 > ## reconstruct the "imdepi" object from its components
 > myimdepi <- as.epidataCS(events = events, stgrid = stgrid,
 +                          W = stateD, qmatrix = diag(2), nCircle2Poly = 16)
-> ## Not run: 
-> ##D ## This reconstructed object is equal to 'imdepi' as long as the internal
-> ##D ## structures of the embedded classes ("owin", "SpatialPolygons", ...), and
-> ##D ## the calculation of the influence regions by "polyclip" have not changed:
-> ##D stopifnot(all.equal(imdepi, myimdepi))
-> ## End(Not run)
+> ## Don't show: 
+> if (surveillance.options("allExamples"))
++ ## End(Don't show)
++ ## This reconstructed object is equal to 'imdepi' as long as the internal
++ ## structures of the embedded classes ("owin", "SpatialPolygons", ...), and
++ ## the calculation of the influence regions by "polyclip" have not changed:
++ stopifnot(all.equal(imdepi, myimdepi))
 > 
 > 
 > 
@@ -4740,8 +4787,8 @@ $h
 > 
 > ### ** Examples
 > 
-> formatDate(Sys.Date(), "%G/%OQ/%q")
-[1] "2023/I/74"
+> formatDate(as.Date("2021-10-13"), "%G/%OQ/%q")
+[1] "2021/IV/13"
 > 
 > 
 > 
@@ -5380,8 +5427,7 @@ Number of time points:  103
 > ##D ## Paul and Held (2011), including predictive model assessement
 > ##D ## using proper scoring rules, see the (computer-intensive)
 > ##D ## demo("fluBYBW") script:
-> ##D demoscript <- system.file(file.path("demo", "fluBYBW.R"),
-> ##D                           package = "surveillance")
+> ##D demoscript <- system.file("demo", "fluBYBW.R", package = "surveillance")
 > ##D demoscript
 > ##D #file.show(demoscript)
 > ##D 
@@ -5491,10 +5537,6 @@ Call:
 MASS::glm.nb(formula = update(formula(hhh4fit)$end, observed ~ 
     . + offset(log(population))), data = measlesWeserEmsData, 
     init.theta = 0.06501198678, link = log)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--0.8170  -0.6217  -0.4630  -0.3228   3.4813  
 
 Coefficients:
                     Estimate Std. Error z value Pr(>|z|)    
@@ -6170,15 +6212,15 @@ Max.    181.00 1690.00 596.00
 > ##    currently only implemented in HIDDA.forecasting::dhhh4sims()
 > 
 > 
-> ## Not run: 
-> ##D ### produce a PIT histogram
-> ##D 
-> ##D ## using empirical distribution of simulated counts as forecast distribition
-> ##D pit(x = observed(attr(salmSims, "stsObserved")),
-> ##D     pdistr = apply(salmSims, 1:2, ecdf))
-> ##D ## long-term forecast is badly calibrated (lower tail is unused, see fan above)
-> ##D ## we also get a warning for the same reason as infinite log-scores
-> ## End(Not run)
+> ### produce a PIT histogram
+> 
+> ## using empirical distribution of simulated counts as forecast distribition
+> pit(x = observed(attr(salmSims, "stsObserved")),
++     pdistr = apply(salmSims, 1:2, ecdf))
+Warning in pit.default(x = observed(attr(salmSims, "stsObserved")), pdistr = apply(salmSims,  :
+  predictive distribution has 0 probability for observed 'x'
+> ## long-term forecast is badly calibrated (lower tail is unused, see fan above)
+> ## we also get a warning for the same reason as infinite log-scores
 > 
 > 
 > 
@@ -6469,8 +6511,7 @@ z = 0.27416, n = 52, p-value = 0.784
 > ### For a more sophisticated multivariate analysis of
 > ### areal time series of influenza counts - data("fluBYBW") -
 > ### see the (computer-intensive) demo("fluBYBW") script:
-> demoscript <- system.file(file.path("demo", "fluBYBW.R"),
-+                           package = "surveillance")
+> demoscript <- system.file("demo", "fluBYBW.R", package = "surveillance")
 > demoscript
 [1] "/home/smeyer/Downloads/surveillance/surveillance.Rcheck/surveillance/demo/fluBYBW.R"
 > #file.show(demoscript)
@@ -6758,12 +6799,10 @@ List of 14
 > # Plot the spatial distribution of the events in W
 > plot(imdepi, "space", points.args = list(col=c("indianred", "darkblue")))
 > 
-> ## Not run: 
-> ##D # or manually (no legends, no account for tied locations)
-> ##D plot(imdepi$W, lwd=2, asp=1) ##D 
-> ##D plot(imdepi$events, pch=c(3,4)[imdepi$events$type], cex=0.8,
-> ##D      col=c("indianred", "darkblue")[imdepi$events$type], add=TRUE)
-> ## End(Not run)
+> # or manually (no legends, no account for tied locations)
+> plot(imdepi$W, lwd=2, asp=1) 
+> plot(imdepi$events, pch=c(3,4)[imdepi$events$type], cex=0.8,
++      col=c("indianred", "darkblue")[imdepi$events$type], add=TRUE)
 > 
 > ## Not run: 
 > ##D   # Show a dynamic illustration of the spatio-temporal dynamics of the 
@@ -6792,19 +6831,18 @@ List of 14
 > 
 > data("imdepi", "imdepifit")
 > 
-> ## Not run: 
-> ##D ## reproduce "imdepifit"
-> ##D myimdepifit <- twinstim(
-> ##D     endemic = addSeason2formula(~ offset(log(popdensity)) + I(start/365-3.5),
-> ##D                                 S = 1, period = 365, timevar = "start"),
-> ##D     epidemic = ~ type + agegrp, siaf = siaf.gaussian(),
-> ##D     data = imdepi, subset = !is.na(agegrp),
-> ##D     optim.args = list(control = list(reltol = sqrt(.Machine$double.eps))),
-> ##D     ## the historical default for reltol is 1e-6, which is rather large
-> ##D     model = FALSE, cumCIF = FALSE
-> ##D )
-> ##D stopifnot(all.equal(imdepifit, myimdepifit))
-> ## End(Not run)
+> ## how this fit was obtained
+> imdepifit$call
+twinstim(endemic = addSeason2formula(~offset(log(popdensity)) + 
+    I(start/365 - 3.5), S = 1, period = 365, timevar = "start"), 
+    epidemic = ~type + agegrp, siaf = siaf.gaussian(), data = imdepi, 
+    subset = !is.na(agegrp), optim.args = list(control = list(reltol = sqrt(.Machine$double.eps))), 
+    model = FALSE, cumCIF = FALSE)
+> ## Don't show: 
+> if (surveillance.options("allExamples"))
++ ## End(Don't show)
++ ## reproduce "imdepifit"
++ stopifnot(all.equal(imdepifit, eval(imdepifit$call)))
 > 
 > 
 > 
@@ -6873,7 +6911,7 @@ List of 14
 > 
 > library("spatstat.geom")
 Loading required package: spatstat.data
-spatstat.geom 3.1-0
+spatstat.geom 3.2-1
 > plot(letterR)
 > plot(intersectPolyCircle(letterR, c(3,2), 1), add=TRUE, col=2, lwd=3)
 > 
@@ -6963,8 +7001,8 @@ dt      <= 50  > 50
 > 
 > ## contingency table in LaTeX
 > toLatex(knoxtest)
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:28 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:12 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{r|rr|r}
@@ -7154,7 +7192,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x560fa4921980>
+<environment: 0x55822bafad68>
 
 $ar$offset
 [1] 1
@@ -7163,7 +7201,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x560fa4921980>
+<environment: 0x55822bafad68>
 
 $ne$offset
 [1] 1
@@ -7187,7 +7225,8 @@ $family
 > mycontrol <- makeControl(
 +     f = list(~1, ~1, ~t), S = c(1, 1, 3),
 +     offset = list(population(fluBYBW)),  # recycled -> in all components
-+     ne = list(normalize = TRUE), verbose = TRUE)
++     ne = list(normalize = TRUE),
++     verbose = TRUE)
 > str(mycontrol)
 List of 5
  $ ar     :List of 2
@@ -7214,7 +7253,11 @@ List of 5
   .. .. ..$ : chr [1:140] "8336" "8337" "8315" "8311" ...
  $ family : chr "NegBin1"
  $ verbose: logi TRUE
-> ## Not run: fit <- hhh4(fluBYBW, mycontrol)
+> ## Don't show: 
+> if (surveillance.options("allExamples"))
++ ## End(Don't show)
++ ## fit this model
++ fit <- hhh4(fluBYBW, mycontrol)
 > 
 > 
 > 
@@ -7745,19 +7788,18 @@ bayes.trunc...
 > #Likelihood ratio for all four possible configurations
 > p <- c(dPBin(c(0,0), theta=theta0), dPBin(c(0,1), theta=theta0),
 +        dPBin(c(1,0), theta=theta0), dPBin(c(1,1), theta=theta0))
+> ## Don't show: 
+> if (surveillance.options("allExamples"))
++ ## End(Don't show)
++ #Compute ARL using non-sparse matrix operations
++ pairedbinCUSUM.runlength(p,w1=c(-1,37,-9,29),w2=c(-1,7),h1=70,h2=32,
++                          h11=38,h22=17)
 > 
-> #Compute ARL using non-sparse matrix operations
-> ## Not run: 
-> ##D pairedbinCUSUM.runlength(p,w1=c(-1,37,-9,29),w2=c(-1,7),h1=70,h2=32,h11=38,h22=17)
-> ## End(Not run)
-> 
-> #Sparse computations don't work on all machines (e.g. the next line
-> #might lead to an error. If it works this call can be considerably (!) faster
-> #than the non-sparse call.
-> ## Not run: 
-> ##D pairedbinCUSUM.runlength(p,w1=c(-1,37,-9,29),w2=c(-1,7),h1=70,h2=32,
-> ##D                          h11=38,h22=17,sparse=TRUE)
-> ## End(Not run)
+> #Sparse computations can be considerably (!) faster
+> pairedbinCUSUM.runlength(p,w1=c(-1,37,-9,29),w2=c(-1,7),h1=70,h2=32,
++                          h11=38,h22=17,sparse=TRUE)
+g = 1763 
+[1] 284.3664
 > 
 > #Use paired binary CUSUM on the De Leval et al. (1994) arterial switch
 > #operation data on 104 newborn babies
@@ -8208,10 +8250,11 @@ FALSE  TRUE
 > # failed in surveillance <= 1.19.1
 >     stopifnot(!is.unsorted(rps(3, mu = 10^-(0:8)), strictly = TRUE))
 > ## End(Don't show)
-> ## Not run: 
-> ##D # rps() gives NA (with a warning) if the NegBin is too wide
-> ##D rps(1e5, mu = 1e5, size = 1e-5)
-> ## End(Not run)
+> ## rps() gives NA (with a warning) if the NegBin is too wide
+> rps(1e5, mu = 1e5, size = 1e-5)
+Warning in (function (x, mu, size, k = 40, tolerance = sqrt(.Machine$double.eps))  :
+  quasi-continuous NegBin distribution (too wide); returning NA
+[1] NA
 > 
 > 
 > 
@@ -8522,6 +8565,7 @@ Head of neighbourhood:
 +     plot(z.xts)
 + }
 Loading required namespace: xts
+Failed with error:  ‘there is no package called ‘xts’’
 > 
 > 
 > 
@@ -8558,28 +8602,6 @@ Loading required namespace: xts
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("stsAggregate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
-> nameEx("stsNClist_animate")
-> ### * stsNClist_animate
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: stsNClist_animate
-> ### Title: Animate a sequence of nowcasts
-> ### Aliases: stsNClist_animate animate_nowcasts
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
-> ## See http://staff.math.su.se/hoehle/blog/2016/07/19/nowCast.html for
-> ## a worked through example. Code will migrate into the package in due
-> ## course.
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("stsNClist_animate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("stsXtrct")
 > ### * stsXtrct
@@ -8717,6 +8739,7 @@ Loading required namespace: xts
 +     autoplot.sts(measlesDE, units = 1:2)
 + }
 Loading required namespace: ggplot2
+Failed with error:  ‘there is no package called ‘ggplot2’’
 > 
 > ## Don't show: 
 > if (surveillance.options("allExamples"))
@@ -8746,10 +8769,10 @@ Loading required namespace: ggplot2
 > ### ** Examples
 > 
 > data("salmAllOnset")
-> salmAllOnsety2013m01d20 <- sts_observation(salmAllOnset,
-+ dateObservation="2014-01-20",cut=FALSE)
+> salmAllOnsety2014m01d20 <- sts_observation(salmAllOnset,
++   dateObservation="2014-01-20",cut=FALSE)
 > plot(salmAllOnset)
-> lines(salmAllOnsety2013m01d20@observed,t="h",col="red")
+> lines(observed(salmAllOnsety2014m01d20),type="h",col="red")
 > 
 > 
 > 
@@ -8940,6 +8963,8 @@ chwi  0 Charlottenburg-Wilmersdorf  chwi
 > ## more sophisticated plots are offered by package "xts"
 > if (requireNamespace("xts"))
 +     plot(as.xts.sts(measlesDE))
+Loading required namespace: xts
+Failed with error:  ‘there is no package called ‘xts’’
 > 
 > ## Use ISO8601 date formatting (see ?strptime) and no legend
 > data("salmNewport")
@@ -9091,8 +9116,8 @@ $gpclib
 +                 thresholdMethod="delta",alpha=0.1)
 > salm <- farringtonFlexible(salm,control=control)
 > toLatex(salm)
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:40 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:24 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrlr}
@@ -9895,22 +9920,22 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
  & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
 \hline
 \hline 
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:44 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:28 2023
  \texttt{h.(Intercept)} & $-20.481$ & $0.053$ & $-389.0$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.041$ & $0.022$ & $-1.9$ & $0.06$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.242$ & $0.064$ & $3.8$ & $2\cdot{}10^{-04}$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.350$ & $0.064$ & $5.4$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:44 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:28 2023
  \texttt{e.(Intercept)} & $-16.90$ & $0.26$ & $-64$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
 \end{tabular}
 > # or, to report rate ratios
 > xtable(s)
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:44 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:28 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -10253,8 +10278,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x560faa4e1380>
-<environment: 0x560faa4dcb00>
+<bytecode: 0x55822d486a90>
+<environment: 0x55822d40d130>
 
 $G
 function (t, logvals, types) 
@@ -10264,7 +10289,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x560faa4dcb00>
+<environment: 0x55822d40d130>
 
 $deriv
 function (t, logvals, types) 
@@ -10280,8 +10305,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x560faa4e2570>
-<environment: 0x560faa4dcb00>
+<bytecode: 0x55822d487c80>
+<environment: 0x55822d40d130>
 
 $Deriv
 function (t, logvals, types) 
@@ -10300,7 +10325,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x560faa4dcb00>
+<environment: 0x55822d40d130>
 
 $npars
 [1] 4
@@ -10966,16 +10991,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x560faa3c8220>
-<environment: 0x560faa3c4d30>
+<bytecode: 0x558226e06c88>
+<environment: 0x558226e03a18>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x560faa3c8ca0>
-<environment: 0x560faa3c4d30>
+<bytecode: 0x558226e07708>
+<environment: 0x558226e03a18>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10983,8 +11008,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x560faa3c91e0>
-<environment: 0x560faa3c4d30>
+<bytecode: 0x558226e07c48>
+<environment: 0x558226e03a18>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10998,8 +11023,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x560faa3c9950>
-<environment: 0x560faa3c4d30>
+<bytecode: 0x558226e083b8>
+<environment: 0x558226e03a18>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -11007,8 +11032,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x560faa3c7100>
-<environment: 0x560faa3c4d30>
+<bytecode: 0x558226e05b68>
+<environment: 0x558226e03a18>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -11020,8 +11045,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x560faa3c7758>
-<environment: 0x560faa3c4d30>
+<bytecode: 0x558226e061c0>
+<environment: 0x558226e03a18>
 
 $npars
 [1] 3
@@ -11294,15 +11319,15 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
  & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
 \hline
 \hline 
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:47 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:31 2023
  \texttt{h.(Intercept)} & $-20.52869$ & $0.04724$ & $-434.597$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{h.I(start/365-3.5)} & $-0.04574$ & $0.02212$ & $-2.068$ & $0.03863$ \\ 
   \texttt{h.sin(2*pi*start/365)} & $0.21728$ & $0.06467$ & $3.360$ & $0.00078$ \\ 
   \texttt{h.cos(2*pi*start/365)} & $0.31810$ & $0.06380$ & $4.986$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:47 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:31 2023
  \texttt{e.(Intercept)} & $-12.51659$ & $0.32326$ & $-38.720$ & $<1\cdot{}10^{-04}$ \\ 
   \texttt{e.typeC} & $-0.90832$ & $0.26742$ & $-3.397$ & $0.000682$ \\ 
   \texttt{e.agegrp[3,19)} & $0.70612$ & $0.32706$ & $2.159$ & $0.030852$ \\ 
@@ -11313,8 +11338,8 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 > 
 > # or using the xtable-method (which produces rate ratios)
 > xtable(s)
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:47 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:31 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -11558,7 +11583,7 @@ attr(,"package")
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2023-03-15 00:29:48 
+Time at beginning of simulation: 2023-05-19 09:35:32.414262 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11583,12 +11608,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.084 seconds
-Estimated finishing time: 2023-03-15 00:29:48 
+Runtime of first simulation: 0.092 seconds
+Estimated finishing time: 2023-05-19 09:35:32.60025 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2023-03-15 00:29:49).
+Done (2023-05-19 09:35:32.806741).
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
 >     local({
@@ -11972,8 +11997,8 @@ FALSE  TRUE
 > 
 > # Compute the quality values in a nice formatted way
 > xtable(algo.quality(survResObj))
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Wed Mar 15 00:29:51 2023
+% latex table generated in R 4.3.0 by xtable 1.8-4 package
+% Fri May 19 09:35:35 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -12035,7 +12060,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  44.503 0.616 45.925 1.094 0.11 
+Time elapsed:  44.327 0.648 45.681 1.097 0.106 
 > grDevices::dev.off()
 null device 
           1 
