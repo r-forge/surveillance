@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,19 +163,14 @@
 <span><span class="co">#Likelihood ratio for all four possible configurations</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">dPBin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, theta<span class="op">=</span><span class="va">theta0</span><span class="op">)</span>, <span class="fu">dPBin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, theta<span class="op">=</span><span class="va">theta0</span><span class="op">)</span>,</span>
 <span>       <span class="fu">dPBin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>, theta<span class="op">=</span><span class="va">theta0</span><span class="op">)</span>, <span class="fu">dPBin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, theta<span class="op">=</span><span class="va">theta0</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#Compute ARL using non-sparse matrix operations</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span><span class="fu">pairedbinCUSUM.runlength</span><span class="op">(</span><span class="va">p</span>,w1<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">37</span>,<span class="op">-</span><span class="fl">9</span>,<span class="fl">29</span><span class="op">)</span>,w2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">7</span><span class="op">)</span>,h1<span class="op">=</span><span class="fl">70</span>,h2<span class="op">=</span><span class="fl">32</span>,h11<span class="op">=</span><span class="fl">38</span>,h22<span class="op">=</span><span class="fl">17</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<span><span class="fu">pairedbinCUSUM.runlength</span><span class="op">(</span><span class="va">p</span>,w1<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">37</span>,<span class="op">-</span><span class="fl">9</span>,<span class="fl">29</span><span class="op">)</span>,w2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">7</span><span class="op">)</span>,h1<span class="op">=</span><span class="fl">70</span>,h2<span class="op">=</span><span class="fl">32</span>,</span>
+<span>                         h11<span class="op">=</span><span class="fl">38</span>,h22<span class="op">=</span><span class="fl">17</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">#Sparse computations don't work on all machines (e.g. the next line</span></span>
-<span><span class="co">#might lead to an error. If it works this call can be considerably (!) faster</span></span>
-<span><span class="co">#than the non-sparse call.</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co">#Sparse computations can be considerably (!) faster</span></span>
 <span><span class="fu">pairedbinCUSUM.runlength</span><span class="op">(</span><span class="va">p</span>,w1<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">37</span>,<span class="op">-</span><span class="fl">9</span>,<span class="fl">29</span><span class="op">)</span>,w2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fl">7</span><span class="op">)</span>,h1<span class="op">=</span><span class="fl">70</span>,h2<span class="op">=</span><span class="fl">32</span>,</span>
 <span>                         h11<span class="op">=</span><span class="fl">38</span>,h22<span class="op">=</span><span class="fl">17</span>,sparse<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
 <span></span>
 <span><span class="co">#Use paired binary CUSUM on the De Leval et al. (1994) arterial switch</span></span>
 <span><span class="co">#operation data on 104 newborn babies</span></span>

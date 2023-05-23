@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,10 +76,6 @@
 
 <p>a list for use as the <code>control</code> argument in <code><a href="hhh4.html">hhh4</a></code>.</p>
     </div>
-    <div class="section level2">
-    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Sebastian Meyer</p>
-    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -91,9 +87,12 @@
 <span><span class="va">mycontrol</span> <span class="op">&lt;-</span> <span class="fu">makeControl</span><span class="op">(</span></span>
 <span>    f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span>, <span class="op">~</span><span class="fl">1</span>, <span class="op">~</span><span class="va">t</span><span class="op">)</span>, S <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>,</span>
 <span>    offset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">)</span>,  <span class="co"># recycled -&gt; in all components</span></span>
-<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>normalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>    ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>normalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mycontrol</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">fluBYBW</span>, <span class="va">mycontrol</span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## fit this model</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">fluBYBW</span>, <span class="va">mycontrol</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

@@ -56,7 +56,7 @@ The method in Becker et al. (1991) was originally developed for the
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -299,7 +299,7 @@ The method in Becker et al. (1991) was originally developed for the
 <span></span>
 <span><span class="co">#Helper function to show the EM step</span></span>
 <span><span class="va">plotIt</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">cur.sts</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">cur.sts</span>,xaxis.labelFormat<span class="op">=</span><span class="cn">NULL</span>, legend<span class="op">=</span><span class="cn">NULL</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">140</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">cur.sts</span>,xaxis.labelFormat<span class="op">=</span><span class="cn">NULL</span>, legend.opts<span class="op">=</span><span class="cn">NULL</span>,ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">140</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co">#Call non-parametric back-projection function with hook function but</span></span>
@@ -328,13 +328,10 @@ The method in Becker et al. (1991) was originally developed for the
 <span><span class="co">#Show the fit</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">sts.bp</span><span class="op">)</span><span class="op">-</span><span class="fl">0.5</span>,<span class="va">mu</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,col<span class="op">=</span><span class="st">"green"</span>,type<span class="op">=</span><span class="st">"s"</span>,lwd<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">#Non-parametric back-projection including boostrap CIs. B=10 is only</span></span>
-<span><span class="co">#used for illustration in the documentation example</span></span>
-<span><span class="co">#In practice use a realistic value of B=1000 or more.</span></span>
-<span><span class="va">bpnp.control2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html" class="external-link">modifyList</a></span><span class="op">(</span><span class="va">bpnp.control</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hookFun<span class="op">=</span><span class="cn">NULL</span>,k<span class="op">=</span><span class="fl">2</span>,B<span class="op">=</span><span class="fl">10</span>,eq3a.method<span class="op">=</span><span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span><span class="va">bpnp.control2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html" class="external-link">modifyList</a></span><span class="op">(</span><span class="va">bpnp.control</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hookFun<span class="op">=</span><span class="cn">NULL</span>,k<span class="op">=</span><span class="fl">2</span>,B<span class="op">=</span><span class="fl">1000</span>,eq3a.method<span class="op">=</span><span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<span><span class="co">#Non-parametric back-projection including boostrap CIs</span></span>
+<span><span class="va">bpnp.control2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/modifyList.html" class="external-link">modifyList</a></span><span class="op">(</span><span class="va">bpnp.control</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hookFun<span class="op">=</span><span class="cn">NULL</span>, k<span class="op">=</span><span class="fl">2</span>,</span>
+<span>  B<span class="op">=</span><span class="fl">10</span>, <span class="co"># in practice, use B &gt;= 1000 !</span></span>
+<span>  eq3a.method<span class="op">=</span><span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">sts.bp2</span> <span class="op">&lt;-</span> <span class="fu">backprojNP</span><span class="op">(</span><span class="va">Ysts</span>, incu.pmf<span class="op">=</span><span class="va">inc.pmf</span>, control<span class="op">=</span><span class="va">bpnp.control2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">######################################################################</span></span>
