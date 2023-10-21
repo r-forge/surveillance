@@ -25,8 +25,8 @@ reset.surveillance.options()
 	Polygon Clipping Library for \R, which (in some versions) has a restricted license
 	(commercial use prohibited), 
 	may be used. This is currently not required since package
-	\pkg{surveillance} has switched to alternatives such as
-	\pkg{polyclip} and \pkg{rgeos} for generating \code{"\link{epidataCS}"}
+	\pkg{surveillance} has switched to
+	\pkg{polyclip} for generating \code{"\link{epidataCS}"}
 	objects by \code{as.epidataCS} or \code{simEpidataCS}.
 	The default setting is \code{FALSE}.
       }
