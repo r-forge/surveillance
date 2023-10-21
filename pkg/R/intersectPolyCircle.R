@@ -15,11 +15,7 @@ intersectPolyCircle.gpc.poly <- function (object, center, radius,
 {
     ## gpcWarning()
     if (useGEOS) {
-        .Deprecated(msg = "argument 'useGEOS' will soon be defunct")
-        loadNamespace("rgeos")  # coerce gpc.poly to SpatialPolygons
-        res <- intersectPolyCircle.SpatialPolygons(as(object, "SpatialPolygons"),
-                                               center, radius, npoly)
-        as(res, "gpc.poly")  # also defined in rgeos
+        .Defunct(msg = "'useGEOS = TRUE' is defunct")
     } else {
         gpclibCheck()
         circle <- discpoly(center, radius, npoly = npoly, class = "gpc.poly")
