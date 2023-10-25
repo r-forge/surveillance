@@ -2,7 +2,6 @@
 \alias{intersectPolyCircle}
 \alias{intersectPolyCircle.owin}
 \alias{intersectPolyCircle.SpatialPolygons}
-\alias{intersectPolyCircle.gpc.poly}
 
 \title{
   Intersection of a Polygonal and a Circular Domain
@@ -19,14 +18,11 @@ intersectPolyCircle(object, center, radius, ...)
 
 \method{intersectPolyCircle}{owin}(object, center, radius, npoly = 32, ...)
 \method{intersectPolyCircle}{SpatialPolygons}(object, center, radius, npoly = 32, ...)
-\method{intersectPolyCircle}{gpc.poly}(object, center, radius, npoly = 32,
-                   useGEOS = FALSE, ...)
 }
 
 \arguments{
   \item{object}{a polygonal domain of one of the supported classes.}
   \item{center,radius,npoly}{see \code{\link{discpoly}}.}
-  \item{useGEOS}{(defunct) logical: \code{TRUE} fails.}
   \item{\dots}{potential further arguments (from the generic).}
 }
 

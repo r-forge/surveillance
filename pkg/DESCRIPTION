@@ -1,7 +1,7 @@
 Package: surveillance
 Title: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena
-Version: 1.21.1
-Date: 2023-05-16
+Version: 1.22.0
+Date: 2023-10-25
 Authors@R: c(
     MH = person("Michael", "Hoehle",
                 email = "hoehle@math.su.se",
@@ -47,7 +47,7 @@ Suggests:
     msm, spc, coda, runjags, INLA,
     spdep, numDeriv, maxLik, gsl, fanplot, hhh4contacts,
     quadprog,
-    memoise, polyclip, rgeos, gpclib, intervals, splancs,
+    memoise, polyclip, rgeos, intervals, splancs,
     gamlss, MGLM (>= 0.1.0), sf,
     tinytest (>= 1.2.4), knitr
 Enhances:
@@ -85,6 +85,5 @@ Description: Statistical methods for the modeling and monitoring of time series
     <doi:10.18637/jss.v077.i11>.
 License: GPL-2
 URL: https://surveillance.R-Forge.R-project.org/
-Additional_repositories: https://inla.r-inla-download.org/R/stable/,
-    https://rdpeng.r-universe.dev
+Additional_repositories: https://inla.r-inla-download.org/R/stable/
 VignetteBuilder: utils, knitr

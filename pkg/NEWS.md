@@ -1,3 +1,9 @@
+# surveillance 1.22.0
+
+- Long unused methods for `"gpc.poly"` objects (from package **gpclib**)
+  have now been removed and `surveillance.options("gpclib")` is obsolete.
+
+
 # surveillance 1.21.1 (2023-05-16)
 
 - This is a maintenance release, fixing encoding-related portability

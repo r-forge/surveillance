@@ -27,8 +27,7 @@ unionSpatialPolygons(SpP, method = c("rgeos", "polyclip"), ...)
     \code{\link[rgeos]{gUnaryUnion}} in package \pkg{rgeos}.
     For \code{method="polyclip"}, function
     \code{\link[polyclip]{polyclip}} from package \pkg{polyclip} is used.
-    The alternative \code{method="gpclib"} via package \pkg{maptools}
-    is no longer provided in \pkg{surveillance} > 1.20.3.
+    The old \code{method="gpclib"} is no longer available.
   }
   \item{\dots}{further arguments passed to the chosen \code{method}.}
 }

@@ -35,10 +35,8 @@ discpoly <- function (center, radius, npoly = 64,
     switch(class,
         "Polygon" = Polygon(cbind(c(x,x[1]),c(y,y[1])), hole=hole),
         "gpc.poly" = {
-            ##gpcWarning()
             pts <- list(list(x=x, y=y, hole=hole))
-            if (isClass("gpc.poly") ||
-                (gpclibCheck(FALSE) && requireNamespace("gpclib"))) {
+            if (isClass("gpc.poly")) { #|| requireNamespace("gpclib")
                 new("gpc.poly", pts = pts)
             } else {
                 warning("formal class \"gpc.poly\" not available")
@@ -56,7 +54,7 @@ unionSpatialPolygons <- function (SpP,
                                   ...)
 {
     if (identical(method, "gpclib")) {
-        .Deprecated(msg = "method = \"gpclib\" is deprecated; using default")
+        .Deprecated(msg = "method = \"gpclib\" is retired; using default")
         method <- NULL
     }
     method <- match.arg(method)
@@ -75,12 +73,6 @@ unionSpatialPolygons <- function (SpP,
             SpatialPolygons(list(W_Polygons))
         },
         "rgeos" = rgeos::gUnaryUnion(SpP, ...)
-        ## "gpclib" = {
-        ##     gpclibCheck() && maptools::gpclibPermit()
-        ##     maptools::unionSpatialPolygons(
-        ##         SpP, IDs = rep.int(1,length(SpP@polygons)),
-        ##         avoidGEOS = TRUE, ...)
-        ## }
     )
     ## ensure that W has exactly the same proj4string as SpP
     W@proj4string <- SpP@proj4string
