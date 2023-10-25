@@ -16,6 +16,8 @@
            - rgeos::gUnaryUnion(SpP) -> sf::st_union(sf::st_as_sfc(SpP)) ?
 15/03/2023 remove dead and unfinished (long experimental) code.
            candidates: newtonRaphson
+31/08/2023 maybe use Paul's gdiff package to watch for unexpected changes
+           in example plots similar to archiving the -Ex.Rout file
 
 #Done
 17/03/2020 remove ancient algo.hhh and simHHH implementations
