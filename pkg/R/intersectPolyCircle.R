@@ -21,9 +21,14 @@ intersectPolyCircle.owin <- function (object, center, radius, npoly = 32, ...)
 intersectPolyCircle.SpatialPolygons <- function (object, center, radius,
                                                  npoly = 32, ...)
 {
-    circle <- discpoly(center, radius, npoly = npoly, class = "Polygon")
-    circleSpP <- SpatialPolygons(list(Polygons(list(circle), "0")))
-    ## ensure that circleSpP has exactly the same proj4string as 'object'
-    circleSpP@proj4string <- object@proj4string
-    rgeos::gIntersection(circleSpP, object)
+    .Defunct()
+    ## FIXME: could implement and wrap a method for sf polygons
+    ##intersectPolyCircle.sfc(sf::st_as_sfc(object), center, radius, npoly, ...)
 }
+
+## intersectPolyCircle.sfc <- function (object, center, radius, npoly = 32, ...)
+## {
+##     ## FIXME: assert polygonal object
+##     circle <- discpoly(center, radius, npoly = npoly, class = "sfg") # or sfc?
+##     sf::st_intersection(object, circle)
+## }

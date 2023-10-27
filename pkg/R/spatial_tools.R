@@ -13,6 +13,7 @@
 
 discpoly <- function (center, radius, npoly = 64,
                       class = c("Polygon", "owin", "gpc.poly"),
+                      ## FIXME: should add polygonal "sfg" (or "sfc"?)
                       hole = FALSE)
 {
     class <- match.arg(class)
@@ -47,19 +48,23 @@ discpoly <- function (center, radius, npoly = 64,
 }
 
 
-### Wrapper for polyclip or rgeos::gUnaryUnion
+### Wrapper for polyclip or sf::st_union
 
 unionSpatialPolygons <- function (SpP,
-                                  method = c("rgeos", "polyclip"),
+                                  method = c("sf", "polyclip"),
                                   ...)
 {
-    if (identical(method, "gpclib")) {
-        .Deprecated(msg = "method = \"gpclib\" is retired; using default")
+    if (identical(method, "gpclib") || identical(method, "rgeos")) {
+        .Deprecated(msg = sprintf("method = \"%s\" is retired; using default", method))
         method <- NULL
     }
     method <- match.arg(method)
     W <- switch(
         method,
+        "sf" = {
+            sf::as_Spatial(sf::st_union(sf::st_as_sfc(SpP), ...),
+                           IDs = "1") # as in rgeos::gUnaryUnion() before
+        },
         "polyclip" = {
             tiles_xylist <- xylist(SpP, reverse=FALSE)
             W_xylist <- polyclip::polyclip(tiles_xylist, tiles_xylist, "union",
@@ -71,8 +76,7 @@ unionSpatialPolygons <- function (SpP,
                        Polygon(cbind(p$x,p$y)[c(1L,length(p$x):1L),])),
                 ID="1")
             SpatialPolygons(list(W_Polygons))
-        },
-        "rgeos" = rgeos::gUnaryUnion(SpP, ...)
+        }
     )
     ## ensure that W has exactly the same proj4string as SpP
     W@proj4string <- SpP@proj4string
@@ -121,7 +125,7 @@ multiplicity.Spatial <- function (x) multiplicity(coordinates(x))
 
 polyAtBorder <- function (SpP,
                           snap = sqrt(.Machine$double.eps),
-                          method = "rgeos", ...)
+                          method = "sf", ...)
 {
     SpP <- as(SpP, "SpatialPolygons")
     W <- unionSpatialPolygons(SpP, method = method, ...)

@@ -1,7 +1,7 @@
 \name{intersectPolyCircle}
 \alias{intersectPolyCircle}
 \alias{intersectPolyCircle.owin}
-\alias{intersectPolyCircle.SpatialPolygons}
+%\alias{intersectPolyCircle.SpatialPolygons} # defunct in surveillance 1.22.0
 
 \title{
   Intersection of a Polygonal and a Circular Domain
@@ -11,13 +11,16 @@
   This is a unifying wrapper around functionality of various packages
   dealing with spatial data. It computes the intersection of a circular
   domain and a polygonal domain (whose class defines the specific method).
+
+  Currently the only supported class is \code{"\link[spatstat.geom]{owin}"}
+  from package \CRANpkg{spatstat.geom}.
 }
 
 \usage{
 intersectPolyCircle(object, center, radius, ...)
 
 \method{intersectPolyCircle}{owin}(object, center, radius, npoly = 32, ...)
-\method{intersectPolyCircle}{SpatialPolygons}(object, center, radius, npoly = 32, ...)
+%\method{intersectPolyCircle}{SpatialPolygons}(object, center, radius, npoly = 32, ...)
 }
 
 \arguments{
