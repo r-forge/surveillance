@@ -1,3 +1,10 @@
+# surveillance 1.22.0.9000
+
+## BUG FIXES
+
+- The `pit()` plot could lack some tick marks on the y-axis (for R >= 4.2.0).
+
+
 # surveillance 1.22.0 (2023-10-30)
 
 ## PACKAGE INFRASTRUCTURE
