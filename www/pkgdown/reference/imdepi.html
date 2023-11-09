@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -154,9 +154,8 @@
   time trends and seasonality (in this discretized time).</p>  
 <p>The entry <code>W</code> contains the observation window as a
   <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code> object, in this case the
-  boundaries of Germany. It was obtained as
-  <code>stateD &lt;- rgeos::gUnaryUnion(districtsD)</code>,
-  where <code>districtsD</code> represents Germany's districts as at
+  boundaries of Germany (<code>stateD</code>). It was obtained as the
+  “UnaryUnion” of Germany's districts (<code>districtsD</code>) as at
   2009-01-01, simplified by the “modified Visvalingam” algorithm
   (level 6.6%) available at <a href="https://MapShaper.org" class="external-link">https://MapShaper.org</a> (v. 0.1.17).
   The objects <code>districtsD</code> and <code>stateD</code> are contained in

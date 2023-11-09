@@ -20,7 +20,7 @@ nb2mat(poly2nb(SpP, ...), style="B",
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +108,7 @@ representing polygon adjacencies.</p>
 <span>    <span class="va">adjmat</span> <span class="op">&lt;-</span> <span class="fu">poly2adjmat</span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">@</span><span class="va">map</span><span class="op">)</span></span>
 <span></span>
 <span>    <span class="co">## same as already stored in the neighbourhood slot (in different order)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">adjmat</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">adjmat</span>,</span>
 <span>                        <span class="fu"><a href="stsSlots.html">neighbourhood</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">adjmat</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">adjmat</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>    <span class="co">## a visual check of the district-specific number of neighbours</span></span>

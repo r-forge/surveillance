@@ -20,11 +20,11 @@ title: Events
     and in [Berlin](https://www.berlin.de/corona/lagebericht/desktop/corona.html).
 
   - The `hhh4()` modelling framework has been used in several
-    retrospective studies of disease dynamics in
+    retrospective studies of disease dynamics:
 ```{r, echo = FALSE, results = "asis"}
 refs_EE <- read.csv("../../../www/applications_EE.csv")
 knitr::combine_words(
-  with(subset(refs_EE, Model == "hhh4" & Disease == "COVID-19"),
+  with(subset(refs_EE, Model == "hhh4" & Disease == "COVID-19" & Period == 2020),
        sprintf("[%s](%s)", Location, URL))
 )
 ```

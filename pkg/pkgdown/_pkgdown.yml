@@ -125,6 +125,7 @@ reference:
 - subtitle: Spatial utilities
 - contents:
   - matches("poly")
+  - intersectPolyCircle
   - unionSpatialPolygons
   - marks
   - starts_with("multiplicity")

@@ -12,7 +12,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,18 +63,7 @@
     <dl><dt>...</dt>
 <dd><p>Either empty, or a sequence of option names (as strings),
     or a sequence of <code>name=value</code> pairs, or a named list of
-    options. Available options are:</p><dl><dt>gpclib:</dt>
-<dd><p>Logical flag indicating whether <span class="pkg">gpclib</span>, the General
-	Polygon Clipping Library for <span style="R">R</span>, which (in some versions) has a restricted license
-	(commercial use prohibited), 
-	may be used. This is currently not required since package
-	<span class="pkg">surveillance</span> has switched to alternatives such as
-	<span class="pkg">polyclip</span> and <span class="pkg">rgeos</span> for generating <code>"<a href="epidataCS.html">epidataCS</a>"</code>
-	objects by <code>as.epidataCS</code> or <code>simEpidataCS</code>.
-	The default setting is <code>FALSE</code>.</p></dd>
-
-      
-      <dt>stsTickFactors:</dt>
+    options. Available options are:</p><dl><dt>stsTickFactors:</dt>
 <dd><p>A named vector containing tick sizes for the <code>"sts"</code> x-axis relative to
 	<code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a>("tcl")</code>. Each entry contains the size at <code><a href="https://rdrr.io/r/base/strptime.html" class="external-link">strptime</a></code>
 	formatting strings. See the help on <code><a href="stsplot_time.html">stsplot_time1</a></code> for

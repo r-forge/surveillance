@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,13 +45,19 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.22.0" id="surveillance-1220-2023-10-30">surveillance 1.22.0 (2023-10-30)<a class="anchor" aria-label="anchor" href="#surveillance-1220-2023-10-30"></a></h2>
+<ul><li><p>Long unused methods for <code>"gpc.poly"</code> objects (from package <strong>gpclib</strong>) have now been removed and <code>surveillance.options("gpclib")</code> is obsolete.</p></li>
+<li><p>Package <strong>rgeos</strong> is no longer available as a <code>clipper</code> method for <code><a href="../reference/epidataCS.html">as.epidataCS()</a></code>. The previous default <strong>polyclip</strong> remains as the only option.</p></li>
+<li><p>Legacy functions <code><a href="../reference/unionSpatialPolygons.html">unionSpatialPolygons()</a></code> and <code><a href="../reference/polyAtBorder.html">polyAtBorder()</a></code> now use <strong>sf</strong> in place of <strong>rgeos</strong>.</p></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.21.1" id="surveillance-1211-2023-05-16">surveillance 1.21.1 (2023-05-16)<a class="anchor" aria-label="anchor" href="#surveillance-1211-2023-05-16"></a></h2>
 <ul><li>This is a maintenance release, fixing encoding-related portability issues and increasing test coverage for rarely used functionality.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.21.0" id="surveillance-1210-2023-03-14">surveillance 1.21.0 (2023-03-14)<a class="anchor" aria-label="anchor" href="#surveillance-1210-2023-03-14"></a></h2>
 <ul><li><p><strong>surveillance</strong> no longer relies on the <strong>maptools</strong> package: <code><a href="../reference/unionSpatialPolygons.html">unionSpatialPolygons()</a></code> with <code>method = "gpclib"</code> is deprecated and now uses the default method with a warning.</p></li>
-<li><p>Long unused <code><a href="../reference/scale.gpc.poly.html">scale.gpc.poly()</a></code> and <code><a href="../reference/inside.gpc.poly.html">inside.gpc.poly()</a></code> are deprecated; the unused and undocumented <code>diameter.gpc.poly()</code> method has been removed.</p></li>
+<li><p>Long unused <code><a href="../reference/surveillance-defunct.html">scale.gpc.poly()</a></code> and <code><a href="../reference/surveillance-defunct.html">inside.gpc.poly()</a></code> are deprecated; the unused and undocumented <code>diameter.gpc.poly()</code> method has been removed.</p></li>
 <li><p><code><a href="../reference/nbOrder.html">nbOrder()</a></code> has been re-implemented: it is now more efficient and no longer depends on <strong>spdep</strong>. Furthermore, it now defaults to <code>maxlag = Inf</code>; the historical default <code>maxlag = 1</code> was barely useful. It no longer messages (about the range of the detected orders).</p></li>
 <li><p>Accommodate the current evolution of <strong>sp</strong>: <strong>sf</strong> is suggested and some examples are now conditionalized on its availability.</p></li>
 <li><p>Printing <code>"sts"</code> objects with a map now shows the first row of the attached data (if present) instead of the object summary.</p></li>
@@ -318,7 +324,7 @@
 <li><p>Automatic <code>knots</code>, model <code><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals()</a></code>, as well as the rug in <code><a href="../reference/intensityplot.html">intensityplot()</a></code> were computed from the whole set of event times.</p></li>
 </ul></li>
 <li><p>The <code><a href="../reference/epidata.html">as.epidata.data.frame()</a></code> converter did not actually allow for latent periods (via <code>tE.col</code>). This is now possible but considered experimental (methods for <code>"epidata"</code> currently ignore latent periods).</p></li>
-<li><p>The <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> methods for <code>"hhh4"</code> and <code>"twinstim"</code> objects now first check for the correct classes.</p></li>
+<li><p>The <code><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal()</a></code> methods for <code>"hhh4"</code> and <code>"twinstim"</code> objects now first check for the correct classes.</p></li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -545,7 +551,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 <li><p>The <code>animate</code>-method for <code>"sts"</code> objects gained an argument <code>draw</code> (to disable the default instantaneous plotting) and now invisibly returns the sequential plot objects (of class <code>"gtable"</code> or <code>"trellis"</code>) in a list for post-processing.</p></li>
 <li><p>The flexible time axis configurations for <code>"sts"</code> plots introduced in version 1.8-0 now also work for classical <code>"sts"</code> objects with integer epochs and standard frequencies (try <code>plot(..., epochsAsDate = TRUE)</code>).</p></li>
 <li><p><code><a href="../reference/stsplot_time.html">stsplot_time()</a></code> initiates <code>par</code> settings only if the <code>par.list</code> argument is a list.</p></li>
-<li><p>The new <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code> method for class <code>"hhh4"</code> compares two fits ignoring their <code>"runtime"</code> and <code>"call"</code> elements (at least).</p></li>
+<li><p>The new <code><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal()</a></code> method for class <code>"hhh4"</code> compares two fits ignoring their <code>"runtime"</code> and <code>"call"</code> elements (at least).</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-10-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-1-10-0"></a></h3>
@@ -794,7 +800,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 <h2 class="pkg-version" data-toc-text="1.7-0" id="surveillance-17-0-2013-11-19">surveillance 1.7-0 (2013-11-19)<a class="anchor" aria-label="anchor" href="#surveillance-17-0-2013-11-19"></a></h2>
 <div class="section level3">
 <h3 id="synopsis-1-7-0">SYNOPSIS<a class="anchor" aria-label="anchor" href="#synopsis-1-7-0"></a></h3>
-<ul><li><p>Package <a href="https://CRAN.R-project.org/package=gpclib" class="external-link"><strong>gpclib</strong></a> is no longer necessary for the construction of <code>"epidataCS"</code>-objects. Instead, we make use of the new dedicated package <a href="https://CRAN.R-project.org/package=polyclip" class="external-link"><strong>polyclip</strong></a> (licensed under the BSL) for polygon clipping operations (via <code>spatstat::intersect.owin()</code>). This results in a slightly different <code>$events$.influenceRegion</code> component of <code>"epidataCS"</code> objects, one reason being that <strong>polyclip</strong> uses integer arithmetic. Change of <code><a href="../reference/twinstim.html">twinstim()</a></code> estimates for a newly created <code>"epidataCS"</code> compared with the same data prepared in earlier versions should be very small (e.g., for <code>data("imdepifit")</code> the mean relative difference of coefficients is 3.7e-08, while the <code><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik()</a></code> is <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code>). As an alternative, <strong>rgeos</strong> can still be chosen to do the polygon operations.</p></li>
+<ul><li><p>Package <a href="https://CRAN.R-project.org/package=gpclib" class="external-link"><strong>gpclib</strong></a> is no longer necessary for the construction of <code>"epidataCS"</code>-objects. Instead, we make use of the new dedicated package <a href="https://CRAN.R-project.org/package=polyclip" class="external-link"><strong>polyclip</strong></a> (licensed under the BSL) for polygon clipping operations (via <code>spatstat::intersect.owin()</code>). This results in a slightly different <code>$events$.influenceRegion</code> component of <code>"epidataCS"</code> objects, one reason being that <strong>polyclip</strong> uses integer arithmetic. Change of <code><a href="../reference/twinstim.html">twinstim()</a></code> estimates for a newly created <code>"epidataCS"</code> compared with the same data prepared in earlier versions should be very small (e.g., for <code>data("imdepifit")</code> the mean relative difference of coefficients is 3.7e-08, while the <code><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik()</a></code> is <code><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal()</a></code>). As an alternative, <strong>rgeos</strong> can still be chosen to do the polygon operations.</p></li>
 <li><p>The <strong>surveillance</strong>-internal code now depends on R &gt;= 2.15.2 (for <code><a href="https://rdrr.io/r/stats/nlminb.html" class="external-link">nlminb()</a></code> <code>NA</code> fix of PR#15052, consistent <code>rownames(model.matrix)</code> of PR#14992, <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>, <code><a href="https://rdrr.io/r/parallel/mclapply.html" class="external-link">parallel::mcmapply()</a></code>). However, the required recent version of <strong>spatstat</strong> (1.34-0, for <strong>polyclip</strong>) actually needs R &gt;= 3.0.2, which therefore also applies to <strong>surveillance</strong>.</p></li>
 <li><p>Some minor new features and changes are documented below.</p></li>
 </ul></div>
@@ -938,7 +944,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 <li><p>Numerical integration of spatial interaction functions with an <code>Fcircle</code> trick is more precise now; this slightly changes previous results.</p></li>
 <li><p>New S3-generic <code><a href="../reference/untie.html">untie()</a></code> with a method for the <code>"epidataCS"</code> class (to randomly break tied event times and/or locations).</p></li>
 <li><p>Renamed <code>N</code> argument of <code>polyCub.SV()</code> to <code>nGQ</code>, and <code>a</code> to <code>alpha</code>, which both have new default values. The optional polygon rotation proposed by Sommariva &amp; Vianello is now also implemented (based on the corresponding MATLAB code) and available as the new <code>rotation</code> argument.</p></li>
-<li><p>The <code>scale.poly()</code> method for <code>"gpc.poly"</code> is now available as <code><a href="../reference/scale.gpc.poly.html">scale.gpc.poly()</a></code>. The default return class of <code><a href="../reference/discpoly.html">discpoly()</a></code> was changed from <code>"gpc.poly"</code> to <code>"Polygon"</code>.</p></li>
+<li><p>The <code>scale.poly()</code> method for <code>"gpc.poly"</code> is now available as <code><a href="../reference/surveillance-defunct.html">scale.gpc.poly()</a></code>. The default return class of <code><a href="../reference/discpoly.html">discpoly()</a></code> was changed from <code>"gpc.poly"</code> to <code>"Polygon"</code>.</p></li>
 <li><p>An <code><a href="../reference/intensityplot.html">intensityplot()</a></code>-method is now also implemented for <code>"simEpidataCS"</code>.</p></li>
 </ul></div>
 <div class="section level3">

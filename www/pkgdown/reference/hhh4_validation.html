@@ -32,7 +32,7 @@ Scores, calibration tests and PIT histograms can also be
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -398,7 +398,7 @@ just convenient wrappers around the respective default methods.</p>
 <span></span>
 <span><span class="co"># \dontshow{</span></span>
 <span><span class="co">## test that scFitted is equivalent to scores(oneStepAhead(..., type = "final"))</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal</a></span><span class="op">(</span></span>
 <span>    <span class="va">scFitted</span>,</span>
 <span>    <span class="fu"><a href="scores.html">scores</a></span><span class="op">(</span><span class="fu">oneStepAhead</span><span class="op">(</span><span class="va">result</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">salmonella</span><span class="op">)</span><span class="op">-</span><span class="fl">5</span>, type<span class="op">=</span><span class="st">"final"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    check.attributes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>

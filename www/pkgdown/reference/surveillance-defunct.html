@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.21.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,10 +51,20 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co">## Defunct in surveillance 1.20.0</span></span>
-<span><span class="fu">qlomax</span><span class="op">(</span><span class="va">p</span>, <span class="va">scale</span>, <span class="va">shape</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co">## Removed in surveillance 1.17.0</span></span>
+<span><span class="fu">compMatrix.writeTable</span><span class="op">(</span><span class="va">compMatrix</span><span class="op">)</span></span>
+<span><span class="fu">correct53to52</span><span class="op">(</span><span class="va">disProgObj</span>, firstweek <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu">enlargeData</span><span class="op">(</span><span class="va">disProgObj</span>, range <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">156</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu">makePlot</span><span class="op">(</span><span class="va">outputpath</span>, data <span class="op">=</span> <span class="st">"k1"</span>, method <span class="op">=</span> <span class="st">"rki1"</span>,</span>
+<span>         <span class="va">name</span>, <span class="va">disease</span>, range <span class="op">=</span> <span class="fl">157</span><span class="op">:</span><span class="fl">339</span><span class="op">)</span></span>
+<span><span class="fu">readData</span><span class="op">(</span><span class="va">abb</span>, week53to52<span class="op">=</span><span class="cn">TRUE</span>, sysPath<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">test</span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k1"</span>, <span class="st">"m5"</span><span class="op">)</span>, range <span class="op">=</span> <span class="fl">157</span><span class="op">:</span><span class="fl">339</span><span class="op">)</span></span>
+<span><span class="fu">testSim</span><span class="op">(</span>p <span class="op">=</span> <span class="fl">0.99</span>, r <span class="op">=</span> <span class="fl">0.01</span>, length <span class="op">=</span> <span class="fl">400</span>, A <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        beta <span class="op">=</span> <span class="fl">0</span>, phi <span class="op">=</span> <span class="fl">0</span>, frequency <span class="op">=</span> <span class="fl">1</span>, state <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">K</span>, </span>
+<span>        range <span class="op">=</span> <span class="fl">200</span><span class="op">:</span><span class="fl">400</span><span class="op">)</span></span>
+<span><span class="fu">toFileDisProg</span><span class="op">(</span><span class="va">disProgObj</span>, <span class="va">toFile</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Defunct in surveillance 1.18.0</span></span>
+<span><span class="co">## Removed in surveillance 1.18.0</span></span>
 <span><span class="fu">algo.hhh</span><span class="op">(</span><span class="va">disProgObj</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>             lambda<span class="op">=</span><span class="cn">TRUE</span>, neighbours<span class="op">=</span><span class="cn">FALSE</span>, linear<span class="op">=</span><span class="cn">FALSE</span>, nseason<span class="op">=</span><span class="fl">0</span>,</span>
 <span>             negbin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"single"</span>, <span class="st">"multiple"</span><span class="op">)</span>,</span>
@@ -70,28 +80,21 @@
 <span>                negbin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">12</span>, <span class="fl">10</span><span class="op">)</span></span>
 <span>            <span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Defunct in surveillance 1.17.0</span></span>
-<span><span class="fu">compMatrix.writeTable</span><span class="op">(</span><span class="va">compMatrix</span><span class="op">)</span></span>
-<span><span class="fu">correct53to52</span><span class="op">(</span><span class="va">disProgObj</span>, firstweek <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu">enlargeData</span><span class="op">(</span><span class="va">disProgObj</span>, range <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">156</span>, times <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu">makePlot</span><span class="op">(</span><span class="va">outputpath</span>, data <span class="op">=</span> <span class="st">"k1"</span>, method <span class="op">=</span> <span class="st">"rki1"</span>,</span>
-<span>         <span class="va">name</span>, <span class="va">disease</span>, range <span class="op">=</span> <span class="fl">157</span><span class="op">:</span><span class="fl">339</span><span class="op">)</span></span>
-<span><span class="fu">readData</span><span class="op">(</span><span class="va">abb</span>, week53to52<span class="op">=</span><span class="cn">TRUE</span>, sysPath<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu">test</span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k1"</span>, <span class="st">"m5"</span><span class="op">)</span>, range <span class="op">=</span> <span class="fl">157</span><span class="op">:</span><span class="fl">339</span><span class="op">)</span></span>
-<span><span class="fu">testSim</span><span class="op">(</span>p <span class="op">=</span> <span class="fl">0.99</span>, r <span class="op">=</span> <span class="fl">0.01</span>, length <span class="op">=</span> <span class="fl">400</span>, A <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>        beta <span class="op">=</span> <span class="fl">0</span>, phi <span class="op">=</span> <span class="fl">0</span>, frequency <span class="op">=</span> <span class="fl">1</span>, state <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">K</span>, </span>
-<span>        range <span class="op">=</span> <span class="fl">200</span><span class="op">:</span><span class="fl">400</span><span class="op">)</span></span>
-<span><span class="fu">toFileDisProg</span><span class="op">(</span><span class="va">disProgObj</span>, <span class="va">toFile</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">## Removed in surveillance 1.20.0</span></span>
+<span><span class="fu">qlomax</span><span class="op">(</span><span class="va">p</span>, <span class="va">scale</span>, <span class="va">shape</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Removed in surveillance 1.22.0</span></span>
+<span><span class="fu">inside.gpc.poly</span><span class="op">(</span><span class="va">x</span>, y <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">polyregion</span>, mode.checked <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for gpc.poly</span></span>
+<span><span class="fu"><a href="intersectPolyCircle.html">intersectPolyCircle</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">center</span>, <span class="va">radius</span>, npoly <span class="op">=</span> <span class="fl">32</span>,</span>
+<span>                   useGEOS <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="co"># S3 method for gpc.poly</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">x</span>, center <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>A <code>qlomax</code> function is provided in package <span class="pkg">VGAM</span>.</p>  
-<p><code>algo.hhh</code> was an early implementation of the HHH regression
-  framework for multivariate time series of infectious disease counts.
-  An improved and considerably extended implementation is provided by
-  the <code><a href="hhh4.html">hhh4</a></code> function since 2012.</p>  
-<p>The trivial function <code>compMatrix.writeTable</code> is no longer used
+    <p>The trivial function <code>compMatrix.writeTable</code> is no longer used
   (it did nothing more than generating an <code>xtable</code> of its input).</p>  
 <p>The ancient test function <code>makePlot</code> is no longer used,
   nor are functions <code>readData</code> (the datasets are still available
@@ -107,6 +110,13 @@
   class are no longer needed. The effect of <code>toFileDisProg</code> could
   still be achieved via <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></code> of
   <code>as.data.frame(disProg2sts(disProgObj))[c("epoch", "observed", "state")]</code>.</p>
+<p><code>algo.hhh</code> was an early implementation of the HHH regression
+  framework for multivariate time series of infectious disease counts.
+  An improved and considerably extended implementation is provided by
+  the <code><a href="hhh4.html">hhh4</a></code> function since 2012.</p>
+<p>A <code>qlomax</code> function is provided in package <span class="pkg">VGAM</span>.</p>
+<p>Long unused methods for <code>"gpc.poly"</code> objects have been removed;
+  the corresponding package <span class="pkg">gpclib</span> has been unmaintained on CRAN.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
