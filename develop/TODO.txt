@@ -113,10 +113,6 @@
 #Bug reports
 ############
 
-02/10/2020 simulate.twinstim's gmax should be replaced by tiaf$gmax(pars)
-27/02/2023 add tiaf.exponential(log = TRUE) to force a decay (usually expected)
-
-
 #Fixed
 29/07/2010>> Summary/print fuer twinstim Objekte, die mit do.call
              erzeugt worden sind scheint nicht zu funktionieren.
@@ -147,6 +143,8 @@ xx/07/2012 R0 on an object containing agegrp as a factor variable
 # Features
 ##########
 
+- add tiaf.exponential(log = TRUE) to force a decay (usually expected)
+- simulate.twinstim's gmax should be replaced by generalized tiaf$gmax(pars)
 - type-specific iso-kernels (need example or test code)
 - add 'tiles' as optional component of "epidataCS"
 - as.epidataCS: "events" could be provided as an object of class ppx (which
