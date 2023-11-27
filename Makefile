@@ -37,11 +37,10 @@ R := R
 VERSION := $(shell $R --vanilla --slave -e 'cat(read.dcf("pkg/DESCRIPTION", fields="Version"))')
 
 ## build the package
-BUILD_COMPACT_VIGNETTES := no
 build:
-	$R CMD build --no-resave-data --compact-vignettes=${BUILD_COMPACT_VIGNETTES} pkg
-build-cran: BUILD_COMPACT_VIGNETTES := both
-build-cran: build
+	$R CMD build --no-resave-data --compact-vignettes=both pkg
+build-noVignettes:
+	$R CMD build --no-resave-data --no-build-vignettes pkg
 
 ## Save internal datasets from pkg/sysdata/ into pkg/R/sysdata.rda
 sysdata:
@@ -70,13 +69,13 @@ if [ $$nwarn -gt 0 ]; then echo "\n\tWARNING: $$nwarn" \
 endef
 
 ## "quick" check
-check: build
+check: build-noVignettes
 	_R_CHECK_FORCE_SUGGESTS_=FALSE _R_CHECK_COMPACT_DATA_=FALSE \
 	_R_CHECK_PKG_SIZES_=FALSE _R_CHECK_DOC_SIZES_=FALSE \
 	$R CMD check --no-manual --ignore-vignettes --check-subdirs=no surveillance_${VERSION}.tar.gz
 
 ## standard --as-cran check
-check-cran: build-cran
+check-cran: build
 	$R CMD check --as-cran --timings surveillance_${VERSION}.tar.gz
 ## further option: --use-gct (for better detection of memory bugs/segfaults)
 	@$(check-report-timings)
@@ -85,7 +84,7 @@ check-cran: build-cran
 ## check with "allExamples" and --run-dontrun
 ## also use --extra-arch to only do runtime tests (no R and Rd code checking)
 ## ignore check.Renviron where I set _R_CHECK_LENGTH_1_LOGIC2_=TRUE (stops INLA)
-check-allExamples: build
+check-allExamples: build-noVignettes
 	_R_SURVEILLANCE_ALL_EXAMPLES_=TRUE R_CHECK_ENVIRON="" $R CMD check --timings --run-dontrun --extra-arch --output=/tmp surveillance_${VERSION}.tar.gz
 	@$(check-report-timings)
 	@$(check-report-warnings-in-examples)
@@ -126,4 +125,4 @@ clean:
 	make -C pkg/vignettes clean
 	rm -f pkg/*/.Rhistory
 
-.PHONY: build build-cran sysdata check check-cran check-allExamples install checkUsage manual www clean
+.PHONY: build build-noVignettes sysdata check check-cran check-allExamples install checkUsage manual www clean
