@@ -2,6 +2,11 @@
 title: Events
 ---
 
+## 2024
+
+- 2024/09/09: Half-day workshop on endemic-epidemic modelling
+  at GEOMED 2024 in Hasselt, Belgium.
+
 ## 2022
 
 - `hhh4()` [workshop](https://cmmid.github.io/hhh4-workshop/)
