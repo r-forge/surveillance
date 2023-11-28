@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.22.0; see ‘package?surveillance’ or
+This is surveillance 1.22.1; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -2044,7 +2044,7 @@ detaching ‘package:msm’
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: algo.quality
 > ### Title: Computation of Quality Values for a Surveillance System Result
-> ### Aliases: algo.quality
+> ### Aliases: algo.quality xtable.algoQV
 > ### Keywords: misc
 > 
 > ### ** Examples
@@ -2057,10 +2057,31 @@ detaching ‘package:msm’
 > # Let this object be tested from rki1
 > survResObj <- algo.rki1(disProgObj, control = list(range = 50:200))
 > 
-> # Compute the quality values
-> algo.quality(survResObj)
+> # Compute the list of quality values
+> quality <- algo.quality(survResObj)
+> quality # the list is printed in matrix form
      TP FP TN  FN Sens Spec      dist       mlag
 [1,] 3  6  142 0  1    0.9594595 0.04054054 0   
+> 
+> ## Don't show: 
+> .opt <- options(xtable.comment = FALSE)
+> ## End(Don't show)
+> # Format as an "xtable", which is printed with LaTeX markup (by default)
+> library("xtable")
+> xtable(quality)
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+  \hline
+ & TP & FP & TN & FN & sens & spec & dist & mlag \\ 
+  \hline
+1 & 3.00 & 6.00 & 142.00 & 0.00 & 1.00 & 0.96 & 0.04 & 0.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+> ## Don't show: 
+> options(.opt)
+> ## End(Don't show)
 > 
 > 
 > 
@@ -6508,8 +6529,6 @@ z = 0.27416, n = 52, p-value = 0.784
 > ### areal time series of influenza counts - data("fluBYBW") -
 > ### see the (computer-intensive) demo("fluBYBW") script:
 > demoscript <- system.file("demo", "fluBYBW.R", package = "surveillance")
-> demoscript
-[1] "/home/smeyer/Downloads/surveillance/surveillance.Rcheck/surveillance/demo/fluBYBW.R"
 > #file.show(demoscript)
 > 
 > 
@@ -6968,11 +6987,11 @@ dt      <= 50  > 50
 
 > ## The Poisson approximation works well for these data since
 > ## the proportion of close pairs is rather small (204/56280).
-> 
+> ## Don't show: 
+> .opt <- options(xtable.comment = FALSE)
+> ## End(Don't show)
 > ## contingency table in LaTeX
 > toLatex(knoxtest)
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:06 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{r|rr|r}
@@ -6987,7 +7006,9 @@ $\sum$ & 6817 & 49463 & 56280 \\
    \hline
 \end{tabular}
 \end{table}
-> 
+> ## Don't show: 
+> options(.opt)
+> ## End(Don't show)
 > 
 > ## Obtain the p-value via a Monte Carlo permutation test,
 > ## where the permutations can be computed in parallel
@@ -7162,7 +7183,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x55e560d3bce0>
+<environment: 0x5626075d2ff0>
 
 $ar$offset
 [1] 1
@@ -7171,7 +7192,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x55e560d3bce0>
+<environment: 0x5626075d2ff0>
 
 $ne$offset
 [1] 1
@@ -9084,9 +9105,8 @@ $gpclib
 +                 pThresholdTrend=0.05,trend=TRUE,
 +                 thresholdMethod="delta",alpha=0.1)
 > salm <- farringtonFlexible(salm,control=control)
-> toLatex(salm)
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:18 2023
+> 
+> toLatex(salm, sanitize.text.function=identity, comment=FALSE)
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrlr}
@@ -9094,12 +9114,12 @@ $gpclib
  & year & week & observed1 & UB \\ 
   \hline
 1 & 1994 & 52 & 3 & 3 \\ 
-  2 & 1995 & 1 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 3 \\ 
-  3 & 1995 & 2 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{7\}\} & 3 \\ 
-  4 & 1995 & 3 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{6\}\} & 3 \\ 
-  5 & 1995 & 4 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{10\}\} & 3 \\ 
+  2 & 1995 & 1 & \textbf{\textcolor{red}{4}} & 3 \\ 
+  3 & 1995 & 2 & \textbf{\textcolor{red}{7}} & 3 \\ 
+  4 & 1995 & 3 & \textbf{\textcolor{red}{6}} & 3 \\ 
+  5 & 1995 & 4 & \textbf{\textcolor{red}{10}} & 3 \\ 
   6 & 1995 & 5 & 2 & 3 \\ 
-  7 & 1995 & 6 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 3 \\ 
+  7 & 1995 & 6 & \textbf{\textcolor{red}{4}} & 3 \\ 
   8 & 1995 & 7 & 0 & 3 \\ 
   9 & 1995 & 8 & 3 & 4 \\ 
   10 & 1995 & 9 & 0 & 4 \\ 
@@ -9116,19 +9136,19 @@ $gpclib
   21 & 1995 & 20 & 1 &  \\ 
   22 & 1995 & 21 & 2 &  \\ 
   23 & 1995 & 22 & 2 & 3 \\ 
-  24 & 1995 & 23 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 3 \\ 
-  25 & 1995 & 24 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{7\}\} & 3 \\ 
-  26 & 1995 & 25 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{6\}\} & 3 \\ 
+  24 & 1995 & 23 & \textbf{\textcolor{red}{4}} & 3 \\ 
+  25 & 1995 & 24 & \textbf{\textcolor{red}{7}} & 3 \\ 
+  26 & 1995 & 25 & \textbf{\textcolor{red}{6}} & 3 \\ 
   27 & 1995 & 26 & 1 & 3 \\ 
-  28 & 1995 & 27 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 3 \\ 
-  29 & 1995 & 28 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{6\}\} & 3 \\ 
-  30 & 1995 & 29 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 2 \\ 
+  28 & 1995 & 27 & \textbf{\textcolor{red}{4}} & 3 \\ 
+  29 & 1995 & 28 & \textbf{\textcolor{red}{6}} & 3 \\ 
+  30 & 1995 & 29 & \textbf{\textcolor{red}{4}} & 2 \\ 
   31 & 1995 & 30 & 2 & 3 \\ 
-  32 & 1995 & 31 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 3 \\ 
-  33 & 1995 & 32 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{5\}\} & 4 \\ 
+  32 & 1995 & 31 & \textbf{\textcolor{red}{4}} & 3 \\ 
+  33 & 1995 & 32 & \textbf{\textcolor{red}{5}} & 4 \\ 
   34 & 1995 & 33 & 5 & 6 \\ 
-  35 & 1995 & 34 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{9\}\} & 7 \\ 
-  36 & 1995 & 35 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{8\}\} & 8 \\ 
+  35 & 1995 & 34 & \textbf{\textcolor{red}{9}} & 7 \\ 
+  36 & 1995 & 35 & \textbf{\textcolor{red}{8}} & 8 \\ 
   37 & 1995 & 36 & 6 & 8 \\ 
   38 & 1995 & 37 & 3 & 7 \\ 
   39 & 1995 & 38 & 2 & 7 \\ 
@@ -9137,7 +9157,7 @@ $gpclib
   42 & 1995 & 41 & 3 & 5 \\ 
   43 & 1995 & 42 & 3 & 4 \\ 
   44 & 1995 & 43 & 4 & 4 \\ 
-  45 & 1995 & 44 & $\backslash$textbf\{$\backslash$textcolor\{red\}\{4\}\} & 4 \\ 
+  45 & 1995 & 44 & \textbf{\textcolor{red}{4}} & 4 \\ 
   46 & 1995 & 45 & 2 & 3 \\ 
   47 & 1995 & 46 & 1 & 3 \\ 
   48 & 1995 & 47 & 2 & 5 \\ 
@@ -9845,8 +9865,7 @@ loglik(MLE) = -9570.059
 Done.
 > 
 > ## summarize the model fit
-> s <- summary(m0, correlation = TRUE, symbolic.cor = TRUE)
-> s
+> summary(m0, correlation = TRUE, symbolic.cor = TRUE)
 
 Call:
 twinstim(endemic = ~offset(log(popdensity)) + I(start/365 - 3.5) + 
@@ -9882,41 +9901,6 @@ e.(Intercept)             .       1
 ---
 Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘B’ 1
 
-> # output the table of coefficients as LaTeX code
-> toLatex(s, digits=2)
-\begin{tabular}{lrrrr}
-\hline
- & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
-\hline
-\hline 
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:23 2023
- \texttt{h.(Intercept)} & $-20.481$ & $0.053$ & $-389.0$ & $<1\cdot{}10^{-04}$ \\ 
-  \texttt{h.I(start/365-3.5)} & $-0.041$ & $0.022$ & $-1.9$ & $0.06$ \\ 
-  \texttt{h.sin(2*pi*start/365)} & $0.242$ & $0.064$ & $3.8$ & $2\cdot{}10^{-04}$ \\ 
-  \texttt{h.cos(2*pi*start/365)} & $0.350$ & $0.064$ & $5.4$ & $<1\cdot{}10^{-04}$ \\ 
-  \hline 
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:23 2023
- \texttt{e.(Intercept)} & $-16.90$ & $0.26$ & $-64$ & $<1\cdot{}10^{-04}$ \\ 
-  \hline 
-\end{tabular}
-> # or, to report rate ratios
-> xtable(s)
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:23 2023
-\begin{table}[ht]
-\centering
-\begin{tabular}{lrrr}
-  \hline
- & RR & 95\% CI & p-value \\ 
-  \hline
-h.I(start/365 - 3.5) & 0.960 & 0.92--1.00 & 0.062 \\ 
-  h.sin(2 * pi * start/365) & 1.273 & 1.12--1.44 & 0.0002 \\ 
-  h.cos(2 * pi * start/365) & 1.420 & 1.25--1.61 & $<$0.0001 \\ 
-   \hline
-\end{tabular}
-\end{table}
 > 
 > ## the default confint-method can be used for Wald-CI's
 > confint(m0, level=0.95)
@@ -10247,8 +10231,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x55e5628cdf60>
-<environment: 0x55e5628ca5f0>
+<bytecode: 0x562608172b90>
+<environment: 0x56260816f220>
 
 $G
 function (t, logvals, types) 
@@ -10258,7 +10242,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x55e5628ca5f0>
+<environment: 0x56260816f220>
 
 $deriv
 function (t, logvals, types) 
@@ -10274,8 +10258,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x55e5628cf150>
-<environment: 0x55e5628ca5f0>
+<bytecode: 0x562608173d80>
+<environment: 0x56260816f220>
 
 $Deriv
 function (t, logvals, types) 
@@ -10294,7 +10278,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x55e5628ca5f0>
+<environment: 0x56260816f220>
 
 $npars
 [1] 4
@@ -10960,16 +10944,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x55e564ad9110>
-<environment: 0x55e564ad5ea0>
+<bytecode: 0x562606cd09a0>
+<environment: 0x562606cc94f0>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x55e564ad9b90>
-<environment: 0x55e564ad5ea0>
+<bytecode: 0x562606cd1420>
+<environment: 0x562606cc94f0>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10977,8 +10961,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x55e564ada0d0>
-<environment: 0x55e564ad5ea0>
+<bytecode: 0x562606cd1960>
+<environment: 0x562606cc94f0>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10992,8 +10976,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x55e564ada840>
-<environment: 0x55e564ad5ea0>
+<bytecode: 0x562606cd20d0>
+<environment: 0x562606cc94f0>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -11001,8 +10985,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x55e564ad7ff0>
-<environment: 0x55e564ad5ea0>
+<bytecode: 0x562606ccd960>
+<environment: 0x562606cc94f0>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -11014,8 +10998,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x55e564ad8648>
-<environment: 0x55e564ad5ea0>
+<bytecode: 0x562606ccdfb8>
+<environment: 0x562606cc94f0>
 
 $npars
 [1] 3
@@ -11282,33 +11266,29 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 
 > 
 > # create LaTeX code of coefficient table
-> toLatex(s, withAIC=FALSE)
+> toLatex(s, digits=2)
 \begin{tabular}{lrrrr}
 \hline
  & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
 \hline
 \hline 
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:25 2023
- \texttt{h.(Intercept)} & $-20.52869$ & $0.04724$ & $-434.597$ & $<1\cdot{}10^{-04}$ \\ 
-  \texttt{h.I(start/365-3.5)} & $-0.04574$ & $0.02212$ & $-2.068$ & $0.03863$ \\ 
-  \texttt{h.sin(2*pi*start/365)} & $0.21728$ & $0.06467$ & $3.360$ & $0.00078$ \\ 
-  \texttt{h.cos(2*pi*start/365)} & $0.31810$ & $0.06380$ & $4.986$ & $<1\cdot{}10^{-04}$ \\ 
+ \texttt{h.(Intercept)} & $-20.529$ & $0.047$ & $-434.6$ & $<1\cdot{}10^{-04}$ \\ 
+  \texttt{h.I(start/365-3.5)} & $-0.046$ & $0.022$ & $-2.1$ & $0.04$ \\ 
+  \texttt{h.sin(2*pi*start/365)} & $0.217$ & $0.065$ & $3.4$ & $8\cdot{}10^{-04}$ \\ 
+  \texttt{h.cos(2*pi*start/365)} & $0.318$ & $0.064$ & $5.0$ & $<1\cdot{}10^{-04}$ \\ 
   \hline 
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:25 2023
- \texttt{e.(Intercept)} & $-12.51659$ & $0.32326$ & $-38.720$ & $<1\cdot{}10^{-04}$ \\ 
-  \texttt{e.typeC} & $-0.90832$ & $0.26742$ & $-3.397$ & $0.000682$ \\ 
-  \texttt{e.agegrp[3,19)} & $0.70612$ & $0.32706$ & $2.159$ & $0.030852$ \\ 
-  \texttt{e.agegrp[19,Inf)} & $-0.24084$ & $0.46124$ & $-0.522$ & $0.601563$ \\ 
-  \texttt{e.siaf.1} & $2.76774$ & $0.08152$ &  &  \\ 
+ \texttt{e.(Intercept)} & $-12.517$ & $0.323$ & $-38.7$ & $<1\cdot{}10^{-04}$ \\ 
+  \texttt{e.typeC} & $-0.908$ & $0.267$ & $-3.4$ & $7\cdot{}10^{-04}$ \\ 
+  \texttt{e.agegrp[3,19)} & $0.706$ & $0.327$ & $2.2$ & $0.03$ \\ 
+  \texttt{e.agegrp[19,Inf)} & $-0.241$ & $0.461$ & $-0.5$ & $0.60$ \\ 
+  \texttt{e.siaf.1} & $2.768$ & $0.082$ &  &  \\ 
   \hline 
 \end{tabular}
-> 
+> ## Don't show: 
+> .opt <- options(xtable.comment = FALSE)
+> ## End(Don't show)
 > # or using the xtable-method (which produces rate ratios)
 > xtable(s)
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:25 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -11324,6 +11304,9 @@ h.I(start/365 - 3.5) & 0.955 & 0.91--1.00 & 0.039 \\
    \hline
 \end{tabular}
 \end{table}
+> ## Don't show: 
+> options(.opt)
+> ## End(Don't show)
 > 
 > 
 > 
@@ -11546,12 +11529,15 @@ attr(,"package")
 > 
 > ## simulate 2 realizations (over a short period, for speed)
 > ## considering events from data(imdepi) before t=31 as prehistory
+> ## Don't show: 
+> ## IGNORE_RDIFF_BEGIN
+> ## End(Don't show)
 > mysims <- simulate(imdepifit, nsim=2, seed=1, data=imdepi,
 +                    tiles=districtsD, newcoef=c("e.typeC"=-1),
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2023-10-30 17:25:27.075448 
+Time at beginning of simulation: 2023-11-28 10:05:17.442196 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11576,12 +11562,15 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.087 seconds
-Estimated finishing time: 2023-10-30 17:25:27.251881 
+Runtime of first simulation: 0.091 seconds
+Estimated finishing time: 2023-11-28 10:05:17.626368 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2023-10-30 17:25:27.461156).
+Done (2023-11-28 10:05:17.830868).
+> ## Don't show: 
+> ## IGNORE_RDIFF_END
+> ## End(Don't show)
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
 >     local({
@@ -11942,47 +11931,6 @@ FALSE  TRUE
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("untie", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-> nameEx("xtable.algoQV")
-> ### * xtable.algoQV
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: xtable.algoQV
-> ### Title: Xtable quality value object
-> ### Aliases: xtable.algoQV
-> ### Keywords: print
-> 
-> ### ** Examples
-> 
-> # Create a test object
-> disProgObj <- sim.pointSource(p = 0.99, r = 0.5, length = 200, A = 1,
-+                               alpha = 1, beta = 0, phi = 0,
-+                               frequency = 1, state = NULL, K = 1.7)
-> 
-> # Let this object be tested from rki1
-> survResObj <- algo.rki1(disProgObj, control = list(range = 50:200))
-> 
-> # Compute the quality values in a nice formatted way
-> xtable(algo.quality(survResObj))
-% latex table generated in R 4.3.1 by xtable 1.8-4 package
-% Mon Oct 30 17:25:30 2023
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrrrrr}
-  \hline
- & TP & FP & TN & FN & sens & spec & dist & mlag \\ 
-  \hline
-1 & 3.00 & 6.00 & 142.00 & 0.00 & 1.00 & 0.96 & 0.04 & 0.00 \\ 
-   \hline
-\end{tabular}
-\end{table}
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("xtable.algoQV", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
 > nameEx("zetaweights")
 > ### * zetaweights
 > 
@@ -12028,7 +11976,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  46.36 0.743 48.074 1.134 0.146 
+Time elapsed:  42.951 0.636 44.364 1.112 0.129 
 > grDevices::dev.off()
 null device 
           1 
