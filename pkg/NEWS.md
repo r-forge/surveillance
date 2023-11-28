@@ -1,18 +1,18 @@
 # surveillance 1.22.1 (2023-11-27)
 
-## BUG FIXES
+## Bug Fixes
 
 - The `pit()` plot could lack some tick marks on the y-axis (for R >= 4.2.0).
 
 
 # surveillance 1.22.0 (2023-10-30)
 
-## PACKAGE INFRASTRUCTURE
+## Package Infrastructure
 
 - Legacy functions `unionSpatialPolygons()` and `polyAtBorder()` now use
   **sf** in place of **rgeos**.
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - Long unused methods for `"gpc.poly"` objects (from package **gpclib**)
   have now been removed and `surveillance.options("gpclib")` is obsolete.
@@ -30,7 +30,7 @@
 
 # surveillance 1.21.0 (2023-03-14)
 
-## MINOR CHANGES
+## Minor Changes
 
 - `nbOrder()` has been re-implemented: it is now more efficient and no
   longer depends on **spdep**. Furthermore, it now defaults to
@@ -40,12 +40,12 @@
 - Printing `"sts"` objects with a map now shows the first row of the
   attached data (if present) instead of the object summary.
 
-## PACKAGE INFRASTRUCTURE
+## Package Infrastructure
 
 - Accommodate the current evolution of **sp**: **sf** is suggested and
   some examples are now conditionalized on its availability.
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - **surveillance** no longer relies on the **maptools** package:
   `unionSpatialPolygons()` with `method = "gpclib"` is deprecated
@@ -67,12 +67,12 @@
 
 # surveillance 1.20.2 (2022-10-31)
 
-## NEW FEATURES
+## New Features
 
 - `plotHHH4_fitted()` can now produce simple (unformatted) time indexes
   if argument `xaxis = NA`.
 
-## MINOR CHANGES
+## Minor Changes
 
 - Various documentation improvements,
   including an example for `predict.hhh4()`.
@@ -80,7 +80,7 @@
 - `intensityplot.twinstim()` no longer depends on package
   [**maptools**](https://CRAN.R-project.org/package=maptools).
 
-## BUG FIXES
+## Bug Fixes
 
 - `hhh4()` now warns about interaction terms in model formulae.
   These are not implemented and were silently ignored previously.
@@ -92,7 +92,7 @@
 
 # surveillance 1.20.1 (2022-07-13)
 
-## BUG FIXES
+## Bug Fixes
 
 - `ks.plot.unif()`: accommodate to `NO_S_TYPEDEFS` in R >= 4.3.0.
 
@@ -104,7 +104,7 @@
 
 # surveillance 1.20.0 (2022-02-15)
 
-## NEW FEATURES
+## New Features
 
 - `plotHHH4_season()` gained a `period` argument to support harmonics
   with periods longer than the frequency of the `"sts"` object.
@@ -114,7 +114,7 @@
 
 - `plotHHH4_fitted()` can now handle time series with missing values.
 
-## MINOR CHANGES
+## Minor Changes
 
 - If the Nelder-Mead optimizer is used for the variance parameters in
   `hhh4()`, it is now limited to 500 (not 300) iterations by default
@@ -134,7 +134,7 @@
 - `summary.hhh4()` now prints the number of excluded observations (due to
   missingness), if any.
 
-## BUG FIXES
+## Bug Fixes
 
 - The `print`-method for `summary.hhh4()` did not apply the `digits`
   argument to the coefficient matrix. Furthermore, printing of estimated
@@ -177,7 +177,7 @@
   A missing count at *t-1* in any unit now gives `NA` values for the
   neighbourhood terms of all units at time *t*, thus reducing `nobs()`.
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - `create.disProg()` is deprecated. Methods for legacy `"disProg"` objects
   are kept for backwards compatibility, but new projects should use `sts()`.
@@ -187,12 +187,12 @@
 
 # surveillance 1.19.1 (2021-03-30)
 
-## DOCUMENTATION
+## Documentation
 
 - The project website at <https://surveillance.R-Forge.R-project.org/>
   has been overhauled using [**pkgdown**](https://pkgdown.r-lib.org/).
 
-## BUG FIXES
+## Bug Fixes
 
 - The `CRS` of `data(imdepi)` and
   `data(measlesWeserEms)` have been updated via
@@ -222,7 +222,7 @@
 
 # surveillance 1.19.0 (2021-01-29)
 
-## NEW FEATURES
+## New Features
 
 - The `nowcast()` function with
   `method="bayes.trunc.ddcp"` now adds support for negative
@@ -238,7 +238,7 @@
 - `animate.sts()` can position the `timeplot` on
   other sides of the map.
 
-## MINOR CHANGES
+## Minor Changes
 
 - The weighted sum in the `ne`ighbourhood component of
   `hhh4()` models is computed more efficiently.
@@ -252,7 +252,7 @@
 - The default `main` title for `stsplot_space()` now
   uses the ISO year-week format for weekly `"sts"` data.
 
-## BUG FIXES
+## Bug Fixes
 
 - Bug fix in the `farringtonFlexible()`-function, which for
   the argument `thresholdMethod=="nbPlugin"` and
@@ -286,7 +286,7 @@
   `epitest(..., method="simulate")` are no longer slowed down by
   intermediate `CRS()` computations.
 
-## PACKAGE INFRASTRUCTURE
+## Package Infrastructure
 
 - Removed unused **rmapshaper** from "Suggests" and moved
   **xts** to "Enhances" (used only for `as.xts.sts`).
@@ -308,7 +308,7 @@
 
 # surveillance 1.18.0 (2020-03-18)
 
-## NEW FEATURES
+## New Features
 
 - New spatial interaction function for `twinstim()`:
   `siaf.exponential()` implements the exponential kernel
@@ -319,7 +319,7 @@
   `plotHHH4_maps()`, now allows for map-specific color keys
   via `zmax = NA` (useful for `prop = TRUE`).
 
-## BUG FIXES
+## Bug Fixes
 
 - The `nowcast()`-function now also works for
   `method="bayes.trunc.ddcp"` method when the number of breakpoints
@@ -331,7 +331,7 @@
   used unit-specific seasonal terms (`addSeason2formula` with
   `length(S) > 1`).
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - The original `algo.hhh()` implementation of the HHH
   model has been removed from the package. The function `hhh4()`
@@ -340,7 +340,7 @@
 
 # surveillance 1.17.3 (2019-12-16)
 
-## BUG FIXES
+## Bug Fixes
 
 - The `head()`-method for `"epidataCS"` objects did
   not work with a negative `n` argument.
@@ -350,7 +350,7 @@
 
 # surveillance 1.17.2 (2019-11-11)
 
-## MINOR CHANGES
+## Minor Changes
 
 - For multivariate time series, `sts()` now checks for
   mismatches in column names of supplied matrices (`observed`,
@@ -358,7 +358,7 @@
   input where the units (columns) are ordered differently in
   different slots, which would flaw subsequent analyses.
 
-## BUG FIXES
+## Bug Fixes
 
 - `simulate.twinSIR()` ignored the `atRiskY` indicator
   of the underlying `"epidata"`, so always assumed a completely
@@ -369,13 +369,13 @@
 
 # surveillance 1.17.1 (2019-09-13)
 
-## NEW FEATURES
+## New Features
 
 - New one-parameter power-law kernel `siaf.powerlaw1()`
   with fixed `sigma = 1`. Useful if `sigma` is difficult to
   estimate with `siaf.powerlaw()`.
 
-## BUG FIXES
+## Bug Fixes
 
 - `pit()`'s default `ylab` was wrong (default are
   densities not relative frequencies).
@@ -390,7 +390,7 @@
 
 - Minor additions and fixes in the package documentation.
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - `hcl.colors()`, exported since 1.14.0, has been renamed
   `.hcl.colors()` and is now internal again, to avoid a name
@@ -399,7 +399,7 @@
 
 # surveillance 1.17.0 (2019-02-22)
 
-## NEW FEATURES
+## New Features
 
 - `W_powerlaw(..., from0 = TRUE)` enables more parsimonious
   `hhh4` models in that the power-law weights are modified to
@@ -419,7 +419,7 @@
   `exp`-transformed and thus show multiplicative effects.
   [based on feedback by Tim Pollington]
 
-## MINOR CHANGES
+## Minor Changes
 
 - `W_np()`'s argument `to0` has been renamed to
   `truncate`. The old name still works but is deprecated.
@@ -436,7 +436,7 @@
   of `algo.farrington()` are now consistently ordered as in the
   default `control` argument.
 
-## BUG FIXES
+## Bug Fixes
 
 - Using negative indices to exclude time points from an
   `"sts"` object (e.g., `x[-1,]`) is now supported and
@@ -515,7 +515,7 @@
 - The `ranef()` matrix extracted from fitted `"hhh4"`
   models could have wrong column names.
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - Several ancient functions deprecated in 1.16.1 are now
   defunct: `compMatrix.writeTable()`,
@@ -526,7 +526,7 @@
 
 # surveillance 1.16.2 (2018-07-24)
 
-## MINOR CHANGES
+## Minor Changes
 
 - `autoplot.sts()` gained a `width` argument to adjust
   the bar width, which now defaults to 7 for weekly time series
@@ -542,7 +542,7 @@
   `vignette("monitoringCounts")` have been updated to also work
   with recent versions of **INLA**.
 
-## BUG FIXES
+## Bug Fixes
 
 - Offsets in `hhh4`'s epidemic components were ignored by
   `simulate.hhh4()` [spotted by Johannes Bracher] as well as
@@ -554,7 +554,7 @@
 
 # surveillance 1.16.1 (2018-05-28)
 
-## BUG FIXES
+## Bug Fixes
 
 - `autoplot.sts()` now sets the calling environment as
   the `plot_env` of the result.
@@ -567,7 +567,7 @@
 - The `summary()` for SI[R]S-type `"epidata"` failed
   if there were initially infectious individuals.
 
-## DEPRECATED AND DEFUNCT
+## Deprecated & Defunct
 
 - Several ancient functions have been deprecated and may be
   removed in future versions of **surveillance**: `qlomax()`,
@@ -578,7 +578,7 @@
 
 # surveillance 1.16.0 (2018-01-24)
 
-## NEW FEATURES
+## New Features
 
 - The `as.data.frame()` method for `"sts"` objects
   gained a `tidy` argument, which enables conversion to the
@@ -600,7 +600,7 @@
   gained an option `total` to sum the fitted components over all
   units.
 
-## SIGNIFICANT CHANGES
+## Significant Changes
 
 - Package [**polyCub**](https://CRAN.R-project.org/package=polyCub) is no longer automatically attached
   (only imported).
@@ -608,7 +608,7 @@
 - `scores.oneStepAhead()` no longer reverses the ordering
   of the time points by default, as announced in 1.15.0.
 
-## MINOR CHANGES
+## Minor Changes
 
 - Some code in `vignette("monitoringCounts")` has been
   adjusted to work with the new version of [**MGLM**](https://CRAN.R-project.org/package=MGLM) (0.0.9).
@@ -616,7 +616,7 @@
 - Added a `[`-method for the `"hhh4sims"` class to
   retain the attributes when subsetting simulations.
 
-## BUG FIXES
+## Bug Fixes
 
 - `aggregate(stsObj, by = "unit")` no longer results in
   empty colnames (set to `"overall"`).
@@ -643,7 +643,7 @@
 
 # surveillance 1.15.0 (2017-10-06)
 
-## NEW FEATURES
+## New Features
 
 - `siaf.gaussian()` now also employs a `polyCub.iso()`
   integration routine by default (similar to the powerlaw-type
@@ -665,7 +665,7 @@
   `"twinstim"`; faster than via the general
   `simulate.twinstim()` method.
 
-## MINOR CHANGES
+## Minor Changes
 
 - `twinstim(..., siaf = siaf.gaussian())`
   uses a larger default initial value for the kernel's standard
@@ -689,7 +689,7 @@
 - Minor improvements in the documentation and some vignettes:
   corrected typos, simplified example code, documented some methods.
 
-## BUG FIXES
+## Bug Fixes
 
 - The C-routines introduced in version 1.14.0 used `==`
   comparisons on parameter values to choose among case-specific
@@ -704,7 +704,7 @@
 
 # surveillance 1.14.0 (2017-06-29)
 
-## DOCUMENTATION
+## Documentation
 
 - The replication code from Meyer et al. (2017, JSS)
   is now included as `demo("v77i11")`.
@@ -712,7 +712,7 @@
   frameworks `twinstim`, `twinSIR`, and `hhh4`
   (see also the corresponding vignettes).
 
-## NEW FEATURES
+## New Features
 
 - Pure C-implementations of integration routines for spatial
   interaction functions considerably accelerate the estimation of
@@ -736,14 +736,14 @@
 - New auxiliary function `makeControl()`, which may be
   used to specify a `hhh4()` model.
 
-## MINOR CHANGES
+## Minor Changes
 
 - `twinstim()` now throws an informative error message when
   trying to fit a purely epidemic model to data containing endemic
   events (i.e., events without ancestors). The `help("twinstim")`
   exemplifies such a model.
 
-## BUG FIXES
+## Bug Fixes
 
 - `siaf.powerlaw()$deriv` returned `NaN` for the
   partial derivative wrt the decay parameter *d*, if *d*
@@ -761,7 +761,7 @@
 
 # surveillance 1.13.1 (2017-04-28)
 
-## DOCUMENTATION
+## Documentation
 
 - The paper on "Spatio-Temporal Analysis of Epidemic
   Phenomena Using the R Package **surveillance**" (by Sebastian
@@ -771,7 +771,7 @@
   as `vignette("twinstim")`, `vignette("twinSIR")`, and
   `vignette("hhh4_spacetime")`, respectively.
 
-## NEW FEATURES
+## New Features
 
 - The `calibrationTest()` and `pit()` methods for
   `"oneStepAhead"` forecasts gained an argument `units`
@@ -784,12 +784,12 @@
   `"hhh4"` models to produce a fan chart using the
   [**fanplot**](https://CRAN.R-project.org/package=fanplot) package.
 
-## MINOR CHANGES
+## Minor Changes
 
 - `scores.hhh4()` sets rownames for consistency with
   `scores.oneStepAhead()`.
 
-## BUG FIXES
+## Bug Fixes
 
 - The `"Lambda.const"` matrix returned by
   `getMaxEV_season()` was wrong for models with asymmetric
@@ -799,7 +799,7 @@
 
 # surveillance 1.13.0 (2016-12-20)
 
-## NEW FEATURES
+## New Features
 
 - `earsC` now has two new arguments thanks to Howard
   Burkom: the number of past time units to be used in calculation is
@@ -817,7 +817,7 @@
   Furthermore, `animate.sts()` now supports time-varying
   population numbers.
 
-## MINOR CHANGES
+## Minor Changes
 
 - `hhh4()` guards against the misuse of
   `family = factor("Poisson")` for univariate time series.
@@ -825,7 +825,7 @@
   definition, but is now interpreted as `family = "Poisson"`
   (with a warning).
 
-## BUG FIXES
+## Bug Fixes
 
 - `animate.sts()` now supports objects with missing values
   (with a warning). Furthermore, the automatic color breaks have been
@@ -861,7 +861,7 @@
 
 # surveillance 1.12.2 (2016-11-14)
 
-## NEW FEATURES
+## New Features
 
 - The internal auxiliary function, which determines the sets of
   potential source events in `"epidataCS"` has been implemented
@@ -881,7 +881,7 @@
   `animate_nowcasts` function allows one to animate a sequence of
   nowcasts.
 
-## MINOR CHANGES
+## Minor Changes
 
 - In the `animate`-method for `"sts"` objects,
   the default top padding of **lattice** plots is now disabled for the
@@ -889,7 +889,7 @@
   Furthermore, the new option `fill` can be used to make the
   panel of the `timeplot` as large as possible.
 
-## BUG FIXES
+## Bug Fixes
 
 - `bodaDelay()`: fixed spurious warnings from `rnbinom()`.
 
@@ -899,7 +899,7 @@
 
 # surveillance 1.12.1 (2016-05-18)
 
-## DOCUMENTATION
+## Documentation
 
 - The new `vignette("monitoringCounts")` illustrates the
   monitoring of count time series in R with a particular focus on
@@ -908,7 +908,7 @@
   for the *Journal of Statistical Software*
   (Salmon, Schumacher, and H&ouml;hle, 2016).
 
-## MINOR CHANGES
+## Minor Changes
 
 - Non-convergent `hhh4()` fits now obey the structure of
   standard `"hhh4"` objects. In particular, such fits now also
@@ -917,7 +917,7 @@
 
 - `knox()` warns about symmetric input matrices.
 
-## BUG FIXES
+## Bug Fixes
 
 - The code of `boda()` (with `samplingMethod="joint"`)
   and `bodaDelay()` (with `inferenceMethod="INLA"`)
@@ -937,7 +937,7 @@
 
 # surveillance 1.12.0 (2016-04-02)
 
-## DOCUMENTATION
+## Documentation
 
 - Several new vignettes illustrate *endemic-epidemic*
   modeling frameworks for spatio-temporal surveillance data:
@@ -969,7 +969,7 @@
   recommend to open the script in an editor rather than running
   all the code at once using `demo("fluBYBW")`.
 
-## NEW FEATURES
+## New Features
 
 - Overhaul of the `"sts"` implementation. This mostly
   affects package-internal code, which is simpler, cleaner and better
@@ -985,7 +985,7 @@
 - `stsplot_time(..., as.one=TRUE)` is now implemented
   (yielding a simple `matplot` of multiple time series).
 
-## MINOR CHANGES
+## Minor Changes
 
 - `plotHHH4_season()` now by default draws a horizontal
   reference line at unity if the multiplicative effect of component
@@ -999,7 +999,7 @@
   efficient (the distance matrix of the events is only computed if
   event sources actually need to be updated).
 
-## BUG FIXES
+## Bug Fixes
 
 - `stsplot_spacetime()` now recognizes its `opts.col`
   argument.
@@ -1019,7 +1019,7 @@
 
 # surveillance 1.11.0 (2016-02-08)
 
-## NEW FEATURES
+## New Features
 
 - `update.epidata()` can now handle a distance matrix
   `D` in the form of a classed `"Matrix"`.
@@ -1038,7 +1038,7 @@
   faster and yields similar results compared to the original method
   (`quantileMethod="MC"`, still the default).
 
-## MINOR CHANGES
+## Minor Changes
 
 - Revised `vignette("hhh4")`, updated the package
   description as well as some references in the documentation.
@@ -1046,7 +1046,7 @@
   `vignette("surveillance")` to account for the corrected version
   of `algo.bayes()` implemented since **surveillance** 1.10-0.
 
-## BUG FIXES
+## Bug Fixes
 
 - Fixed bug in `categoricalCUSUM()`, which ignored alarms
   generated for the last time point in `range`. Furthermore, the
@@ -1074,7 +1074,7 @@
 
 # surveillance 1.10-0 (2015-11-04)
 
-## NEW FEATURES
+## New Features
 
 - Calibration tests for count data (Wei and Held, 2014, Test)
   are now implemented and available as `calibrationTest()`.
@@ -1129,7 +1129,7 @@
   to the default Euclidean distance based on the individuals coordinates.
   (Request of George Wood to support `twinSIR` models on networks.)
 
-## MINOR CHANGES
+## Minor Changes
 
 - The first argument of `scores()` is now called `x`
   instead of `object` (for consistency with `calibrationTest()`).
@@ -1180,7 +1180,7 @@
   compares two fits ignoring their `"runtime"` and `"call"`
   elements (at least).
 
-## BUG FIXES
+## Bug Fixes
 
 - Fixed a bug in `algo.bayes`, where an alarm was already
   sounded if the current observation was equal to the quantile of the
@@ -1227,7 +1227,7 @@
 
 # surveillance 1.9-0 (2015-06-09)
 
-## NEW FEATURES
+## New Features
 
 - New functions and data for Bayesian outbreak detection in the
   presence of reporting delays (Salmon et al., 2015):
@@ -1294,7 +1294,7 @@
 - New option `scaled = "standardized"` in `iafplot()`
   to plot *f(x) / f(0)* or *g(t) / g(0)*, respectively.
 
-## MINOR CHANGES
+## Minor Changes
 
 - Initial data processing in `twinstim()` is faster
   since event sources are only re-determined if there is effective
@@ -1314,7 +1314,7 @@
   uses [**MASS**](https://CRAN.R-project.org/package=MASS)::`truehist()` instead of `hist()` and
   accepts graphical parameters to customize the histogram.
 
-## BUG FIXES
+## Bug Fixes
 
 - The `bodaFit` function did not draw samples from the
   joint posterior. Instead draws were from the respective posterior
@@ -1376,7 +1376,7 @@
 
 # surveillance 1.8-2 (2014-12-16)
 
-## MINOR CHANGES related to `hhh4`
+## Minor Changes for `hhh4`
 
 - In the coefficient vector resulting from a `hhh4` fit,
   random intercepts are now named.
@@ -1392,7 +1392,7 @@
   Setting `use.estimates = FALSE` means to re-use the previous
   start specification.
 
-## MINOR CHANGES related to the `"sts"`-class
+## Minor Changes for the `"sts"` Class
 
 - For univariate `"sts"` objects, the (meaningless)
   "head of neighbourhood" is no longer `show`n.
@@ -1413,7 +1413,7 @@
 
 # surveillance 1.8-1 (2014-10-29)
 
-## NEW FEATURES
+## New Features
 
 - The `R0`-method for `"twinstim"` gained an argument
   `newcoef` to simplify computation of reproduction numbers with
@@ -1453,7 +1453,7 @@
 - The result of `profile.twinSIR()` gained a class and an
   associated `plot`-method.
 
-## MAJOR CHANGES
+## Minor Changes
 
 - For multivariate `oneStepAhead()` predictions,
   `scores(..., individual=TRUE)` now returns a 3d array instead
@@ -1477,7 +1477,7 @@
 
 - Several modifications and corrections in `data("hagelloch")`.
 
-## MINOR CHANGES
+## Minor Changes
 
 - Better plotting of `stsNC` objects by writing an own plot
   method for them. Prediction intervals are now shown jointly with the
@@ -1535,7 +1535,7 @@
   now by default plotted side by side (`mfrow=c(1,2)`) instead of
   one below the other.
 
-## BUG FIXES
+## Bug Fixes
 
 - In `farringtonFlexible` alarms are now for
   `observed>upperbound` and not for `observed>=upperbound`
@@ -1588,7 +1588,7 @@
 
 # surveillance 1.8-0 (2014-06-16)
 
-## PACKAGE INFRASTRUCTURE
+## Package Infrastructure
 
 - Package **surveillance** now depends on newer versions of
   packages [**sp**](https://CRAN.R-project.org/package=sp) (>= 1.0-15), [**polyCub**](https://CRAN.R-project.org/package=polyCub) (>= 0.4-2),
@@ -1616,7 +1616,7 @@
   (`stsplot_*`, previously named `plot.sts.*`)
   are now exported and documented separately.
 
-## NEW FEATURES
+## New Features
 
 - The `nowcast` procedure has been completely re-written to
   handle the inherit right-truncation of reporting data (best
@@ -1726,7 +1726,7 @@
   This is mainly provided for testing purposes since wrapping into
   `glm` usually takes longer.
 
-## MAJOR CHANGES
+## Significant Changes
 
 - Fitted `hhh4()` objects no longer contain the associated
   `"sts"` data twice: it is now only stored as `$stsObj`
@@ -1783,7 +1783,7 @@
 - The events in an `"epidataCS"` object no longer have
   a reserved `"ID"` column.
 
-## MINOR CHANGES
+## Minor Changes
 
 - `hhh4()` now stores the runtime just like `twinstim()`.
 
@@ -1828,7 +1828,7 @@
 - The `multiplicity`-generic and its default method have
   been integrated into [**spatstat**](https://CRAN.R-project.org/package=spatstat) and are imported from there.
 
-## DATA
+## Data
 
 - The polygon representation of Germany's districts (
   `system.file("shapes", "districtsD.RData", package="surveillance")`
@@ -1848,7 +1848,7 @@
   a corrected version of `data("measles.weser")` (of the old
   `"disProg"` class).
 
-## BUG FIXES
+## Bug Fixes
 
 - Fixed a bug in `LRCUSUM.runlength` where computations
   were erroneously always done under the in-control parameter
@@ -1875,7 +1875,7 @@
 
 # surveillance 1.7-0 (2013-11-19)
 
-## SYNOPSIS
+## Synopsis
 
 - Package [**gpclib**](https://CRAN.R-project.org/package=gpclib) is no longer necessary for the
   construction of `"epidataCS"`-objects. Instead, we make use of
@@ -1903,7 +1903,7 @@
 
 - Some minor new features and changes are documented below.
 
-## NEW FEATURES
+## New Features
 
 - Functions `unionSpatialPolygons()` and
   `intersectPolyCircle()` are now exported. Both are wrappers
@@ -1915,7 +1915,7 @@
 - `discpoly()` moved back from [**polyCub**](https://CRAN.R-project.org/package=polyCub)
   to **surveillance**.
 
-## MINOR CHANGES
+## Minor Changes
 
 - **surveillance** now Depends on [**polyCub**](https://CRAN.R-project.org/package=polyCub) (>= 0.4-0)
   and not only Imports it (which avoids `::`-references in
@@ -1940,7 +1940,7 @@
 
 # surveillance 1.6-0 (2013-09-03)
 
-## SYNOPSIS
+## Synopsis
 
 - The `polyCub`-methods for cubature over polygonal domains
   have been moved to the new dedicated package [**polyCub**](https://CRAN.R-project.org/package=polyCub),
@@ -1996,7 +1996,7 @@
 - Some further new features, minor changes, and bug fixes are
   described in the following subsections.
 
-## NEW FEATURES
+## New Features
 
 - Using `tiaf.exponential()` in a `twinstim()` now works
   with `nTypes=1` for multi-type data.
@@ -2025,7 +2025,7 @@
 - `animate.epidataCS()` allows for a `main` title and
   can show a progress bar.
 
-## MINOR CHANGES
+## Minor Changes
 
 - Changed parametrization of `zetaweights()` and completed
   its documentation (now no longer marked as experimental).
@@ -2051,7 +2051,7 @@
 - `twinstim(...)$runtime` now contains the complete
   information from `proc.time()`.
 
-## BUG FIXES
+## Bug Fixes
 
 - Fixed a bug in function
   `refvalIdxByDate()` which produced empty reference values
@@ -2118,8 +2118,6 @@
 
 # surveillance 1.5-4 (2013-04-21)
 
-## SYNOPSIS
-
 - Fixed obsolete `.path.package()` calls.
 
 - Small corrections in the documentation.
@@ -2134,7 +2132,7 @@
 
 # surveillance 1.5-2 (2013-03-15)
 
-## SYNOPSIS
+## Synopsis
 
 - New method for outbreak detection: `earsC`
   (CUSUM-method described in the CDC Early Aberration Reporting
@@ -2152,7 +2150,7 @@
 - `siaf.lomax` is deprecated and replaced by
   `siaf.powerlaw` (re-parametrization).
 
-## NEW FEATURES (`twinstim()`-related)
+## New Features for `twinstim()`
 
 - The temporal `plot`-method for class `"epidataCS"`
   now understands the `add` parameter to add the histogram to an
@@ -2197,7 +2195,7 @@
 - New `xtable`-method for `"summary.twinstim"` for
   printing the covariate effects as risk ratios (with CI's and p-values).
 
-## NEW FEATURES (`hhh4()`-related)
+## New Features for `hhh4()`
 
 - New argument `hide0s` in the `plot`-method for class
   `"ah4"`.
@@ -2208,8 +2206,6 @@
 
 # surveillance 1.5-1 (2012-12-14)
 
-## SYNOPSIS
-
 - The **surveillance** package is again backward-compatible
   with R version 2.14.0, which is now declared as the minimum
   required version.
@@ -2217,7 +2213,7 @@
 
 # surveillance 1.5-0 (2012-12-12)
 
-## SYNOPSIS
+## Synopsis
 
 - This new version mainly improves upon the `twinstim()` and
   `hhh4()` implementations (see below).
@@ -2238,7 +2234,7 @@
   `surveillance.options(gpclib = TRUE)`. Otherwise,
   `as.epidataCS()` and `simEpidataCS()` may not be used.
 
-## NEW FEATURES (`twinstim()`-related)
+## New Features for `twinstim()`
 
 - Speed-up by memoisation of the `siaf` cubature (using
   the [**memoise**](https://CRAN.R-project.org/package=memoise) package).
@@ -2305,7 +2301,7 @@
 - An `intensityplot()`-method is now also implemented for
   `"simEpidataCS"`.
 
-## NEW FEATURES (`hhh4()`-related)
+## New Features for `hhh4()`
 
 - Significant speed-up (runs about 6 times faster now, amongst
   others by many code optimizations and by using sparse [**Matrix**](https://CRAN.R-project.org/package=Matrix)
@@ -2330,7 +2326,7 @@
 - New argument `check.analyticals` (default `FALSE`)
   mainly for development purposes.
 
-## BUG FIXES
+## Bug Fixes
 
 - Fixed sign of observed Fisher information matrix in
   `twinstim`.
@@ -2372,7 +2368,7 @@
 
 # surveillance 1.4-2 (2012-08-17)
 
-## SYNOPSIS
+## Synopsis
 
 - This is mainly a patch release for the `twinstim`-related
   functionality of the package.
@@ -2382,7 +2378,7 @@
   the package namespace if it is not found in R **base** at
   installation of the **surveillance** package).
 
-## NEW FEATURES
+## New Features
 
 - Important new `twinstim()`-feature: fix parameters
   during optimization.
@@ -2409,7 +2405,7 @@
 - More thorough documentation of `"twinstim"`-related
   functions *including many examples*.
 
-## BUG FIXES (`"twinstim"`-related)
+## Bug Fixes for `twinstim()`
 
 - `nlminb` (instead of `optim`'s `"BFGS"`) is
   now the default optimizer (as already documented).
@@ -2450,14 +2446,14 @@
 - Improved error handling in `simEpidataCS()`. Removed a
   `browser()`-call and avoid potentially infinite loop.
 
-## BUG FIXES (`"twinSIR"`-related)
+## Bug Fixes for `twinSIR()`
 
 - The `.allocate` argument of `simEpidata()` has
   now a fail-save default.
 
 - Simulation without endemic `cox()`-terms now works.
 
-## MINOR CHANGES
+## Minor Changes
 
 - Simplified `imdepi` data to monthly instead of weekly
   intervals in `stgrid` for faster examples and reduced package
@@ -2487,13 +2483,13 @@
 
 # surveillance 1.4 (2012-07-26)
 
-## SYNOPSIS
+## Synopsis
 
 - Besides minor bug fixes, additional functionality has entered the package
   and a new attempt is made to finally release a new version on CRAN
   (version 1.3 has not appeared on CRAN), including a proper 'NAMESPACE'.
 
-## NEW FEATURES
+## New Features
 
 - Support for non-parametric back-projection using the function
   `backprojNP()` which returns an object of the new
@@ -2518,7 +2514,7 @@
   self-exciting spatio-temporal point process models (see
   below).
 
-## NEW FEATURES AND SIGNIFICANT CHANGES FOR `"twinstim"`
+## Significant Changes for `"twinstim"`
 
 - Modified arguments of `twinstim()`: new ordering, new
   argument `nCub.adaptive`, removed argument
@@ -2548,7 +2544,7 @@
 
 - `plot`-method for `"epidataCS"`
 
-## MINOR CHANGES
+## Minor Changes
 
 - Improved documentation for the new functionalities.
 
@@ -2560,7 +2556,7 @@
 
 # surveillance 1.3 (2011-04-25)
 
-## SYNOPSIS
+## Synopsis
 
 - This is a major realease integrating plenty of new code (unfortunately
   not all documented as good as it could be). This includes code
@@ -2570,7 +2566,7 @@
   It may take a while before this version will become available from CRAN.
   For further details see below.
 
-## SIGNIFICANT CHANGES
+## Significant Changes
 
 - Renamed the `"week"` slot of the `"sts"` S4 class to `"epoch"`.
   All saved data objects have accordingly be renamed, but some hazzle
@@ -2580,7 +2576,7 @@
 
 - Removed the functions `algo.cdc()` and `algo.rki()`.
 
-## NEW FEATURES
+## New Features
 
 - Support for `"twinSIR"` models (with associated
   `"epidata"` objects) as described
