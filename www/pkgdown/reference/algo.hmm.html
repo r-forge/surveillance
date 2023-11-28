@@ -6,7 +6,7 @@
   configuration, is found by the Viterbi algorithm and the most
   probable state of the last observation is recorded. On-line
   detection is performed by sequentially repeating this procedure.  
-Warning: This function can be very slow - a more efficient implementation would be nice!"><title>Hidden Markov Model (HMM) method — algo.hmm • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Hidden Markov Model (HMM) method — algo.hmm"><meta property="og:description" content="This function implements on-line HMM detection of outbreaks based on
+Warning: This function can be very slow - a more efficient implementation would be nice!"><title>Hidden Markov Model (HMM) method — algo.hmm • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Hidden Markov Model (HMM) method — algo.hmm"><meta property="og:description" content="This function implements on-line HMM detection of outbreaks based on
   the retrospective procedure described in Le Strat and Carret (1999).
   Using the function msm (from package msm) a specified HMM
   is estimated, the decoding problem, i.e. the most probable state
@@ -24,7 +24,7 @@ Warning: This function can be very slow - a more efficient implementation would 
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@ Warning: This function can be very slow - a more efficient implementation would 
     <div class="ref-description section level2">
     <p>This function implements on-line HMM detection of outbreaks based on
   the retrospective procedure described in Le Strat and Carret (1999).
-  Using the function <code><a href="https://rdrr.io/pkg/msm/man/msm.html" class="external-link">msm</a></code> (from package <span class="pkg">msm</span>) a specified HMM
+  Using the function <code><a href="https://chjackson.github.io/msm/reference/msm.html" class="external-link">msm</a></code> (from package <span class="pkg">msm</span>) a specified HMM
   is estimated, the decoding problem, i.e. the most probable state
   configuration, is found by the Viterbi algorithm and the most
   probable state of the last observation is recorded. On-line
@@ -119,7 +119,7 @@ Warning: This function can be very slow - a more efficient implementation would 
 <dd><p>Boolean, if <code>TRUE</code> then the fitted HMMs are saved. With this option the function can also be used to analyse data retrospectively. Default option is <code>FALSE</code></p></dd>
 
             <dt><code>extraMSMArgs</code></dt>
-<dd><p>A named list with additional arguments to send to the <code><a href="https://rdrr.io/pkg/msm/man/msm.html" class="external-link">msm</a></code> HMM fitting function. Note that the <code>msm</code> arguments <code>formula</code>, <code>data</code>, <code>qmatrix</code>, <code>hmodel</code>, <code>hcovariates</code> and <code>hconstraint</code> are automatically filled by <code>algo.hmm</code>, thus these should NOT be modified.</p></dd>
+<dd><p>A named list with additional arguments to send to the <code><a href="https://chjackson.github.io/msm/reference/msm.html" class="external-link">msm</a></code> HMM fitting function. Note that the <code>msm</code> arguments <code>formula</code>, <code>data</code>, <code>qmatrix</code>, <code>hmodel</code>, <code>hcovariates</code> and <code>hconstraint</code> are automatically filled by <code>algo.hmm</code>, thus these should NOT be modified.</p></dd>
 
             
 </dl><p></p></dd>
@@ -171,7 +171,7 @@ Warning: This function can be very slow - a more efficient implementation would 
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/msm/man/msm.html" class="external-link">msm</a></code></p></div>
+    <div class="dont-index"><p><code><a href="https://chjackson.github.io/msm/reference/msm.html" class="external-link">msm</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -209,11 +209,11 @@ Warning: This function can be very slow - a more efficient implementation would 
 <span>                          trend<span class="op">=</span><span class="cn">FALSE</span>,covEffectsEqual<span class="op">=</span><span class="cn">TRUE</span>, saveHMMs<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Compute most probable state using the viterbi algorithm - 1 is "normal", 2 is "outbreak".</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/msm/man/viterbi.msm.html" class="external-link">viterbi.msm</a></span><span class="op">(</span><span class="va">surv</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">hmms</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">fitted</span></span>
+<span><span class="fu"><a href="https://chjackson.github.io/msm/reference/viterbi.msm.html" class="external-link">viterbi.msm</a></span><span class="op">(</span><span class="va">surv</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">hmms</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">fitted</span></span>
 <span></span>
 <span><span class="co">#How often correct?</span></span>
 <span><span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>truth<span class="op">=</span><span class="va">counts</span><span class="op">$</span><span class="va">state</span> <span class="op">+</span> <span class="fl">1</span> ,</span>
-<span>             hmm<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/msm/man/viterbi.msm.html" class="external-link">viterbi.msm</a></span><span class="op">(</span><span class="va">surv</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">hmm</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">fitted</span><span class="op">)</span></span>
+<span>             hmm<span class="op">=</span><span class="fu"><a href="https://chjackson.github.io/msm/reference/viterbi.msm.html" class="external-link">viterbi.msm</a></span><span class="op">(</span><span class="va">surv</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">hmm</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">fitted</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">tab</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,<span class="va">tab</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
     </div>

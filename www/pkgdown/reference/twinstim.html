@@ -3,7 +3,7 @@
   marked spatio-temporal point process data. This constitutes a
   regression approach for conditional intensity function modelling.
   The implementation is illustrated in Meyer et al. (2017, Section 3),
-  see vignette("twinstim").'><title>Fit a Two-Component Spatio-Temporal Point Process Model — twinstim • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fit a Two-Component Spatio-Temporal Point Process Model — twinstim"><meta property="og:description" content='A twinstim model as described in Meyer et al. (2012) is fitted to
+  see vignette("twinstim").'><title>Fit a Two-Component Spatio-Temporal Point Process Model — twinstim • surveillance</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fit a Two-Component Spatio-Temporal Point Process Model — twinstim"><meta property="og:description" content='A twinstim model as described in Meyer et al. (2012) is fitted to
   marked spatio-temporal point process data. This constitutes a
   regression approach for conditional intensity function modelling.
   The implementation is illustrated in Meyer et al. (2017, Section 3),
@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -314,17 +314,18 @@
     <p>The function performs maximum likelihood inference
   for the additive-multiplicative spatio-temporal intensity model
   described in Meyer et al. (2012). It uses <code><a href="https://rdrr.io/r/stats/nlminb.html" class="external-link">nlminb</a></code> as the
-  default optimizer and returns an object of class <code>twinstim</code>. 
+  default optimizer and returns an object of class <code>"twinstim"</code>.
   Such objects have <code>print</code>, <code><a href="twinstim_plot.html">plot</a></code> and
   <code><a href="twinstim_methods.html">summary</a></code> methods.
-  The output of the <code>summary</code> can be
-  processed by the <code><a href="twinstim_methods.html">toLatex</a></code>
-  function. Furthermore, the usual model 
-  fit methods such as <code>coef</code>, <code>vcov</code>, <code>logLik</code>,
+  The <code>summary</code> output can be converted via corresponding
+  <code><a href="twinstim_methods.html">xtable</a></code> or
+  <code><a href="twinstim_methods.html">toLatex</a></code> methods.
+  Furthermore, the usual accessor methods are implemented, including
+  <code>coef</code>, <code>vcov</code>, <code>logLik</code>,
   <code><a href="residualsCT.html">residuals</a></code>, and
-  <code>update</code> are implemented. 
-  A specific add-on is the use of the functions <code><a href="R0.html">R0</a></code> and
-  <code><a href="twinstim_simulation.html">simulate</a></code>.</p>
+  <code>update</code>.
+  Additional functionality is provided by the <code><a href="R0.html">R0</a></code> and
+  <code><a href="twinstim_simulation.html">simulate</a></code> methods.</p>
     </div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -519,12 +520,7 @@
 <span><span class="va">m0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">m_noepi</span>, epidemic<span class="op">=</span><span class="op">~</span><span class="fl">1</span>, model<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## summarize the model fit</span></span>
-<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">m0</span>, correlation <span class="op">=</span> <span class="cn">TRUE</span>, symbolic.cor <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">s</span></span>
-<span><span class="co"># output the table of coefficients as LaTeX code</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/toLatex.html" class="external-link">toLatex</a></span><span class="op">(</span><span class="va">s</span>, digits<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co"># or, to report rate ratios</span></span>
-<span><span class="fu">xtable</span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">m0</span>, correlation <span class="op">=</span> <span class="cn">TRUE</span>, symbolic.cor <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## the default confint-method can be used for Wald-CI's</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">m0</span>, level<span class="op">=</span><span class="fl">0.95</span><span class="op">)</span></span>

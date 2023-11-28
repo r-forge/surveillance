@@ -5,7 +5,7 @@ articles:
   bibliography: pkgdown/bibliography.html
   events: pkgdown/events.html
   overview: pkgdown/overview.html
-last_built: 2023-11-09T13:36Z
+last_built: 2023-11-28T09:21Z
 urls:
   reference: https://surveillance.R-forge.R-project.org/pkgdown/reference
   article: https://surveillance.R-forge.R-project.org/pkgdown/articles
