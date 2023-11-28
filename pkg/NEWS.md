@@ -1376,7 +1376,7 @@
 
 # surveillance 1.8-2 (2014-12-16)
 
-## Minor Changes for `hhh4`
+## Minor Changes for `hhh4()`
 
 - In the coefficient vector resulting from a `hhh4` fit,
   random intercepts are now named.
@@ -1453,7 +1453,7 @@
 - The result of `profile.twinSIR()` gained a class and an
   associated `plot`-method.
 
-## Minor Changes
+## Significant Changes
 
 - For multivariate `oneStepAhead()` predictions,
   `scores(..., individual=TRUE)` now returns a 3d array instead
@@ -1529,7 +1529,7 @@
 
 - The **surveillance** package now depends on R >= 3.0.2,
   which, effectively, is the minimum version required since
-  **surveillance** 1.7-0 (see the corresponding NEWS below).
+  **surveillance** 1.7-0.
 
 - The two diagnostic plots of `checkResidualProcess()` are
   now by default plotted side by side (`mfrow=c(1,2)`) instead of
@@ -1875,7 +1875,7 @@
 
 # surveillance 1.7-0 (2013-11-19)
 
-## Synopsis
+## Package Infrastructure
 
 - Package [**gpclib**](https://CRAN.R-project.org/package=gpclib) is no longer necessary for the
   construction of `"epidataCS"`-objects. Instead, we make use of
@@ -1900,8 +1900,6 @@
   required recent version of **spatstat** (1.34-0, for
   **polyclip**) actually needs R >= 3.0.2, which therefore also
   applies to **surveillance**.
-
-- Some minor new features and changes are documented below.
 
 ## New Features
 
@@ -1992,9 +1990,6 @@
   code: `mapply`, dropped clumsy `for`-loop in
   `fisherinfo`, new argument `cores` for parallel
   computing via forking (not available on Windows).
-
-- Some further new features, minor changes, and bug fixes are
-  described in the following subsections.
 
 ## New Features
 
@@ -2132,14 +2127,11 @@
 
 # surveillance 1.5-2 (2013-03-15)
 
-## Synopsis
+## New Features
 
 - New method for outbreak detection: `earsC`
   (CUSUM-method described in the CDC Early Aberration Reporting
   System, see Hutwagner et al, 2003).
-
-- New features and minor bug fixes for the "`twinstim`"
-  part of the package (see below).
 
 - Yet another p-value formatting function `formatPval()`
   is now also part of the **surveillance** package.
@@ -2147,10 +2139,10 @@
 - `polyCub.SV()` now also accepts objects of classes
   `"Polygon"` and `"Polygons"` for convenience.
 
-- `siaf.lomax` is deprecated and replaced by
-  `siaf.powerlaw` (re-parametrization).
-
 ## New Features for `twinstim()`
+
+- New spatial interaction function `siaf.powerlaw()`,
+  a re-parametrization of the now-deprecated `siaf.lomax()`.
 
 - The temporal `plot`-method for class `"epidataCS"`
   now understands the `add` parameter to add the histogram to an
@@ -2213,10 +2205,7 @@
 
 # surveillance 1.5-0 (2012-12-12)
 
-## Synopsis
-
-- This new version mainly improves upon the `twinstim()` and
-  `hhh4()` implementations (see below).
+## Package Infrastructure
 
 - As requested by the CRAN team, examples now run faster. Some
   are conditioned on the value of the new package option
@@ -2368,12 +2357,9 @@
 
 # surveillance 1.4-2 (2012-08-17)
 
-## Synopsis
+## Package Infrastructure
 
-- This is mainly a patch release for the `twinstim`-related
-  functionality of the package.
-
-- Apart from that, the package is now again compatible with older
+- The package is now again compatible with older
   releases of R (< 2.15.0) as intended (by defining `paste0()` in
   the package namespace if it is not found in R **base** at
   installation of the **surveillance** package).
@@ -2510,10 +2496,6 @@
   `"twinstim"` models may be checked graphically by the new
   function `checkResidualProcess()`.
 
-- Many new features for the `"twinstim"` class of
-  self-exciting spatio-temporal point process models (see
-  below).
-
 ## Significant Changes for `"twinstim"`
 
 - Modified arguments of `twinstim()`: new ordering, new
@@ -2564,7 +2546,6 @@
   The `"twinSIR"` class of models has been
   migrated from package **RLadyBug** to **surveillance**.
   It may take a while before this version will become available from CRAN.
-  For further details see below.
 
 ## Significant Changes
 
@@ -2595,8 +2576,8 @@
 
 # surveillance 1.2-2
 
-- Replaced the deprecated getSpPPolygonsLabptSlots method with calls
-  to the coordinates method when plotting the map slot.
+- Replaced the deprecated `getSpPPolygonsLabptSlots()` calls
+  by `coordinates()` when plotting the map slot.
 
 - Minor proof-reading of the documentation.
 
