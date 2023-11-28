@@ -1,6 +1,6 @@
 
-R version 4.2.2 Patched (2022-11-10 r83330) -- "Innocent and Trusting"
-Copyright (C) 2022 The R Foundation for Statistical Computing
+R version 4.3.2 (2023-10-31) -- "Eye Holes"
+Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -41,6 +41,8 @@ Type 'q()' to quit R.
 Warning message:
 In RNGkind("Mersenne-Twister", "Inversion", "Rounding") :
   non-uniform 'Rounding' sampler used
+> ##M reduce printed precision for less machine-specific output
+> options(digits = 5)
 > 
 > ################################################################################
 > ## Section 3: Spatio-temporal point pattern of infective events
@@ -48,7 +50,7 @@ In RNGkind("Mersenne-Twister", "Inversion", "Rounding") :
 > library("surveillance")  # you should also have installed the suggested packages
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.21.0; see ‘package?surveillance’ or
+This is surveillance 1.22.1; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > ## 3.2. Data structure: 'epidataCS'
@@ -65,23 +67,23 @@ https://surveillance.R-Forge.R-project.org/ for an overview.
 > summary(events)
 Object of class SpatialPointsDataFrame
 Coordinates:
-       min      max
-x 4038.570 4665.246
-y 2710.255 3524.959
+     min    max
+x 4038.6 4665.2
+y 2710.3 3525.0
 Is projected: TRUE 
 proj4string :
 [+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80
 +units=km +no_defs]
 Number of points: 636
 Data attributes:
-      time                tile     type        eps.t        eps.s    
- Min.   :   0.2117   05354  : 34   B:336   Min.   :30   Min.   :200  
- 1st Qu.: 539.4753   05370  : 27   C:300   1st Qu.:30   1st Qu.:200  
- Median :1154.9527   11000  : 27           Median :30   Median :200  
- Mean   :1192.6813   05358  : 13           Mean   :30   Mean   :200  
- 3rd Qu.:1808.0295   05162  : 12           3rd Qu.:30   3rd Qu.:200  
- Max.   :2542.7800   05382  : 12           Max.   :30   Max.   :200  
-                     (Other):511                                     
+      time              tile     type        eps.t        eps.s    
+ Min.   :   0.21   05354  : 34   B:336   Min.   :30   Min.   :200  
+ 1st Qu.: 539.48   05370  : 27   C:300   1st Qu.:30   1st Qu.:200  
+ Median :1154.95   11000  : 27           Median :30   Median :200  
+ Mean   :1192.68   05358  : 13           Mean   :30   Mean   :200  
+ 3rd Qu.:1808.03   05162  : 12           3rd Qu.:30   3rd Qu.:200  
+ Max.   :2542.78   05382  : 12           Max.   :30   Max.   :200  
+                   (Other):511                                     
      sex           agegrp   
  female:292   [0,3)   :194  
  male  :339   [3,19)  :279  
@@ -104,50 +106,50 @@ Data attributes:
 > 
 > imdepi
 Observation period: 0 - 2557 
-Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
+Observation window (bounding box): [4031.3, 4672.3] x [2684.1, 3549.9] 
 Spatio-temporal grid (not shown): 84 time blocks x 413 tiles 
 Types of events: "B" "C"
 Overall number of events: 636
 
-           coordinates       time  tile type eps.t eps.s    sex   agegrp BLOCK
-1 (4112.188, 3202.792)  0.2116949 05554    B    30   200   male   [3,19)     1
-2  (4122.508, 3076.97)  0.7124225 05382    C    30   200   male   [3,19)     1
-3 (4412.466, 2915.939)  5.5910231 09574    B    30   200 female [19,Inf)     1
-4 (4202.635, 2879.698)  7.1169826 08212    B    30   200 female   [3,19)     1
-5 (4128.335, 3223.314) 22.0595327 05554    C    30   200   male   [3,19)     1
-6 (4089.915, 3178.005) 24.9544435 05170    C    30   200   male   [3,19)     1
-  start popdensity
-1     0   260.8612
-2     0   519.3570
-3     0   209.4464
-4     0  1665.6117
-5     0   260.8612
-6     0   454.7456
+       coordinates     time  tile type eps.t eps.s    sex   agegrp BLOCK start
+1 (4112.2, 3202.8)  0.21169 05554    B    30   200   male   [3,19)     1     0
+2   (4122.5, 3077)  0.71242 05382    C    30   200   male   [3,19)     1     0
+3 (4412.5, 2915.9)  5.59102 09574    B    30   200 female [19,Inf)     1     0
+4 (4202.6, 2879.7)  7.11698 08212    B    30   200 female   [3,19)     1     0
+5 (4128.3, 3223.3) 22.05953 05554    C    30   200   male   [3,19)     1     0
+6   (4089.9, 3178) 24.95444 05170    C    30   200   male   [3,19)     1     0
+  popdensity
+1     260.86
+2     519.36
+3     209.45
+4    1665.61
+5     260.86
+6     454.75
 [....]
 > 
 > summary(imdepi)
 Observation period: 0 - 2557 
-Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
+Observation window (bounding box): [4031.3, 4672.3] x [2684.1, 3549.9] 
 Spatio-temporal grid (not shown): 84 time blocks x 413 tiles 
 Overall number of events: 636 (2 types)
 
 Summary of event marks and number of potential sources:
-      time                tile     type        eps.t        eps.s    
- Min.   :   0.2117   05354  : 34   B:336   Min.   :30   Min.   :200  
- 1st Qu.: 539.4753   05370  : 27   C:300   1st Qu.:30   1st Qu.:200  
- Median :1154.9527   11000  : 27           Median :30   Median :200  
- Mean   :1192.6813   05358  : 13           Mean   :30   Mean   :200  
- 3rd Qu.:1808.0295   05162  : 12           3rd Qu.:30   3rd Qu.:200  
- Max.   :2542.7800   05382  : 12           Max.   :30   Max.   :200  
-                     (Other):511                                     
-     sex           agegrp          x              y          |.sources|    
- female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
- male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.000  
- NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
-              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
-                             3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.000  
-                             Max.   :4665   Max.   :3525   Max.   :14.000  
-                                                                           
+      time              tile     type        eps.t        eps.s    
+ Min.   :   0.21   05354  : 34   B:336   Min.   :30   Min.   :200  
+ 1st Qu.: 539.48   05370  : 27   C:300   1st Qu.:30   1st Qu.:200  
+ Median :1154.95   11000  : 27           Median :30   Median :200  
+ Mean   :1192.68   05358  : 13           Mean   :30   Mean   :200  
+ 3rd Qu.:1808.03   05162  : 12           3rd Qu.:30   3rd Qu.:200  
+ Max.   :2542.78   05382  : 12           Max.   :30   Max.   :200  
+                   (Other):511                                     
+     sex           agegrp          x              y          |.sources|   
+ female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.00  
+ male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.00  
+ NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.00  
+              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.63  
+                             3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.00  
+                             Max.   :4665   Max.   :3525   Max.   :14.00  
+                                                                          
 > 
 > par(mar = c(5, 5, 1, 1), las = 1)
 > plot(as.stepfun(imdepi), xlim = summary(imdepi)$timeRange, xaxs = "i",
@@ -168,7 +170,7 @@ Summary of event marks and number of potential sources:
 > 
 > eventDists <- dist(coordinates(imdepi$events))
 > (minsep <- min(eventDists[eventDists > 0]))
-[1] 1.172836
+[1] 1.1728
 > set.seed(321)
 > imdepi_untied <- untie(imdepi, amount = list(s = minsep / 2))
 > 
@@ -195,9 +197,9 @@ no epidemic component in model
 minimizing the negative log-likelihood using 'nlminb()' ...
 initial parameters:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-                -19.85955                   0.00000                   0.00000 
+                   -19.86                      0.00                      0.00 
 h.cos(2 * pi * start/365) 
-                  0.00000 
+                     0.00 
 negative log-likelihood and parameters in each iteration:
   0:     9689.1757: -19.8595  0.00000  0.00000  0.00000
   1:     9588.9760: -20.5435 -0.0777874 0.352955 0.481287
@@ -207,10 +209,10 @@ negative log-likelihood and parameters in each iteration:
 
 MLE:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.36832391               -0.04435847                0.27334815 
+               -20.368324                 -0.044358                  0.273348 
 h.cos(2 * pi * start/365) 
-               0.35085784 
-loglik(MLE) = -9579.064 
+                 0.350858 
+loglik(MLE) = -9579.1 
 
 Done.
 > 
@@ -221,11 +223,11 @@ twinstim(endemic = endemic, epidemic = ~0, data = imdepi_untied,
     subset = !is.na(agegrp))
 
 Coefficients of the endemic component:
-                           Estimate Std. Error  z value Pr(>|z|)    
-h.(Intercept)             -20.36832    0.04189 -486.243  < 2e-16 ***
-h.I(start/365 - 3.5)       -0.04436    0.01999   -2.219   0.0265 *  
-h.sin(2 * pi * start/365)   0.27335    0.05755    4.750 2.04e-06 ***
-h.cos(2 * pi * start/365)   0.35086    0.05805    6.044 1.51e-09 ***
+                          Estimate Std. Error z value Pr(>|z|)    
+h.(Intercept)             -20.3683     0.0419 -486.24  < 2e-16 ***
+h.I(start/365 - 3.5)       -0.0444     0.0200   -2.22    0.027 *  
+h.sin(2 * pi * start/365)   0.2733     0.0576    4.75  2.0e-06 ***
+h.cos(2 * pi * start/365)   0.3509     0.0581    6.04  1.5e-09 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -250,11 +252,11 @@ Loading required namespace: memoise
 minimizing the negative log-likelihood using 'nlminb()' ...
 initial parameters:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.36832391               -0.04435847                0.27334815 
+               -20.368324                 -0.044358                  0.273348 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.35085784              -12.50000000                0.00000000 
+                 0.350858                -12.500000                  0.000000 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.00000000                0.00000000                2.75000000 
+                 0.000000                  0.000000                  2.750000 
 negative log-likelihood and parameters in each iteration:
   0:     9493.7715: -20.3683 -0.0443585 0.273348 0.350858 -12.5000  0.00000  0.00000  0.00000  2.75000
   1:     9475.3480: -20.5414 -0.0462571 0.213708 0.322619 -12.4789 -0.765759 0.493694 -0.317894  2.76394
@@ -264,12 +266,12 @@ negative log-likelihood and parameters in each iteration:
 
 MLE:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.52968319               -0.04563444                0.21745126 
+               -20.529683                 -0.045634                  0.217451 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.31852654              -12.50898348               -0.91136531 
+                 0.318527                -12.508983                 -0.911365 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.69295893               -0.25327661                2.77246899 
-loglik(MLE) = -9474.66 
+                 0.692959                 -0.253277                  2.772469 
+loglik(MLE) = -9474.7 
 
 Done.
 > 
@@ -278,8 +280,8 @@ Done.
 +              label = "tab:imdfit_Gaussian"),
 +       sanitize.text.function = NULL, sanitize.colnames.function = NULL,
 +       sanitize.rownames.function = function(x) paste0("\\code{", x, "}"))
-% latex table generated in R 4.2.2 by xtable 1.8-4 package
-% Tue Mar 14 13:19:53 2023
+% latex table generated in R 4.3.2 by xtable 1.8-4 package
+% Tue Nov 28 09:16:20 2023
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -300,8 +302,8 @@ Done.
 > 
 > R0_events <- R0(imdfit_Gaussian)
 > tapply(R0_events, marks(imdepi_untied)[names(R0_events), "type"], mean)
-         B          C 
-0.21614484 0.09576457 
+       B        C 
+0.216145 0.095765 
 > 
 > imdfit_powerlaw <- update(imdfit_Gaussian, data = imdepi_untied_infeps,
 +   siaf = siaf.powerlaw(), control.siaf = NULL,
@@ -313,13 +315,13 @@ assuming constant temporal interaction 'tiaf.constant()'
 minimizing the negative log-likelihood using 'nlminb()' ...
 initial parameters:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.52968319               -0.04563444                0.21745126 
+               -20.529683                 -0.045634                  0.217451 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.31852654               -6.20000000               -0.91136531 
+                 0.318527                 -6.200000                 -0.911365 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.69295893               -0.25327661                1.50000000 
+                 0.692959                 -0.253277                  1.500000 
                  e.siaf.2 
-               0.90000000 
+                 0.900000 
 negative log-likelihood and parameters in each iteration:
   0:     9460.4117: -20.5297 -0.0456344 0.217451 0.318527 -6.20000 -0.911365 0.692959 -0.253277  1.50000 0.900000
   1:     9459.7918: -20.5746 -0.0422050 0.209197 0.324391 -6.16502 -0.797406 0.797939 -0.166170  1.52960 0.913527
@@ -328,14 +330,14 @@ negative log-likelihood and parameters in each iteration:
 
 MLE:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.57472072               -0.04217572                0.20971819 
+               -20.574721                 -0.042176                  0.209718 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.32397890               -6.16411451               -0.80371569 
+                 0.323979                 -6.164115                 -0.803716 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.78487728               -0.17546356                1.53470971 
+                 0.784877                 -0.175464                  1.534710 
                  e.siaf.2 
-               0.91127366 
-loglik(MLE) = -9459.785 
+                 0.911274 
+loglik(MLE) = -9459.8 
 
 Done.
 > 
@@ -349,13 +351,13 @@ assuming constant temporal interaction 'tiaf.constant()'
 minimizing the negative log-likelihood using 'nlminb()' ...
 initial parameters:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.52968319               -0.04563444                0.21745126 
+               -20.529683                 -0.045634                  0.217451 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.31852654              -10.00000000               -0.91136531 
+                 0.318527                -10.000000                 -0.911365 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.69295893               -0.25327661               -2.00000000 
+                 0.692959                 -0.253277                 -2.000000 
                  e.siaf.2                  e.siaf.3                  e.siaf.4 
-              -3.00000000               -4.00000000               -5.00000000 
+                -3.000000                 -4.000000                 -5.000000 
 negative log-likelihood and parameters in each iteration:
   0:     9477.0103: -20.5297 -0.0456344 0.217451 0.318527 -10.0000 -0.911365 0.692959 -0.253277 -2.00000 -3.00000 -4.00000 -5.00000
   1:     9454.7586: -20.5783 -0.0392993 0.209495 0.325838 -10.2341 -0.834703 0.585664 -0.590421 -2.05964 -2.71175 -3.96140 -5.81030
@@ -365,14 +367,14 @@ negative log-likelihood and parameters in each iteration:
 
 MLE:
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.58233472               -0.04051175                0.21196397 
+               -20.582335                 -0.040512                  0.211964 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.32072974              -10.16678349               -0.88026287 
+                 0.320730                -10.166783                 -0.880263 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.69820515               -0.38796609               -2.23988539 
+                 0.698205                 -0.387966                 -2.239885 
                  e.siaf.2                  e.siaf.3                  e.siaf.4 
-              -2.81840029               -4.08646390               -5.95136272 
-loglik(MLE) = -9454.466 
+                -2.818400                 -4.086464                 -5.951363 
+loglik(MLE) = -9454.5 
 
 Done.
 > 
@@ -386,15 +388,15 @@ Done.
 +        col = c(4, 3, 2), lty = c(2, 4, 1), lwd = 3, bty = "n")
 > 
 > AIC(imdfit_endemic, imdfit_Gaussian, imdfit_powerlaw, imdfit_step4)
-                df      AIC
-imdfit_endemic   4 19166.13
-imdfit_Gaussian  9 18967.32
-imdfit_powerlaw 10 18939.57
-imdfit_step4    12 18932.93
+                df   AIC
+imdfit_endemic   4 19166
+imdfit_Gaussian  9 18967
+imdfit_powerlaw 10 18940
+imdfit_step4    12 18933
 > 
 > ## Example of AIC-based stepwise selection of the endemic model
 > imdfit_endemic_sel <- stepComponent(imdfit_endemic, component = "endemic")
-Start:  AIC=19166.13
+Start:  AIC=19166
 ~offset(log(popdensity)) + I(start/365 - 3.5) + sin(2 * pi * 
     start/365) + cos(2 * pi * start/365)
 
@@ -438,7 +440,7 @@ Note: added the 'tau' component to object 'imdfit_powerlaw' for future use.
 > imdsims <- simulate(imdfit_powerlaw, nsim = 30, seed = 1, t0 = 1826, T = 2555,
 +   data = imdepi_untied_infeps, tiles = districtsD)
 
-Time at beginning of simulation: 2023-03-14 13:20:07 
+Time at beginning of simulation: 2023-11-28 09:16:34.328367 
 Simulation 1 / 30 ...
 -------------------------------------------------------------------------------
 
@@ -450,13 +452,13 @@ Simulating a marked spatio-temporal point pattern with
 	- 10 coefficients:
 
             h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.57472072               -0.04217572                0.20971819 
+               -20.574721                 -0.042176                  0.209718 
 h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.32397890               -6.16411451               -0.80371569 
+                 0.323979                 -6.164115                 -0.803716 
            e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.78487728               -0.17546356                1.53470971 
+                 0.784877                 -0.175464                  1.534710 
                  e.siaf.2 
-               0.91127366 
+                 0.911274 
 
 Simulating (starting from t=1826) ...
 Simulation has ended @t = 2555 with 137 simulated events.
@@ -465,8 +467,8 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 1.688 seconds
-Estimated finishing time: 2023-03-14 13:20:58 
+Runtime of first simulation: 1.768 seconds
+Estimated finishing time: 2023-11-28 09:17:27.370619 
 
 Simulation  2 / 30 ...	simulated 187 events up to time 2555 
 Simulation  3 / 30 ...	simulated 192 events up to time 2555 
@@ -498,7 +500,7 @@ Simulation 28 / 30 ...	simulated 174 events up to time 2555
 Simulation 29 / 30 ...	simulated 158 events up to time 2555 
 Simulation 30 / 30 ...	simulated 155 events up to time 2555 
 
-Done (2023-03-14 13:21:13).
+Done (2023-11-28 09:17:42.557303).
 > 
 > table(imdsims[[1]]$events$source > 0, exclude = NULL)
 
@@ -537,18 +539,18 @@ FALSE  TRUE  <NA>
 3  3 Mueller 41 61   4 female 1861-11-28 1861-12-02 preschool <NA>  172  9
 4  4 Seibold 61 62  13   male 1861-11-27 1861-11-28 2nd class <NA>  180 10
 5  5  Motzer 42 63   8 female 1861-11-22 1861-11-27 1st class <NA>   45 11
-                C PR CA NI GE TD   TM x.loc y.loc     tPRO     tERU tDEAD
-1 no complicatons  4  4  3  1 NA   NA 142.5 100.0 22.71242 26.22541    NA
-2 no complicatons  4  4  3  1  3 40.3 142.5 100.0 24.21169 28.79112    NA
-3 no complicatons  4  4  3  2  1 40.5 142.5 100.0 29.59102 33.69121    NA
-4 no complicatons  1  1  1  1  3 40.7 165.0 102.5 28.11698 29.02866    NA
-5 no complicatons  5  3  2  1 NA   NA 145.0 120.0 23.05953 28.41510    NA
-        tR       tI
-1 29.22541 21.71242
-2 31.79112 23.21169
-3 36.69121 28.59102
-4 32.02866 27.11698
-5 31.41510 22.05953
+                C PR CA NI GE TD   TM x.loc y.loc   tPRO   tERU tDEAD     tR
+1 no complicatons  4  4  3  1 NA   NA 142.5 100.0 22.712 26.225    NA 29.225
+2 no complicatons  4  4  3  1  3 40.3 142.5 100.0 24.212 28.791    NA 31.791
+3 no complicatons  4  4  3  2  1 40.5 142.5 100.0 29.591 33.691    NA 36.691
+4 no complicatons  1  1  1  1  3 40.7 165.0 102.5 28.117 29.029    NA 32.029
+5 no complicatons  5  3  2  1 NA   NA 145.0 120.0 23.060 28.415    NA 31.415
+      tI
+1 21.712
+2 23.212
+3 28.591
+4 27.117
+5 22.060
 > 
 > hagelloch <- as.epidata(hagelloch.df,
 +   t0 = 0, tI.col = "tI", tR.col = "tR",
@@ -559,12 +561,12 @@ FALSE  TRUE  <NA>
 +            c2 = function (CL.i, CL.j) CL.i == "2nd class" & CL.j == CL.i),
 +   keep.cols = c("SEX", "AGE", "CL"))
 > head(hagelloch, n = 5)
-  BLOCK id start     stop atRiskY event Revent x.loc y.loc    SEX AGE        CL
-1     1  1     0 1.136356       1     0      0 142.5 100.0 female   7 1st class
-2     1  2     0 1.136356       1     0      0 142.5 100.0 female   6 1st class
-3     1  3     0 1.136356       1     0      0 142.5 100.0 female   4 preschool
-4     1  4     0 1.136356       1     0      0 165.0 102.5   male  13 2nd class
-5     1  5     0 1.136356       1     0      0 145.0 120.0 female   8 1st class
+  BLOCK id start   stop atRiskY event Revent x.loc y.loc    SEX AGE        CL
+1     1  1     0 1.1364       1     0      0 142.5 100.0 female   7 1st class
+2     1  2     0 1.1364       1     0      0 142.5 100.0 female   6 1st class
+3     1  3     0 1.1364       1     0      0 142.5 100.0 female   4 preschool
+4     1  4     0 1.1364       1     0      0 165.0 102.5   male  13 2nd class
+5     1  5     0 1.1364       1     0      0 145.0 120.0 female   8 1st class
   household nothousehold c1 c2
 1         0            1  0  0
 2         0            1  0  0
@@ -587,7 +589,7 @@ In `[.epidata`(x, 1:5, , drop = FALSE) :
 > 
 > ## 4.3. Modeling and inference
 > hagellochFit <- twinSIR(~household + c1 + c2 + nothousehold, data = hagelloch)
-Initialized 1 log-baseline interval:  0.00000 92.54524
+Initialized 1 log-baseline interval:  0.000 92.545
 Initial parameter vector:  1 1 1 1 0
 iter   10 value 1171.526434
 iter   20 value 887.870001
@@ -608,26 +610,26 @@ Call:
 twinSIR(formula = ~household + c1 + c2 + nothousehold, data = hagelloch)
 
 Coefficients:
-                   Estimate Std. Error z value Pr(>|z|)    
-household         0.0268676  0.0061133   4.395 1.11e-05 ***
-c1                0.0238922  0.0050264   4.753 2.00e-06 ***
-c2                0.0029319  0.0007547   3.885 0.000102 ***
-nothousehold      0.0008314  0.0001416   5.871 4.34e-09 ***
-cox(logbaseline) -7.3626441  0.8879894  -8.291  < 2e-16 ***
+                  Estimate Std. Error z value Pr(>|z|)    
+household         0.026868   0.006113    4.39  1.1e-05 ***
+c1                0.023892   0.005026    4.75  2.0e-06 ***
+c2                0.002932   0.000755    3.88    1e-04 ***
+nothousehold      0.000831   0.000142    5.87  4.3e-09 ***
+cox(logbaseline) -7.362644   0.887989   -8.29  < 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Total number of infections:  187 
 
-One-sided AIC: 1244.8	(simulated penalty weights)
-Log-likelihood: -619.4
+One-sided AIC: 1245	(simulated penalty weights)
+Log-likelihood: -619
 Number of log-likelihood evaluations: 119 
 
 > ##M Note: OSAIC is 1244.9 (with quadprog <= 1.5-7) or 1244.8 (with 1.5-8)
 > 
 > exp(confint(hagellochFit, parm = "cox(logbaseline)"))
-                        2.5 %      97.5 %
-cox(logbaseline) 0.0001113234 0.003616615
+                      2.5 %    97.5 %
+cox(logbaseline) 0.00011132 0.0036166
 > 
 > prof <- profile(hagellochFit,
 +   list(c(match("c1", names(coef(hagellochFit))), NA, NA, 25),
@@ -689,9 +691,9 @@ Computing profile likelihood-based confidence intervals ...
 1 / 2 
 2 / 2 
 > prof$ci.hl
-   idx     hl.low       hl.up    wald.low     wald.up         mle
-c1   2 0.01521872 0.034968523 0.014040642 0.033743757 0.023892199
-c2   3 0.00157588 0.004535186 0.001452658 0.004411096 0.002931877
+   idx    hl.low     hl.up  wald.low   wald.up       mle
+c1   2 0.0152187 0.0349685 0.0140406 0.0337438 0.0238922
+c2   3 0.0015759 0.0045352 0.0014527 0.0044111 0.0029319
 > 
 > plot(prof)
 > 
@@ -707,7 +709,7 @@ c2   3 0.00157588 0.004535186 0.001452658 0.004411096 0.002931877
 > hagellochFit_fstep <- twinSIR(
 +   ~household + c1 + c2 + B1 + B2 + B3,
 +   data = update(hagelloch, f = fstep))
-Initialized 1 log-baseline interval:  0.00000 92.54524
+Initialized 1 log-baseline interval:  0.000 92.545
 Initial parameter vector:  1 1 1 1 1 1 0
 iter   10 value 1225.113513
 iter   20 value 885.335161
@@ -724,9 +726,9 @@ converged
 > set.seed(1)
 > AIC(hagellochFit, hagellochFit_fstep)
 Computing OSAIC weights for 4 epidemic covariates based on 1000 simulations ...
-                   df      AIC
-hagellochFit        5 1244.656
-hagellochFit_fstep  7 1245.708
+                   df    AIC
+hagellochFit        5 1244.7
+hagellochFit_fstep  7 1245.7
 > ##M Note: OSAIC values slightly changed (abs. diff. < 0.2) with quadprog 1.5-8
 > 
 > ################################################################################
@@ -778,20 +780,20 @@ Call:
 hhh4(stsObj = measlesWeserEms, control = measlesModel_basic)
 
 Coefficients:
-                      Estimate   Std. Error
-exp(ar.1)              0.645403   0.079270 
-exp(ne.1)              0.015805   0.004200 
-exp(end.1)             1.080248   0.278839 
-exp(end.t)             1.001185   0.004264 
-end.A(2 * pi * t/52)   1.164231   0.192124 
-end.s(2 * pi * t/52)  -0.634360   0.133500 
-overdisp               2.013839   0.285441 
+                      Estimate  Std. Error
+exp(ar.1)              0.64540   0.07927  
+exp(ne.1)              0.01581   0.00420  
+exp(end.1)             1.08025   0.27884  
+exp(end.t)             1.00119   0.00426  
+end.A(2 * pi * t/52)   1.16423   0.19212  
+end.s(2 * pi * t/52)  -0.63436   0.13350  
+overdisp               2.01384   0.28544  
 
 Epidemic dominant eigenvalue:  0.72 
 
-Log-likelihood:   -971.72 
-AIC:              1957.44 
-BIC:              1995.72 
+Log-likelihood:   -971.7 
+AIC:              1957.4 
+BIC:              1995.7 
 
 Number of units:        17 
 Number of time points:  103 
@@ -800,13 +802,13 @@ Number of time points:  103
 > plot(measlesFit_basic, type = "season", components = "end", main = "")
 > 
 > confint(measlesFit_basic, parm = "overdisp")
-            2.5 %   97.5 %
-overdisp 1.454385 2.573293
+          2.5 % 97.5 %
+overdisp 1.4544 2.5733
 > 
 > AIC(measlesFit_basic, update(measlesFit_basic, family = "Poisson"))
-                                             df      AIC
-measlesFit_basic                              7 1957.442
-update(measlesFit_basic, family = "Poisson")  6 2479.305
+                                             df    AIC
+measlesFit_basic                              7 1957.4
+update(measlesFit_basic, family = "Poisson")  6 2479.3
 > 
 > districts2plot <- which(colSums(observed(measlesWeserEms)) > 20)
 > plot(measlesFit_basic, type = "fitted", units = districts2plot, hide0s = TRUE)
@@ -815,7 +817,7 @@ update(measlesFit_basic, family = "Poisson")  6 2479.305
 +   nrow = nrow(measlesWeserEms), ncol = ncol(measlesWeserEms), byrow = TRUE)
 > summary(Sprop[1, ])
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.03057 0.04808 0.05808 0.06750 0.08296 0.13983 
+ 0.0306  0.0481  0.0581  0.0675  0.0830  0.1398 
 > 
 > Soptions <- c("unchanged", "Soffset", "Scovar")
 > SmodelGrid <- expand.grid(end = Soptions, ar = Soptions)
@@ -835,21 +837,21 @@ update(measlesFit_basic, family = "Poisson")  6 2479.305
 > aics_vacc <- do.call(AIC, lapply(names(measlesFits_vacc), as.name),
 +   envir = as.environment(measlesFits_vacc))
 > aics_vacc[order(aics_vacc[, "AIC"]), ]
-                    df      AIC
-`Scovar|unchanged`   8 1917.071
-`Scovar|Scovar`      9 1919.070
-`Soffset|unchanged`  7 1922.114
-`Soffset|Scovar`     8 1924.020
-`Scovar|Soffset`     8 1934.478
-`Soffset|Soffset`    7 1936.990
-unchanged|unchanged  7 1957.442
-`unchanged|Scovar`   8 1958.959
-`unchanged|Soffset`  7 1966.933
+                    df    AIC
+`Scovar|unchanged`   8 1917.1
+`Scovar|Scovar`      9 1919.1
+`Soffset|unchanged`  7 1922.1
+`Soffset|Scovar`     8 1924.0
+`Scovar|Soffset`     8 1934.5
+`Soffset|Soffset`    7 1937.0
+unchanged|unchanged  7 1957.4
+`unchanged|Scovar`   8 1959.0
+`unchanged|Soffset`  7 1966.9
 > 
 > measlesFit_vacc <- measlesFits_vacc[["Scovar|unchanged"]]
 > coef(measlesFit_vacc, se = TRUE)["end.log(Sprop)", ]
   Estimate Std. Error 
- 1.7180884  0.2877142 
+   1.71809    0.28771 
 > 
 > measlesFit_nepop <- update(measlesFit_vacc,
 +   ne = list(f = ~log(pop)), data = list(pop = population(measlesWeserEms)))
@@ -884,10 +886,10 @@ unchanged|unchanged  7 1957.442
 + })
 > 
 > AIC(measlesFit_nepop, measlesFit_powerlaw, measlesFit_np2)
-                    df      AIC
-measlesFit_nepop     9 1886.836
-measlesFit_powerlaw 10 1882.065
-measlesFit_np2      10 1880.963
+                    df    AIC
+measlesFit_nepop     9 1886.8
+measlesFit_powerlaw 10 1882.1
+measlesFit_np2      10 1881.0
 > 
 > measlesFit_ri <- update(measlesFit_powerlaw,
 +   end = list(f = update(formula(measlesFit_powerlaw)$end, ~. + ri() - 1)),
@@ -901,27 +903,27 @@ Call:
 hhh4(stsObj = object$stsObj, control = control)
 
 Random effects:
-            Var   Corr   
-ar.ri(iid)  1.076        
-ne.ri(iid)  1.294 0      
-end.ri(iid) 1.312 0    0 
+            Var  Corr   
+ar.ri(iid)  1.08        
+ne.ri(iid)  1.29 0      
+end.ri(iid) 1.31 0    0 
 
 Fixed effects:
-                      Estimate   Std. Error
-ar.ri(iid)            -1.613893   0.381968 
-ne.log(pop)            3.424061   1.077217 
-ne.ri(iid)             6.624286   2.815530 
-end.t                  0.005777   0.004803 
-end.A(2 * pi * t/52)   1.203592   0.201494 
-end.s(2 * pi * t/52)  -0.479155   0.142054 
-end.log(Sprop)         1.793501   0.691594 
-end.ri(iid)            4.422602   1.946051 
-neweights.d            3.606399   0.776016 
-overdisp               0.977234   0.151321 
+                      Estimate  Std. Error
+ar.ri(iid)            -1.61389   0.38197  
+ne.log(pop)            3.42406   1.07722  
+ne.ri(iid)             6.62429   2.81553  
+end.t                  0.00578   0.00480  
+end.A(2 * pi * t/52)   1.20359   0.20149  
+end.s(2 * pi * t/52)  -0.47916   0.14205  
+end.log(Sprop)         1.79350   0.69159  
+end.ri(iid)            4.42260   1.94605  
+neweights.d            3.60640   0.77602  
+overdisp               0.97723   0.15132  
 
 Epidemic dominant eigenvalue:  0.84 
 
-Penalized log-likelihood:  -868.63 
+Penalized log-likelihood:  -868.6 
 Marginal log-likelihood:   -54.2 
 
 Number of units:        17 
@@ -929,10 +931,10 @@ Number of time points:  103
 
 > 
 > head(ranef(measlesFit_ri, tomatrix = TRUE), n = 3)
-      ar.ri(iid)  ne.ri(iid) end.ri(iid)
-03401  0.0000000 -0.05673057  -1.0044596
-03402  1.2234776  0.04311721   1.5263983
-03403 -0.8272548  1.55877779  -0.6198755
+      ar.ri(iid) ne.ri(iid) end.ri(iid)
+03401    0.00000  -0.056731    -1.00446
+03402    1.22348   0.043117     1.52640
+03403   -0.82725   1.558778    -0.61988
 > 
 > stopifnot(ranef(measlesFit_ri) > -1.6, ranef(measlesFit_ri) < 1.6)
 > for (comp in c("ar", "ne", "end")) {
@@ -963,10 +965,10 @@ Number of time points:  103
 > measlesScores1 <- lapply(measlesPreds1, scores, which = SCORES, individual = TRUE,
 +                          reverse = TRUE)  ##M for replication with surveillance >= 1.16.0
 > t(sapply(measlesScores1, colMeans, dims = 2))
-                        logs       rps      dss      ses
-measlesFit_basic    1.088505 0.7357836 1.291088 5.289318
-measlesFit_powerlaw 1.100818 0.7306564 2.222276 5.394352
-measlesFit_ri       1.007047 0.6380744 0.965551 4.823226
+                      logs     rps     dss    ses
+measlesFit_basic    1.0885 0.73578 1.29109 5.2893
+measlesFit_powerlaw 1.1008 0.73066 2.22228 5.3944
+measlesFit_ri       1.0070 0.63807 0.96555 4.8232
 > 
 > measlesPreds2 <- lapply(mget(models2compare), oneStepAhead,
 +   tp = tp, type = "rolling", which.start = "final",
@@ -999,12 +1001,12 @@ One-step-ahead prediction @ t = 76 ...
 One-step-ahead prediction @ t = 77 ...
 One-step-ahead prediction @ t = 65 ...
 One-step-ahead prediction @ t = 66 ...
-One-step-ahead prediction @ t = 67 ...
 One-step-ahead prediction @ t = 68 ...
-One-step-ahead prediction @ t = 69 ...
+One-step-ahead prediction @ t = 67 ...
 One-step-ahead prediction @ t = 70 ...
-One-step-ahead prediction @ t = 71 ...
+One-step-ahead prediction @ t = 69 ...
 One-step-ahead prediction @ t = 72 ...
+One-step-ahead prediction @ t = 71 ...
 One-step-ahead prediction @ t = 74 ...
 One-step-ahead prediction @ t = 73 ...
 One-step-ahead prediction @ t = 76 ...
@@ -1013,26 +1015,26 @@ One-step-ahead prediction @ t = 77 ...
 > measlesScores2 <- lapply(measlesPreds2, scores, which = SCORES, individual = TRUE,
 +                          reverse = TRUE)  ##M for replication with surveillance >= 1.16.0
 > t(sapply(measlesScores2, colMeans, dims = 2))
-                        logs       rps      dss      ses
-measlesFit_basic    1.102458 0.7477739 1.339070 5.403861
-measlesFit_powerlaw 1.136181 0.7654048 2.929147 5.865495
-measlesFit_ri       1.110280 0.7631817 2.349311 7.080466
+                      logs     rps    dss    ses
+measlesFit_basic    1.1025 0.74777 1.3391 5.4039
+measlesFit_powerlaw 1.1362 0.76540 2.9291 5.8655
+measlesFit_ri       1.1103 0.76318 2.3493 7.0805
 > 
 > set.seed(321)
 > sapply(SCORES, function (score) permutationTest(
 +   measlesScores2$measlesFit_ri[, , score],
 +   measlesScores2$measlesFit_basic[, , score]))
-            logs        rps        dss       ses      
-diffObs     0.007821607 0.01540781 1.010241  1.676605 
-pVal.permut 0.8669      0.7197     0.5183    0.19     
-pVal.t      0.8541216   0.7165022  0.3736935 0.1710554
+            logs      rps      dss     ses    
+diffObs     0.0078216 0.015408 1.0102  1.6766 
+pVal.permut 0.8669    0.7197   0.5183  0.19   
+pVal.t      0.85412   0.7165   0.37369 0.17106
 > 
 > calibrationTest(measlesPreds2[["measlesFit_ri"]], which = "rps")
 
 	Calibration Test for Count Data (based on RPS)
 
 data:  measlesPreds2[["measlesFit_ri"]]
-z = 0.80671, n = 221, p-value = 0.4198
+z = 0.807, n = 221, p-value = 0.42
 
 > 
 > par(mfrow = sort(n2mfrow(length(measlesPreds2))), mar = c(4.5, 4.5, 3, 1))
@@ -1049,7 +1051,7 @@ z = 0.80671, n = 221, p-value = 0.4198
 +   nsim = 100, seed = 1, subset = 53:104, y.start = y.start)
 > summary(colSums(measlesSim, dims = 2))
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  223.0   326.0   424.0   550.3   582.5  3971.0 
+    223     326     424     550     582    3971 
 > 
 > par(las = 1, mar = c(5, 5, 1, 1))
 > plot(measlesSim, "time", ylim = c(0, 100))
