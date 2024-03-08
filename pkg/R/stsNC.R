@@ -109,20 +109,6 @@ setMethod(f="plot", signature=signature(x="stsNC", y="missing"),
 ######################################
 
 ######################################################################
-## Convert discrete time hazards to PMF
-## Parameters:
-##  haz - vector with entries for (0,...,Dmax)
-######################################################################
-
-haz2pmf <- function(haz) {
-    PMF <- 0*haz
-    for (i in 0:(length(haz)-1)) {
-        PMF[i+1] <- haz[i+1] * (1-sum(PMF[seq(i)]))
-    }
-    return(PMF)
-}
-
-######################################################################
 # Find a quantile of a discrete random variable with support on
 # 0,...,D and which has a PMF given by the vector prob. We
 # define the q quantile as \min_{x} F(x) \geq q.
