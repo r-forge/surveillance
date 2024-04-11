@@ -249,7 +249,7 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
     factor variable). It is called as
     \code{plotter(Weight ~ Distance, ...)} and defaults to
     \code{\link{boxplot}}. A useful alternative is, e.g.,
-    \code{\link{stripplot}} from package \pkg{lattice}.}
+    \code{\link[lattice]{stripplot}} from package \pkg{lattice}.}
   \item{exclude}{vector of neighbourhood orders to be excluded from
     plotting (passed to \code{\link{factor}}).
     By default, the neighbourhood weight for order 0 is not
