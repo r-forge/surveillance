@@ -14,6 +14,7 @@
 #Open
 31/08/2023 maybe use Paul's gdiff package to watch for unexpected changes
            in example plots similar to archiving the -Ex.Rout file
+28/11/2023 converting from Rcpp to cpp11 or C would reduce installed size
 
 #Done
 17/03/2020 remove ancient algo.hhh and simHHH implementations
