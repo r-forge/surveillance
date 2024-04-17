@@ -7,7 +7,7 @@ Layout Items for \code{spplot}
 }
 
 \description{
-Generate \code{sp.layout} items for use by \code{\link{spplot}}
+Generate \code{sp.layout} items for use by \code{\link[sp]{spplot}}
 or plot these items directly in the traditional graphics system.
 Function \code{layout.labels} draws labels at the coordinates of the
 spatial object, and \code{layout.scalebar} returns a labeled scale bar.
@@ -47,7 +47,7 @@ layout.scalebar(obj, corner = c(0.05, 0.95), scale = 1,
     scale bar is placed in the top left corner (with a small buffer).
   }
   \item{scale}{
-    the width of the scale bar in the units of \code{\link{proj4string}(obj)}.
+    the width of the scale bar in the units of \code{\link[sp]{proj4string}(obj)}.
     If \code{identical(FALSE, \link{is.projected}(obj))}
     (i.e., \code{obj} has longlat coordinates), \code{scale} is
     interpreted in kilometres.
@@ -68,7 +68,7 @@ layout.scalebar(obj, corner = c(0.05, 0.95), scale = 1,
   \item{plot}{
     logical indicating if the layout item should be plotted using the
     traditional graphics system. By default (\code{FALSE}), a list for
-    subsequent use by \code{\link{spplot}} is returned.
+    subsequent use by \code{\link[sp]{spplot}} is returned.
   }
 }
 

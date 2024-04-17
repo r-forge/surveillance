@@ -142,7 +142,7 @@ intensity.twinstim(x,
 }
   \item{\dots}{
     further arguments passed to \code{plot} or \code{lines} (if
-    \code{aggregate = "time"}), or to \code{\link{spplot}} (if
+    \code{aggregate = "time"}), or to \code{\link[sp]{spplot}} (if
     \code{aggregate = "space"}).\cr
     For \code{intensityplot.simEpidataCS}, arguments passed to
     \code{intensityplot.twinstim}.

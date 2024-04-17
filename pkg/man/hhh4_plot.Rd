@@ -99,7 +99,7 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
     \code{plotHHH4_fitted} passes them to \code{plotHHH4_fitted1}, which is called
     sequentially for every unit in \code{units}.\cr
     \code{plotHHH4_maps} and \code{plotHHH4_ri} pass additional arguments to
-    \code{\link{spplot}}, and \code{plotHHH4_neweights} to the
+    \code{\link[sp]{spplot}}, and \code{plotHHH4_neweights} to the
     \code{plotter}.}
   \item{units,unit}{integer or character vector specifying a single
     \code{unit} or possibly multiple \code{units} to plot.
@@ -238,7 +238,7 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
   \item{labels}{determines if and how regions are labeled, see
     \code{\link{layout.labels}}.}
   \item{sp.layout}{optional list of additional layout items, see
-    \code{\link{spplot}}.}
+    \code{\link[sp]{spplot}}.}
   \item{gpar.missing}{list of graphical parameters for
     \code{\link{sp.polygons}}, applied to regions
     with missing random intercepts, i.e., not included in the model.
@@ -277,11 +277,11 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
   dominant eigenvalue of the \eqn{\Lambda_t} matrix for all time points
   \eqn{t} of \code{x$stsObj}.\cr
   \code{plotHHH4_maps} returns a \code{\link[lattice]{trellis.object}} if
-  \code{length(which) == 1} (a single \code{\link{spplot}}), and
+  \code{length(which) == 1} (a single \code{\link[sp]{spplot}}), and
   otherwise uses \code{\link[gridExtra]{grid.arrange}} from the
   \pkg{gridExtra} package to arrange all \code{length(which)}
-  \code{\link{spplot}}s on a single page.
-  \code{plotHHH4_ri} returns the generated \code{\link{spplot}}, i.e.,
+  \code{\link[sp]{spplot}}s on a single page.
+  \code{plotHHH4_ri} returns the generated \code{\link[sp]{spplot}}, i.e.,
   a \code{\link[lattice]{trellis.object}}.\cr
   \code{plotHHH4_neweights} eventually calls \code{plotter} and
   thus returns whatever is returned by that function.
