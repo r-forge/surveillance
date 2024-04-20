@@ -116,14 +116,14 @@ intensity.twinstim(x,
 }
   \item{polygons.args}{
     if a list, its elements are passed as arguments to
-    \code{\link{sp.polygons}}, which will add \code{tiles} to the plot
+    \code{\link[sp]{sp.polygons}}, which will add \code{tiles} to the plot
     if \code{aggregate = "space"} (it is unused for the temporal plot).
     By default, the fill \code{col}our of the tiles is set to
     \code{"darkgrey"}.
 }
   \item{points.args}{
     if a list, its elements are passed as arguments to
-    \code{\link{sp.points}}, which will add the event locations to the plot
+    \code{\link[sp]{sp.points}}, which will add the event locations to the plot
     if \code{aggregate = "space"} (it is unused for the temporal plot).
     By default, the plot symbol is set to \code{pch=1}. The sizes
     of the points are determined as the product of the argument \code{cex}

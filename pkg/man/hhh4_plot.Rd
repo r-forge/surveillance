@@ -240,7 +240,7 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
   \item{sp.layout}{optional list of additional layout items, see
     \code{\link[sp]{spplot}}.}
   \item{gpar.missing}{list of graphical parameters for
-    \code{\link{sp.polygons}}, applied to regions
+    \code{\link[sp]{sp.polygons}}, applied to regions
     with missing random intercepts, i.e., not included in the model.
     Such extra regions won't be plotted if
     \code{!is.list(gpar.missing)}.}

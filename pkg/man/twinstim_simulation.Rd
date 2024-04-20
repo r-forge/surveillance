@@ -89,7 +89,7 @@ simEpidataCS(endemic, epidemic, siaf, tiaf, qmatrix, rmarks,
   }
   \item{events}{
     \code{NULL} or missing (default) in case of an empty prehistory,
-    or a \code{\link{SpatialPointsDataFrame}} containing events of the
+    or a \code{\link[sp]{SpatialPointsDataFrame}} containing events of the
     prehistory (-Inf;\code{t0}] of the process (required for the
     epidemic to start in case of no endemic component in the model).
     The \code{SpatialPointsDataFrame} must have the same

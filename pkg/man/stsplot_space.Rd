@@ -113,7 +113,7 @@ stsplot_space(x, tps = NULL, map = x@map, population = NULL,
     \code{total.args=list()} will use all of them.
   }
   \item{gpar.missing}{list of graphical parameters for
-    \code{\link{sp.polygons}} applied to the regions of \code{map},
+    \code{\link[sp]{sp.polygons}} applied to the regions of \code{map},
     which are not part of \code{x}. Such extra regions won't be plotted
     if \code{!is.list(gpar.missing)}.}
   \item{sp.layout}{

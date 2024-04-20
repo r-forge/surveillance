@@ -48,12 +48,12 @@ layout.scalebar(obj, corner = c(0.05, 0.95), scale = 1,
   }
   \item{scale}{
     the width of the scale bar in the units of \code{\link[sp]{proj4string}(obj)}.
-    If \code{identical(FALSE, \link{is.projected}(obj))}
+    If \code{identical(FALSE, \link[sp]{is.projected}(obj))}
     (i.e., \code{obj} has longlat coordinates), \code{scale} is
     interpreted in kilometres.
   }
   \item{height}{
-    the height of the scale bar, see \code{\link{layout.scale.bar}}.
+    the height of the scale bar, see \code{\link[sp]{layout.scale.bar}}.
   }
   \item{pos}{
     a position specifier for the labels (see \code{\link{text}}).

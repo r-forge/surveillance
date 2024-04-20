@@ -157,7 +157,7 @@ getSourceDists(object, dimension = c("space", "time"))
   \item{clipper}{polygon clipping engine to use for calculating the
     \code{.influenceRegion}s of events (see the Value section below).
     Default is the \CRANpkg{polyclip} package (called via
-    \code{\link{intersect.owin}} from package \CRANpkg{spatstat.geom}).
+    \code{\link[spatstat.geom]{intersect.owin}} from package \CRANpkg{spatstat.geom}).
     In \pkg{surveillance} <= 1.6-0, package \pkg{gpclib} was used;
     this is no longer supported, neither is \pkg{rgeos}.}
 
@@ -177,7 +177,7 @@ getSourceDists(object, dimension = c("space", "time"))
 
   \item{i,j,drop}{
     arguments passed to the
-    \code{\link[=[,SpatialPointsDataFrame-method]{[-method}} for
+    \code{\link[sp:SpatialPointsDataFrame-class]{[-method}} for
     \code{SpatialPointDataFrame}s for subsetting the \code{events} while
     retaining \code{stgrid} and \code{W}.\cr
     If \code{drop=TRUE} (the default), event types that completely
