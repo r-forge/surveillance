@@ -11,6 +11,7 @@ template:
 navbar:
   structure:
     left: [overview, reference, news, events, bibliography]
+    right: []
   components:
     overview:
       text: Overview
