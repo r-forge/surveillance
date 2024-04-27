@@ -2,7 +2,7 @@
 ### Maximum Likelihood inference for the two-component spatio-temporal intensity
 ### model described in Meyer et al (2012), DOI: 10.1111/j.1541-0420.2011.01684.x
 ###
-### Copyright (C) 2009-2019 Sebastian Meyer
+### Copyright (C) 2009-2019,2024 Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -976,7 +976,8 @@ twinstim <- function (
     if (nbeta0 > 0)
         initpars[seq_len(nbeta0)] <- crudebeta0(
             nEvents = Nin,
-            offset.mean = if (is.null(offsetGrid)) 0 else weighted.mean(offsetGrid, ds),
+            offset.mean = if (is.null(offsetGrid)) 0
+                          else weighted.mean(offsetGrid, replace(ds, !is.finite(offsetGrid), 0)),
             W.area = sum(ds[gridBlocks==histIntervals[1,"BLOCK"]]),
             period = T-t0, nTypes = nTypes
         )

@@ -1,6 +1,10 @@
-# surveillance 1.22.1 (2023-11-27)
+# surveillance 1.22.2 (UNRELEASED)
 
-## Bug Fixes
+- Start values for endemic intercepts in `twinstim()` are now robust
+  against non-finite values in offset terms. 
+
+
+# surveillance 1.22.1 (2023-11-27)
 
 - The `pit()` plot could lack some tick marks on the y-axis (for R >= 4.2.0).
 
