@@ -1015,6 +1015,13 @@ twinstim <- function (
         initpars["e.(Intercept)"] < 0)
         warning("identity link and negative start value for \"e.(Intercept)\"")
 
+    ## check that start values are finite
+    if (any(!is.finite(initpars))) {
+        print(initpars[!is.finite(initpars)])
+        stop("initial parameter values must be finite; set 'start'",
+             call. = FALSE)
+    }
+
     ## update optim.args$par
     optim.args$par <- initpars
 
