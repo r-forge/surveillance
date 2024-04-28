@@ -10,3 +10,9 @@ fit0 <- twinstim(endemic = ~offset(log(popdensity)) + I(start/365),
                  data = imdepi0, model = TRUE)
 ## beta0 was initialized at Inf in surveillance <= 1.22.1
 stopifnot(fit0$converged, is.finite(logLik(fit0)))
+
+## endemic intensity is 0 in unpopulated districts
+load(system.file("shapes", "districtsD.RData", package = "surveillance"))
+hGrid <- intensity.twinstim(fit0, "space", tiles = districtsD)$hGrid
+districts_h0 <- names(which(hGrid == 0))
+stopifnot(length(districts_h0) > 0, startsWith(districts_h0, "01"))
