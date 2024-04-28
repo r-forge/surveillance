@@ -1,5 +1,7 @@
 ## miscellaneous regression tests for twinstim()
 data("imdepi")
+load(system.file("shapes", "districtsD.RData", package = "surveillance"))
+
 
 ## let some districts have no population
 imdepi0 <- imdepi
@@ -12,7 +14,14 @@ fit0 <- twinstim(endemic = ~offset(log(popdensity)) + I(start/365),
 stopifnot(fit0$converged, is.finite(logLik(fit0)))
 
 ## endemic intensity is 0 in unpopulated districts
-load(system.file("shapes", "districtsD.RData", package = "surveillance"))
 hGrid <- intensity.twinstim(fit0, "space", tiles = districtsD)$hGrid
 districts_h0 <- names(which(hGrid == 0))
 stopifnot(length(districts_h0) > 0, startsWith(districts_h0, "01"))
+
+
+## intensityplot works for an endemic-only model
+fit_end <- twinstim(endemic = ~1, data = imdepi, model = TRUE,
+                    optim.args = list(fixed = TRUE))
+intensityplot(fit_end, "total", "space", tiles = districtsD)
+## produced an error in surveillance <= 1.22.1:
+##   unable to find an inherited method for function 'coordinates' for signature '"NULL"'

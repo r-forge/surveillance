@@ -185,6 +185,8 @@ twinstim <- function (
     qmatrix <- checkQ(qmatrix, typeNames)
     # we only need the integer codes for the calculations
     eventTypes <- as.integer(eventTypes)
+    # coords are needed for intensityplot(), so even for endemic-only models
+    eventCoords <- coordinates(data$events)[inmfe,,drop=FALSE]
 
 
     ### Generate model matrix
@@ -204,7 +206,6 @@ twinstim <- function (
         bdist <- mfe[["(bdist)"]]
         gIntUpper <- mfe[["(obsInfLength)"]]
         gIntLower <- pmax(0, t0-eventTimes)
-        eventCoords <- coordinates(data$events)[inmfe,,drop=FALSE]
         influenceRegion <- data$events@data$.influenceRegion[inmfe]
         iRareas <- vapply(X = influenceRegion, FUN = attr, which = "area",
                           FUN.VALUE = 0, USE.NAMES = FALSE)

@@ -1,7 +1,10 @@
-# surveillance 1.22.2 (UNRELEASED)
+# surveillance 1.22.2 (TBD)
 
 - Start values for endemic intercepts in `twinstim()` are now robust
   against non-finite values in offset terms. 
+
+- `intensityplot.twinstim(aggregate = "space")` no longer fails for
+  endemic-only fits.
 
 
 # surveillance 1.22.1 (2023-11-27)
