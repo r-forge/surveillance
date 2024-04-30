@@ -63,11 +63,11 @@ echo "$${CHECK_REPORT_TIMINGS_SCRIPT}" | $R -s --vanilla
 endef
 
 define check-report-warnings-in-examples
-cd surveillance.Rcheck; \
+(cd surveillance.Rcheck; \
 nwarn=`grep -cP '^Warning(?!.*(gpc.poly|pit.default|k = 40))' surveillance-Ex.Rout`; \
 if [ $$nwarn -gt 0 ]; then echo "\n\tWARNING: $$nwarn" \
 	"warning(s) thrown when running examples,\n" \
-	"\t         see file surveillance.Rcheck/surveillance-Ex.Rout\n"; fi
+	"\t         see file surveillance.Rcheck/surveillance-Ex.Rout\n"; fi)
 endef
 
 ## "quick" check
@@ -88,8 +88,7 @@ check-cran: build
 ## ignore check.Renviron where I set _R_CHECK_LENGTH_1_LOGIC2_=TRUE (stops INLA)
 check-allExamples: build-noVignettes
 	_R_SURVEILLANCE_ALL_EXAMPLES_=TRUE R_CHECK_ENVIRON="" $R CMD check --timings --run-dontrun --extra-arch --output=/tmp surveillance_${VERSION}.tar.gz
-	@$(check-report-timings)
-	@$(check-report-warnings-in-examples)
+	@cd /tmp; $(check-report-timings); $(check-report-warnings-in-examples)
 
 
 install: build
