@@ -1,17 +1,24 @@
 ## miscellaneous regression tests for twinstim()
 data("imdepi")
-load(system.file("shapes", "districtsD.RData", package = "surveillance"))
+load(system.file("shapes", "districtsD.RData", package = "surveillance"),
+     verbose = TRUE)
 
 
 ## let some districts have no population
-imdepi0 <- imdepi
-imdepi0$stgrid$popdensity[startsWith(as.character(imdepi$stgrid$tile), "01")] <- 0
+## FIXME: something like update(stgrid=) would be useful
+imdepi0 <- as.epidataCS(
+    events = as(imdepi, "SpatialPointsDataFrame"),
+    stgrid = within(imdepi$stgrid[,-1],
+                    popdensity[startsWith(as.character(tile), "01")] <- 0),
+    W = stateD, verbose = FALSE)
 
 ## automatic start value is robust against -Inf offset
 fit0 <- twinstim(endemic = ~offset(log(popdensity)) + I(start/365),
-                 data = imdepi0, model = TRUE)
+                 data = imdepi0, model = TRUE,
+                 optim.args = list(fixed = TRUE))
 ## beta0 was initialized at Inf in surveillance <= 1.22.1
-stopifnot(fit0$converged, is.finite(logLik(fit0)))
+stopifnot(is.finite(coef(fit0)),
+          is.infinite(logLik(fit0))) # because of events in 0-pop tiles
 
 ## endemic intensity is 0 in unpopulated districts
 hGrid <- intensity.twinstim(fit0, "space", tiles = districtsD)$hGrid
@@ -22,6 +29,6 @@ stopifnot(length(districts_h0) > 0, startsWith(districts_h0, "01"))
 ## intensityplot works for an endemic-only model
 fit_end <- twinstim(endemic = ~1, data = imdepi, model = TRUE,
                     optim.args = list(fixed = TRUE))
-intensityplot(fit_end, "total", "space", tiles = districtsD)
+intensityplot(fit_end, "total", "space", tiles = districtsD) -> .plotobj
 ## produced an error in surveillance <= 1.22.1:
 ##   unable to find an inherited method for function 'coordinates' for signature '"NULL"'
