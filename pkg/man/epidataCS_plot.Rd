@@ -60,7 +60,7 @@ epidataCSplot_space(x, subset, by = type, tiles = x$W, pop = NULL,
     passed to \code{\link{hist}} or \code{\link{hist.Date}},
     respectively. In \code{epidataCSplot_space}, further arguments are
     passed to the \code{plot}-method for
-    \code{"\linkS4class{SpatialPolygons}"}, which draws \code{tiles}.
+    \code{"\linkSPclass{SpatialPolygons}"}, which draws \code{tiles}.
   }
 
   \item{by}{an expression evaluated in \code{marks(x)}, defining how
@@ -116,10 +116,10 @@ epidataCSplot_space(x, subset, by = type, tiles = x$W, pop = NULL,
     more than one type.}
 
   \item{tiles}{the observation region \code{x$W} (default) or,
-    alternatively, a \code{"\linkS4class{SpatialPolygons}"}
+    alternatively, a \code{"\linkSPclass{SpatialPolygons}"}
     representation of the tiles of \code{x$stgrid}.}
   \item{pop}{if \code{tiles} is a
-    \code{"\linkS4class{SpatialPolygonsDataFrame}"}, \code{pop} can
+    \code{"\linkSPclass{SpatialPolygonsDataFrame}"}, \code{pop} can
     specify an attribute to be displayed in a \code{levelplot} behind the
     point pattern, see \code{\link[sp]{spplot}}. By default (\code{NULL}),
     the conventional graphics system is used to display the \code{tiles}

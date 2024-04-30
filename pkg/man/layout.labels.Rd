@@ -23,7 +23,7 @@ layout.scalebar(obj, corner = c(0.05, 0.95), scale = 1,
 
 \arguments{
   \item{obj}{
-    an object inheriting from a \code{\linkS4class{Spatial}} class.
+    an object inheriting from a \code{"\linkSPclass{Spatial}"} class.
   }
   \item{labels}{
     specification of the labels. For \code{layout.labels}:

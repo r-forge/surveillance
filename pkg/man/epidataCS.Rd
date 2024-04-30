@@ -58,7 +58,7 @@ getSourceDists(object, dimension = c("space", "time"))
 
 \arguments{
   \item{events}{
-    a \code{"\linkS4class{SpatialPointsDataFrame}"} of cases with the
+    a \code{"\linkSPclass{SpatialPointsDataFrame}"} of cases with the
     following obligatory columns (in the \code{events@data}
     \code{data.frame}): 
     \describe{
@@ -125,7 +125,7 @@ getSourceDists(object, dimension = c("space", "time"))
   }
 
   \item{W}{
-    an object of class \code{"\linkS4class{SpatialPolygons}"}
+    an object of class \code{"\linkSPclass{SpatialPolygons}"}
     representing the observation region.
     It must have the same \code{proj4string} as \code{events}
     and all events must be within \code{W}.
@@ -228,7 +228,7 @@ getSourceDists(object, dimension = c("space", "time"))
 \value{
   An object of class \code{"epidataCS"} is a list containing the
   following components: 
-  \item{events}{a \code{"\linkS4class{SpatialPointsDataFrame}"} (see the
+  \item{events}{a \code{"\linkSPclass{SpatialPointsDataFrame}"} (see the
     description of the argument). 
     The input \code{events} are checked for requirements and sorted
     chronologically. The columns are in the following
@@ -256,7 +256,7 @@ getSourceDists(object, dimension = c("space", "time"))
     The spatio-temporal grid of endemic covariates is sorted by time
     interval (indexed by the added variable \code{BLOCK}) and region
     (\code{tile}). It is a full \code{BLOCK} x \code{tile} grid.}
-  \item{W}{a \code{"\linkS4class{SpatialPolygons}"} object representing
+  \item{W}{a \code{"\linkSPclass{SpatialPolygons}"} object representing
     the observation region.}
   \item{qmatrix}{see the above description of the argument. The
     \code{\link{storage.mode}} of the indicator matrix is set to logical

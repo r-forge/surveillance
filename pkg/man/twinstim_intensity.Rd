@@ -62,14 +62,14 @@ intensity.twinstim(x,
     type or a subset of event types.
 }
   \item{tiles}{
-    object of class \code{\linkS4class{SpatialPolygons}} representing
+    object of class \code{"\linkSPclass{SpatialPolygons}"} representing
     the decomposition of \eqn{\bold{W}} into different regions (as used
     in the corresponding \code{stgrid} of the \code{"\link{epidataCS}"}.
     This is only needed for \code{aggregate = "space"}.
 }
   \item{tiles.idcol}{
     either a column index for \code{tiles@data} (if \code{tiles} is a
-    \code{\linkS4class{SpatialPolygonsDataFrame}}), or \code{NULL}
+    \code{"\linkSPclass{SpatialPolygonsDataFrame}"}), or \code{NULL}
     (default), which refers to the \code{"ID"} slot of the polygons,
     i.e., \code{row.names(tiles)}.
     The ID's must correspond to the factor levels of
@@ -105,7 +105,7 @@ intensity.twinstim(x,
     modified.
   }
   \item{sgrid}{
-    either an object of class \code{"\linkS4class{SpatialPixels}"} (or
+    either an object of class \code{"\linkSPclass{SpatialPixels}"} (or
     coercible to that class) representing the locations where to
     evaluate \code{which}, or a scalar representing the approximate
     number of points of a grid constructed on the bounding box of

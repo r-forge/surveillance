@@ -230,7 +230,7 @@ plotHHH4_neweights(x, plotter = boxplot, ...,
   \item{colorkey}{a Boolean indicating whether to draw the color key.
     Alternatively, a list specifying how to draw it, see
     \code{\link[lattice]{levelplot}}.}
-  \item{map}{an object inheriting from \code{"\linkS4class{SpatialPolygons}"}
+  \item{map}{an object inheriting from \code{"\linkSPclass{SpatialPolygons}"}
     with \code{row.names} covering \code{colnames(x)}.}
   \item{component}{component for which to plot the estimated
     region-specific random intercepts. Must partially match one of

@@ -125,8 +125,8 @@ sts(observed, start = c(2000, 1), frequency = 52,
     \item{\code{populationFrac}:}{\code{matrix} of population 
       fractions or absolute numbers (see \code{multinomialTS} below)
       with dimensions \code{dim(observed)}.}
-    \item{\code{map}:}{object of class \code{"\linkS4class{SpatialPolygons}"}
-      (or \code{"\linkS4class{SpatialPolygonsDataFrame}"})
+    \item{\code{map}:}{object of class \code{"\linkSPclass{SpatialPolygons}"}
+      (or \code{"\linkSPclass{SpatialPolygonsDataFrame}"})
       providing a shape of the areas which are monitored.}
     \item{\code{control}:}{\code{\link{list}} of settings; this is a
       rather free data type to be returned by the surveillance algorithms.}

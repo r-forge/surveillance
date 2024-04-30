@@ -41,7 +41,7 @@ stsplot_space(x, tps = NULL, map = x@map, population = NULL,
     time period \code{1:nrow(x)}.
   }
   \item{map}{
-    an object inheriting from \code{"\linkS4class{SpatialPolygons}"}
+    an object inheriting from \code{"\linkSPclass{SpatialPolygons}"}
     representing the \code{ncol(x)} regions. By default
     the \code{map} slot of \code{x} is queried (which might be
     empty and is not applicable if \code{x} is a matrix of counts).
