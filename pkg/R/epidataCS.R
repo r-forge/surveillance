@@ -222,7 +222,7 @@ check_events <- function (events, dropTypes = TRUE, verbose = TRUE)
 
 ### CHECK FUNCTION FOR stgrid ARGUMENT IN as.epidataCS
 
-check_stgrid <- function (stgrid, T, verbose = TRUE)
+check_stgrid <- function (stgrid, T, verbose = TRUE, warn = TRUE)
 {
     # Check class
     stopifnot(inherits(stgrid, "data.frame"))
@@ -243,13 +243,9 @@ check_stgrid <- function (stgrid, T, verbose = TRUE)
     }
 
     # Check other columns on reserved names
-    reservedColsIdx <- na.omit(match(reservedColsNames_stgrid, names(stgrid),
-                                     nomatch=NA_integer_))
-    if (length(reservedColsIdx) > 0L) {
-        warning("in 'stgrid', the existing columns with reserved names (",
-                paste0("'", names(stgrid)[reservedColsIdx], "'", collapse=", "),
-                ") have been replaced")
-        stgrid <- stgrid[-reservedColsIdx]
+    if (warn && length(reservedCols <- intersect(reservedColsNames_stgrid, names(stgrid)))) {
+        warning("replacing existing columns in 'stgrid' which have reserved names: ",
+                paste0("'", reservedCols, "'", collapse=", "))
     }
 
     # Transform tile into a factor variable
@@ -325,10 +321,10 @@ check_stgrid <- function (stgrid, T, verbose = TRUE)
 
 ### MERGE stgrid DATA INTO events
 
-merge_stgrid <- function (events, stgrid, verbose = TRUE)
+merge_stgrid <- function (events, stgrid, verbose = TRUE, warn = TRUE)
 {
     # Some basic quantities
-    nEvents <- length(events)
+    nEvents <- nrow(events)
     timeRange <- with(stgrid, c(start[1], stop[length(stop)]))
 
     # Are events covered by stgrid?
@@ -367,18 +363,15 @@ merge_stgrid <- function (events, stgrid, verbose = TRUE)
 
     # Attach endemic covariates from stgrid to events
     if (verbose) cat("Attaching endemic covariates from 'stgrid' to 'events' ...\n")
-    stgridIgnoreCols <- match(setdiff(obligColsNames_stgrid, "start"), names(stgrid))
-    copyCols <- setdiff(seq_along(stgrid), stgridIgnoreCols)
-    reservedColsIdx <- na.omit(match(names(stgrid)[copyCols], names(events@data),
-                                     nomatch=NA_integer_))
-    if (length(reservedColsIdx) > 0L) {
-        warning("in 'events@data', the existing columns with names of endemic ",
-                "covariates from 'stgrid' (",
-                paste0("'", names(events@data)[reservedColsIdx], "'", collapse=", "),
-                ") have been replaced")
-        events@data <- events@data[-reservedColsIdx]
+    endemicVars <- setdiff(names(stgrid),
+                           c(reservedColsNames_stgrid, obligColsNames_stgrid))
+    copyCols <- c("BLOCK", "start", endemicVars)
+    if (warn && length(replaceCols <- intersect(copyCols, names(events)))) {
+        warning("replacing existing columns in 'events' data with ",
+                "variables from 'stgrid': ",
+                paste0("'", replaceCols, "'", collapse=", "))
     }
-    events@data <- cbind(events@data, stgrid[gridcellsOfEvents, copyCols])
+    events@data[copyCols] <- stgrid[gridcellsOfEvents, copyCols]
 
     return(events)
 }
