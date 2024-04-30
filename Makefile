@@ -1,8 +1,9 @@
 ################################################################################
+## Build and check the package
+## CAVE: Watch the list in .Rbuildignore
+##
 ## Authors: Sebastian Meyer, Michael Hoehle
 ## $Date$
-## Project: Preparing package build
-## Note: Watch the list in .Rbuildignore
 ##
 ## History:
 ##    8 Jan 2008 (MH): initial version
@@ -27,6 +28,7 @@
 ##   12 Jul 2017 (SM): "quick" vs. CRAN-versions of build and check rules
 ##   13 Sep 2018 (SM): drop roxygen (no longer supports latin1 packages)
 ##   02 Nov 2018 (SM): add pkgdown recipe
+##               ... : (see svn log)
 ################################################################################
 
 ## Define variable for R which enables the use of alternatives,
@@ -34,7 +36,7 @@
 R := R
 
 ## package version
-VERSION := $(shell $R --vanilla --slave -e 'cat(read.dcf("pkg/DESCRIPTION", fields="Version"))')
+VERSION := $(shell $R --vanilla -s -e 'cat(read.dcf("pkg/DESCRIPTION", fields="Version"))')
 
 ## build the package
 build:
@@ -57,7 +59,7 @@ subset(timings, elapsed > 2)
 endef
 export CHECK_REPORT_TIMINGS_SCRIPT
 define check-report-timings
-echo "$${CHECK_REPORT_TIMINGS_SCRIPT}" | $R --slave --vanilla
+echo "$${CHECK_REPORT_TIMINGS_SCRIPT}" | $R -s --vanilla
 endef
 
 define check-report-warnings-in-examples
@@ -98,11 +100,15 @@ checkUsage: install
 	checkUsagePackage('surveillance', suppressFundefMismatch=FALSE, \
 	    suppressLocalUnused=TRUE, suppressNoLocalFun=TRUE, skipWith=TRUE, \
 	    suppressUndefined=FALSE, suppressPartialMatchArgs=FALSE)" \
-	| $R --slave --no-save --no-restore
+	| $R -s --no-save --no-restore
 
 ## we need to run Rd2pdf inside pkg such that \packageTitle finds DESCRIPTION
-manual:	
+manuals:
 	$R CMD Rd2pdf --batch --force --output=manual.pdf pkg
+	cd pkg; \
+	  echo "tools::pkg2HTML(dir = '.', out = '../manual.html', toc_entry = 'name')" \
+	  | $R -s --no-save --no-restore
+	xdg-open manual.html
 
 NEWS.html: pkg/NEWS.md
 	pandoc -f markdown -t html -s --metadata title="News for Package 'surveillance'" --css=https://cran.R-project.org/web/CRAN_web.css -o "$@" "$<"
@@ -125,4 +131,4 @@ clean:
 	make -C pkg/vignettes clean
 	rm -f pkg/*/.Rhistory
 
-.PHONY: build build-noVignettes sysdata check check-cran check-allExamples install checkUsage manual www clean
+.PHONY: build build-noVignettes sysdata check check-cran check-allExamples install checkUsage manuals www clean
