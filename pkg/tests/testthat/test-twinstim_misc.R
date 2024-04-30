@@ -5,12 +5,9 @@ load(system.file("shapes", "districtsD.RData", package = "surveillance"),
 
 
 ## let some districts have no population
-## FIXME: something like update(stgrid=) would be useful
-imdepi0 <- as.epidataCS(
-    events = as(imdepi, "SpatialPointsDataFrame"),
-    stgrid = within(imdepi$stgrid[,-1],
-                    popdensity[startsWith(as.character(tile), "01")] <- 0),
-    W = stateD, verbose = FALSE)
+imdepi0 <- update(imdepi,
+    stgrid = within(imdepi$stgrid,
+                    popdensity[startsWith(as.character(tile), "01")] <- 0))
 
 ## automatic start value is robust against -Inf offset
 fit0 <- twinstim(endemic = ~offset(log(popdensity)) + I(start/365),

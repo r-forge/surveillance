@@ -154,7 +154,6 @@ xx/07/2012 R0 on an object containing agegrp as a factor variable
   "stgrid" could be of class STFDF.
 - allow for spatial "prehistory", i.e. events outside of W as possible sources
   in the epidemic component only, but otherwise not part of the likelihood
-- update.epidataCS(): add or remove stgrid variables
 - marks<-.epidataCS(,add=TRUE): to add marks
 - allow for type-specific endemic effects, i.e. interaction with type. ideas:
 use "special", or extra argument typeSpecificEffects=c("(Intercept)",
@@ -185,6 +184,7 @@ xx/07/2012 (sebastian): Documentation of functions in Rd files; also update refe
   should be avoided to compute the whole distance matrix. It is also wasteful to
   recompute the eventDists for every data permutation during epitest...
 02/07/2019 (sebastian): implement siaf.powerlaw1(), i.e. with fixed sigma=1
+30/04/2024 (sebastian): update.epidataCS(stgrid=)
 
 
 #======================================================================

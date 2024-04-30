@@ -18,7 +18,7 @@ region.
 }
 
 \usage{
-\method{update}{epidataCS}(object, eps.t, eps.s, qmatrix, nCircle2Poly, ...)
+\method{update}{epidataCS}(object, eps.t, eps.s, qmatrix, nCircle2Poly, stgrid, ...)
 }
 
 \arguments{
@@ -26,13 +26,13 @@ region.
     an object of class \code{"epidataCS"}.
 }
   \item{eps.t}{
-    numeric vector of length the number of events in
+    numeric vector of length 1 or corresponding to the number of events in
     \code{object$events}.  The event data column \code{eps.t} specifies
     the maximum temporal influence radius (e.g., length of infectious
     period, time to culling, etc.) of the events. 
 }
   \item{eps.s}{
-    numeric vector of length the number of events in
+    numeric vector of length 1 or corresponding to the number of events in
     \code{object$events}.  The event data column \code{eps.s} specifies
     the maximum spatial influence radius of the events.
 }
@@ -42,6 +42,12 @@ region.
 }
   \item{nCircle2Poly}{
     accuracy (number of edges) of the polygonal approximation of a circle.
+}
+  \item{stgrid}{
+    a new \code{data.frame} of endemic covariates, covering the same
+    regions as the original, i.e., \code{levels(object$stgrid$tile)}
+    must remain identical. See \code{\link{epidataCS}} for a detailed
+    description of the required format.
 }
   \item{\dots}{
     unused (argument of the generic).
