@@ -21,7 +21,7 @@ fit0 <- twinstim(endemic = ~offset(log(popdensity)) + I(start/365),
                  data = imdepi0, model = TRUE,
                  optim.args = list(fixed = TRUE))
 ## beta0 was initialized at Inf in surveillance <= 1.22.1
-stopifnot(is.finite(coef(fit0)),
+stopifnot(is.finite(coef(fit0)), is.character(fit0$converged),
           is.infinite(logLik(fit0))) # because of events in 0-pop tiles
 
 ## endemic intensity is 0 in unpopulated districts

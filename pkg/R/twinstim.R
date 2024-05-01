@@ -1309,6 +1309,10 @@ twinstim <- function (
                        TRUE else msgConvergence
            )
 
+    ## fix convergence status
+    if (isTRUE(fit$converged) && !is.finite(fit$loglik))
+        fit$converged <- warning("non-finite log-likelihood")
+
 
     ### Add Fisher information matrices
 
