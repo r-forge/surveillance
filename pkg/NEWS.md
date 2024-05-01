@@ -1,4 +1,13 @@
-# surveillance 1.22.2 (TBD)
+# surveillance 1.23.0 (TBD)
+
+## New Features
+
+- `update.epidataCS()` gained an argument `stgrid` to update the
+  spatio-temporal grid data in an existing `"epidataCS"` object.
+  This enables updates/transformations of endemic variables and/or changes
+  of the time intervals without needing to do `as.epidataCS()` from scratch.
+
+## Bug Fixes
 
 - Start values for endemic intercepts in `twinstim()` are now robust
   against non-finite values in offset terms. 
