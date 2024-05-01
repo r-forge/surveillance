@@ -8,6 +8,13 @@ load(system.file("shapes", "districtsD.RData", package = "surveillance"),
 imdepi0 <- update(imdepi,
     stgrid = within(imdepi$stgrid,
                     popdensity[startsWith(as.character(tile), "01")] <- 0))
+stopifnot(# verify update-method
+    identical(names(imdepi0$stgrid), names(imdepi$stgrid)),
+    identical(names(imdepi0$events), names(imdepi$events)),
+    with(imdepi0$events@data,
+         all.equal(startsWith(as.character(tile), "01"), popdensity == 0)),
+    identical(marks(imdepi0), marks(imdepi))
+)
 
 ## automatic start value is robust against -Inf offset
 fit0 <- twinstim(endemic = ~offset(log(popdensity)) + I(start/365),

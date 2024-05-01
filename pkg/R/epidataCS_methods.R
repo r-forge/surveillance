@@ -36,9 +36,13 @@ update.epidataCS <- function (object, eps.t, eps.s, qmatrix, nCircle2Poly,
         if ((oldA <- sum(head(object$stgrid$area, nTiles))) !=
             (newA <- sum(head(       stgrid$area, nTiles))))
             warning("total tile area has changed: ", paste(oldA, "->", newA))
-        object$events <- merge_stgrid(object$events, stgrid,
-                                      verbose = FALSE, warn = FALSE)
-        ## TODO: leftover / added endemic variables, column order!
+        ## merge new spatio-temporal grid data into events@data
+        object$events@data <- cbind(
+            merge_stgrid(marks(object, coords = FALSE),
+                         stgrid, # possibly with dropped/added endemic vars
+                         verbose = FALSE),
+            object$events@data[dotNames_events]
+        )
         object$stgrid <- stgrid
     }
     

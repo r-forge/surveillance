@@ -41,8 +41,8 @@
 
 obligColsNames_events <- c("time", "tile", "type", "eps.t", "eps.s")
 obligColsNames_stgrid <- c("start", "stop", "tile", "area")
-reservedColsNames_events <- c(".obsInfLength", ".sources", ".bdist",
-                              ".influenceRegion", "BLOCK", "start")
+dotNames_events <- c(".obsInfLength", ".sources", ".bdist", ".influenceRegion")
+reservedColsNames_events <- c(dotNames_events, "BLOCK", "start")
 reservedColsNames_stgrid <- c("BLOCK")
 
 as.epidataCS <- function (events, stgrid, W, qmatrix = diag(nTypes),
@@ -102,7 +102,7 @@ as.epidataCS <- function (events, stgrid, W, qmatrix = diag(nTypes),
     }
 
     # Attach spatio-temporal grid data to events
-    events <- merge_stgrid(events, stgrid, verbose = verbose)
+    events@data <- merge_stgrid(events@data, stgrid, verbose = verbose)
     
     # Calculate observed infection length for log-likelihood
     events$.obsInfLength <- pmin(T - events$time, events$eps.t)
@@ -319,9 +319,10 @@ check_stgrid <- function (stgrid, T, verbose = TRUE, warn = TRUE)
 }
 
 
-### MERGE stgrid DATA INTO events
+### MERGE stgrid DATA INTO events@data
+## Note: 'events' below refers to the data slot
 
-merge_stgrid <- function (events, stgrid, verbose = TRUE, warn = TRUE)
+merge_stgrid <- function (events, stgrid, verbose = TRUE)
 {
     # Some basic quantities
     nEvents <- nrow(events)
@@ -366,12 +367,12 @@ merge_stgrid <- function (events, stgrid, verbose = TRUE, warn = TRUE)
     endemicVars <- setdiff(names(stgrid),
                            c(reservedColsNames_stgrid, obligColsNames_stgrid))
     copyCols <- c("BLOCK", "start", endemicVars)
-    if (warn && length(replaceCols <- intersect(copyCols, names(events)))) {
+    if (length(replaceCols <- intersect(copyCols, names(events)))) {
         warning("replacing existing columns in 'events' data with ",
                 "variables from 'stgrid': ",
                 paste0("'", replaceCols, "'", collapse=", "))
     }
-    events@data[copyCols] <- stgrid[gridcellsOfEvents, copyCols]
+    events[copyCols] <- stgrid[gridcellsOfEvents, copyCols]
 
     return(events)
 }
