@@ -1,5 +1,5 @@
 ######################################################################
-# Compute ARL for paired binary CUSUM charts as introducted in Steiner,
+# Compute ARL for paired binary CUSUM charts as introduced in Steiner,
 # Cook and Farefwell, 1999, Monitoring paired binary surgical outcomes,
 # Stats in Med, 18, 69-86.
 #

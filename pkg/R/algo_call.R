@@ -4,7 +4,7 @@
 
 
 # 'algo.quality' calculates quality values
-# like specifity, sensitivity for a surveillance method
+# like specificity, sensitivity for a surveillance method
 #
 # Parameters:
 #      survResObj: object of class survRes, which includes the state chain and

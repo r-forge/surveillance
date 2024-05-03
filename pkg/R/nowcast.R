@@ -163,7 +163,7 @@ nowcast <- function(now, when, data, dEventCol="dHospital", dReportCol="dReport"
     control$score <- FALSE
   }
 
-  #Checking for the bayes.trun.ddcp procedure. If so make sure params are set up.
+  #Checking for the bayes.trunc.ddcp procedure. If so make sure params are set up.
   if ("bayes.trunc.ddcp" %in% method) {
       #If no parameters at all set to defaults.
       if (is.null(control[["ddcp",exact=TRUE]])) {
