@@ -152,7 +152,7 @@ knox(dt, ds, eps.t, eps.s, simulate.p.value = TRUE, B = 999, ...)
 data("imdepi")
 imdepiB <- subset(imdepi, type == "B")
 
-## Perfom the Knox test using the Poisson approximation
+## Perform the Knox test using the Poisson approximation
 knoxtest <- knox(
     dt = dist(imdepiB$events$time), eps.t = 30,
     ds = dist(coordinates(imdepiB$events)), eps.s = 50,

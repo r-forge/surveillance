@@ -241,7 +241,7 @@ for (j in 1:ncol(sts.bp)) {
 #Show the fit
 lines(1:nrow(sts.bp)-0.5,mu[,1],col="green",type="s",lwd=3)
 
-#Non-parametric back-projection including boostrap CIs
+#Non-parametric back-projection including bootstrap CIs
 bpnp.control2 <- modifyList(bpnp.control, list(hookFun=NULL, k=2,
   B=10, # in practice, use B >= 1000 !
   eq3a.method="C"))

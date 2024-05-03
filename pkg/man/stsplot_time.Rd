@@ -177,8 +177,8 @@ plot(aggregate(salmNewport,by="unit"), xlab="Time (weeks)",
      xaxis.tickFreq=list("\%m"=atChange,"\%G"=atChange),
      xaxis.labelFreq=list("\%G"=atMedian),xaxis.labelFormat="\%G")
 
-## Formatting now also works for daily data (illustrate by artifical
-## outbreak converted to sts object by linelist2sts)
+## Formatting also works for daily data (illustrated by artificial
+## outbreak converted to sts object via 'linelist2sts')
 set.seed(123)
 exposureTimes <-  as.Date("2014-03-12") + sample(x=0:25,size=99,replace=TRUE)
 sts <- linelist2sts(data.frame(exposure=exposureTimes),

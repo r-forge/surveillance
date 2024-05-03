@@ -53,7 +53,7 @@ such that it works for a very large class of distributions.
     length variable.}
   \item{cdf}{Cumulative density function (up to length \eqn{T}) of the run
     length variable.}
-  \item{arl}{If the model is time homogenous (i.e. if \eqn{T==1}) then
+  \item{arl}{If the model is time homogeneous (i.e. if \eqn{T==1}) then
     the ARL is computed based on the stationary distribution of the
     Markov chain. See the eqns in the reference for details. Note: If
     the model is not time homogeneous then the function returns

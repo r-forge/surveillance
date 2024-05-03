@@ -88,7 +88,7 @@ simEpidata(formula, data, id.col, I0.col, coords.cols, subset,
     positions} of the individuals during the whole epidemic.  Thus, an
     individual has the same coordinates in every block.  For simplicity, the
     coordinates are derived from the first time block only.  The epidemic
-    covariates are calculated based on the Euclidian distance between the
+    covariates are calculated based on the Euclidean distance between the
     individuals, see \code{f}.
   }
   \item{subset}{

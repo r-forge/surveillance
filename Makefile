@@ -104,7 +104,8 @@ checkUsage: install
 	| $R -s --no-save --no-restore
 
 spelling:
-	codespell -S '*~' -L 'ans,parm,hist,Nin,nd,tE' pkg
+	cd pkg; \
+	  codespell -q 35 -S '*~' -L 'ans,parm,hist' NEWS.md R man vignettes
 
 ## we need to run Rd2pdf inside pkg such that \packageTitle finds DESCRIPTION
 manuals:
