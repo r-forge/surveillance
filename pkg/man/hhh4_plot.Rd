@@ -356,12 +356,15 @@ if (requireNamespace("gridExtra")) {
 }
 
 ## estimated random intercepts of the endemic component
-fixef(measlesFit)["end.ri(iid)"]     # global intercept (log-scale)
-ranef(measlesFit, tomatrix = TRUE)   # zero-mean deviations
-ranef(measlesFit, intercept = TRUE)  # sum of the above
-exp(ranef(measlesFit))               # multiplicative effects
+round(nu0    <- fixef(measlesFit)["end.ri(iid)"],   4) # global intercept
+round(ranefs <- ranef(measlesFit, tomatrix = TRUE), 4) # zero-mean deviations
+stopifnot(all.equal(
+    nu0 + ranefs,
+    ranef(measlesFit, intercept = TRUE) # local intercepts (log-scale)
+))
 plot(measlesFit, type="ri", component="end",
      main="deviations around the endemic intercept (log-scale)")
+exp(ranef(measlesFit))  # multiplicative effects, plotted below
 plot(measlesFit, type="ri", component="end", exp=TRUE,
      main="multiplicative effects",
      labels=list(font=3, labels="GEN"))
