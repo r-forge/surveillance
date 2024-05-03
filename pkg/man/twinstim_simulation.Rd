@@ -400,19 +400,19 @@ nsim <- 5
 ### as the prehistory for the continued process.
 
 origT <- tail(imdepi$stgrid$stop, 1)
-## create a time-extended version of imdepi
-imdepiext <- local({
-    ## first we have to expand stgrid (assuming constant "popdensity")
-    g <- imdepi$stgrid
-    g$stop <- g$BLOCK <- NULL
-    gadd <- data.frame(start=rep(seq(origT, by=30, length.out=nm2add),
-                                 each=nlevels(g$tile)),
-                       g[rep(seq_len(nlevels(g$tile)), nm2add), -1])
-    ## now create an "epidataCS" using this time-extended stgrid
-    as.epidataCS(events=imdepi$events,  # the replacement warnings are ok
-                 W=imdepi$W, qmatrix=imdepi$qmatrix,
-                 stgrid=rbind(g, gadd), T=max(gadd$start) + 30)
+## extend the 'stgrid' by replicating the last block 'nm2add' times
+## (i.e., holding "popdensity" constant)
+stgridext <- local({
+    gLast <- subset(imdepi$stgrid, BLOCK == max(BLOCK))
+    gAdd <- gLast[rep(1:nrow(gLast), nm2add),]; rownames(gAdd) <- NULL
+    newstart <- seq(origT, by=30, length.out=nm2add)
+    newstop <- c(newstart[-1], max(newstart) + 30)
+    gAdd$start <- rep(newstart, each=nlevels(gAdd$tile))
+    gAdd$stop <- rep(newstop, each=nlevels(gAdd$tile))
+    rbind(imdepi$stgrid, gAdd, make.row.names = FALSE)[,-1]
 })
+## create an updated "epidataCS" with the time-extended 'stgrid'
+imdepiext <- update(imdepi, stgrid = stgridext)
 newT <- tail(imdepiext$stgrid$stop, 1)
 
 ## simulate beyond the original period
