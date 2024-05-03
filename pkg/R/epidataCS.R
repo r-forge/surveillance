@@ -371,8 +371,9 @@ merge_stgrid <- function (events, stgrid, verbose = TRUE)
         warning("replacing existing columns in 'events' data with ",
                 "variables from 'stgrid': ",
                 paste0("'", replaceCols, "'", collapse=", "))
+        events[replaceCols] <- NULL  # ensure endemic vars are _appended_
     }
-    events[copyCols] <- stgrid[gridcellsOfEvents, copyCols]
+    events <- cbind(events, stgrid[gridcellsOfEvents, copyCols])
 
     return(events)
 }
