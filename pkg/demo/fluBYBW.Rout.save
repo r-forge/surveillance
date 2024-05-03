@@ -1,7 +1,7 @@
 
-R version 4.3.2 (2023-10-31) -- "Eye Holes"
-Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -37,7 +37,7 @@ Type 'q()' to quit R.
 > library("surveillance")
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.22.1; see ‘package?surveillance’ or
+This is surveillance 1.23.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > ## Reproducibility
@@ -231,19 +231,19 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0016666
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00038866 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.001374 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00032218 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00032215 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0011338 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00026724 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00026727 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00093637 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00022183 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00022182 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00077381 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018423 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00063981 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018425 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00063982 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00015309 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00015308 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00052926 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00012722 
@@ -255,62 +255,62 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00036253
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 8.792e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00030016 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.3101e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.3102e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00024857 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.0784e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.0783e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00020589 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.0543e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00017056 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.0544e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00017058 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2027e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2033e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00014132 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.4949e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00011709 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.4948e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00011708 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.9057e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 9.7019e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.9054e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 9.7025e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.4155e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.0405e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.4157e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.0403e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.0083e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.6631e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.0082e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.6633e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.6693e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.5225e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.6694e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.5224e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.3877e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 4.5772e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.3876e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 4.577e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.1533e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.7936e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.5849e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.1445e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.1444e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.9654e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.6064e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.9651e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.6063e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.6188e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.6186e-06 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.1604e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.4993e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.7909e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.4991e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.7908e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.569e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.4845e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.5688e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.4844e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.7956e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.2306e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.7955e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.2305e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.1529e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.0201e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.1528e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.02e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.6188e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.4558e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.6187e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.4555e-06 
 
 Optimization converged
 > 
@@ -348,20 +348,20 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.015467
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00052334 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0043401 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00014903 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0012306 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00014905 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0012309 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2461e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00035026 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2447e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00035011 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.2096e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 9.9735e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.209e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 9.9691e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.445e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.8403e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.4435e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.839e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.8114e-07 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.0887e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.8069e-07 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.0851e-06 
 
 Optimization converged
 > 
@@ -482,65 +482,65 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0009531
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00023848 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00076195 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018985 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018986 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00060952 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00015122 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00015121 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00048784 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00012053 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00039062 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.6117e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.6113e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00031289 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.6682e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.6684e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0002507 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.1202e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00020095 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.12e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00020092 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.8869e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00016105 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.8862e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00016106 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.902e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00012913 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.9022e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00012914 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.1174e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00010353 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.1175e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00010355 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.4905e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.3037e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.4908e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.3039e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.995e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.6599e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.6601e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.599e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.3421e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.3422e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.2818e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 4.2854e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.0276e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.438e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.4381e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 8.2391e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.7584e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 8.2393e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.7585e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.6065e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.2133e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.6068e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.2134e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.2981e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.776e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.2982e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.7761e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2491e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.4252e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2492e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.4253e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.408e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.4081e-06 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.1438e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.7336e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 9.1795e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.7337e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 9.1798e-06 
 
 Optimization converged
 > 
@@ -577,23 +577,23 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0011909
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00041788 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00056989 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00019401 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00019404 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00027349 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.0065e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00012973 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.0038e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00012972 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.1799e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.1274e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.1792e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.1277e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.9409e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.8904e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.941e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.8906e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.0201e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.3632e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.0208e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.3633e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.1951e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.4312e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.1954e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.4317e-06 
 
 Optimization converged
 > 
@@ -624,7 +624,7 @@ Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.015304
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.012482 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0083307 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0071661 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.007166 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0047136 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.004358 
@@ -641,35 +641,35 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0011097
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00054294 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00071274 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00031789 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00045864 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00031777 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00045865 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018554 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00029549 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018563 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00029544 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00011099 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00019043 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00011096 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00019041 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.8141e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00012275 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.8135e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00012276 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.187e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 7.914e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.1872e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 7.9155e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.575e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.1029e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.5754e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.1044e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.585e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.2907e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.5854e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.2918e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.7641e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.1222e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.7671e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.1229e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.0772e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.3686e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.0793e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.3691e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.8058e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.8263e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.8071e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.8295e-06 
 
 Optimization converged
 > 
@@ -713,7 +713,7 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0079357
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0046138 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0056906 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0033486 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0033485 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0041083 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0024775 
@@ -734,22 +734,22 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0010986
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00065037 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00085123 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00050605 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00066004 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00050621 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00066002 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00039463 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.000512 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00039435 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00051202 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00030782 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00039726 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00030799 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00039725 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0002405 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00024044 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00030823 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018779 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00018777 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00023914 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00014664 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00014666 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0001855 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00011446 
@@ -759,34 +759,34 @@ Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 8.9295e-05
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00011154 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 6.9624e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.6452e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.6454e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 5.4251e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.6989e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 6.6988e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2244e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.189e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.2245e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.1889e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.2874e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 4.0183e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 4.0182e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.5565e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.1107e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.987e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.4075e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.4074e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.5434e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.8627e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.5433e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.8626e-05 
 
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.1981e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.4408e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.4407e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.2962e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 9.296e-06 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.1141e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.2092e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.6132e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.209e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 8.6129e-06 
 
 Optimization converged
 > 
@@ -834,35 +834,35 @@ Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0056821
 Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0010634 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0030155 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0005698 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0016074 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00056984 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0016076 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00030562 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00085945 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.0003056 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00085937 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.00016401 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0004603 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 0.000164 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00046026 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 8.8049e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 8.8043e-05 
 Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00024678 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.7279e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.00013242 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 4.7278e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 0.0001324 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.5395e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 7.1083e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.5392e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 7.1077e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.3641e-05 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.817e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 1.364e-05 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 3.8165e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.3279e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.05e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 7.3272e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 2.0498e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.9368e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.1012e-05 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 3.9364e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 1.101e-05 
 
-Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.1151e-06 
-Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.9154e-06 
+Update of regression parameters:  max|x_0 - x_1| / max|x_0| = 2.1149e-06 
+Update of variance parameters:  max|x_0 - x_1| / max|x_0| = 5.9148e-06 
 
 Optimization converged
 > 

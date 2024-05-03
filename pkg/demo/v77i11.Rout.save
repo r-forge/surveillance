@@ -1,7 +1,7 @@
 
-R version 4.3.2 (2023-10-31) -- "Eye Holes"
-Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -50,7 +50,7 @@ In RNGkind("Mersenne-Twister", "Inversion", "Rounding") :
 > library("surveillance")  # you should also have installed the suggested packages
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.22.1; see ‘package?surveillance’ or
+This is surveillance 1.23.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > ## 3.2. Data structure: 'epidataCS'
@@ -280,8 +280,8 @@ Done.
 +              label = "tab:imdfit_Gaussian"),
 +       sanitize.text.function = NULL, sanitize.colnames.function = NULL,
 +       sanitize.rownames.function = function(x) paste0("\\code{", x, "}"))
-% latex table generated in R 4.3.2 by xtable 1.8-4 package
-% Tue Nov 28 09:16:20 2023
+% latex table generated in R 4.4.0 by xtable 1.8-4 package
+% Thu May  2 18:48:26 2024
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -440,7 +440,7 @@ Note: added the 'tau' component to object 'imdfit_powerlaw' for future use.
 > imdsims <- simulate(imdfit_powerlaw, nsim = 30, seed = 1, t0 = 1826, T = 2555,
 +   data = imdepi_untied_infeps, tiles = districtsD)
 
-Time at beginning of simulation: 2023-11-28 09:16:34.328367 
+Time at beginning of simulation: 2024-05-02 18:48:40.285992 
 Simulation 1 / 30 ...
 -------------------------------------------------------------------------------
 
@@ -467,8 +467,8 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 1.768 seconds
-Estimated finishing time: 2023-11-28 09:17:27.370619 
+Runtime of first simulation: 2.091 seconds
+Estimated finishing time: 2024-05-02 18:49:43.018345 
 
 Simulation  2 / 30 ...	simulated 187 events up to time 2555 
 Simulation  3 / 30 ...	simulated 192 events up to time 2555 
@@ -500,7 +500,7 @@ Simulation 28 / 30 ...	simulated 174 events up to time 2555
 Simulation 29 / 30 ...	simulated 158 events up to time 2555 
 Simulation 30 / 30 ...	simulated 155 events up to time 2555 
 
-Done (2023-11-28 09:17:42.557303).
+Done (2024-05-02 18:49:58.746586).
 > 
 > table(imdsims[[1]]$events$source > 0, exclude = NULL)
 
@@ -895,7 +895,7 @@ measlesFit_np2      10 1881.0
 +   end = list(f = update(formula(measlesFit_powerlaw)$end, ~. + ri() - 1)),
 +   ar  = list(f = update(formula(measlesFit_powerlaw)$ar,  ~. + ri() - 1)),
 +   ne  = list(f = update(formula(measlesFit_powerlaw)$ne,  ~. + ri() - 1)))
-! Non-convergence message from optimizer: false convergence (8) 
+! Non-convergence message from optimizer: iteration limit reached without convergence (10) 
 Update of variance parameters in iteration  5  unreliable
 > summary(measlesFit_ri, amplitudeShift = TRUE, maxEV = TRUE)
 
