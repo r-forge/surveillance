@@ -1,7 +1,7 @@
 
-R version 4.3.2 (2023-10-31) -- "Eye Holes"
-Copyright (C) 2023 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.22.1; see ‘package?surveillance’ or
+This is surveillance 1.23.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -3179,7 +3179,31 @@ z = 1.5197, n = 6, p-value = 0.1286
 > 
 > ### ** Examples
 > 
-> if (require("gamlss")) {
+> ## Don't show: 
+> ## IGNORE_RDIFF_BEGIN
+> ## End(Don't show)
+> have_GAMLSS <- require("gamlss")
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+Loading required package: parallel
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+> ## Don't show: 
+> ## IGNORE_RDIFF_END
+> ## End(Don't show)
+> if (have_GAMLSS) {
 +   ###########################################################################
 +   #Beta-binomial CUSUM for a small example containing the time-varying
 +   #number of positive test out of a time-varying number of total
@@ -3258,23 +3282,6 @@ z = 1.5197, n = 6, p-value = 0.1286
 +   #Index of the alarm
 +   which.max(alarms(surv[,1]))
 + }
-Loading required package: gamlss
-Loading required package: splines
-Loading required package: gamlss.data
-
-Attaching package: ‘gamlss.data’
-
-The following object is masked from ‘package:datasets’:
-
-    sleep
-
-Loading required package: gamlss.dist
-Loading required package: nlme
-Loading required package: parallel
- **********   GAMLSS Version 5.4-20  ********** 
-For more on GAMLSS look at https://www.gamlss.com/
-Type gamlssNews() to see new features/changes/bug fixes.
-
 GAMLSS-RS iteration 1: Global Deviance = 1206.79 
 GAMLSS-RS iteration 2: Global Deviance = 1171.326 
 GAMLSS-RS iteration 3: Global Deviance = 1138.789 
@@ -3491,78 +3498,21 @@ window: polygonal boundary
 enclosing rectangle: [-5, 5] x [-5, 5] units
 > plot(disc1, axes=TRUE, main="", border=2)
 > 
-> print(disc2)
-An object of class "Polygon"
-Slot "labpt":
-[1] -1.547281e-17 -2.823789e-16
-
-Slot "area":
-[1] 76.53669
-
-Slot "hole":
-[1] FALSE
-
-Slot "ringDir":
-[1] 1
-
-Slot "coords":
-               [,1]          [,2]
- [1,]  5.000000e+00 -1.224647e-15
- [2,]  4.619398e+00 -1.913417e+00
- [3,]  3.535534e+00 -3.535534e+00
- [4,]  1.913417e+00 -4.619398e+00
- [5,] -9.184851e-16 -5.000000e+00
- [6,] -1.913417e+00 -4.619398e+00
- [7,] -3.535534e+00 -3.535534e+00
- [8,] -4.619398e+00 -1.913417e+00
- [9,] -5.000000e+00  6.123234e-16
-[10,] -4.619398e+00  1.913417e+00
-[11,] -3.535534e+00  3.535534e+00
-[12,] -1.913417e+00  4.619398e+00
-[13,]  3.061617e-16  5.000000e+00
-[14,]  1.913417e+00  4.619398e+00
-[15,]  3.535534e+00  3.535534e+00
-[16,]  4.619398e+00  1.913417e+00
-[17,]  5.000000e+00 -1.224647e-15
-
+> str(disc2)
+Formal class 'Polygon' [package "sp"] with 5 slots
+  ..@ labpt  : num [1:2] -1.55e-17 -2.82e-16
+  ..@ area   : num 76.5
+  ..@ hole   : logi FALSE
+  ..@ ringDir: int 1
+  ..@ coords : num [1:17, 1:2] 5.00 4.62 3.54 1.91 -9.18e-16 ...
 > lines(disc2, col=3)
 > 
-> print(disc3)  # a list or a formal "gpc.poly" (if gpclib is available)
-[[1]]
-[[1]]$x
- [1]  5.000000e+00  4.975924e+00  4.903926e+00  4.784702e+00  4.619398e+00
- [6]  4.409606e+00  4.157348e+00  3.865052e+00  3.535534e+00  3.171966e+00
-[11]  2.777851e+00  2.356984e+00  1.913417e+00  1.451423e+00  9.754516e-01
-[16]  4.900857e-01 -9.184851e-16 -4.900857e-01 -9.754516e-01 -1.451423e+00
-[21] -1.913417e+00 -2.356984e+00 -2.777851e+00 -3.171966e+00 -3.535534e+00
-[26] -3.865052e+00 -4.157348e+00 -4.409606e+00 -4.619398e+00 -4.784702e+00
-[31] -4.903926e+00 -4.975924e+00 -5.000000e+00 -4.975924e+00 -4.903926e+00
-[36] -4.784702e+00 -4.619398e+00 -4.409606e+00 -4.157348e+00 -3.865052e+00
-[41] -3.535534e+00 -3.171966e+00 -2.777851e+00 -2.356984e+00 -1.913417e+00
-[46] -1.451423e+00 -9.754516e-01 -4.900857e-01  3.061617e-16  4.900857e-01
-[51]  9.754516e-01  1.451423e+00  1.913417e+00  2.356984e+00  2.777851e+00
-[56]  3.171966e+00  3.535534e+00  3.865052e+00  4.157348e+00  4.409606e+00
-[61]  4.619398e+00  4.784702e+00  4.903926e+00  4.975924e+00
-
-[[1]]$y
- [1] -1.224647e-15 -4.900857e-01 -9.754516e-01 -1.451423e+00 -1.913417e+00
- [6] -2.356984e+00 -2.777851e+00 -3.171966e+00 -3.535534e+00 -3.865052e+00
-[11] -4.157348e+00 -4.409606e+00 -4.619398e+00 -4.784702e+00 -4.903926e+00
-[16] -4.975924e+00 -5.000000e+00 -4.975924e+00 -4.903926e+00 -4.784702e+00
-[21] -4.619398e+00 -4.409606e+00 -4.157348e+00 -3.865052e+00 -3.535534e+00
-[26] -3.171966e+00 -2.777851e+00 -2.356984e+00 -1.913417e+00 -1.451423e+00
-[31] -9.754516e-01 -4.900857e-01  6.123234e-16  4.900857e-01  9.754516e-01
-[36]  1.451423e+00  1.913417e+00  2.356984e+00  2.777851e+00  3.171966e+00
-[41]  3.535534e+00  3.865052e+00  4.157348e+00  4.409606e+00  4.619398e+00
-[46]  4.784702e+00  4.903926e+00  4.975924e+00  5.000000e+00  4.975924e+00
-[51]  4.903926e+00  4.784702e+00  4.619398e+00  4.409606e+00  4.157348e+00
-[56]  3.865052e+00  3.535534e+00  3.171966e+00  2.777851e+00  2.356984e+00
-[61]  1.913417e+00  1.451423e+00  9.754516e-01  4.900857e-01
-
-[[1]]$hole
-[1] FALSE
-
-
+> str(disc3)  # a list or a formal "gpc.poly" (if gpclib is available)
+List of 1
+ $ :List of 3
+  ..$ x   : num [1:64] 5 4.98 4.9 4.78 4.62 ...
+  ..$ y   : num [1:64] -1.22e-15 -4.90e-01 -9.75e-01 -1.45 -1.91 ...
+  ..$ hole: logi FALSE
 > if (is(disc3, "gpc.poly")) {
 +   plot(disc3, add=TRUE, poly.args=list(border=4))
 + } else {
@@ -4411,6 +4361,32 @@ Summary of event marks and number of potential sources:
 > ## changed the set of potential sources of transmission for each
 > ## event, since the interaction is shorter in time but wider in space
 > ## (eps.s=Inf means interaction over the whole observation region).
+> 
+> ## use a time-constant grid
+> imdepi3 <- update(imdepi, stgrid = subset(imdepi$stgrid, BLOCK == 1, -stop))
+> (s3 <- summary(imdepi3)) # "1 time block"
+Observation period: 0 - 2557 
+Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
+Spatio-temporal grid (not shown): 1 time block, x 413 tiles 
+Overall number of events: 636 (2 types)
+
+Summary of event marks and number of potential sources:
+      time                tile     type        eps.t        eps.s    
+ Min.   :   0.2117   05354  : 34   B:336   Min.   :30   Min.   :200  
+ 1st Qu.: 539.4753   05370  : 27   C:300   1st Qu.:30   1st Qu.:200  
+ Median :1154.9527   11000  : 27           Median :30   Median :200  
+ Mean   :1192.6813   05358  : 13           Mean   :30   Mean   :200  
+ 3rd Qu.:1808.0295   05162  : 12           3rd Qu.:30   3rd Qu.:200  
+ Max.   :2542.7800   05382  : 12           Max.   :30   Max.   :200  
+                     (Other):511                                     
+     sex           agegrp          x              y          |.sources|    
+ female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
+ male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.000  
+ NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
+              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
+                             3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.000  
+                             Max.   :4665   Max.   :3525   Max.   :14.000  
+                                                                           
 > 
 > 
 > 
@@ -5786,48 +5762,35 @@ Number of time points:  103
 Loading required namespace: gridExtra
 > 
 > ## estimated random intercepts of the endemic component
-> fixef(measlesFit)["end.ri(iid)"]     # global intercept (log-scale)
+> round(nu0    <- fixef(measlesFit)["end.ri(iid)"],   4) # global intercept
 end.ri(iid) 
-  0.1573899 
-> ranef(measlesFit, tomatrix = TRUE)   # zero-mean deviations
+     0.1574 
+> round(ranefs <- ranef(measlesFit, tomatrix = TRUE), 4) # zero-mean deviations
       end.ri(iid)
-03401 -1.62676960
-03402  2.51836562
-03403  0.14647720
-03404 -1.08237223
-03405 -1.69306962
-03451 -0.36634070
-03452  1.25061075
-03453  0.52707599
-03454  0.42850743
-03455 -0.96092621
-03456 -1.17919647
-03457  1.91801746
-03458 -0.13066704
-03459 -0.09661706
-03460 -0.54758073
-03461  0.87493143
-03462  0.01955377
-> ranef(measlesFit, intercept = TRUE)  # sum of the above
-      end.ri(iid)
-03401 -1.46937971
-03402  2.67575551
-03403  0.30386709
-03404 -0.92498235
-03405 -1.53567973
-03451 -0.20895081
-03452  1.40800064
-03453  0.68446588
-03454  0.58589731
-03455 -0.80353633
-03456 -1.02180658
-03457  2.07540734
-03458  0.02672285
-03459  0.06077283
-03460 -0.39019084
-03461  1.03232131
-03462  0.17694365
-> exp(ranef(measlesFit))               # multiplicative effects
+03401     -1.6268
+03402      2.5184
+03403      0.1465
+03404     -1.0824
+03405     -1.6931
+03451     -0.3663
+03452      1.2506
+03453      0.5271
+03454      0.4285
+03455     -0.9609
+03456     -1.1792
+03457      1.9180
+03458     -0.1307
+03459     -0.0966
+03460     -0.5476
+03461      0.8749
+03462      0.0196
+> stopifnot(all.equal(
++     nu0 + ranefs,
++     ranef(measlesFit, intercept = TRUE) # local intercepts (log-scale)
++ ))
+> plot(measlesFit, type="ri", component="end",
++      main="deviations around the endemic intercept (log-scale)")
+> exp(ranef(measlesFit))  # multiplicative effects, plotted below
 end.ri(iid).03401 end.ri(iid).03402 end.ri(iid).03403 end.ri(iid).03404 
         0.1965635        12.4083002         1.1577485         0.3387909 
 end.ri(iid).03405 end.ri(iid).03451 end.ri(iid).03452 end.ri(iid).03453 
@@ -5838,8 +5801,6 @@ end.ri(iid).03458 end.ri(iid).03459 end.ri(iid).03460 end.ri(iid).03461
         0.8775099         0.9079036         0.5783473         2.3987108 
 end.ri(iid).03462 
         1.0197462 
-> plot(measlesFit, type="ri", component="end",
-+      main="deviations around the endemic intercept (log-scale)")
 > plot(measlesFit, type="ri", component="end", exp=TRUE,
 +      main="multiplicative effects",
 +      labels=list(font=3, labels="GEN"))
@@ -6203,26 +6164,26 @@ Max.    181.00 1690.00 596.00
 +                    f = fi, y = observed(attr(salmSims,"stsObserved")))
 > cbind("empirical" = scores(salmSims, "logs"), "density" = logs_kde)
     empirical  density
-679  6.214608 6.659049
-680  4.605170 5.821944
-681  4.605170 4.602234
-682  6.214608 5.210892
-683  5.115996 4.990551
-684  4.422849 5.483517
-685       Inf 6.063348
-686  6.214608 5.239930
-687  5.521461 5.268759
-688       Inf 5.312466
-689       Inf 6.083345
-690  4.828314 5.471725
-691  4.605170 5.189581
-692  5.115996 5.267835
-693  4.605170 5.374848
-694  5.521461 5.437915
-695  5.115996 5.795522
-696  6.214608 5.679130
-697       Inf 5.841814
-698  5.115996 5.250713
+679  6.214608 6.659979
+680  4.605170 5.822914
+681  4.605170 4.603229
+682  6.214608 5.211775
+683  5.115996 4.991573
+684  4.422849 5.484528
+685       Inf 6.064300
+686  6.214608 5.240908
+687  5.521461 5.269806
+688       Inf 5.313447
+689       Inf 6.084266
+690  4.828314 5.472717
+691  4.605170 5.190417
+692  5.115996 5.268753
+693  4.605170 5.375747
+694  5.521461 5.438898
+695  5.115996 5.796517
+696  6.214608 5.680099
+697       Inf 5.843015
+698  5.115996 5.251521
 > ## a similar KDE approach is implemented in scoringRules::logs_sample()
 > 
 > ## 2. average conditional predictive NegBin's of simulated trajectories,
@@ -6898,20 +6859,16 @@ twinstim(endemic = addSeason2formula(~offset(log(popdensity)) +
 > 
 > ### ** Examples
 > 
-> library("spatstat.geom")
-Loading required package: spatstat.data
-spatstat.geom 3.2-7
-> plot(letterR)
-> plot(intersectPolyCircle(letterR, c(3,2), 1), add=TRUE, col=2, lwd=3)
+> letterR <- surveillance:::LETTERR  # an "owin" (internally used for checks)
+> plot(letterR, axes = TRUE)
+> plot(intersectPolyCircle(letterR, center = c(-1, 2), radius = 2),
++      add = TRUE, col = 4, lwd = 3)
 > 
 > 
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("intersectPolyCircle", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-
-detaching ‘package:spatstat.geom’, ‘package:spatstat.data’
-
 > nameEx("isoWeekYear")
 > ### * isoWeekYear
 > 
@@ -7183,7 +7140,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x5626075d2ff0>
+<environment: 0x5917482e4220>
 
 $ar$offset
 [1] 1
@@ -7192,7 +7149,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x5626075d2ff0>
+<environment: 0x5917482e4220>
 
 $ne$offset
 [1] 1
@@ -7979,8 +7936,7 @@ length(x) = 4
 ...
 > 
 > ## parallel lapply()
-> res <- plapply(x, quantile, probs = 1:3/4, .parallel = 2)
-...
+> res <- plapply(x, quantile, probs = 1:3/4, .parallel = 2, .verbose = FALSE)
 > 
 > ## using a predefined cluster
 > library("parallel")
@@ -8363,7 +8319,8 @@ rki(6,6,0) 5  7  189 0  1    0.9642857 0.03571429 0
 +     B <- 19  # limited here for speed
 +     ## Don't show: 
 + if (!interactive()) B <- 4
-+ ## End(Don't show) 
++ ## End(Don't show)
++  
 +     imdBstKtest <- stKtest(imdepiB, eps.s = SGRID, eps.t = TGRID, B = B,
 +                            cores = 2, seed = 1, poly = list(mainpoly))
 +     print(imdBstKtest)
@@ -9256,7 +9213,7 @@ Number of log-likelihood evaluations: 23
 > fit2 <- twinSIR(~ household, data = hagelloch, nIntervals = 3,
 +                 optim.args = list(par = coef(fit1)[c(1,2,2,2)]))
 Initialized 3 log-baseline intervals:  0.00000 26.95444 33.51139 92.54524
-Initial parameter vector:  0.0537688129156112 -4.41141359759098 -4.41141359759098 -4.41141359759098
+Initial parameter vector:  0.05376881 -4.41141360 -4.41141360 -4.41141360
 iter   10 value 674.375995
 iter   20 value 668.543216
 final  value 668.543216 
@@ -10231,8 +10188,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x562608172b90>
-<environment: 0x56260816f220>
+<bytecode: 0x59174aed9ad8>
+<environment: 0x591748aa0720>
 
 $G
 function (t, logvals, types) 
@@ -10242,7 +10199,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x56260816f220>
+<environment: 0x591748aa0720>
 
 $deriv
 function (t, logvals, types) 
@@ -10258,8 +10215,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x562608173d80>
-<environment: 0x56260816f220>
+<bytecode: 0x591743e04568>
+<environment: 0x591748aa0720>
 
 $Deriv
 function (t, logvals, types) 
@@ -10278,7 +10235,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x56260816f220>
+<environment: 0x591748aa0720>
 
 $npars
 [1] 4
@@ -10944,16 +10901,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x562606cd09a0>
-<environment: 0x562606cc94f0>
+<bytecode: 0x591748197dc0>
+<environment: 0x591747cdebb0>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x562606cd1420>
-<environment: 0x562606cc94f0>
+<bytecode: 0x591748198840>
+<environment: 0x591747cdebb0>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10961,8 +10918,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x562606cd1960>
-<environment: 0x562606cc94f0>
+<bytecode: 0x591748198d80>
+<environment: 0x591747cdebb0>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10976,8 +10933,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x562606cd20d0>
-<environment: 0x562606cc94f0>
+<bytecode: 0x5917481956c0>
+<environment: 0x591747cdebb0>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10985,8 +10942,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x562606ccd960>
-<environment: 0x562606cc94f0>
+<bytecode: 0x591748196ca0>
+<environment: 0x591747cdebb0>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10998,8 +10955,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x562606ccdfb8>
-<environment: 0x562606cc94f0>
+<bytecode: 0x591747cdd528>
+<environment: 0x591747cdebb0>
 
 $npars
 [1] 3
@@ -11537,7 +11494,7 @@ attr(,"package")
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2023-11-28 10:05:17.442196 
+Time at beginning of simulation: 2024-05-03 16:09:55.539844 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11562,12 +11519,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.091 seconds
-Estimated finishing time: 2023-11-28 10:05:17.626368 
+Runtime of first simulation: 0.086 seconds
+Estimated finishing time: 2024-05-03 16:09:55.713565 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2023-11-28 10:05:17.830868).
+Done (2024-05-03 16:09:55.900362).
 > ## Don't show: 
 > ## IGNORE_RDIFF_END
 > ## End(Don't show)
@@ -11680,19 +11637,19 @@ Summary of event marks and number of potential sources:
 > ##D ### as the prehistory for the continued process.
 > ##D 
 > ##D origT <- tail(imdepi$stgrid$stop, 1)
-> ##D ## create a time-extended version of imdepi
-> ##D imdepiext <- local({
-> ##D     ## first we have to expand stgrid (assuming constant "popdensity")
-> ##D     g <- imdepi$stgrid
-> ##D     g$stop <- g$BLOCK <- NULL
-> ##D     gadd <- data.frame(start=rep(seq(origT, by=30, length.out=nm2add),
-> ##D                                  each=nlevels(g$tile)),
-> ##D                        g[rep(seq_len(nlevels(g$tile)), nm2add), -1])
-> ##D     ## now create an "epidataCS" using this time-extended stgrid
-> ##D     as.epidataCS(events=imdepi$events,  # the replacement warnings are ok
-> ##D                  W=imdepi$W, qmatrix=imdepi$qmatrix,
-> ##D                  stgrid=rbind(g, gadd), T=max(gadd$start) + 30)
+> ##D ## extend the 'stgrid' by replicating the last block 'nm2add' times
+> ##D ## (i.e., holding "popdensity" constant)
+> ##D stgridext <- local({
+> ##D     gLast <- subset(imdepi$stgrid, BLOCK == max(BLOCK))
+> ##D     gAdd <- gLast[rep(1:nrow(gLast), nm2add),]; rownames(gAdd) <- NULL
+> ##D     newstart <- seq(origT, by=30, length.out=nm2add)
+> ##D     newstop <- c(newstart[-1], max(newstart) + 30)
+> ##D     gAdd$start <- rep(newstart, each=nlevels(gAdd$tile))
+> ##D     gAdd$stop <- rep(newstop, each=nlevels(gAdd$tile))
+> ##D     rbind(imdepi$stgrid, gAdd, make.row.names = FALSE)[,-1]
 > ##D })
+> ##D ## create an updated "epidataCS" with the time-extended 'stgrid'
+> ##D imdepiext <- update(imdepi, stgrid = stgridext)
 > ##D newT <- tail(imdepiext$stgrid$stop, 1)
 > ##D 
 > ##D ## simulate beyond the original period
@@ -11976,7 +11933,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  42.951 0.636 44.364 1.112 0.129 
+Time elapsed:  42.072 0.788 43.704 1.087 0.123 
 > grDevices::dev.off()
 null device 
           1 
