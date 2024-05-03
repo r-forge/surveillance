@@ -13,7 +13,7 @@
 #  data - the Database containing columns dEventCol and dReportCol, which
 #      contain the date of the event and of when the report arrives in
 #      the database.
-#  dEventCol - name of column in data containing time of event occurence
+#  dEventCol - name of column in data containing time of event occurrence
 #  dReportCol - name of column in data containing time of reprt arrival
 #  method - which method to use
 
@@ -94,7 +94,7 @@ nowcast <- function(now, when, data, dEventCol="dHospital", dReportCol="dReport"
       }
   }
 
-  #Choose the corect difference function
+  #Choose the correct difference function
   if (aggregate.by == "1 day") {
       timeDelay <- function(d1,d2) {as.numeric(d2-d1)}
   }
@@ -362,7 +362,7 @@ nowcast <- function(now, when, data, dEventCol="dHospital", dReportCol="dReport"
   if (is.null(m)) {
     m <- T
   }
-  if (m<1) { stop("Assertion m>=1 not fullfilled.") }
+  if (m<1) { stop("Assertion m>=1 not fulfilled.") }
 
   #Define the observation triangle
   n <- matrix(NA,nrow=T+1, ncol=T+1, dimnames=list(as.character(t02s), NULL))
@@ -658,7 +658,7 @@ nowcast <- function(now, when, data, dEventCol="dHospital", dReportCol="dReport"
     }
 
     #Add up. Note: Delay zero (i.e. element D+1) is ignored as this is
-    #not modelled explicitily by the GD distribution (sum to 1 constraints)
+    #not modelled explicitly by the GD distribution (sum to 1 constraints)
     alpha.star <- alpha.prior + alpha
     beta.star  <- beta.prior  + beta
 
@@ -1032,7 +1032,7 @@ nowcast <- function(now, when, data, dEventCol="dHospital", dReportCol="dReport"
   ######################################################################
   idxt <- which(dateRange %in% when)
   for (i in idxt) {
-    #Save PMFs if thats requested
+    #Save PMFs if that is requested
     if (control$predPMF) {
       res <- list()
       for (j in 1:length(method)) {

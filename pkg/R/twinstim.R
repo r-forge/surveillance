@@ -856,7 +856,7 @@ twinstim <- function (
         siafpars <- theta[nbeta0+p+q+seq_len(nsiafpars)]
         tiafpars <- theta[nbeta0+p+q+nsiafpars+seq_len(ntiafpars)]
 
-        # calculcate the observed intensities
+        # calculate the observed intensities
         hEvents <- if (hash) .hEvents(beta0, beta) else 0
         eEvents <- if (hase) {
                 gammapred <- drop(epilinkinv(mme %*% gamma))  # N-vector

@@ -102,6 +102,9 @@ checkUsage: install
 	    suppressUndefined=FALSE, suppressPartialMatchArgs=FALSE)" \
 	| $R -s --no-save --no-restore
 
+spelling:
+	codespell -S '*~' -L 'ans,parm,hist,Nin,nd,tE' pkg
+
 ## we need to run Rd2pdf inside pkg such that \packageTitle finds DESCRIPTION
 manuals:
 	$R CMD Rd2pdf --batch --force --output=manual.pdf pkg
@@ -131,4 +134,4 @@ clean:
 	make -C pkg/vignettes clean
 	rm -f pkg/*/.Rhistory
 
-.PHONY: build build-noVignettes sysdata check check-cran check-allExamples install checkUsage manuals www clean
+.PHONY: build build-noVignettes sysdata check check-cran check-allExamples install checkUsage spelling manuals www clean

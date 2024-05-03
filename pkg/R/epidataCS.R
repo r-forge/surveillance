@@ -278,7 +278,7 @@ check_stgrid <- function (stgrid, T, verbose = TRUE, warn = TRUE)
 
     if (!autostop) {
         # Check start/stop consistency
-        if (verbose) cat("\tChecking start/stop consisteny ...\n")
+        if (verbose) cat("\tChecking start/stop consistency ...\n")
         if (any(histIntervals[,2L] <= histIntervals[,1L])) {
             stop("stop times must be greater than start times")
         }

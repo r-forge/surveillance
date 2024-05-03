@@ -125,7 +125,7 @@ pmfQuantile <- function(prob,q=0.5) {
 
 ######################################################################
 ## Show empirical and, if available, model based median of delay
-## distribution as a function of occurence time t.
+## distribution as a function of occurrence time t.
 ##
 ## Parameters:
 ##  nc - nowcast object
@@ -184,7 +184,7 @@ stsNC_plotDelay <- function(nc, rT.truth=NULL, dates=NULL, w=1, modelQuantiles=0
   
   ##Make a plot (use plot.Dates instead of matplot)
   
-  plot(dates, quants[,2],xlab="Time of occurence",ylab=paste0("Delay (",epochUnit,")"),ylim=c(0,15),col=1,lty=c(1),lwd=4,type="n")
+  plot(dates, quants[,2],xlab="Time of occurrence",ylab=paste0("Delay (",epochUnit,")"),ylim=c(0,15),col=1,lty=c(1),lwd=4,type="n")
   
   idxFirstTruncObs <- which(dates == (nc@control$now - D))
   idxNow <- which(dates == nc@control$now)

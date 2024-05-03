@@ -869,7 +869,7 @@
   `tp` (`tp[1]`) beyond the originally fitted time range
   (in that they were based on the original time range only).
   This usage of `oneStepAhead()` was never really supported and
-  is now catched when checking the `tp` argument.
+  is now caught when checking the `tp` argument.
 
 - `plot.hhh4simslist()` ignored its `par.settings`
   argument if `groups=NULL` (default).
@@ -1157,7 +1157,7 @@
   `plotHHH4_fitted()` and `plotHHH4_fitted1()` (moved color
   of "observed" to separate argument `pt.col` and reversed
   remaining colors). The old `col` specification as a vector of
-  length 4 still works (catched internally) but is undocumented.
+  length 4 still works (caught internally) but is undocumented.
 
 - The `epoch` slot of class `"sts"` is now initialized to
   `1:nrow(observed)` by default and thus no longer needs to be
@@ -2313,7 +2313,7 @@
   operations).
 
 - `hhh4()` optimization routines can now be customized for
-  the updates of regression and variance parameters seperately, which
+  the updates of regression and variance parameters separately, which
   for instance enables the use of Nelder-Mead for the variance
   updates, which seems to be more stable/robust as it does
   not depend on the inverse Fisher info and is usually faster.
@@ -2556,7 +2556,7 @@
 
 ## Synopsis
 
-- This is a major realease integrating plenty of new code (unfortunately
+- This is a major release integrating plenty of new code (unfortunately
   not all documented as good as it could be). This includes code
   for the `"twinstim"` and the `"hhh4"` model.
   The `"twinSIR"` class of models has been
@@ -2566,7 +2566,7 @@
 ## Significant Changes
 
 - Renamed the `"week"` slot of the `"sts"` S4 class to `"epoch"`.
-  All saved data objects have accordingly be renamed, but some hazzle
+  All saved data objects have accordingly be renamed, but some hassle
   is to be expected if one you have old `"sts"` objects stored in binary
   form. The function `convertSTS()` can be used to
   convert such "old school" `"sts"` objects.
@@ -2627,7 +2627,7 @@
   and Welfare, Finland. The new function calls `glm.fit()`
   directly, which gives a doubling of speed for long series. However, if one
   wants to process the fitted model output some of the GLM routines might
-  not work on this output. For backwards compability the argument
+  not work on this output. For backwards compatibility the argument
   `control$fitFun = "algo.farrington.fitGLM"` provides the old (and slow)
   behaviour.
 
