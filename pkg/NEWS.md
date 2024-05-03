@@ -1,4 +1,4 @@
-# surveillance 1.23.0 (TBD)
+# surveillance 1.23.0 (2024-05-03)
 
 ## New Features
 
