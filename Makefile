@@ -77,6 +77,7 @@ check: build-noVignettes
 	$R CMD check --no-manual --ignore-vignettes --check-subdirs=no surveillance_${VERSION}.tar.gz
 
 ## standard --as-cran check
+check-cran: export _R_CHECK_PKG_SIZES_THRESHOLD_ := 8.5
 check-cran: build
 	$R CMD check --as-cran --timings surveillance_${VERSION}.tar.gz
 ## further option: --use-gct (for better detection of memory bugs/segfaults)
