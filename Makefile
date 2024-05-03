@@ -34,6 +34,7 @@
 ## Define variable for R which enables the use of alternatives,
 ## e.g., 'make check R=R-devel'
 R := R
+export LANGUAGE := en
 
 ## package version
 VERSION := $(shell $R --vanilla -s -e 'cat(read.dcf("pkg/DESCRIPTION", fields="Version"))')
