@@ -20,7 +20,7 @@ indicate attributes such as the population (using spplot).'><meta name="twitter:
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@ number of events along the time axis (<code>epidataCSplot_time</code>) as a
 <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist()</a></code>, or the locations of the events in the observation region
 <code>W</code> (<code>epidataCSplot_space</code>).
 The spatial plot can be enriched with tile-specific color levels to
-indicate attributes such as the population (using <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>).</p>
+indicate attributes such as the population (using <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>).</p>
     </div>
 
     <div class="section level2">
@@ -111,7 +111,7 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
     passed to <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></code> or <code><a href="https://rdrr.io/r/graphics/hist.POSIXt.html" class="external-link">hist.Date</a></code>,
     respectively. In <code>epidataCSplot_space</code>, further arguments are
     passed to the <code>plot</code>-method for
-    <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>, which draws <code>tiles</code>.</p></dd>
+    <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>, which draws <code>tiles</code>.</p></dd>
 
 
   <dt>by</dt>
@@ -162,7 +162,7 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
   <dt>add</dt>
 <dd><p>logical (default: <code>FALSE</code>) indicating if the plot
     should be added to an existing window.
-    Ignored if an <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code> is created (if <code>pop</code> is
+    Ignored if an <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code> is created (if <code>pop</code> is
     non-<code>NULL</code>).</p></dd>
 
   <dt>mar</dt>
@@ -192,14 +192,14 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
 
   <dt>tiles</dt>
 <dd><p>the observation region <code>x$W</code> (default) or,
-    alternatively, a <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
+    alternatively, a <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representation of the tiles of <code>x$stgrid</code>.</p></dd>
 
   <dt>pop</dt>
 <dd><p>if <code>tiles</code> is a
-    <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygonsDataFrame-class.html" class="external-link">SpatialPolygonsDataFrame</a>"</code>, <code>pop</code> can
+    <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygonsDataFrame-class.html" class="external-link">SpatialPolygonsDataFrame</a>"</code>, <code>pop</code> can
     specify an attribute to be displayed in a <code>levelplot</code> behind the
-    point pattern, see <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>. By default (<code>NULL</code>),
+    point pattern, see <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>. By default (<code>NULL</code>),
     the conventional graphics system is used to display the <code>tiles</code>
     and event locations, otherwise the result is a
     <code><a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis.object</a></code>.</p></dd>
@@ -229,7 +229,7 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
 
   <dt>sp.layout</dt>
 <dd><p>optional list of additional layout items in case
-    <code>pop</code> is non-<code>NULL</code>, see <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>.</p></dd>
+    <code>pop</code> is non-<code>NULL</code>, see <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -240,7 +240,7 @@ indicate attributes such as the population (using <code><a href="https://rdrr.io
 of the histogram (as returned by <code><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></code>),
 and for <code>aggregate="space"</code> (i.e., <code>epidataCSplot_space</code>)
 <code>NULL</code>, invisibly, or the <code><a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis.object</a></code> generated by
-<code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code> (if <code>pop</code> is non-<code>NULL</code>).</p>
+<code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code> (if <code>pop</code> is non-<code>NULL</code>).</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

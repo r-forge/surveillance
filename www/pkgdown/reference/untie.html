@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +110,7 @@
     for model fitting or if a different <code>qmatrix</code> is supplied.</p></dd>
 
   <dt>constraint</dt>
-<dd><p>an object of class <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
+<dd><p>an object of class <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representing the domain which the points of the matrix should belong
     to -- before and after jittering.</p></dd>
 
@@ -176,7 +176,7 @@
 <span></span>
 <span><span class="co"># spatial example</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">)</span></span>
-<span><span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">)</span></span>
+<span><span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://edzer.github.io/sp/reference/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">$</span><span class="va">events</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">duplicated</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">coords</span>, cex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="multiplicity.html">multiplicity</a></span><span class="op">(</span><span class="va">coords</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>

@@ -28,7 +28,7 @@ The "epidataCS" class is the basis for fitting
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,7 +113,7 @@ getSourceDists(object, dimension = c("space", "time"))</code></pre></div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>events</dt>
-<dd><p>a <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPointsDataFrame-class.html" class="external-link">SpatialPointsDataFrame</a>"</code> of cases with the
+<dd><p>a <code>"<a href="https://edzer.github.io/sp/reference/SpatialPointsDataFrame-class.html" class="external-link">SpatialPointsDataFrame</a>"</code> of cases with the
     following obligatory columns (in the <code>events@data</code>
     <code>data.frame</code>):</p><dl><dt>time</dt>
 <dd><p>time point of event. Will be converted to a numeric
@@ -182,7 +182,7 @@ getSourceDists(object, dimension = c("space", "time"))</code></pre></div>
 <dd><p>area of the spatial region (<code>tile</code>).
 	Be aware that the unit of this area (e.g., square km) must be consistent
 	with the units of <code>W</code> and <code>events</code> (as specified in
-	their <code><a href="https://rdrr.io/pkg/sp/man/is.projected.html" class="external-link">proj4string</a></code>s).</p></dd>
+	their <code><a href="https://edzer.github.io/sp/reference/is.projected.html" class="external-link">proj4string</a></code>s).</p></dd>
 
     
 </dl><p>The remaining columns are endemic covariates.
@@ -192,7 +192,7 @@ getSourceDists(object, dimension = c("space", "time"))</code></pre></div>
 
 
   <dt>W</dt>
-<dd><p>an object of class <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
+<dd><p>an object of class <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representing the observation region.
     It must have the same <code>proj4string</code> as <code>events</code>
     and all events must be within <code>W</code>.
@@ -254,7 +254,7 @@ getSourceDists(object, dimension = c("space", "time"))</code></pre></div>
 
   <dt>i,j,drop</dt>
 <dd><p>arguments passed to the
-    <code><a href="https://rdrr.io/pkg/sp/man/SpatialPointsDataFrame-class.html" class="external-link">[-method</a></code> for
+    <code><a href="https://edzer.github.io/sp/reference/SpatialPointsDataFrame-class.html" class="external-link">[-method</a></code> for
     <code>SpatialPointDataFrame</code>s for subsetting the <code>events</code> while
     retaining <code>stgrid</code> and <code>W</code>.<br>
     If <code>drop=TRUE</code> (the default), event types that completely
@@ -317,7 +317,7 @@ getSourceDists(object, dimension = c("space", "time"))</code></pre></div>
 <p>An object of class <code>"epidataCS"</code> is a list containing the
   following components:</p>
 <dl><dt>events</dt>
-<dd><p>a <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPointsDataFrame-class.html" class="external-link">SpatialPointsDataFrame</a>"</code> (see the
+<dd><p>a <code>"<a href="https://edzer.github.io/sp/reference/SpatialPointsDataFrame-class.html" class="external-link">SpatialPointsDataFrame</a>"</code> (see the
     description of the argument). 
     The input <code>events</code> are checked for requirements and sorted
     chronologically. The columns are in the following
@@ -355,7 +355,7 @@ getSourceDists(object, dimension = c("space", "time"))</code></pre></div>
     (<code>tile</code>). It is a full <code>BLOCK</code> x <code>tile</code> grid.</p></dd>
 
   <dt>W</dt>
-<dd><p>a <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code> object representing
+<dd><p>a <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code> object representing
     the observation region.</p></dd>
 
   <dt>qmatrix</dt>

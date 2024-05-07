@@ -20,7 +20,7 @@ nb2mat(poly2nb(SpP, ...), style="B",
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@ nb2mat(poly2nb(SpP, ...), style="B",
     <div class="ref-description section level2">
     <p>Wrapping around functionality of the <span class="pkg">spdep</span> package, this function
 computes the symmetric, binary (0/1), adjacency matrix from a
-<code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code> object.
+<code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code> object.
 It essentially applies
 <code><a href="https://r-spatial.github.io/spdep/reference/nb2mat.html" class="external-link">nb2mat</a>(<a href="https://r-spatial.github.io/spdep/reference/poly2nb.html" class="external-link">poly2nb</a>(SpP, ...), style="B",
   zero.policy=zero.policy)</code>.</p>
@@ -72,7 +72,7 @@ It essentially applies
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>SpP</dt>
-<dd><p>an object inheriting from <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>.</p></dd>
+<dd><p>an object inheriting from <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>.</p></dd>
 
   <dt>...</dt>
 <dd><p>arguments passed to <code><a href="https://r-spatial.github.io/spdep/reference/poly2nb.html" class="external-link">poly2nb</a></code>.
@@ -113,7 +113,7 @@ representing polygon adjacencies.</p>
 <span></span>
 <span>    <span class="co">## a visual check of the district-specific number of neighbours</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">@</span><span class="va">map</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">@</span><span class="va">map</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">adjmat</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>, font<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fu"><a href="https://edzer.github.io/sp/reference/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">fluBYBW</span><span class="op">@</span><span class="va">map</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">adjmat</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>, font<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

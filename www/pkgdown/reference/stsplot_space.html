@@ -22,7 +22,7 @@ time period.'><meta name="twitter:card" content="summary"><meta name="twitter:cr
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@ time period.'><meta name="twitter:card" content="summary"><meta name="twitter:cr
     <p>This is the <code>plot</code> variant of <code>type=observed~unit</code> for
 <code>"<a href="sts-class.html">sts</a>"</code> objects, i.e.,
 <code>plot(stsObj, type=observed~unit, ...)</code> calls the function
-documented below. It produces an <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>
+documented below. It produces an <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>
 where regions are color-coded according to disease incidence
 (either absolute counts or relative to population) over a given
 time period.</p>
@@ -96,7 +96,7 @@ time period.</p>
     time period <code>1:nrow(x)</code>.</p></dd>
 
   <dt>map</dt>
-<dd><p>an object inheriting from <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
+<dd><p>an object inheriting from <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representing the <code>ncol(x)</code> regions. By default
     the <code>map</code> slot of <code>x</code> is queried (which might be
     empty and is not applicable if <code>x</code> is a matrix of counts).</p></dd>
@@ -130,7 +130,7 @@ time period.</p>
     see <code><a href="layout.labels.html">layout.labels</a></code>.</p></dd>
 
   <dt>...</dt>
-<dd><p>further arguments for <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>,
+<dd><p>further arguments for <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>,
     for example <code>col = "white"</code> for white polygon lines.</p></dd>
 
   <dt>at</dt>
@@ -167,12 +167,12 @@ time period.</p>
 
   <dt>gpar.missing</dt>
 <dd><p>list of graphical parameters for
-    <code><a href="https://rdrr.io/pkg/sp/man/panel.html" class="external-link">sp.polygons</a></code> applied to the regions of <code>map</code>,
+    <code><a href="https://edzer.github.io/sp/reference/panel.html" class="external-link">sp.polygons</a></code> applied to the regions of <code>map</code>,
     which are not part of <code>x</code>. Such extra regions won't be plotted
     if <code>!is.list(gpar.missing)</code>.</p></dd>
 
   <dt>sp.layout</dt>
-<dd><p>optional list of additional layout items, see <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>.</p></dd>
+<dd><p>optional list of additional layout items, see <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>.</p></dd>
 
   </dl><p><!-- %% currently hard-coded for simplicity (rarely needed): --></p>
 <p></p>
@@ -191,7 +191,7 @@ time period.</p>
 <p></p>
 <p><code>"<a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis</a>"</code>, but see</p>
 <p></p>
-<p><code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>.</p>
+<p><code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

@@ -16,7 +16,7 @@ spatial object, and layout.scalebar returns a labeled scale bar."><meta name="tw
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@ spatial object, and layout.scalebar returns a labeled scale bar."><meta name="tw
     </div>
 
     <div class="ref-description section level2">
-    <p>Generate <code>sp.layout</code> items for use by <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>
+    <p>Generate <code>sp.layout</code> items for use by <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>
 or plot these items directly in the traditional graphics system.
 Function <code>layout.labels</code> draws labels at the coordinates of the
 spatial object, and <code>layout.scalebar</code> returns a labeled scale bar.</p>
@@ -70,7 +70,7 @@ spatial object, and <code>layout.scalebar</code> returns a labeled scale bar.</p
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>obj</dt>
-<dd><p>an object inheriting from a <code><a href="https://rdrr.io/pkg/sp/man/Spatial-class.html" class="external-link">Spatial</a></code> class.</p></dd>
+<dd><p>an object inheriting from a <code>"<a href="https://edzer.github.io/sp/reference/Spatial-class.html" class="external-link">Spatial</a>"</code> class.</p></dd>
 
   <dt>labels</dt>
 <dd><p>specification of the labels. For <code>layout.labels</code>:</p><ul><li><p>a <code>FALSE</code> or <code>NULL</code> value omits labels
@@ -91,13 +91,13 @@ spatial object, and <code>layout.scalebar</code> returns a labeled scale bar.</p
     scale bar is placed in the top left corner (with a small buffer).</p></dd>
 
   <dt>scale</dt>
-<dd><p>the width of the scale bar in the units of <code><a href="https://rdrr.io/pkg/sp/man/is.projected.html" class="external-link">proj4string</a>(obj)</code>.
-    If <code>identical(FALSE, <a href="https://rdrr.io/pkg/sp/man/is.projected.html" class="external-link">is.projected</a>(obj))</code>
+<dd><p>the width of the scale bar in the units of <code><a href="https://edzer.github.io/sp/reference/is.projected.html" class="external-link">proj4string</a>(obj)</code>.
+    If <code>identical(FALSE, <a href="https://edzer.github.io/sp/reference/is.projected.html" class="external-link">is.projected</a>(obj))</code>
     (i.e., <code>obj</code> has longlat coordinates), <code>scale</code> is
     interpreted in kilometres.</p></dd>
 
   <dt>height</dt>
-<dd><p>the height of the scale bar, see <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">layout.scale.bar</a></code>.</p></dd>
+<dd><p>the height of the scale bar, see <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">layout.scale.bar</a></code>.</p></dd>
 
   <dt>pos</dt>
 <dd><p>a position specifier for the labels (see <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>).
@@ -112,7 +112,7 @@ spatial object, and <code>layout.scalebar</code> returns a labeled scale bar.</p
   <dt>plot</dt>
 <dd><p>logical indicating if the layout item should be plotted using the
     traditional graphics system. By default (<code>FALSE</code>), a list for
-    subsequent use by <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code> is returned.</p></dd>
+    subsequent use by <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code> is returned.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -150,7 +150,7 @@ spatial object, and <code>layout.scalebar</code> returns a labeled scale bar.</p
 <span><span class="va">li1</span> <span class="op">&lt;-</span> <span class="fu">layout.labels</span><span class="op">(</span><span class="va">mapWE</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font<span class="op">=</span><span class="fl">2</span>, labels<span class="op">=</span><span class="st">"GEN"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">li2</span> <span class="op">&lt;-</span> <span class="fu">layout.scalebar</span><span class="op">(</span><span class="va">mapWE</span>, corner <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.05</span><span class="op">)</span>, scale <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"20 km"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></span><span class="op">(</span><span class="va">mapWE</span>, zcol <span class="op">=</span> <span class="st">"AREA"</span>, sp.layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">li1</span><span class="op">)</span>, <span class="va">li2</span><span class="op">)</span>,</span>
+<span><span class="fu"><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></span><span class="op">(</span><span class="va">mapWE</span>, zcol <span class="op">=</span> <span class="st">"AREA"</span>, sp.layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">li1</span><span class="op">)</span>, <span class="va">li2</span><span class="op">)</span>,</span>
 <span>       col.regions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">heat.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span>, scales <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>draw <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## districts in Bavaria (projected coordinates)</span></span>
@@ -158,7 +158,7 @@ spatial object, and <code>layout.scalebar</code> returns a labeled scale bar.</p
 <span><span class="va">bavaria</span> <span class="op">&lt;-</span> <span class="va">districtsD</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">==</span> <span class="st">"09"</span>, <span class="op">]</span></span>
 <span><span class="va">sb</span> <span class="op">&lt;-</span> <span class="fu">layout.scalebar</span><span class="op">(</span><span class="va">bavaria</span>, corner <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.75</span>,<span class="fl">0.9</span><span class="op">)</span>, scale <span class="op">=</span> <span class="fl">50</span>,</span>
 <span>                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"50 km"</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></span><span class="op">(</span><span class="va">bavaria</span>, zcol <span class="op">=</span> <span class="st">"POPULATION"</span>, sp.layout <span class="op">=</span> <span class="va">sb</span>,</span>
+<span><span class="fu"><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></span><span class="op">(</span><span class="va">bavaria</span>, zcol <span class="op">=</span> <span class="st">"POPULATION"</span>, sp.layout <span class="op">=</span> <span class="va">sb</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="st">"x [km]"</span>, ylab <span class="op">=</span> <span class="st">"y [km]"</span>, scales <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>draw <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>       col.regions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">heat.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>

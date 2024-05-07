@@ -38,7 +38,7 @@ Spatio-temporal "hhh4" models and these plots are illustrated in
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,7 +162,7 @@ Spatio-temporal "hhh4" models and these plots are illustrated in
     For the <code>plot</code>-method these go to the specific plot
     <code>type</code> function.<br><code>plotHHH4_fitted</code> passes them to <code>plotHHH4_fitted1</code>, which is called
     sequentially for every unit in <code>units</code>.<br><code>plotHHH4_maps</code> and <code>plotHHH4_ri</code> pass additional arguments to
-    <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>, and <code>plotHHH4_neweights</code> to the
+    <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>, and <code>plotHHH4_neweights</code> to the
     <code>plotter</code>.</p></dd>
 
   <dt>units,unit</dt>
@@ -353,7 +353,7 @@ Spatio-temporal "hhh4" models and these plots are illustrated in
     <code><a href="https://rdrr.io/pkg/lattice/man/levelplot.html" class="external-link">levelplot</a></code>.</p></dd>
 
   <dt>map</dt>
-<dd><p>an object inheriting from <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
+<dd><p>an object inheriting from <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     with <code>row.names</code> covering <code>colnames(x)</code>.</p></dd>
 
   <dt>component</dt>
@@ -367,11 +367,11 @@ Spatio-temporal "hhh4" models and these plots are illustrated in
 
   <dt>sp.layout</dt>
 <dd><p>optional list of additional layout items, see
-    <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>.</p></dd>
+    <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>.</p></dd>
 
   <dt>gpar.missing</dt>
 <dd><p>list of graphical parameters for
-    <code><a href="https://rdrr.io/pkg/sp/man/panel.html" class="external-link">sp.polygons</a></code>, applied to regions
+    <code><a href="https://edzer.github.io/sp/reference/panel.html" class="external-link">sp.polygons</a></code>, applied to regions
     with missing random intercepts, i.e., not included in the model.
     Such extra regions won't be plotted if
     <code>!is.list(gpar.missing)</code>.</p></dd>
@@ -428,14 +428,14 @@ Spatio-temporal "hhh4" models and these plots are illustrated in
 <p></p>
 <p><code>plotHHH4_maps</code> returns a <code><a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis.object</a></code> if</p>
 <p></p>
-<p><code>length(which) == 1</code> (a single <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>), and
+<p><code>length(which) == 1</code> (a single <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>), and
   otherwise uses <code><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html" class="external-link">grid.arrange</a></code> from the</p>
 <p></p>
 <p><span class="pkg">gridExtra</span> package to arrange all <code>length(which)</code></p>
 <p></p>
-<p><code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>s on a single page.</p>
+<p><code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>s on a single page.</p>
 <p></p>
-<p><code>plotHHH4_ri</code> returns the generated <code><a href="https://rdrr.io/pkg/sp/man/spplot.html" class="external-link">spplot</a></code>, i.e.,
+<p><code>plotHHH4_ri</code> returns the generated <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">spplot</a></code>, i.e.,
   a <code><a href="https://rdrr.io/pkg/lattice/man/trellis.object.html" class="external-link">trellis.object</a></code>.<br></p>
 <p></p>
 <p><code>plotHHH4_neweights</code> eventually calls <code>plotter</code> and
@@ -511,12 +511,15 @@ Spatio-temporal "hhh4" models and these plots are illustrated in
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co">## estimated random intercepts of the endemic component</span></span>
-<span><span class="fu"><a href="ranef.html">fixef</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span><span class="op">[</span><span class="st">"end.ri(iid)"</span><span class="op">]</span>     <span class="co"># global intercept (log-scale)</span></span>
-<span><span class="fu"><a href="ranef.html">ranef</a></span><span class="op">(</span><span class="va">measlesFit</span>, tomatrix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>   <span class="co"># zero-mean deviations</span></span>
-<span><span class="fu"><a href="ranef.html">ranef</a></span><span class="op">(</span><span class="va">measlesFit</span>, intercept <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="co"># sum of the above</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="ranef.html">ranef</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span><span class="op">)</span>               <span class="co"># multiplicative effects</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">nu0</span>    <span class="op">&lt;-</span> <span class="fu"><a href="ranef.html">fixef</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span><span class="op">[</span><span class="st">"end.ri(iid)"</span><span class="op">]</span>,   <span class="fl">4</span><span class="op">)</span> <span class="co"># global intercept</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ranefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="ranef.html">ranef</a></span><span class="op">(</span><span class="va">measlesFit</span>, tomatrix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span> <span class="co"># zero-mean deviations</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal</a></span><span class="op">(</span></span>
+<span>    <span class="va">nu0</span> <span class="op">+</span> <span class="va">ranefs</span>,</span>
+<span>    <span class="fu"><a href="ranef.html">ranef</a></span><span class="op">(</span><span class="va">measlesFit</span>, intercept <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># local intercepts (log-scale)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit</span>, type<span class="op">=</span><span class="st">"ri"</span>, component<span class="op">=</span><span class="st">"end"</span>,</span>
 <span>     main<span class="op">=</span><span class="st">"deviations around the endemic intercept (log-scale)"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="ranef.html">ranef</a></span><span class="op">(</span><span class="va">measlesFit</span><span class="op">)</span><span class="op">)</span>  <span class="co"># multiplicative effects, plotted below</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">measlesFit</span>, type<span class="op">=</span><span class="st">"ri"</span>, component<span class="op">=</span><span class="st">"end"</span>, exp<span class="op">=</span><span class="cn">TRUE</span>,</span>
 <span>     main<span class="op">=</span><span class="st">"multiplicative effects"</span>,</span>
 <span>     labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font<span class="op">=</span><span class="fl">3</span>, labels<span class="op">=</span><span class="st">"GEN"</span><span class="op">)</span><span class="op">)</span></span>

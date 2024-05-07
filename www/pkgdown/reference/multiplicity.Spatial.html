@@ -22,7 +22,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,9 +76,9 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
-<dd><p>a <code>"<a href="https://rdrr.io/pkg/sp/man/Spatial-class.html" class="external-link">Spatial</a>"</code> object (we only need a
-    <code><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></code>-method), e.g. of class
-    <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPoints-class.html" class="external-link">SpatialPoints</a>"</code>.</p></dd>
+<dd><p>a <code>"<a href="https://edzer.github.io/sp/reference/Spatial-class.html" class="external-link">Spatial</a>"</code> object (we only need a
+    <code><a href="https://edzer.github.io/sp/reference/coordinates.html" class="external-link">coordinates</a></code>-method), e.g. of class
+    <code>"<a href="https://edzer.github.io/sp/reference/SpatialPoints-class.html" class="external-link">SpatialPoints</a>"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -97,7 +97,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/SpatialPoints.html" class="external-link">SpatialPoints</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://edzer.github.io/sp/reference/SpatialPoints.html" class="external-link">SpatialPoints</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,</span>
 <span>                              <span class="fl">2</span>,<span class="fl">3</span>,</span>
 <span>                              <span class="fl">1</span>,<span class="fl">2</span>,</span>
 <span>                              <span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span>, <span class="fl">4</span>, <span class="fl">2</span>, byrow<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
@@ -106,7 +106,7 @@
 <span><span class="co"># the following function determines the multiplicities in a matrix</span></span>
 <span><span class="co"># or data frame and returns unique rows with appended multiplicity</span></span>
 <span><span class="va">countunique</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">x</span>, count<span class="op">=</span><span class="fu"><a href="multiplicity.html">multiplicity</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">countunique</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">foo</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">countunique</span><span class="op">(</span><span class="fu"><a href="https://edzer.github.io/sp/reference/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">foo</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

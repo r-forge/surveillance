@@ -22,7 +22,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -177,7 +177,7 @@
   <code>m.interpretation="hoehle_anderheiden2014"</code> (Default) then the
   sliding window is defined as a horizontal cut in the reporting
   triangle, i.e. the values for the delay estimation originate from
-  reports occuring during <code>(now-m):now</code>. This means that the estimation of long delays is
+  reports occurring during <code>(now-m):now</code>. This means that the estimation of long delays is
   based on fewer observations than the estimation of the short delays,
   hence, the long delay estimates are subject to more variability. If
   for example \(m=D\) then the estimate for a delay of \(d=D\) is
@@ -190,7 +190,7 @@
   estimated based on the same number of observations (\(m+1\)). This
   means that in order to estimate the delay for \(d\) days, a
   sliding rectangle of length \(m+1\) containing the reports which
-  occured during <code>(now-m-d):now</code>. See Fig. 2 in Lawless (1994) for
+  occurred during <code>(now-m-d):now</code>. See Fig. 2 in Lawless (1994) for
   details. Note: A warning is given is
   <code>method="lawless"</code>, but <code>m.interpretation</code> is not.</p></dd>
 
@@ -259,7 +259,7 @@
 	    <code>c("iidLogGa","tps","rw1","rw2")</code>.</p></dd>
 
 	  <dt><code>respDistr</code></dt>
-<dd><p>Reponse distribution of \(n_{t,d}\)
+<dd><p>Response distribution of \(n_{t,d}\)
   in the reporting triangle. Default is <code>"poisson"</code>. An
   experimental alternative is to use <code>"negbin"</code>.</p></dd>
 

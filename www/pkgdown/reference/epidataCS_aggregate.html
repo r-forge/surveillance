@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
     is actually optional, <code>neighbourhood=NULL</code> also works.</p></dd>
   
   <dt>tiles</dt>
-<dd><p>object inheriting from <code>"<a href="https://rdrr.io/pkg/sp/man/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
+<dd><p>object inheriting from <code>"<a href="https://edzer.github.io/sp/reference/SpatialPolygons-class.html" class="external-link">SpatialPolygons</a>"</code>
     representing the regions in <code>object$stgrid</code> (column
     <code>"tile"</code>). It will become the <code>"map"</code> slot of the
     resulting <code>"sts"</code> object.
@@ -201,7 +201,7 @@
 <span>    <span class="va">imdepi_short</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="va">time</span> <span class="op">&lt;</span> <span class="fl">50</span><span class="op">)</span>  <span class="co"># to reduce the runtime</span></span>
 <span>    <span class="va">imdepi_short</span><span class="op">$</span><span class="va">stgrid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">imdepi_short</span><span class="op">$</span><span class="va">stgrid</span>, <span class="va">start</span> <span class="op">&lt;</span> <span class="fl">50</span><span class="op">)</span></span>
 <span>    <span class="va">imdepidata</span> <span class="op">&lt;-</span> <span class="fu"><a href="epidata.html">as.epidata</a></span><span class="op">(</span><span class="va">imdepi_short</span>,</span>
-<span>                             tileCentroids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">)</span><span class="op">)</span></span>
+<span>                             tileCentroids <span class="op">=</span> <span class="fu"><a href="https://edzer.github.io/sp/reference/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">districtsD</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">imdepidata</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
     </div>

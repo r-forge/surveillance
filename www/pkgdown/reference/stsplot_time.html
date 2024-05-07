@@ -18,7 +18,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.22.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -278,8 +278,8 @@
 <span>     xaxis.tickFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%m"</span><span class="op">=</span><span class="va">atChange</span>,<span class="st">"%G"</span><span class="op">=</span><span class="va">atChange</span><span class="op">)</span>,</span>
 <span>     xaxis.labelFreq<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"%G"</span><span class="op">=</span><span class="va">atMedian</span><span class="op">)</span>,xaxis.labelFormat<span class="op">=</span><span class="st">"%G"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Formatting now also works for daily data (illustrate by artifical</span></span>
-<span><span class="co">## outbreak converted to sts object by linelist2sts)</span></span>
+<span><span class="co">## Formatting also works for daily data (illustrated by artificial</span></span>
+<span><span class="co">## outbreak converted to sts object via 'linelist2sts')</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">exposureTimes</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2014-03-12"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">25</span>,size<span class="op">=</span><span class="fl">99</span>,replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">sts</span> <span class="op">&lt;-</span> <span class="fu"><a href="linelist2sts.html">linelist2sts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>exposure<span class="op">=</span><span class="va">exposureTimes</span><span class="op">)</span>,</span>
