@@ -120,11 +120,11 @@ NEWS.html: pkg/NEWS.md
 
 www:
 	cd pkg; $R --no-echo --no-save --no-restore -e \
-	  "pkgdown::build_site(examples = FALSE, lazy = TRUE, devel = TRUE)"
+	  "pkgdown::build_site(examples = FALSE, lazy = TRUE, devel = TRUE); summary(warnings())"
 
 www-clean:
 	cd pkg; $R --no-echo --no-save --no-restore -e \
-	  "pkgdown::clean_site(); pkgdown::build_site(examples = FALSE)"
+	  "pkgdown::clean_site(); pkgdown::build_site(examples = FALSE, new_process = FALSE); summary(warnings())"
 
 www-applications: www/applications_EE.csv
 	cd www; $R --no-echo --no-save --no-restore -e \
