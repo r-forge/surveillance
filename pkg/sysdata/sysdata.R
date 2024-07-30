@@ -22,7 +22,7 @@ surveillance.gvar.z   <- - c(0:1000/100, 11:100)
 ## extended list of references (methodological papers)
 REFERENCES <- readCitationFile(
     file = "REFERENCES",
-    meta = packageDescription("pkg", lib.loc = "../..")
+    meta = read.dcf("../../pkg/DESCRIPTION")[1,]
 )
 
 ## a simple polygonal "owin" (with hole) for testing, obtained as
