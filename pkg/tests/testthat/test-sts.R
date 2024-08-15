@@ -99,12 +99,15 @@ test_that("expected error message is produced", {
 })
 
 test_that("\"sf\" input gets transformed to \"SpatialPolygons\"", if (requireNamespace("sf")) {
-    data(measlesWeserEms)
+    data("measlesWeserEms")
     sts_from_sp <- sts(observed(measlesWeserEms), map = measlesWeserEms@map)
+    ## convert the map to "sf" and retry sts() construction based on that
     map_sf <- sf::st_as_sf(measlesWeserEms@map)
     expect_inherits(map_sf, "sf")
     sts_from_sf <- sts(observed(measlesWeserEms), map = map_sf)
     expect_inherits(sts_from_sf@map, "SpatialPolygonsDataFrame")
+    ## it is checked that the map covers all regions
+    expect_error(sts(observed(measlesWeserEms), map = map_sf[1:3,]), "incomplete")
     ## test equivalence of map slots
     attr_from_sp <- attributes(sts_from_sp@map)
     attr_from_sf <- attributes(sts_from_sf@map)
