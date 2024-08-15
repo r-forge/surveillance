@@ -1,3 +1,12 @@
+# surveillance 1.23.1 (2024-08-15)
+
+## New Features
+
+- The `sts()` constructor now also accepts an `"sf"` object as `map` input;
+  it is internally converted to `"SpatialPolygons"` as required by the
+  `"sts"` class.  (Based on a patch by Sophie Reichert.)
+
+
 # surveillance 1.23.0 (2024-05-03)
 
 ## New Features
