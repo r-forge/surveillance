@@ -91,11 +91,11 @@ stsplot_alarm(x, lvl=rep(1,ncol(x)),
   \item{lwd}{Vector of length 3 specifying the line width of the three
     elements to plot. See also the \code{col} argument.}
   \item{alarm.symbol}{a list with entries \code{pch}, \code{col},
-    \code{cex} and \code{lwd} specifying the appearance of the outbreak
+    \code{cex} and \code{lwd} specifying the appearance of the alarm
     symbol in the plot.}
   \item{outbreak.symbol}{a list with entries \code{pch}, \code{col},
     \code{cex} and \code{lwd} specifying the appearance of the outbreak
-    symbol in the plot.}
+    symbol in the plot.  Currently ignored by \code{stsplot_alarm}.}
   \item{legend.opts}{a list of arguments for the \code{\link{legend}}.
     If \code{\link{missing}(legend.opts)} (i.e., not explicitly
     specified), the default legend will only be added if the \code{"sts"} object
