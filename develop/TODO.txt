@@ -14,9 +14,9 @@
 #Open
 31/08/2023 maybe use Paul's gdiff package to watch for unexpected changes
            in example plots similar to archiving the -Ex.Rout file
-28/11/2023 converting from Rcpp to cpp11 or C would reduce installed size
 
 #Done
+21/08/2024 converting from Rcpp to C (size of libs: 2148 K -> 528 K)
 17/03/2020 remove ancient algo.hhh and simHHH implementations
 15/02/2019 remove deprecated functions
 12/02/2019 format.Date(x, "%V") and "%G" work on Windows since R 3.1.0,
