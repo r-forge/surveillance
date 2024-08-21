@@ -173,7 +173,8 @@ backprojNP(sts, incu.pmf,
 
 \author{
   Michael \enc{Höhle}{Hoehle} with help by
-  Daniel \enc{Sabanés Bové}{Sabanes Bove} for the \pkg{Rcpp} interface
+  Daniel \enc{Sabanés Bové}{Sabanes Bove}
+  and Sebastian Meyer for \code{eq3a.method = "C"}
 }
 
 \note{
