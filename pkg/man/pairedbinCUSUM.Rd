@@ -74,8 +74,8 @@ dPBin <- function(yz,theta) {
 #Likelihood ratio for all four possible configurations
 p <- c(dPBin(c(0,0), theta=theta0), dPBin(c(0,1), theta=theta0),
        dPBin(c(1,0), theta=theta0), dPBin(c(1,1), theta=theta0))
-\dontshow{if (surveillance.options("allExamples"))}
-#Compute ARL using non-sparse matrix operations
+if (surveillance.options("allExamples"))
+#Compute ARL using slow, non-sparse matrix operations
 pairedbinCUSUM.runlength(p,w1=c(-1,37,-9,29),w2=c(-1,7),h1=70,h2=32,
                          h11=38,h22=17)
 

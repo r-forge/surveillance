@@ -318,7 +318,9 @@ plot(sim1)
 fitsim1 <- update(fit, data = sim1)
 cbind(base = coef(fit), new = coef(fitsim1))
 
-\dontshow{if (surveillance.options("allExamples")) \{}
+
+if (surveillance.options("allExamples")) {
+
 ## simulate only 10 days, using random infPeriods ~ Exp(0.1)
 sim2 <- simulate(fit, data = hagelloch, seed = 2, end = 10,
     infPeriod = function(ids) rexp(length(ids), rate = 0.1))
@@ -336,7 +338,8 @@ intensityplot(simepi)
 ## see if we correctly estimate the parameters
 fitsimepi <- twinSIR(~ cox(AGE) + household, data = simepi)
 cbind(true = c(0.05, -4, 0.1), est = coef(fitsimepi), confint(fitsimepi))
-\dontshow{\}}
+
+}
 }
 
 \keyword{datagen}

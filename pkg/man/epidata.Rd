@@ -330,7 +330,7 @@ head(as.data.frame(myEpi))  # "epidata" has event history format
 summary(myEpi)              # see 'summary.epidata'
 plot(myEpi)                 # see 'plot.epidata' and also 'animate.epidata'
 
-\dontshow{if (surveillance.options("allExamples")) \{}
+
 ## add distance- and covariate-based weights for the force of infection
 ## in a twinSIR model, see vignette("twinSIR") for a description
 myEpi <- update(myEpi,
@@ -345,7 +345,6 @@ myEpi <- update(myEpi,
 )
 ## this is now identical to the prepared hagelloch "epidata"
 stopifnot(all.equal(myEpi, hagelloch))
-\dontshow{\}}
 
 \dontshow{if (surveillance.options("allExamples")) {
 ## test with precomputed distance matrix D
