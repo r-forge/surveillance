@@ -1,4 +1,4 @@
-# surveillance 1.23.1 (2024-08-21)
+# surveillance 1.23.1 (2024-09-02)
 
 ## Package Infrastructure
 
