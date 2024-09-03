@@ -1,5 +1,5 @@
 
-R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
 Copyright (C) 2024 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
 
@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.23.0; see ‘package?surveillance’ or
+This is surveillance 1.23.1; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -123,23 +123,167 @@ $arl
 + })
 > plot(h.grid, arls,type="l",xlab="threshold h",ylab=expression(ARL[0]))
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ ######################################################
-+ #Run length of a time varying negative binomial CUSUM
-+ ######################################################
-+ 
-+ mu0 <- matrix(5*sin(2*pi/52 * 1:200) + 10,ncol=1)
-+ 
-+ rl <- LRCUSUM.runlength( mu=t(mu0), mu0=t(mu0), mu1=kappa*t(mu0), h=2,
+> ######################################################
+> #Run length of a time varying negative binomial CUSUM
+> ######################################################
+> 
+> mu0 <- matrix(5*sin(2*pi/52 * 1:150) + 10,ncol=1)
+> 
+> rl <- LRCUSUM.runlength( mu=t(mu0), mu0=t(mu0), mu1=kappa*t(mu0), h=2,
 +   dfun = dY, n=rep(100,length(mu0)), alpha=alpha,g=20)
-+ 
-+ plot(1:length(mu0),rl$pmf,type="l",xlab="t",ylab="PMF")
-+ plot(1:length(mu0),rl$cdf,type="l",xlab="t",ylab="CDF")
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
+Looking at t = 1 / 150 
+Looking at t = 2 / 150 
+Looking at t = 3 / 150 
+Looking at t = 4 / 150 
+Looking at t = 5 / 150 
+Looking at t = 6 / 150 
+Looking at t = 7 / 150 
+Looking at t = 8 / 150 
+Looking at t = 9 / 150 
+Looking at t = 10 / 150 
+Looking at t = 11 / 150 
+Looking at t = 12 / 150 
+Looking at t = 13 / 150 
+Looking at t = 14 / 150 
+Looking at t = 15 / 150 
+Looking at t = 16 / 150 
+Looking at t = 17 / 150 
+Looking at t = 18 / 150 
+Looking at t = 19 / 150 
+Looking at t = 20 / 150 
+Looking at t = 21 / 150 
+Looking at t = 22 / 150 
+Looking at t = 23 / 150 
+Looking at t = 24 / 150 
+Looking at t = 25 / 150 
+Looking at t = 26 / 150 
+Looking at t = 27 / 150 
+Looking at t = 28 / 150 
+Looking at t = 29 / 150 
+Looking at t = 30 / 150 
+Looking at t = 31 / 150 
+Looking at t = 32 / 150 
+Looking at t = 33 / 150 
+Looking at t = 34 / 150 
+Looking at t = 35 / 150 
+Looking at t = 36 / 150 
+Looking at t = 37 / 150 
+Looking at t = 38 / 150 
+Looking at t = 39 / 150 
+Looking at t = 40 / 150 
+Looking at t = 41 / 150 
+Looking at t = 42 / 150 
+Looking at t = 43 / 150 
+Looking at t = 44 / 150 
+Looking at t = 45 / 150 
+Looking at t = 46 / 150 
+Looking at t = 47 / 150 
+Looking at t = 48 / 150 
+Looking at t = 49 / 150 
+Looking at t = 50 / 150 
+Looking at t = 51 / 150 
+Looking at t = 52 / 150 
+Looking at t = 53 / 150 
+Looking at t = 54 / 150 
+Looking at t = 55 / 150 
+Looking at t = 56 / 150 
+Looking at t = 57 / 150 
+Looking at t = 58 / 150 
+Looking at t = 59 / 150 
+Looking at t = 60 / 150 
+Looking at t = 61 / 150 
+Looking at t = 62 / 150 
+Looking at t = 63 / 150 
+Looking at t = 64 / 150 
+Looking at t = 65 / 150 
+Looking at t = 66 / 150 
+Looking at t = 67 / 150 
+Looking at t = 68 / 150 
+Looking at t = 69 / 150 
+Looking at t = 70 / 150 
+Looking at t = 71 / 150 
+Looking at t = 72 / 150 
+Looking at t = 73 / 150 
+Looking at t = 74 / 150 
+Looking at t = 75 / 150 
+Looking at t = 76 / 150 
+Looking at t = 77 / 150 
+Looking at t = 78 / 150 
+Looking at t = 79 / 150 
+Looking at t = 80 / 150 
+Looking at t = 81 / 150 
+Looking at t = 82 / 150 
+Looking at t = 83 / 150 
+Looking at t = 84 / 150 
+Looking at t = 85 / 150 
+Looking at t = 86 / 150 
+Looking at t = 87 / 150 
+Looking at t = 88 / 150 
+Looking at t = 89 / 150 
+Looking at t = 90 / 150 
+Looking at t = 91 / 150 
+Looking at t = 92 / 150 
+Looking at t = 93 / 150 
+Looking at t = 94 / 150 
+Looking at t = 95 / 150 
+Looking at t = 96 / 150 
+Looking at t = 97 / 150 
+Looking at t = 98 / 150 
+Looking at t = 99 / 150 
+Looking at t = 100 / 150 
+Looking at t = 101 / 150 
+Looking at t = 102 / 150 
+Looking at t = 103 / 150 
+Looking at t = 104 / 150 
+Looking at t = 105 / 150 
+Looking at t = 106 / 150 
+Looking at t = 107 / 150 
+Looking at t = 108 / 150 
+Looking at t = 109 / 150 
+Looking at t = 110 / 150 
+Looking at t = 111 / 150 
+Looking at t = 112 / 150 
+Looking at t = 113 / 150 
+Looking at t = 114 / 150 
+Looking at t = 115 / 150 
+Looking at t = 116 / 150 
+Looking at t = 117 / 150 
+Looking at t = 118 / 150 
+Looking at t = 119 / 150 
+Looking at t = 120 / 150 
+Looking at t = 121 / 150 
+Looking at t = 122 / 150 
+Looking at t = 123 / 150 
+Looking at t = 124 / 150 
+Looking at t = 125 / 150 
+Looking at t = 126 / 150 
+Looking at t = 127 / 150 
+Looking at t = 128 / 150 
+Looking at t = 129 / 150 
+Looking at t = 130 / 150 
+Looking at t = 131 / 150 
+Looking at t = 132 / 150 
+Looking at t = 133 / 150 
+Looking at t = 134 / 150 
+Looking at t = 135 / 150 
+Looking at t = 136 / 150 
+Looking at t = 137 / 150 
+Looking at t = 138 / 150 
+Looking at t = 139 / 150 
+Looking at t = 140 / 150 
+Looking at t = 141 / 150 
+Looking at t = 142 / 150 
+Looking at t = 143 / 150 
+Looking at t = 144 / 150 
+Looking at t = 145 / 150 
+Looking at t = 146 / 150 
+Looking at t = 147 / 150 
+Looking at t = 148 / 150 
+Looking at t = 149 / 150 
+Looking at t = 150 / 150 
+> 
+> plot(1:length(mu0),rl$pmf,type="l",xlab="t",ylab="PMF")
+> plot(1:length(mu0),rl$cdf,type="l",xlab="t",ylab="CDF")
 > 
 > ########################################################
 > # Further examples contain the binomial, beta-binomial
@@ -1832,20 +1976,16 @@ bayes(5,5,1) 6  3  192 0  1         0.9846154 0.01538462 0
 > x <- rpois(520,lambda=1)
 > stsObj <- sts(observed=x, frequency=52)
 > 
-> ## Don't show: 
 > if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
 + #Compare timing of the two possible fitters for algo.farrington
-+ range <- 312:520
-+ system.time( sts1 <- farrington(stsObj, control=list(range=range,
-+                        fitFun="algo.farrington.fitGLM.fast"), verbose=FALSE))
-+ system.time( sts2 <- farrington(stsObj, control=list(range=range,
-+                        fitFun="algo.farrington.fitGLM"), verbose=FALSE))
-+ #Check if results are the same
-+ stopifnot(upperbound(sts1) == upperbound(sts2))
-+ ## Don't show: 
++   range <- 312:520
++   system.time( sts1 <- farrington(stsObj, control=list(range=range,
++                          fitFun="algo.farrington.fitGLM.fast"), verbose=FALSE))
++   system.time( sts2 <- farrington(stsObj, control=list(range=range,
++                          fitFun="algo.farrington.fitGLM"), verbose=FALSE))
++   #Check if results are the same
++   stopifnot(upperbound(sts1) == upperbound(sts2))
 + }
-> ## End(Don't show)
 > 
 > 
 > 
@@ -2835,7 +2975,7 @@ No bootstrap CIs calculated as requested.
 > #Show the fit
 > lines(1:nrow(sts.bp)-0.5,mu[,1],col="green",type="s",lwd=3)
 > 
-> #Non-parametric back-projection including boostrap CIs
+> #Non-parametric back-projection including bootstrap CIs
 > bpnp.control2 <- modifyList(bpnp.control, list(hookFun=NULL, k=2,
 +   B=10, # in practice, use B >= 1000 !
 +   eq3a.method="C"))
@@ -3179,9 +3319,7 @@ z = 1.5197, n = 6, p-value = 0.1286
 > 
 > ### ** Examples
 > 
-> ## Don't show: 
 > ## IGNORE_RDIFF_BEGIN
-> ## End(Don't show)
 > have_GAMLSS <- require("gamlss")
 Loading required package: gamlss
 Loading required package: splines
@@ -3200,9 +3338,8 @@ Loading required package: parallel
 For more on GAMLSS look at https://www.gamlss.com/
 Type gamlssNews() to see new features/changes/bug fixes.
 
-> ## Don't show: 
 > ## IGNORE_RDIFF_END
-> ## End(Don't show)
+> 
 > if (have_GAMLSS) {
 +   ###########################################################################
 +   #Beta-binomial CUSUM for a small example containing the time-varying
@@ -3670,12 +3807,10 @@ $ counters ('data.frame', 376 x 6 ): evolution of the epidemic:
 
 > plot(myEpi)                 # see 'plot.epidata' and also 'animate.epidata'
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ ## add distance- and covariate-based weights for the force of infection
-+ ## in a twinSIR model, see vignette("twinSIR") for a description
-+ myEpi <- update(myEpi,
+> 
+> ## add distance- and covariate-based weights for the force of infection
+> ## in a twinSIR model, see vignette("twinSIR") for a description
+> myEpi <- update(myEpi,
 +     f = list(
 +         household    = function(u) u == 0,
 +         nothousehold = function(u) u > 0
@@ -3685,11 +3820,8 @@ $ counters ('data.frame', 376 x 6 ): evolution of the epidemic:
 +         c2 = function (CL.i, CL.j) CL.i == "2nd class" & CL.j == CL.i
 +     )
 + )
-+ ## this is now identical to the prepared hagelloch "epidata"
-+ stopifnot(all.equal(myEpi, hagelloch))
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
+> ## this is now identical to the prepared hagelloch "epidata"
+> stopifnot(all.equal(myEpi, hagelloch))
 > 
 > ## Don't show: 
 > if (surveillance.options("allExamples")) {
@@ -4020,13 +4152,16 @@ Data attributes:
 > ## reconstruct the "imdepi" object from its components
 > myimdepi <- as.epidataCS(events = events, stgrid = stgrid,
 +                          W = stateD, qmatrix = diag(2), nCircle2Poly = 16)
+> 
+> ## This reconstructed object should be equal to 'imdepi' as long as the internal
+> ## structures of the embedded classes ("owin", "SpatialPolygons", ...), and
+> ## the calculation of the influence regions by "polyclip" have not changed:
+> all.equal(imdepi, myimdepi)
+[1] TRUE
 > ## Don't show: 
 > if (surveillance.options("allExamples"))
-+ ## End(Don't show)
-+ ## This reconstructed object is equal to 'imdepi' as long as the internal
-+ ## structures of the embedded classes ("owin", "SpatialPolygons", ...), and
-+ ## the calculation of the influence regions by "polyclip" have not changed:
 + stopifnot(all.equal(imdepi, myimdepi))
+> ## End(Don't show)
 > 
 > 
 > 
@@ -4065,11 +4200,8 @@ Data attributes:
 > plot(imdsts, type = observed ~ time)
 > par(opar)
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples"))
-+ ## End(Don't show)
-+ ## plot number of cases by district
-+ plot(imdsts, type = observed ~ unit)
+> ## plot number of cases by district
+> plot(imdsts, type = observed ~ unit)
 > 
 > ## also test conversion to an SIS event history ("epidata") of the "tiles"
 > if (requireNamespace("intervals")) {
@@ -4264,15 +4396,12 @@ Overall number of events: 636
 > ## show the distribution in space
 > plot(imdepi, "space", lwd = 2, col = "lavender")
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ ## with the district-specific population density in the background,
-+ ## a scale bar, and customized point style
-+ load(system.file("shapes", "districtsD.RData", package = "surveillance"))
-+ districtsD$log10popdens <- log10(districtsD$POPULATION/districtsD$AREA)
-+ keylabels <- (c(1,2,5) * rep(10^(1:3), each=3))[-1]
-+ plot(imdepi, "space", tiles = districtsD, pop = "log10popdens",
+> ## with the district-specific population density in the background,
+> ## a scale bar, and customized point style
+> load(system.file("shapes", "districtsD.RData", package = "surveillance"))
+> districtsD$log10popdens <- log10(districtsD$POPULATION/districtsD$AREA)
+> keylabels <- (c(1,2,5) * rep(10^(1:3), each=3))[-1]
+> plot(imdepi, "space", tiles = districtsD, pop = "log10popdens",
 +      ## modify point style for better visibility on gray background
 +      points.args = list(pch=c(1,3), col=c("orangered","blue"), lwd=2),
 +      ## metric scale bar, see proj4string(imdepi$W)
@@ -4283,9 +4412,6 @@ Overall number of events: 636
 +      at = seq(1.3, 3.7, by=0.05),
 +      colorkey = list(labels=list(at=log10(keylabels), labels=keylabels),
 +                      title=expression("Population density per " * km^2)))
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
 > 
 > 
 > 
@@ -4739,11 +4865,9 @@ $h
 > 
 > # Count time series plot
 > plot(fluBYBW, type = observed ~ time)
-> ## Don't show: 
-> if (surveillance.options("allExamples"))
-+ ## End(Don't show)
-+ # Map of disease incidence (per 100000 inhabitants) for the year 2001
-+ plot(fluBYBW, type = observed ~ unit, tps = 1:52, total.args = list(),
+> 
+> # Map of disease incidence (per 100000 inhabitants) for the year 2001
+> plot(fluBYBW, type = observed ~ unit, tps = 1:52, total.args = list(),
 +      population = fluBYBW@map$X31_12_01 / 100000)
 > # the overall rate for 2001 shown in the bottom right corner is
 > sum(observed(fluBYBW[1:52,])) / sum(fluBYBW@map$X31_12_01) * 100000
@@ -5655,9 +5779,9 @@ Number of time points:  103
 > plot(measlesFit, total = TRUE)
 > ## little contribution from neighbouring districts
 > 
-> ## Don't show: 
+> 
 > if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
++ 
 + ## simpler model with autoregressive effects captured by the ne component
 + measlesModel2 <- list(
 +     ne = list(f = ~ 1, weights = W_powerlaw(maxlag=5, from0=TRUE)),
@@ -5675,9 +5799,8 @@ Number of time points:  103
 + ## almost the same RMSE as with separate AR and NE effects
 + c(rmse1 = sqrt(mean(residuals(measlesFit, "response")^2)),
 +   rmse2 = sqrt(mean(residuals(measlesFit2, "response")^2)))
-+ ## Don't show: 
++ 
 + }
-> ## End(Don't show)
 > 
 > 
 > 
@@ -6816,9 +6939,9 @@ twinstim(endemic = addSeason2formula(~offset(log(popdensity)) +
     model = FALSE, cumCIF = FALSE)
 > ## Don't show: 
 > if (surveillance.options("allExamples"))
-+ ## End(Don't show)
 + ## reproduce "imdepifit"
 + stopifnot(all.equal(imdepifit, eval(imdepifit$call)))
+> ## End(Don't show)
 > 
 > 
 > 
@@ -6922,7 +7045,7 @@ $ISOWeek
 > imdepiB <- subset(imdepi, type == "B")
 Note: dropped type(s) "C"
 > 
-> ## Perfom the Knox test using the Poisson approximation
+> ## Perform the Knox test using the Poisson approximation
 > knoxtest <- knox(
 +     dt = dist(imdepiB$events$time), eps.t = 30,
 +     ds = dist(coordinates(imdepiB$events)), eps.s = 50,
@@ -7140,7 +7263,7 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x5917482e4220>
+<environment: 0x5eddfd9a35d0>
 
 $ar$offset
 [1] 1
@@ -7149,7 +7272,7 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x5917482e4220>
+<environment: 0x5eddfd9a35d0>
 
 $ne$offset
 [1] 1
@@ -7201,9 +7324,8 @@ List of 5
   .. .. ..$ : chr [1:140] "8336" "8337" "8315" "8311" ...
  $ family : chr "NegBin1"
  $ verbose: logi TRUE
-> ## Don't show: 
+> 
 > if (surveillance.options("allExamples"))
-+ ## End(Don't show)
 + ## fit this model
 + fit <- hhh4(fluBYBW, mycontrol)
 > 
@@ -7355,21 +7477,20 @@ Head of observed:
 +      xaxis.labelFreq = list("%G"=atChange), xaxis.labelFormat = "%G")
 > surveillance.options(oopts)
 > 
-> ## Don't show: 
+> 
 > if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
++ 
 + ## stratified monitoring from 2007-W40 using the Farrington algorithm
 + phase2 <- which(epoch(momo) >= "2007-10-01")
 + momo2 <- farrington(momo, control = list(range=phase2, alpha=0.01, b=5, w=4))
-+ colSums(alarms(momo2))
++ print(colSums(alarms(momo2)))
 + plot(momo2, col = c(8, NA, 4), same.scale = FALSE)
 + 
 + ## stripchart of alarms (Figure 5 in Hoehle and Mazick, 2010)
 + plot(momo2, type = alarm ~ time, xlab = "Time (weeks)", main = "",
 +      alarm.symbol = list(pch=3, col=1, cex=1.5))
-+ ## Don't show: 
++ 
 + }
-> ## End(Don't show)
 > 
 > 
 > 
@@ -7736,10 +7857,8 @@ bayes.trunc...
 > #Likelihood ratio for all four possible configurations
 > p <- c(dPBin(c(0,0), theta=theta0), dPBin(c(0,1), theta=theta0),
 +        dPBin(c(1,0), theta=theta0), dPBin(c(1,1), theta=theta0))
-> ## Don't show: 
 > if (surveillance.options("allExamples"))
-+ ## End(Don't show)
-+ #Compute ARL using non-sparse matrix operations
++ #Compute ARL using slow, non-sparse matrix operations
 + pairedbinCUSUM.runlength(p,w1=c(-1,37,-9,29),w2=c(-1,7),h1=70,h2=32,
 +                          h11=38,h22=17)
 > 
@@ -7809,7 +7928,7 @@ g = 1763
 > # After each alarm the CUSUM statistic is set to zero and
 > # monitoring continues from this point. Triangles indicate alarm
 > # in the respective CUSUM (nearmiss or death). If in both
-> # simultaneously then an alarm is caued by the secondary limits.
+> # simultaneously then an alarm is caused by the secondary limits.
 > ######################################################################
 > pb.surv2 <- pairedbinCUSUM(deleval,control=list(theta0=theta0,
 +              theta1=theta1,h1=70*w1,h2=32*w2,h11=38*w1,h22=17*w2))
@@ -8688,12 +8807,9 @@ Failed with error:  ‘there is no package called ‘xts’’
 Loading required namespace: ggplot2
 Failed with error:  ‘there is no package called ‘ggplot2’’
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples"))
-+ ## End(Don't show)
-+ ## weekly incidence: population(measlesDE) gives population fractions,
-+ ## which we need to multiply by the total population
-+ if (require("ggplot2")) {
+> ## weekly incidence: population(measlesDE) gives population fractions,
+> ## which we need to multiply by the total population
+> if (require("ggplot2", quietly = TRUE)) {
 +     autoplot.sts(measlesDE, population = 1000000/82314906) +
 +         ylab("Weekly incidence [per 1'000'000 inhabitants]")
 + }
@@ -8837,17 +8953,11 @@ Head of map@data:
      Id                     BEZIRK SNAME
 chwi  0 Charlottenburg-Wilmersdorf  chwi
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ ## map of total counts by district (compare old vs. new implementation)
-+ plot(ha.sts, type = observed ~ 1 | unit)
-+ plot(ha.sts, type = observed ~ unit, labels = TRUE)
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
-> 
 > ## Not run: 
+> ##D # map of total counts by district (compare old vs. new implementation)
+> ##D plot(ha.sts, type = observed ~ 1 | unit) # deprecated
+> ##D plot(ha.sts, type = observed ~ unit, labels = TRUE)
+> ##D 
 > ##D # space-time animation
 > ##D plot(aggregate(ha.sts,nfreq=13), type = observed ~ 1 | unit * time)
 > ##D 
@@ -8919,8 +9029,8 @@ Failed with error:  ‘there is no package called ‘xts’’
 +      xaxis.tickFreq=list("%m"=atChange,"%G"=atChange),
 +      xaxis.labelFreq=list("%G"=atMedian),xaxis.labelFormat="%G")
 > 
-> ## Formatting now also works for daily data (illustrate by artifical
-> ## outbreak converted to sts object by linelist2sts)
+> ## Formatting also works for daily data (illustrated by artificial
+> ## outbreak converted to sts object via 'linelist2sts')
 > set.seed(123)
 > exposureTimes <-  as.Date("2014-03-12") + sample(x=0:25,size=99,replace=TRUE)
 > sts <- linelist2sts(data.frame(exposure=exposureTimes),
@@ -9379,27 +9489,25 @@ converged
 > ende <- plot(fit, which = "endemic", add = TRUE, col = 2)
 > legend("topleft", legend = "endemic proportion", lty = 1, col = 2, bty = "n")
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ # individual intensities
-+ tmp <- plot(fit, which = "total", aggregate = FALSE,
+> # individual intensities
+> tmp <- plot(fit, which = "total", aggregate = FALSE,
 +     col = rgb(0, 0, 0, alpha = 0.1),
 +     main = expression("Individual infection intensities " *
 +         lambda[i](t) == Y[i](t) %.% (e[i](t) + h[i](t))))
-+ # return value: matrix of individual intensity paths
-+ str(tmp)
-+ 
-+ # plot intensity path only for individuals 3 and 99
-+ matplot(x = tmp[,1], y = tmp[,1+c(3,99)], type = "S",
+> # return value: matrix of individual intensity paths
+> str(tmp)
+ num [1:375, 1:189] 1.14 7.2 7.47 7.63 8.25 ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : NULL
+  ..$ : chr [1:189] "stop" "1" "2" "3" ...
+> 
+> # plot intensity path only for individuals 3 and 99
+> matplot(x = tmp[,1], y = tmp[,1+c(3,99)], type = "S",
 +         ylab = "Force of infection", xlab = "time",
 +         main = expression("Paths of the infection intensities " *
 +                           lambda[3](t) * " and " * lambda[99](t)))
-+ legend("topright", legend = paste("Individual", c(3,99)),
+> legend("topright", legend = paste("Individual", c(3,99)),
 +        col = 1:2, lty = 1:2)
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
 > 
 > 
 > 
@@ -9651,9 +9759,9 @@ converged
 household         0.05364103  0.05617818
 cox(logbaseline) -4.07676005 -4.10337393
 > 
-> ## Don't show: 
+> 
 > if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
++ 
 + ## simulate only 10 days, using random infPeriods ~ Exp(0.1)
 + sim2 <- simulate(fit, data = hagelloch, seed = 2, end = 10,
 +     infPeriod = function(ids) rexp(length(ids), rate = 0.1))
@@ -9671,9 +9779,8 @@ cox(logbaseline) -4.07676005 -4.10337393
 + ## see if we correctly estimate the parameters
 + fitsimepi <- twinSIR(~ cox(AGE) + household, data = simepi)
 + cbind(true = c(0.05, -4, 0.1), est = coef(fitsimepi), confint(fitsimepi))
-+ ## Don't show: 
++ 
 + }
-> ## End(Don't show)
 > 
 > 
 > 
@@ -9876,20 +9983,16 @@ e.(Intercept)             -17.41647557 -16.377836153
 > ## plot the path of the fitted total intensity
 > plot(m0, "total intensity", tgrid=500)
 > 
-> ## Don't show: 
 > if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
 + ## extract "residual process" integrating over space (takes some seconds)
 + res <- residuals(m0)
 + # if the model describes the true CIF well _in the temporal dimension_,
 + # then this residual process should behave like a stationary Poisson
 + # process with intensity 1
 + plot(res, type="l"); abline(h=c(0, length(res)), lty=2)
-+ # easier, with CI and serial correlation -> checkResidualProcess()
++ # easier, with CI and serial correlation:
 + checkResidualProcess(m0)
-+ ## Don't show: 
 + }
-> ## End(Don't show)
 > 
 > ## Not run: 
 > ##D   ## NB: in contrast to nlminb(), optim's BFGS would miss the
@@ -10005,9 +10108,9 @@ AIC:  2834.2
 Log-likelihood: -1416
 
 > 
-> ## Don't show: 
+> 
 > if (surveillance.options("allExamples")) withAutoprint({
-+ ## End(Don't show)
++ 
 + ### full model with interaction functions (time-consuming)
 + ## estimate an exponential temporal decay of infectivity
 + m1_tiaf <- update(m0, tiaf=tiaf.exponential())
@@ -10037,9 +10140,8 @@ Log-likelihood: -1416
 +   
 + ## look at estimated R0 values by event type
 + tapply(R0(m2), imdepi$events@data[names(R0(m2)), "type"], summary)
-+ ## Don't show: 
++ 
 + })
-> ## End(Don't show)
 > 
 > 
 > 
@@ -10188,8 +10290,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x59174aed9ad8>
-<environment: 0x591748aa0720>
+<bytecode: 0x5ede03079578>
+<environment: 0x5eddfd8484a8>
 
 $G
 function (t, logvals, types) 
@@ -10199,7 +10301,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x591748aa0720>
+<environment: 0x5eddfd8484a8>
 
 $deriv
 function (t, logvals, types) 
@@ -10215,8 +10317,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x591743e04568>
-<environment: 0x591748aa0720>
+<bytecode: 0x5ede02cfbf78>
+<environment: 0x5eddfd8484a8>
 
 $Deriv
 function (t, logvals, types) 
@@ -10235,7 +10337,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x591748aa0720>
+<environment: 0x5eddfd8484a8>
 
 $npars
 [1] 4
@@ -10901,16 +11003,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x591748197dc0>
-<environment: 0x591747cdebb0>
+<bytecode: 0x5ede000b0c10>
+<environment: 0x5eddfeeb4880>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x591748198840>
-<environment: 0x591747cdebb0>
+<bytecode: 0x5ede000b1690>
+<environment: 0x5eddfeeb4880>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10918,8 +11020,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x591748198d80>
-<environment: 0x591747cdebb0>
+<bytecode: 0x5ede000abe80>
+<environment: 0x5eddfeeb4880>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10933,8 +11035,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x5917481956c0>
-<environment: 0x591747cdebb0>
+<bytecode: 0x5ede000ac5f0>
+<environment: 0x5eddfeeb4880>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10942,8 +11044,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x591748196ca0>
-<environment: 0x591747cdebb0>
+<bytecode: 0x5eddfeeb69d0>
+<environment: 0x5eddfeeb4880>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10955,8 +11057,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x591747cdd528>
-<environment: 0x591747cdebb0>
+<bytecode: 0x5eddfeeb7028>
+<environment: 0x5eddfeeb4880>
 
 $npars
 [1] 3
@@ -11050,19 +11152,17 @@ Setting up the model environment ...
 > 
 > 
 > ## spatial shape of the intensity (aggregated over time)
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+   ## load borders of Germany's districts
-+   load(system.file("shapes", "districtsD.RData", package="surveillance"))
-+ 
-+   # total intensity (using a rather sparse 'sgrid' for speed)
-+   intensityplot(imdepifit, which="total intensity",
+> 
+>   ## load borders of Germany's districts
+>   load(system.file("shapes", "districtsD.RData", package="surveillance"))
+> 
+>   # total intensity (using a rather sparse 'sgrid' for speed)
+>   intensityplot(imdepifit, which="total intensity",
 +                 aggregate="space", tiles=districtsD, sgrid=500,
 +                 col.regions=rev(heat.colors(100))) 
-+ 
-+   # epidemic proportion by type
-+   maps_epiprop <- lapply(1:2, function (type) {
+> 
+>   # epidemic proportion by type
+>   maps_epiprop <- lapply(1:2, function (type) {
 +       intensityplot(imdepifit, which="epidemic", aggregate="space",
 +                     types=type, tiles=districtsD, sgrid=1000,
 +                     main=rownames(imdepifit$qmatrix)[type],
@@ -11070,11 +11170,8 @@ Setting up the model environment ...
 +                     col.regions=rev(hcl.colors(10,"YlOrRd")),
 +                     colorkey=list(title=list("Epidemic proportion", cex=1)))
 +   })
-+   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
-+   plot(maps_epiprop[[2]], split=c(2,1,2,1))
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
+>   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
+>   plot(maps_epiprop[[2]], split=c(2,1,2,1))
 > 
 > 
 > 
@@ -11437,18 +11534,36 @@ attr(,"package")
 > plot(imdepi$W, lwd = 2, asp = 1)  
 > plot(s1, col = s1$type, cex = 0.5, add = TRUE)
 > 
-> ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ ## the general simulation method takes longer
-+ s0 <- simulate(m_noepi, seed = 1, data = imdepi, tiles = districtsD)
-+ class(s0)  # gives a full "simEpidataCS" with several methods applicable
-+ methods(class = "epidataCS")
-+ plot(s0, "time")
-+ plot(s0, "space", points.args = list(pch = 3), lwd = 2)
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
+> ## Compare with the generic simulation method (slower)
+> s0 <- simulate(m_noepi, seed = 1, data = imdepi, tiles = districtsD)
+
+Checking the supplied arguments ...
+(no events from 'data$events' were considered as prehistory)
+
+Simulating a spatio-temporal point pattern with 
+	- 2 event types 
+	- no prehistory
+	- 4 coefficients:
+
+            h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
+               31.0762030                15.4118731                -0.7388808 
+h.cos(2 * pi * start/365) 
+                2.3050950 
+
+Simulating (starting from t=0) ...
+Simulation has ended @t = 120 with 54 simulated events.
+
+Preparing simulated events for "epidataCS" ...
+Done.
+> class(s0)  # gives a full "simEpidataCS" with several methods applicable
+[1] "simEpidataCS" "epidataCS"   
+> methods(class = "epidataCS")
+ [1] [           animate     as.epidata  as.stepfun  coerce      head       
+ [7] initialize  marks       nobs        plot        print       show       
+[13] slotsFromS3 subset      summary     tail        untie       update     
+see '?methods' for accessing help and source code
+> plot(s0, "time")
+> plot(s0, "space", points.args = list(pch = 3), lwd = 2)
 > 
 > 
 > 
@@ -11475,26 +11590,20 @@ attr(,"package")
 > ## https://gdz.bkg.bund.de/), simplified by the "modified Visvalingam"
 > ## algorithm (level=6.6%) using MapShaper.org (v. 0.1.17):
 > load(system.file("shapes", "districtsD.RData", package="surveillance"))
-> ## Don't show: 
 > if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ plot(districtsD)
-+ plot(stateD, add=TRUE, border=2, lwd=2)
-+ ## Don't show: 
++   plot(districtsD)
++   plot(stateD, add=TRUE, border=2, lwd=2)
 + }
-> ## End(Don't show)
 > 
 > ## simulate 2 realizations (over a short period, for speed)
 > ## considering events from data(imdepi) before t=31 as prehistory
-> ## Don't show: 
 > ## IGNORE_RDIFF_BEGIN
-> ## End(Don't show)
 > mysims <- simulate(imdepifit, nsim=2, seed=1, data=imdepi,
 +                    tiles=districtsD, newcoef=c("e.typeC"=-1),
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2024-05-03 16:09:55.539844 
+Time at beginning of simulation: 2024-09-02 16:55:03.880373 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11519,15 +11628,13 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.086 seconds
-Estimated finishing time: 2024-05-03 16:09:55.713565 
+Runtime of first simulation: 0.097 seconds
+Estimated finishing time: 2024-09-02 16:55:04.074785 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2024-05-03 16:09:55.900362).
-> ## Don't show: 
+Done (2024-09-02 16:55:04.256737).
 > ## IGNORE_RDIFF_END
-> ## End(Don't show)
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
 >     local({
@@ -11593,42 +11700,72 @@ Summary of event marks and number of potential sources:
                                                
 > plot(mysim2, aggregate="space")
 > 
+> 
+> ### compare the observed _cumulative_ number of cases in the first 90 days to
+> nsim <- 20
+> ### simulations from the fitted model
 > ## Don't show: 
-> if (surveillance.options("allExamples")) {
-+ ## End(Don't show)
-+ ### compare the observed _cumulative_ number of cases during the
-+ ### first 90 days to 20 simulations from the fitted model
-+ 
-+ sims <- simulate(imdepifit, nsim=20, seed=1, data=imdepi, t0=0, T=90,
+> if (!interactive()) nsim <- 2
+> ## End(Don't show)
+> sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, t0=0, T=90,
 +                  tiles=districtsD, simplify=TRUE)
-+ 
-+ ## extract cusums
-+ getcsums <- function (events) {
+
+Time at beginning of simulation: 2024-09-02 16:55:04.390162 
+Simulation 1 / 2 ...
+-------------------------------------------------------------------------------
+
+Checking the supplied arguments ...
+(no events from 'data$events' were considered as prehistory)
+
+Simulating a marked spatio-temporal point pattern with 
+	- 2 event types 
+	- no prehistory
+	- 9 coefficients:
+
+            h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
+             -20.52869499               -0.04574093                0.21728211 
+h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
+               0.31810266              -12.51659414               -0.90832081 
+           e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
+               0.70611556               -0.24083969                2.76773501 
+
+Simulating (starting from t=0) ...
+Simulation has ended @t = 90 with 35 simulated events.
+
+Preparing simulated events for "epidataCS" ...
+Done.
+
+-------------------------------------------------------------------------------
+Runtime of first simulation: 0.45 seconds
+Estimated finishing time: 2024-09-02 16:55:05.289979 
+
+Simulation 2 / 2 ...	simulated 21 events up to time 90 
+
+Done (2024-09-02 16:55:05.309639).
+> 
+> ## extract cusums
+> getcsums <- function (events) {
 +     tapply(events$time, events@data["type"],
 +            function (t) cumsum(table(t)), simplify=FALSE)
 + }
-+ csums_observed <- getcsums(imdepi$events)
-+ csums_simulated <- lapply(sims$eventsList, getcsums)
-+ 
-+ ## plot it
-+ plotcsums <- function (csums, ...) {
+> csums_observed <- getcsums(imdepi$events)
+> csums_simulated <- lapply(sims$eventsList, getcsums)
+> 
+> ## plot it
+> plotcsums <- function (csums, ...) {
 +     mapply(function (csum, ...) lines(as.numeric(names(csum)), csum, ...),
 +            csums, ...)
 +     invisible()
 + }
-+ plot(c(0,90), c(0,35), type="n", xlab="Time [days]",
+> plot(c(0,90), c(0,35), type="n", xlab="Time [days]",
 +      ylab="Cumulative number of cases")
-+ plotcsums(csums_observed, col=c(2,4), lwd=3)
-+ legend("topleft", legend=levels(imdepi$events$type), col=c(2,4), lwd=1)
-+ invisible(lapply(csums_simulated, plotcsums,
-+                  col=adjustcolor(c(2,4), alpha=0.5)))
-+ ## Don't show: 
-+ }
-> ## End(Don't show)
+> plotcsums(csums_observed, col=c(2,4), lwd=3)
+> legend("topleft", legend=levels(imdepi$events$type), col=c(2,4), lwd=1)
+> invisible(lapply(csums_simulated, plotcsums,
++                  col=adjustcolor(c(2,4), alpha.f=0.5)))
 > 
 > 
 > ## Not run: 
-> ##D 
 > ##D ### Experimental code to generate 'nsim' simulations of 'nm2add' months
 > ##D ### beyond the observed time period:
 > ##D nm2add <- 24
@@ -11933,7 +12070,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  42.072 0.788 43.704 1.087 0.123 
+Time elapsed:  52.443 0.771 54.067 1.331 0.14 
 > grDevices::dev.off()
 null device 
           1 
