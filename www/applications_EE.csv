@@ -22,8 +22,9 @@ hhh4,pertussis,human,Lancashire and South Wales,1940-1969,Social Science & Medic
 hhh4,COVID-19,human,Italy,2020,BMC Infectious Diseases,2020,https://doi.org/10.1186/s12879-020-05415-7
 hhh4,COVID-19,human,Africa (country-level),2020,PNAS,2021,https://doi.org/10.1073/pnas.2026664118
 hhh4,norovirus gastroenteritis,human,England,2014-2019,BMC Public Health,2021,https://doi.org/10.1186/s12889-021-11317-3
-hhh4,measles,human,France,2009-2018,BMC Medicine,2022,https://doi.org/10.1186/s12916-022-02277-5
 hhh4,COVID-19,human,Italy,2020,Spatial Statistics,2021,https://doi.org/10.1016/j.spasta.2021.100528
+hhh4,measles,human,France,2009-2018,BMC Medicine,2022,https://doi.org/10.1186/s12916-022-02277-5
+hhh4,COVID-19,human,Japan,2020-2021,Journal of Applied Statistics,2022,https://doi.org/10.1080/02664763.2022.2064439
 hhh4,COVID-19,human,Switzerland and Italy,2020,Spatial Statistics,2022,https://doi.org/10.1016/j.spasta.2021.100552
 twinstim,COVID-19,human,Italy,2020,Environmental Research,2022,https://doi.org/10.1016/j.envres.2022.113617
 hhh4,campylobacteriosis,human,Sweden,2009-2019,International Journal of Food Microbiology,2022,https://doi.org/10.1016/j.ijfoodmicro.2022.109823
@@ -32,5 +33,7 @@ hhh4,measles,human,Southern Vietnam,2018-2020,Epidemiology and Infection,2022,ht
 hhh4,campylobacteriosis,human,Norway,2010-2022,Eurosurveillance,2022,https://doi.org/10.2807/1560-7917.ES.2022.27.43.2101121
 hhh4,COVID-19,human,Germany,2020,Regional Studies,2023,https://doi.org/10.1080/00343404.2023.2176478
 hhh4,COVID-19,human,Belgium,2021,BMC Infectious Diseases,2023,https://doi.org/10.1186/s12879-023-08368-9
+hhh4,COVID-19,human,Rwanda,2020-2021,BMC Public Health,2023,https://doi.org/10.1186/s12889-023-15888-1
+hhh4,pertussis,human,"King County, Washington, USA",2010-2017,Epidemics,2023,https://doi.org/10.1016/j.epidem.2023.100689
 hhh4,highly pathogenic avian influenza,poultry,Europe,2016-2022,Scientific Reports,2023,https://doi.org/10.1038/s41598-023-42660-7
 hhh4,COVID-19,human,"France, Czechia, Italy",2020-2023,BMC Infectious Diseases,2024,https://doi.org/10.1186/s12879-024-08986-x
