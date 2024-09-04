@@ -90,7 +90,9 @@ sts(observed, start = c(2000, 1), frequency = 52,
   \item{map}{optional spatial data representing the regions, either of
     class \code{"\linkSPclass{SpatialPolygons}"}
     (or \code{"\linkSPclass{SpatialPolygonsDataFrame}"}) or of class
-    \code{"\link[sf]{sf}"} (requires package \CRANpkg{sf}).}
+    \code{"\link[sf]{sf}"} (requires package \CRANpkg{sf}).
+    Its \code{row.names()} must contain the region IDs to be matched
+    against \code{colnames(observed)}.}
   \item{\dots}{further named arguments with names corresponding to slot
     names (see the list below). For instance, in the public health surveillance context,
     the \code{state} slot is used to indicate outbreaks (default:
