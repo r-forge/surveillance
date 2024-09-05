@@ -37,6 +37,8 @@
 #======================================================================
 
 #Open
+04/09/2024 provide methods for the standard generics
+           frequency(), cycle(), time(), window()
 
 #Done
 28/10/2021 default legend of stsplot_time1() should exclude unused slots
@@ -200,6 +202,7 @@ xx/07/2012 (sebastian): Documentation of functions in Rd files; also update refe
 17/03/2020 return means from simHHH4 and export similar to old simHHH
 28/02/2023 interaction terms currently need to be set up manually, because
            checkFormula()/fe() does not use model.matrix() capabilities.
+05/09/2024 implement residuals(type = "pearson") for JB's sake
 
 #Done
 20/03/2023 updateParams_nlm() loses coef names
