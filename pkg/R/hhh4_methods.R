@@ -1,7 +1,7 @@
 ################################################################################
 ### Standard methods for "hhh4" fits
 ###
-### Copyright (C) 2010-2012 Michaela Paul, 2012-2023 Sebastian Meyer
+### Copyright (C) 2010-2012 Michaela Paul, 2012-2024 Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -485,31 +485,34 @@ componentsHHH4 <- function (object)
     names(which(sapply(object$control[c("ar", "ne", "end")], "[[", "inModel")))
 
 ## deviance residuals
-residuals.hhh4 <- function (object, type = c("deviance", "response"), ...)
+residuals.hhh4 <- function (object, type = c("deviance", "pearson", "response"), ...)
 {
     type <- match.arg(type)
-    obs <- observed(object$stsObj)[object$control$subset,]
+    obs <- observed(object$stsObj)[object$control$subset,,drop=FALSE]
     fit <- fitted(object)
     if (type == "response")
         return(obs - fit)
 
-    ## deviance residuals
-    ## Cf. residuals.ah, it calculates:
     ## deviance = sign(y - mean) * sqrt(2 * (distr(y) - distr(mean)))
     ## pearson = (y - mean)/sqrt(variance)
-    dev.resids <- if (identical(object$control$family, "Poisson")) {
-        poisson()$dev.resids
+    family <- if (identical(object$control$family, "Poisson")) {
+        poisson()
     } else {
         size <- if (identical(object$control$family, "NegBin1")) {
             psi2size.hhh4(object, subset = NULL)
         } else {
             psi2size.hhh4(object) # CAVE: a matrix -> non-standard "size"
         }
-        negative.binomial(size)$dev.resids
+        negative.binomial(size)
     }
-
-    di2 <- dev.resids(y=obs, mu=fit, wt=1)
-    sign(obs-fit) * sqrt(pmax.int(di2, 0))
+    switch(type,
+           deviance = {
+               di2 <- family$dev.resids(y=obs, mu=fit, wt=1)
+               sign(obs-fit) * sqrt(pmax.int(di2, 0))
+           },
+           pearson = {
+               (obs - fit) / sqrt(family$variance(fit))
+           })
 }
 
 ## extract the formulae of the three log-linear predictors

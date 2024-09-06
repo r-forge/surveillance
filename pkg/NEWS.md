@@ -1,3 +1,10 @@
+# surveillance 1.23.1.9000
+
+## New Features
+
+- `residuals.hhh4()` can now also compute `type = "pearson"` residuals.
+
+
 # surveillance 1.23.1 (2024-09-02)
 
 ## Package Infrastructure
