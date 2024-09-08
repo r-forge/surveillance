@@ -379,11 +379,18 @@ update.hhh4 <- function (object, ..., S = NULL, subset.upper = NULL,
     if (!is.null(S)) {
         stopifnot(is.list(S), !is.null(names(S)),
                   names(S) %in% c("ar", "ne", "end"))
-        control[names(S)] <- mapply(function (comp, S) {
-            comp$f <- addSeason2formula(removeSeasonFromFormula(comp$f),
-                                        period = object$stsObj@freq, S = S)
+        control[names(S)] <- mapply(function (name, comp, S) {
+            comp$f <- addSeason2formula(
+                if (isInModel(comp$f, name))
+                    removeSeasonFromFormula(comp$f)
+                else {
+                    warning("newly enabled \"", name, "\" component; ",
+                            "you might want to tweak its offset etc.",
+                            call. = FALSE)
+                    ~1
+                }, period = object$stsObj@freq, S = S)
             comp
-        }, control[names(S)], S, SIMPLIFY=FALSE, USE.NAMES=FALSE)
+        }, names(S), control[names(S)], S, SIMPLIFY=FALSE, USE.NAMES=FALSE)
     }
 
     ## use a different time range of the data (only changing the end)

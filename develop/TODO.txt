@@ -202,9 +202,9 @@ xx/07/2012 (sebastian): Documentation of functions in Rd files; also update refe
 17/03/2020 return means from simHHH4 and export similar to old simHHH
 28/02/2023 interaction terms currently need to be set up manually, because
            checkFormula()/fe() does not use model.matrix() capabilities.
-06/09/2024 update(S =) should warn when the component was ~-1 (and add the intercept)
 
 #Done
+08/09/2024 update(S =) should warn when the component was ~-1 (and add the intercept)
 06/09/2024 implement residuals(type = "pearson") for JB's sake
 20/03/2023 updateParams_nlm() loses coef names
 09/02/2022 investigate handling of NA's in observed (checkderiv, etc.)

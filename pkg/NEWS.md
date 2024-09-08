@@ -4,6 +4,13 @@
 
 - `residuals.hhh4()` can now also compute `type = "pearson"` residuals.
 
+## Bug Fixes
+
+- `update.hhh4(S =)` can now be used for a previously disabled model
+  component, when it simply uses `f = ~1` and adds the requested number
+  of harmonics (but gives a warning as the specification may need to be
+  tweaked, e.g., for an offset).
+
 
 # surveillance 1.23.1 (2024-09-02)
 
