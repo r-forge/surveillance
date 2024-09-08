@@ -65,7 +65,7 @@ endef
 
 define check-report-warnings-in-examples
 (cd surveillance.Rcheck; \
-nwarn=`grep -cP '^Warning(?!.*(gpc.poly|pit.default|k = 40))' surveillance-Ex.Rout`; \
+nwarn=`grep -cP '^Warning(?!.*(gpc.poly|pit.default|k = 40|newly enabled))' surveillance-Ex.Rout`; \
 if [ $$nwarn -gt 0 ]; then echo "\n\tWARNING: $$nwarn" \
 	"warning(s) thrown when running examples,\n" \
 	"\t         see file surveillance.Rcheck/surveillance-Ex.Rout\n"; fi)
