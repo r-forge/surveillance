@@ -1,7 +1,8 @@
 ################################################################################
 ### Initialization and other basic methods for the S4 class "sts"
 ###
-### Copyright (C) 2007-2014 Michael Hoehle, 2012-2019,2021,2023 Sebastian Meyer
+### Copyright (C) 2007-2014 Michael Hoehle
+### Copyright (C) 2012-2019,2021,2023,2024 Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -134,8 +135,10 @@ init.sts <- function(.Object, ..., # also for slots of classes extending "sts"
     }
 
     ## time-constant population fractions can be provided as a single vector
-    if (is.vector(populationFrac, mode="numeric") &&
-        length(populationFrac) == nUnit) {
+    if (is.vector(populationFrac, mode = "numeric")) {
+        if (length(populationFrac) != nUnit)
+            stop("population vector has length ", length(populationFrac),
+                 " but ", nUnit, " units are 'observed'", call. = FALSE)
         populationFrac <- matrix(populationFrac, nTime, nUnit, byrow=TRUE)
     }
 
