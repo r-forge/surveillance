@@ -7,6 +7,7 @@ template:
     twitter:
       creator: "@bastistician"
       card: summary
+  math-rendering: mathjax
 
 navbar:
   structure:
