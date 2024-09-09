@@ -37,8 +37,7 @@
 #======================================================================
 
 #Open
-04/09/2024 provide methods for the standard generics
-           frequency(), cycle(), time(), window()
+04/09/2024 provide methods for the standard generic window()
 
 #Done
 28/10/2021 default legend of stsplot_time1() should exclude unused slots

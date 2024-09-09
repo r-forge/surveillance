@@ -285,7 +285,14 @@ setMethod("dim", "sts", function (x) dim(x@observed))
 setMethod("dimnames", "sts", function (x) dimnames(x@observed))
 setMethod("frequency", "sts", function (x, ...) x@freq)
 
-#Extract which observation within year we have
+## ## time() method to extract fractional year index (not really needed)
+## setMethod("time", "sts", function (x, ...) {
+##     tsp1 <- x@start[1L] + (x@start[2L] - 1)/x@freq
+##     seq.int(tsp1, by = 1/x@freq, length.out = length(x@epoch))
+## })
+
+## Extract which observation within year we have
+## (this could have been named "cycle", for consistency with "ts")
 setMethod("epochInYear", "sts", function(x,...) {
   if (x@epochAsDate && x@freq %in% c(12, 52, 365)) {
     epochStr <- switch(as.character(x@freq),
