@@ -469,7 +469,7 @@ data("measlesWeserEms")
 ## fit an endemic-only "hhh4" model
 ## with time covariates and a district-specific offset
 hhh4fit <- hhh4(measlesWeserEms, control = list(
-    end = list(f = addSeason2formula(~1 + t, period = measlesWeserEms@freq),
+    end = list(f = addSeason2formula(~1 + t, period = frequency(measlesWeserEms)),
                offset = population(measlesWeserEms)),
     ar = list(f = ~-1), ne = list(f = ~-1), family = "NegBin1",
     subset = 1:nrow(measlesWeserEms)

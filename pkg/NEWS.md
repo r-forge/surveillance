@@ -4,6 +4,9 @@
 
 - `residuals.hhh4()` can now also compute `type = "pearson"` residuals.
 
+- `frequency()` can now be used to extract the `freq` slot of `"sts"` objects.
+
+
 ## Bug Fixes
 
 - `update.hhh4(S =)` can now be used for a previously disabled model

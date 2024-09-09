@@ -47,6 +47,9 @@ setGeneric("toLatex")
 setGeneric("dim")
 setGeneric("dimnames")
 
+## "ts"-like methods
+setGeneric("frequency")
+
 
 ######################################################################
 # Conversion to and from sts objects

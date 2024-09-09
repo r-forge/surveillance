@@ -283,6 +283,7 @@ setMethod("aggregate", signature(x="sts"), aggregate.sts)
 
 setMethod("dim", "sts", function (x) dim(x@observed))
 setMethod("dimnames", "sts", function (x) dimnames(x@observed))
+setMethod("frequency", "sts", function (x, ...) x@freq)
 
 #Extract which observation within year we have
 setMethod("epochInYear", "sts", function(x,...) {

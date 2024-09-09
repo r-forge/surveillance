@@ -33,7 +33,7 @@
     Updating the \code{f}ormula of component \code{\var{comp}} works by first
     dropping all sine and cosine terms and then applying
     \code{addSeason2formula} with arguments \code{S = S[[\var{comp}]]} and
-    \code{period = object$stsObj@freq}, unless the component was
+    \code{period = frequency(object$stsObj)}, unless the component was
     originally disabled (\code{f = ~ -1}) when the harmonics are added
     to a simple intercept model and a warning is given.\cr
     Note that this step of updating
