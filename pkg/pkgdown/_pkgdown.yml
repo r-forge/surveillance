@@ -3,11 +3,6 @@ destination: "../www/pkgdown"
 
 template:
   bootstrap: 5
-  opengraph:
-    twitter:
-      creator: "@bastistician"
-      card: summary
-  math-rendering: mathjax
 
 navbar:
   structure:
