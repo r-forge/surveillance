@@ -363,7 +363,7 @@ The constructor function sts can be used to setup an
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">showClass</span><span class="op">(</span><span class="st">"sts"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/methods/RClassUtils.html" class="external-link">showClass</a></span><span class="op">(</span><span class="st">"sts"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## create an sts object from time-series data</span></span>
 <span><span class="va">salmonellaDF</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/salmonella.agona.txt"</span>,</span>
@@ -377,7 +377,7 @@ The constructor function sts can be used to setup an
 <span></span>
 <span><span class="co">## these data are also available as a legacy "disProg" object in the package</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">salmonella</span>, <span class="fu"><a href="disProg2sts.html">disProg2sts</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">salmonella</span>, <span class="fu"><a href="disProg2sts.html">disProg2sts</a></span><span class="op">(</span><span class="va">salmonella.agona</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## A typical dataset with weekly counts of measles from several districts</span></span>
@@ -401,7 +401,7 @@ The constructor function sts can be used to setup an
 <span></span>
 <span><span class="co">## convert ts/mts object to sts</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">300</span>,<span class="fl">10</span><span class="op">)</span>, <span class="fl">100</span>, <span class="fl">3</span><span class="op">)</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1961</span>, <span class="fl">1</span><span class="op">)</span>, frequency <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span><span class="va">z.sts</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">z</span>, <span class="st">"sts"</span><span class="op">)</span></span>
+<span><span class="va">z.sts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html" class="external-link">as</a></span><span class="op">(</span><span class="va">z</span>, <span class="st">"sts"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">z.sts</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## conversion of "sts" objects to the quasi-standard "xts" class</span></span>

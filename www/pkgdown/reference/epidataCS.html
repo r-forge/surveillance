@@ -472,7 +472,7 @@ The "epidataCS" class is the basis for fitting
 <span><span class="co">## a) as a data frame with coordinate columns via marks()</span></span>
 <span><span class="va">eventsData</span> <span class="op">&lt;-</span> <span class="fu"><a href="marks.html">marks</a></span><span class="op">(</span><span class="va">imdepi</span><span class="op">)</span></span>
 <span><span class="co">## b) as a Spatial object via the coerce-method</span></span>
-<span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"SpatialPointsDataFrame"</span><span class="op">)</span></span>
+<span><span class="va">events</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html" class="external-link">as</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="st">"SpatialPointsDataFrame"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## plot observation region with events (may require package 'sf')</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"sf"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -493,7 +493,7 @@ The "epidataCS" class is the basis for fitting
 <span><span class="co">## This reconstructed object should be equal to 'imdepi' as long as the internal</span></span>
 <span><span class="co">## structures of the embedded classes ("owin", "SpatialPolygons", ...), and</span></span>
 <span><span class="co">## the calculation of the influence regions by "polyclip" have not changed:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/all.equal-methods.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="va">myimdepi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">imdepi</span>, <span class="va">myimdepi</span><span class="op">)</span></span>
 <span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
