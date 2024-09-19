@@ -1,7 +1,7 @@
 Package: surveillance
 Title: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena
 Version: 1.23.1.9000
-Date: 2024-09-02
+Date: 2024-09-19
 Authors@R: c(
     MH = person("Michael", "Hoehle",
                 email = "hoehle@math.su.se",
@@ -35,7 +35,7 @@ Authors@R: c(
     )
 Depends:
     R (>= 3.6.0), methods, grDevices, graphics, stats, utils, 
-    sp (>= 1.0-15), xtable (>= 1.7-0)
+    sp (>= 2.1-4), xtable (>= 1.7-0)
 Imports:
     polyCub (>= 0.8.0),
     MASS, Matrix, nlme,
