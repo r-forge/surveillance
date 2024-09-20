@@ -10,6 +10,11 @@
   i.e., `<sts>[,<character>]`, the additional argument `drop = TRUE` can
   now be used to subset the map accordingly.
 
+## Package Infrastructure
+
+- **sp** version 2.1-4 is now required, mainly to skip versions that
+  produce misleading/obsolete startup messages or throw unnecessary
+  warnings when **sf** is not available.
 
 ## Bug Fixes
 
@@ -21,13 +26,6 @@
 
 # surveillance 1.23.1 (2024-09-02)
 
-## Package Infrastructure
-
-- **Rcpp** is no longer used. Only two small helper functions (for
-  `backprojNP(eq3a.method="C")` and `as.epidataCS()`) were using it
-  (inefficiently) and have been replaced by C implementations.
-  This also reduces the size of the installed package.
-
 ## New Features
 
 - The `sts()` constructor now also accepts an `"sf"` object as `map` input;
@@ -35,6 +33,13 @@
   `"sts"` class.  (Based on a patch by Sophie Reichert.)
 
 - `as.epidataCS()` is faster in determining potential event sources.
+
+## Package Infrastructure
+
+- **Rcpp** is no longer used. Only two small helper functions (for
+  `backprojNP(eq3a.method="C")` and `as.epidataCS()`) were using it
+  (inefficiently) and have been replaced by C implementations.
+  This also reduces the size of the installed package.
 
 
 # surveillance 1.23.0 (2024-05-03)
