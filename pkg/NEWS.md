@@ -6,6 +6,10 @@
 
 - `frequency()` can now be used to extract the `freq` slot of `"sts"` objects.
 
+- When indexing a spatial `"sts"` object that contains a map by region names,
+  i.e., `<sts>[,<character>]`, the additional argument `drop = TRUE` can
+  now be used to subset the map accordingly.
+
 
 ## Bug Fixes
 

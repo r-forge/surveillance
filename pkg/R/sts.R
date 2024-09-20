@@ -320,7 +320,7 @@ setMethod("year", "sts", function(x,...) {
 #[-method for truncating the time series and/or selecting units
 #####################################################################
 
-setMethod("[", "sts", function(x, i, j, ..., drop) {
+setMethod("[", "sts", function(x, i, j, ..., drop = FALSE) {
   nTimeOriginal <- nrow(x@observed)
   if (missing(i)) { # set default value
     i <- seq_len(nTimeOriginal)
@@ -339,6 +339,7 @@ setMethod("[", "sts", function(x, i, j, ..., drop) {
   ## if(missing(j)) j <- seq_len(ncol(x@observed))   # redundant
   if (!missing(j) && anyNA(j))
     stop("missing column index values are not supported")
+  ## FIXME: should probably warn about duplicated column indices
 
   ## check if i is a regular integer sequence (not invalidating freq)
   if (any(diff(i) != 1))
@@ -388,6 +389,15 @@ setMethod("[", "sts", function(x, i, j, ..., drop) {
   ## Note: We do not automatically subset the map according to j, since
   ##       identical(row.names(map), colnames(observed))
   ##       is not a property of the sts-class; Unmonitored regions are allowed.
+  ##       The map can also be empty (protoype value).
+  if (drop && !missing(j)) {
+      if (!is.character(j))
+          stop("'drop = TRUE' requires character-type column indices")
+      if (length(x@map))
+          x@map <- x@map[j,]
+      else
+          warning("nothing to drop; object has no map")
+  }
 
   #Done
   return(x)
