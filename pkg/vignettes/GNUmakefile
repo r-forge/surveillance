@@ -35,13 +35,17 @@ cleanall: clean
 	rm -rf ${VIGNETTES} ${TEXFILESFROMRNW} ${RNWFILES:.Rnw=.R}
 
 
-### create surveillance-hmm.pdf
+### create static figures
 
 #surveillance.pdf: surveillance-hmm.pdf  # additional dependency
 surveillance-hmm.pdf: surveillance-hmm.tex
 	latex -interaction=batchmode $< && dvips -q ${<:.tex=.dvi} && \
 		ps2pdf -q -sOutputFile=- ${<:.tex=.ps} | pdfcrop - $@
 	rm -f $(addprefix $(basename $<).,aux dvi log ps)
+
+#monitoringCounts.pdf: monitoringCounts-fPlot1.pdf monitoringCounts-fPlot2.pdf
+monitoringCounts-fPlot1.pdf monitoringCounts-fPlot2.pdf &: monitoringCounts-fPlot.R
+	${R} --vanilla -s -f "$<"
 
 
 ### check running tangled vignette code because knitr tampers with R CMD check,
