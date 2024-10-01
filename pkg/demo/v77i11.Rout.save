@@ -1,5 +1,5 @@
 
-R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
 Copyright (C) 2024 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
 
@@ -50,7 +50,7 @@ In RNGkind("Mersenne-Twister", "Inversion", "Rounding") :
 > library("surveillance")  # you should also have installed the suggested packages
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.23.0; see ‘package?surveillance’ or
+This is surveillance 1.24.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > ## 3.2. Data structure: 'epidataCS'
@@ -179,6 +179,11 @@ Summary of event marks and number of potential sources:
 > imdsts <- epidataCS2sts(imdepi, freq = 12, start = c(2002, 1), tiles = districtsD)
 Loading required namespace: spdep
 Note: auto-generated neighbourhood matrix contains 1 island
+Warning messages:
+1: In spdep::poly2nb(SpP, ...) : some observations have no neighbours;
+if this seems unexpected, try increasing the snap argument.
+2: In spdep::poly2nb(SpP, ...) : neighbour object has 2 sub-graphs;
+if this sub-graph count seems unexpected, try increasing the snap argument.
 > par(las = 1, lab = c(7, 7, 7), mar = c(5, 5, 1, 1))
 > plot(imdsts, type = observed ~ time)
 > plot(imdsts, type = observed ~ unit, population = districtsD$POPULATION / 100000)
@@ -280,8 +285,8 @@ Done.
 +              label = "tab:imdfit_Gaussian"),
 +       sanitize.text.function = NULL, sanitize.colnames.function = NULL,
 +       sanitize.rownames.function = function(x) paste0("\\code{", x, "}"))
-% latex table generated in R 4.4.0 by xtable 1.8-4 package
-% Thu May  2 18:48:26 2024
+% latex table generated in R 4.4.1 by xtable 1.8-4 package
+% Tue Oct  1 16:47:04 2024
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -440,7 +445,7 @@ Note: added the 'tau' component to object 'imdfit_powerlaw' for future use.
 > imdsims <- simulate(imdfit_powerlaw, nsim = 30, seed = 1, t0 = 1826, T = 2555,
 +   data = imdepi_untied_infeps, tiles = districtsD)
 
-Time at beginning of simulation: 2024-05-02 18:48:40.285992 
+Time at beginning of simulation: 2024-10-01 16:47:18.851024 
 Simulation 1 / 30 ...
 -------------------------------------------------------------------------------
 
@@ -467,8 +472,8 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 2.091 seconds
-Estimated finishing time: 2024-05-02 18:49:43.018345 
+Runtime of first simulation: 1.964 seconds
+Estimated finishing time: 2024-10-01 16:48:17.773044 
 
 Simulation  2 / 30 ...	simulated 187 events up to time 2555 
 Simulation  3 / 30 ...	simulated 192 events up to time 2555 
@@ -500,7 +505,7 @@ Simulation 28 / 30 ...	simulated 174 events up to time 2555
 Simulation 29 / 30 ...	simulated 158 events up to time 2555 
 Simulation 30 / 30 ...	simulated 155 events up to time 2555 
 
-Done (2024-05-02 18:49:58.746586).
+Done (2024-10-01 16:48:31.733047).
 > 
 > table(imdsims[[1]]$events$source > 0, exclude = NULL)
 
