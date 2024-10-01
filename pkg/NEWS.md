@@ -1,4 +1,4 @@
-# surveillance 1.23.1.9000
+# surveillance 1.24.0 (2024-10-01)
 
 ## New Features
 
