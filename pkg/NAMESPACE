@@ -242,8 +242,7 @@ export(algo.bayes, algo.bayes1, algo.bayes2, algo.bayes3,
        algo.hmm,
        algo.outbreakP,
        algo.rki, algo.rki1, algo.rki2, algo.rki3, algo.rkiLatestTimepoint,
-       algo.rogerson,
-       algo.twins)
+       algo.rogerson)
 
 ## auxiliary functions for algo.farrington (FIXME: why export these internals?)
 export(algo.farrington.assign.weights,
@@ -251,7 +250,6 @@ export(algo.farrington.assign.weights,
        algo.farrington.fitGLM.populationOffset, algo.farrington.threshold)
 
 
-S3method(plot, atwins)
 S3method(plot, survRes)
 S3method(print, algoQV)
 S3method(xtable, algoQV)

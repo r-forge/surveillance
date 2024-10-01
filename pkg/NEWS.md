@@ -16,6 +16,14 @@
   produce misleading/obsolete startup messages or throw unnecessary
   warnings when **sf** is not available.
 
+## Deprecated & Defunct
+
+- The experimental `algo.twins()` implementation of
+  [Held et al. (2006)](https://doi.org/10.1093/biostatistics/kxj016)
+  has been removed from the package. The source code has been migrated
+  to a separate R package, `twins`, which is archived at
+  <https://codeberg.org/EE-hub/twins>.
+
 ## Bug Fixes
 
 - `update.hhh4(S =)` can now be used for a previously disabled model

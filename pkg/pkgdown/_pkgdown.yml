@@ -60,7 +60,6 @@ reference:
 - title: Prospective outbreak detection
 - contents:
   - matches("algo")
-  - -algo.twins
   - boda
   - matches("CUSUM")
   - arlCusum
@@ -143,7 +142,3 @@ reference:
   - surveillance.options
   - ranef
   - anscombe.residuals
-- title: Deprecated functions
-- contents:
-  - algo.twins
-  - plot.atwins
