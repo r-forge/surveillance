@@ -13,6 +13,7 @@
 \alias{epoch,sts-method}
 \alias{epoch<-,sts-method}
 \alias{frequency,sts-method}
+\alias{start,sts-method}
 \alias{observed,sts-method}
 \alias{observed<-,sts-method}
 \alias{population,sts-method}
@@ -170,6 +171,8 @@ sts(observed, start = c(2000, 1), frequency = 52,
       respectively.}
     \item{frequency}{\code{signature(x = "sts")}:
       extract the \code{freq} slot.}
+    \item{start}{\code{signature(x = "sts")}:
+      extract the \code{start} slot.}
     \item{observed}{\code{signature(x = "sts")}:
       extract the \code{observed} slot.}
     \item{alarms}{\code{signature(x = "sts")}:

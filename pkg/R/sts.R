@@ -284,6 +284,7 @@ setMethod("aggregate", signature(x="sts"), aggregate.sts)
 setMethod("dim", "sts", function (x) dim(x@observed))
 setMethod("dimnames", "sts", function (x) dimnames(x@observed))
 setMethod("frequency", "sts", function (x, ...) x@freq)
+setMethod("start", "sts", function (x, ...) x@start)
 
 ## ## time() method to extract fractional year index (not really needed)
 ## setMethod("time", "sts", function (x, ...) {

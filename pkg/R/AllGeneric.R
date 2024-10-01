@@ -49,6 +49,7 @@ setGeneric("dimnames")
 
 ## "ts"-like methods
 setGeneric("frequency")
+setGeneric("start")
 
 
 ######################################################################

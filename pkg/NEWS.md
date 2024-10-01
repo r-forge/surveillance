@@ -4,7 +4,8 @@
 
 - `residuals.hhh4()` can now also compute `type = "pearson"` residuals.
 
-- `frequency()` can now be used to extract the `freq` slot of `"sts"` objects.
+- The standard `frequency()` and `start()` generics can now be used to
+  extract the respective slots from an `"sts"` object.
 
 - When indexing a spatial `"sts"` object that contains a map by region names,
   i.e., `<sts>[,<character>]`, the additional argument `drop = TRUE` can

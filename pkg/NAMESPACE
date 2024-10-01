@@ -183,7 +183,7 @@ exportMethods(as.data.frame)
 export(tidy.sts)
 
 # more S4 generics, some with an equivalent S3-method, see ?Methods_for_S3
-exportMethods(dim, dimnames, frequency, year, epochInYear, "[")
+exportMethods(dim, dimnames, frequency, start, year, epochInYear, "[")
 S3method(plot, sts)
 exportMethods(plot)
 S3method(toLatex, sts)
