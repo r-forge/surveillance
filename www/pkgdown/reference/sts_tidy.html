@@ -6,14 +6,14 @@
   Some time variables are added for convenience:
   year, epochInYear, epochInPeriod, date
   (the latter gives NA dates if epoch(x, as.Date=TRUE)
-  fails, i.e., for non-standard x@freq if not x@epochAsDate).'><meta property="og:description" content='The resulting data frame will have a row for each time point and
+  fails, i.e., for non-standard frequency(x) if x@epochAsDate is false).'><meta property="og:description" content='The resulting data frame will have a row for each time point and
   observational unit, and columns corresponding to the slots of the
   "sts" object (except for populationFrac,
   which is named population).
   Some time variables are added for convenience:
   year, epochInYear, epochInPeriod, date
   (the latter gives NA dates if epoch(x, as.Date=TRUE)
-  fails, i.e., for non-standard x@freq if not x@epochAsDate).'><!-- For Rd equations in pkgdown 2.1.0, see https://katex.org/docs/autorender.html --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script><script>
+  fails, i.e., for non-standard frequency(x) if x@epochAsDate is false).'><!-- For Rd equations in pkgdown 2.1.0, see https://katex.org/docs/autorender.html --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script><script>
   document.addEventListener("DOMContentLoaded", function() {
       renderMathInElement(document.body, {
           throwOnError: false,
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
   Some time variables are added for convenience:
   <code>year</code>, <code>epochInYear</code>, <code>epochInPeriod</code>, <code>date</code>
   (the latter gives <code>NA</code> dates if <code>epoch(x, as.Date=TRUE)</code>
-  fails, i.e., for non-standard <code>x@freq</code> if not <code>x@epochAsDate</code>).</p>
+  fails, i.e., for non-standard <code>frequency(x)</code> if <code>x@epochAsDate</code> is false).</p>
     </div>
 
     <div class="section level2">
@@ -107,7 +107,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

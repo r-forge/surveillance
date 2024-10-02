@@ -36,7 +36,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -620,7 +620,7 @@
 <span><span class="co">## fit an endemic-only "hhh4" model</span></span>
 <span><span class="co">## with time covariates and a district-specific offset</span></span>
 <span><span class="va">hhh4fit</span> <span class="op">&lt;-</span> <span class="fu">hhh4</span><span class="op">(</span><span class="va">measlesWeserEms</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, period <span class="op">=</span> <span class="va">measlesWeserEms</span><span class="op">@</span><span class="va">freq</span><span class="op">)</span>,</span>
+<span>    end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span> <span class="op">+</span> <span class="va">t</span>, period <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>               offset <span class="op">=</span> <span class="fu"><a href="stsSlots.html">population</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, ne <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"NegBin1"</span>,</span>
 <span>    subset <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">measlesWeserEms</span><span class="op">)</span></span>
@@ -652,7 +652,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

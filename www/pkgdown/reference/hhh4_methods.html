@@ -22,7 +22,7 @@ see vignette("hhh4_spacetime").'><!-- For Rd equations in pkgdown 2.1.0, see htt
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,7 @@ see <code>vignette("hhh4_spacetime")</code>.</p>
 <span>        reparamPsi <span class="op">=</span> <span class="cn">TRUE</span>, idx2Exp <span class="op">=</span> <span class="cn">NULL</span>, amplitudeShift <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for class 'hhh4'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"deviance"</span>, <span class="st">"response"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"deviance"</span>, <span class="st">"pearson"</span>, <span class="st">"response"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -162,7 +162,8 @@ see <code>vignette("hhh4_spacetime")</code>.</p>
 
   <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>the type of residuals which should be returned. The
-    alternatives are <code>"deviance"</code> (default) and <code>"response"</code>.</p></dd>
+    alternatives are <code>"deviance"</code> (default), <code>"pearson"</code>,
+    and <code>"response"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -193,7 +194,8 @@ see <code>vignette("hhh4_spacetime")</code>.</p>
   The <code><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></code>-method returns Wald-type confidence
   intervals (assuming asymptotic normality).</p>
 <p>The <code><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></code>-method extracts raw (<code>"response"</code>) or
-  scaled (<code>"deviance"</code>) residuals from the model fit similar to
+  <code>"deviance"</code> or standardized (<code>"pearson"</code>)
+  residuals from the model fit similar to
   <code><a href="https://rdrr.io/r/stats/glm.summaries.html" class="external-link">residuals.glm</a></code> for Poisson or NegBin GLM's.</p>
     </div>
     <div class="section level2">
@@ -224,7 +226,7 @@ see <code>vignette("hhh4_spacetime")</code>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

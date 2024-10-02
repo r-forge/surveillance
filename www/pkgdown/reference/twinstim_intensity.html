@@ -34,7 +34,7 @@ location (integrated over the other dimension).'><!-- For Rd equations in pkgdow
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -261,14 +261,17 @@ location (integrated over the other dimension).</p>
 <span></span>
 <span><span class="co">## spatial shape of the intensity (aggregated over time)</span></span>
 <span></span>
-<span>  <span class="co">## load borders of Germany's districts</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shapes"</span>, <span class="st">"districtsD.RData"</span>, package<span class="op">=</span><span class="st">"surveillance"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># need a map of the 'stgrid' tiles, here Germany's districts</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"shapes"</span>, <span class="st">"districtsD.RData"</span>, package<span class="op">=</span><span class="st">"surveillance"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># total intensity (using a rather sparse 'sgrid' for speed)</span></span>
-<span>  <span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">imdepifit</span>, which<span class="op">=</span><span class="st">"total intensity"</span>,</span>
-<span>                aggregate<span class="op">=</span><span class="st">"space"</span>, tiles<span class="op">=</span><span class="va">districtsD</span>, sgrid<span class="op">=</span><span class="fl">500</span>,</span>
-<span>                col.regions<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">heat.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="co"># total intensity (using a rather sparse 'sgrid' for speed)</span></span>
+<span><span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">imdepifit</span>, which<span class="op">=</span><span class="st">"total intensity"</span>,</span>
+<span>              aggregate<span class="op">=</span><span class="st">"space"</span>, tiles<span class="op">=</span><span class="va">districtsD</span>, sgrid<span class="op">=</span><span class="fl">500</span>,</span>
+<span>              col.regions<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">heat.colors</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
+<span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="surveillance.options.html">surveillance.options</a></span><span class="op">(</span><span class="st">"allExamples"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># epidemic proportion by type</span></span>
 <span>  <span class="va">maps_epiprop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">type</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="fu"><a href="intensityplot.html">intensityplot</a></span><span class="op">(</span><span class="va">imdepifit</span>, which<span class="op">=</span><span class="st">"epidemic"</span>, aggregate<span class="op">=</span><span class="st">"space"</span>,</span>
@@ -279,7 +282,8 @@ location (integrated over the other dimension).</p>
 <span>                    colorkey<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>title<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Epidemic proportion"</span>, cex<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">maps_epiprop</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, split<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span>, more<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">maps_epiprop</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, split<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">maps_epiprop</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, split<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
@@ -290,7 +294,7 @@ location (integrated over the other dimension).</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

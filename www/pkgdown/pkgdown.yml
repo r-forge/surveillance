@@ -1,11 +1,11 @@
 pandoc: 3.2.1
-pkgdown: 2.1.0.9000
+pkgdown: 2.1.1.9000
 pkgdown_sha: ~
 articles:
   pkgdown/bibliography: pkgdown/bibliography.html
   pkgdown/events: pkgdown/events.html
   pkgdown/overview: pkgdown/overview.html
-last_built: 2024-09-16T12:10Z
+last_built: 2024-10-02T06:47Z
 urls:
   reference: https://surveillance.R-forge.R-project.org/pkgdown/reference
   article: https://surveillance.R-forge.R-project.org/pkgdown/articles

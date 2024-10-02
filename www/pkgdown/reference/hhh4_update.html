@@ -14,7 +14,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.23.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,10 +70,13 @@
     way of changing the number of harmonics in the <code>f</code>ormulae of
     the model components <code>"ar"</code>, <code>"ne"</code> and <code>"end"</code> (to be
     used as names of the list). Non-specified components are not touched.
-    Updating the <code>i</code>'th component's <code>f</code>ormula works by first
+    Updating the <code>f</code>ormula of component <code><var>comp</var></code> works by first
     dropping all sine and cosine terms and then applying
-    <code>addSeason2formula</code> with arguments <code>S = S[[i]]</code> and
-    <code>period = object$stsObj@freq</code>. Note that this step of updating
+    <code>addSeason2formula</code> with arguments <code>S = S[[<var>comp</var>]]</code> and
+    <code>period = frequency(object$stsObj)</code>, unless the component was
+    originally disabled (<code>f = ~ -1</code>) when the harmonics are added
+    to a simple intercept model and a warning is given.<br>
+    Note that this step of updating
     seasonality is processed after modification of the <code>control</code>
     list by the <code>...</code> arguments.</p></dd>
 
@@ -125,9 +128,17 @@
 <span></span>
 <span><span class="co">## fit a basic model</span></span>
 <span><span class="va">fit0</span> <span class="op">&lt;-</span> <span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">salmonella</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="op">~</span><span class="fl">1</span><span class="op">)</span>, end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>f <span class="op">=</span> <span class="fu"><a href="addSeason2formula.html">addSeason2formula</a></span><span class="op">(</span><span class="op">~</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## update: Poisson -&gt; NegBin1, component seasonality</span></span>
+<span><span class="co">## the same, updating the minimal endemic-only model via 'S' (with a warning):</span></span>
+<span><span class="va">fit0.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="fu"><a href="hhh4.html">hhh4</a></span><span class="op">(</span><span class="va">salmonella</span><span class="op">)</span>, <span class="co"># has no AR component</span></span>
+<span>                 S <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ar <span class="op">=</span> <span class="fl">0</span>, end <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/eval.html" class="external-link">local</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="va">fit0</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">start</span> <span class="op">&lt;-</span> <span class="va">fit0.2</span><span class="op">$</span><span class="va">control</span><span class="op">$</span><span class="va">start</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># obviously different</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">fit0</span>, <span class="va">fit0.2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## multiple updates: Poisson -&gt; NegBin1, more harmonics</span></span>
 <span><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">fit0</span>, family <span class="op">=</span> <span class="st">"NegBin1"</span>, S <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>end<span class="op">=</span><span class="fl">2</span>, ar<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## compare fits</span></span>
@@ -147,7 +158,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>
