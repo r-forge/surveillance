@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.23.1; see ‘package?surveillance’ or
+This is surveillance 1.24.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -2567,313 +2567,6 @@ rki(4,0,2) 12  6 585  0 1.00 0.9898477 0.010152284    0
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("algo.summary", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-> nameEx("algo.twins")
-> ### * algo.twins
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: algo.twins
-> ### Title: Fit a Two-Component Epidemic Model using MCMC
-> ### Aliases: algo.twins
-> ### Keywords: ts regression
-> 
-> ### ** Examples
-> 
-> # Load the data used in the Held et al. (2006) paper
-> data("hepatitisA")
-> 
-> # Fix seed - this is used for the MCMC samplers in twins
-> set.seed(123)
-> 
-> # Call algorithm and save result (use short chain without filtering for speed)
-> oldwd <- setwd(tempdir())  # where logfiles will be written
-> otwins <- algo.twins(hepatitisA,
-+                      control=list(burnin=500, filter=1, sampleSize=1000))
-MCMC Estimation in BPLE Model v1.0.1 (using R API).
-dim(x) = 208	1
-logfile is in "twins.log".
-logfile2 is in "twins.log2".
-burnin = 500 (500)
-filter = 1 (1)
-sampleSize = 1000 (1000)
-T = 52
-nfreq = 1
-alpha_xi = 10.000000
-beta_xi = 10.000000
-psiRWSigma = 0.250000
-alpha_psi = 1.000000
-beta_psi = 0.100000
-nu_trend = 0
- ====== The data =======
-0	0	
-0	24	
-0	43	
-0	51	
-0	61	
-0	76	
-0	63	
-0	53	
-0	32	
-0	47	
-0	43	
-0	39	
-0	33	
-0	50	
-0	34	
-0	27	
-0	18	
-0	38	
-0	35	
-0	30	
-0	39	
-0	27	
-0	53	
-0	25	
-0	32	
-0	27	
-0	37	
-0	26	
-0	26	
-0	25	
-0	22	
-0	26	
-0	34	
-0	40	
-0	36	
-0	50	
-0	57	
-0	68	
-0	69	
-0	86	
-0	58	
-0	76	
-0	83	
-0	78	
-0	49	
-0	54	
-0	51	
-0	37	
-0	43	
-0	31	
-0	40	
-0	53	
-0	17	
-0	19	
-0	43	
-0	42	
-0	34	
-0	34	
-0	26	
-0	36	
-0	32	
-0	29	
-0	12	
-0	32	
-0	23	
-0	12	
-0	17	
-0	24	
-0	19	
-0	21	
-0	18	
-0	15	
-0	19	
-0	15	
-0	7	
-0	22	
-0	25	
-0	13	
-0	17	
-0	12	
-0	7	
-0	14	
-0	19	
-0	11	
-0	10	
-0	17	
-0	36	
-0	25	
-0	38	
-0	43	
-0	40	
-0	47	
-0	41	
-0	73	
-0	49	
-0	39	
-0	32	
-0	57	
-0	41	
-0	37	
-0	47	
-0	33	
-0	38	
-0	44	
-0	24	
-0	19	
-0	36	
-0	33	
-0	31	
-0	36	
-0	22	
-0	35	
-0	36	
-0	22	
-0	30	
-0	35	
-0	25	
-0	28	
-0	15	
-0	24	
-0	19	
-0	20	
-0	20	
-0	24	
-0	20	
-0	20	
-0	16	
-0	36	
-0	22	
-0	13	
-0	17	
-0	17	
-0	15	
-0	13	
-0	16	
-0	15	
-0	16	
-0	24	
-0	10	
-0	14	
-0	25	
-0	28	
-0	27	
-0	48	
-0	31	
-0	30	
-0	37	
-0	35	
-0	36	
-0	28	
-0	45	
-0	32	
-0	32	
-0	47	
-0	46	
-0	32	
-0	15	
-0	17	
-0	33	
-0	31	
-0	33	
-0	36	
-0	29	
-0	35	
-0	28	
-0	20	
-0	32	
-0	22	
-0	25	
-0	21	
-0	50	
-0	36	
-0	37	
-0	39	
-0	23	
-0	22	
-0	27	
-0	30	
-0	29	
-0	27	
-0	13	
-0	26	
-0	20	
-0	17	
-0	23	
-0	34	
-0	19	
-0	27	
-0	22	
-0	54	
-0	99	
-0	86	
-0	99	
-0	61	
-0	82	
-0	62	
-0	69	
-0	38	
-0	50	
-0	39	
-0	38	
-0	30	
-0	37	
-0	27	
-0	33	
-0	33	
-0	26	
-0	28	
-0	27	
-------------------------------------------------
-psi:     Ga(1.000000, 0.100000)-->	10.000000
-------------------------------------------------
-Total number of samples = 500 + 1 * 1000 = 1500
-..................................................
-Current psiRWSigma= 0.250000 --> acc rate = 0.416000
-Corrected psiRWSigma= 0.375000
-..................................................
-Current psiRWSigma= 0.375000 --> acc rate = 0.294000
-Corrected psiRWSigma= 0.187500
-..................................................
-Current psiRWSigma= 0.187500 --> acc rate = 0.512000
-Corrected psiRWSigma= 0.281250
-..................................................
-Current psiRWSigma= 0.281250 --> acc rate = 0.374000
-Corrected psiRWSigma= 0.281250
-.34%.35%..36%.37%..38%.39%..40%.41%..42%.43%..44%.45%..46%.47%..48%.49%..50%.51%..52%.53%..54%.55%..56%.57%..58%.59%..60%.61%..62%.63%..64%.65%..66%.67%..68%.69%..70%.71%..72%.73%..74%.75%..76%.77%..78%.79%..80%.81%..82%.83%..84%.85%..86%.87%..88%.89%..90%.91%..92%.93%..94%.95%..96%.97%..98%.99%..100%
-Done with twins -- going back to R.
-> setwd(oldwd)
-> 
-> # This shows the entire output (use ask=TRUE for pause between plots)
-> plot(otwins, ask=FALSE)
-> 
-> # Direct access to MCMC output
-> hist(otwins$logFile$psi,xlab=expression(psi),main="")
-> if (require("coda")) {
-+     print(summary(mcmc(otwins$logFile[,c("psi","xipsi","K")])))
-+ }
-Loading required package: coda
-
-Iterations = 1:1000
-Thinning interval = 1 
-Number of chains = 1 
-Sample size per chain = 1000 
-
-1. Empirical mean and standard deviation for each variable,
-   plus standard error of the mean:
-
-       Mean    SD Naive SE Time-series SE
-psi   21.73 4.497  0.14222          0.716
-xipsi  1.00 0.000  0.00000          0.000
-K     11.60 2.834  0.08962          1.218
-
-2. Quantiles for each variable:
-
-       2.5%   25%   50%   75% 97.5%
-psi   14.35 18.63 21.02 24.36 33.25
-xipsi  1.00  1.00  1.00  1.00  1.00
-K      8.00  9.00 11.00 14.00 17.00
-
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("algo.twins", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
-
-detaching ‘package:coda’
-
 > nameEx("backprojNP")
 > ### * backprojNP
 > 
@@ -4102,15 +3795,12 @@ Loading objects:
 > ## b) as a Spatial object via the coerce-method
 > events <- as(imdepi, "SpatialPointsDataFrame")
 > 
-> ## plot observation region with events (may require package 'sf')
-> if (requireNamespace("sf")) {
-+   plot(stateD, axes=TRUE); title(xlab="x [km]", ylab="y [km]")
-+   points(events, pch=unclass(events$type), cex=0.5, col=unclass(events$type))
-+   legend("topright", legend=levels(events$type), title="Type", pch=1:2, col=1:2)
-+ 
-+   summary(events)
-+ }
-Loading required namespace: sf
+> ## plot observation region with events
+> plot(stateD, axes=TRUE); title(xlab="x [km]", ylab="y [km]")
+> points(events, pch=unclass(events$type), cex=0.5, col=unclass(events$type))
+> legend("topright", legend=levels(events$type), title="Type", pch=1:2, col=1:2)
+> 
+> summary(events)
 Object of class SpatialPointsDataFrame
 Coordinates:
        min      max
@@ -4200,8 +3890,9 @@ Data attributes:
 > plot(imdsts, type = observed ~ time)
 > par(opar)
 > 
-> ## plot number of cases by district
-> plot(imdsts, type = observed ~ unit)
+> ## plot number of cases by district in Bavaria (municipality keys 09xxx)
+> imd09 <- imdsts[, grep("^09", colnames(imdsts), value = TRUE), drop = TRUE]
+> plot(imd09, type = observed ~ unit)
 > 
 > ## also test conversion to an SIS event history ("epidata") of the "tiles"
 > if (requireNamespace("intervals")) {
@@ -5612,7 +5303,7 @@ Number of time points:  103
 > ## fit an endemic-only "hhh4" model
 > ## with time covariates and a district-specific offset
 > hhh4fit <- hhh4(measlesWeserEms, control = list(
-+     end = list(f = addSeason2formula(~1 + t, period = measlesWeserEms@freq),
++     end = list(f = addSeason2formula(~1 + t, period = frequency(measlesWeserEms)),
 +                offset = population(measlesWeserEms)),
 +     ar = list(f = ~-1), ne = list(f = ~-1), family = "NegBin1",
 +     subset = 1:nrow(measlesWeserEms)
@@ -5621,7 +5312,7 @@ Number of time points:  103
 
 Call: 
 hhh4(stsObj = measlesWeserEms, control = list(end = list(f = addSeason2formula(~1 + 
-    t, period = measlesWeserEms@freq), offset = population(measlesWeserEms)), 
+    t, period = frequency(measlesWeserEms)), offset = population(measlesWeserEms)), 
     ar = list(f = ~-1), ne = list(f = ~-1), family = "NegBin1", 
     subset = 1:nrow(measlesWeserEms)))
 
@@ -5689,8 +5380,10 @@ Number of Fisher Scoring iterations: 1
 +     all.equal(1/coef(hhh4fit)[["overdisp"]], glmnbfit$theta, tolerance = 1e-6),
 +     all.equal(coef(hhh4fit)[1:4], coef(glmnbfit),
 +               tolerance = 1e-6, check.attributes = FALSE),
-+     all.equal(c(residuals(hhh4fit)), residuals(glmnbfit),
-+               tolerance = 1e-6, check.attributes = FALSE)
++     sapply(c("deviance", "pearson", "response"), function (type)
++         all.equal(c(residuals(hhh4fit, type = type)),
++                   residuals(glmnbfit, type = type),
++                   tolerance = 5e-6, check.attributes = FALSE))
 + )
 > ## End(Don't show)
 > 
@@ -6347,16 +6040,25 @@ Warning in pit.default(x = observed(attr(salmSims, "stsObserved")), pdistr = app
 > 
 > ## fit a basic model
 > fit0 <- hhh4(salmonella,
-+             list(ar = list(f = ~1), end = list(f = addSeason2formula(~t))))
++             list(ar = list(f = ~1), end = list(f = addSeason2formula(~1))))
 > 
-> ## update: Poisson -> NegBin1, component seasonality
+> ## the same, updating the minimal endemic-only model via 'S' (with a warning):
+> fit0.2 <- update(hhh4(salmonella), # has no AR component
++                  S = list(ar = 0, end = 1))
+Warning: newly enabled "ar" component; you might want to tweak its offset etc.
+> local({
++   fit0$control$start <- fit0.2$control$start <- NULL # obviously different
++   stopifnot(all.equal(fit0, fit0.2))
++ })
+> 
+> ## multiple updates: Poisson -> NegBin1, more harmonics
 > fit1 <- update(fit0, family = "NegBin1", S = list(end=2, ar=2))
 > 
 > ## compare fits
 > AIC(fit0, fit1)
      df      AIC
-fit0  5 1285.577
-fit1 12 1251.151
+fit0  4 1285.980
+fit1 11 1250.114
 > opar <- par(mfrow=c(2,2))
 > plot(fit0, type="fitted", names="fit0", par.settings=NULL)
 > plot(fit1, type="fitted", names="fit1", par.settings=NULL)
@@ -7154,35 +6856,32 @@ dt      <= 50  > 50
 > ### Keywords: aplot dplot
 > 
 > ### ** Examples
-> if (requireNamespace("sf")) { # required by recent 'sp'
-+ 
-+ ## districts in the Regierungsbezirk Weser-Ems (longlat coordinates)
-+ data("measlesWeserEms")
-+ mapWE <- measlesWeserEms@map
-+ li1 <- layout.labels(mapWE, labels = list(font=2, labels="GEN"))
-+ li2 <- layout.scalebar(mapWE, corner = c(0.05, 0.05), scale = 20,
+> 
+> ## districts in the Regierungsbezirk Weser-Ems (longlat coordinates)
+> data("measlesWeserEms")
+> mapWE <- measlesWeserEms@map
+> li1 <- layout.labels(mapWE, labels = list(font=2, labels="GEN"))
+> li2 <- layout.scalebar(mapWE, corner = c(0.05, 0.05), scale = 20,
 +                        labels = c("0", "20 km"))
-+ spplot(mapWE, zcol = "AREA", sp.layout = c(list(li1), li2),
+> spplot(mapWE, zcol = "AREA", sp.layout = c(list(li1), li2),
 +        col.regions = rev(heat.colors(100)), scales = list(draw = TRUE))
-+ 
-+ ## districts in Bavaria (projected coordinates)
-+ load(system.file("shapes", "districtsD.RData", package = "surveillance"))
-+ bavaria <- districtsD[substr(row.names(districtsD), 1, 2) == "09", ]
-+ sb <- layout.scalebar(bavaria, corner = c(0.75,0.9), scale = 50,
+> 
+> ## districts in Bavaria (projected coordinates)
+> load(system.file("shapes", "districtsD.RData", package = "surveillance"))
+> bavaria <- districtsD[substr(row.names(districtsD), 1, 2) == "09", ]
+> sb <- layout.scalebar(bavaria, corner = c(0.75,0.9), scale = 50,
 +                       labels = c("0", "50 km"), cex = 0.8)
-+ spplot(bavaria, zcol = "POPULATION", sp.layout = sb,
+> spplot(bavaria, zcol = "POPULATION", sp.layout = sb,
 +        xlab = "x [km]", ylab = "y [km]", scales = list(draw = TRUE),
 +        col.regions = rev(heat.colors(100)))
-+ 
-+ ## these layout functions also work in the traditional graphics system
-+ par(mar = c(0,0,0,0))
-+ plot(bavaria, col = "lavender")
-+ layout.scalebar(bavaria, corner = c(0.75, 0.9), scale = 50,
+> 
+> ## these layout functions also work in the traditional graphics system
+> par(mar = c(0,0,0,0))
+> plot(bavaria, col = "lavender")
+> layout.scalebar(bavaria, corner = c(0.75, 0.9), scale = 50,
 +                 labels = c("0", "50 km"), plot = TRUE)
-+ layout.labels(bavaria, labels = list(cex = 0.8,
+> layout.labels(bavaria, labels = list(cex = 0.8,
 +               labels = substr(bavaria$GEN, 1, 3)), plot = TRUE)
-+ 
-+ }
 > 
 > 
 > 
@@ -7263,7 +6962,6 @@ dt      <= 50  > 50
 $ar
 $ar$f
 ~1
-<environment: 0x5eddfd9a35d0>
 
 $ar$offset
 [1] 1
@@ -7272,7 +6970,6 @@ $ar$offset
 $ne
 $ne$f
 ~1
-<environment: 0x5eddfd9a35d0>
 
 $ne$offset
 [1] 1
@@ -8523,13 +8220,13 @@ detaching ‘package:splancs’
 > ### Aliases: sts sts-class alarms,sts-method alarms<-,sts-method
 > ###   upperbound,sts-method upperbound<-,sts-method control,sts-method
 > ###   control<-,sts-method epoch,sts-method epoch<-,sts-method
-> ###   observed,sts-method observed<-,sts-method population,sts-method
-> ###   population<-,sts-method multinomialTS,sts-method
-> ###   multinomialTS<-,sts-method neighbourhood,sts-method
-> ###   neighbourhood<-,sts-method dim,sts-method dimnames,sts-method year
-> ###   year,sts-method epochInYear epochInYear,sts-method as.data.frame.sts
-> ###   as.data.frame,sts-method as.ts.sts coerce,sts,ts-method
-> ###   coerce,ts,sts-method as.xts.sts
+> ###   frequency,sts-method start,sts-method observed,sts-method
+> ###   observed<-,sts-method population,sts-method population<-,sts-method
+> ###   multinomialTS,sts-method multinomialTS<-,sts-method
+> ###   neighbourhood,sts-method neighbourhood<-,sts-method dim,sts-method
+> ###   dimnames,sts-method year year,sts-method epochInYear
+> ###   epochInYear,sts-method as.data.frame.sts as.data.frame,sts-method
+> ###   as.ts.sts coerce,sts,ts-method coerce,ts,sts-method as.xts.sts
 > ### Keywords: classes ts methods
 > 
 > ### ** Examples
@@ -8683,13 +8380,18 @@ Failed with error:  ‘there is no package called ‘xts’’
 > ### ** Examples
 > 
 > data("ha.sts")
-> haagg <- aggregate(ha.sts, nfreq=13)
 > 
-> plot(haagg[, 3])       # Single series
-> plot(haagg[1:30, 3])   # Somewhat shorter
+> # Show a (subset of a) single time series
+> plot(ha.sts[,7])
+> plot(ha.sts[year(ha.sts)==2006, 7])
 > 
-> #Counts at time 20
-> plot(haagg[20, ], type = observed ~ unit)
+> # Map a single time point
+> plot(ha.sts[5*52+26,], type=observed~unit)
+> plot(ha.sts,           type=observed~unit, tps=5*52+26) # same -> ?stsplot_space
+> 
+> # Restrict the data (and the map) to a subset of the districts
+> plot(ha.sts[,c("pank","lich")],           type=observed~unit, labels=TRUE)
+> plot(ha.sts[,c("pank","lich"),drop=TRUE], type=observed~unit, labels=TRUE)
 > 
 > 
 > 
@@ -10290,8 +9992,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x5ede03079578>
-<environment: 0x5eddfd8484a8>
+<bytecode: 0x5945689a2eb8>
+<environment: 0x59456899d948>
 
 $G
 function (t, logvals, types) 
@@ -10301,7 +10003,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x5eddfd8484a8>
+<environment: 0x59456899d948>
 
 $deriv
 function (t, logvals, types) 
@@ -10317,8 +10019,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x5ede02cfbf78>
-<environment: 0x5eddfd8484a8>
+<bytecode: 0x5945689a40a8>
+<environment: 0x59456899d948>
 
 $Deriv
 function (t, logvals, types) 
@@ -10337,7 +10039,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x5eddfd8484a8>
+<environment: 0x59456899d948>
 
 $npars
 [1] 4
@@ -11003,16 +10705,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x5ede000b0c10>
-<environment: 0x5eddfeeb4880>
+<bytecode: 0x59456eed1ad0>
+<environment: 0x59456eece860>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x5ede000b1690>
-<environment: 0x5eddfeeb4880>
+<bytecode: 0x59456eed2550>
+<environment: 0x59456eece860>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -11020,8 +10722,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x5ede000abe80>
-<environment: 0x5eddfeeb4880>
+<bytecode: 0x59456eed2a90>
+<environment: 0x59456eece860>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -11035,8 +10737,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x5ede000ac5f0>
-<environment: 0x5eddfeeb4880>
+<bytecode: 0x59456eecf3d0>
+<environment: 0x59456eece860>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -11044,8 +10746,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x5eddfeeb69d0>
-<environment: 0x5eddfeeb4880>
+<bytecode: 0x59456eed09b0>
+<environment: 0x59456eece860>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -11057,8 +10759,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x5eddfeeb7028>
-<environment: 0x5eddfeeb4880>
+<bytecode: 0x59456eecd1d8>
+<environment: 0x59456eece860>
 
 $npars
 [1] 3
@@ -11153,16 +10855,17 @@ Setting up the model environment ...
 > 
 > ## spatial shape of the intensity (aggregated over time)
 > 
->   ## load borders of Germany's districts
->   load(system.file("shapes", "districtsD.RData", package="surveillance"))
+> # need a map of the 'stgrid' tiles, here Germany's districts
+> load(system.file("shapes", "districtsD.RData", package="surveillance"))
 > 
->   # total intensity (using a rather sparse 'sgrid' for speed)
->   intensityplot(imdepifit, which="total intensity",
-+                 aggregate="space", tiles=districtsD, sgrid=500,
-+                 col.regions=rev(heat.colors(100))) 
+> # total intensity (using a rather sparse 'sgrid' for speed)
+> intensityplot(imdepifit, which="total intensity",
++               aggregate="space", tiles=districtsD, sgrid=500,
++               col.regions=rev(heat.colors(100)))
 > 
->   # epidemic proportion by type
->   maps_epiprop <- lapply(1:2, function (type) {
+> if (surveillance.options("allExamples")) {
++   # epidemic proportion by type
++   maps_epiprop <- lapply(1:2, function (type) {
 +       intensityplot(imdepifit, which="epidemic", aggregate="space",
 +                     types=type, tiles=districtsD, sgrid=1000,
 +                     main=rownames(imdepifit$qmatrix)[type],
@@ -11170,8 +10873,9 @@ Setting up the model environment ...
 +                     col.regions=rev(hcl.colors(10,"YlOrRd")),
 +                     colorkey=list(title=list("Epidemic proportion", cex=1)))
 +   })
->   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
->   plot(maps_epiprop[[2]], split=c(2,1,2,1))
++   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
++   plot(maps_epiprop[[2]], split=c(2,1,2,1))
++ }
 > 
 > 
 > 
@@ -11603,7 +11307,7 @@ see '?methods' for accessing help and source code
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2024-09-02 16:55:03.880373 
+Time at beginning of simulation: 2024-10-01 17:43:05.536847 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11628,12 +11332,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.097 seconds
-Estimated finishing time: 2024-09-02 16:55:04.074785 
+Runtime of first simulation: 0.081 seconds
+Estimated finishing time: 2024-10-01 17:43:05.698805 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2024-09-02 16:55:04.256737).
+Done (2024-10-01 17:43:05.903179).
 > ## IGNORE_RDIFF_END
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
@@ -11710,7 +11414,7 @@ Summary of event marks and number of potential sources:
 > sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, t0=0, T=90,
 +                  tiles=districtsD, simplify=TRUE)
 
-Time at beginning of simulation: 2024-09-02 16:55:04.390162 
+Time at beginning of simulation: 2024-10-01 17:43:06.019531 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11736,12 +11440,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.45 seconds
-Estimated finishing time: 2024-09-02 16:55:05.289979 
+Runtime of first simulation: 0.372 seconds
+Estimated finishing time: 2024-10-01 17:43:06.764181 
 
 Simulation 2 / 2 ...	simulated 21 events up to time 90 
 
-Done (2024-09-02 16:55:05.309639).
+Done (2024-10-01 17:43:06.825511).
 > 
 > ## extract cusums
 > getcsums <- function (events) {
@@ -12070,7 +11774,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  52.443 0.771 54.067 1.331 0.14 
+Time elapsed:  49.133 0.854 50.787 1.156 0.141 
 > grDevices::dev.off()
 null device 
           1 
