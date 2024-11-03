@@ -16,6 +16,8 @@ test_that <- function (desc, code) {
 ## show warnings as they appear
 options(warn = 1)
 
-## we use verbose = 1 to print_status() only after each test file,
-## not after each expression (verbose = 2)
-tinytest::test_package("surveillance", testdir = "testthat", verbose = 1)
+## use verbose = 1 to print_status() only after each test file,
+## not after each expression (verbose = 2),
+## and omit ANSI escapes for a cleaner log
+tinytest::test_package("surveillance", testdir = "testthat",
+                       verbose = 1, color = FALSE)
