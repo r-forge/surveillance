@@ -8,6 +8,7 @@ if (!requireNamespace("tinytest", quietly = TRUE)
 }
 
 ## provide simple replacement for test_that() expectation bundles
+## WARNING: this wrapper doesn't print test results, not even failures!
 test_that <- function (desc, code) {
     eval(substitute(code), new.env(parent = parent.frame()))
     invisible()
