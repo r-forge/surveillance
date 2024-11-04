@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>surveillance: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena • surveillance</title>
+<title>The R package 'surveillance' • surveillance</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../../deps/headroom-0.11.0/headroom.min.js"></script><script src="../../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../../deps/clipboard.js-2.0.11/clipboard.min.js"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="surveillance: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena">
+<script src="../../deps/headroom-0.11.0/headroom.min.js"></script><script src="../../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../../deps/clipboard.js-2.0.11/clipboard.min.js"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="The R package 'surveillance'">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,9 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>surveillance: Temporal and Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena</h1>
+      <h1>The R package 'surveillance'</h1>
+            <h3 data-toc-skip class="subtitle">Temporal and
+Spatio-Temporal Modeling and Monitoring of Epidemic Phenomena</h3>
             
       
 
@@ -67,19 +69,6 @@ and others working in, e.g., applied infectious disease epidemiology.
 However, applications could just as well originate from environmetrics,
 reliability engineering, econometrics or the social sciences.</p>
 <div class="section level2">
-<h2 id="data-class-sts">Data class <code>"sts"</code><a class="anchor" aria-label="anchor" href="#data-class-sts"></a>
-</h2>
-<p>The S4 class <code>"sts"</code> (surveillance time series), created
-via <code><a href="../../reference/sts-class.html">sts()</a></code> or <code><a href="../../reference/linelist2sts.html">linelist2sts()</a></code>, represents
-(multivariate) time series of counts. For areal time series, the class
-can also capture population fractions, a map, and a weight matrix. The
-<code>"sts"</code> class supersedes the <a href="../../reference/create.disProg.html"><code>"disProg"</code></a>
-class.</p>
-<p>For evaluation purposes, the package contains several <a href="../../reference/index.html#section-datasets">datasets</a> drawn
-from the <a href="https://survstat.rki.de/" class="external-link">SurvStat@RKI</a> database
-maintained by the Robert Koch Institute in Germany.</p>
-</div>
-<div class="section level2">
 <h2 id="prospective-outbreak-detection">Prospective outbreak detection<a class="anchor" aria-label="anchor" href="#prospective-outbreak-detection"></a>
 </h2>
 <p><a href="https://doi.org/10.18637/jss.v070.i10" class="external-link">Salmon et
@@ -97,9 +86,8 @@ A Markov Chain approximation for computing the run-length distribution
 of the proposed likelihood ratio CUSUMs is available as function
 <code><a href="../../reference/LRCUSUM.runlength.html">LRCUSUM.runlength()</a></code>.</p></li>
 </ul>
-<p>See the <a href="../../reference/index.html#prospective-outbreak-detection">reference
-section on outbreak detection</a> for the complete list of
-algorithms.</p>
+<p>See the <a href="https://surveillance.R-forge.R-project.org/pkgdown/reference/index.html#prospective-outbreak-detection">online
+reference index</a> for the complete list of algorithms.</p>
 </div>
 <div class="section level2">
 <h2 id="modeling-reporting-delays">Modeling reporting delays<a class="anchor" aria-label="anchor" href="#modeling-reporting-delays"></a>
@@ -109,19 +97,16 @@ algorithms.</p>
 <li><p>Adjusting for occurred-but-not-yet-reported events:
 <code><a href="../../reference/nowcast.html">nowcast()</a></code>, <code><a href="../../reference/bodaDelay.html">bodaDelay()</a></code></p></li>
 </ul>
-<div class="section level5">
-<h5 id="applications">Applications<a class="anchor" aria-label="anchor" href="#applications"></a>
-</h5>
-<p>These methods have also been used for COVID-19 surveillance, for
-example:</p>
-<ul>
-<li><p><a href="https://doi.org/10.1017/S0950268821000558" class="external-link"><em>Analysis
-of the early COVID-19 epidemic curve in Germany by regression models
-with change points</em></a></p></li>
-<li><p><a href="https://doi.org/10.1002/bimj.202000112" class="external-link"><em>Nowcasting
-the COVID-19 pandemic in Bavaria</em></a></p></li>
-</ul>
-</div>
+<!--
+##### Applications
+
+These methods have also been used for COVID-19 surveillance, for example:
+
+- [*Analysis of the early COVID-19 epidemic curve in Germany by regression models
+  with change points*](https://doi.org/10.1017/S0950268821000558)
+
+- [*Nowcasting the COVID-19 pandemic in Bavaria*](https://doi.org/10.1002/bimj.202000112)
+-->
 </div>
 <div class="section level2">
 <h2 id="endemic-epidemic-modeling">Endemic-epidemic modeling<a class="anchor" aria-label="anchor" href="#endemic-epidemic-modeling"></a>
@@ -134,51 +119,64 @@ described in corresponding package vignettes:</p>
 <dl>
 <dt><code><a href="../../reference/twinstim.html">twinstim()</a></code></dt>
 <dd>
-models a <em>spatio-temporal point pattern</em> of infective events
+… models a <em>spatio-temporal point pattern</em> of infective events
 </dd>
 <dd>
-is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf" class="external-link"><code>vignette("twinstim")</code></a>
+… is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf" class="external-link"><code>vignette("twinstim")</code></a>
 </dd>
 <dd>
-fits data of class <a href="../../reference/epidataCS.html"><code>"epidataCS"</code></a>,
-which holds the observed events (with covariates) and exogenous
-covariates on a space-time grid (for the endemic component)
+… fits data of class <code>"epidataCS"</code>, which holds the observed
+events (with covariates) and exogenous covariates on a space-time grid
+(for the endemic component)
 </dd>
 <dd>
-features a model-based <code><a href="../../reference/twinstim_epitest.html">epitest()</a></code> for space-time interaction
+… features a model-based <code><a href="../../reference/twinstim_epitest.html">epitest()</a></code> for space-time
+interaction
 </dd>
 <dt><code><a href="../../reference/twinSIR.html">twinSIR()</a></code></dt>
 <dd>
-models the susceptible-infectious-recovered <em>(SIR) event history of a
-fixed population</em>
+… models the susceptible-infectious-recovered <em>(SIR) event history of
+a fixed population</em>
 </dd>
 <dd>
-is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf" class="external-link"><code>vignette("twinSIR")</code></a>
+… is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf" class="external-link"><code>vignette("twinSIR")</code></a>
 </dd>
 <dd>
-fits data of class <a href="../../reference/epidata.html"><code>"epidata"</code></a>
+… fits data of class <code>"epidata"</code>
 </dd>
 <dt><code><a href="../../reference/hhh4.html">hhh4()</a></code></dt>
 <dd>
-models a (multivariate) <em>time series of infectious disease
+… models a (multivariate) <em>time series of infectious disease
 counts</em>
 </dd>
 <dd>
-is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf" class="external-link"><code>vignette("hhh4_spacetime")</code></a>
+… is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf" class="external-link"><code>vignette("hhh4_spacetime")</code></a>
 for areal time series, and more generally in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/hhh4.pdf" class="external-link"><code>vignette("hhh4")</code></a>,
 including the univariate case
 </dd>
 <dd>
-fits data of class <a href="../../reference/sts-class.html"><code>"sts"</code></a>
+… fits data of class <code>"sts"</code> (see below)
 </dd>
 </dl>
 <div class="section level5">
-<h5 id="applications-1">Applications<a class="anchor" aria-label="anchor" href="#applications-1"></a>
+<h5 id="applications">Applications<a class="anchor" aria-label="anchor" href="#applications"></a>
 </h5>
 <p>These endemic-epidemic modelling frameworks have proven useful in a
 wide range of applications, including for COVID-19. We loosely maintain
 a list of related publications at <a href="https://surveillance.R-forge.R-project.org/applications_EE.html" class="external-link uri">https://surveillance.R-forge.R-project.org/applications_EE.html</a>.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="data-class-sts">Data class <code>"sts"</code><a class="anchor" aria-label="anchor" href="#data-class-sts"></a>
+</h2>
+<p>The S4 class <code>"sts"</code> (surveillance time series), created
+via <code><a href="../../reference/sts-class.html">sts()</a></code> or <code><a href="../../reference/linelist2sts.html">linelist2sts()</a></code>, represents
+(multivariate) time series of counts. For areal time series, the class
+can also capture population fractions, a map, and a weight matrix.</p>
+<p>For evaluation purposes, the package contains several datasets
+derived from the <a href="https://survstat.rki.de/" class="external-link">SurvStat@RKI</a>
+database maintained by the Robert Koch Institute in Germany. See the <a href="https://surveillance.R-forge.R-project.org/pkgdown/reference/index.html#datasets">online
+reference index</a> for the complete list of datasets.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -193,6 +191,8 @@ R-Forge at <a href="https://R-Forge.R-project.org/projects/surveillance/" class=
 a Subversion (SVN) repository. It can be installed via</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"surveillance"</span>, repos <span class="op">=</span> <span class="st">"https://R-Forge.R-project.org"</span><span class="op">)</span></span></code></pre></div>
+<p>Alternatively, a development build can be installed from the <a href="https://r-forge.r-universe.dev/surveillance" class="external-link">R-universe</a> mirror
+of R-Forge.</p>
 </div>
 <div class="section level2">
 <h2 id="feedback">Feedback<a class="anchor" aria-label="anchor" href="#feedback"></a>
@@ -213,14 +213,15 @@ and <a href="https://github.com/Junyi-L/hhh4ZI" class="external-link"><strong>hh
 institutions:</p>
 <ul>
 <li>
-<a href="https://www.izkf.med.fau.eu/" class="external-link">FAU Interdisciplinary Center
-for Clinical Research</a> (IZKF, 2018-2021, junior project J75)</li>
+<a href="https://www.izkf.med.fau.de/en/" class="external-link">FAU Interdisciplinary
+Center for Clinical Research</a> (IZKF, 2018-2021, junior project
+J75)</li>
 <li>
 <a href="https://www.vr.se/english.html" class="external-link">Swedish Research
 Council</a> (VR, 2016-2019, #2015-05182)</li>
 <li>
-<a href="http://www.snf.ch/en/" class="external-link">Swiss National Science
-Foundation</a> (SNSF, 2007-2010, 2012-2015, projects <a href="http://p3.snf.ch/Project-116776" class="external-link">#116776</a>, <a href="http://p3.snf.ch/Project-124429" class="external-link">#124429</a>, and <a href="http://p3.snf.ch/Project-137919" class="external-link">#137919</a>)</li>
+<a href="https://www.snf.ch/en/" class="external-link">Swiss National Science
+Foundation</a> (SNSF, 2007-2010, 2012-2015, projects <a href="https://p3.snf.ch/Project-116776" class="external-link">#116776</a>, <a href="https://p3.snf.ch/Project-124429" class="external-link">#124429</a>, and <a href="https://p3.snf.ch/Project-137919" class="external-link">#137919</a>)</li>
 <li>
 <a href="https://www.en.mc-health.uni-muenchen.de/" class="external-link">Munich Center of
 Health Sciences</a> (MC-Health, 2007-2010)</li>

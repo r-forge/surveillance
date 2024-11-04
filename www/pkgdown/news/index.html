@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.24.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,10 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.24.1" id="surveillance-1241-2024-11-04">surveillance 1.24.1 (2024-11-04)<a class="anchor" aria-label="anchor" href="#surveillance-1241-2024-11-04"></a></h2>
+<p>This maintenance release adjusts a test of <code><a href="../reference/formatDate.html">formatDate()</a></code> to be compatible with recent changes in R-devel.</p>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.24.0" id="surveillance-1240-2024-10-01">surveillance 1.24.0 (2024-10-01)<a class="anchor" aria-label="anchor" href="#surveillance-1240-2024-10-01"></a></h2>
 <div class="section level3">
 <h3 id="new-features-1-24-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-24-0"></a></h3>
@@ -47,7 +51,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="deprecated--defunct-1-24-0">Deprecated &amp; Defunct<a class="anchor" aria-label="anchor" href="#deprecated--defunct-1-24-0"></a></h3>
-<ul><li>The experimental <code>algo.twins()</code> implementation of <a href="https://doi.org/10.1093/biostatistics/kxj016" class="external-link">Held et al. (2006)</a> has been removed from the package. The source code has been migrated to a separate R package, <code>twins</code>, which is archived at <a href="https://codeberg.org/EE-hub/twins" class="external-link uri">https://codeberg.org/EE-hub/twins</a>.</li>
+<ul><li>The experimental <code><a href="../reference/surveillance-defunct.html">algo.twins()</a></code> implementation of <a href="https://doi.org/10.1093/biostatistics/kxj016" class="external-link">Held et al. (2006)</a> has been removed from the package. The source code has been migrated to a separate R package, <strong>twins</strong>, which is archived at <a href="https://codeberg.org/EE-hub/twins" class="external-link uri">https://codeberg.org/EE-hub/twins</a>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-24-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-24-0"></a></h3>
@@ -83,8 +87,11 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.22.1" id="surveillance-1221-2023-11-27">surveillance 1.22.1 (2023-11-27)<a class="anchor" aria-label="anchor" href="#surveillance-1221-2023-11-27"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-1-22-1">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-22-1"></a></h3>
 <ul><li>The <code><a href="../reference/pit.html">pit()</a></code> plot could lack some tick marks on the y-axis (for R &gt;= 4.2.0).</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.22.0" id="surveillance-1220-2023-10-30">surveillance 1.22.0 (2023-10-30)<a class="anchor" aria-label="anchor" href="#surveillance-1220-2023-10-30"></a></h2>
 <div class="section level3">
@@ -99,8 +106,8 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.21.1" id="surveillance-1211-2023-05-16">surveillance 1.21.1 (2023-05-16)<a class="anchor" aria-label="anchor" href="#surveillance-1211-2023-05-16"></a></h2>
-<ul><li>This is a maintenance release, fixing encoding-related portability issues and increasing test coverage for rarely used functionality.</li>
-</ul></div>
+<p>This is a maintenance release, fixing encoding-related portability issues and increasing test coverage for rarely used functionality.</p>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.21.0" id="surveillance-1210-2023-03-14">surveillance 1.21.0 (2023-03-14)<a class="anchor" aria-label="anchor" href="#surveillance-1210-2023-03-14"></a></h2>
 <div class="section level3">
@@ -121,9 +128,12 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.20.3" id="surveillance-1203-2022-11-14">surveillance 1.20.3 (2022-11-14)<a class="anchor" aria-label="anchor" href="#surveillance-1203-2022-11-14"></a></h2>
+<div class="section level3">
+<h3 id="package-infrastructure-1-20-3">Package Infrastructure<a class="anchor" aria-label="anchor" href="#package-infrastructure-1-20-3"></a></h3>
 <ul><li>
 <code>vignette("monitoringCounts")</code> now uses <strong>knitr</strong> as its engine to work around <a href="https://bugs.R-project.org/show_bug.cgi?id=18318" class="external-link">Bug 18318</a>.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.20.2" id="surveillance-1202-2022-10-31">surveillance 1.20.2 (2022-10-31)<a class="anchor" aria-label="anchor" href="#surveillance-1202-2022-10-31"></a></h2>
 <div class="section level3">
@@ -139,7 +149,7 @@
 <div class="section level3">
 <h3 id="bug-fixes-1-20-2">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-20-2"></a></h3>
 <ul><li><p><code><a href="../reference/hhh4.html">hhh4()</a></code> now warns about interaction terms in model formulae. These are not implemented and were silently ignored previously.</p></li>
-<li><p>Fixed a memory leak in <code>algo.twins()</code>; note that this old experimental MCMC implementation for a two-component epidemic model may be removed in future versions of the package.</p></li>
+<li><p>Fixed a memory leak in <code><a href="../reference/surveillance-defunct.html">algo.twins()</a></code>; note that this old experimental MCMC implementation for a two-component epidemic model may be removed in future versions of the package.</p></li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -553,7 +563,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 <h3 id="bug-fixes-1-12-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-12-0"></a></h3>
 <ul><li><p><code><a href="../reference/stsplot_spacetime.html">stsplot_spacetime()</a></code> now recognizes its <code>opts.col</code> argument.</p></li>
 <li><p>Conversion from <code>"ts"</code> to <code>"sts"</code> using <code>as(ts, "sts")</code> could set a wrong start time. For instance, <code>as(ts(1:10, start=c(1959,2), frequency=4), "sts")@start</code> was <code>c(1959,1)</code>.</p></li>
-<li><p><code>algo.twins()</code> now also accepts <code>"sts"</code> input and the automatic legend in the first plot of <code>plot.atwins()</code> works again.</p></li>
+<li><p><code><a href="../reference/surveillance-defunct.html">algo.twins()</a></code> now also accepts <code>"sts"</code> input and the automatic legend in the first plot of <code><a href="../reference/surveillance-defunct.html">plot.atwins()</a></code> works again.</p></li>
 <li><p>The experimental <code>profile</code>-method for <code>"twinstim"</code> objects did not work if embedded <code><a href="../reference/twinstim.html">twinstim()</a></code> fits issued warnings.</p></li>
 </ul></div>
 </div>
@@ -580,6 +590,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.10-0" id="surveillance-110-0-2015-11-04">surveillance 1.10-0 (2015-11-04)<a class="anchor" aria-label="anchor" href="#surveillance-110-0-2015-11-04"></a></h2>
+<p>This package is now maintained by Sebastian Meyer, who has been an active co-author since version 1.3. We thank Michael Höhle for 10 years of maintenance ever since he created <strong>surveillance</strong> and published the package on CRAN in November 2005 for R 2.2.0.</p>
 <div class="section level3">
 <h3 id="new-features-1-10-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-10-0"></a></h3>
 <ul><li><p>Calibration tests for count data (Wei and Held, 2014, Test) are now implemented and available as <code><a href="../reference/calibration.html">calibrationTest()</a></code>. In addition to a default method taking pure counts and predictive means and dispersion parameters, there are convenient methods for <code>"hhh4"</code> and <code>"oneStepAhead"</code> objects.</p></li>
