@@ -149,13 +149,13 @@ and [**hhh4ZI**](https://github.com/Junyi-L/hhh4ZI).
 
 The authors acknowledge financial support from the following institutions:
 
-- [FAU Interdisciplinary Center for Clinical Research](https://www.izkf.med.fau.eu/)
+- [FAU Interdisciplinary Center for Clinical Research](https://www.izkf.med.fau.de/en/)
   (IZKF, 2018-2021, junior project J75)
 - [Swedish Research Council](https://www.vr.se/english.html) (VR, 2016-2019, #2015-05182)
-- [Swiss National Science Foundation](http://www.snf.ch/en/) (SNSF, 2007-2010, 2012-2015, projects
-  [#116776](http://p3.snf.ch/Project-116776),
-  [#124429](http://p3.snf.ch/Project-124429), and
-  [#137919](http://p3.snf.ch/Project-137919))
+- [Swiss National Science Foundation](https://www.snf.ch/en/) (SNSF, 2007-2010, 2012-2015, projects
+  [#116776](https://p3.snf.ch/Project-116776),
+  [#124429](https://p3.snf.ch/Project-124429), and
+  [#137919](https://p3.snf.ch/Project-137919))
 - [Munich Center of Health Sciences](https://www.en.mc-health.uni-muenchen.de/)
   (MC-Health, 2007-2010)
 - [German Science Foundation](https://www.dfg.de/en/) (DFG, 2003-2006)
