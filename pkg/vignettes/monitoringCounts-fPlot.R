@@ -4,7 +4,7 @@
 # Code removed from vignette to drop ggplot2 dependency
 library(ggplot2)
 
-# for rectanges
+# for rectangles
 widthRectangles <- 10
 # dimensions for the ticks
 heightTick <- 4
