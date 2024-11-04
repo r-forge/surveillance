@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.24.0; see ‘package?surveillance’ or
+This is surveillance 1.24.1; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -9992,8 +9992,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x5945689a2eb8>
-<environment: 0x59456899d948>
+<bytecode: 0x6470d95a0198>
+<environment: 0x6470d959ba28>
 
 $G
 function (t, logvals, types) 
@@ -10003,7 +10003,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x59456899d948>
+<environment: 0x6470d959ba28>
 
 $deriv
 function (t, logvals, types) 
@@ -10019,8 +10019,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x5945689a40a8>
-<environment: 0x59456899d948>
+<bytecode: 0x6470d95a1388>
+<environment: 0x6470d959ba28>
 
 $Deriv
 function (t, logvals, types) 
@@ -10039,7 +10039,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x59456899d948>
+<environment: 0x6470d959ba28>
 
 $npars
 [1] 4
@@ -10705,16 +10705,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x59456eed1ad0>
-<environment: 0x59456eece860>
+<bytecode: 0x6470db569190>
+<environment: 0x6470db565f20>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x59456eed2550>
-<environment: 0x59456eece860>
+<bytecode: 0x6470db569c10>
+<environment: 0x6470db565f20>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10722,8 +10722,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x59456eed2a90>
-<environment: 0x59456eece860>
+<bytecode: 0x6470db56a150>
+<environment: 0x6470db565f20>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10737,8 +10737,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x59456eecf3d0>
-<environment: 0x59456eece860>
+<bytecode: 0x6470db566a90>
+<environment: 0x6470db565f20>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10746,8 +10746,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x59456eed09b0>
-<environment: 0x59456eece860>
+<bytecode: 0x6470db568070>
+<environment: 0x6470db565f20>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10759,8 +10759,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x59456eecd1d8>
-<environment: 0x59456eece860>
+<bytecode: 0x6470db564898>
+<environment: 0x6470db565f20>
 
 $npars
 [1] 3
@@ -11307,7 +11307,7 @@ see '?methods' for accessing help and source code
 +                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
 +                    simplify=TRUE)
 
-Time at beginning of simulation: 2024-10-01 17:43:05.536847 
+Time at beginning of simulation: 2024-11-04 18:47:35.071895 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11333,11 +11333,11 @@ Done.
 
 -------------------------------------------------------------------------------
 Runtime of first simulation: 0.081 seconds
-Estimated finishing time: 2024-10-01 17:43:05.698805 
+Estimated finishing time: 2024-11-04 18:47:35.233533 
 
 Simulation 2 / 2 ...	simulated 5 events up to time 45 
 
-Done (2024-10-01 17:43:05.903179).
+Done (2024-11-04 18:47:35.430421).
 > ## IGNORE_RDIFF_END
 > ## Don't show: 
 >     ## check construction and selection from "simEpidataCSlist"
@@ -11414,7 +11414,7 @@ Summary of event marks and number of potential sources:
 > sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, t0=0, T=90,
 +                  tiles=districtsD, simplify=TRUE)
 
-Time at beginning of simulation: 2024-10-01 17:43:06.019531 
+Time at beginning of simulation: 2024-11-04 18:47:35.545546 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11440,12 +11440,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.372 seconds
-Estimated finishing time: 2024-10-01 17:43:06.764181 
+Runtime of first simulation: 0.366 seconds
+Estimated finishing time: 2024-11-04 18:47:36.27779 
 
 Simulation 2 / 2 ...	simulated 21 events up to time 90 
 
-Done (2024-10-01 17:43:06.825511).
+Done (2024-11-04 18:47:36.336573).
 > 
 > ## extract cusums
 > getcsums <- function (events) {
@@ -11774,7 +11774,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.133 0.854 50.787 1.156 0.141 
+Time elapsed:  47.516 0.81 49.08 1.113 0.136 
 > grDevices::dev.off()
 null device 
           1 
