@@ -35,6 +35,8 @@ home:
     href: https://github.com/r-forge/surveillance/tree/master/pkg
   - text: "R-Forge project"
     href: https://R-forge.R-project.org/projects/surveillance/
+  - text: "R-Forge @ R-universe"
+    href: https://r-forge.r-universe.dev/surveillance
   - text: "Applications of endemic-epidemic modelling"
     href: ../applications_EE.html
 
