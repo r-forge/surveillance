@@ -1,4 +1,4 @@
-## Modeling and Monitoring Epidemic Phenomena
+## Modeling and Monitoring of Epidemic Phenomena
 
 <!-- `algo.glrnb()`: -->
 <!-- : ![](man/figures/survlr.png) -->
