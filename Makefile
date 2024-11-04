@@ -105,7 +105,7 @@ checkUsage: install
 
 spelling:
 	cd pkg; \
-	  codespell -q 35 -S '*~' -L 'ans,parm,hist' NEWS.md R man vignettes
+	  codespell -q 35 -S '*~' -L 'ans,parm,hist' NEWS.md README.md R man vignettes
 
 ## we need to run Rd2pdf inside pkg such that \packageTitle finds DESCRIPTION
 manuals:
@@ -116,7 +116,9 @@ manuals:
 	xdg-open manual.html
 
 NEWS.html: pkg/NEWS.md
-	pandoc -f markdown -t html -s --metadata title="News for Package 'surveillance'" --css=https://cran.R-project.org/web/CRAN_web.css -o "$@" "$<"
+README.html: pkg/README.md
+%.html: pkg/%.md
+	pandoc -f markdown -t html -s --css=https://CRAN.R-project.org/web/CRAN_web.css -o "$@" "$<"
 
 www:
 	cd pkg; $R --no-echo --no-save --no-restore -e \
