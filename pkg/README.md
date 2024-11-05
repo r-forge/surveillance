@@ -144,7 +144,7 @@ and [**hhh4ZI**](https://github.com/Junyi-L/hhh4ZI).
 The authors acknowledge financial support from the following institutions:
 
 - [German Research Foundation](https://www.dfg.de/en/)
-  (DFG, 2024--2027, [#528691398](https://gepris.dfg.de/gepris/projekt/528691398?language=en))
+  (DFG, 2024--2027, #528691398)
 - [FAU Interdisciplinary Center for Clinical Research](https://www.izkf.med.fau.de/en/)
   (IZKF, 2018--2021, junior project J75)
 - [Swedish Research Council](https://www.vr.se/english.html)

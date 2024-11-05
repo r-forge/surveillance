@@ -1,4 +1,4 @@
-# surveillance 1.24.1 (2024-11-04)
+# surveillance 1.24.1 (2024-11-05)
 
 This maintenance release adjusts a test of `formatDate()`
 to be compatible with recent changes in R-devel.
