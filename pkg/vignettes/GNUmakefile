@@ -1,10 +1,8 @@
 ## This is a convenient Makefile for quick vignette compilation in Emacs
 ## and for maintainer-level checks of the vignette cache. It requires GNU make.
 ## Because of this and because it does nothing special to build
-## the vignettes, it is listed in the top-level .Rbuildignore file
+## the vignettes, it is excluded via the top-level .Rbuildignore file
 ## and called GNUmakefile so that it is not used by R CMD build.
-## In addition it defines a rule to create the PStricks-based HMM figure
-## included in surveillance.Rnw
 ##
 ## Copyright (C) 2016,2022  Sebastian Meyer <seb.meyer@fau.de>
 ## This Makefile can be redistributed and/or modified under the terms
@@ -33,19 +31,6 @@ clean:
 	rm -rf *.aux *.bbl *.blg *.log *.out *-R.bib plots/ Rplots.pdf $(addprefix *-cache.RData,.new .diff) *.Rout
 cleanall: clean
 	rm -rf ${VIGNETTES} ${TEXFILESFROMRNW} ${RNWFILES:.Rnw=.R}
-
-
-### create static figures
-
-#surveillance.pdf: surveillance-hmm.pdf  # additional dependency
-surveillance-hmm.pdf: surveillance-hmm.tex
-	latex -interaction=batchmode $< && dvips -q ${<:.tex=.dvi} && \
-		ps2pdf -q -sOutputFile=- ${<:.tex=.ps} | pdfcrop - $@
-	rm -f $(addprefix $(basename $<).,aux dvi log ps)
-
-#monitoringCounts.pdf: monitoringCounts-fPlot1.pdf monitoringCounts-fPlot2.pdf
-monitoringCounts-fPlot1.pdf monitoringCounts-fPlot2.pdf &: monitoringCounts-fPlot.R
-	${R} --vanilla -s -f "$<"
 
 
 ### check running tangled vignette code because knitr tampers with R CMD check,
