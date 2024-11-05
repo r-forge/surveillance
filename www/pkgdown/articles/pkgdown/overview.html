@@ -98,8 +98,6 @@ reference index</a> for the complete list of algorithms.</p>
 <code><a href="../../reference/nowcast.html">nowcast()</a></code>, <code><a href="../../reference/bodaDelay.html">bodaDelay()</a></code></p></li>
 </ul>
 <!--
-##### Applications
-
 These methods have also been used for COVID-19 surveillance, for example:
 
 - [*Analysis of the early COVID-19 epidemic curve in Germany by regression models
@@ -112,58 +110,54 @@ These methods have also been used for COVID-19 surveillance, for example:
 <h2 id="endemic-epidemic-modeling">Endemic-epidemic modeling<a class="anchor" aria-label="anchor" href="#endemic-epidemic-modeling"></a>
 </h2>
 <p><a href="https://doi.org/10.18637/jss.v077.i11" class="external-link">Meyer et
-al. (2017)</a> provide an overall guide to the spatio-temporal modeling
-capabilities of <strong>surveillance</strong>. The three
-regression-oriented modeling frameworks for epidemic phenomena are also
-described in corresponding package vignettes:</p>
-<dl>
-<dt><code><a href="../../reference/twinstim.html">twinstim()</a></code></dt>
-<dd>
-… models a <em>spatio-temporal point pattern</em> of infective events
-</dd>
-<dd>
-… is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf" class="external-link"><code>vignette("twinstim")</code></a>
-</dd>
-<dd>
-… fits data of class <code>"epidataCS"</code>, which holds the observed
-events (with covariates) and exogenous covariates on a space-time grid
-(for the endemic component)
-</dd>
-<dd>
-… features a model-based <code><a href="../../reference/twinstim_epitest.html">epitest()</a></code> for space-time
-interaction
-</dd>
-<dt><code><a href="../../reference/twinSIR.html">twinSIR()</a></code></dt>
-<dd>
-… models the susceptible-infectious-recovered <em>(SIR) event history of
-a fixed population</em>
-</dd>
-<dd>
-… is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf" class="external-link"><code>vignette("twinSIR")</code></a>
-</dd>
-<dd>
-… fits data of class <code>"epidata"</code>
-</dd>
-<dt><code><a href="../../reference/hhh4.html">hhh4()</a></code></dt>
-<dd>
-… models a (multivariate) <em>time series of infectious disease
+al. (2017)</a> provide a guide to the spatio-temporal modeling
+capabilities of <strong>surveillance</strong>. These so-called
+<em>endemic-epidemic</em> models have proven useful in a wide range of
+applications, also beyond epidemiology. A list of corresponding
+publications is maintained at <a href="https://surveillance.R-forge.R-project.org/applications_EE.html" class="external-link uri">https://surveillance.R-forge.R-project.org/applications_EE.html</a>.</p>
+<div class="section level3">
+<h3 id="twinstim">
+<code>twinstim()</code><a class="anchor" aria-label="anchor" href="#twinstim"></a>
+</h3>
+<ul>
+<li>models a <em>spatio-temporal point pattern</em> of infective
+events</li>
+<li>is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf" class="external-link"><code>vignette("twinstim")</code></a>
+</li>
+<li>needs data of class <code>"epidataCS"</code>, which holds the
+observed events (with covariates) and exogenous covariates on a
+space-time grid (for the endemic/background component)</li>
+<li>features a model-based <code><a href="../../reference/twinstim_epitest.html">epitest()</a></code> for space-time
+interaction</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="twinsir">
+<code>twinSIR()</code><a class="anchor" aria-label="anchor" href="#twinsir"></a>
+</h3>
+<ul>
+<li>models the susceptible-infectious-recovered <em>(SIR) event history
+of a fixed population</em>
+</li>
+<li>is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf" class="external-link"><code>vignette("twinSIR")</code></a>
+</li>
+<li>needs data of class <code>"epidata"</code>
+</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="hhh4">
+<code>hhh4()</code><a class="anchor" aria-label="anchor" href="#hhh4"></a>
+</h3>
+<ul>
+<li>models a (multivariate) <em>time series of infectious disease
 counts</em>
-</dd>
-<dd>
-… is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf" class="external-link"><code>vignette("hhh4_spacetime")</code></a>
+</li>
+<li>is described in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf" class="external-link"><code>vignette("hhh4_spacetime")</code></a>
 for areal time series, and more generally in <a href="https://CRAN.R-project.org/package=surveillance/vignettes/hhh4.pdf" class="external-link"><code>vignette("hhh4")</code></a>,
-including the univariate case
-</dd>
-<dd>
-… fits data of class <code>"sts"</code> (see below)
-</dd>
-</dl>
-<div class="section level5">
-<h5 id="applications">Applications<a class="anchor" aria-label="anchor" href="#applications"></a>
-</h5>
-<p>These endemic-epidemic modelling frameworks have proven useful in a
-wide range of applications, including for COVID-19. We loosely maintain
-a list of related publications at <a href="https://surveillance.R-forge.R-project.org/applications_EE.html" class="external-link uri">https://surveillance.R-forge.R-project.org/applications_EE.html</a>.</p>
+including the univariate case</li>
+<li>needs data of class <code>"sts"</code> (see below)</li>
+</ul>
 </div>
 </div>
 <div class="section level2">
@@ -213,21 +207,24 @@ and <a href="https://github.com/Junyi-L/hhh4ZI" class="external-link"><strong>hh
 institutions:</p>
 <ul>
 <li>
+<a href="https://www.dfg.de/en/" class="external-link">German Research Foundation</a>
+(DFG, 2024–2027, <a href="https://gepris.dfg.de/gepris/projekt/528691398?language=en" class="external-link">#528691398</a>)</li>
+<li>
 <a href="https://www.izkf.med.fau.de/en/" class="external-link">FAU Interdisciplinary
-Center for Clinical Research</a> (IZKF, 2018-2021, junior project
+Center for Clinical Research</a> (IZKF, 2018–2021, junior project
 J75)</li>
 <li>
 <a href="https://www.vr.se/english.html" class="external-link">Swedish Research
-Council</a> (VR, 2016-2019, #2015-05182)</li>
+Council</a> (VR, 2016–2019, #2015-05182)</li>
 <li>
 <a href="https://www.snf.ch/en/" class="external-link">Swiss National Science
-Foundation</a> (SNSF, 2007-2010, 2012-2015, projects <a href="https://p3.snf.ch/Project-116776" class="external-link">#116776</a>, <a href="https://p3.snf.ch/Project-124429" class="external-link">#124429</a>, and <a href="https://p3.snf.ch/Project-137919" class="external-link">#137919</a>)</li>
+Foundation</a> (SNSF, 2007–2010 and 2012–2015, projects <a href="https://data.snf.ch/grants/grant/116776" class="external-link">#116776</a>, <a href="https://data.snf.ch/grants/grant/124429" class="external-link">#124429</a>, and <a href="https://data.snf.ch/grants/grant/137919" class="external-link">#137919</a>)</li>
 <li>
 <a href="https://www.en.mc-health.uni-muenchen.de/" class="external-link">Munich Center of
-Health Sciences</a> (MC-Health, 2007-2010)</li>
+Health Sciences</a> (MC-Health, 2007–2010)</li>
 <li>
-<a href="https://www.dfg.de/en/" class="external-link">German Science Foundation</a> (DFG,
-2003-2006)</li>
+<a href="https://www.dfg.de/en/" class="external-link">German Research Foundation</a>
+(DFG, 2003–2006)</li>
 </ul>
 </div>
 <div class="section level2">
