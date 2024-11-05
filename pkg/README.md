@@ -45,8 +45,6 @@ for the complete list of algorithms.
 - Adjusting for occurred-but-not-yet-reported events: `nowcast()`, `bodaDelay()`
 
 <!--
-##### Applications
-
 These methods have also been used for COVID-19 surveillance, for example:
 
 - [*Analysis of the early COVID-19 epidemic curve in Germany by regression models
@@ -55,44 +53,40 @@ These methods have also been used for COVID-19 surveillance, for example:
 - [*Nowcasting the COVID-19 pandemic in Bavaria*](https://doi.org/10.1002/bimj.202000112)
 -->
 
+
 ## Endemic-epidemic modeling
 
-[Meyer et al. (2017)](https://doi.org/10.18637/jss.v077.i11) provide an overall
+[Meyer et al. (2017)](https://doi.org/10.18637/jss.v077.i11) provide a
 guide to the spatio-temporal modeling capabilities of **surveillance**.
-The three regression-oriented modeling frameworks for epidemic phenomena
-are also described in corresponding package vignettes:
+These so-called *endemic-epidemic* models have proven useful in a wide
+range of applications, also beyond epidemiology.
+A list of corresponding publications is maintained at
+<https://surveillance.R-forge.R-project.org/applications_EE.html>.
 
-`twinstim()`
-: ... models a *spatio-temporal point pattern* of infective events
-: ... is described in [`vignette("twinstim")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf)
-: ... fits data of class `"epidataCS"`, which
+### `twinstim()`
+- models a *spatio-temporal point pattern* of infective events
+- is described in
+  [`vignette("twinstim")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinstim.pdf)
+- needs data of class `"epidataCS"`, which
   holds the observed events (with covariates) and exogenous covariates on a
-  space-time grid (for the endemic component)
-: ... features a model-based `epitest()` for space-time interaction
+  space-time grid (for the endemic/background component)
+- features a model-based `epitest()` for space-time interaction
     
-`twinSIR()`
-: ... models the susceptible-infectious-recovered
+### `twinSIR()`
+- models the susceptible-infectious-recovered
   *(SIR) event history of a fixed population*
-: ... is described in
+- is described in
   [`vignette("twinSIR")`](https://CRAN.R-project.org/package=surveillance/vignettes/twinSIR.pdf)
-: ... fits data of class `"epidata"`
+- needs data of class `"epidata"`
 
-`hhh4()`
-: ... models a (multivariate) *time series of infectious disease counts*
-: ... is described in
+### `hhh4()`
+- models a (multivariate) *time series of infectious disease counts*
+- is described in
   [`vignette("hhh4_spacetime")`](https://CRAN.R-project.org/package=surveillance/vignettes/hhh4_spacetime.pdf)
   for areal time series, and more generally in
   [`vignette("hhh4")`](https://CRAN.R-project.org/package=surveillance/vignettes/hhh4.pdf),
   including the univariate case
-: ... fits data of class `"sts"` (see below)
-
-
-##### Applications
-
-These endemic-epidemic modelling frameworks have proven useful in a wide range
-of applications, including for COVID-19.
-We loosely maintain a list of related publications at
-<https://surveillance.R-forge.R-project.org/applications_EE.html>.
+- needs data of class `"sts"` (see below)
 
 
 ## Data class `"sts"`
@@ -149,16 +143,20 @@ and [**hhh4ZI**](https://github.com/Junyi-L/hhh4ZI).
 
 The authors acknowledge financial support from the following institutions:
 
+- [German Research Foundation](https://www.dfg.de/en/)
+  (DFG, 2024--2027, [#528691398](https://gepris.dfg.de/gepris/projekt/528691398?language=en))
 - [FAU Interdisciplinary Center for Clinical Research](https://www.izkf.med.fau.de/en/)
-  (IZKF, 2018-2021, junior project J75)
-- [Swedish Research Council](https://www.vr.se/english.html) (VR, 2016-2019, #2015-05182)
-- [Swiss National Science Foundation](https://www.snf.ch/en/) (SNSF, 2007-2010, 2012-2015, projects
+  (IZKF, 2018--2021, junior project J75)
+- [Swedish Research Council](https://www.vr.se/english.html)
+  (VR, 2016--2019, #2015-05182)
+- [Swiss National Science Foundation](https://www.snf.ch/en/)
+  (SNSF, 2007--2010 and 2012--2015, projects
   [#116776](https://data.snf.ch/grants/grant/116776),
   [#124429](https://data.snf.ch/grants/grant/124429), and
   [#137919](https://data.snf.ch/grants/grant/137919))
 - [Munich Center of Health Sciences](https://www.en.mc-health.uni-muenchen.de/)
-  (MC-Health, 2007-2010)
-- [German Science Foundation](https://www.dfg.de/en/) (DFG, 2003-2006)
+  (MC-Health, 2007--2010)
+- [German Research Foundation](https://www.dfg.de/en/) (DFG, 2003--2006)
 
 
 ## License
