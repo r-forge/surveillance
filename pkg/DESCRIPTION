@@ -30,8 +30,8 @@ Authors@R: c(
     person("Wei", "Wei", role = "ctb"),
     person("Valentin", "Wimmer", role = "ctb"),
     person("R Core Team", role = "ctb",
-           comment = paste("A few code segments are modified",
-                           "versions of code from base R"))
+           comment = c(ROR = "02zz1nj61",
+                       "src/ks.c and a few code fragments of standard S3 methods"))
     )
 Depends:
     R (>= 3.6.0), methods, grDevices, graphics, stats, utils, 
