@@ -81,11 +81,13 @@ sts(observed, start = c(2000, 1), frequency = 52,
   \item{epoch}{observation times, either as an integer sequence (default)
     or as a \code{Date} vector (in which case \code{epochAsDate} is
     automatically set to \code{TRUE}).}
-  \item{population}{a vector of length the number of columns in
-    \code{observed} or a matrix of the same dimension as
-    \code{observed}. Especially for multivariate time series, the
-    population numbers (or fractions) underlying the counts in each unit
-    are relevant for visualization and statistical inference. The
+  \item{population}{the population sizes (or fractions) underlying the
+    \code{observed} counts, especially relevant for multivariate time
+    series (for incidence maps or as offsets in epidemic models).
+    If assumed constant over time, \code{population} can be supplied as
+    a vector of length the number of columns (regions, groups, etc.) in
+    \code{observed}. Otherwise, \code{population} needs to be a matrix
+    of the same \code{\link{dim}}ension as \code{observed}. The
     \code{population} argument is an alias for the corresponding slot
     \code{populationFrac}. The default \code{NULL} value sets
     equal population fractions across all units.}
