@@ -85,11 +85,10 @@ check-cran: build
 	@$(check-report-timings)
 	@$(check-report-warnings-in-examples)
 
-## check with "allExamples" and --run-dontrun
+## check with "allExamples" (donttest), --run-demo and --run-dontrun
 ## also use --extra-arch to only do runtime tests (no R and Rd code checking)
-## ignore check.Renviron where I set _R_CHECK_LENGTH_1_LOGIC2_=TRUE (stops INLA)
 check-allExamples: build-noVignettes
-	_R_SURVEILLANCE_ALL_EXAMPLES_=TRUE R_CHECK_ENVIRON="" $R CMD check --ignore-vignettes --timings --run-dontrun --extra-arch --output=/tmp surveillance_${VERSION}.tar.gz
+	_R_SURVEILLANCE_ALL_EXAMPLES_=TRUE $R CMD check --ignore-vignettes --timings --run-demo --run-dontrun --extra-arch --output=/tmp surveillance_${VERSION}.tar.gz
 	@cd /tmp; $(check-report-timings); $(check-report-warnings-in-examples)
 
 
