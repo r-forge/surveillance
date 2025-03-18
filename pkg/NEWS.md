@@ -1,3 +1,10 @@
+# surveillance 1.24.1.9000 (UNRELEASED)
+
+## Bug Fixes
+
+- `algo.glrnb()` warns about unimplemented `dir`ection settings.
+
+
 # surveillance 1.24.1 (2024-11-05)
 
 This maintenance release adjusts a test of `formatDate()`
