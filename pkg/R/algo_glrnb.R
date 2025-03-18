@@ -34,10 +34,6 @@ algo.glrnb <- function(disProgObj,
   if(is.null(control[["xMax",exact=TRUE]]))
     control$xMax <- 1e4
 
-  if (!is.null(control[["theta"]]) && control[["theta"]] <= 0) {
-    warning("'theta' should be positive (reflecting an increase)")
-  }
-
   ##Set alpha to null as default. Not necessary, coz it would be taken from
   ##glrnb output.
   ##if(is.null(control[["alpha",exact=TRUE]])) control$alpha <- 0
@@ -54,6 +50,13 @@ algo.glrnb <- function(disProgObj,
   control$mu0Model <- NULL
   control$dir <- match.arg(control$dir, c("inc","dec"))
   dir <- ifelse(control$dir=="inc",1,-1)
+  if (!is.null(control[["theta"]])) {
+    if (dir != 1)
+      warning("'dir' is ignored: only *increases* are implemented for fixed 'theta'")
+    if (control[["theta"]] <= 0)
+      warning("'theta' should be positive (reflecting an increase)")
+  }
+
   control$ret <- match.arg(control$ret, c("value","cases"))
   ret <- pmatch(control$ret,c("value","cases"))
   mod <- list()
@@ -143,8 +146,6 @@ algo.glrnb <- function(disProgObj,
 
         }
       } else { ###################### !is.null(control$theta), i.e. ordinary CUSUM
-        if (dir != 1)
-          warning("'dir' is ignored: only *increases* are implemented for known 'theta'")
         if (control$alpha == 0) { #poisson
 
           res <- .C(C_lr_cusum,x=as.integer(x),mu0=as.double(mu0),lx=length(x),as.double(control$theta),c.ARL=as.double(control$c.ARL),N=as.integer(0),val=as.double(numeric(length(x))),cases=as.double(numeric(length(x))),as.integer(ret))
