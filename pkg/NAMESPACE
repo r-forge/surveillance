@@ -33,7 +33,7 @@ importFrom(utils, head, tail, toLatex)
 ##                   poisson, ppois, qpois, predict.glm, summary.glm, quasipoisson,
 ##                   glm.fit) ## and many more...
 importFrom(utils, packageName, packageVersion,
-                  modifyList, capture.output, read.table, data,
+                  modifyList, capture.output, read.table, data, hasName,
                   setTxtProgressBar, txtProgressBar, sessionInfo, head.matrix,
                   str, flush.console, write.table, as.roman, tail.matrix,
                   methods)
