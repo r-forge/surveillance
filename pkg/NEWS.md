@@ -1,5 +1,10 @@
 # surveillance 1.24.1.9000 (UNRELEASED)
 
+## New Features
+
+- `algo.cusum()` gains a `reset` option: if enabled, the CUSUM statistic
+  restarts from 0 after an alarm.  (Suggested by Ann Christin Vietor.)
+
 ## Bug Fixes
 
 - `algo.glrnb()` warns about unimplemented `dir`ection settings.
