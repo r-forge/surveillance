@@ -3,7 +3,7 @@
 ## New Features
 
 - `algo.cusum()` gains a `reset` option: if enabled, the CUSUM statistic
-  restarts from 0 after an alarm.  (Suggested by Ann Christin Vietor.)
+  restarts from 0 after an alarm.  (Wish of Ann Christin Vietor.)
 
 ## Bug Fixes
 
