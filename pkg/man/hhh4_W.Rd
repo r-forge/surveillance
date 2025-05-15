@@ -153,7 +153,8 @@ plot(measlesFit2, type = "neweights", exclude = NULL, xlab = "adjacency order")
 plot(measlesFit2, total = TRUE,
      legend.args = list(legend = c("epidemic", "endemic")))
 ## almost the same RMSE as with separate AR and NE effects
-c(rmse1 = sqrt(mean(residuals(measlesFit, "response")^2)),
+c(rmse1 = sqrt(mean( residuals(measlesFit, "response")^2 )),
+      # = sqrt(mean( scores(measlesFit, "ses")           ))
   rmse2 = sqrt(mean(residuals(measlesFit2, "response")^2)))
 
 }
