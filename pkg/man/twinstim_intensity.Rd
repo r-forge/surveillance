@@ -64,7 +64,7 @@ intensity.twinstim(x,
   \item{tiles}{
     object of class \code{"\linkSPclass{SpatialPolygons}"} representing
     the decomposition of \eqn{\bold{W}} into different regions (as used
-    in the corresponding \code{stgrid} of the \code{"\link{epidataCS}"}.
+    in the corresponding \code{stgrid} of the \code{"\link{epidataCS}"}).
     This is only needed for \code{aggregate = "space"}.
 }
   \item{tiles.idcol}{
