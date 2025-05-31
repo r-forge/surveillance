@@ -13,6 +13,12 @@
   `checkEmptyRC` when it calls `sp::spplot()`, so grids with
   horizontal or vertical gaps are now plotted without artifacts.
 
+## Deprecated & Defunct
+
+- The deprecated function `stsplot_spacetime()` has been removed.
+  `plot.sts()` with the old `type = observed ~ 1 | unit` now uses
+  `stsplot_space()` with a warning.
+
 
 # surveillance 1.24.1 (2024-11-05)
 
