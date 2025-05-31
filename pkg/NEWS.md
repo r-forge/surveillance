@@ -9,6 +9,10 @@
 
 - `algo.glrnb()` warns about unimplemented `dir`ection settings.
 
+- `intensityplot.twinstim(..., aggregate = "space")` no longer disables
+  `checkEmptyRC` when it calls `sp::spplot()`, so grids with
+  horizontal or vertical gaps are now plotted without artifacts.
+
 
 # surveillance 1.24.1 (2024-11-05)
 

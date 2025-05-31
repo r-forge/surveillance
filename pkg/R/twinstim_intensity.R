@@ -210,9 +210,8 @@ intensityplot.twinstim <- function (x,
         if(! "xlab" %in% nms) dotargs$xlab <- "time"
         if(! "ylab" %in% nms) dotargs$ylab <- which
         if(! "type" %in% nms) dotargs$type <- "l"
-        if(! "ylim" %in% nms) dotargs$ylim <- {
+        if(! "ylim" %in% nms) dotargs$ylim <-
             if (which == "total intensity") c(0,max(yvals)) else c(0,1)
-        }
         do.call(if (add) "lines" else "plot", args=c(alist(x=tgrid, y=yvals), dotargs))
         if (is.list(rug.opts)) {
             if (is.null(rug.opts$ticksize)) rug.opts$ticksize <- 0.02
@@ -279,8 +278,8 @@ intensityplot.twinstim <- function (x,
         if (! "ylim" %in% nms) dotargs$ylim <- bbox(tiles)[2,]
         if (! "aspect" %in% nms) dotargs$aspect <- "iso"  # always projected
         if (! "scales" %in% nms) dotargs$scales <- list(draw = TRUE)
-        do.call("spplot", args=c(alist(sgridy, zcol="yvals", sp.layout=lobjs,
-                          checkEmptyRC=FALSE), dotargs))
+        do.call("spplot", args=c(alist(sgridy, zcol="yvals", sp.layout=lobjs),
+                                 dotargs))
     }
 }
 
