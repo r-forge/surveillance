@@ -203,7 +203,8 @@ sts(observed, start = c(2000, 1), frequency = 52,
     \item{year}{\code{signature(x = "sts")}:
       extract the corresponding year of each observation.}
     \item{epochInYear}{\code{signature(x = "sts")}:
-      extract the epoch number within the year.}
+      extract the epoch number within the year.
+      This corresponds to \code{\link[stats]{cycle}(as.ts(x))}.}
 
     \item{[}{\code{signature(x = "sts")}:
       subset rows (time points) and/or columns (units),
