@@ -5,8 +5,11 @@
 - `algo.cusum()` gains a `reset` option: if enabled, the CUSUM statistic
   restarts from 0 after an alarm.  (Wish of Ann Christin Vietor.)
 
-- `intensityplot.twinstim(..., aggregate = "space")`
-  automatically labels the color key.
+- `intensityplot.twinstim()` in its spatial variant now automatically
+  labels the color key.
+
+- `intensityplot.twinstim()` now also supports plotting the component
+  intensities, not just their proportions.
 
 - `plotHHH4_neweights()` now only excludes distance 0 by default when the
   model has an AR component.
