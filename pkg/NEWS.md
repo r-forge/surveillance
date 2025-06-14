@@ -8,6 +8,9 @@
 - `intensityplot.twinstim(..., aggregate = "space")`
   automatically labels the color key.
 
+- `plotHHH4_neweights()` now only excludes distance 0 by default when the
+  model has an AR component.
+
 ## Bug Fixes
 
 - `algo.glrnb()` warns about unimplemented `dir`ection settings.

@@ -147,7 +147,7 @@ measlesFit2 <- hhh4(measlesWeserEms, measlesModel2)
 ## omitting the separate AR component simplifies model extensions/selection
 ## and interpretation of covariate effects (only two predictors left)
 
-plot(measlesFit2, type = "neweights", exclude = NULL, xlab = "adjacency order")
+plot(measlesFit2, type = "neweights", xlab = "adjacency order")
 ## strong decay, again mostly within-district transmission
 ## (one could also try a purely autoregressive model)
 plot(measlesFit2, total = TRUE,

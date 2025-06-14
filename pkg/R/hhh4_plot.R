@@ -876,7 +876,8 @@ getSeasonStart <- function (object)
 ###
 
 plotHHH4_neweights <- function (x, plotter = boxplot, ...,
-                                exclude = 0, maxlag = Inf)
+                                exclude = if (isTRUE(x$control$ar$inModel)) 0,
+                                maxlag = Inf)
 {
     plotter <- match.fun(plotter)
 
