@@ -2,6 +2,12 @@
 title: Events
 ---
 
+## 2025
+
+- 2025/06/14: Half-day workshop on endemic-epidemic modelling
+  at [TRR 391 Summer School 2025](https://trr391.tu-dortmund.de/events/summer-schools/)
+  in Dortmund, Germany.
+
 ## 2024
 
 - 2024/09/09: Half-day workshop on endemic-epidemic modelling
