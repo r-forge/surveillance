@@ -16,6 +16,9 @@
   `checkEmptyRC` when it calls `sp::spplot()`, so grids with
   horizontal or vertical gaps are now plotted without artifacts.
 
+- `plot.hhh4()` can now be called with an *unnamed* `type` argument and
+  additional named arguments of specific methods.
+
 ## Deprecated & Defunct
 
 - The deprecated function `stsplot_spacetime()` has been removed.
