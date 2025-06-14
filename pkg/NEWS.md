@@ -5,6 +5,9 @@
 - `algo.cusum()` gains a `reset` option: if enabled, the CUSUM statistic
   restarts from 0 after an alarm.  (Wish of Ann Christin Vietor.)
 
+- `intensityplot.twinstim(..., aggregate = "space")`
+  automatically labels the color key.
+
 ## Bug Fixes
 
 - `algo.glrnb()` warns about unimplemented `dir`ection settings.

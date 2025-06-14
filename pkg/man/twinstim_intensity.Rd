@@ -221,7 +221,7 @@ if (surveillance.options("allExamples")) {% ~as in vignette("twinstim")
                     main=rownames(imdepifit$qmatrix)[type],
                     scales=list(draw=FALSE), at=seq(0,1,by=0.1),
                     col.regions=rev(hcl.colors(10,"YlOrRd")),
-                    colorkey=list(title=list("Epidemic proportion", cex=1)))
+                    par.settings=list(par.title.text=list(cex=1)))
   })
   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
   plot(maps_epiprop[[2]], split=c(2,1,2,1))

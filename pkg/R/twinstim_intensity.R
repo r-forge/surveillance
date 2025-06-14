@@ -1,7 +1,7 @@
 ################################################################################
 ### Plot the temporal or spatial evolution of the estimated intensity
 ###
-### Copyright (C) 2012-2015, 2022  Sebastian Meyer
+### Copyright (C) 2012-2015, 2022, 2025  Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -274,6 +274,10 @@ intensityplot.twinstim <- function (x,
 
         ## plotit
         if (add) message("'add'ing is not possible with 'aggregate=\"space\"'")
+        if ((! "colorkey" %in% nms) || isTRUE(dotargs$colorkey)) {
+            dotargs$colorkey <- list(title = which)
+        } else if (is.list(dotargs$colorkey))
+            dotargs$colorkey <- modifyList(list(title = which), dotargs$colorkey)
         if (! "xlim" %in% nms) dotargs$xlim <- bbox(tiles)[1,]
         if (! "ylim" %in% nms) dotargs$ylim <- bbox(tiles)[2,]
         if (! "aspect" %in% nms) dotargs$aspect <- "iso"  # always projected
