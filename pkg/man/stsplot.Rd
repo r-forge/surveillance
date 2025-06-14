@@ -26,7 +26,9 @@
   There are various types of plots which can be produced from an
   \code{"sts"} object. The \code{type} argument specifies the desired
   plot as a formula, which defaults to \code{observed ~ time | unit},
-  i.e., plot the time series of each unit separately. Arguments to
+  i.e., plot the time series of each unit separately.
+  The \code{observed} term on the left-hand side can also be omitted;
+  it is used by default. Arguments to
   specific plot functions can be passed as further arguments (\dots).
   The following list describes the plot variants:
   

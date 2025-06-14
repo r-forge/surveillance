@@ -106,7 +106,7 @@ W_np(maxlag, truncate = TRUE, normalize = TRUE,
 data("measlesWeserEms")
 
 ## data contains adjaceny orders as required for parametric weights
-plot(measlesWeserEms, type = observed ~ unit, labels = TRUE)
+plot(measlesWeserEms, ~unit, labels = TRUE)
 neighbourhood(measlesWeserEms)[1:6,1:6]
 max(neighbourhood(measlesWeserEms))  # max order is 5
 

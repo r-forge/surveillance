@@ -675,8 +675,8 @@ We can also use \class{sts} visualizations, e.g.\ (Figure~\ref{fig:imdsts_plot})
 imdsts <- epidataCS2sts(imdepi, freq = 12, start = c(2002, 1), tiles = districtsD,
                         neighbourhood = NULL) # skip adjacency matrix (needs spdep)
 par(las = 1, lab = c(7,7,7), mar = c(5,5,1,1))
-plot(imdsts, type = observed ~ time)
-plot(imdsts, type = observed ~ unit, population = districtsD$POPULATION / 100000)
+plot(imdsts, ~time)
+plot(imdsts, ~unit, population = districtsD$POPULATION / 100000)
 @
 
 

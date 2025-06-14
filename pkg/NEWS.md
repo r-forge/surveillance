@@ -14,6 +14,9 @@
 - `plotHHH4_neweights()` now only excludes distance 0 by default when the
   model has an AR component.
 
+- `plot.sts()` now allows `type = ~time` and `type = ~unit` as short forms
+  of `type = observed ~ time` and `type = observed ~ unit`, respectively.
+
 ## Bug Fixes
 
 - `algo.glrnb()` warns about unimplemented `dir`ection settings.
