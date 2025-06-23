@@ -1,6 +1,6 @@
 
-R version 4.4.0 (2024-04-24) -- "Puppy Cup"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -27,7 +27,7 @@ Type 'q()' to quit R.
 > library("surveillance")
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.23.0; see ‘package?surveillance’ or
+This is surveillance 1.25.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > options(width=70)
 > options("prompt"="R> ")
@@ -325,14 +325,11 @@ R> ###################################################
 R> 
 R> ## import shapefile as "SpatialPolygonsDataFrame"
 R> shp <- system.file("shapes/berlin.shp",package="surveillance")
-R> if (requireNamespace("maptools")) { # archived on 2023-10-16
-+     map <- maptools::readShapePoly(shp, IDvar = "SNAME")
-+ } else { # replacement code
-+     map <- sf::as_Spatial(sf::st_read(shp, stringsAsFactors = TRUE, quiet = TRUE))
-+     row.names(map) <- as.character(map$SNAME)
-+ }
-Loading required namespace: maptools
-Failed with error:  ‘there is no package called ‘maptools’’
+R> ##map <- maptools::readShapePoly(shp, IDvar = "SNAME")
+R> ## package 'maptools' was archived on 2023-10-16; replacement code:
+R> map <- sf::as_Spatial(sf::st_read(shp, stringsAsFactors = TRUE, quiet = TRUE))
+R> row.names(map) <- as.character(map$SNAME)
+R> 
 R> ## convert to "sts" class
 R> ha.sts <- disProg2sts(ha, map = map)
 R> ## or simply load the prepared object from the package: data("ha.sts")
@@ -341,9 +338,7 @@ R> opendevice(file="figs/ha-1unit.pdf",width=7,height=7)
 R> par(mar=c(0,0,0,0))
 R> plot(ha.sts,type=observed ~ 1 | unit)
 Warning message:
-In stsplot_spacetime(x, type, ...) : 'stsplot_spacetime' is deprecated.
-Use 'stsplot_space' instead.
-See help("Deprecated")
+plot type 'observed ~ 1 | unit' is defunct; using 'observed ~ unit' 
 R> dev.off()
 null device 
           1 
