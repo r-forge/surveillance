@@ -117,8 +117,7 @@ intensity.twinstim(x,
     if a list, its elements are passed as arguments to
     \code{\link[sp]{sp.polygons}}, which will add \code{tiles} to the plot
     if \code{aggregate = "space"} (it is unused for the temporal plot).
-    By default, the fill \code{col}our of the tiles is set to
-    \code{"darkgrey"}.
+    The default border \code{col}our of the polygons is \code{"darkgrey"}.
 }
   \item{points.args}{
     if a list, its elements are passed as arguments to
@@ -183,8 +182,9 @@ plot(imdepi, "time", breaks=100)
 par(opar)
 
 ## time course of the epidemic proportion (default) by event
-intensityplot(imdepifit, "epidemic", tgrid=500, types=1)
-intensityplot(imdepifit, "epidemic", tgrid=500, types=2, add=TRUE, col=2)
+intensityplot(imdepifit, tgrid=500, types=1)
+intensityplot(imdepifit, tgrid=500, types=2,
+              add=TRUE, col=2, rug.opts=list(col=2))
 legend("topright", legend=levels(imdepi$events$type), lty=1, col=1:2,
        title = "event type")
 
@@ -192,7 +192,7 @@ legend("topright", legend=levels(imdepi$events$type), lty=1, col=1:2,
 intensityplot(imdepifit, which="total intensity", tgrid=501, lwd=2,
               ylab="intensity")
 intensityplot(imdepifit, which="endemic intensity", tgrid=501, lwd=2,
-              add=TRUE, col=2)
+              add=TRUE, col=2, rug.opts=NULL)
 text(2500, 0.36, labels="total", col=1, pos=2, font=2)
 text(2500, 0.08, labels="endemic", col=2, pos=2, font=2)
 
