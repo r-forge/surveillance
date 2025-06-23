@@ -1,4 +1,4 @@
-# surveillance 1.24.1.9000 (UNRELEASED)
+# surveillance 1.25.0 (2025-06-23)
 
 ## New Features
 
