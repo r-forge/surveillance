@@ -429,11 +429,14 @@ plot.sts <- function (x, type = observed ~ time | unit, ...)
 
     if ("time" %in% RHS_elts) {
         ## Temporal plots
-        if (RHS == "time" && ncol(x) > 1)
-            x <- aggregate(x, by = "unit")
-        switch(LHS,
-               observed = stsplot_time(x, ...),
-               alarm    = stsplot_alarm(x, ...))
+        if (LHS == "alarm") {
+            ## no auto-aggregation: alarm~time == alarm~time|unit
+            stsplot_alarm(x, ...)
+        } else {
+            if (RHS == "time" && ncol(x) > 1)
+                x <- aggregate(x, by = "unit")
+            stsplot_time(x, ...)
+        }
     } else {
         ## Spatial plots
         if (RHS != "unit") # was stsplot_spacetime(x, type, ...)

@@ -50,8 +50,9 @@
     
     \item{\code{alarm ~ time}}{Generates a so called alarmplot for a
       multivariate \code{sts} object. For each time point and each
-      series it is shown whether there is an alarm. In case of
-      hierarchical surveillance the user can pass
+      series it is shown whether there is an alarm (so it actually shows
+      \code{alarm ~ time | unit} and this \code{type} works as well).
+      In case of hierarchical surveillance the user can pass
       an additional argument \code{lvl}, which is a vector of the
       same length as rows in \code{x} specifying for each time series
       its level.
