@@ -50,7 +50,7 @@ Suggests:
     quadprog,
     memoise, polyclip, intervals, splancs,
     gamlss, MGLM (>= 0.1.0), sf,
-    tinytest (>= 1.2.4), knitr
+    tinytest (>= 1.4.1), knitr
 Enhances:
     xts, ggplot2
 Description: Statistical methods for the modeling and monitoring of time series
