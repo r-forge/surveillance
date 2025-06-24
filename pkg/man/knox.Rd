@@ -170,7 +170,7 @@ toLatex(knoxtest)
 knoxtestMC <- knox(
     dt = dist(imdepiB$events$time), eps.t = 30,
     ds = dist(coordinates(imdepiB$events)), eps.s = 50,
-    simulate.p.value = TRUE, B = 99  # limited here for speed
+    simulate.p.value = TRUE, B = 49  # limited here for speed
     ## optionally: compute permutations in parallel
     ## , .parallel = 2, .verbose = FALSE
 )
