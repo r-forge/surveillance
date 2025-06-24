@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -35,7 +35,7 @@ Type 'q()' to quit R.
 > library('surveillance')
 Loading required package: sp
 Loading required package: xtable
-This is surveillance 1.24.1; see ‘package?surveillance’ or
+This is surveillance 1.25.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -3842,13 +3842,10 @@ Data attributes:
 > ## reconstruct the "imdepi" object from its components
 > myimdepi <- as.epidataCS(events = events, stgrid = stgrid,
 +                          W = stateD, qmatrix = diag(2), nCircle2Poly = 16)
-> 
+> ## Don't show: 
 > ## This reconstructed object should be equal to 'imdepi' as long as the internal
 > ## structures of the embedded classes ("owin", "SpatialPolygons", ...), and
 > ## the calculation of the influence regions by "polyclip" have not changed:
-> all.equal(imdepi, myimdepi)
-[1] TRUE
-> ## Don't show: 
 > if (surveillance.options("allExamples"))
 + stopifnot(all.equal(imdepi, myimdepi))
 > ## End(Don't show)
@@ -3887,12 +3884,12 @@ Data attributes:
 > ## compare plots of monthly number of cases
 > opar <- par(mfrow = c(2, 1))
 > plot(imdepi, "time")
-> plot(imdsts, type = observed ~ time)
+> plot(imdsts, ~time)
 > par(opar)
 > 
 > ## plot number of cases by district in Bavaria (municipality keys 09xxx)
 > imd09 <- imdsts[, grep("^09", colnames(imdsts), value = TRUE), drop = TRUE]
-> plot(imd09, type = observed ~ unit)
+> plot(imd09, ~unit)
 > 
 > ## also test conversion to an SIS event history ("epidata") of the "tiles"
 > if (requireNamespace("intervals")) {
@@ -4555,10 +4552,10 @@ $h
 > data("fluBYBW")
 > 
 > # Count time series plot
-> plot(fluBYBW, type = observed ~ time)
+> plot(fluBYBW, ~time)
 > 
 > # Map of disease incidence (per 100000 inhabitants) for the year 2001
-> plot(fluBYBW, type = observed ~ unit, tps = 1:52, total.args = list(),
+> plot(fluBYBW, ~unit, tps = 1:52, total.args = list(),
 +      population = fluBYBW@map$X31_12_01 / 100000)
 > # the overall rate for 2001 shown in the bottom right corner is
 > sum(observed(fluBYBW[1:52,])) / sum(fluBYBW@map$X31_12_01) * 100000
@@ -4755,8 +4752,8 @@ map: 12 Polygons, 3 variables
 Head of map@data:
      Id                     BEZIRK SNAME
 chwi  0 Charlottenburg-Wilmersdorf  chwi
-> plot(ha.sts, type = observed ~ time)  # = plot(aggregate(ha.sts, by = "unit"))
-> plot(ha.sts, type = observed ~ unit, labels = TRUE)
+> plot(ha.sts, ~time)  # = plot(aggregate(ha.sts, by = "unit"))
+> plot(ha.sts, ~unit, labels = TRUE)
 > 
 > 
 > 
@@ -5409,7 +5406,7 @@ Number of Fisher Scoring iterations: 1
 > data("measlesWeserEms")
 > 
 > ## data contains adjaceny orders as required for parametric weights
-> plot(measlesWeserEms, type = observed ~ unit, labels = TRUE)
+> plot(measlesWeserEms, ~unit, labels = TRUE)
 > neighbourhood(measlesWeserEms)[1:6,1:6]
       03401 03402 03403 03404 03405 03451
 03401     0     4     2     4     3     2
@@ -5484,13 +5481,14 @@ Number of time points:  103
 + ## omitting the separate AR component simplifies model extensions/selection
 + ## and interpretation of covariate effects (only two predictors left)
 + 
-+ plot(measlesFit2, type = "neweights", exclude = NULL, xlab = "adjacency order")
++ plot(measlesFit2, type = "neweights", xlab = "adjacency order")
 + ## strong decay, again mostly within-district transmission
 + ## (one could also try a purely autoregressive model)
 + plot(measlesFit2, total = TRUE,
 +      legend.args = list(legend = c("epidemic", "endemic")))
 + ## almost the same RMSE as with separate AR and NE effects
-+ c(rmse1 = sqrt(mean(residuals(measlesFit, "response")^2)),
++ c(rmse1 = sqrt(mean( residuals(measlesFit, "response")^2 )),
++       # = sqrt(mean( scores(measlesFit, "ses")           ))
 +   rmse2 = sqrt(mean(residuals(measlesFit2, "response")^2)))
 + 
 + }
@@ -6792,21 +6790,21 @@ $\sum$ & 6817 & 49463 & 56280 \\
 > options(.opt)
 > ## End(Don't show)
 > 
-> ## Obtain the p-value via a Monte Carlo permutation test,
-> ## where the permutations can be computed in parallel
-> ## (using forking on Unix-alikes and a cluster on Windows, see ?plapply)
+> ## Obtain the p-value via a Monte Carlo permutation test
 > knoxtestMC <- knox(
 +     dt = dist(imdepiB$events$time), eps.t = 30,
 +     ds = dist(coordinates(imdepiB$events)), eps.s = 50,
-+     simulate.p.value = TRUE, B = 99,  # limited here for speed
-+     .parallel = 2, .seed = 1, .verbose = FALSE
++     simulate.p.value = TRUE, B = 49  # limited here for speed
++     ## optionally: compute permutations in parallel
++     ## , .parallel = 2, .verbose = FALSE
 + )
+.................................................
 > knoxtestMC
 
 	Knox test with simulated p-value
 
 data:  dt = dist(imdepiB$events$time) and ds = dist(coordinates(imdepiB$events))
-number of close pairs = 204, B = 99, p-value = 0.03
+number of close pairs = 204, B = 49, p-value = 0.02
 alternative hypothesis: true number is greater than 181.5686
 
 contingency table:
@@ -7107,12 +7105,12 @@ Head of neighbourhood:
 > 
 > ## aggregate to bi-weekly intervals
 > measles2w <- aggregate(measlesDE, nfreq = 26)
-> plot(measles2w, type = observed ~ time)
+> plot(measles2w, ~time)
 > 
 > ## use a date index for nicer x-axis plotting
 > epoch(measles2w) <- seq(as.Date("2005-01-03"), by = "2 weeks",
 +                         length.out = nrow(measles2w))
-> plot(measles2w, type = observed ~ time)
+> plot(measles2w, ~time)
 > 
 > 
 > 
@@ -8138,7 +8136,7 @@ rki(6,6,0) 5  7  189 0  1    0.9642857 0.03571429 0
 + ## End(Don't show)
 +  
 +     imdBstKtest <- stKtest(imdepiB, eps.s = SGRID, eps.t = TGRID, B = B,
-+                            cores = 2, seed = 1, poly = list(mainpoly))
++                            poly = list(mainpoly))
 +     print(imdBstKtest)
 +     plot(imdBstKtest)
 + }
@@ -8625,59 +8623,6 @@ Note: selection of units could invalidate the 'neighbourhood'
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("stsplot_space", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
-> nameEx("stsplot_spacetime")
-> ### * stsplot_spacetime
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: stsplot_spacetime
-> ### Title: Animated Map of Disease Incidence (DEPRECATED)
-> ### Aliases: stsplot_spacetime
-> ### Keywords: hplot dynamic spatial internal
-> 
-> ### ** Examples
-> 
-> data("ha.sts")
-> print(ha.sts)
--- An object of class sts -- 
-freq:		 52 
-start:		 2001 1 
-dim(observed):	 290 12 
-
-Head of observed:
-     chwi frkr lich mahe mitt neuk pank rein span zehl scho trko
-[1,]    0    0    0    0    0    0    0    0    0    0    0    0
-
-map: 12 Polygons, 3 variables
-Head of map@data:
-     Id                     BEZIRK SNAME
-chwi  0 Charlottenburg-Wilmersdorf  chwi
-> 
-> ## Not run: 
-> ##D # map of total counts by district (compare old vs. new implementation)
-> ##D plot(ha.sts, type = observed ~ 1 | unit) # deprecated
-> ##D plot(ha.sts, type = observed ~ unit, labels = TRUE)
-> ##D 
-> ##D # space-time animation
-> ##D plot(aggregate(ha.sts,nfreq=13), type = observed ~ 1 | unit * time)
-> ##D 
-> ##D #print the frames to a png device
-> ##D #and do the animation without extra sleeping between frames
-> ##D imgname <- file.path(tempdir(), "berlin")
-> ##D plot(aggregate(ha.sts,nfreq=13), type = observed ~ 1 | unit * time,
-> ##D      wait.ms=0, dev.printer=list(name=imgname))
-> ##D 
-> ##D #Use ImageMagick (you might have to adjust the path to 'convert')
-> ##D system(paste0("convert -delay 50 ", imgname,
-> ##D               "*.png ", imgname, "-animated.gif"))
-> ## End(Not run)
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("stsplot_spacetime", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("stsplot_time")
 > ### * stsplot_time
@@ -9992,8 +9937,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x6470d95a0198>
-<environment: 0x6470d959ba28>
+<bytecode: 0x5e88009b79f8>
+<environment: 0x5e88009b2168>
 
 $G
 function (t, logvals, types) 
@@ -10003,7 +9948,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x6470d959ba28>
+<environment: 0x5e88009b2168>
 
 $deriv
 function (t, logvals, types) 
@@ -10019,8 +9964,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x6470d95a1388>
-<environment: 0x6470d959ba28>
+<bytecode: 0x5e88009b8be8>
+<environment: 0x5e88009b2168>
 
 $Deriv
 function (t, logvals, types) 
@@ -10039,7 +9984,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x6470d959ba28>
+<environment: 0x5e88009b2168>
 
 $npars
 [1] 4
@@ -10705,16 +10650,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x6470db569190>
-<environment: 0x6470db565f20>
+<bytecode: 0x5e880026a470>
+<environment: 0x5e8800267200>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x6470db569c10>
-<environment: 0x6470db565f20>
+<bytecode: 0x5e880026aef0>
+<environment: 0x5e8800267200>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10722,8 +10667,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x6470db56a150>
-<environment: 0x6470db565f20>
+<bytecode: 0x5e880026b430>
+<environment: 0x5e8800267200>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10737,8 +10682,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x6470db566a90>
-<environment: 0x6470db565f20>
+<bytecode: 0x5e8800267d70>
+<environment: 0x5e8800267200>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10746,8 +10691,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x6470db568070>
-<environment: 0x6470db565f20>
+<bytecode: 0x5e8800269350>
+<environment: 0x5e8800267200>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10759,8 +10704,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x6470db564898>
-<environment: 0x6470db565f20>
+<bytecode: 0x5e8800265b78>
+<environment: 0x5e8800267200>
 
 $npars
 [1] 3
@@ -10835,20 +10780,18 @@ Setting up the model environment ...
 > plot(imdepi, "time", breaks=100)
 > par(opar)
 > 
-> ## time course of the epidemic proportion by event
-> intensityplot(imdepifit, which="epidemic proportion",
-+               aggregate="time", tgrid=500, types=1)
-> intensityplot(imdepifit, which="epidemic proportion",
-+               aggregate="time", tgrid=500, types=2, add=TRUE, col=2)
+> ## time course of the epidemic proportion (default) by event
+> intensityplot(imdepifit, tgrid=500, types=1)
+> intensityplot(imdepifit, tgrid=500, types=2,
++               add=TRUE, col=2, rug.opts=list(col=2))
 > legend("topright", legend=levels(imdepi$events$type), lty=1, col=1:2,
 +        title = "event type")
 > 
 > ## endemic and total intensity in one plot
-> intensity_endprop <- intensityplot(imdepifit, which="endemic proportion",
-+                                    aggregate="time", plot=FALSE)
-> intensity_total <- intensityplot(imdepifit, which="total intensity",
-+                                  aggregate="time", tgrid=501, lwd=2)
-> curve(intensity_endprop(x) * intensity_total(x), add=TRUE, col=2, lwd=2, n=501)
+> intensityplot(imdepifit, which="total intensity", tgrid=501, lwd=2,
++               ylab="intensity")
+> intensityplot(imdepifit, which="endemic intensity", tgrid=501, lwd=2,
++               add=TRUE, col=2, rug.opts=NULL)
 > text(2500, 0.36, labels="total", col=1, pos=2, font=2)
 > text(2500, 0.08, labels="endemic", col=2, pos=2, font=2)
 > 
@@ -10871,7 +10814,7 @@ Setting up the model environment ...
 +                     main=rownames(imdepifit$qmatrix)[type],
 +                     scales=list(draw=FALSE), at=seq(0,1,by=0.1),
 +                     col.regions=rev(hcl.colors(10,"YlOrRd")),
-+                     colorkey=list(title=list("Epidemic proportion", cex=1)))
++                     par.settings=list(par.title.text=list(cex=1)))
 +   })
 +   plot(maps_epiprop[[1]], split=c(1,1,2,1), more=TRUE)
 +   plot(maps_epiprop[[2]], split=c(2,1,2,1))
@@ -11071,26 +11014,6 @@ h.I(start/365 - 3.5) & 0.955 & 0.91--1.00 & 0.039 \\
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("twinstim_methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
-> nameEx("twinstim_plot")
-> ### * twinstim_plot
-> 
-> flush(stderr()); flush(stdout())
-> 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: twinstim_plot
-> ### Title: Plot methods for fitted 'twinstim"s
-> ### Aliases: plot.twinstim
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
-> # see the examples for iafplot() and intensityplot.twinstim()
-> 
-> 
-> 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("twinstim_plot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
-> cleanEx()
 > nameEx("twinstim_profile")
 > ### * twinstim_profile
 > 
@@ -11289,132 +11212,22 @@ see '?methods' for accessing help and source code
 > 
 > data("imdepi", "imdepifit")
 > 
-> ## load borders of Germany's districts (originally obtained from
-> ## the German Federal Agency for Cartography and Geodesy,
-> ## https://gdz.bkg.bund.de/), simplified by the "modified Visvalingam"
-> ## algorithm (level=6.6%) using MapShaper.org (v. 0.1.17):
+> ## simulation needs the district polygons ('tiles')
 > load(system.file("shapes", "districtsD.RData", package="surveillance"))
 > if (surveillance.options("allExamples")) {
 +   plot(districtsD)
 +   plot(stateD, add=TRUE, border=2, lwd=2)
 + }
 > 
-> ## simulate 2 realizations (over a short period, for speed)
-> ## considering events from data(imdepi) before t=31 as prehistory
-> ## IGNORE_RDIFF_BEGIN
-> mysims <- simulate(imdepifit, nsim=2, seed=1, data=imdepi,
-+                    tiles=districtsD, newcoef=c("e.typeC"=-1),
-+                    t0=31, T=if (interactive()) 180 else 45, # for CRAN
-+                    simplify=TRUE)
-
-Time at beginning of simulation: 2024-11-04 18:47:35.071895 
-Simulation 1 / 2 ...
--------------------------------------------------------------------------------
-
-Checking the supplied arguments ...
-
-Simulating a marked spatio-temporal point pattern with 
-	- 2 event types 
-	- 4 events in the prehistory
-	- 9 coefficients:
-
-            h.(Intercept)      h.I(start/365 - 3.5) h.sin(2 * pi * start/365) 
-             -20.52869499               -0.04574093                0.21728211 
-h.cos(2 * pi * start/365)             e.(Intercept)                   e.typeC 
-               0.31810266              -12.51659414               -1.00000000 
-           e.agegrp[3,19)          e.agegrp[19,Inf)                  e.siaf.1 
-               0.70611556               -0.24083969                2.76773501 
-
-Simulating (starting from t=31) ...
-Simulation has ended @t = 45 with 3 simulated events.
-
-Preparing simulated events for "epidataCS" ...
-Done.
-
--------------------------------------------------------------------------------
-Runtime of first simulation: 0.081 seconds
-Estimated finishing time: 2024-11-04 18:47:35.233533 
-
-Simulation 2 / 2 ...	simulated 5 events up to time 45 
-
-Done (2024-11-04 18:47:35.430421).
-> ## IGNORE_RDIFF_END
-> ## Don't show: 
->     ## check construction and selection from "simEpidataCSlist"
->     local({
-+         mysim_from_list <- mysims[[1]]
-+         capture.output(mysim_single <- eval("[[<-"(attr(mysims, "call"), "nsim", 1)))
-+         mysim_from_list$runtime <- mysim_single$runtime <- NULL
-+         stopifnot(all.equal(mysim_single, mysim_from_list,
-+                             check.attributes = FALSE))
-+     })
->     ## check equivalence of Lambdag from simulation and residuals via twinstim
->     stopifnot(all.equal(
-+         residuals(mysims[[1]]),
-+         suppressMessages(surveillance:::residuals.twinstim(surveillance:::as.twinstim.simEpidataCS(mysims[[1]])))
-+     ))
-> ## End(Don't show)
-> 
-> ## plot both simulations using the plot-method for simEpidataCSlist's
-> mysims
-
-Call:
-simulate.twinstim(object = imdepifit, nsim = 2, seed = 1, data = imdepi, 
-    tiles = districtsD, newcoef = c(e.typeC = -1), t0 = 31, T = if (interactive()) 180 else 45, 
-    simplify = TRUE)
-
-Simplified list of 2 simulated epidemics of class "simEpidataCS" (not printed)
-
-> plot(mysims, aggregate="time")
-Note: ignoring events of the prehistory (before "stgrid")
-Note: ignoring events of the prehistory (before "stgrid")
-> 
-> ## extract the second realization -> object of class simEpidataCS
-> mysim2 <- mysims[[2]]
-> summary(mysim2)
-Observation period: 31 - 45 
-Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
-Spatio-temporal grid (not shown): 1 time block, x 413 tiles 
-Overall number of events: 9 (2 types, prehistory: 4)
-
-Summary of event marks and number of potential sources:
-      time             tile   type      eps.t        eps.s         sex   
- Min.   : 5.591   01053  :1   B:4   Min.   :30   Min.   :200   female:2  
- 1st Qu.:22.060   03454  :1   C:5   1st Qu.:30   1st Qu.:200   male  :7  
- Median :32.453   05113  :1         Median :30   Median :200             
- Mean   :26.805   05170  :1         Mean   :30   Mean   :200             
- 3rd Qu.:35.257   05314  :1         3rd Qu.:30   3rd Qu.:200             
- Max.   :43.459   05554  :1         Max.   :30   Max.   :200             
-                  (Other):3                                              
-      agegrp      source     lambda.h        lambda.e    Lambdag      
- [0,3)   :2   Min.   :0   Min.   :0e+00   Min.   :0   Min.   :0.5326  
- [3,19)  :5   1st Qu.:0   1st Qu.:0e+00   1st Qu.:0   1st Qu.:0.9549  
- [19,Inf):2   Median :0   Median :0e+00   Median :0   Median :1.5766  
-              Mean   :0   Mean   :2e-06   Mean   :0   Mean   :1.9560  
-              3rd Qu.:0   3rd Qu.:5e-06   3rd Qu.:0   3rd Qu.:2.1333  
-              Max.   :0   Max.   :6e-06   Max.   :0   Max.   :4.5828  
-              NA's   :4   NA's   :4       NA's   :4   NA's   :4       
-       x              y          |.sources|    
- Min.   :4090   Min.   :2742   Min.   :0.0000  
- 1st Qu.:4115   1st Qu.:2916   1st Qu.:0.0000  
- Median :4134   Median :3143   Median :0.0000  
- Mean   :4224   Mean   :3092   Mean   :0.4444  
- 3rd Qu.:4360   3rd Qu.:3223   3rd Qu.:0.0000  
- Max.   :4463   Max.   :3370   Max.   :2.0000  
-                                               
-> plot(mysim2, aggregate="space")
-> 
-> 
-> ### compare the observed _cumulative_ number of cases in the first 90 days to
-> nsim <- 20
-> ### simulations from the fitted model
+> ### simulate from the fitted model, only over the first 90 days (for speed)
+> nsim <- 10
 > ## Don't show: 
 > if (!interactive()) nsim <- 2
 > ## End(Don't show)
-> sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, t0=0, T=90,
+> sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, T=90,
 +                  tiles=districtsD, simplify=TRUE)
 
-Time at beginning of simulation: 2024-11-04 18:47:35.545546 
+Time at beginning of simulation: 2025-06-24 17:35:14.025975 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11440,14 +11253,60 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.366 seconds
-Estimated finishing time: 2024-11-04 18:47:36.27779 
+Runtime of first simulation: 0.367 seconds
+Estimated finishing time: 2025-06-24 17:35:14.760932 
 
 Simulation 2 / 2 ...	simulated 21 events up to time 90 
 
-Done (2024-11-04 18:47:36.336573).
+Done (2025-06-24 17:35:14.833557).
+> sims
+
+Call:
+simulate.twinstim(object = imdepifit, nsim = nsim, seed = 1, 
+    data = imdepi, tiles = districtsD, T = 90, simplify = TRUE)
+
+Simplified list of 2 simulated epidemics of class "simEpidataCS" (not printed)
+
 > 
-> ## extract cusums
+> ## plot event times for a random selection of 4 simulations
+> plot(sims, aggregate="time")
+> 
+> ## extract the second realization -> object of class "simEpidataCS"
+> sim2 <- sims[[2]]
+> summary(sim2)
+Observation period: 0 - 90 
+Observation window (bounding box): [4031.295, 4672.253] x [2684.102, 3549.931] 
+Spatio-temporal grid (not shown): 3 time blocks x 413 tiles 
+Overall number of events: 21 (2 types)
+
+Summary of event marks and number of potential sources:
+      time             tile    type       eps.t        eps.s         sex    
+ Min.   : 8.037   01058  : 2   B:10   Min.   :30   Min.   :200   female:15  
+ 1st Qu.:27.952   05316  : 2   C:11   1st Qu.:30   1st Qu.:200   male  : 6  
+ Median :48.141   11000  : 2          Median :30   Median :200              
+ Mean   :44.952   15082  : 2          Mean   :30   Mean   :200              
+ 3rd Qu.:66.355   15087  : 2          3rd Qu.:30   3rd Qu.:200              
+ Max.   :75.674   01057  : 1          Max.   :30   Max.   :200              
+                  (Other):10                                                
+      agegrp       source          lambda.h            lambda.e        
+ [0,3)   : 5   Min.   : 0.000   Min.   :7.977e-08   Min.   :0.000e+00  
+ [3,19)  :11   1st Qu.: 0.000   1st Qu.:2.381e-07   1st Qu.:0.000e+00  
+ [19,Inf): 5   Median : 0.000   Median :2.655e-07   Median :0.000e+00  
+               Mean   : 1.095   Mean   :1.633e-06   Mean   :1.946e-07  
+               3rd Qu.: 0.000   3rd Qu.:2.313e-06   3rd Qu.:8.924e-10  
+               Max.   :12.000   Max.   :7.718e-06   Max.   :1.114e-06  
+                                                                       
+    Lambdag        coords.x1      coords.x2      |.sources|   
+ Min.   : 2.59   Min.   :4053   Min.   :2932   Min.   :0.000  
+ 1st Qu.: 9.27   1st Qu.:4288   1st Qu.:3105   1st Qu.:0.000  
+ Median :16.76   Median :4350   Median :3164   Median :1.000  
+ Mean   :15.75   Mean   :4337   Mean   :3208   Mean   :1.333  
+ 3rd Qu.:23.76   3rd Qu.:4436   3rd Qu.:3279   3rd Qu.:2.000  
+ Max.   :27.37   Max.   :4562   Max.   :3468   Max.   :6.000  
+                                                              
+> plot(sim2, aggregate="space")
+> 
+> ## extract _cumulative_ number of events (simulated vs. observed)
 > getcsums <- function (events) {
 +     tapply(events$time, events@data["type"],
 +            function (t) cumsum(table(t)), simplify=FALSE)
@@ -11774,7 +11633,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  47.516 0.81 49.08 1.113 0.136 
+Time elapsed:  49.114 0.667 49.975 0.046 0.057 
 > grDevices::dev.off()
 null device 
           1 
