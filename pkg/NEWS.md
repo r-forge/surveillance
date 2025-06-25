@@ -1,3 +1,10 @@
+# surveillance 1.25.0.9000 (UNRELEASED)
+
+## Minor Changes
+
+- `addSeason2formula()` now preserves the original formula environment.
+
+
 # surveillance 1.25.0 (2025-06-24)
 
 ## New Features
