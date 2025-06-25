@@ -4,7 +4,7 @@
 ## the vignettes, it is excluded via the top-level .Rbuildignore file
 ## and called GNUmakefile so that it is not used by R CMD build.
 ##
-## Copyright (C) 2016,2022  Sebastian Meyer <seb.meyer@fau.de>
+## Copyright (C) 2016,2022,2025  Sebastian Meyer <seb.meyer@fau.de>
 ## This Makefile can be redistributed and/or modified under the terms
 ## of the GNU General Public License, version 2 or later.
 
@@ -24,7 +24,8 @@ monitoringCounts.pdf: monitoringCounts.bib  # additional dependency
 
 .SECONDARY: ${TEXFILESFROMRNW}  # make shall not remove intermediate tex files
 %.tex: %.Rnw
-	LANGUAGE=en ${R} --vanilla CMD Sweave "$<"
+	LANGUAGE=en /usr/bin/time -f "Elapsed time: %e seconds" \
+	  ${R} --vanilla CMD Sweave "$<"
 
 .PHONY: clean cleanall
 clean:
