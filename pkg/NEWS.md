@@ -4,6 +4,11 @@
 
 - `addSeason2formula()` now preserves the original formula environment.
 
+## Bug Fixes
+
+- `plot.epidataCS()` now evaluates the optional `subset` in the
+  calling environment, fixing a scoping issue for, e.g., `time >= start`.
+
 
 # surveillance 1.25.0 (2025-06-24)
 
