@@ -464,7 +464,7 @@ The original method is widely used in public health surveillance~\citep{hulth_et
  that it does not need to be fine-tuned for each specific pathogen. It is hence easy to implement it for scanning data for many different pathogens. Furthermore, it does tackle classical issues of surveillance data: overdispersion, presence of past outbreaks that are reweighted,
 seasonality that is taken into account differently in the two methods.
 An example of use of the function is shown in Figure~\ref{fig:newportFar} with the code below.
-<<>>=
+<<far>>=
 salm.farrington <- farringtonFlexible(salmNewportGermany, con.farrington)
 salm.noufaily   <- farringtonFlexible(salmNewportGermany, con.noufaily)
 @
