@@ -530,14 +530,14 @@ checkFormula <- function(f, component, data, stsObj)
       res <- cbind(res, c(
           eval(substitute(fe(x), list(x=vars[[i]])), envir=data),
           list(offsetComp=component)
-          ))
+          ), deparse.level = 0)
 
   # fixed effects
   for(i in attr(term, "specials")$fe)
       res <- cbind(res, c(
           eval(vars[[i]], envir=data),
           list(offsetComp=component)
-          ))
+          ), deparse.level = 0)
 
   res <- cbind(res, deparse.level=0) # ensure res has matrix dimensions
 
@@ -550,7 +550,7 @@ checkFormula <- function(f, component, data, stsObj)
       res <- cbind(res, c(
           eval(vars[[i]], envir=data),
           list(offsetComp=component)
-          ))
+          ), deparse.level = 0)
 
   return(res)
 }
