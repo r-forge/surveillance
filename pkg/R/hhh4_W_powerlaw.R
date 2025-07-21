@@ -1,7 +1,7 @@
 ################################################################################
 ### Parametric power-law specification for neighbourhood weights in hhh4()
 ###
-### Copyright (C) 2012-2016,2018 Sebastian Meyer
+### Copyright (C) 2012-2016,2018,2025 Sebastian Meyer
 ###
 ### This file is part of the R package "surveillance",
 ### free software under the terms of the GNU General Public License, version 2,
@@ -58,6 +58,8 @@ W_powerlaw <- function (maxlag, normalize = TRUE, log = FALSE,
         if (from0) maxlag <- maxlag + 1L
     }
     stopifnot(isScalar(initial))
+    if (is.null(names(initial)))
+        names(initial) <- if (log) "logd" else "d"
 
     ## main function which returns the weight matrix
     weights.call <- call("zetaweights",

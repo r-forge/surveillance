@@ -1,6 +1,9 @@
 # surveillance 1.25.0.9000 (UNRELEASED)
 
-## Minor Changes
+## New Features
+
+- `W_powerlaw()` now names its parameter `"d"` or `"logd"`, depending
+  on the `log` argument, to clarify `hhh4()` coefficient summaries.
 
 - `addSeason2formula()` now preserves the original formula environment.
 
