@@ -1,6 +1,6 @@
 ################################################################################
 ### Get a tidy() table of parameters from an "hhh4" fit
-### (not yet sure if this is useful)
+### (not yet sure if this is useful as multiple components are non-standard)
 ###
 ### Copyright (C) 2025 Sebastian Meyer
 ###
@@ -23,12 +23,11 @@ tidy.hhh4 <- function (x, effects = "fixed",
     estSE <- coef(x, se = TRUE, idx2Exp = idx2Exp,
                   amplitudeShift = TRUE) # we always want this
     colnames(estSE) <- c("estimate", "std.error") # 'broom' convention
-    model <- terms(x)
 
     result_fixed <-
         if ("fixed" %in% effects) {
             estSE_fixed <- head(estSE, x$dim[1L])
-            cbind(.tidy.hhh4_fixed(model),
+            cbind(.tidy.hhh4_fixed(x),
                   "exp" = startsWith(rownames(estSE_fixed), "exp("),
                   estSE_fixed)
         }
@@ -36,7 +35,7 @@ tidy.hhh4 <- function (x, effects = "fixed",
     result_random <-
         if (any(c("random", "ran_vals") %in% effects)) {
             estSE_random <- tail(estSE, x$dim[2L])
-            cbind(.tidy.hhh4_random(tail(names(x$coefficients), x$dim[2L])),
+            cbind(.tidy.hhh4_random(x),
                   "exp" = startsWith(rownames(estSE_random), "exp("),
                   estSE_random)
         }
@@ -65,8 +64,10 @@ tidy.hhh4 <- function (x, effects = "fixed",
     result
 }
 
-.tidy.hhh4_fixed <- function (model)
+## create index columns for the fixed effects
+.tidy.hhh4_fixed <- function (object)
 {
+    model <- terms(object)
     comps <- c("ar","ne","end")[unlist(model$terms["offsetComp",])]
     names_theta <- names(model$initialTheta)
     names_terms <- unlist(model$terms["name",])
@@ -91,10 +92,12 @@ tidy.hhh4 <- function (x, effects = "fixed",
     result
 }
 
-.tidy.hhh4_random <- function (names)
+## create index columns for the random intercepts
+.tidy.hhh4_random <- function (object)
 {
-    m <- regexec("^([^.]+)\\.([^.]+)\\.(.+)$", names)
-    tab <- do.call(rbind, regmatches(names, m))[,-1L]
+    names_ri <- tail(names(object$coefficients), object$dim[2L])
+    m <- regexec("^([^.]+)\\.([^.]+)\\.(.+)$", names_ri)
+    tab <- do.call(rbind, regmatches(names_ri, m))[,-1L]
     result <- data.frame(
         "component" = tab[,1L], # = compsFE[model$indexRE]
         "effect" = "random",
