@@ -18,7 +18,8 @@ hhh4,COVID-19,human,Italy,2020,Nonlinear Dynamics,2020,https://doi.org/10.1007/s
 hhh4,SFTS,human,"Zhejiang, China",2011-2018,PLOS Neglected Tropical Diseases,2020,https://doi.org/10.1371/journal.pntd.0008186
 twinstim,far-right radicalization,human,USA,2005-2017,Humanities and Social Sciences Communications,2020,https://doi.org/10.1057/s41599-020-00546-3
 hhh4,COVID-19,human,England,2020,medRxiv [preprint],2020,https://doi.org/10.1101/2020.05.15.20102715
-hhh4,pertussis,human,Lancashire and South Wales,1940-1969,Social Science & Medicine,2020,https://doi.org/10.1016/j.socscimed.2020.113295
+hhh4,pertussis,human,Lancashire and South Wales,1940-1969,Social Science & Medicine,2021,https://doi.org/10.1016/j.socscimed.2020.113295
+hhh4,tuberculosis,human,China,2004-2017,BMC Public Health,2020,https://doi.org/10.1186/s12889-020-09331-y
 hhh4,COVID-19,human,Italy,2020,BMC Infectious Diseases,2020,https://doi.org/10.1186/s12879-020-05415-7
 twinstim,Iberian oak decline,forest,Spain,1981-2016,Forest Pathology,2021,https://doi.org/10.1111/efp.12667
 hhh4,COVID-19,human,Africa (country-level),2020,PNAS,2021,https://doi.org/10.1073/pnas.2026664118
@@ -33,7 +34,9 @@ hhh4,measles,human,Southern Vietnam,2018-2020,Epidemiology and Infection,2022,ht
 hhh4,campylobacteriosis,human,Sweden,2009-2019,International Journal of Food Microbiology,2022,https://doi.org/10.1016/j.ijfoodmicro.2022.109823
 hhh4,campylobacteriosis,human,Norway,2010-2022,Eurosurveillance,2022,https://doi.org/10.2807/1560-7917.ES.2022.27.43.2101121
 hhh4,SFTS,human,"Shandong Province, China",2016-2018,Transboundary and Emerging Diseases,2022,https://doi.org/10.1111/tbed.14745
+hhh4,COVID-19,human,"Canton of Zurich, Switzerland",2020,"Journal of the Royal Statistical Society, Series A (Statistics in Society)",2022,https://doi.org/10.1111/rssa.12910
 hhh4,COVID-19,human,Germany,2020,Regional Studies,2023,https://doi.org/10.1080/00343404.2023.2176478
+hhh4,COVID-19,human,Belgium,2020,Spatial and Spatio-temporal Epidemiology,2023,https://doi.org/10.1016/j.sste.2023.100568
 hhh4,COVID-19,human,Belgium,2021,BMC Infectious Diseases,2023,https://doi.org/10.1186/s12879-023-08368-9
 hhh4,COVID-19,human,Rwanda,2020-2021,BMC Public Health,2023,https://doi.org/10.1186/s12889-023-15888-1
 hhh4,pertussis,human,"King County, Washington, USA",2010-2017,Epidemics,2023,https://doi.org/10.1016/j.epidem.2023.100689
@@ -41,5 +44,6 @@ hhh4,highly pathogenic avian influenza,poultry,Europe,2016-2022,Scientific Repor
 hhh4,COVID-19,human,"France, Czechia, Italy",2020-2023,BMC Infectious Diseases,2024,https://doi.org/10.1186/s12879-024-08986-x
 hhh4,COVID-19,human,"Guangdong Province, China",2020-2022,Archives of Public Health,2024,https://doi.org/10.1186/s13690-024-01406-1
 twinstim,opioid-related non-fatal overdose,human,"Marion County, Indiana, USA",2020-2021,Journal of Epidemiology & Community Health,2024,https://doi.org/10.1136/jech-2024-222263
+hhh4,COVID-19,human,Switzerland,2020,BMC Infectious Diseases,2024,https://doi.org/10.1186/s12879-024-09674-6
 hhh4,highly pathogenic avian influenza,poultry,Japan & South Korea,2020-2024,Scientific Reports,2025,https://doi.org/10.1038/s41598-025-91384-3
 hhh4,COVID-19,human,Europe,2020-2022,Research Square [preprint],2025,https://doi.org/10.21203/rs.3.rs-6770961/v1
