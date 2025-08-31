@@ -1910,7 +1910,7 @@ updateParams_nlm <- function (start, ll, sc, fi, ..., control)
         negloglik
     }
     ## run the optimization
-    res <- do.call("nlm", args=c(alist(p=start, f=negllscfi, ...), control))
+    res <- do.call("nlm", args=c(alist(p=start, f=negllscfi), quote(...), control))
     ## Done
     list(par=setNames(res$estimate, names(start)), ll=-res$minimum,
          rel.tol=getRelDiff(res$estimate, start),
