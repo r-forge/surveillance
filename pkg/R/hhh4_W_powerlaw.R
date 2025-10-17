@@ -39,7 +39,7 @@ zetaweights <- function (nbmat, d = 1, maxlag = max(nbmat), normalize = FALSE)
 
 
 
-### powerlaw weights
+### Power-law weights for an 'nbOrder' matrix
 ## in the non-truncated case, i.e. maxlag = max(nbmat),
 ## the raw powerlaw weights are defined as w_ji = o_ji^-d, o_ji >= 1
 ## and with (row-)normalization we have    w_ji = o_ji^-d / sum_k o_jk^-d
@@ -130,4 +130,51 @@ W_powerlaw <- function (maxlag, normalize = TRUE, log = FALSE,
 
     ## return list of functions
     list(w=weights, dw=dweights, d2w=d2weights, initial=initial)
+}
+
+
+### EXPERIMENTAL & UNEXPORTED
+### Power-law weights for positive, metric distances (between centroids)
+## Defined simply as w_ji = d_ji^-rho, for j != i, and 0 otherwise,
+## which means there is no 'from0' option (AR within NE is not meaningful).
+## Optional normalization is delegated to scaleNEweights.list(),
+## which is a bit slower than W_powerlaw's built-in normalization.
+## Works on the neighbourhood() matrix: can it contain non-integer distances?
+
+W_powerlawD <- function (log = FALSE, initial = if (log) 0 else 1)
+{
+    stopifnot(isScalar(initial))
+    if (is.null(names(initial)))
+        names(initial) <- if (log) "log(rho)" else "rho"
+
+    ## main function which returns the weight matrix
+    wFUN <- as.function(c(alist(rho=, D=, ...=), as.call(c(as.name("{"),
+        if (log) quote( rho <- exp(rho) ), # back-transform
+        quote( res <- D^-rho    ),
+        quote( `diag<-`(res, 0) )  # so not a time-varying weight matrix
+    ))), envir = baseenv())
+
+    ## construct derivatives with respect to "rho" (or "log(rho)")
+    dw <- wFUN
+    body(dw) <- as.call(append(
+        as.list(body(wFUN)),
+        c(as.list(expression(
+            logdist <- log(D),
+            res <- res * -logdist
+          )),
+          if (log) quote(
+            res <- res * rho  # the non-log rho
+            )),
+        after = length(body(wFUN)) - 1L
+    ))
+    d2w <- dw
+    body(d2w) <- as.call(append(
+        as.list(body(dw)),
+        if (log) list(quote( res <- res * (1 - rho*logdist) ))
+        else     list(quote( res <- res * -logdist          )),
+        after = length(body(dw)) - 1L
+    ))
+
+    ## return list of functions
+    list(w = wFUN, dw = dw, d2w = d2w, initial = initial)
 }
