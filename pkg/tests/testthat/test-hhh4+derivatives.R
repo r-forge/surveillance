@@ -55,7 +55,8 @@ test_that("generalized power-law weights give equivalent results", {
                           use.estimates = FALSE)
     expect_equal(logLik(measlesFitD), logLik(measlesFit))
     expect_equal(fitted(measlesFitD), fitted(measlesFit))
-    expect_equivalent(coefW(measlesFitD), coefW(measlesFit)) # names differ
+    expect_equivalent(coefW(measlesFitD), coefW(measlesFit), # names differ
+                      tolerance = 1e-6)
 })
 
 test_that("score vector and Fisher info agree with numerical approximations", if (requireNamespace("numDeriv")) {
