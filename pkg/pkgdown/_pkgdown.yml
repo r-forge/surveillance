@@ -1,5 +1,6 @@
 url: https://surveillance.R-forge.R-project.org/pkgdown/
 destination: "../www/pkgdown"
+llm-docs: false
 
 template:
   bootstrap: 5
