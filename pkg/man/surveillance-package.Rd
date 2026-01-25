@@ -48,19 +48,19 @@
   The function \code{\link{hhh4}} offers inference methods for the
   (multivariate) count time series models of Held et al. (2005), Paul et
   al. (2008), Paul and Held (2011), Held and Paul (2012), and Meyer and
-  Held (2014). See \code{vignette("hhh4")} for a general introduction
-  and \code{vignette("hhh4_spacetime")} for a discussion and
+  Held (2014). See \vignette{hhh4} for a general introduction
+  and \vignette{hhh4_spacetime} for a discussion and
   illustration of spatial \code{hhh4} models.
   Self-exciting point processes are modeled through endemic-epidemic
   conditional intensity functions.
   \code{\link{twinSIR}} (H\enc{ö}{oe}hle, 2009) models the
   susceptible-infectious-recovered (SIR) event history of a 
   fixed population, e.g, epidemics across farms or networks;
-  see \code{vignette("twinSIR")} for an illustration.
+  see \vignette{twinSIR} for an illustration.
   \code{\link{twinstim}} (Meyer et al., 2012) fits spatio-temporal point
   process models to point patterns of infective events, e.g.,
   time-stamped geo-referenced surveillance data on infectious disease
-  occurrence; see \code{vignette("twinstim")} for an illustration.
+  occurrence; see \vignette{twinstim} for an illustration.
   A recent overview of the implemented space-time modeling frameworks
   for epidemic phenomena is given by Meyer et al. (2017).
 }
