@@ -667,7 +667,7 @@ interpretControl <- function (control, stsObj)
   }
 
   # the vector with dims of the random effects must be equal if they are correlated
-  if(length(unique(dim.re.group[dim.re.group>0]))!=1 & dim.corr>0){
+  if(dim.corr > 0 && length(unique(dim.re.group[dim.re.group>0])) != 1){
     stop("Correlated effects must have same penalty")
   }
 
