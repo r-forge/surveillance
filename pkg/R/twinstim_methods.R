@@ -449,7 +449,7 @@ R0.twinstim <- function (object, newevents, trimmed = TRUE, newcoef = NULL, ...)
         }
         noCircularIR <- if (is.null(bdist)) FALSE else all(eps.s > bdist)
         if (attr(siaf, "constant")) {
-            iRareas <- sapply(influenceRegion, area.owin)
+            iRareas <- vapply(influenceRegion, area.owin, 0, USE.NAMES=FALSE)
             ## will be used by .siafInt()
         } else if (! (is.null(siaf$Fcircle) ||
                (is.null(siaf$effRange) && noCircularIR))) {
