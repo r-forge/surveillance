@@ -29,8 +29,9 @@ monitoringCounts.pdf: monitoringCounts.bib  # additional dependency
 
 .PHONY: clean cleanall
 clean:
-	rm -rf *.aux *.bbl *.blg *.log *.out *-R.bib plots/ Rplots.pdf $(addprefix *-cache.RData,.new .diff) *.Rout
+	rm -rf *.aux *.bbl *.blg *.log *.out Rplots.pdf $(addprefix *-cache.RData,.new .diff) *.Rout
 cleanall: clean
+	rm -rf plots *-R.bib
 	rm -rf ${VIGNETTES} ${TEXFILESFROMRNW} ${RNWFILES:.Rnw=.R}
 
 
