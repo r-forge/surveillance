@@ -23,6 +23,7 @@ options(xtable.booktabs = TRUE, xtable.size = "small",
 
 
 \documentclass[nojss,nofooter,article]{jss}
+\usepackage{fixjss}
 \usepackage[utf8]{inputenc} % Rnw is ASCII, but auto-generated bib file isn't
                             % (specification is redundant in LaTeX >= 2018-04-01)
 

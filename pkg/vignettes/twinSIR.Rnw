@@ -23,6 +23,7 @@ options(xtable.booktabs = TRUE, xtable.size = "small",
 
 
 \documentclass[nojss,nofooter,article]{jss}
+\usepackage{fixjss}
 
 \title{%
   \vspace{-1.5cm}

@@ -12,6 +12,7 @@ options(xtable.booktabs = TRUE, xtable.comment = FALSE)
 @ 
 
 \documentclass[nojss]{jss}
+\usepackage{fixjss}
 \usepackage{amsmath,bm}
 \usepackage{booktabs}
 \usepackage{subcaption} % successor of subfig, which supersedes subfigure
