@@ -1098,7 +1098,8 @@ knitr::write_bib( # produces UTF-8
     file = "hhh4_spacetime-R.bib", tweak = FALSE, prefix = "R:")
 @
 
-\bibliography{references,hhh4_spacetime-R}
+% also using the installed bibliography (shared with the Rd system)
+\bibliography{references,hhh4_spacetime-R,\Sexpr{find.package("surveillance")}/REFERENCES}
 
 
 

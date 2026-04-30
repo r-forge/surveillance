@@ -517,7 +517,8 @@ refer to \code{help("simulate.twinSIR")}.
 % BIBLIOGRAPHY
 %--------------
 
-\bibliography{references}
+% also using the installed bibliography (shared with the Rd system)
+\bibliography{references,\Sexpr{find.package("surveillance")}/REFERENCES}
 
 
 

@@ -1156,7 +1156,8 @@ knitr::write_bib( # produces UTF-8
     file = "twinstim-R.bib", tweak = FALSE, prefix = "R:")
 @
 
-\bibliography{references,twinstim-R}
+% also using the installed bibliography (shared with the Rd system)
+\bibliography{references,twinstim-R,\Sexpr{find.package("surveillance")}/REFERENCES}
 
 
 

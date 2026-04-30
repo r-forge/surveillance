@@ -783,7 +783,7 @@ heterogeneity in incidence levels and disease transmission.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{apalike}
 \renewcommand{\bibfont}{\small}
-\bibliography{references}
+\bibliography{references,\Sexpr{find.package("surveillance")}/REFERENCES}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

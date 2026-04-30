@@ -1447,6 +1447,7 @@ Code contributions to the package are very welcome as well as feedback and sugge
 The authors would like to express their gratitude to all contributors to the package, in particular
 Juliane Manitz, University of G\"{o}ttingen, Germany, for her work on the \texttt{boda} code, and Angela Noufaily, The Open University, Milton Keynes, UK, for providing us with the code used in her article that we extended for \texttt{farringtonFlexible}. The work of M. Salmon was financed by a PhD grant of the RKI.
 
-\bibliography{monitoringCounts,references}
+
+\bibliography{monitoringCounts,references,\Sexpr{find.package("surveillance")}/REFERENCES}
 
 \end{document}

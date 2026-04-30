@@ -550,6 +550,6 @@ support from the Collaborative Research Centre SFB 386 funded by the
 German research foundation (DFG).
 
 
-\bibliography{references}
+\bibliography{references,\Sexpr{find.package("surveillance")}/REFERENCES}
 
 \end{document}
