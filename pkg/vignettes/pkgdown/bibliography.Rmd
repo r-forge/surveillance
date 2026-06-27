@@ -2,14 +2,28 @@
 title: Bibliography
 ---
 
-See [Authors and Citation](../../authors.html) for the two standard
-JSS references to cite **surveillance** in publications.
-This page gives a more comprehensive list of papers feeding **surveillance**:
+```{r, biblist, include = FALSE}
+BIB <- bibtex::read.bib(package = "surveillance")
+BIB <- BIB[lengths(BIB$annote) > 0]
+biblist <- split(BIB, BIB$journal == "Journal of Statistical Software")
 
-<ul>
-```{r, echo = FALSE, results = "asis"}
-##writeLines(paste("-", format(surveillance:::REFERENCES, "citation", bibtex = FALSE)), sep = "\n\n")
-writeLines(paste0("<li>", format(surveillance:::REFERENCES, "html"), "</li>"),
-           sep = "\n\n")
+writedl <- function (terms, descriptions) {
+    writeLines(c(
+        "<dl>",
+        paste0("<dt>", terms, "</dt>\n",
+               "<dd>", descriptions, "</dd>"),
+        "</dl>"), sep = "\n\n")
+}
 ```
-</ul>
+
+## Main JSS references
+
+```{r, echo = FALSE, results = "asis"}
+writedl(biblist[[2]]$annote, format(biblist[[2]], "html"))
+```
+
+## Some methodological papers
+
+```{r, echo = FALSE, results = "asis"}
+writedl(biblist[[1]]$annote, format(biblist[[1]], "html"))
+```
