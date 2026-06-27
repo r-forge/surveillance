@@ -119,10 +119,10 @@
   }
   To cite the \R package \pkg{surveillance} in publications, please use:
   \describe{
-    \item{For the monitoring functions:}{%\bibshow{salmon.etal2014}
+    \item{For the monitoring functions:}{%\bibshow{salmon.etal2016}
       \Sexpr[results=rd]{tools::toRd(CITATION[grep("Salmon", CITATION$author)])}
     }
-    \item{For the modeling frameworks:}{%\bibshow{meyer.etal2014}
+    \item{For the modeling frameworks:}{%\bibshow{meyer.etal2017}
       \Sexpr[results=rd]{tools::toRd(CITATION[grep("Meyer", CITATION$author)])}
     }
   }

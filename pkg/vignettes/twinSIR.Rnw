@@ -31,7 +31,7 @@ options(xtable.booktabs = TRUE, xtable.size = "small",
       This introduction to the \code{twinSIR} modeling framework of the
       \proglang{R}~package \pkg{surveillance} is based on a publication in the
       \textit{Journal of Statistical Software} --
-      \citet[Section~4]{meyer.etal2014} -- which is the suggested reference
+      \citet[Section~4]{meyer.etal2017} -- which is the suggested reference
       if you use the \code{twinSIR} implementation in your own work.}}\\[1cm]
   \code{twinSIR}: Individual-level epidemic modeling for a fixed population with known distances}
 \Plaintitle{twinSIR: Individual-level epidemic modeling for a fixed population with known distances}
@@ -127,7 +127,7 @@ if (!COMPUTE) load("twinSIR-cache.RData", verbose = TRUE)
 
 
 The spatio-temporal point process regression model ``\code{twinstim}''
-(\citealp{meyer.etal2011}, illustrated in \code{vignette("twinstim")})
+(\citealp{meyer.etal2012}, illustrated in \code{vignette("twinstim")})
 is indexed in a continuous spatial domain, i.e., the set of
 possible event locations %(the susceptible ``population'')
 consists of the whole observation region and is thus infinite.

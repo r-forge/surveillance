@@ -33,7 +33,7 @@ options(xtable.booktabs = TRUE, xtable.size = "small",
       This introduction to spatio-temporal \code{hhh4} models implemented in the
       \proglang{R}~package \pkg{surveillance} is based on a publication in the
       \textit{Journal of Statistical Software} --
-      \citet[Section~5]{meyer.etal2014} -- which is the suggested reference
+      \citet[Section~5]{meyer.etal2017} -- which is the suggested reference
       if you use the \code{hhh4} implementation in your own work.}}\\[1cm]
   \code{hhh4}: Endemic-epidemic modeling\\of areal count time series}
 \Plaintitle{hhh4: Endemic-epidemic modeling of areal count time series}
@@ -88,7 +88,7 @@ The \proglang{R}~package \pkg{surveillance} can handle
 various levels of aggregation at which infective events have been recorded.
 This vignette illustrates the analysis of area-level time series of counts using
 the endemic-epidemic multivariate time-series model ``\code{hhh4}''
-described in, e.g., \citet[Section~3]{meyer.held2013}.
+described in, e.g., \citet[Section~3]{meyer.held2014}.
 See \code{vignette("hhh4")} for a more general introduction to \code{hhh4}
 models, including the univariate and non-spatial bivariate case.
 %% (For other types of surveillance data, see
@@ -126,7 +126,7 @@ An endemic-epidemic multivariate time-series model for infectious disease counts
 $Y_{it}$ from units $i=1,\dotsc,I$ during periods $t=1,\dotsc,T$
 was proposed by \citet{held-etal-2005} and was later extended in
 a series of papers
-\citep{paul-etal-2008,paul-held-2011,held.paul2012,meyer.held2013}.
+\citep{paul-etal-2008,paul-held-2011,held.paul2012,meyer.held2014}.
 In its most general formulation, this so-called ``\code{hhh4}'' model assumes that, conditional on past
 observations, $Y_{it}$ has a negative binomial distribution with mean
 \begin{equation} \label{eqn:hhh4}
@@ -182,7 +182,7 @@ A suitable choice to reflect epidemiological coupling
 between regions \citep[Chapter~7]{Keeling.Rohani2008}
 is a power-law distance decay $w_{ji} = o_{ji}^{-d}$
 defined in terms of the adjacency order~$o_{ji}$ in the
-neighborhood graph of the regions \citep{meyer.held2013}.
+neighborhood graph of the regions \citep{meyer.held2014}.
 %% For instance, a second-order neighbor~$j$ of a region~$i$ ($o_{ji} = 2$) is a
 %% region adjacent to a first-order neighbor of $i$, but not itself directly
 %% adjacent to $i$.
@@ -193,7 +193,7 @@ weight matrix $(w_{ji})$.
 
 Likelihood inference for the above multivariate time-series model
 has been established by \citet{paul-held-2011} with
-extensions for parametric neighborhood weights by \citet{meyer.held2013}.
+extensions for parametric neighborhood weights by \citet{meyer.held2014}.
 Supplied with the analytical score function and Fisher information, the function
 \code{hhh4} by default uses the quasi-Newton algorithm available through the
 \proglang{R} function \code{nlminb} to maximize the log-likelihood.
@@ -230,7 +230,7 @@ These data are contained in \pkg{surveillance} as
 \code{data("measlesWeserEms")} -- an object of the \proglang{S}4-class \class{sts}
 (``surveillance time series'') used for data input in \code{hhh4} models and
 briefly introduced below.
-See \citet{hoehle-mazick-2010} and \citet{salmon.etal2014}
+See \citet{hoehle-mazick-2010} and \citet{salmon.etal2016}
 for more detailed descriptions of this class, which is also used for the
 prospective aberration detection facilities of the \pkg{surveillance} package.
 
@@ -621,7 +621,7 @@ measlesFit_nepop <- update(measlesFit_vacc,
   ne = list(f = ~log(pop)), data = list(pop = population(measlesWeserEms)))
 @
 As in a similar analyses of influenza
-\citep{geilhufe.etal2012,meyer.held2013}, we find strong evidence for such an agglomeration
+\citep{geilhufe.etal2012,meyer.held2014}, we find strong evidence for such an agglomeration
 effect: AIC decreases from
 \Sexpr{round(AIC(measlesFit_vacc))} to \Sexpr{round(AIC(measlesFit_nepop))}
 and the estimated exponent $\hat{\beta}_{pop}$ is
@@ -630,7 +630,7 @@ cbind("Estimate" = coef(measlesFit_nepop),
   confint(measlesFit_nepop))["ne.log(pop)",]
 @
 
-Second, to account for long-range transmission of cases, \citet{meyer.held2013} proposed
+Second, to account for long-range transmission of cases, \citet{meyer.held2014} proposed
 to estimate the weights $w_{ji}$ as a function of the adjacency order
 $o_{ji}$ between the districts. For instance, a power-law model
 assumes the form $w_{ji} = o_{ji}^{-d}$, for $j\ne i$ and $w_{jj}=0$,
