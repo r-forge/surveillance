@@ -1,4 +1,4 @@
-% Process \Sexpr code at build time; like bib macros.
+% Process \Sexpr code at build time; like bib macros (not yet supported by pkgdown).
 \RdOpts{stage=build}
 % NOTE: in R 2.12.0 - 4.0.5, \RdOpts{} had no effect (PR#18073)
 
@@ -24,9 +24,9 @@
 \details{
   The package implements many typical outbreak detection procedures such
   as Stroup et al. (1989), Farrington et al. (1996), Rossi et al. (1999),
-  Rogerson and Yamada (2001), a Bayesian approach \bibcitep{hoehle-2007},
+  Rogerson and Yamada (2001), a Bayesian approach (Höhle, 2007),
   negative binomial CUSUM methods (Höhle and Mazick, 2009), and a
-  detector based on generalized likelihood ratios \bibcitep{hoehle.paul2008},
+  detector based on generalized likelihood ratios (Höhle and Paul, 2008),
   see \code{\link{wrap.algo}}.
   Also CUSUMs for the prospective change-point detection in binomial,
   beta-binomial and multinomial time series are covered based on
@@ -41,29 +41,29 @@
   class \code{\link{sts}} wrapping observations, monitoring results and
   date handling for multivariate time series.
   A recent overview of the available monitoring procedures is
-  given by \bibcitet{salmon.etal2014}.
+  given by Salmon et al. (2016).
 
   For the retrospective analysis of epidemic spread, the package
   provides three endemic-epidemic modeling frameworks with
   tools for visualization, likelihood inference, and simulation.
   The function \code{\link{hhh4}} offers inference methods for the
-  (multivariate) count time series model of \bibcitet{held-etal-2005},
-  including some of its extensions \bibcitep{paul-held-2011,
-  meyer.held2013}. See \vignette{hhh4} for a general introduction
+  (multivariate) count time series model of Held et al. (2005),
+  including some of its extensions (Paul and Held, 2011; Meyer and
+  Held, 2014). See \vignette{hhh4} for a general introduction
   and \vignette{hhh4_spacetime} for a discussion and
   illustration of spatial \code{hhh4} models.
   Self-exciting point processes are modeled through endemic-epidemic
   conditional intensity functions.
-  \code{\link{twinSIR}} \bibcitep{hoehle2009} models the
+  \code{\link{twinSIR}} (Höhle, 2009) models the
   susceptible-infectious-recovered (SIR) event history of a 
   fixed population, e.g, epidemics across farms or networks;
   see \vignette{twinSIR} for an illustration.
-  \code{\link{twinstim}} \bibcitep{meyer.etal2011} fits spatio-temporal point
+  \code{\link{twinstim}} (Meyer et al., 2012) fits spatio-temporal point
   process models to point patterns of infective events, e.g.,
   time-stamped geo-referenced surveillance data on infectious disease
   occurrence; see \vignette{twinstim} for an illustration.
   A recent overview of the implemented space-time modeling frameworks
-  for epidemic phenomena is given by \bibcitet{meyer.etal2014}.
+  for epidemic phenomena is given by Meyer et al. (2017).
 }
 
 %% Author information is dynamically extracted from the DESCRIPTION file
@@ -114,18 +114,29 @@
 }
 
 \section{\file{CITATION}}{
+  \Sexpr{
+    CITATION <- readCitationFile(find_inst_file("CITATION"))  # gives marked UTF-8 strings
+  }
   To cite the \R package \pkg{surveillance} in publications, please use:
   \describe{
-    \item{For the monitoring functions:}{\bibshow{salmon.etal2014}}
-    \item{For the modeling frameworks:}{\bibshow{meyer.etal2014}}
+    \item{For the monitoring functions:}{%\bibshow{salmon.etal2014}
+      \Sexpr[results=rd]{tools::toRd(CITATION[grep("Salmon", CITATION$author)])}
+    }
+    \item{For the modeling frameworks:}{%\bibshow{meyer.etal2014}
+      \Sexpr[results=rd]{tools::toRd(CITATION[grep("Meyer", CITATION$author)])}
+    }
   }
-
-  References to underlying methodological papers are given on
-  the specific help pages and in \code{surveillance:::REFERENCES}.
+  See also \code{citation("surveillance")}.
 }
 
 \references{
-  \bibshow{*}
+  References to the underlying methodological papers are given on
+  the specific help pages; some are also available in an
+  installed BibTeX file:
+  \preformatted{
+    system.file("REFERENCES.bib", package = "surveillance")
+  }
+  %\bibshow{*}
 }
 
 \seealso{

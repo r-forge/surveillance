@@ -33,7 +33,6 @@ Authors@R: c(
            comment = c(ROR = "02zz1nj61",
                        "src/ks.c and a few code fragments of standard S3 methods"))
     )
-Note: Building the package requires R >= 4.6.0 for \bibshow{} et al.
 Depends:
     R (>= 3.6.0), methods, grDevices, graphics, stats, utils, 
     sp (>= 2.1-4), xtable (>= 1.7-0)
@@ -51,7 +50,7 @@ Suggests:
     quadprog,
     memoise, polyclip, intervals, splancs,
     gamlss, MGLM (>= 0.1.0), sf,
-    tinytest (>= 1.4.1), knitr, bibtex
+    tinytest (>= 1.4.1), knitr
 Enhances:
     xts, ggplot2
 Description: Statistical methods for the modeling and monitoring of time series
