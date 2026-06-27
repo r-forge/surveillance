@@ -19,12 +19,6 @@ CIdata <- read.table("CIdata.txt", header=TRUE)
 surveillance.gvar.hyp <- scan("hypGeomSmall.txt")
 surveillance.gvar.z   <- - c(0:1000/100, 11:100)
 
-## extended list of references (methodological papers)
-REFERENCES <- readCitationFile(
-    file = "REFERENCES",
-    meta = read.dcf("../../pkg/DESCRIPTION")[1,]
-)
-
 ## a simple polygonal "owin" (with hole) for testing, obtained as
 ## spatstat.geom::owin(poly = rapply(
 ##     spatstat.geom::shift.owin(spatstat.data::letterR, -c(3,2))$bdry,
