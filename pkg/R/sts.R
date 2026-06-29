@@ -490,4 +490,6 @@ setMethod( "show", "sts", function( object ){
       cat("\nHead of neighbourhood:\n")
       print( head(object@neighbourhood,n))
   }
+
+  invisible(NULL)
 } )
