@@ -114,7 +114,7 @@
 }
 
 \section{\file{CITATION}}{
-  \Sexpr{
+  \Sexpr[results=hide]{
     CITATION <- readCitationFile(find_inst_file("CITATION"))  # gives marked UTF-8 strings
   }
   To cite the \R package \pkg{surveillance} in publications, please use:
@@ -133,9 +133,9 @@
   References to the underlying methodological papers are given on
   the specific help pages; some are also available in an
   installed BibTeX file:
-  \preformatted{
+\preformatted{
     system.file("REFERENCES.bib", package = "surveillance")
-  }
+}
   %\bibshow{*}
 }
 
