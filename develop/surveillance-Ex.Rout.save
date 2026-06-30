@@ -1,6 +1,6 @@
 
-R version 4.5.1 (2025-06-13) -- "Great Square Root"
-Copyright (C) 2025 The R Foundation for Statistical Computing
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -34,8 +34,7 @@ Type 'q()' to quit R.
 > ### * </HEADER>
 > library('surveillance')
 Loading required package: sp
-Loading required package: xtable
-This is surveillance 1.25.0; see ‘package?surveillance’ or
+This is surveillance 1.26.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -127,160 +126,114 @@ $arl
 > #Run length of a time varying negative binomial CUSUM
 > ######################################################
 > 
-> mu0 <- matrix(5*sin(2*pi/52 * 1:150) + 10,ncol=1)
+> mu0 <- matrix(5*sin(2*pi/52 * 1:104) + 10,ncol=1)
 > 
 > rl <- LRCUSUM.runlength( mu=t(mu0), mu0=t(mu0), mu1=kappa*t(mu0), h=2,
 +   dfun = dY, n=rep(100,length(mu0)), alpha=alpha,g=20)
-Looking at t = 1 / 150 
-Looking at t = 2 / 150 
-Looking at t = 3 / 150 
-Looking at t = 4 / 150 
-Looking at t = 5 / 150 
-Looking at t = 6 / 150 
-Looking at t = 7 / 150 
-Looking at t = 8 / 150 
-Looking at t = 9 / 150 
-Looking at t = 10 / 150 
-Looking at t = 11 / 150 
-Looking at t = 12 / 150 
-Looking at t = 13 / 150 
-Looking at t = 14 / 150 
-Looking at t = 15 / 150 
-Looking at t = 16 / 150 
-Looking at t = 17 / 150 
-Looking at t = 18 / 150 
-Looking at t = 19 / 150 
-Looking at t = 20 / 150 
-Looking at t = 21 / 150 
-Looking at t = 22 / 150 
-Looking at t = 23 / 150 
-Looking at t = 24 / 150 
-Looking at t = 25 / 150 
-Looking at t = 26 / 150 
-Looking at t = 27 / 150 
-Looking at t = 28 / 150 
-Looking at t = 29 / 150 
-Looking at t = 30 / 150 
-Looking at t = 31 / 150 
-Looking at t = 32 / 150 
-Looking at t = 33 / 150 
-Looking at t = 34 / 150 
-Looking at t = 35 / 150 
-Looking at t = 36 / 150 
-Looking at t = 37 / 150 
-Looking at t = 38 / 150 
-Looking at t = 39 / 150 
-Looking at t = 40 / 150 
-Looking at t = 41 / 150 
-Looking at t = 42 / 150 
-Looking at t = 43 / 150 
-Looking at t = 44 / 150 
-Looking at t = 45 / 150 
-Looking at t = 46 / 150 
-Looking at t = 47 / 150 
-Looking at t = 48 / 150 
-Looking at t = 49 / 150 
-Looking at t = 50 / 150 
-Looking at t = 51 / 150 
-Looking at t = 52 / 150 
-Looking at t = 53 / 150 
-Looking at t = 54 / 150 
-Looking at t = 55 / 150 
-Looking at t = 56 / 150 
-Looking at t = 57 / 150 
-Looking at t = 58 / 150 
-Looking at t = 59 / 150 
-Looking at t = 60 / 150 
-Looking at t = 61 / 150 
-Looking at t = 62 / 150 
-Looking at t = 63 / 150 
-Looking at t = 64 / 150 
-Looking at t = 65 / 150 
-Looking at t = 66 / 150 
-Looking at t = 67 / 150 
-Looking at t = 68 / 150 
-Looking at t = 69 / 150 
-Looking at t = 70 / 150 
-Looking at t = 71 / 150 
-Looking at t = 72 / 150 
-Looking at t = 73 / 150 
-Looking at t = 74 / 150 
-Looking at t = 75 / 150 
-Looking at t = 76 / 150 
-Looking at t = 77 / 150 
-Looking at t = 78 / 150 
-Looking at t = 79 / 150 
-Looking at t = 80 / 150 
-Looking at t = 81 / 150 
-Looking at t = 82 / 150 
-Looking at t = 83 / 150 
-Looking at t = 84 / 150 
-Looking at t = 85 / 150 
-Looking at t = 86 / 150 
-Looking at t = 87 / 150 
-Looking at t = 88 / 150 
-Looking at t = 89 / 150 
-Looking at t = 90 / 150 
-Looking at t = 91 / 150 
-Looking at t = 92 / 150 
-Looking at t = 93 / 150 
-Looking at t = 94 / 150 
-Looking at t = 95 / 150 
-Looking at t = 96 / 150 
-Looking at t = 97 / 150 
-Looking at t = 98 / 150 
-Looking at t = 99 / 150 
-Looking at t = 100 / 150 
-Looking at t = 101 / 150 
-Looking at t = 102 / 150 
-Looking at t = 103 / 150 
-Looking at t = 104 / 150 
-Looking at t = 105 / 150 
-Looking at t = 106 / 150 
-Looking at t = 107 / 150 
-Looking at t = 108 / 150 
-Looking at t = 109 / 150 
-Looking at t = 110 / 150 
-Looking at t = 111 / 150 
-Looking at t = 112 / 150 
-Looking at t = 113 / 150 
-Looking at t = 114 / 150 
-Looking at t = 115 / 150 
-Looking at t = 116 / 150 
-Looking at t = 117 / 150 
-Looking at t = 118 / 150 
-Looking at t = 119 / 150 
-Looking at t = 120 / 150 
-Looking at t = 121 / 150 
-Looking at t = 122 / 150 
-Looking at t = 123 / 150 
-Looking at t = 124 / 150 
-Looking at t = 125 / 150 
-Looking at t = 126 / 150 
-Looking at t = 127 / 150 
-Looking at t = 128 / 150 
-Looking at t = 129 / 150 
-Looking at t = 130 / 150 
-Looking at t = 131 / 150 
-Looking at t = 132 / 150 
-Looking at t = 133 / 150 
-Looking at t = 134 / 150 
-Looking at t = 135 / 150 
-Looking at t = 136 / 150 
-Looking at t = 137 / 150 
-Looking at t = 138 / 150 
-Looking at t = 139 / 150 
-Looking at t = 140 / 150 
-Looking at t = 141 / 150 
-Looking at t = 142 / 150 
-Looking at t = 143 / 150 
-Looking at t = 144 / 150 
-Looking at t = 145 / 150 
-Looking at t = 146 / 150 
-Looking at t = 147 / 150 
-Looking at t = 148 / 150 
-Looking at t = 149 / 150 
-Looking at t = 150 / 150 
+Looking at t = 1 / 104 
+Looking at t = 2 / 104 
+Looking at t = 3 / 104 
+Looking at t = 4 / 104 
+Looking at t = 5 / 104 
+Looking at t = 6 / 104 
+Looking at t = 7 / 104 
+Looking at t = 8 / 104 
+Looking at t = 9 / 104 
+Looking at t = 10 / 104 
+Looking at t = 11 / 104 
+Looking at t = 12 / 104 
+Looking at t = 13 / 104 
+Looking at t = 14 / 104 
+Looking at t = 15 / 104 
+Looking at t = 16 / 104 
+Looking at t = 17 / 104 
+Looking at t = 18 / 104 
+Looking at t = 19 / 104 
+Looking at t = 20 / 104 
+Looking at t = 21 / 104 
+Looking at t = 22 / 104 
+Looking at t = 23 / 104 
+Looking at t = 24 / 104 
+Looking at t = 25 / 104 
+Looking at t = 26 / 104 
+Looking at t = 27 / 104 
+Looking at t = 28 / 104 
+Looking at t = 29 / 104 
+Looking at t = 30 / 104 
+Looking at t = 31 / 104 
+Looking at t = 32 / 104 
+Looking at t = 33 / 104 
+Looking at t = 34 / 104 
+Looking at t = 35 / 104 
+Looking at t = 36 / 104 
+Looking at t = 37 / 104 
+Looking at t = 38 / 104 
+Looking at t = 39 / 104 
+Looking at t = 40 / 104 
+Looking at t = 41 / 104 
+Looking at t = 42 / 104 
+Looking at t = 43 / 104 
+Looking at t = 44 / 104 
+Looking at t = 45 / 104 
+Looking at t = 46 / 104 
+Looking at t = 47 / 104 
+Looking at t = 48 / 104 
+Looking at t = 49 / 104 
+Looking at t = 50 / 104 
+Looking at t = 51 / 104 
+Looking at t = 52 / 104 
+Looking at t = 53 / 104 
+Looking at t = 54 / 104 
+Looking at t = 55 / 104 
+Looking at t = 56 / 104 
+Looking at t = 57 / 104 
+Looking at t = 58 / 104 
+Looking at t = 59 / 104 
+Looking at t = 60 / 104 
+Looking at t = 61 / 104 
+Looking at t = 62 / 104 
+Looking at t = 63 / 104 
+Looking at t = 64 / 104 
+Looking at t = 65 / 104 
+Looking at t = 66 / 104 
+Looking at t = 67 / 104 
+Looking at t = 68 / 104 
+Looking at t = 69 / 104 
+Looking at t = 70 / 104 
+Looking at t = 71 / 104 
+Looking at t = 72 / 104 
+Looking at t = 73 / 104 
+Looking at t = 74 / 104 
+Looking at t = 75 / 104 
+Looking at t = 76 / 104 
+Looking at t = 77 / 104 
+Looking at t = 78 / 104 
+Looking at t = 79 / 104 
+Looking at t = 80 / 104 
+Looking at t = 81 / 104 
+Looking at t = 82 / 104 
+Looking at t = 83 / 104 
+Looking at t = 84 / 104 
+Looking at t = 85 / 104 
+Looking at t = 86 / 104 
+Looking at t = 87 / 104 
+Looking at t = 88 / 104 
+Looking at t = 89 / 104 
+Looking at t = 90 / 104 
+Looking at t = 91 / 104 
+Looking at t = 92 / 104 
+Looking at t = 93 / 104 
+Looking at t = 94 / 104 
+Looking at t = 95 / 104 
+Looking at t = 96 / 104 
+Looking at t = 97 / 104 
+Looking at t = 98 / 104 
+Looking at t = 99 / 104 
+Looking at t = 100 / 104 
+Looking at t = 101 / 104 
+Looking at t = 102 / 104 
+Looking at t = 103 / 104 
+Looking at t = 104 / 104 
 > 
 > plot(1:length(mu0),rl$pmf,type="l",xlab="t",ylab="PMF")
 > plot(1:length(mu0),rl$cdf,type="l",xlab="t",ylab="CDF")
@@ -2207,8 +2160,9 @@ detaching ‘package:msm’
 > .opt <- options(xtable.comment = FALSE)
 > ## End(Don't show)
 > # Format as an "xtable", which is printed with LaTeX markup (by default)
-> library("xtable")
-> xtable(quality)
+> if (require("xtable"))
++   xtable(quality)
+Loading required package: xtable
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrr}
@@ -2228,6 +2182,9 @@ detaching ‘package:msm’
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("algo.quality", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
+
+detaching ‘package:xtable’
+
 > nameEx("algo.rki")
 > ### * algo.rki
 > 
@@ -3027,7 +2984,7 @@ The following object is masked from ‘package:datasets’:
 Loading required package: gamlss.dist
 Loading required package: nlme
 Loading required package: parallel
- **********   GAMLSS Version 5.4-22  ********** 
+ **********   GAMLSS Version 5.5-0  ********** 
 For more on GAMLSS look at https://www.gamlss.com/
 Type gamlssNews() to see new features/changes/bug fixes.
 
@@ -3592,8 +3549,8 @@ Summary of event marks and number of potential sources:
      sex           agegrp          x              y          |.sources|    
  female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
  male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.000  
- NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
-              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
+ NAs   :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
+              NAs     :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
                              3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.000  
                              Max.   :4665   Max.   :3525   Max.   :14.000  
                                                                            
@@ -3823,8 +3780,8 @@ Data attributes:
      sex           agegrp   
  female:292   [0,3)   :194  
  male  :339   [3,19)  :279  
- NA's  :  5   [19,Inf):162  
-              NA's    :  1  
+ NAs   :  5   [19,Inf):162  
+              NAs     :  1  
                             
                             
                             
@@ -4080,6 +4037,7 @@ Overall number of events: 636
 > ## show the occurrence of events along time
 > plot(imdepi, "time", main = "Histogram of event time points")
 > plot(imdepi, "time", by = NULL, main = "Aggregated over both event types")
+> plot(imdepi, "time", subset = type == "B", main = "Only type B")
 > 
 > ## show the distribution in space
 > plot(imdepi, "space", lwd = 2, col = "lavender")
@@ -4142,8 +4100,8 @@ Summary of event marks and number of potential sources:
      sex           agegrp          x              y          |.sources|    
  female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
  male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.000  
- NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
-              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
+ NAs   :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
+              NAs     :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
                              3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.000  
                              Max.   :4665   Max.   :3525   Max.   :14.000  
                                                                            
@@ -4165,8 +4123,8 @@ Summary of event marks and number of potential sources:
      sex           agegrp          x              y          |.sources|    
  female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
  male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 1.000  
- NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 2.000  
-              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 2.854  
+ NAs   :  5   [19,Inf):162   Median :4206   Median :3106   Median : 2.000  
+              NAs     :  1   Mean   :4244   Mean   :3092   Mean   : 2.854  
                              3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 4.000  
                              Max.   :4665   Max.   :3525   Max.   :14.000  
                                                                            
@@ -4196,8 +4154,8 @@ Summary of event marks and number of potential sources:
      sex           agegrp          x              y          |.sources|    
  female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
  male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.000  
- NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
-              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
+ NAs   :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
+              NAs     :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
                              3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.000  
                              Max.   :4665   Max.   :3525   Max.   :14.000  
                                                                            
@@ -6530,8 +6488,8 @@ Summary of event marks and number of potential sources:
      sex           agegrp          x              y          |.sources|    
  female:292   [0,3)   :194   Min.   :4039   Min.   :2710   Min.   : 0.000  
  male  :339   [3,19)  :279   1st Qu.:4101   1st Qu.:2967   1st Qu.: 0.000  
- NA's  :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
-              NA's    :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
+ NAs   :  5   [19,Inf):162   Median :4206   Median :3106   Median : 1.000  
+              NAs     :  1   Mean   :4244   Mean   :3092   Mean   : 1.634  
                              3rd Qu.:4361   3rd Qu.:3194   3rd Qu.: 2.000  
                              Max.   :4665   Max.   :3525   Max.   :14.000  
                                                                            
@@ -6771,7 +6729,9 @@ dt      <= 50  > 50
 > .opt <- options(xtable.comment = FALSE)
 > ## End(Don't show)
 > ## contingency table in LaTeX
-> toLatex(knoxtest)
+> if (require("xtable"))
++   toLatex(knoxtest)
+Loading required package: xtable
 \begin{table}[ht]
 \centering
 \begin{tabular}{r|rr|r}
@@ -6820,6 +6780,9 @@ dt      <= 50  > 50
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("knox", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
+
+detaching ‘package:xtable’
+
 > nameEx("ks.plot.unif")
 > ### * ks.plot.unif
 > 
@@ -8681,13 +8644,16 @@ Failed with error:  ‘there is no package called ‘xts’’
 > set.seed(123)
 > exposureTimes <-  as.Date("2014-03-12") + sample(x=0:25,size=99,replace=TRUE)
 > sts <- linelist2sts(data.frame(exposure=exposureTimes),
-+                                dateCol="exposure",aggregate.by="1 day")
++                     dateCol="exposure", aggregate.by="1 day")
 > ## Plot it with larger ticks for days than usual
-> surveillance.options("stsTickFactors"=c("%d"=1, "%W"=0.33,
-+                 "%V"=0.33, "%m"=1.75, "%Q"=1.25, "%Y"=1.5, "%G"=1.5))
-> plot(sts,xaxis.tickFreq=list("%d"=atChange,"%m"=atChange),
-+      xaxis.labelFreq=list("%d"=at2ndChange),xaxis.labelFormat="%d-%b",
+> surveillance.options(stsTickFactors = c("%d"=1, "%W"=0.33,
++     "%V"=0.33, "%m"=1.75, "%Q"=1.25, "%Y"=1.5, "%G"=1.5))
+> plot(sts, xaxis.tickFreq=list("%d"=atChange,"%m"=atChange),
++      xaxis.labelFreq=list("%d"=at2ndChange), xaxis.labelFormat="%d-%b",
 +      xlab="Time (days)")
+> ## Don't show: 
+> reset.surveillance.options()
+> ## End(Don't show)
 > 
 > 
 > 
@@ -8778,7 +8744,7 @@ $colors
 
 $stsTickFactors
   %d   %W   %V   %m   %Q   %Y   %G 
-1.00 0.33 0.33 1.75 1.25 1.50 1.50 
+0.33 0.33 0.33 1.00 1.25 1.50 1.50 
 
 $allExamples
 [1] FALSE
@@ -8820,7 +8786,10 @@ $gpclib
 +                 thresholdMethod="delta",alpha=0.1)
 > salm <- farringtonFlexible(salm,control=control)
 > 
-> toLatex(salm, sanitize.text.function=identity, comment=FALSE)
+> ## Don't show: 
+> if (requireNamespace("xtable"))
++ ## End(Don't show)
++ toLatex(salm, sanitize.text.function=identity, comment=FALSE)
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrlr}
@@ -9691,7 +9660,7 @@ Summary of event marks and number of potential sources:
      sex           agegrp          x              y          |.sources|    
  female:139   [0,3)   : 88   Min.   :4052   Min.   :2724   Min.   : 0.000  
  male  :159   [3,19)  :137   1st Qu.:4151   1st Qu.:2907   1st Qu.: 2.000  
- NA's  :  2   [19,Inf): 75   Median :4283   Median :3110   Median : 3.000  
+ NAs   :  2   [19,Inf): 75   Median :4283   Median :3110   Median : 3.000  
                              Mean   :4300   Mean   :3073   Mean   : 3.767  
                              3rd Qu.:4421   3rd Qu.:3224   3rd Qu.: 5.000  
                              Max.   :4638   Max.   :3470   Max.   :11.000  
@@ -9937,8 +9906,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x5e88009b79f8>
-<environment: 0x5e88009b2168>
+<bytecode: 0x5d452a737d58>
+<environment: 0x5d452398bca8>
 
 $G
 function (t, logvals, types) 
@@ -9948,7 +9917,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x5e88009b2168>
+<environment: 0x5d452398bca8>
 
 $deriv
 function (t, logvals, types) 
@@ -9964,8 +9933,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x5e88009b8be8>
-<environment: 0x5e88009b2168>
+<bytecode: 0x5d452398c738>
+<environment: 0x5d452398bca8>
 
 $Deriv
 function (t, logvals, types) 
@@ -9984,7 +9953,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x5e88009b2168>
+<environment: 0x5d452398bca8>
 
 $npars
 [1] 4
@@ -10650,16 +10619,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x5e880026a470>
-<environment: 0x5e8800267200>
+<bytecode: 0x5d4527856cf8>
+<environment: 0x5d4528c8cf30>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x5e880026aef0>
-<environment: 0x5e8800267200>
+<bytecode: 0x5d4527857778>
+<environment: 0x5d4528c8cf30>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10667,8 +10636,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x5e880026b430>
-<environment: 0x5e8800267200>
+<bytecode: 0x5d4527857e40>
+<environment: 0x5d4528c8cf30>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10682,8 +10651,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x5e8800267d70>
-<environment: 0x5e8800267200>
+<bytecode: 0x5d4527854f60>
+<environment: 0x5d4528c8cf30>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10691,8 +10660,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x5e8800269350>
-<environment: 0x5e8800267200>
+<bytecode: 0x5d45278565b0>
+<environment: 0x5d4528c8cf30>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10704,8 +10673,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x5e8800265b78>
-<environment: 0x5e8800267200>
+<bytecode: 0x5d4527856c08>
+<environment: 0x5d4528c8cf30>
 
 $npars
 [1] 3
@@ -10967,7 +10936,9 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 
 > 
 > # create LaTeX code of coefficient table
-> toLatex(s, digits=2)
+> if (require("xtable"))
++   toLatex(s, digits=2)
+Loading required package: xtable
 \begin{tabular}{lrrrr}
 \hline
  & Estimate & Std. Error & $z$ value & $P(|Z|>|z|)$ \\
@@ -10989,7 +10960,8 @@ Corr. codes:  0 ‘ ’ 0.3 ‘.’ 0.6 ‘,’ 0.8 ‘+’ 0.9 ‘*’ 0.95 ‘
 > .opt <- options(xtable.comment = FALSE)
 > ## End(Don't show)
 > # or using the xtable-method (which produces rate ratios)
-> xtable(s)
+> if (require("xtable"))
++   xtable(s)
 \begin{table}[ht]
 \centering
 \begin{tabular}{lrrr}
@@ -11014,6 +10986,9 @@ h.I(start/365 - 3.5) & 0.955 & 0.91--1.00 & 0.039 \\
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("twinstim_methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
+
+detaching ‘package:xtable’
+
 > nameEx("twinstim_profile")
 > ### * twinstim_profile
 > 
@@ -11227,7 +11202,7 @@ see '?methods' for accessing help and source code
 > sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, T=90,
 +                  tiles=districtsD, simplify=TRUE)
 
-Time at beginning of simulation: 2025-06-24 17:35:14.025975 
+Time at beginning of simulation: 2026-06-30 17:47:57.839825 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11253,12 +11228,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.367 seconds
-Estimated finishing time: 2025-06-24 17:35:14.760932 
+Runtime of first simulation: 0.374 seconds
+Estimated finishing time: 2026-06-30 17:47:58.587672 
 
 Simulation 2 / 2 ...	simulated 21 events up to time 90 
 
-Done (2025-06-24 17:35:14.833557).
+Done (2026-06-30 17:47:58.658031).
 > sims
 
 Call:
@@ -11633,7 +11608,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.114 0.667 49.975 0.046 0.057 
+Time elapsed:  49.347 0.85 50.423 0.042 0.062 
 > grDevices::dev.off()
 null device 
           1 
