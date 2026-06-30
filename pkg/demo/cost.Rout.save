@@ -1,6 +1,6 @@
 
-R version 4.5.1 (2025-06-13) -- "Great Square Root"
-Copyright (C) 2025 The R Foundation for Statistical Computing
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -26,8 +26,7 @@ Type 'q()' to quit R.
 > ###################################################
 > library("surveillance")
 Loading required package: sp
-Loading required package: xtable
-This is surveillance 1.25.0; see ‘package?surveillance’ or
+This is surveillance 1.26.0; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > options(width=70)
 > options("prompt"="R> ")
