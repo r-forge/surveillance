@@ -35,7 +35,7 @@ Authors@R: c(
     )
 Depends:
     R (>= 3.6.0), methods, grDevices, graphics, stats, utils, 
-    sp (>= 2.1-4), xtable (>= 1.7-0)
+    sp (>= 2.1-4)
 Imports:
     polyCub (>= 0.8.0),
     MASS, Matrix, nlme,
@@ -44,6 +44,7 @@ LinkingTo:
     polyCub
 Suggests:
     parallel, grid,
+    xtable (>= 1.7-0),
     gridExtra (>= 2.0.0), lattice (>= 0.20-44), colorspace, scales, animation,
     msm, spc, coda, runjags, INLA,
     spdep, numDeriv, maxLik, gsl, fanplot, hhh4contacts,

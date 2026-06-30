@@ -1,7 +1,7 @@
 %\VignetteIndexEntry{twinSIR: Individual-level epidemic modeling for a fixed population with known distances}
 %\VignetteEngine{knitr::knitr}
 %% additional dependencies beyond what is required for surveillance anyway:
-%\VignetteDepends{surveillance, quadprog}
+%\VignetteDepends{surveillance, xtable, quadprog}
 
 <<setup, cache = FALSE, include = FALSE, purl = FALSE>>=
 ## purl=FALSE => not included in the tangle'd R script
@@ -16,6 +16,7 @@ options(prompt = "R> ", continue = "+  ", useFancyQuotes = FALSE)  # JSS
 options(width = 85, digits = 4)
 options(scipen = 1)  # so that 1e-4 gets printed as 0.0001
 ## xtable settings
+library("xtable")
 options(xtable.booktabs = TRUE, xtable.size = "small",
         xtable.sanitize.text.function = identity,
         xtable.comment = FALSE)

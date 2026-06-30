@@ -7,6 +7,11 @@
 
 - `addSeason2formula()` now preserves the original formula environment.
 
+## Package Infrastructure
+
+- Package **xtable** is no longer attached by default and no longer a
+  strict dependency of **surveillance**.
+
 ## Bug Fixes
 
 - `plot.epidataCS()` now evaluates the optional `subset` in the

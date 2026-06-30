@@ -1,7 +1,7 @@
 %\VignetteIndexEntry{Monitoring count time series in R: Aberration detection in public health surveillance}
 %\VignetteEngine{knitr::knitr}
 %% additional dependencies beyond what is required for surveillance anyway:
-%\VignetteDepends{surveillance, gamlss, MGLM}
+%\VignetteDepends{surveillance, xtable, gamlss, MGLM}
 
 <<knitr, include = FALSE, purl = FALSE>>=
 knitr::opts_chunk$set(fig.path="plots/monitoringCounts-",

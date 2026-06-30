@@ -1,7 +1,7 @@
 %\VignetteIndexEntry{hhh4 (spatio-temporal): Endemic-epidemic modeling of areal count time series}
 %\VignetteEngine{knitr::knitr}
 %% additional dependencies beyond what is required for surveillance anyway:
-%\VignetteDepends{surveillance, lattice, gsl, colorspace, gridExtra, scales, fanplot, hhh4contacts}
+%\VignetteDepends{surveillance, xtable, lattice, gsl, colorspace, gridExtra, scales, fanplot, hhh4contacts}
 
 <<setup, cache = FALSE, include = FALSE, purl = FALSE>>=
 ## purl=FALSE => not included in the tangle'd R script
@@ -16,6 +16,7 @@ options(prompt = "R> ", continue = "+  ", useFancyQuotes = FALSE)  # JSS
 options(width = 85, digits = 4)
 options(scipen = 1)  # so that 1e-4 gets printed as 0.0001
 ## xtable settings
+library("xtable")
 options(xtable.booktabs = TRUE, xtable.size = "small",
         xtable.sanitize.text.function = identity,
         xtable.comment = FALSE)
