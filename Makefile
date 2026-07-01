@@ -122,10 +122,17 @@ README.html: pkg/README.md
 www:
 	cd pkg; $R --no-echo --no-save --no-restore -e \
 	  "pkgdown::build_site(examples = FALSE, lazy = TRUE, devel = TRUE); summary(warnings())"
+	make www-link-CRAN-vignettes
 
 www-clean:
 	cd pkg; $R --no-echo --no-save --no-restore -e \
 	  "pkgdown::clean_site(); pkgdown::build_site(examples = FALSE, new_process = FALSE); summary(warnings())"
+	make www-link-CRAN-vignettes
+
+## replace relative links to installed vignettes by their CRAN versions
+www-link-CRAN-vignettes:
+	cd www/pkgdown/reference && \
+	  sed -i -e 's|"../doc/|"https://cloud.R-project.org/web/packages/surveillance/vignettes/|g' *.html
 
 www-applications: www/applications_EE.csv
 	cd www; $R --no-echo --no-save --no-restore -e \
