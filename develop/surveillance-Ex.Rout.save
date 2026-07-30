@@ -34,7 +34,7 @@ Type 'q()' to quit R.
 > ### * </HEADER>
 > library('surveillance')
 Loading required package: sp
-This is surveillance 1.26.0; see ‘package?surveillance’ or
+This is surveillance 1.26.1; see ‘package?surveillance’ or
 https://surveillance.R-Forge.R-project.org/ for an overview.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -8187,7 +8187,6 @@ detaching ‘package:splancs’
 > ###   neighbourhood,sts-method neighbourhood<-,sts-method dim,sts-method
 > ###   dimnames,sts-method year year,sts-method epochInYear
 > ###   epochInYear,sts-method as.data.frame.sts as.data.frame,sts-method
-> ###   as.ts.sts coerce,sts,ts-method coerce,ts,sts-method as.xts.sts
 > ### Keywords: classes ts methods
 > 
 > ### ** Examples
@@ -8277,19 +8276,6 @@ Head of neighbourhood:
 +                  population = populationFrac,
 +                  neighbourhood = weserems_nbOrder, map = map)
 > stopifnot(identical(mymeasles, measlesWeserEms))
-> 
-> ## convert ts/mts object to sts
-> z <- ts(matrix(rpois(300,10), 100, 3), start = c(1961, 1), frequency = 12)
-> z.sts <- as(z, "sts")
-> plot(z.sts)
-> 
-> ## conversion of "sts" objects to the quasi-standard "xts" class
-> if (requireNamespace("xts")) {
-+     z.xts <- as.xts.sts(z.sts)
-+     plot(z.xts)
-+ }
-Loading required namespace: xts
-Failed with error:  ‘there is no package called ‘xts’’
 > 
 > 
 > 
@@ -8396,6 +8382,71 @@ Failed with error:  ‘there is no package called ‘xts’’
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("sts_animate", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("sts_coerce")
+> ### * sts_coerce
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: sts_conversion
+> ### Title: Convert an '"sts"' Object to '"ts"' or '"xts"'
+> ### Aliases: as.ts.sts coerce,sts,ts-method coerce,ts,sts-method as.xts.sts
+> ### Keywords: ts methods
+> 
+> ### ** Examples
+> 
+> ## convert "ts"/"mts" object to "sts"
+> counts <- matrix(rpois(28*3,10), 28, 3,
++                  dimnames = list(NULL, paste("Region", 1:3)))
+> z <- ts(counts, start = c(1983, 12), frequency = 12)
+> head(z)
+         Region 1 Region 2 Region 3
+Dec 1983        8       11        5
+Jan 1984       10        9       14
+Feb 1984        7        5       10
+Mar 1984       11       13       16
+Apr 1984       14        8       11
+May 1984       12       13        7
+> x <- as(z, "sts")
+> x
+-- An object of class sts -- 
+freq:		 12 
+start:		 1983 12 
+dim(observed):	 28 3 
+
+Head of observed:
+     Region 1 Region 2 Region 3
+[1,]        8       11        5
+> 
+> ## direct "sts" construction gives the same:
+> (x2 <- sts(counts, start = start(z), frequency = frequency(z)))
+-- An object of class sts -- 
+freq:		 12 
+start:		 1983 12 
+dim(observed):	 28 3 
+
+Head of observed:
+     Region 1 Region 2 Region 3
+[1,]        8       11        5
+> ## Don't show: 
+> stopifnot(identical(x, x2))
+> ## End(Don't show)
+> 
+> ## conversion of "sts" objects to the "xts" class
+> if (require("xts")) {
++     y <- as.xts(x)
++     print(head(y))
++     plot(y)
++ }
+Loading required package: xts
+Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘xts’
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("sts_coerce", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("sts_creation")
 > ### * sts_creation
@@ -9906,8 +9957,8 @@ $g
 function (t, logvals, types) 
 heights(logvals)[(types - 1) * nallknots + .bincode(t, allknotsInf, 
     right = FALSE)]
-<bytecode: 0x5d452a737d58>
-<environment: 0x5d452398bca8>
+<bytecode: 0x652052976f68>
+<environment: 0x6520529727f8>
 
 $G
 function (t, logvals, types) 
@@ -9917,7 +9968,7 @@ function (t, logvals, types)
         sum(typeheights(logvals, type) * diff.default(knots2t))
     }, t, types, SIMPLIFY = TRUE, USE.NAMES = FALSE)
 }
-<environment: 0x5d452398bca8>
+<environment: 0x6520529727f8>
 
 $deriv
 function (t, logvals, types) 
@@ -9933,8 +9984,8 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<bytecode: 0x5d452398c738>
-<environment: 0x5d452398bca8>
+<bytecode: 0x652052978158>
+<environment: 0x6520529727f8>
 
 $Deriv
 function (t, logvals, types) 
@@ -9953,7 +10004,7 @@ function (t, logvals, types)
     dim(res) <- c(L, npars)
     res
 }
-<environment: 0x5d452398bca8>
+<environment: 0x6520529727f8>
 
 $npars
 [1] 4
@@ -10619,16 +10670,16 @@ function (s, logvals, types = NULL)
     sLength <- sqrt(.rowSums(s^2, length(s)/2, 2L))
     c(1, exp(logvals), 0)[.bincode(sLength, allknots, right = FALSE)]
 }
-<bytecode: 0x5d4527856cf8>
-<environment: 0x5d4528c8cf30>
+<bytecode: 0x65205510bba8>
+<environment: 0x652055108938>
 
 $F
 function (polydomain, f, logvals, type = NULL, npoly = 256) 
 {
     sum(c(1, exp(logvals)) * ringAreas(polydomain, npoly = npoly))
 }
-<bytecode: 0x5d4527857778>
-<environment: 0x5d4528c8cf30>
+<bytecode: 0x65205510c628>
+<environment: 0x652055108938>
 
 $Fcircle
 function (r, logvals, type = NULL) 
@@ -10636,8 +10687,8 @@ function (r, logvals, type = NULL)
     sum(c(1, exp(logvals)) * pi * diff(pmin.int(allknotsPos, 
         r)^2))
 }
-<bytecode: 0x5d4527857e40>
-<environment: 0x5d4528c8cf30>
+<bytecode: 0x65205510cb68>
+<environment: 0x652055108938>
 
 $deriv
 function (s, logvals, types = NULL) 
@@ -10651,8 +10702,8 @@ function (s, logvals, types = NULL)
     dim(deriv) <- c(L, nknots)
     deriv
 }
-<bytecode: 0x5d4527854f60>
-<environment: 0x5d4528c8cf30>
+<bytecode: 0x6520551094a8>
+<environment: 0x652055108938>
 
 $Deriv
 function (polydomain, deriv, logvals, type = NULL, npoly = 256) 
@@ -10660,8 +10711,8 @@ function (polydomain, deriv, logvals, type = NULL, npoly = 256)
     ringAreas <- ringAreas(polydomain, npoly = npoly)
     exp(logvals) * ringAreas[-1L]
 }
-<bytecode: 0x5d45278565b0>
-<environment: 0x5d4528c8cf30>
+<bytecode: 0x65205510aa88>
+<environment: 0x652055108938>
 
 $simulate
 function (n, logvals, type = NULL, ub) 
@@ -10673,8 +10724,8 @@ function (n, logvals, type = NULL, ub)
         prob = heights * diff.default(c(0, knots2upper^2)))
     runifdisc(n, knots2upper[rings], c(0, knots2upper)[rings])
 }
-<bytecode: 0x5d4527856c08>
-<environment: 0x5d4528c8cf30>
+<bytecode: 0x6520551072b0>
+<environment: 0x652055108938>
 
 $npars
 [1] 3
@@ -11202,7 +11253,7 @@ see '?methods' for accessing help and source code
 > sims <- simulate(imdepifit, nsim=nsim, seed=1, data=imdepi, T=90,
 +                  tiles=districtsD, simplify=TRUE)
 
-Time at beginning of simulation: 2026-06-30 17:47:57.839825 
+Time at beginning of simulation: 2026-07-30 16:20:12.801005 
 Simulation 1 / 2 ...
 -------------------------------------------------------------------------------
 
@@ -11228,12 +11279,12 @@ Preparing simulated events for "epidataCS" ...
 Done.
 
 -------------------------------------------------------------------------------
-Runtime of first simulation: 0.374 seconds
-Estimated finishing time: 2026-06-30 17:47:58.587672 
+Runtime of first simulation: 0.431 seconds
+Estimated finishing time: 2026-07-30 16:20:13.66311 
 
 Simulation 2 / 2 ...	simulated 21 events up to time 90 
 
-Done (2026-06-30 17:47:58.658031).
+Done (2026-07-30 16:20:13.712203).
 > sims
 
 Call:
@@ -11608,7 +11659,7 @@ FALSE  TRUE
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.347 0.85 50.423 0.042 0.062 
+Time elapsed:  50.715 0.794 51.802 0.046 0.059 
 > grDevices::dev.off()
 null device 
           1 
