@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.26.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.26.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,10 @@
 
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.26.1" id="surveillance-1261-2026-07-30">surveillance 1.26.1 (2026-07-30)<a class="anchor" aria-label="anchor" href="#surveillance-1261-2026-07-30"></a></h2>
+<p>This is a maintenance release, improving documentation and updating deprecated <code><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure()</a></code> syntax in a few test scripts.</p>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.26.0" id="surveillance-1260-2026-06-30">surveillance 1.26.0 (2026-06-30)<a class="anchor" aria-label="anchor" href="#surveillance-1260-2026-06-30"></a></h2>
 <div class="section level3">
@@ -169,7 +173,8 @@
 <div class="section level3">
 <h3 id="package-infrastructure-1-20-3">Package Infrastructure<a class="anchor" aria-label="anchor" href="#package-infrastructure-1-20-3"></a></h3>
 <ul><li>
-<code>vignette("monitoringCounts")</code> now uses <strong>knitr</strong> as its engine to work around <a href="https://bugs.R-project.org/show_bug.cgi?id=18318" class="external-link">Bug 18318</a>.</li>
+<code>vignette("monitoringCounts")</code> now uses <strong>knitr</strong> as its engine. <!-- to work around R's [PR#18318](https://bugs.R-project.org/show_bug.cgi?id=18318) -->
+</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -267,7 +272,7 @@
 <ul><li><p>Bug fix in the <code><a href="../reference/farringtonFlexible.html">farringtonFlexible()</a></code>-function, which for the argument <code>thresholdMethod=="nbPlugin"</code> and <code>thresholdMethod=="muan"</code> unfortunately computed the limit as an <code>(1-alpha/2)</code> prediction interval instead of the documented <code>(1-alpha)</code> prediction interval. This affects four threshold values in Table 2 of <code>vignette("monitoringCounts")</code>. The default method <code>"delta"</code> worked as expected.</p></li>
 <li><p>In <code><a href="../reference/hhh4.html">hhh4()</a></code> models without AR component, the matrix of fitted values could lack column names.</p></li>
 <li><p>Experimental time-varying neighbourhood weights in <code><a href="../reference/hhh4.html">hhh4()</a></code> were indexed differently in model fitting and in the <code><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate()</a></code> method (undocumented behaviour). Both now use the latter variant, where the mean at time <em>t</em> uses products of weights at time <em>t</em> and observed counts at time <em>t-1</em>. [reported by Johannes Bracher]</p></li>
-<li><p>For weekly <code>sts</code> indexed via <code>start</code> and <code>freq=52</code>, <code>epoch(sts, as.Date=TRUE)</code> now interprets the <code>start</code> week according to ISO 8601. For example, <code>start = c(2020, 5)</code> corresponds to 2020-01-27, not 2020-02-03. This affects <code><a href="../reference/sts-class.html">as.xts.sts()</a></code> and the time plot in <code><a href="../reference/sts_animate.html">animate.sts()</a></code>.</p></li>
+<li><p>For weekly <code>sts</code> indexed via <code>start</code> and <code>freq=52</code>, <code>epoch(sts, as.Date=TRUE)</code> now interprets the <code>start</code> week according to ISO 8601. For example, <code>start = c(2020, 5)</code> corresponds to 2020-01-27, not 2020-02-03. This affects <code><a href="../reference/sts_coerce.html">as.xts.sts()</a></code> and the time plot in <code><a href="../reference/sts_animate.html">animate.sts()</a></code>.</p></li>
 <li><p><code><a href="../reference/stsplot_space.html">stsplot_space()</a></code> automatically extends manual color breaks (<code>at</code>), if the intervals do not cover the data range.</p></li>
 <li><p><code><a href="../reference/twinstim_simEndemicEvents.html">simEndemicEvents()</a></code> and thus <code>epitest(..., method="simulate")</code> are no longer slowed down by intermediate <code><a href="https://edzer.github.io/sp/reference/CRS-class.html" class="external-link">sp::CRS()</a></code> computations.</p></li>
 </ul></div>
@@ -686,7 +691,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 <li><p>and <code><a href="../reference/twinstim_epitest.html">epitest()</a></code> for <code>twinstim</code> models (makes use of the new auxiliary function <code><a href="../reference/R0.html">simpleR0()</a></code>).</p></li>
 </ul></li>
 <li><p>New function <code><a href="../reference/plapply.html">plapply()</a></code>: a parallel and verbose version of <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> wrapping around both <code>mclapply()</code> and <code>parLapply()</code> of package <strong>parallel</strong>.</p></li>
-<li><p>New converter <code><a href="../reference/sts-class.html">as.xts.sts()</a></code> to transform <code>"sts"</code> objects to the quasi standard <code>"xts"</code> class, e.g., to make use of package <a href="https://CRAN.R-project.org/package=dygraphs" class="external-link"><strong>dygraphs</strong></a> for interactive time series plots.</p></li>
+<li><p>New converter <code><a href="../reference/sts_coerce.html">as.xts.sts()</a></code> to transform <code>"sts"</code> objects to the quasi standard <code>"xts"</code> class, e.g., to make use of package <a href="https://CRAN.R-project.org/package=dygraphs" class="external-link"><strong>dygraphs</strong></a> for interactive time series plots.</p></li>
 <li><p>New options for scaling and normalization of neighbourhood weights in <code><a href="../reference/hhh4.html">hhh4()</a></code> models.</p></li>
 <li><p>New auxiliary function <code><a href="../reference/layout.labels.html">layout.scalebar()</a></code> for use as part of <code>sp.layout</code> in <code><a href="https://edzer.github.io/sp/reference/spplot.html" class="external-link">sp::spplot()</a></code> or in the traditional graphics system.</p></li>
 </ul><div class="section level4">
@@ -906,7 +911,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 <div class="section level3">
 <h3 id="package-infrastructure-1-7-0">Package Infrastructure<a class="anchor" aria-label="anchor" href="#package-infrastructure-1-7-0"></a></h3>
 <ul><li><p>Package <a href="https://CRAN.R-project.org/package=gpclib" class="external-link"><strong>gpclib</strong></a> is no longer necessary for the construction of <code>"epidataCS"</code>-objects. Instead, we make use of the new dedicated package <a href="https://CRAN.R-project.org/package=polyclip" class="external-link"><strong>polyclip</strong></a> (licensed under the BSL) for polygon clipping operations (via <code>spatstat::intersect.owin()</code>). This results in a slightly different <code>$events$.influenceRegion</code> component of <code>"epidataCS"</code> objects, one reason being that <strong>polyclip</strong> uses integer arithmetic. Change of <code><a href="../reference/twinstim.html">twinstim()</a></code> estimates for a newly created <code>"epidataCS"</code> compared with the same data prepared in earlier versions should be very small (e.g., for <code>data("imdepifit")</code> the mean relative difference of coefficients is 3.7e-08, while the <code><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik()</a></code> is <code><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal()</a></code>). As an alternative, <strong>rgeos</strong> can still be chosen to do the polygon operations.</p></li>
-<li><p>The <strong>surveillance</strong>-internal code now depends on R &gt;= 2.15.2 (for <code><a href="https://rdrr.io/r/stats/nlminb.html" class="external-link">nlminb()</a></code> <code>NA</code> fix of PR#15052, consistent <code>rownames(model.matrix)</code> of PR#14992, <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>, <code><a href="https://rdrr.io/r/parallel/mclapply.html" class="external-link">parallel::mcmapply()</a></code>). However, the required recent version of <strong>spatstat</strong> (1.34-0, for <strong>polyclip</strong>) actually needs R &gt;= 3.0.2, which therefore also applies to <strong>surveillance</strong>.</p></li>
+<li><p>The <strong>surveillance</strong>-internal code now depends on R &gt;= 2.15.2 (for the <code><a href="https://rdrr.io/r/stats/nlminb.html" class="external-link">nlminb()</a></code> <code>NA</code> fix from PR#15052, consistent <code>rownames(model.matrix)</code> from PR#14992, and the new <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code> and <code><a href="https://rdrr.io/r/parallel/mclapply.html" class="external-link">parallel::mcmapply()</a></code>). However, the required recent version of <strong>spatstat</strong> (1.34-0, for <strong>polyclip</strong>) actually needs R &gt;= 3.0.2, which therefore also applies to <strong>surveillance</strong>.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-1-7-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-7-0"></a></h3>
@@ -1231,7 +1236,7 @@ Dominant eigenvalues (<code>"maxEV"</code>) were not affected by this bug.</li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>

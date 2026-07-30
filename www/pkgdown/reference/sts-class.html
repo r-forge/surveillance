@@ -40,7 +40,7 @@ The constructor function sts can be used to setup an
 
     <a class="navbar-brand me-2" href="../index.html">surveillance</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.26.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.26.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -335,12 +335,14 @@ The constructor function sts can be used to setup an
     <dt>coerce</dt>
 <dd><p><code>signature(from="sts", to="ts")</code> and
       <code>signature(from="ts", to="sts")</code>,
-      to be called via <code>as(stsObj, "ts")</code> (or <code>as.ts(stsObj)</code>)
+      to be called via <code>as(stsObj, "ts")</code> (or
+      <code><a href="sts_coerce.html">as.ts</a>(stsObj)</code>)
       and <code>as(tsObj, "sts")</code>, respectively.</p></dd>
 
 
     <dt>as.xts</dt>
-<dd><p>convert to the <a href="https://CRAN.R-project.org/package=xts" class="external-link"><span class="pkg">xts</span></a> package format.</p></dd>
+<dd><p>convert to the <a href="https://CRAN.R-project.org/package=xts" class="external-link"><span class="pkg">xts</span></a> package format,
+      see <code><a href="sts_coerce.html">as.xts.sts</a></code>.</p></dd>
 
 
 </dl><p></p>
@@ -411,18 +413,7 @@ The constructor function sts can be used to setup an
 <span><span class="va">mymeasles</span> <span class="op">&lt;-</span> <span class="fu">sts</span><span class="op">(</span><span class="va">counts</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2001</span>, <span class="fl">1</span><span class="op">)</span>, frequency <span class="op">=</span> <span class="fl">52</span>,</span>
 <span>                 population <span class="op">=</span> <span class="va">populationFrac</span>,</span>
 <span>                 neighbourhood <span class="op">=</span> <span class="va">weserems_nbOrder</span>, map <span class="op">=</span> <span class="va">map</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">mymeasles</span>, <span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## convert ts/mts object to sts</span></span>
-<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">300</span>,<span class="fl">10</span><span class="op">)</span>, <span class="fl">100</span>, <span class="fl">3</span><span class="op">)</span>, start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1961</span>, <span class="fl">1</span><span class="op">)</span>, frequency <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span><span class="va">z.sts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html" class="external-link">as</a></span><span class="op">(</span><span class="va">z</span>, <span class="st">"sts"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">z.sts</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## conversion of "sts" objects to the quasi-standard "xts" class</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"xts"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">z.xts</span> <span class="op">&lt;-</span> <span class="fu">as.xts.sts</span><span class="op">(</span><span class="va">z.sts</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">z.xts</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">mymeasles</span>, <span class="va">measlesWeserEms</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
@@ -433,7 +424,7 @@ The constructor function sts can be used to setup an
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.9000. Hosted on <a href="https://R-forge.R-project.org/projects/surveillance/" class="external-link"><img src="https://r-forge.r-project.org/themes/rforge/imagesrf/logo.png" height="18" alt="R-Forge"></a></p>
 </div>
 
     </footer></div>
