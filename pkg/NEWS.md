@@ -1,3 +1,9 @@
+# surveillance 1.26.1 (2026-07-30)
+
+This is a maintenance release, improving documentation and updating
+deprecated `structure()` syntax in a few test scripts.
+
+
 # surveillance 1.26.0 (2026-06-30)
 
 ## New Features
