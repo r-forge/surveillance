@@ -51,7 +51,7 @@ Suggests:
     quadprog,
     memoise, polyclip, intervals, splancs,
     gamlss, MGLM (>= 0.1.0), sf,
-    tinytest (>= 1.4.1), knitr
+    tinytest (>= 1.4.1), knitr, bibtex
 Enhances:
     xts, ggplot2
 Description: Statistical methods for the modeling and monitoring of time series
@@ -89,3 +89,4 @@ License: GPL-2
 URL: https://surveillance.R-Forge.R-project.org/
 Additional_repositories: https://inla.r-inla-download.org/R/stable/
 VignetteBuilder: utils, knitr
+Note: Building the package requires R >= 4.6.0 for Rd \bibshow{} et al.
